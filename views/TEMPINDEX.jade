@@ -91,7 +91,12 @@ head
               span(class="input-group-addon" id="sizing-addon1") картинка
               input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='userpic') 
             button(type='submit' class='btn btn-lg btn-primary') Загрузить
-    
+        .col-xs-6
+          form(method='post',action='/upltest',role='form', enctype='multipart/form-data')
+            .input-group(style='margin-bottom:5px;')
+              span(class="input-group-addon" id="sizing-addon1") текст
+              input(type="text"  class="form-control" aria-describedby="sizing-addon1" name='usertext') 
+            button(type='submit' class='btn btn-lg btn-danger') Загрузить
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       

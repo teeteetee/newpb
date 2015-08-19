@@ -38,8 +38,8 @@ app.get('/',function(req,res){
 
 app.post('/upl',function(req,res){
   console.log('upl!');
-  if(req.files) {
-  res.send(req.files);
+  if(req.usertext) {
+  console.log(req.usertext);
    
   }
   upload(req.files.userpic.path,req.files.userpic.name,reply);
