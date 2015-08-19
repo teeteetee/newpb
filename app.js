@@ -35,20 +35,20 @@ app.get('/',function(req,res){
   console.log(' REQ ');
 });
 
-app.post('/upltest',function(req,res){
+app.post('/upltest',function(req,res) {
   console.log('upl!');
-  if(req.params.usertext) {
-  res.send(req.params.usertext);
+  if(req.body.usertext) {
+  res.send(req.body.usertext);
    
   }
   else {
-    res.send(req);
+    res.send(req.body);
   }
 });
 
-app.post('/upl',function(req,res){
+app.post('/upl',function(req,res) {
   console.log('upl!');
-  console.log(req.files);
+  console.log(req.files.userpic);
   upload(req.files.userpic.path,req.files.userpic.name,reply);
 
   function reply(picadr){
