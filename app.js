@@ -35,13 +35,20 @@ app.get('/',function(req,res){
   console.log(' REQ ');
 });
 
-
-app.post('/upl',function(req,res){
+app.post('/upltest',function(req,res){
   console.log('upl!');
   if(req.usertext) {
   console.log(req.usertext);
    
   }
+  else {
+    console.log('empty');
+  }
+});
+
+app.post('/upl',function(req,res){
+  console.log('upl!');
+  
   upload(req.files.userpic.path,req.files.userpic.name,reply);
 
   function reply(picadr){
