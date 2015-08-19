@@ -23,7 +23,10 @@ app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 //app.use(require('connect').bodyParser());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(express.compress());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
