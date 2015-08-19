@@ -42,7 +42,7 @@ app.post('/upltest',function(req,res){
    
   }
   else {
-    console.log('empty');
+    console.log(req);
   }
 });
 
