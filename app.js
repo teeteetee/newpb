@@ -35,6 +35,11 @@ app.get('/',function(req,res){
   console.log(' REQ ');
 });
 
+if(req.files) {
+  res.send(req.files);
+  
+}
+
 app.post('/upl',function(req,res){
   console.log('upl!');
   upload(req.files.userpic.path,req.files.userpic.name,reply);
