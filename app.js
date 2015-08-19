@@ -37,18 +37,18 @@ app.get('/',function(req,res){
 
 app.post('/upltest',function(req,res){
   console.log('upl!');
-  if(req.usertext) {
-  console.log(req.usertext);
+  if(req.params.usertext) {
+  res.send(req.params.usertext);
    
   }
   else {
-    console.log(req);
+    res.send(req);
   }
 });
 
 app.post('/upl',function(req,res){
   console.log('upl!');
-  
+  console.log(req.files);
   upload(req.files.userpic.path,req.files.userpic.name,reply);
 
   function reply(picadr){
