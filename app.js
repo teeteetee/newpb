@@ -13,6 +13,7 @@ var db = require('monk')('localhost/tav')
   , users = db.get('users'),insidemsg = db.get('insidemsg'),friends = db.get('friends');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
+var multer = require('multer');
 
 var app = express();
 
@@ -23,10 +24,11 @@ app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 //app.use(require('connect').bodyParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({
+//  extended: true
+//}));
+app.use(multer({dest:'./uploads/'}));
 app.use(cookieParser());
 app.use(express.compress());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
