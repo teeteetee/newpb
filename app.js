@@ -35,6 +35,32 @@ app.get('/',function(req,res){
   console.log(' REQ ');
 });
 
+app.post('/upl',function(req,res){
+  console.log('upl!');
+  upload(req.files.userpic.path,req.files.userpic.name,reply);
+
+  function reply(picadr){
+    console.log('reply!');
+   req.send('<img src="'+picadr+'" style="height:200px;width:200px;"></img');
+  }
+
+  function upload(filepath,imageid,reply){
+               var oldPath = filepath;
+               console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+               var newPath = __dirname +"/public/userpics/"+ imageid;
+               console.log('UPLOAD 2 step, newPath:' + newPath );
+                fs.readFile(oldPath , function(err, data) {
+                  fs.writeFile(newPath, data, function(err) {
+                      fs.unlink(oldPath, function(){
+                          if(err) throw err;
+                          res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+                          reply("/userpics/"+ imageid;)
+                            });
+
+                  }); 
+               }); 
+               }
+});
 
 
 
