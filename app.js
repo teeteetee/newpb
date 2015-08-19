@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
 
 
 app.get('/',function(req,res){
-  res.send('Welcome to the test environment! </br> <a href="ya.ru"></a>');
+  res.render('TEMPINDEX');
   console.log(' REQ ');
 });
 
