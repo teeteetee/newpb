@@ -1,0 +1,489 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+      min-width:768px;
+      font-family:roboto-thin;
+      background-color:#333;
+      }
+      .navbar-nav {
+       float: right;
+      }
+      h1{
+        font-family:roboto-thin;
+      }
+      h2{
+        font-family:roboto-thin;
+      }
+      h3{
+        font-family:roboto-thin;
+      }
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
+      }
+      btn {
+        font-family:roboto-thin;
+      }
+      #showLeft:hover {
+       color:white !important;
+      }
+      .cbp-spmenu {
+        background: #1d1d1d;
+        position: fixed;
+      }
+      
+      .cbp-spmenu h3 {
+        text-align:center;
+        color: springgreen;
+        font-size: 1.9em;
+        padding: 20px;
+        padding-top:27px;
+        margin: 0;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a {
+        display: block;
+        color: white;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a:hover {
+        background: #333;
+        text-decoration:none !important;
+      }
+      
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        margin-left:74px;
+        border-left:1px solid #333;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .cbp-spmenu-vertical a {
+        padding: 1em;
+      }
+      .cbp-spmenu-left {
+        left: -240px;
+      }
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .adding{
+        box-shadow: inset 0px 0px 10px 1px #181818;
+        background-color:#333;
+        color:#999;
+      }
+      .adding input {
+        background-color:#333;
+        color:white;
+      }
+      .previous {
+        background-color:#EFAF4F !important;
+        border:0px;
+        border-radius:30px;
+      }
+      .previous a {
+        color:#623B00 !important;
+      }
+      .next {
+        background-color:#565555 !important;
+      }
+      .next:hover{
+        cursor:pointer
+      }
+      .previous:hover {
+        background-color:#DA8403;
+        color:white;
+        cursor:pointer;
+      }
+      .previous:active {
+        background-color:#DA8403;
+        color:white;
+      }
+      .previous:focus {
+        background-color:#DA8403;
+        color:white;
+      }
+      .pager li>a, .pager li>span {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 0px;
+      border-radius: 30px;
+      }
+      a {
+        color:white !important;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      .navbar-form {
+        padding-top: 6 !important;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+      }
+      .alreadyb{
+      color:rgb(0, 0, 0);
+      opacity:0.3;
+      }
+      .alreadym{
+      color:rgb(0,0,0);
+      opacity:0.3;
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      label {
+        color:white;
+      }
+      .modpanel .btn{
+        margin:10px;
+        border-radius:30px;
+      }
+      .flickb:hover {
+        cursor:pointer;
+        background-color:#{bhl};
+      }
+      .flickm:hover {
+        cursor:pointer;
+        background-color:#{mhl};
+      }
+      .h1 .small,
+       .h1 small,
+       .h2 .small,
+       .h2 small,
+       .h3 .small,
+       .h3 small,
+       .h4 .small,
+       .h4 small,
+       .h5 .small,
+       .h5 small,
+       .h6 .small,
+       .h6 small,
+       h1 .small,
+       h1 small,
+       h2 .small,
+       h2 small,
+       h3 .small,
+       h3 small,
+       h4 .small,
+       h4 small,
+       h5 .small,
+       h5 small,
+       h6 .small,
+       h6 small {
+      #{small}
+      }
+  body
+    script.
+      if(screen.width < 414){
+      window.location='http://m.peopleandbooks.com/';
+      }
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      //form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' style='margin-top: 15px;' role="search")
+      //  .input-group
+      //     input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+      //     span(class='input-group-btn')
+      //       button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+      //         span(class='glyphicon glyphicon-search') 
+      a(style='margin-top:20px;' href='/') Мои списки
+      a(href='/people') Списки друзей
+      a(href="/settings") Настройки
+      a(href='/about') О проекте
+      a(href="/logout") Выйти
+      img(class="media-object img-circle" src="/images/pblogov4.png" style='position:absolute;opacity:0.2;left:88px;bottom:20px;width:64px;height:64px;' alt="...")
+    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
+      //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+    .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
+      .row(style='background-color:darkgray;')
+        .col-xs-12(id='buttoninsert')
+          h4(style='margin-bottom:0px;display:inline;') #{mail}
+      .row
+        .col-xs-6(id='books' style='background-color:#{bh};')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='booksfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{bhl};')
+          .row
+            #bookinsert.col-xs-12(style='height:100%;overflow:auto;')
+        .col-xs-6(id='movies' style='background-color:#{mh};')
+          .row
+            .col-xs-12(style='text-align:center;')
+              h1(id='moviesfigures' style='font-family:high;font-size:200px;font-weight:bold;color:#{mhl};')
+          .row
+            #movieinsert.col-xs-12(style='height:100%;overflow:auto;')
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        var buttonval=!{button};
+        var addbutton ="<button class='btn btn-success btn-xs' onclick='addfriend()' id='addfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;margin-left:10px;' type='button'> Subscribe</button>";
+        var rembutton ="<button class='btn btn-warning btn-xs' onclick='remfriend()' id='remfriendbutton' style='border-radius:30px;margin-top:10px;margin-bottom:10px;margin-left:10px;' type='button'> Unsubscribe</button>";
+        if(buttonval){
+          $('#buttoninsert').append(addbutton);
+        }
+        else {
+          $('#buttoninsert').append(rembutton);
+        }
+        // Setting user books/movies counters
+        var seenmovies = #{seenmovies};
+        var newmovies = #{newmovies};
+        $('#moviesfigures').append(" "+newmovies+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+seenmovies+"</span>");
+        var readbooks = #{readbooks};
+        var newbooks = #{newbooks};
+        $('#booksfigures').append(" "+newbooks+" <span style='color:rgb(0,0,0);opacity:#{spanop}'> | "+readbooks+"</span>");
+        //End of setting counters
+        // Populating the columns
+        var books = !{books};
+        var movies = !{movies};
+        if ( books!=0)
+        {books.forEach(function(element,index,array){
+                       //$('#bookinsert').append("<h4 style='color:white;'>"+element.booktitle+"</h4>");
+                       var popbookclass = 'yet';
+                       if(element.newbook!=1)
+                       {
+                        popbookclass='alreadyb';
+                       }
+                       //onclick='openmodpanel("+element.bid+")'
+                       var popinsert = "<div class='row '  id='book"+element.bid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popbookclass+"'>"+element.booktitle+" <small> "+element.author+" </small>";
+                       if(element.star===1&&element.newbook===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newbook===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div>";
+                       //popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       //popinsert+="<button class='btn btn-success' onclick='modify(1,"+element.bid+")' type='button'>Add to my list</button></div</div>";
+                       $('#bookinsert').prepend(popinsert);
+                    });}
+        if(movies!=0)
+        {movies.forEach(function(element,index,array){
+                       //$('#movieinsert').append("<h4 style='color:white;'>"+element.movietitle+"</h4>");
+                       var popmovieclass = 'yet';
+                       if(element.newmovie!=1)
+                       {
+                        popmovieclass='alreadym';
+                       }
+                       //onclick='openmodmoviepanel("+element.mid+")'
+                       var popinsert = "<div class='row '  id='movie"+element.mid+"'><div class='col-xs-12'><h4 style='margin-left:40px;' class='"+popmovieclass+"'>"+element.movietitle+" <small> "+element.year+" </small>";
+                       if(element.star===1&&element.newmovie===0){
+                         popinsert+="<span style='color:#F2D45C;margin-left:10px;' class='glyphicon glyphicon-star'></span>";
+                       }
+                       if(element.attention===1&&element.newmovie===1){
+                         popinsert+="<span style='color:rgba(255, 255, 255, 0.65);margin-left:10px;' class='glyphicon glyphicon-exclamation-sign'></span>";
+                       }
+                       popinsert+="</h4></div></div>";
+                       //popinsert+="</h4></div></div><div class='row modpanel' id='modbook"+element.bid+"' style='text-align:center;display:none;background-color:#333;'><div class='col-xs-12'>";
+                       //popinsert+="<button class='btn btn-success' onclick='modify(1,"+element.bid+")' type='button'>Add to my list</button></div</div>";
+                       $('#movieinsert').prepend(popinsert);
+                    });}
+        //end of populating the columns
+        // Sliding menu mechanics
+        var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            showLeftPush = document.getElementById( 'showLeftPush' ),
+            showRightPush = document.getElementById( 'showRightPush' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         $('.container').css('-webkit-filter','brightness(1)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('.container').css('-webkit-filter','brightness(0.6)');
+                        break;
+                      }
+        };
+        //
+        $('.container').click(function(){
+          if($('#cbp-spmenu-s1').hasClass('cbp-spmenu-open' )){
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
+            $('.bckgrnd').css({'-webkit-filter':'brightness(1)','-moz-filter':'brightness(1)','filter':'brightness(1)'});
+          }
+          });
+         // Function for opening panel with remove/modify buttons
+        function openmodpanel(bid) {
+          eval("$('#modbook"+bid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){ if($(this).css('display')==='block'&& $(this).attr('id')!='modbook"+bid+"'){$(this).slideToggle(); }});");
+        }
+        //end of openmodpanel funciton
+        // Function for opening panel with remove/modify buttons in movies column
+        function openmodmoviepanel(mid) {
+          eval("$('#modmovie"+mid+"').slideToggle();");
+          eval("$('.modpanel').each(function(){if($(this).css('display')==='block'&& $(this).attr('id')!='modmovie"+mid+"'){$(this).slideToggle();}});");
+        }
+        //end of openmodpanel funciton for movies column
+        $('#movies').click(function() {
+          console.log('container touch');
+         if(counter)
+          {
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css('-webkit-filter','brightness(1)');
+          }
+        });
+        $('#books').click(function() {
+          console.log('container touch');
+         if(counter)
+          {
+            counter=0;
+            $('#showLeft').removeClass('active' );
+            $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+            $('.container').css('-webkit-filter','brightness(1)');
+          }
+        });
+        //end of sliding menu mechanics
+        var allowadd = 1;
+        function addfriend() {
+          if(!allowadd ){
+            return;
+          }
+         allowadd =0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        // do your job here
+        if (parsed.trouble === 1)
+        {
+         
+        }
+        else { 
+          $('#addfriendbutton').attr('disabled','true');
+          $('#addfriendbutton').text('в вашем списке');
+        allowadd=1;
+        }
+        }
+        };
+        request.open('POST', '/addfriend', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // Most libraries like jQuery/Prototype/Dojo do this
+        request.send("uid=#{uid}");
+          }
+        var allowrem = 1;
+        function remfriend() {
+          if(!allowrem ){
+            return;
+          }
+         allowrem =0;
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        // do your job here
+        if (parsed.trouble === 1)
+        {
+         
+        }
+        else { 
+          $('#remfriendbutton').attr('disabled','true');
+          $('#remfriendbutton').text('Removed');
+        allowrem=1;
+        }
+        }
+        };
+        request.open('POST', '/remfriend', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // Most libraries like jQuery/Prototype/Dojo do this
+        request.send("uid=#{uid}");
+          }
+        
+      
