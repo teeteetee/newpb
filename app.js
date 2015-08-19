@@ -41,7 +41,7 @@ app.post('/upl',function(req,res){
 
   function reply(picadr){
     console.log('reply!');
-   req.send('<img src="'+picadr+'" style="height:200px;width:200px;"></img');
+   req.send('<img src="'+picadr+'" style="height:200px;width:200px;"></img>');
   }
 
   function upload(filepath,imageid,reply){
@@ -54,7 +54,7 @@ app.post('/upl',function(req,res){
                       fs.unlink(oldPath, function(){
                           if(err) throw err;
                           res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-                          reply("/userpics/"+ imageid;)
+                          reply("/userpics/"+ imageid);
                             });
 
                   }); 
