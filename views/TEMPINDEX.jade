@@ -85,12 +85,12 @@ head
             p &Rcy;&iecy;&zcy;&ucy;&lcy;&softcy;&tcy;&acy;&tcy;&ycy;:
             #cropresult
       .row
-        .col-xs-12
+        .col-xs-6
           form(method='post',action='/upl',role='form', enctype='multipart/form-data')
-          .input-group(style='margin-bottom:5px;')
-            span(class="input-group-addon" id="sizing-addon1") картинка
-            input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='userpic') 
-
+            .input-group(style='margin-bottom:5px;')
+              span(class="input-group-addon" id="sizing-addon1") картинка
+              input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='userpic') 
+            button(type='submit' class='btn btn-lg btn-primary') Загрузить
     
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
