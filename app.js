@@ -51,7 +51,7 @@ app.post('/upltest',function(req,res) {
 
 app.post('/upl',function(req,res) {
   console.log('upl!');
-  console.log(req.files.userpic);
+  console.log('req.files: '+req.files);
   upload(req.files.userpic.path,req.files.userpic.name,reply);
 
   function reply(picadr){
