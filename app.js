@@ -55,7 +55,6 @@ app.post('/upltest',function (req,res) {
 app.post('/usrp',function(req,res) {
   console.log('upl!');
   console.log('req.files: '+req.files);
-  upload(req.files.userpic.path,req.files.userpic.name,reply);
 
   function reply(picadr){
     console.log('reply!');
@@ -79,6 +78,7 @@ app.post('/usrp',function(req,res) {
                   }); 
                }); 
                }
+  upload(req.files.userpic.path,req.files.userpic.name,reply);
 });
 
 app.post('/userp/crop',function (req,res){
