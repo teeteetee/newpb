@@ -55,30 +55,28 @@ app.post('/upltest',function (req,res) {
 app.post('/usrp',function (req,res) {
   console.log('upl!');
   
-  console.log(req.files.userpic.path);
-  console.log(req.files.userpic.name);
-
-
-  function upload(filepath,imageid){
-               console.log('into upload');
-               var oldPath = filepath;
-               console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-               var newPath = __dirname +"/public/userpics/"+ imageid;
-               console.log('UPLOAD 2 step, newPath:' + newPath );
-                fs.readFile(oldPath , function(err, data) {
-                  fs.writeFile(newPath, data, function(err) {
-                      fs.unlink(oldPath, function(){
-                          if(err) throw err;
-                          var ms ={};
-                          //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                           ms.mtext= 'done';
-                          res.send(ms);
+  //console.log(req.files.userpic.path);
+  //console.log(req.files.userpic.name);
+  //function upload(filepath,imageid){
+  //             console.log('into upload');
+  //             var oldPath = filepath;
+  //             console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+  //             var newPath = __dirname +"/public/userpics/"+ imageid;
+  //             console.log('UPLOAD 2 step, newPath:' + newPath );
+  //              fs.readFile(oldPath , function(err, data) {
+  //                fs.writeFile(newPath, data, function(err) {
+  //                    fs.unlink(oldPath, function(){
+  //                        if(err) throw err;
+  //                        var ms ={};
+  //                        //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+  //                         ms.mtext= 'done';
+  //                        res.send(ms);
                             });
-
-                  }); 
-               }); 
-               }
-  upload(req.files.userpic.path,req.files.userpic.name);
+//
+//                  }); 
+//               }); 
+//               }
+//  upload(req.files.userpic.path,req.files.userpic.name);
 });
 
 app.post('/userp/crop',function (req,res){
