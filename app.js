@@ -71,7 +71,7 @@ app.post('/usrp',function (req,res) {
                           if(err) throw err;
                           var ms ={};
                           //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                          var ms.mtext= 'done';
+                           ms.mtext= 'done';
                           res.send(ms);
                             });
 
