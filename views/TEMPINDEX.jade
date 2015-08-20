@@ -46,7 +46,7 @@ head
         .col-xs-12
           h2 Hey
       .row
-        .col-xs-8.col-xs-offset-4
+        .col-xs-8.col-xs-offset-4(id='targetbucket')
           img#target(src='images/pp.jpeg', alt='[Jcrop Example]')
           button#release &Ucy;&bcy;&rcy;&acy;&tcy;&softcy; &vcy;&ycy;&dcy;&iecy;&lcy;&iecy;&ncy;&icy;&iecy;
             button#crop &Ocy;&bcy;&rcy;&iecy;&zcy;&acy;&tcy;&softcy;
@@ -120,6 +120,8 @@ head
           formData.append('userimage', file, file.name);
           var xhr = new XMLHttpRequest();
 
+        
+
            // Open the connection.
           xhr.open('POST', '/usrp', true);
           
@@ -127,9 +129,12 @@ head
           xhr.onload = function () {
             if (xhr.status === 200) {
               // File(s) uploaded.
+              //parsed = JSON.parse(xhr.responseText);
+              //console.log(parsed);
               uploadButton.innerHTML = 'Загрузить';
-              var dest = '/userpics/'+file.name;
-              $('#target').attr('src',dest);
+              var newimg = '<img id="target" src="/userpics/'+file.name+'"></img>';
+              $('#target').remove();
+              $('#targetbucket').append(newimg);
             } else {
               alert('An error occurred!');
             }

@@ -34,12 +34,14 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
 
 
 
-app.get('/',function(req,res){
+app.get('/',function (req,res){
   res.render('TEMPINDEX');
   console.log(' REQ ');
 });
 
-app.post('/upltest',function(req,res) {
+
+
+app.post('/upltest',function (req,res) {
   console.log('upl!');
   if(req.body.usertext) {
   res.send(req.body.usertext);
@@ -50,7 +52,7 @@ app.post('/upltest',function(req,res) {
   }
 });
 
-app.post('/upl',function(req,res) {
+app.post('/usrp',function(req,res) {
   console.log('upl!');
   console.log('req.files: '+req.files);
   upload(req.files.userpic.path,req.files.userpic.name,reply);
@@ -78,6 +80,9 @@ app.post('/upl',function(req,res) {
                }
 });
 
+app.post('/userp/crop',function (req,res){
+  res.send(req.body);
+});
 
 
 // production error handler
