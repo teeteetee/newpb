@@ -54,7 +54,7 @@ app.post('/upltest',function (req,res) {
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-  if(req.files) 
+  if (req.files) 
   { res.send(req.files);
     function upload(filepath,imageid){
                  console.log('into upload');
@@ -76,7 +76,7 @@ app.post('/usrp',function (req,res) {
                }
    // upload(req.files.userpic.path,req.files.userpic.name);
  }
- esle {
+ else {
   res.send('Trouble with files');
  }
 });
