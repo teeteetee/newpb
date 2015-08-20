@@ -71,7 +71,7 @@ app.post('/usrp',function (req,res) {
   //                        //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
   //                         ms.mtext= 'done';
   //                        res.send(ms);
-                            });
+  //                          });
 //
 //                  }); 
 //               }); 
