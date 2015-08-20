@@ -17,26 +17,28 @@ jQuery(function($){
     });   
 	// Соблюдать пропорции
     $('#ar_lock').change(function(e) {
-		//jcrop_api.setOptions(this.checked?
-		//	{ aspectRatio: 1/1 }: { aspectRatio: 0 });
+	    jcrop_api.setOptions(this.checked?
+	    	{ aspectRatio: 1/1 }: { aspectRatio: 0 });
         jcrop_api.setOptions({aspectRatio: 1/1});
 		jcrop_api.focus();
     });
    // Установка минимальной/максимальной ширины и высоты
    $('#size_lock').change(function(e) {
-		//jcrop_api.setOptions(this.checked? {
-		//	minSize: [ 100,100  ],
-		//	maxSize: [ 400, 400 ]
-		//}: {
-		//	minSize: [ 0, 0 ],
-		//	maxSize: [ 0, 0 ]
-		//});
-		jcrop_api.setOptions({
+		jcrop_api.setOptions(this.checked? {
 			minSize: [ 100,100  ],
 			maxSize: [ 400, 400 ]
+		}: {
+			minSize: [ 0, 0 ],
+			maxSize: [ 0, 0 ]
 		});
 		jcrop_api.focus();
     });
+    // set aspect ratio and min/max from the start
+     jcrop_api.setOptions({aspectRatio: 1/1});
+     jcrop_api.setOptions({
+			minSize: [ 100,100  ],
+			maxSize: [ 400, 400 ]
+		});
 	// Изменение координат
 	function showCoords(c){
 		x1 = c.x; $('#x1').val(c.x);		
