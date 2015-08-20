@@ -59,7 +59,7 @@ function release(){
 jQuery(function($){
 	$('#crop').click(function(e) {
 		var img = $('#target').attr('src');
-		$.post('action.php', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
+		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
 			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
 			release();
 		});
