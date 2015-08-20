@@ -94,57 +94,6 @@ head
         
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
-      script.
-        var form = document.getElementById('file-form');
-        var fileSelect = document.getElementById('userpic');
-        var uploadButton = document.getElementById('sbtn');
       
-        form.onsubmit = function(event) {
-          event.preventDefault();
-        
-          // Update button text.
-          uploadButton.innerHTML = 'Загрузка...';
-        
-            // Get the selected files from the input.
-          var files = fileSelect.files;
-          console.log('files: '+files);
-
-          
-            // Create a new FormData object.
-          var formData = new FormData();
-          var file = files[0];
-          // if (!file.type.match('image.*')) {
-          //  continue;
-          //}  
-          //else {alert('not a picture!');}
-        
-                  // Add the file to the request.
-          formData.append('userimage', file, file.name);
-          var xhr = new XMLHttpRequest();
-
-        
-
-           // Open the connection.
-          xhr.open('POST', '/usrp', true);
-          
-            // Set up a handler for when the request finishes.
-          xhr.onload = function () {
-            if (xhr.status === 200) {
-              // File(s) uploaded.
-              parsed = JSON.parse(xhr.responseText);
-              alert(parsed.mtext);
-              uploadButton.innerHTML = 'Загрузили!';
-              var newimg = '<img id="target" src="/userpics/'+file.name+'"></img>';
-              $('#target').remove();
-              $('#targetbucket').append(newimg);
-            } else {
-              alert('An error occurred!');
-            }
-          };
-          
-           // Send the Data.
-          xhr.send(formData);
-        }
-
         
       
