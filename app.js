@@ -58,12 +58,8 @@ app.post('/usrp',function (req,res) {
   console.log(req.files.userpic.path);
   console.log(req.files.userpic.name);
 
-  function reply(picadr){
-    console.log('reply!');
-   req.send('<img src="'+picadr+'" style="height:200px;width:200px;"></img>');
-  }
 
-  function upload(filepath,imageid,reply){
+  function upload(filepath,imageid){
                console.log('into upload');
                var oldPath = filepath;
                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
@@ -73,14 +69,16 @@ app.post('/usrp',function (req,res) {
                   fs.writeFile(newPath, data, function(err) {
                       fs.unlink(oldPath, function(){
                           if(err) throw err;
-                          res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-                          reply("/userpics/"+ imageid);
+                          var ms ={};
+                          //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+                          var ms.mtext= 'done';
+                          res.send(ms);
                             });
 
                   }); 
                }); 
                }
-  upload(req.files.userpic.path,req.files.userpic.name,reply);
+  upload(req.files.userpic.path,req.files.userpic.name);
 });
 
 app.post('/userp/crop',function (req,res){
