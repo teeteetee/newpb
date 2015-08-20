@@ -56,7 +56,7 @@ app.post('/usrp',function (req,res) {
   console.log('upl!');
   var ms={};
   ms.mtext='done';
-  res.send()
+  res.send(ms);
   //console.log(req.files.userpic.path);
   //console.log(req.files.userpic.name);
   //function upload(filepath,imageid){
