@@ -54,28 +54,31 @@ app.post('/upltest',function (req,res) {
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-  var ms={};
-  ms.mtext='hey';
-  res.send(ms);
-  function upload(filepath,imageid){
-               console.log('into upload');
-               var oldPath = filepath;
-               console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-               var newPath = __dirname +"/public/userpics/"+ imageid;
-               console.log('UPLOAD 2 step, newPath:' + newPath );
-                fs.readFile(oldPath , function(err, data) {
-                  fs.writeFile(newPath, data, function(err) {
-                      fs.unlink(oldPath, function(){
-                          if(err) throw err;
-                          //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                          var dest = '/userpics/'+imageid;
-                          res.render('crop',{'imgsrc':dest});
-                            });
-
-                }); 
-             }); 
-             }
- // upload(req.files.userpic.path,req.files.userpic.name);
+  if(req.files) 
+  { res.send(req.files);
+    function upload(filepath,imageid){
+                 console.log('into upload');
+                 var oldPath = filepath;
+                 console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+                 var newPath = __dirname +"/public/userpics/"+ imageid;
+                 console.log('UPLOAD 2 step, newPath:' + newPath );
+                  fs.readFile(oldPath , function(err, data) {
+                    fs.writeFile(newPath, data, function(err) {
+                        fs.unlink(oldPath, function(){
+                            if(err) throw err;
+                            //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+                            var dest = '/userpics/'+imageid;
+                            res.render('crop',{'imgsrc':dest});
+                              });
+  
+                  }); 
+               }); 
+               }
+   // upload(req.files.userpic.path,req.files.userpic.name);
+ }
+ esle {
+  res.send('Trouble with files');
+ }
 });
 
 
