@@ -63,6 +63,7 @@ app.post('/usrp',function(req,res) {
   }
 
   function upload(filepath,imageid,reply){
+               console.log('into upload');
                var oldPath = filepath;
                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
                var newPath = __dirname +"/public/userpics/"+ imageid;
