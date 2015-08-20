@@ -107,6 +107,8 @@ head
         
             // Get the selected files from the input.
           var files = fileSelect.files;
+          console.log('files: '+files);
+          console.log('files parsed: '+JSON.parse(file));
           
             // Create a new FormData object.
           var formData = new FormData();
