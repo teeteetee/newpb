@@ -69,10 +69,9 @@ app.post('/usrp',function (req,res) {
                   fs.writeFile(newPath, data, function(err) {
                       fs.unlink(oldPath, function(){
                           if(err) throw err;
-                          var ms ={};
                           //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                           ms.mtext= 'done';
-                          res.send(ms);
+                          var dest = '/userpics/'+imageid;
+                          res.render('crop',{'imgsrc':dest});
                             });
 
                 }); 
@@ -80,6 +79,7 @@ app.post('/usrp',function (req,res) {
              }
   upload(req.files.userpic.path,req.files.userpic.name);
 });
+
 
 app.post('/userp/crop',function (req,res){
   res.send(req.body);
