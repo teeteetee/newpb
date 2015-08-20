@@ -47,7 +47,7 @@ head
           h2 Hey
       .row
         .col-xs-8.col-xs-offset-4
-          img#target(src='images/pp.jpeg', alt='[Jcrop Example]')
+          img#target(src='images/pp.jpeg', alt='[Jcrop Example]',id='target')
           button#release &Ucy;&bcy;&rcy;&acy;&tcy;&softcy; &vcy;&ycy;&dcy;&iecy;&lcy;&iecy;&ncy;&icy;&iecy;
             button#crop &Ocy;&bcy;&rcy;&iecy;&zcy;&acy;&tcy;&softcy;
             .optlist.offset
@@ -86,20 +86,58 @@ head
             #cropresult
       .row
         .col-xs-6
-          form(method='post',action='/upl',role='form', enctype='multipart/form-data')
+          form(method='post',action='/usrp',id='file-form',role='form', enctype='multipart/form-data')
             .input-group(style='margin-bottom:5px;')
               span(class="input-group-addon" id="sizing-addon1") картинка
-              input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='userpic') 
-            button(type='submit' class='btn btn-lg btn-primary') Загрузить
-        .col-xs-6
-          form(method='post',action='/upltest',role='form', enctype='multipart/form-data')
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") текст
-              input(type="text"  class="form-control" aria-describedby="sizing-addon1" name='usertext') 
-            button(type='submit' class='btn btn-lg btn-danger') Загрузить
+              input(type="file" id='userpic' class="form-control" aria-describedby="sizing-addon1" name='userpic') 
+            button(type='submit' id='sbtn' class='btn btn-lg btn-primary') Загрузить
+        
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
+      script.
+        var form = document.getElementById('file-form');
+        var fileSelect = document.getElementById('userpic');
+        var uploadButton = document.getElementById('sbtn');
       
+        form.onsubmit = function(event) {
+          event.preventDefault();
+        
+          // Update button text.
+          uploadButton.innerHTML = 'Загрузка...';
+        
+            // Get the selected files from the input.
+          var files = fileSelect.files;
+          
+            // Create a new FormData object.
+          var formData = new FormData();
+          var file = files[0];
+          // if (!file.type.match('image.*')) {
+          //  continue;
+          //}  
+          //else {alert('not a picture!');}
+        
+                  // Add the file to the request.
+          formData.append('userimage', file, file.name);
+          var xhr = new XMLHttpRequest();
+
+           // Open the connection.
+          xhr.open('POST', '/usrp', true);
+          
+            // Set up a handler for when the request finishes.
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              // File(s) uploaded.
+              uploadButton.innerHTML = 'Загрузить';
+              var dest = '/userpics/'+file.name;
+              $('#target').attr('src',dest);
+            } else {
+              alert('An error occurred!');
+            }
+          };
+          
+           // Send the Data.
+          xhr.send(formData);
+        }
 
         
       
