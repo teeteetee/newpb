@@ -54,9 +54,6 @@ app.post('/upltest',function (req,res) {
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-  console.log(JSON.parse(req));
-  console.log('-----------------------------');
-  console.log(req);
   var ms={};
   ms.mtext='hey';
   res.send(ms);
