@@ -54,11 +54,12 @@ app.post('/upltest',function (req,res) {
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
+  console.log(JSON.parse(req));
+  console.log('-----------------------------');
+  console.log(req);
   var ms={};
-  ms.mtext='done';
+  ms.mtext='hey';
   res.send(ms);
-  console.log(req.userpic.path);
-  console.log(req.userpic.name);
   function upload(filepath,imageid){
                console.log('into upload');
                var oldPath = filepath;
@@ -77,7 +78,7 @@ app.post('/usrp',function (req,res) {
                 }); 
              }); 
              }
-  upload(req.files.userpic.path,req.files.userpic.name);
+ // upload(req.files.userpic.path,req.files.userpic.name);
 });
 
 
