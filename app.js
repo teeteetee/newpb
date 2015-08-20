@@ -52,9 +52,9 @@ app.post('/upltest',function (req,res) {
   }
 });
 
-app.post('/usrp',function(req,res) {
+app.post('/usrp',function (req,res) {
   console.log('upl!');
-  console.log('req.files: '+req.files);
+  
   console.log(req.files.userpic.path);
   console.log(req.files.userpic.name);
 
