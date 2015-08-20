@@ -57,8 +57,8 @@ app.post('/usrp',function (req,res) {
   var ms={};
   ms.mtext='done';
   res.send(ms);
-  console.log(req.files[0].path);
-  console.log(req.files[0].name);
+  console.log(req.userimage.path);
+  console.log(req.userimage.name);
   function upload(filepath,imageid){
                console.log('into upload');
                var oldPath = filepath;
@@ -78,7 +78,7 @@ app.post('/usrp',function (req,res) {
                 }); 
              }); 
              }
-//  upload(req.files.userpic.path,req.files.userpic.name);
+  upload(req.files.userpic.path,req.files.userpic.name);
 });
 
 app.post('/userp/crop',function (req,res){
