@@ -83,7 +83,7 @@ app.post('/usrp',function (req,res) {
 
 
 app.post('/userp/crop',function (req,res){
-  res.send(req.body);
+  console.log(req.body);
 });
 
 
