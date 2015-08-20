@@ -1,6 +1,6 @@
 // x1, y1, x2, y2 - Координаты для обрезки изображения
 // crop - Папка для обрезанных изображений
-var x1, y1, x2, y2, crop = 'crop/';
+var x1, y1, x2, y2, crop = 'userpics/';
 var jcrop_api;
 
 jQuery(function($){             
@@ -61,7 +61,7 @@ jQuery(function($){
 		var img = $('#target').attr('src');
 		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
 			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
-			release();
+			release();	
 		});
 		
     });   
