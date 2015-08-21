@@ -32,7 +32,8 @@ app.use(express.bodyParser());
 //}));
 app.use(cookieParser());
 app.use(express.compress());
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
+//app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
