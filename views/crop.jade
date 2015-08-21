@@ -44,6 +44,9 @@ head
       .row(style='background-color:white;')
         .col-xs-12
           h2 Hey
+      .row(style='display:hidden;')
+        input(id='ar_lock',type='checkbox')
+        input(id='size_lock',type='checkbox')
       .row
         .col-xs-8.col-xs-offset-4(id='targetbucket')
           img#target(src='#{imgsrc}', alt='[Jcrop Example]')
@@ -77,11 +80,7 @@ head
       script(src='/js/crop.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        // settings
-        jcrop_api.setOptions({aspectRatio: 1/1});
-        jcrop_api.setOptions({
-         minSize: [ 100,100  ],
-         maxSize: [ 400, 400 ]
-        });
-        jcrop_api.focus();
+        document.getElementById("ar_lock").checked = true;
+        document.getElementById("size_lock").checked = true;
+        
       
