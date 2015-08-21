@@ -96,10 +96,14 @@ app.post('/userp/crop',function (req,res){
    // top: req.body.x1,
    // right: req.body.y2,
    // bottom: req.body.y1
-   left:400,
-   top:200,
-   right:699,
-   bottom:499
+   //left:400,
+   //top:200,
+   //right:699,
+   //bottom:499
+   left:240,
+   top:420,
+   right:283,
+   bottom:463
   }; // extract the face from the pic
  
   image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
