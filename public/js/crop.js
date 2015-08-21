@@ -75,7 +75,8 @@ jQuery(function($){
          data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
        }).done(function (data) {
            ///var response = JSON.parse(jqXHR.responseText);
-           window.location='ttp://vntrlst.com/userpics/'+data.rdurl;
+           var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
+           window.location=redurl;
            });
            
     });   
