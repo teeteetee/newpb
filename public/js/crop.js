@@ -39,6 +39,7 @@ jQuery(function($){
 			minSize: [ 100,100  ],
 			maxSize: [ 400, 400 ]
 		});
+     jcrop_api.focus();
 	// Изменение координат
 	function showCoords(c){
 		x1 = c.x; $('#x1').val(c.x);		
