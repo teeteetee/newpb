@@ -92,10 +92,14 @@ app.post('/userp/crop',function (req,res){
   lwip.open(fullimgname, function(err, image) {
   if (err) throw err;
   var _cropOpt = {
-    left: req.body.x2,
-    top: req.body.x1,
-    right: req.body.y2,
-    bottom: req.body.y1
+   // left: req.body.x2,
+   // top: req.body.x1,
+   // right: req.body.y2,
+   // bottom: req.body.y1
+   left:400,
+   top:200,
+   right:699,
+   bottom:499
   }; // extract the face from the pic
  
   image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
