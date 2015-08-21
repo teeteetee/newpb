@@ -82,5 +82,15 @@ head
       script.
         document.getElementById("ar_lock").checked = true;
         document.getElementById("size_lock").checked = true;
+        jcrop_api.setOptions(this.checked?
+        { aspectRatio: 1/1 }: { aspectRatio: 0 });
+        jcrop_api.setOptions(this.checked? {
+          minSize: [ 100,100  ],
+          maxSize: [ 400, 400 ]
+        }: {
+          minSize: [ 0, 0 ],
+          maxSize: [ 0, 0 ]
+        });
+        jcrop_api.focus();
         
       
