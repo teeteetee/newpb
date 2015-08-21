@@ -69,7 +69,7 @@ app.post('/usrp',function (req,res) {
                             if(err) throw err;
                             //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
                             var dest = '/userpics/'+imageid;
-                            res.render('crop',{'imgsrc':dest;'img':imageid});
+                            res.render('crop',{'imgsrc':dest,'img':imageid});
                               });
   
                   }); 
