@@ -2,7 +2,6 @@
 // crop - Папка для обрезанных изображений
 var x1, y1, x2, y2, crop = 'userpics/';
 var jcrop_api;
-var imgn;
 
 jQuery(function($){             
 
@@ -67,7 +66,7 @@ function release(){
 jQuery(function($){
 	$('#crop').click(function(e) {
 		var img = $('#target').attr('src');
-		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop,'imgn':imgn}, function(file) {
+		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
 			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
 			release();	
 		});
