@@ -14,6 +14,7 @@ var db = require('monk')('localhost/tav')
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
+
 var app = express();
 
 // view engine setup
@@ -68,7 +69,7 @@ app.post('/usrp',function (req,res) {
                             if(err) throw err;
                             //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
                             var dest = '/userpics/'+imageid;
-                            res.render('crop',{'imgsrc':dest});
+                            res.render('crop',{'imgsrc':dest;'img':imageid});
                               });
   
                   }); 
@@ -83,7 +84,29 @@ app.post('/usrp',function (req,res) {
 
 
 app.post('/userp/crop',function (req,res){
-  console.log(req.body);
+  var imgname = req.body.img;
+  var fullimgname = __dirname +"/public/userpics/"+ imgname;
+  // TO DO check if info is present
+  lwip.open(fullimgname, function(err, image) {
+  if (err) throw err;
+  var _cropOpt = {
+    left: req.body.x1,
+    top: req.body.y1,
+    right: req.body.x2,
+    bottom: req.body.y2
+  }; // extract the face from the pic
+ 
+  image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
+    if (err) throw err;
+    crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imageid, function(err) {
+      if (err) throw err;
+      res.send('succecss');
+    });
+  });
+ 
+});
+
+  });
 });
 
 

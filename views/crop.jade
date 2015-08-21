@@ -48,7 +48,7 @@ head
           h2 Hey
       .row
         .col-xs-8.col-xs-offset-4(id='targetbucket')
-          img#target(src='#{imgsrc} ', alt='[Jcrop Example]')
+          img#target(src='#{imgsrc}', alt='[Jcrop Example]')
           button#release &Ucy;&bcy;&rcy;&acy;&tcy;&softcy; &vcy;&ycy;&dcy;&iecy;&lcy;&iecy;&ncy;&icy;&iecy;
             button#crop &Ocy;&bcy;&rcy;&iecy;&zcy;&acy;&tcy;&softcy;
             .inline-labels
@@ -81,3 +81,5 @@ head
         
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
+      script.
+        var img = #{img};
