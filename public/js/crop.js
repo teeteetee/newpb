@@ -9,8 +9,8 @@ jQuery(function($){
 		onChange:   showCoords,
 		onSelect:   showCoords,
 		 aspectRatio: 1/1 ,
-		 minSize: [ 100,100  ],
-	     maxSize: [ 400, 400 ]
+		 minSize: [ 300,300  ],
+	     maxSize: [ 700, 700 ]
 	},function(){		
 		jcrop_api = this;		
 	});
