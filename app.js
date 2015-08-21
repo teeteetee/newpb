@@ -85,7 +85,7 @@ app.post('/usrp',function (req,res) {
 });
 
 
-app.post('/userp/crop',function (req,res){
+app.post('/userp2/crop',function (req,res){
    console.log('CROP \n');
    console.log('left '+parseInt(req.body.x2)+'\n');
    console.log('top'+parseInt(req.body.y2)+'\n');
@@ -96,7 +96,7 @@ app.post('/userp/crop',function (req,res){
    res.send('ok');
 });
 
-app.post('/userp2/crop',function (req,res){
+app.post('/userp/crop',function (req,res){
   console.log(req.body);
   var imgname = req.body.img.substring(10);
   var fullimgname = __dirname +"/public/userpics/"+ imgname;
