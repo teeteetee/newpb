@@ -91,6 +91,8 @@ app.post('/userp/crop',function (req,res){
    console.log('top'+parseInt(req.body.y2)+'\n');
    console.log('right '+parseInt(req.body.x1)+'\n');
    console.log('bottom '+parseInt(req.body.y1)+'\n');
+   console.log('width '+parseInt(req.body.cw)+'\n');
+   console.log('height '+parseInt(req.body.ch)+'\n');
    res.send('ok');
 });
 
