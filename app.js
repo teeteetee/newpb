@@ -13,7 +13,8 @@ var db = require('monk')('localhost/tav')
   , users = db.get('users'),insidemsg = db.get('insidemsg'),friends = db.get('friends');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
-
+  
+var lwip = require('lwip');
 
 var app = express();
 
@@ -69,7 +70,7 @@ app.post('/usrp',function (req,res) {
                             if(err) throw err;
                             //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
                             var dest = '/userpics/'+imageid;
-                            res.render('crop',{'imgsrc':dest,'img':imageid});
+                            res.render('crop',{'imgsrc':dest});
                               });
   
                   }); 
@@ -85,7 +86,7 @@ app.post('/usrp',function (req,res) {
 
 app.post('/userp/crop',function (req,res){
   console.log(req.body);
-  var imgname = req.body.imgn;
+  var imgname = req.body.img.substring(10);
   var fullimgname = __dirname +"/public/userpics/"+ imgname;
   // TO DO check if info is present
   lwip.open(fullimgname, function(err, image) {
@@ -99,7 +100,7 @@ app.post('/userp/crop',function (req,res){
  
   image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
     if (err) throw err;
-    crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imageid, function(err) {
+    crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
       if (err) throw err;
       res.send('succecss');
     });
