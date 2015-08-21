@@ -2,6 +2,7 @@
 // crop - Папка для обрезанных изображений
 var x1, y1, x2, y2, crop = 'userpics/';
 var jcrop_api;
+var imgn;
 
 jQuery(function($){             
 
@@ -17,9 +18,8 @@ jQuery(function($){
     });   
 	// Соблюдать пропорции
     $('#ar_lock').change(function(e) {
-	    jcrop_api.setOptions(this.checked?
-	    	{ aspectRatio: 1/1 }: { aspectRatio: 0 });
-        jcrop_api.setOptions({aspectRatio: 1/1});
+		jcrop_api.setOptions(this.checked?
+			{ aspectRatio: 1/1 }: { aspectRatio: 0 });
 		jcrop_api.focus();
     });
    // Установка минимальной/максимальной ширины и высоты
@@ -33,7 +33,7 @@ jQuery(function($){
 		});
 		jcrop_api.focus();
     });
-    // set aspect ratio and min/max from the start
+   // settings
      jcrop_api.setOptions({aspectRatio: 1/1});
      jcrop_api.setOptions({
 			minSize: [ 100,100  ],
@@ -65,8 +65,8 @@ function release(){
 // Обрезка изображение и вывод результата
 jQuery(function($){
 	$('#crop').click(function(e) {
-		//var img = $('#target').attr('src');
-		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
+		var img = $('#target').attr('src');
+		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop,'imgn':imgn}, function(file) {
 			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
 			release();	
 		});

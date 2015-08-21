@@ -84,7 +84,8 @@ app.post('/usrp',function (req,res) {
 
 
 app.post('/userp/crop',function (req,res){
-  var imgname = req.body.img;
+  console.log(req.body);
+  var imgname = req.body.imgn;
   var fullimgname = __dirname +"/public/userpics/"+ imgname;
   // TO DO check if info is present
   lwip.open(fullimgname, function(err, image) {
