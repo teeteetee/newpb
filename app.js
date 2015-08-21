@@ -96,21 +96,19 @@ app.post('/userp/crop',function (req,res){
    // top: req.body.x1,
    // right: req.body.y2,
    // bottom: req.body.y1
-   //left:400,
-   //top:200,
-   //right:699,
-   //bottom:499
-   left:240,
-   top:420,
-   right:283,
-   bottom:463
+   left:parseInt(req.body.x1),
+   top:parseInt(req.body.x2),
+   right:parseInt(req.body.y1),
+   bottom:parseInt(req.body.y2)
   }; // extract the face from the pic
  
   image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
     if (err) throw err;
     crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
       if (err) throw err;
-      res.send('success');
+      var ms={};
+      ms.rdurl = 'crop_'+imgname;
+      res.send(ms);
     });
   });
  
