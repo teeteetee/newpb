@@ -32,13 +32,6 @@ jQuery(function($){
 		});
 		jcrop_api.focus();
     });
-   // settings
-     jcrop_api.setOptions({aspectRatio: 1/1});
-     jcrop_api.setOptions({
-			minSize: [ 100,100  ],
-			maxSize: [ 400, 400 ]
-		});
-     jcrop_api.focus();
 	// Изменение координат
 	function showCoords(c){
 		x1 = c.x; $('#x1').val(c.x);		

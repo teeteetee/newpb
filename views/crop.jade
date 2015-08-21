@@ -76,4 +76,12 @@ head
       script(src='/js/jquery.Jcrop.min.js')
       script(src='/js/crop.js')
       script(async src='/js/bootstrap.min.js')
+      script.
+        // settings
+        jcrop_api.setOptions({aspectRatio: 1/1});
+        jcrop_api.setOptions({
+         minSize: [ 100,100  ],
+         maxSize: [ 400, 400 ]
+        });
+        jcrop_api.focus();
       
