@@ -7,7 +7,10 @@ jQuery(function($){
 
 	$('#target').Jcrop({		
 		onChange:   showCoords,
-		onSelect:   showCoords
+		onSelect:   showCoords,
+		 aspectRatio: 1/1 ,
+		 minSize: [ 100,100  ],
+	     maxSize: [ 400, 400 ]
 	},function(){		
 		jcrop_api = this;		
 	});
