@@ -96,10 +96,10 @@ app.post('/userp/crop',function (req,res){
    // top: req.body.x1,
    // right: req.body.y2,
    // bottom: req.body.y1
-   left:parseInt(req.body.x1),
-   top:parseInt(req.body.x2),
-   right:parseInt(req.body.y1),
-   bottom:parseInt(req.body.y2)
+   left:parseInt(req.body.x2),
+   top:parseInt(req.body.x1),
+   right:parseInt(req.body.y2),
+   bottom:parseInt(req.body.y1)
   }; // extract the face from the pic
  
   image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
