@@ -70,12 +70,12 @@ jQuery(function($){
 		//	release();	
 		//});
 		$.ajax({
-         method: "POST",
-         url: "/userp/crop",
+         method: 'POST',
+         url: '/userp/crop',
          data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
-       }).done(function( jqXHR ) {
-           var response = JSON.parse(jqXHR.responseText);
-           alert(response.rdurl);
+       }).done(function (data) {
+           ///var response = JSON.parse(jqXHR.responseText);
+           alert(data.rdurl);
            });
            
     });   
