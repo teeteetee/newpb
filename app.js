@@ -93,8 +93,8 @@ app.post('/userp/crop',function (req,res){
   if (err) throw err;
   var _cropOpt = {
     left: req.body.x1,
-    top: req.body.y1,
-    right: req.body.x2,
+    top: req.body.x2,
+    right: req.body.y1,
     bottom: req.body.y2
   }; // extract the face from the pic
  
