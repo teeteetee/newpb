@@ -8,8 +8,8 @@ jQuery(function($){
 	$('#target').Jcrop({		
 		onChange:   showCoords,
 		onSelect:   showCoords,
-		 aspectRatio: 1/1 ,
-		 minSize: [ 300,300  ],
+		 aspectRatio: 1 ,
+		 minSize: [ 300, 300 ],
 	     maxSize: [ 700, 700 ]
 	},function(){		
 		jcrop_api = this;		
@@ -41,6 +41,8 @@ jQuery(function($){
 		y1 = c.y; $('#y1').val(c.y);		
 		x2 = c.x2; $('#x2').val(c.x2);		
 		y2 = c.y2; $('#y2').val(c.y2);
+		cw = c.w;
+        ch = c.h;
 		
 		$('#w').val(c.w);
 		$('#h').val(c.h);
@@ -62,7 +64,7 @@ function release(){
 jQuery(function($){
 	$('#crop').click(function(e) {
 		var img = $('#target').attr('src');
-		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}, function(file) {
+		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2,'cw' : cw,'ch' : ch, 'img': img, 'crop': crop}, function(file) {
 			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
 			release();	
 		});
