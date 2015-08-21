@@ -61,23 +61,26 @@ function release(){
 	$('#crop').hide();
 }
 // Обрезка изображение и вывод результата
-//jQuery(function($){
-//	$('#crop').click(function(e) {
-//		var img = $('#target').attr('src');
-//		$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2,'cw' : cw,'ch' : ch, 'img': img, 'crop': crop}, function(file) {
-//			$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
-//			release();	
-//		});
-//		
-//    });   
-//});
 
- $.ajax({
-  method: "POST",
-  url: "/userp/crop",
-  data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
-})
-  .done(function( jqXHR ) {
-    var response = JSON.parse(jqXHR.responseText);
-    alert(response.rdurl);
-  });
+jQuery(function($){
+	$('#crop').click(function(e) {
+		var img = $('#target').attr('src');
+		//$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2,'cw' : cw,'ch' : ch, 'img': img, 'crop': crop}, function(file) {
+		//	$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
+		//	release();	
+		//});
+		$.ajax({
+         method: "POST",
+         url: "/userp/crop",
+         data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
+       })
+         .done(function( jqXHR ) {
+           var response = JSON.parse(jqXHR.responseText);
+           alert(response.rdurl);
+         });
+    });   
+});
+
+
+
+ 
