@@ -9,7 +9,7 @@ head
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')     
-    meta(liber='', de='', amicitia='', est='')
+    meta(liber de amicitia est)
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -82,12 +82,9 @@ head
       #list {
         max-height:inherit;
       }
-      .container {
-      padding:0;
-      margin:0;
-      }
-      body {
-      padding:0;
+      #mobilehead {
+        margin-left:0px;
+        margin-right:0px;
       }
       }
       @media (max-width: 992px) {
@@ -192,7 +189,7 @@ head
             .col-xs-12
               h2(style='color:white;') Clandestine                        
               h4(style='color:gray;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies              
-          .row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
+          #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
               h2(style='color:white;text-align:center;')  Clandestine                        
               h4(style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies                  
