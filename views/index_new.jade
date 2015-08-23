@@ -56,6 +56,10 @@ head
       text-align:center;
       padding-top:50px;
       }
+      #signup {
+        padding-top:50px;
+        padding-bottom:100px;
+      }
       @media (max-width: 767px) {
       #mainframe {
       margin-top:0px;
@@ -214,7 +218,7 @@ head
                   img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')
                   h3 Connections
               #signup.row(style='text-align:center;margin-top:50px;')
-                .col-xs-12
+                .col-xs-12.visible-md.visible-lg
                   form(id='paddgroup' class="form-horizontal")
                     .form-group
                       .col-md-10
@@ -228,6 +232,20 @@ head
                     .form-group 
                       .col-md-10 
                         button(type="submit" class="btn btn-success") Sign up
+                .col-xs-12.visible-sm.visible-xs
+                  form(id='paddgroup' class="form-horizontal")
+                    .form-group
+                      .col-md-10
+                        input(type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email")
+                    .form-group 
+                      .col-md-10 
+                        input(type="password" class="form-control input-lg" id="inputPassword3" placeholder="Password")
+                    .form-group 
+                      .col-md-10 
+                        input(type="password" class="form-control input-lg" id="inputPassword3" placeholder="Confirm password") 
+                    .form-group 
+                      .col-md-10 
+                        button(type="submit" class="btn btn-success btn-lg") Sign up
   
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
