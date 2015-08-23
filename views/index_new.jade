@@ -86,6 +86,13 @@ head
         margin-left:0px;
         margin-right:0px;
       }
+      #paddgroup {
+      padding-left:25px;
+      padding-right:25px;
+      }
+      #signup {
+        background-color:#333;
+      }
       }
       @media (max-width: 992px) {
       #booklist {
@@ -206,9 +213,22 @@ head
                 .col-md-4.things
                   img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')
                   h3 Connections
-              .row(style='text-align:center;margin-top:50px;')
+              #signup.row(style='text-align:center;margin-top:50px;')
                 .col-xs-12
-                  button.btn.btn-lg.btn-warning(type='button') Sign up
+                  form(id='paddgroup' class="form-horizontal")
+                    .form-group
+                      .col-md-10
+                        input(type="email" class="form-control" id="inputEmail3" placeholder="Email")
+                    .form-group 
+                      .col-md-10 
+                        input(type="password" class="form-control" id="inputPassword3" placeholder="Password")
+                    .form-group 
+                      .col-md-10 
+                        input(type="password" class="form-control" id="inputPassword3" placeholder="Confirm password") 
+                    .form-group 
+                      .col-md-10 
+                        button(type="submit" class="btn btn-success") Sign up
+  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
