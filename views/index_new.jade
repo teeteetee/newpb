@@ -184,7 +184,7 @@ head
               h4
                 span.glyphicon.glyphicon-log-in(style='color:#23BBA7;')
                 | Sign in
-          .inleftblock.row.visible-lg.visible-md
+          #signupopen.inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
             .col-xs-12
               h4  Sign up
           .inleftblock.row.visible-lg.visible-md
@@ -272,6 +272,13 @@ head
         $('#signupblock').slideToggle();
         $('#signinblock').slideToggle();
         $('#signinopen').css({'background-color':'#333','color':'white'});
+        $('#signupopen').css({'background-color':'white','color':'#333'});
+        });
+      $('#signupopen').click(function(){
+        $('#signinblock').slideToggle();
+        $('#signupblock').slideToggle();
+        $('#signupopen').css({'background-color':'#333','color':'white'});
+        $('#signinopen').css({'background-color':'white','color':'#333'});
         });
       $('.signup').click(function(){
           if($('.paddgroup-lg').css('display')==='none'){
