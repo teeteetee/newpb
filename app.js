@@ -55,7 +55,7 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-                  res.send('WELCOME USER'+done.uid);
+                  res.send('WELCOME USER '+done.uid);
               }
               else {
                 res.render('index_new');
@@ -69,7 +69,7 @@ app.get('/',function(req,res) {
 
 app.get('/logout',function(req,res){
   req.session.reset();
-  res.redirect('http://peopleandbooks.com/');
+  res.redirect('http://vntrlst.com/');
 });
 
 app.post('/newuser',function(req,res){
