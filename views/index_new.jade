@@ -211,11 +211,8 @@ head
                   .col-md-6.col-md-offset-3
                     input(type="password" class="form-control" id="p" name='p' placeholder="Password")
                 .form-group 
-                  .col-md-6.col-md-offset-3 
-                    input(type="password" class="form-control" id="pc" name='pc' placeholder="Confirm password") 
-                .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                    button(type="button" class="signup btn btn-success") Sign in
+                    button(type="button" id='login' class=" btn btn-success") Sign in
           #signupblock.list.row
             .col-xs-12
               .row
@@ -290,6 +287,7 @@ head
            runregister(2)
           }
         });
+        $('#login').click(authsubmit);
          //-------REGISTER--------
         function validateEmail(email) { 
         console.log('checking email');
