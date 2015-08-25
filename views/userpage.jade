@@ -173,17 +173,21 @@ head
       .btn-success:hover {
       background-color:#1F9E8E;
       } 
+      a:hover, a:focus {
+        text-decoration:none;!important
+        color:inherit;
+      }
   body
     .container
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
           h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C      
           .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row.visible-lg.visible-md'>
-             .col-xs-12'>
+          .inleftblock.row.visible-lg.visible-md
+             .col-xs-12
                h4 
                  span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
-                 | Добавить книгу
+                 | Add item
           .inleftblock.row.visible-lg.visible-md
             .col-xs-12(style='background-color:#333;color:white;')
               a(href='/')
