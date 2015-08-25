@@ -173,19 +173,23 @@ head
       .btn-success:hover {
       background-color:#1F9E8E;
       } 
+      a:hover, a:focus, a:active {
+      text-decoration:none !important;
+      color:inherit !important;
+      }
   body
     .container
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
           h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C      
           .row(style='border-top:1px solid #eee;')      
-          #signinopen.inleftblock.row.visible-lg.visible-md
+          .inleftblock.row.visible-lg.visible-md
             .col-xs-12
               a(href='/signin')
                 h4
                   span.glyphicon.glyphicon-log-in(style='color:#23BBA7;')
                   | Sign in
-          #signupopen.inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
+          .inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
             .col-xs-12
               h4  Sign up
           .inleftblock.row.visible-lg.visible-md
