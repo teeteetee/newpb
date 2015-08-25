@@ -179,18 +179,19 @@ head
         #leftpanel.thun.col-md-2
           h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C      
           .row(style='border-top:1px solid #eee;')      
-          #signinopen.inleftblock.row.visible-lg.visible-md
+          .inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
             .col-xs-12
-              a(href='/signin')
-                h4
-                  span.glyphicon.glyphicon-log-in(style='color:#23BBA7;')
-                  | Sign in
-          #signupopen.inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
-            .col-xs-12
-              h4  Sign up
+              h4
+                span.glyphicon.glyphicon-log-in(style='color:#23BBA7;')
+                | Sign in
           .inleftblock.row.visible-lg.visible-md
             .col-xs-12
-              h4  About      
+              a(href='http://vntrlst.com')
+                h4  Sign up
+          .inleftblock.row.visible-lg.visible-md
+            .col-xs-12
+              a(href='/about')
+                h4  About      
         #booklist.thun.col-md-10
           .row.visible-lg.visible-md(style='background-color:#333;border-top-right-radius:10px;')
             .col-xs-12
@@ -200,7 +201,7 @@ head
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
               h2(style='color:white;text-align:center;')  Clandestine                        
               h4(style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies                  
-          #signinblock.list.row(style='display:none;')
+          #signinblock.list.row
             .col-xs-12(style='padding:top:100px;')
               form(class="form-horizontal paddgroup")
                 .form-group
@@ -214,69 +215,12 @@ head
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
                     button(type="button" id='login' class=" btn btn-success") Sign in
-          #signupblock.list.row
-            .col-xs-12
-              .row
-                .col-md-4
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')        
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Find new
-                // booklist block
-                .col-md-4.things
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')       
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Keep track  
-                .col-md-4.things
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Connections
-              #signup.row(style='text-align:center;margin-top:50px;')
-                .col-xs-12.visible-md.visible-lg(id='paddgroup-lg')
-                  form(class="form-horizontal paddgroup")
-                    .form-group
-                      .col-md-6.col-md-offset-3.message
-                    .form-group
-                      .col-md-6.col-md-offset-3
-                        input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
-                    .form-group 
-                      .col-md-6.col-md-offset-3
-                        input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
-                    .form-group 
-                      .col-md-6.col-md-offset-3 
-                        input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
-                    .form-group 
-                      .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                        button(type="button" class="signup btn btn-success") Sign up
-                .col-xs-12.visible-sm.visible-xs(id='paddgroup-sm')
-                  form(class="form-horizontal paddgroup")
-                    .form-group
-                      .col-md-10.message
-                    .form-group
-                      .col-md-10
-                        input(type="email" class="form-control input-lg" id="mail-sm" name='mail' placeholder="Email")
-                    .form-group 
-                      .col-md-10 
-                        input(type="password" class="form-control input-lg" id="p-sm" name='p' placeholder="Password")
-                    .form-group 
-                      .col-md-10 
-                        input(type="password" class="form-control input-lg" id="pc-sm" name='pc' placeholder="Confirm password") 
-                    .form-group 
-                      .col-md-10(style='padding-top:30px;') 
-                        button(type="button" class="signup btn btn-success btn-lg") Sign up
-  
+         
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      $('.signup').click(function(){
-          if($('.paddgroup-lg').css('display')==='none'){
-          console.log('1');
-           runregister(1);
-          }
-          else {
-            console.log('2');
-           runregister(2)
-          }
-        });
-        $('#login').click(authsubmit);
          //-------REGISTER--------
         function validateEmail(email) { 
         console.log('checking email');
@@ -330,76 +274,4 @@ head
         request.send("phr="+vphr+"&lgn="+vlgn);
         }
         //END OF AUTHSUBMIT FUNCTION
-        //---------------------
-        // RUNREGISTER FUNCTION
-        //---------------------
-        function runregister(arg) {
-         var errcount =0;
-         if(arg===1){
-          var vp = $('#p-sm').val();
-         var vpc = $('#pc-sm').val();
-         var vmail = $('#mail-sm').val();}
-          else
-        {var vp = $('#p-lg').val();
-         var vpc = $('#pc-lg').val();
-         var vmail = $('#mail-lg').val();}
-        $('.message').empty();
-        console.log(vp.length);
-        if(vpc.length === 0 && vp.length === 0) {
-        console.log('pass length 0');
-        //$('.message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        alert('Provide a password, and verify it');
-        $('#p').empty();
-        $('#pc').empty();
-        errcount++;
-        }
-        if(vp != vpc && errcount===0) {
-        //$('.message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
-        alert("Passwords don't match");
-        $('#p').empty();
-        $('#pc').empty();
-        errcount++;
-        }
-        console.log(vmail);
-        var mailx = validateEmail(vmail);
-        if(mailx != true)
-        {
-        //$('.message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        alert('Incorrect email');
-        errcount++;
-        }
-        if(errcount!=0) {
-          return;
-        }
-        console.log('submitting now');
-        //$("#regform").submit();
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        // do your job here
-        if (parsed.trouble === 1)
-        {
-        $('.message').empty();
-        switch (parsed.mtext)
-        {
-        case('fail'):
-        $('.message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        break;
-        case('email exists'):
-        $('.message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
-        break;
         
-        }
-        }
-        else { window.location = 'http://vntrlst.com';}
-        }
-        };
-        request.open('POST', '/newuser', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp);
-          }

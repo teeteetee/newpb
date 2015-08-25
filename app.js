@@ -67,7 +67,11 @@ app.get('/',function(req,res) {
   res.render('index_new');}
 });
 
-app.get('/logout',function(req,res){
+app.get('/signin', function (req,res){
+  res.render('signin');
+});
+
+app.get('/logout',function (req,res){
   req.session.reset();
   res.redirect('http://vntrlst.com/');
 });
