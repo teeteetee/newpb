@@ -55,7 +55,7 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-                  res.send('WELCOME USER '+done.uid);
+                  res.render('userpage',{'user':done.uid});
               }
               else {
                 res.render('index_new');
