@@ -227,7 +227,9 @@ head
     script.
       $('#login').click(authsubmit;);
       var code = (e.keyCode ? e.keyCode : e.which);
-      if(code == 13 && $('#mail').val() && $('#p').val()) { //Enter keycode
+      var temp_mail = $('#mail').val();
+      var temp_p = $('#p').val();
+      if(code == 13 && temp_mail && temp_p) { //Enter keycode
         authsubmit;
       }
       //-------REGISTER--------
