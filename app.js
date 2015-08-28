@@ -10,7 +10,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),friends = db.get('friends');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -209,6 +209,51 @@ app.post('/check',function(req,res){
   });
 });
 
+
+app.get('/chat',function (req,res){
+  if(req.session.mail){
+    users.findOne({mail:req.session.mail},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
+            if(err){
+              //err page ?
+              res.render('index_new');
+              console.log('QUERY ERR');
+            }
+            else {
+              if(done){
+                  if(done.discussions)
+                  {
+                  res.render('chat',{'user':done.uid,'discussions':done.discussions});
+                  }
+                  else {
+                   res.render('emptychat',{'user':done.uid});
+                  }
+              }
+              else {
+                res.render('index_new');
+                console.log('DOCUMENT ERR');
+              }
+            }
+          });
+  }
+  else {
+    res.send('restricted. authorised only');
+  }
+});
+
+app.post('/chat',function (req,res){
+  if(req.session.mail){
+    var vsender = req.body.sender;
+    var vdest = req.body.dest;
+    var vtextbody = req.body.textbody;
+    var vdiscussion = req.body.vdiscussion;
+
+  }
+    else {
+      res.send('restricted. authorised only');
+    }
+});
 
 
 
