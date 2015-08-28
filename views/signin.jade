@@ -229,9 +229,11 @@ head
       var code = (e.keyCode ? e.keyCode : e.which);
       var temp_mail = $('#mail').val();
       var temp_p = $('#p').val();
-      if(code == 13 && temp_mail && temp_p) { //Enter keycode
-        authsubmit;
-      }
+      $(document).keypress(function(e) {
+          if(e.which == 13 && temp_mail && temp_p) {
+              authsubmit;
+          }
+      });
       //-------REGISTER--------
       function validateEmail(email) { 
       console.log('checking email');
