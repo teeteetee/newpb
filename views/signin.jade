@@ -224,7 +224,7 @@ head
       var temp_mail = $('#mail').val();
       var temp_p = $('#p').val();
       $(document).keypress(function(e) { 
-          console.log(temp_mail+' '+temp_p);
+          console.log('temps; '+temp_mail+' '+temp_p);
           if(e.which == 13 && temp_mail && temp_p) {
               alert('here: '+temp_mail+' '+temp_p);
               authsubmit;
