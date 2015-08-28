@@ -220,14 +220,14 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      $('#login').click(authsubmit);
+      $('#login').click(showdata);
       var temp_mail = $('#mail').val();
       var temp_p = $('#p').val();
+      function showdata () {
+        alert('here: '+temp_mail+' '+temp_p);
+      }
       $(document).keypress(function(e) { 
-          console.log('temps; '+temp_mail+' '+temp_p);
-          $('#mail').val('joke');
           if(e.which == 13 && temp_mail && temp_p) {
-              alert('here: '+temp_mail+' '+temp_p);
               authsubmit;
           }
       });
