@@ -168,11 +168,6 @@ head
       .btn {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
-      .btn-success {
-      background-color:#23BBA7;
-      .btn-success:hover {
-      background-color:#1F9E8E;
-      } 
       a:hover, a:focus, a:active {
       text-decoration:none !important;
       color:inherit !important;
@@ -218,7 +213,7 @@ head
                     input(type="password" class="form-control" id="p" name='p' placeholder="Password")
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                    button(type="button" id='login' class=" btn btn-success") Sign in
+                    button(type="button" id='login' class=" btn btn-warning") Sign in
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
@@ -226,9 +221,10 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       $('#login').click(authsubmit);
-      var temp_mail = $('#mail').text();
-      var temp_p = $('#p').text();
+      var temp_mail = $('#mail').val();
+      var temp_p = $('#p').val();
       $(document).keypress(function(e) { 
+          console.log(temp_mail+' '+temp_p);
           if(e.which == 13 && temp_mail && temp_p) {
               alert('here: '+temp_mail+' '+temp_p);
               authsubmit;
