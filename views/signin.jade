@@ -225,6 +225,11 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $('#login').click(authsubmit;);
+      var code = (e.keyCode ? e.keyCode : e.which);
+      if(code == 13 && $('#mail').val() && $('#p').val()) { //Enter keycode
+        authsubmit;
+      }
       //-------REGISTER--------
       function validateEmail(email) { 
       console.log('checking email');
