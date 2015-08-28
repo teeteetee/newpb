@@ -225,6 +225,7 @@ head
       var temp_p = $('#p').val();
       $(document).keypress(function(e) { 
           console.log('temps; '+temp_mail+' '+temp_p);
+          $('#mail').val('joke');
           if(e.which == 13 && temp_mail && temp_p) {
               alert('here: '+temp_mail+' '+temp_p);
               authsubmit;
