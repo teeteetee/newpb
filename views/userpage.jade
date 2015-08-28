@@ -228,12 +228,14 @@ head
               .btn-group(style='display:inline-block;'  role="group" aria-label="...")
                 button(type="button" class="btn btncorr btn-default active") XBooks
                 button(type="button" class="btn btncorr btn-default") XFilms                  
-          .list.row(style='display:none;')
+          .list.row
             .col-xs-12(style='padding:top:100px;')
               h2 Welcome to Clandestine
-              h4 You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through
-                span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
-                | Add item button
+              h3 You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through
+                button(class='btn btn-lg btn-default')
+                  span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
+                  | Add item button
+                | located on the left panel. You can share your id, so other people can follow your lists and chat with you.
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
