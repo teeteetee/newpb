@@ -226,12 +226,11 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       $('#login').click(authsubmit);
-      var temp_mail = $('#mail').val();
-      var temp_p = $('#p').val();
-      $(document).keypress(function(e) {
-           alert('here: '+temp_mail+' '+temp_p);
+      var temp_mail = $('#mail').text();
+      var temp_p = $('#p').text();
+      $(document).keypress(function(e) { 
           if(e.which == 13 && temp_mail && temp_p) {
-              alert('submit');
+              alert('here: '+temp_mail+' '+temp_p);
               authsubmit;
           }
       });
