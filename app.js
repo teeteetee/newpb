@@ -287,7 +287,7 @@ app.get('/chat/:sndid/:recid',function (req,res){
               if(done){
                 console.log(3);
                 console.log('discussion '+done.discid);
-                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':done.discid});
+                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done.discid});
               }
                 else {
                   console.log(4);
