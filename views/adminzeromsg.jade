@@ -53,11 +53,10 @@ head
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
             .navbar-header
-              a(class="navbar-brand" style='padding:5px;' href="/")
-                img(alt="Logo",src="/images/pblogov4.png",height='40',width='40')
+              a(class="navbar-brand" href="/") People & Books
             .collapse.navbar-collapse#navbar-collapse-9
               ul(class='nav navbar-nav')
-                li
+                li(class='active')
                   a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
     .container(style='min-height:100vh;')  
       .row(style='margin-top:10px;margin-bottom:10px;')
@@ -69,14 +68,6 @@ head
         .col-xs-6(style='max-height:340px;overflow:auto;')
           ul(class='list-group', id='insertmessages')
             li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
-            each message,i in doc
-              li(class='list-group-item' id='msg#{message.mid}' onclick="$('#removeblock#{message.mid}').slideToggle();") 
-                h4(сlass="list-group-item-heading")
-                  small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year} 
-                  | #{message.heading}
-                p(class="list-group-item-text") #{message.textbody}
-              li(class='list-group-item' id='removeblock#{message.mid}' style='borer-top:0px;text-align:center;display:none;')
-                button(class='btn btn-danger' type='button' onclick='removefn(#{message.mid})') Удалить
       .row
         .col-xs-8
           .panel.panel-default

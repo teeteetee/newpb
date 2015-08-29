@@ -147,7 +147,6 @@ app.post('/newuser',function(req,res){
           function insert(vuid) {
             //lgn:vu
           users.insert({pub:0,styleint:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
-          friends.insert({uid:vuid,mail:vmail});
           req.session.mail=vmail;
           ms.trouble =0;
           ms.mtext='success';
@@ -486,6 +485,218 @@ app.get('/user/:id', function (req,res){
 //});
 //
 //  });
+
+function messagescount () {
+  insidemsg.count({},function(err,c){
+    if(err) {
+      return 0;
+    }
+    else {
+      return c;
+    }
+  });
+}
+
+function getmessages () {
+  insidemsg.find({},function(err,doc){
+    if (err)
+    {
+      return 0;
+    }
+    else {
+      return doc;
+    }
+  });
+}
+
+app.get('/admax',function(req,res){
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session));
+  
+   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+   {
+   users.count({},function(err,c){
+    if (err)
+    {
+      res.send('DB ERR')
+    }
+  else {
+    
+        if(messagescount)
+    {
+       var messages = getmessages;
+      res.render('admin',{'users':c,'doc':messages});
+     }
+     else {
+      res.render('adminzeromsg',{'users':c});
+     }
+     
+
+  }
+  });
+  
+}
+   else {
+   res.render('adminauth');
+ }
+
+});
+
+app.post('/admax',function(req,res){
+  var pas = 'christ';
+  var log = 'jesus';
+  var vpas = req.body.vpas;
+  var vlog = req.body.vlog;
+  if(pas === vpas && log === vlog) {
+    req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
+    res.redirect('http://peopleandbooks.com/admax');
+  }
+  else {
+    res.render('adminauth');
+  }
+});
+
+app.get('/admin/userlist',function(req,res){
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    users.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('userlist',{'doc':doc});
+      }
+      else{
+         res.send('NO PLACES - EMPTY DB');
+      }
+    }
+  });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
+});
+
+app.post('/drop/users',function(req,res){
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    var pp = 'secureshit';
+     if(req.body.p ===  pp)
+     {users.remove({});
+      friends.remove({});
+     console.log('USERS DB DROPPED FROM '+ req.ip);
+     req.session.reset();
+     res.redirect('http://vntrlst.com/admax');}
+    else {
+      res.redirect('http://vntrlst.com');
+    }
+  }
+  else {
+    res.redirect('http://peopleandbooks.com');
+  }
+});
+
+app.post('/admin/1/:uid',function(req,res){
+  var pas = req.body.uu;
+  if (pas != 'withoutthesecurity') {
+    res.redirect('http://vntrlst.com');
+  }
+  else 
+  {var vuid = parseInt(req.params.uid);
+    var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    users.remove({uid:vuid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        friends.remove({uid:vuid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });
+      }
+    });}
+});
+
+app.post('/admin/insidemsg/remove',function(req,res){
+  console.log('removing a message');
+  var vmid = parseInt(req.body.mid);
+  var pas = req.body.pas;
+  if (pas != 'withoutthesecurity' || !vmid) {
+    res.redirect('http://vntrlst.com');
+  }
+  else 
+  { var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    insidemsg.remove({mid:vmid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });
+  }
+
+});
+
+
+app.post('/admin/insidemsg',function(req,res){
+  console.log('creating message;');
+  var vheading = req.body.heading;
+  var vtextbody = req.body.textbody;
+  var d = new Date();
+  var vday = d.getDate().toString();
+  var vmonth = d.getMonth()+1;
+  vmonth = vmonth.toString();
+  var vyear = d.getUTCFullYear().toString();
+  console.log('beginning');
+  if (vday.length===1){
+         vday='0'+vday;
+       }
+  if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+  var vregdateint= vyear+vmonth+vday;
+  vregdateint = parseInt(vregdateint);
+  var ms = {};
+  ms.trouble=1;
+  ms.mtext = 'db';
+  console.log('middle');
+  insidemsg.find({},{limit:1,sort:{mid:-1}},function(err,doc){
+    if(err)
+    {
+      //clap your hands
+      res.send(ms);
+    }
+   else {
+    if(doc.length>0){
+      console.log('end');
+         var newid = doc[0].mid;
+         newid++;
+         console.log(newid);
+         insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+      ms.trouble=0;
+      res.send(ms);
+       }
+       else {
+         insidemsg.insert({mid: 1,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+         ms.trouble=0;
+      res.send(ms);
+       }
+   }
+  });
+});
 
 
 
