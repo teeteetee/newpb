@@ -242,18 +242,39 @@ app.get('/chat',function (req,res){
   }
 });
 
-app.post('/chat',function (req,res){
-  if(req.session.mail){
-    var vsender = req.body.sender;
-    var vdest = req.body.dest;
-    var vtextbody = req.body.textbody;
-    var vdiscussion = req.body.vdiscussion;
-
-  }
-    else {
-      res.send('restricted. authorised only');
-    }
+app.get('/chat/:sndid/:recid',function (req,res){
+   var vsender = req.params.sndid;
+   var vdest =  req.params.recid;
+   discussions.findOne({snd:vsender,rcv:vdest},function(err,done){
+     if(err){
+              //err page ?
+              res.render('index_new');
+              console.log('QUERY ERR');
+            }
+            else {
+              if(done){
+                console.log('discussion '+done.discid);
+                res.render('discussion',{'sndr':vsender,'rcvr':vdest});
+              }
+                else {
+                  disussions.insert({snd:vsender,rcv:vdest,msgcnt:0});
+                  res.render('discussion',{'sndr':vsender,'rcvr':vdest});
+                }
+            }
+   });
 });
+//app.post('/chat',function (req,res){
+//  if(req.session.mail){
+//    var vsender = req.body.sender;
+//    var vdest = req.body.dest;
+//    var vtextbody = req.body.textbody;
+//    var vdiscussion = req.body.vdiscussion;
+//
+//  }
+//    else {
+//      res.send('restricted. authorised only');
+//    }
+//});
 
 
 
