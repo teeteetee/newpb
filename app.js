@@ -210,7 +210,7 @@ app.post('/check',function(req,res){
 });
 
 app.get('/temp_disc',function (req,res){
-  res.render('discussion',{'rcvrid':2});
+  res.render('discussion',{'rcvrid':2,'user':1});
 });
 
 
