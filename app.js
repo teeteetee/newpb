@@ -189,6 +189,7 @@ app.post('/check',function(req,res){
           {
           
           req.session.mail = confirmed.mail;
+          req.session.uid = confirmed.uid;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
@@ -209,9 +210,6 @@ app.post('/check',function(req,res){
   });
 });
 
-app.get('/temp_disc',function (req,res){
-  res.render('discussion',{'rcvrid':2,'user':1});
-});
 
 
 app.get('/chat',function (req,res){
@@ -246,10 +244,38 @@ app.get('/chat',function (req,res){
   }
 });
 
+app.get('/temp_disc',function (req,res){
+  res.render('discussion',{'rcvrid':2,'user':1});
+});
+
+app.get('/discussion/:id',function (req,res){
+  //TO DO if req.session
+  discussions.finOne({discid:vdiscid},function (err,doc){
+    if(err) {
+    ms.trouble=1;
+    ms.mtext='db';
+    res.send(ms);
+    }
+    else {
+      if(doc){
+         var vlast = doc.msgstore.length - 10;
+         ms.trouble = 0;
+         ms.mtext = array_slice( doc.msgstore,vlast,doc.msgstore.length);
+         res.send(ms);
+      }
+      else {
+        ms.trouble=1;
+        ms.mtext='no discussion';
+        res.send(ms);
+      }
+    }
+  });
+});
+
 app.get('/chat/:sndid/:recid',function (req,res){
    var vsender = req.params.sndid;
    var vdest =  req.params.recid;
-   discussions.findOne({snd:vsender,rcv:vdest},function(err,done){
+   discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
      if(err){
               //err page ?
               res.render('index_new');
@@ -258,14 +284,129 @@ app.get('/chat/:sndid/:recid',function (req,res){
             else {
               if(done){
                 console.log('discussion '+done.discid);
-                res.render('discussion',{'sndr':vsender,'rcvr':vdest});
+                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':done.discid});
               }
                 else {
-                  disussions.insert({snd:vsender,rcv:vdest,msgcnt:0});
-                  res.render('discussion',{'sndr':vsender,'rcvr':vdest});
+                  discussions.find({},{limit:1,sort:{discid:-1}},function (err,doc){
+                    if(err){
+                        res.render('index_new');
+                         console.log('QUERY ERR');
+                       }
+                     else {
+                       if(doc.length>0){
+                           var newid = doc[0].discid;
+                           newid++;
+                           disussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
+                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':newid});
+                         }
+                       }
+                     });
                 }
             }
    });
+});
+
+app.post('/disc/:id',function (req,res){
+  //TO DO if req.session present, otherwise go away
+  var vdiscid = req.params.id;
+  var vsndr = req.body.sndr;
+  var vrcvr = req.body.vrcvr;
+  var vtxtbody = req.body.vtxtbody;
+  var ms = {};
+  ms.trouble =0;
+  var vtmstmp = Date().now;
+  discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
+  res.send(ms);
+  });
+  //discussions.finOne({discid:vdiscid},function (err,doc){
+  //  if(err) {
+  //  ms.trouble=1;
+  //  ms.mtext='db';
+  //  res.send(ms);
+  //  }
+  //  else {
+  //    if(doc){
+  //     
+  //    }
+  //    else {
+  //      ms.trouble=1;
+  //      ms.mtext='no discussion';
+  //      res.send(ms);
+  //    }
+  //  }
+  //});
+  //messages.find({},{limit:1,sort:{uid:-1}},function(err,doc){
+  //                  if(err){
+  //                      res.render('index_new');
+  //                       console.log('QUERY ERR');
+  //                     }
+  //                   else {
+  //                     if(doc.length>0){
+  //                         var newid = doc[0].uid;
+  //                         newid++;
+  //                         var vtmstmp = Date().now;
+  //                        messages.insert({txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp});
+  //                        //TO DO check for new messages 
+  //                        var ms={};
+  //                        var ms.trouble = 0;
+  //                        res.send(ms); 
+  //                       }
+  //                       }
+  //                     });
+
+
+app.post('/checkdisc/:id/:last', function (req,res){
+  var vdiscid = req.params.id;
+  var vlast = req.params.last;
+  ms.trouble=1;
+  ms.mtext='db';
+  res.send(ms);
+
+  array_slice( $directors, 1, 2 )
+
+  discussions.finOne({discid:vdiscid},function (err,doc){
+    if(err) {
+    res.send(ms);
+    }
+    else {
+      if(doc){
+        ms.trouble=0;
+        ms.mtext=array_slice( doc.msgstore,vlast,doc.msgstore.length);
+        console.log(ms.mtext);
+       res.send(ms);
+      }
+      else {
+        ms.trouble=1;
+        ms.mtext='no discussion';
+        res.send(ms);
+      }
+    }
+  });
+
+});
+
+app.get('/user/:id', function (req,res){
+  //TO DO if req.session
+  if(req.session.uid)
+  {var vuid = req.params.id;
+    users.finOne({uid:vuid},function (err,doc){
+      if(err) {
+      
+      }
+      else {
+        if(doc){
+          res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});
+        }
+        else {
+          res.render('index_new');
+        }
+      }
+    });
+  }
+  else {
+    res.render('restricted');
+    //TO DO restricted does not exist
+  }
 });
 //app.post('/chat',function (req,res){
 //  if(req.session.mail){
