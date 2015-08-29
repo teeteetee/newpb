@@ -229,22 +229,19 @@ head
           .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;')
             .col-xs-12
               h2(style='color:#6CB7B7;') User №#{user}                       
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Chat 
+              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Chat with user №#{user}  
            #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;') 
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;') user №#{user} 
+              h2(style='color:white;text-align:center;') Chat with user №#{user} 
               h4(style='color:gray;') Chat
           .list.row
             .col-xs-12(style='padding:top:100px;')
               .row
-                .col-xs-12
-                  h2 #{rcvrid}
-              .row
-                #messages.col-xs-10.col-xs-offset-1(style='background-color:white;border-radius:7px;')
+                #messages.col-xs-10.col-xs-offset-1(style='background-color:white;border-radius:7px;min-height:300px;')
               .row
                 .col-xs-12
-                textarea(class='form-control')
-                button(class='btn btn-default pull-right') Отправить
+                  textarea(class='form-control' style='margin-bottom:15px;')
+                  button(class='btn btn-default pull-right') Отправить
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
