@@ -304,11 +304,11 @@ app.get('/chat/:sndid/:recid',function (req,res){
                            var newid = doc[0].discid;
                            newid++;
                            discussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
-                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':newid});
+                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newid});
                          }
                          else{
                           discussions.insert({discid:1,snd:vsender,rcv:vdest,msgcnt:0});
-                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':1});
+                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':1});
                          }
                        }
                      });
