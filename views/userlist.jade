@@ -105,6 +105,8 @@ head
                   | Public?
                 th 
                   | Regdate
+                th 
+                  | Discs
               tbody
                 each user, i in doc
                   tr(id='row#{user.uid}')
@@ -120,6 +122,8 @@ head
                       | #{user.pub}
                     td
                       | #{user.regdate.day}.#{user.regdate.month}.#{user.regdate.year}
+                    td 
+                      | #{user.discussions.length}
                     td
                       button(onclick='removeuser(#{user.uid})',class='btn btn-danger btn-xs',type='button') Удалить 
      
