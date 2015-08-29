@@ -548,7 +548,7 @@ app.post('/admax',function(req,res){
   var vlog = req.body.vlog;
   if(pas === vpas && log === vlog) {
     req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
-    res.redirect('http://peopleandbooks.com/admax');
+    res.redirect('http://vntrlst.com/admax');
   }
   else {
     res.render('adminauth');
