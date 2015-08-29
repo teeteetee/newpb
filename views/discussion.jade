@@ -359,8 +359,14 @@ head
       alert('trouble');
       }
       else {
+      if(parsed==='empty'){
       $('#messages').empty();
-      $('#messages').append("<h4>"+parsed+"</h4>");
+      $('#messages').append("<div class='row'><div class='col-xs-12'><h4 style='text-align:center;'>No messages</h4></div></div>");
+      }
+      else 
+      {
+      $('#messages').empty();
+      $('#messages').append("<h4>"+parsed+"</h4>");}
       }
       }
       };

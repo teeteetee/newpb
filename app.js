@@ -320,16 +320,23 @@ app.get('/chat/:sndid/:recid',function (req,res){
 app.post('/getdisc/:id', function (req,res){
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
+  var ms ={};
+  ms.trouble = 0;
   discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
     res.send(ms);
     }
     else {
       if(doc){
-        ms.trouble=0;
-        ms.mtext=array_slice( doc.msgstore,vlast,doc.msgstore.length);
-        console.log(ms.mtext);
-       res.send(ms);
+        if(doc.msgstore)
+        {
+         ms.mtext=array_slice( doc.msgstore,vlast,doc.msgstore.length);
+         console.log(ms.mtext);
+         res.send(ms);}
+        else {
+          ms.mtext = 'empty'
+          res.send(ms);
+        }
       }
       else {
         ms.trouble=1;
