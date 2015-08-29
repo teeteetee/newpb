@@ -433,6 +433,19 @@ app.get('/cs',function (req,res){
   res.send(req.session);
 });
 
+app.get('/usr:id',function (req,res){
+  var vuid = parseInt(req.params.id);
+  users.findOne({uid:vuid},function (err,done){
+    if (err) {
+      console.log('err');
+      res.send('db err');
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
 app.get('/user/:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
