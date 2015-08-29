@@ -282,6 +282,20 @@ head
           }
         });
         $('#login').click(authsubmit);
+        $(document).keypress(function(e) { 
+          if($('#mail-lg').val() || $('#mail-sm').val() ) {
+            if(e.which == 13) {
+                runregister();
+            }
+          }
+          else {
+             if($('#mail').val()) {
+                if(e.which == 13) {
+                authsubmit();
+            }
+             }
+          }
+        });
          //-------REGISTER--------
         function validateEmail(email) { 
         console.log('checking email');
