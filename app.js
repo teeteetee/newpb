@@ -148,6 +148,7 @@ app.post('/newuser',function(req,res){
             //lgn:vu
           users.insert({pub:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           req.session.mail=vmail;
+          req.session.uid=vuid;
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
@@ -249,7 +250,7 @@ app.get('/temp_disc',function (req,res){
 
 app.get('/discussion/:id',function (req,res){
   //TO DO if req.session
-  discussions.finOne({discid:vdiscid},function (err,doc){
+  discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
     ms.trouble=1;
     ms.mtext='db';
@@ -317,7 +318,7 @@ app.post('/disc/:id',function (req,res){
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
   res.send(ms);
   });
-  //discussions.finOne({discid:vdiscid},function (err,doc){
+  //discussions.findOne({discid:vdiscid},function (err,doc){
   //  if(err) {
   //  ms.trouble=1;
   //  ms.mtext='db';
@@ -363,7 +364,7 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
   array_slice( $directors, 1, 2 )
 
-  discussions.finOne({discid:vdiscid},function (err,doc){
+  discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
     res.send(ms);
     }
@@ -392,7 +393,7 @@ app.get('/user/:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
   {var vuid = req.params.id;
-    users.finOne({uid:vuid},function (err,doc){
+    users.findOne({uid:vuid},function (err,doc){
       if(err) {
       
       }
