@@ -187,6 +187,56 @@ head
         text-indent:20px;
         font-size:18px;
       }
+      .bubblesndr
+      {
+      color:white;
+      position: relative;
+      width: 250px;
+      min-height:70px;
+      padding: 0px;
+      background: #2F7EFF;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      }
+      .bubblesndr:after 
+      {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 15px 0 15px 15px;
+      border-color: transparent #2F7EFF;
+      display: block;
+      width: 0;
+      z-index: 1;
+      right: -15px;
+      top: 24px;
+      }
+      .bubblercvr
+      {
+      color:white;
+      position: relative;
+      width: 250px;
+      min-height:70px;
+      padding: 0px;
+      background: #ff9900;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      }
+      .bubblercvr:after 
+      {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 15px 15px 15px 0;
+      border-color: transparent #ff9900;
+      display: block;
+      width: 0;
+      z-index: 1;
+      left: -15px;
+      top: 24px;
+      }
   body
     .container
       #mainframe.row.cuttop
@@ -237,7 +287,11 @@ head
           .list.row
             .col-xs-12(style='padding:top:100px;')
               .row
-                #messages.col-xs-10.col-xs-offset-1(style='background-color:white;border-radius:7px;min-height:300px;')
+                #messages.col-xs-10.col-xs-offset-1(style='background-color:white;border-radius:7px;min-height:300px;margin-bottom:15px;')
+                  .bubblesndr.pull-right
+                    p Jesus christ ! We did it
+                  .bubblercvr.pull-left
+                    p Jesus christ ! We did it ! We did it man !
               .row
                 .col-xs-10.col-xs-offset-1
                   textarea(class='form-control' style='margin-bottom:15px;')
