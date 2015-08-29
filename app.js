@@ -273,6 +273,7 @@ app.get('/discussion/:id',function (req,res){
 });
 
 app.get('/chat/:sndid/:recid',function (req,res){
+   console.log(1);
    var vsender = req.params.sndid;
    var vdest =  req.params.recid;
    discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
@@ -282,18 +283,24 @@ app.get('/chat/:sndid/:recid',function (req,res){
               console.log('QUERY ERR');
             }
             else {
+              console.log(2);
               if(done){
+                console.log(3);
                 console.log('discussion '+done.discid);
                 res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':done.discid});
               }
                 else {
+                  console.log(4);
                   discussions.find({},{limit:1,sort:{discid:-1}},function (err,doc){
+                    console.log(5);
                     if(err){
                         res.render('index_new');
                          console.log('QUERY ERR');
                        }
                      else {
+                      console.log(6);
                        if(doc.length>0){
+                        console.log(7);
                            var newid = doc[0].discid;
                            newid++;
                            disussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
