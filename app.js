@@ -392,17 +392,21 @@ app.get('/cs',function (req,res){
 app.get('/user/:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
-  {var vuid = req.params.id;
+  {var vuid = parseInt(req.params.id);
     users.findOne({uid:vuid},function (err,doc){
       if(err) {
       
       }
       else {
-        if(doc.pub){
-          res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});
+        if(doc){
+          if(doc.pub)
+          {res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});}
+          else {
+            res.render('restricted');
+          }
         }
         else {
-          res.render('restricted');
+          res.redirect('vntrlst.com');
         }
       }
     });
