@@ -303,11 +303,11 @@ app.get('/chat/:sndid/:recid',function (req,res){
                         console.log(7);
                            var newid = doc[0].discid;
                            newid++;
-                           disussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
+                           discussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':newid});
                          }
                          else{
-                          disussions.insert({discid:1,snd:vsender,rcv:vdest,msgcnt:0});
+                          discussions.insert({discid:1,snd:vsender,rcv:vdest,msgcnt:0});
                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discussion':1});
                          }
                        }
