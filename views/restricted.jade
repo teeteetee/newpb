@@ -20,23 +20,17 @@ head
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
-      h1{
-        font-family:roboto-thin;
+      @font-face{
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       h2{
-        font-family:roboto-thin;
+      font-family:boldproxima;
+      text-transform:uppercase;
+      color:white;
       }
-      h3{
-        font-family:roboto-thin;
-      }
-      h4{
-        font-family:roboto-thin;
-      }
-      h5{
-        font-family:roboto-thin;
-      }
-      h6{
-        font-family:roboto-thin;
+      body {
+        background-color:#333;
       }
       .btn {
         border-radius:30px;
@@ -61,8 +55,8 @@ head
     .container
       .row
         .col-xs-12(style='text-align:center;margin-top:20vh;margin-bottom:5vh;') 
-          img(src='/images/pblogov4black.png' style='margin-left:auto;margin-right:auto;height:200px;width:200px;')
-          h3(style='margin-top:15vh;') This list is private.
+          h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C  
+          h3(style='margin-top:15vh;color:white;') This list is private.
           
          
 

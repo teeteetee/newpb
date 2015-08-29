@@ -404,7 +404,6 @@ app.get('/user/:id', function (req,res){
   }
   else {
     res.render('restricted');
-    //TO DO restricted does not exist
   }
 });
 //app.post('/chat',function (req,res){
