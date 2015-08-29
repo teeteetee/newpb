@@ -384,6 +384,10 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
+app.get('/cs',function (req,res){
+  res.send(req.session);
+});
+
 app.get('/user/:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
@@ -393,11 +397,11 @@ app.get('/user/:id', function (req,res){
       
       }
       else {
-        if(doc){
+        if(doc.pub){
           res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});
         }
         else {
-          res.render('index_new');
+          res.render('restricted');
         }
       }
     });
