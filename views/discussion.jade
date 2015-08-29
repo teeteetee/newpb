@@ -344,3 +344,30 @@ head
     script.
       var discid = #{discid};
       alert('discussionid: '+discid);
+      getdisc(discid);
+      //------------------//
+      function getdisc(discid) {
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      alert('trouble');
+      }
+      else {
+      $('#messages').empty();
+      $('#messages').append("<h4>"+parsed+"</h4>");
+      }
+      }
+      };
+      var url='/getdisc/'+discid;
+      request.open('POST', url, true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send();
+      }
