@@ -276,6 +276,16 @@ app.get('/dropdisc',function (req,res){
   discussions.remove({});
   res.redirect('/');
 });
+app.get('/seedisc',function (req,res){
+  discussions.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
 
 app.get('/chat/:sndid/:recid',function (req,res){
    console.log(1);
