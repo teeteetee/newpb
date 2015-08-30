@@ -289,8 +289,8 @@ app.get('/seedisc',function (req,res){
 
 app.get('/chat/:sndid/:recid',function (req,res){
    console.log(1);
-   var vsender = req.params.sndid;
-   var vdest =  req.params.recid;
+   var vsender = parseInt(req.params.sndid);
+   var vdest =  parseInt(req.params.recid);
    discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
      if(err){
               //err page ?
@@ -320,11 +320,13 @@ app.get('/chat/:sndid/:recid',function (req,res){
                            newid++;
                            discussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
                            users.update({uid:vsender},{$push:{discussions:newid}});
+                           users.update({uid:vdest},{$push:{discussions:newid}});
                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newid});
                          }
                          else{
                           discussions.insert({discid:1,snd:vsender,rcv:vdest,msgcnt:0});
                           users.update({uid:vsender},{$push:{discussions:1}});
+                          users.update({uid:vdest},{$push:{discussions:1}});
                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':1});
                          }
                        }
