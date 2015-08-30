@@ -272,6 +272,11 @@ app.get('/discussion/:id',function (req,res){
   });
 });
 
+app.get('/dropdisc',function (req,res){
+  discussions.remove({});
+  res.redirect('/');
+});
+
 app.get('/chat/:sndid/:recid',function (req,res){
    console.log(1);
    var vsender = req.params.sndid;
