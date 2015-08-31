@@ -277,27 +277,32 @@ head
       }
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
-      var url='/getdiscinfo/'+discid;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
+      console.log(1);
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
+        console.log(2);
       var parsed = JSON.parse(request.responseText);
       console.log(parsed);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
+      console.log(3);
       return 0;
       }
       else {
       console.log('parsed mtext :\n'+parsed.mtext);
       return parsed.mtext;
       }
+      console.log(4);
       };
+      console.log(5);
       request.open('POST', '/getdiscinfo/'+discid, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
+      console.log(6);
       request.send();
       }
       }
