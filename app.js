@@ -341,7 +341,7 @@ app.get('/chat/:sndid/:recid',function (req,res){
 }
 });
 
-app.post('/getavatar/:uid',function (req,res){
+app.get('/getavatar/:uid',function (req,res){
   var vuid = parseInt(req.params.uid);
   console.log(vuid);
   //if(req.session.mail&&req.session.uid){
