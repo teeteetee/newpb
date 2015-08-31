@@ -737,7 +737,8 @@ app.get('/admin/userlist',function(req,res){
 });
 
 app.post('/drop/users',function(req,res){
-  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  //if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  f(req.ip === '188.226.189.180' )
   {
     var pp = 'secureshit';
      if(req.body.p ===  pp)
