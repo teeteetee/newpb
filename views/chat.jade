@@ -253,7 +253,7 @@ head
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      
+      $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
       }
       else {
       if(parsed.mtext==='empty'){
@@ -271,4 +271,5 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send();
+      }
       }
