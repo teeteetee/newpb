@@ -240,8 +240,10 @@ head
       var discussions = [#{discussions}];
       alert(discussions);
       for(i=0;i<discussions.length;i++) {
-         $('#discussions').append("<div class='row' id='cid"+discussions[i].discid+"'><div class='col-xs-9'><h3> User №"+discussions[i].rcvr+"</h3></div></div>");
-         getavatar(discussions[i].rcvr);
+         var discussion = getdisc(discussions[i]);
+         console.log(discussion);
+         $('#discussions').append("<div class='row' id='cid"+discussion.discid+"'><div class='col-xs-9'><h3> User №"+discussion.rcvr+"</h3></div></div>");
+         getavatar(discussion.rcvr);
       }
       function getavatar(uid) {
       request = new XMLHttpRequest();
@@ -283,16 +285,10 @@ head
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+      return 0;
       }
       else {
-      if(parsed.mtext==='empty'){
-       $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
-      }
-      else 
-      {
-       $('#cid'+uid).prepend("<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>");
-      }
+      return parsed.mtext;
       }
       };
       var url='/getdiscinfo/'+discid;
