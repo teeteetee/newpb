@@ -266,6 +266,7 @@ head
        $('#cid'+uid).prepend("<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>");
       }
       }
+      }
       };
       var url='/getavatar/'+uid;
       request.open('POST', url, true);
@@ -274,10 +275,10 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send();
       }
-      }
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
-      var request = new XMLHttpRequest();
+      request = new XMLHttpRequest();
+      console.log(0);
       request.onreadystatechange = function () {
       console.log(1);
       var DONE = this.DONE || 4;
@@ -296,6 +297,7 @@ head
       return parsed.mtext;
       }
       console.log(4);
+      }
       };
       console.log(5);
       request.open('POST', '/getdiscinfo/'+discid, true);
@@ -304,5 +306,4 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       console.log(6);
       request.send();
-      }
       }
