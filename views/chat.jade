@@ -273,3 +273,33 @@ head
       request.send();
       }
       }
+      function getdisc(discid) {
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+      }
+      else {
+      if(parsed.mtext==='empty'){
+       $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+      }
+      else 
+      {
+       $('#cid'+uid).prepend("<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>");
+      }
+      }
+      };
+      var url='/getdiscinfo/'+discid;
+      request.open('POST', url, true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send();
+      }
+      }
