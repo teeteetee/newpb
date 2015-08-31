@@ -285,14 +285,14 @@ head
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      console.log(3);
+      console.log('return 0');
       return 0;
       }
       else {
+        console.log('disc id: '+parsed.mtext.discid);
         $('#discussions').append("<div class='row' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9'><h3> User №"+parsed.mtext.rcvr+"</h3></div></div>");
          getavatar(parsed.mtext.rcvr);
       }
-      console.log(4);
       }
       };
       console.log(5);
