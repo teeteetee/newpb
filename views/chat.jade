@@ -264,13 +264,13 @@ head
       }
       }
       };
-      var url='/getavatar/'+uid;
-      request.open('POST', url, true);
+      request.open('POST', '/getavatar/'+uid, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send();
       }
+      //------------------//
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
       request = new XMLHttpRequest();
@@ -290,8 +290,8 @@ head
       }
       else {
         console.log('disc id: '+parsed.mtext.discid);
-        $('#discussions').append("<div class='row' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9'><h3> User №"+parsed.mtext.rcvr+"</h3></div></div>");
-         getavatar(parsed.mtext.rcvr);
+        $('#discussions').append("<div class='row' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+parsed.mtext.rcvr+"</h3></div></div>");
+         getavatar(parsed.mtext.rcv);
       }
       }
       };
