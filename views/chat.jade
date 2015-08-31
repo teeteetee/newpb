@@ -239,10 +239,7 @@ head
     script.
       var discussions = [#{discussions}];
       for(i=0;i<discussions.length;i++) {
-         console.log(getdisc(discussions[i]));
-         var discussion = getdisc(discussions[i]);
-         $('#discussions').append("<div class='row' id='cid"+discussion.discid+"'><div class='col-xs-9'><h3> User №"+discussion.rcvr+"</h3></div></div>");
-         getavatar(discussion.rcvr);
+         getdisc(discussions[i]);
       }
       function getavatar(uid) {
       request = new XMLHttpRequest();
@@ -292,8 +289,8 @@ head
       return 0;
       }
       else {
-      console.log('parsed mtext :\n'+JSON.stringify(parsed.mtext));
-      return JSON.stringify(parsed.mtext);
+        $('#discussions').append("<div class='row' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9'><h3> User №"+parsed.mtext.rcvr+"</h3></div></div>");
+         getavatar(parsed.mtext.rcvr);
       }
       console.log(4);
       }
