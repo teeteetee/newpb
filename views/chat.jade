@@ -237,7 +237,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
     script.
-      var discussions = #{discussions};
+      var discussions = [#{discussions}];
       alert(discussions);
       for(i=0;i<discussions.length;i++) {
          $('#discussions').append("<div class='row'><div class='col-xs-12'><h3>"+discussions[i].id+"</h3></div></div>");

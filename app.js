@@ -291,6 +291,10 @@ app.get('/chat/:sndid/:recid',function (req,res){
    console.log(1);
    var vsender = parseInt(req.params.sndid);
    var vdest =  parseInt(req.params.recid);
+   if(vsender!=req.session.uid){
+    res.redirect('/');
+   }
+   else{
    discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
      if(err){
               //err page ?
@@ -334,6 +338,7 @@ app.get('/chat/:sndid/:recid',function (req,res){
                 }
             }
    });
+}
 });
 
 app.post('/getdisc/:id', function (req,res){
