@@ -294,6 +294,7 @@ head
       }
       };
       var url='/getdiscinfo/'+discid;
+      console.log(url);
       request.open('POST', url, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
