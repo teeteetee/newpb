@@ -146,7 +146,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({pub:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           req.session.mail=vmail;
           req.session.uid=vuid;
           ms.trouble =0;
@@ -341,16 +341,44 @@ app.get('/chat/:sndid/:recid',function (req,res){
 }
 });
 
-app.get('/getavatar/:uid',function (req,res){
+app.post('/getavatar/:uid',function (req,res){
   var vuid = parseInt(req.params.uid);
-  console.log(vuid);
-  //if(req.session.mail&&req.session.uid){
-  //  users.findOne({uid:vuid})
-  //}
-  //else
-  //{
-  //res.send(Date().now);
-  //}
+  if(vuid)
+  {
+    if(req.session.mail&&req.session.uid){
+      var ms={};
+      ms.trouble=1;
+      users.findOne({uid:vuid},function(err,doc){
+           if(err) {
+       ms.mtext='db';
+       res.send(ms);
+       }
+       else {
+         if(doc){
+            if(doc.userpic)
+            {ms.trouble = 0;
+             ms.mtext = doc.userpic;
+             res.send(ms);}
+             else {
+                ms.trouble = 0;
+             ms.mtext = 'emptypic';
+             res.send(ms);
+             }
+         }
+         else {
+           ms.mtext='no user';
+           res.send(ms);
+         }
+      });
+    }
+    else
+    {
+    res.send(Date().now);
+    }
+  }
+  else {
+    res.send(Date().now);
+  }
 });
 
 app.post('/getdisc/:id', function (req,res){

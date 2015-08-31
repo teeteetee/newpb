@@ -240,5 +240,35 @@ head
       var discussions = [#{discussions}];
       alert(discussions);
       for(i=0;i<discussions.length;i++) {
-         $('#discussions').append("<div class='row'><div class='col-xs-12'><h3>"+discussions[i].discid+"</h3></div></div>");
+         $('#discussions').append("<div class='row' id='cid"+discussions[i].discid+"'><div class='col-xs-9'><h3> User №"+discussions[i].rcvr+"</h3></div></div>");
+         getavatar(discussions[i].rcvr);
+      }
+      function getavatar(uid) {
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      
+      }
+      else {
+      if(parsed.mtext==='empty'){
+       $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+      }
+      else 
+      {
+       $('#cid'+uid).prepend("<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>");
+      }
+      }
+      };
+      var url='/getavatar/'+uid;
+      request.open('POST', url, true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send();
       }
