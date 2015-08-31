@@ -276,6 +276,12 @@ app.get('/dropdisc',function (req,res){
   discussions.remove({});
   res.redirect('/');
 });
+
+app.get('/dropusers',function (req,res){
+  users.remove({});
+  res.redirect('/');
+});
+
 app.get('/seedisc',function (req,res){
   discussions.find({},function (err,done){
     if(err){
