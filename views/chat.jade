@@ -277,7 +277,7 @@ head
       }
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
-      request = new XMLHttpRequest();
+      var request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       console.log(1);
       var DONE = this.DONE || 4;
