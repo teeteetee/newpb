@@ -276,6 +276,7 @@ head
       }
       }
       function getdisc(discid) {
+      console.log('getting discifno');
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -288,6 +289,7 @@ head
       return 0;
       }
       else {
+      console.log('parsed mtext :\n'+parsed.mtext);
       return parsed.mtext;
       }
       };
