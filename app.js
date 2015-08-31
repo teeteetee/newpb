@@ -415,6 +415,7 @@ app.post('/getdisc/:id', function (req,res){
 });
 
 app.post('/getdiscinfo/:id', function (req,res){
+  console.log('getting disc info');
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
   var ms ={};
