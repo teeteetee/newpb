@@ -369,6 +369,7 @@ app.post('/getavatar/:uid',function (req,res){
            ms.mtext='no user';
            res.send(ms);
          }
+       }
       });
     }
     else
