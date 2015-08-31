@@ -239,10 +239,8 @@ head
     script.
       var discussions = [#{discussions}];
       for(i=0;i<discussions.length;i++) {
-         var discussion = {};
-         console.log('RRR '+getdisc(discussions[i]));
-         discussion = getdisc(discussions[i]);
-         console.log('discussion rcvr: '+discussion);
+         console.log(getdisc(discussions[i]));
+         var discussion = getdisc(discussions[i]);
          $('#discussions').append("<div class='row' id='cid"+discussion.discid+"'><div class='col-xs-9'><h3> User №"+discussion.rcvr+"</h3></div></div>");
          getavatar(discussion.rcvr);
       }
@@ -295,7 +293,7 @@ head
       }
       else {
       console.log('parsed mtext :\n'+parsed.mtext);
-      return parsed.mtext;
+      return JSON.stringify(parsed.mtext);
       }
       console.log(4);
       }
