@@ -240,7 +240,7 @@ head
       var discussions = [#{discussions}];
       for(i=0;i<discussions.length;i++) {
          var discussion = getdisc(discussions[i]);
-         console.log('discussion rcvr: '+discussion.rcvr);
+         console.log('discussion rcvr: '+discussion);
          $('#discussions').append("<div class='row' id='cid"+discussion.discid+"'><div class='col-xs-9'><h3> User №"+discussion.rcvr+"</h3></div></div>");
          getavatar(discussion.rcvr);
       }
