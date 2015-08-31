@@ -341,6 +341,18 @@ app.get('/chat/:sndid/:recid',function (req,res){
 }
 });
 
+app.post('/getavatar/:uid',function (req,res){
+  var vuid = parseInt(req.params.uid);
+  console.log(vuid);
+  //if(req.session.mail&&req.session.uid){
+  //  users.findOne({uid:vuid})
+  //}
+  //else
+  //{
+  //res.send(Date().now);
+  //}
+});
+
 app.post('/getdisc/:id', function (req,res){
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
