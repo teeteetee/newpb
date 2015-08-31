@@ -251,15 +251,18 @@ head
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+      var insert ="<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+      eval("$('#cid"+uid"').prepend(insert);");
       }
       else {
       if(parsed.mtext==='empty'){
-       $('#cid'+uid).prepend("<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>");
+       var insert = "<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+       eval("$('#cid"+uid"').prepend(insert);");
       }
       else 
       {
-       $('#cid'+uid).prepend("<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>");
+      var insert = "<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>";
+      eval("$('#cid"+uid"').prepend(insert);");
       }
       }
       }
