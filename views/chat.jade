@@ -277,6 +277,7 @@ head
       }
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
+      var url='/getdiscinfo/'+discid;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -293,7 +294,6 @@ head
       return parsed.mtext;
       }
       };
-      var url='/getdiscinfo/'+discid;
       console.log(url);
       request.open('POST', url, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
