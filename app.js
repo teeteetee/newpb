@@ -361,7 +361,7 @@ app.post('/getavatar/:uid',function (req,res){
        }
        else {
          if(doc){
-            if(doc.userpic)
+            if(parseInt(doc.userpic))
             {ms.trouble = 0;
              ms.mtext = doc.userpic;
              res.send(ms);}
