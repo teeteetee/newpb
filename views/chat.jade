@@ -241,7 +241,7 @@ head
       for(i=0;i<discussions.length;i++) {
          getdisc(discussions[i]);
       }
-      function getavatar(uid) {
+      function getavatar(uid,discid) {
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -252,19 +252,19 @@ head
       {
       // TO DO do somewthing here
       var insert ="<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-      eval("$('#cid"+uid+"').prepend(insert);");
+      eval("$('#cid"+discid+"').prepend(insert);");
       }
       else {
       if(parsed.mtext==='empty'){
         console.log('EMPTY AVATAR');
        var insert = "<div class='col-xs-3><div class='emptyavatar' style='width:100%;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-       eval("$('#cid"+uid+"').prepend(insert);");
+       eval("$('#cid"+discid+"').prepend(insert);");
       }
       else 
       {
         console.log('HAS AVATAR');
       var insert = "<div class='col-xs-3><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>";
-      eval("$('#cid"+uid+"').prepend(insert);");
+      eval("$('#cid"+discid+"').prepend(insert);");
       }
       }
       }
@@ -301,7 +301,7 @@ head
         
         console.log('disc id: '+parsed.mtext.discid);
         $('#discussions').append("<div class='row' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>");
-         getavatar(parsed.mtext.rcv);
+         getavatar(parsed.mtext.rcv,discid);
       }
       }
       };
