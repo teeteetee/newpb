@@ -273,7 +273,7 @@ app.get('/discussion/:id',function (req,res){
 });
 
 app.get('/dropdisc',function (req,res){
-  users.update({},{$unset:{disuccions:1}},false,true);
+  users.update({},{$unset:{disuccions:1}});
   discussions.remove({});
   res.redirect('/');
 });
@@ -293,6 +293,7 @@ app.get('/seedisc',function (req,res){
     }
   });
 });
+
 app.get('/seeuser',function (req,res){
   users.find({},function (err,done){
     if(err){
