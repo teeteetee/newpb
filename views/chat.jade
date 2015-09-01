@@ -55,7 +55,6 @@ head
       min-height:500px;
       max-height:70vh;
       text-align:center;
-      padding-top:50px;
       }
       #signup {
         padding-top:50px;
@@ -97,9 +96,6 @@ head
       border-bottom-left-radius:10px;
       }
       .things{
-      padding-top:50px;
-      }
-      .list {
       padding-top:50px;
       }
       }
@@ -234,7 +230,7 @@ head
               h2(style='color:white;text-align:center;') user №#{user} 
               h4(style='color:gray;') Conversations
           .list.row
-            #discussions.col-xs-12(style='padding:top:100px;')
+            #discussions.col-xs-12
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -254,20 +250,18 @@ head
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-      eval("$('#cid"+discid+"').prepend(insert);");
+      //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+      eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
       }
       else {
       if(parsed.mtext==='emptypic'){
         console.log('EMPTY AVATAR');
-       var insert = "<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-       eval("$('#cid"+discid+"').prepend(insert);");
+       eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
       }
       else 
       {
         console.log('HAS AVATAR');
-      var insert = "<div class='col-xs-3'><img class='img-cirlce' style='width:100%;' src='http://vntrlst.com/userpics/uid"+uid+"_small.jpg'></img></div>";
-      eval("$('#cid"+discid+"').prepend(insert);");
+      eval("$('#img_cid"+discid+"').attr('src','/userpics/uid"+uid+"_small.jpg');");
       }
       }
       }
@@ -303,7 +297,9 @@ head
         var vuid = parsed.mtext.snd;}
         
         console.log('disc id: '+parsed.mtext.discid);
-        $('#discussions').append("<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>");
+        var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='media'><div class='media-left'><a href='#'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></a></div><div class='media-body'><h4 class='media-heading'>User №"+vuid+"</h4></div></div></div>";
+        //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
+        $('#discussions').append(insert);
          getavatar(parsed.mtext.rcv,discid);
       }
       }
