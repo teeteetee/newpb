@@ -470,7 +470,7 @@ app.post('/disc/:id',function (req,res){
   var vsndr = parseInt(req.body.sndr);
   var vrcvr = parseInt(req.body.rcvr);
   var vtxtbody = req.body.txtbody;
-  console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+txtbody);
+  console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody);
   var ms = {};
   ms.trouble =0;
   var vtmstmp = Date().now;
