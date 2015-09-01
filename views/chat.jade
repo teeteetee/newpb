@@ -251,7 +251,6 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
-      console.log('getavatr: '+parsed);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -278,14 +277,14 @@ head
       request.send();
       }
       //------------------//
-      function getdisc(discid) {
+      function getdisc(discid,iter) {
       console.log('getting discifno: '+discid);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
-      console.log(parsed);
+      console.log('iter: '+iter+', parsed: '+parsed);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -296,7 +295,6 @@ head
         {var vuid = parsed.mtext.rcv;}
         else {
         var vuid = parsed.mtext.snd;}
-        console.log('disc id: '+parsed.mtext.discid);
         var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h4 class='media-heading'>User №"+vuid+"</h4></div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
