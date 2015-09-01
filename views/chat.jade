@@ -285,7 +285,8 @@ head
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
+      if(request.readyState==4 && request.status==200){
+      //if (this.readyState === DONE){
       console.log('iter: '+iter+',discid: '+discid+', parsed: '+request.responseText);
       var parsed = JSON.parse(request.responseText);
       if(parsed.trouble === 1)
