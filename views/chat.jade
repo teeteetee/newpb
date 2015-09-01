@@ -245,6 +245,7 @@ head
          getdisc(discussions[i]);
       }
       function getavatar(uid,discid) {
+      console.log('getting avatar for: '+uid);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -280,18 +281,14 @@ head
       function getdisc(discid) {
       console.log('getting discifno: '+discid);
       request = new XMLHttpRequest();
-      console.log(0);
       request.onreadystatechange = function () {
-      console.log(1);
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-        console.log(2);
       var parsed = JSON.parse(request.responseText);
       console.log(parsed);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
-      console.log('return 0');
       return 0;
       }
       else {
@@ -299,7 +296,6 @@ head
         {var vuid = parsed.mtext.rcv;}
         else {
         var vuid = parsed.mtext.snd;}
-        
         console.log('disc id: '+parsed.mtext.discid);
         var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h4 class='media-heading'>User №"+vuid+"</h4></div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
@@ -308,11 +304,9 @@ head
       }
       }
       };
-      console.log(5);
       request.open('POST', '/getdiscinfo/'+discid, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      console.log(6);
       request.send();
       }
