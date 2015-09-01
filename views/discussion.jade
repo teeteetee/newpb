@@ -384,12 +384,12 @@ head
       var sndr = #{user};
       var txtbody = $('#gettext').val();
       console.log(txtbody);
-      sndrequest = new XMLHttpRequest();
-      sndrequest.onreadystatechange = function () {
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
-      if(sndrequest.readyState==4 && sndrequest.status==200){
+      if(request.readyState==4 && request.status==200){
       //if (this.readyState === DONE){
-      var parsed = JSON.parse(sndrequest.responseText);
+      var parsed = JSON.parse(request.responseText);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -400,11 +400,11 @@ head
       }
       }
       };
-      sndrequest.open('POST', '/disc/#{discid}', true);
-      sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      sndrequest.setRequestHeader("Content-type", "text/javascript");
+      request.open('POST', '/disc/#{discid}', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "text/javascript");
       //Most libraries like jQuery/Prototype/Dojo do this
-      sndrequest.send('sndr='+sndr+'&rcvr='+rcvr+'&txtbody='+txtbody);
+      request.send('sndr='+sndr+'&rcvr='+rcvr+'&txtbody='+txtbody);
       }
       function getmsg() {
       console.log('getting msg');
