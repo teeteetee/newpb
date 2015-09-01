@@ -161,7 +161,7 @@ head
       -moz-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       }
-      .btn, h4 {
+      .btn {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
       .btn-success {
@@ -185,6 +185,9 @@ head
       }
       .media-body, .media-left, .media-right {
       vertical-align: middle;
+      }
+      .media-heading{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
   body
     .container
@@ -295,7 +298,7 @@ head
         {var vuid = parsed.mtext.rcv;}
         else {
         var vuid = parsed.mtext.snd;}
-        var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h4 class='media-heading'>User №"+vuid+"</h4></div></div></a></div></div>";
+        var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h3 class='media-heading'>User №"+vuid+"</h3></div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
          getavatar(parsed.mtext.rcv,discid);

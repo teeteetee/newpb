@@ -444,6 +444,7 @@ app.post('/getdiscinfo/:id', function (req,res){
   ms.trouble = 0;
   discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
+    ms.trouble=1;
     res.send(ms);
     }
     else {
