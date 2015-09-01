@@ -367,7 +367,7 @@ head
       else 
       {
       $('#messages').empty();
-      $('#messages').append("<h4>"+parsed.mtext+"</h4>");}
+      $('#messages').append("<h4 id='empty'>"+parsed.mtext+"</h4>");}
       }
       }
       };
@@ -396,6 +396,9 @@ head
       alert('trouble');
       }
       else {
+         if($('#messages').has('#empty')){
+          $('#messages').empty();
+        }
         $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
       }
       }
@@ -420,6 +423,9 @@ head
       console.log('trouble or empty');
       }
       else {
+        if($('#messages').has('#empty')){
+          $('#messages').empty();
+        }
         if(parsed.mult){
           for(var i=0;i<parsed.msgstore.length;i++){
             if(parseInt(parsed.msgstore[i].rcvr) === #{user})
