@@ -394,11 +394,11 @@ app.post('/getavatar/:uid',function (req,res){
     }
     else
     {
-    res.send(Date().now);
+    res.send(Date.now());
     }
   }
   else {
-    res.send(Date().now);
+    res.send(Date.now());
   }
 });
 
@@ -472,7 +472,7 @@ app.post('/disc/:id',function (req,res){
   var vtxtbody = req.body.txtbody;
   var ms = {};
   ms.trouble =0;
-  var vtmstmp = Date().now;
+  var vtmstmp = Date.now();
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
   //discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
   res.send(ms);
@@ -538,7 +538,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
   //                     if(doc.length>0){
   //                         var newid = doc[0].uid;
   //                         newid++;
-  //                         var vtmstmp = Date().now;
+  //                         var vtmstmp = Date.now();
   //                        messages.insert({txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp});
   //                        //TO DO check for new messages 
   //                        var ms={};
