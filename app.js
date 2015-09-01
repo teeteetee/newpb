@@ -327,6 +327,20 @@ app.get('/chat/:sndid/:recid',function (req,res){
                 console.log('discussion '+done.discid);
                 res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done.discid});
               }
+              else{
+               discussions.findOne({rcv:vsender,snd:vdest},function (err,done2){
+                 if(err){
+                          //err page ?
+                          res.render('index_new');
+                          console.log('QUERY ERR');
+                        }
+                        else {
+                          console.log(2);
+                          if(done2){
+                            console.log(3);
+                            console.log('discussion '+done2.discid);
+                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done2.discid});
+                          }
                 else {
                   console.log(4);
                   discussions.find({},{limit:1,sort:{discid:-1}},function (err,doc){
@@ -354,7 +368,10 @@ app.get('/chat/:sndid/:recid',function (req,res){
                          }
                        }
                      });
-                }
+                }//else
+              }
+             });
+              }
             }
    });
 }

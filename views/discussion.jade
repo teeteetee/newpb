@@ -362,12 +362,12 @@ head
       else {
       if(parsed.mtext==='empty'){
       $('#messages').empty();
-      $('#messages').append("<div class='row'><div class='col-xs-12'><h4 style='text-align:center;'>No messages</h4></div></div>");
+      $('#messages').append("<div class='row'><div class='col-xs-12'><h4 id='empty' style='text-align:center;'>No messages</h4></div></div>");
       }
       else 
       {
       $('#messages').empty();
-      $('#messages').append("<h4 id='empty'>"+parsed.mtext+"</h4>");}
+      $('#messages').append("<h4 >"+parsed.mtext+"</h4>");}
       }
       }
       };
