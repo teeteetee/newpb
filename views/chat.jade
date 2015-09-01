@@ -283,7 +283,7 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      console.log('iter: '+iter+', parsed: '+request.responseText);
+      console.log('iter: '+iter+',discid: '+discid+', parsed: '+request.responseText);
       var parsed = JSON.parse(request.responseText);
       if(parsed.trouble === 1)
       {
