@@ -404,7 +404,7 @@ head
       sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       sndrequest.setRequestHeader("Content-type", "text/javascript");
       //Most libraries like jQuery/Prototype/Dojo do this
-      sndrequest.send('sndr='+sndr+',rcvr='+rcvr+',txtbody='+txtbody);
+      sndrequest.send('sndr='+sndr+'&rcvr='+rcvr+'&txtbody='+txtbody);
       }
       function getmsg() {
       console.log('getting msg');
@@ -439,6 +439,6 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "text/javascript");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send('tmstmp='+tmstmp+',uid='+#{user});
+      request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
       setInterval(getmsg, 5000);
