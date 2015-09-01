@@ -468,15 +468,51 @@ app.post('/disc/:id',function (req,res){
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
   var vsndr = parseInt(req.body.sndr);
-  var vrcvr = parseInt(req.body.vrcvr);
+  var vrcvr = parseInt(req.body.rcvr);
   var vtxtbody = req.body.vtxtbody;
   var ms = {};
   ms.trouble =0;
   var vtmstmp = Date().now;
+  //,{$set:{vsndr:vtmstmp}}
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
   res.send(ms);
   });
 
+app.post('/disccheck/:id/:uid',function (req,res){
+  // Client checking for messages 
+  //TO DO if req.session present, otherwise go away
+  var rcvr = parseInt(req.params.uid);
+  var vdiscid = parseInt(req.params.id);
+  var vtmstmp = parseInt(req.body.tmstmp);
+  var ms ={};
+  ms.trouble=1;
+  ms.msgstore=[];
+  discussions.findOne({discid:vdiscid},function (err,done){
+    if (err) {
+     res.send(ms);
+    }
+    else {
+      if(done) {
+         var mstorelength = done.msgstore.length-1;
+        for (var i = done.msgstore.length; i > 0; --i) {
+          if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > tmstmp) {
+            ms.msgstore.push(done.msgstore[i]);
+          }
+          else if(done.msgstore[i].tmstmp <= tmstmp){
+            break;
+          }
+        }
+        ms.trouble=0;
+        console.log(ms);
+        res.send(ms);
+      }
+      else {
+       res.send(ms);
+      }
+    }
+  });
+});
+  
   //discussions.findOne({discid:vdiscid},function (err,doc){
   //  if(err) {
   //  ms.trouble=1;

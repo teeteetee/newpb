@@ -335,7 +335,7 @@ head
                         | COlumbus first settled in america at around 1667 year, which is now a very imortant date, Jesus christ ! We did it ! We did it man ! So roll up another one for hime
               .row(style='margin-bottom:20px;')
                 .col-md-10.col-md-offset-1.col-sm-12
-                  textarea(class='form-control' style='margin-bottom:15px;')
+                  textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
                   button(class='btn btn-default' id='sendmsg') Отправить
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
@@ -343,6 +343,7 @@ head
     script(src='js/bootstrap.min.js')  
     script.
       var discid = #{discid};
+      var tmstmp = 0;
       getdisc(discid);
       //------------------//
       function getdisc(discid) {
@@ -376,3 +377,67 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send();
       }
+      function sendmsg() {
+      console.log('msg sendin');
+      var rcvr = #{rcvrid};  
+      var sndr = #{user};
+      var txtbody = $('#gettext').val();
+      console.log(txtbody);
+      sndrequest = new XMLHttpRequest();
+      sndrequest.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if(sndrequest.readyState==4 && sndrequest.status==200){
+      //if (this.readyState === DONE){
+      var parsed = JSON.parse(sndrequest.responseText);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      alert('trouble');
+      }
+      else {
+        $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
+      }
+      }
+      };
+      sndrequest.open('POST', '/disc/#{discid}', true);
+      sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      sndrequest.setRequestHeader("Content-type", "text/javascript");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      sndrequest.send();
+      }
+      function getmsg() {
+      console.log('getting msg');
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if(request.readyState==4 && request.status==200){
+      //if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      alert('trouble');
+      }
+      else {
+        if(parsed.mult){
+          for(i=0;i<parsed.msgstore.length;i++){
+            if(parseInt(parsed.msgstore[i].rcvr) === #{user})
+            {tmstmp = parsed.msgstore[i].tmstmp;
+            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+txtbody+"</div></div></div>");
+            }    
+          }
+        }
+        else {
+          tmstmp = parsed.msgstore[i].tmstmp;
+          $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+txtbody+"</div></div></div>");
+        }
+      }
+      }
+      };
+      request.open('POST', '/disc/#{discid}', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "text/javascript");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send('tmstmp='+tmstmp+',uid='+#{user});
+      }
+      setInterval(getmsg, 2500);
