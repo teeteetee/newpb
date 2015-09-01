@@ -249,11 +249,11 @@ head
       }
       function getavatar(uid,discid) {
       console.log('getting avatar for: '+uid);
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
+      avatarrequest = new XMLHttpRequest();
+      avatarrequest.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      var parsed = JSON.parse(request.responseText);
+      var parsed = JSON.parse(avatarrequest.responseText);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -273,11 +273,11 @@ head
       }
       }
       };
-      request.open('POST', '/getavatar/'+uid, true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      avatarrequest.open('POST', '/getavatar/'+uid, true);
+      avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send();
+      avatarrequest.send();
       }
       //------------------//
       function getdisc(discid,iter) {
