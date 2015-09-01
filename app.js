@@ -403,7 +403,7 @@ app.post('/getavatar/:uid',function (req,res){
 });
 
 app.post('/getdisc/:id', function (req,res){
-  // API
+  // API to populate discussion page
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
   var ms ={};
@@ -436,7 +436,7 @@ app.post('/getdisc/:id', function (req,res){
 });
 
 app.post('/getdiscinfo/:id', function (req,res){
-  //API
+  //API used when populating page with the list of conversations
   console.log('getting disc info');
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
@@ -447,7 +447,7 @@ app.post('/getdiscinfo/:id', function (req,res){
     res.send(ms);
     }
     else {
-      console.log('found discussion: \n'+doc);
+      console.log('found discussion №'+doc.discid+': \n'+doc);
       if(doc){
         ms.mtext = doc;
         res.send(ms);
