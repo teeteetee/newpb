@@ -493,8 +493,9 @@ app.post('/disccheck/:id/:uid',function (req,res){
     }
     else {
       if(done.msgstore) {
-        for (var i = done.msgstore.length; i > 0; --i) {
-          if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > tmstmp) {
+        console.log('IIIIIIII'+done.msgstore+'IIIIIIII');
+        for (var i = done.msgstore.length-1; i > -1; --i) {
+          if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
             ms.msgstore.push(done.msgstore[i]);
           }
           else if(done.msgstore[i].tmstmp <= tmstmp){
