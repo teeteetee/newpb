@@ -434,8 +434,7 @@ app.post('/getdisc/:id', function (req,res){
         if(doc.msgstore)
         {
          var vlast = doc.msgstore.length - 10;
-         ms.mtext=doc.msgstore.slice(vlast,doc.msgstore.length);
-         console.log(ms.mtext);
+         ms.msgstore=doc.msgstore.slice(vlast,doc.msgstore.length);
          res.send(ms);}
         else {
           ms.mtext = 'empty'

@@ -363,7 +363,16 @@ head
       else 
       {
       $('#messages').empty();
-      $('#messages').append("<h4 >"+parsed.mtext+"</h4>");}
+      for(var i=0;i<parsed.msgstore.length;i++){
+            if(parseInt(parsed.msgstore[i].rcvr) === #{user})
+            {tmstmp = parsed.msgstore[i].tmstmp;
+            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
+            }
+            else {
+              $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+            }    
+          }
+      }
       }
       }
       };
@@ -426,7 +435,7 @@ head
         for(var i=0;i<parsed.msgstore.length;i++){
             if(parseInt(parsed.msgstore[i].rcvr) === #{user})
             {tmstmp = parsed.msgstore[i].tmstmp;
-            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
         //if(parsed.mult){
