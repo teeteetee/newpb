@@ -242,7 +242,7 @@ head
     script.
       var discussions = [#{discussions}];
       for(i=0;i<discussions.length;i++) {
-         getdisc(discussions[i]);
+         getdisc(discussions[i],i);
       }
       function getavatar(uid,discid) {
       console.log('getting avatar for: '+uid);
@@ -284,7 +284,7 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
-      console.log('iter: '+iter+', parsed: '+parsed);
+      console.log('iter: '+iter+', parsed: '+request.responseText);
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
