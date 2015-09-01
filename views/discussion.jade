@@ -426,18 +426,24 @@ head
         if($('#messages').find('#empty').length){
           $('#messages').empty();
         }
-        if(parsed.mult){
-          for(var i=0;i<parsed.msgstore.length;i++){
+        for(var i=0;i<parsed.msgstore.length;i++){
             if(parseInt(parsed.msgstore[i].rcvr) === #{user})
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
-        }
-        else {
-          tmstmp = parsed.msgstore[i].tmstmp;
-          $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
-        }
+        //if(parsed.mult){
+        //  for(var i=0;i<parsed.msgstore.length;i++){
+        //    if(parseInt(parsed.msgstore[i].rcvr) === #{user})
+        //    {tmstmp = parsed.msgstore[i].tmstmp;
+        //    $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+        //    }    
+        //  }
+        //}
+        //else {
+        //  tmstmp = parsed.msgstore[i].tmstmp;
+        //  $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+        //}
       }
       }
       };
