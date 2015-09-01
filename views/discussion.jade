@@ -396,7 +396,7 @@ head
       alert('trouble');
       }
       else {
-         if($('#messages').has('#empty')){
+         if($('#messages').find('#empty').length){
           $('#messages').empty();
         }
         $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
@@ -423,7 +423,7 @@ head
       console.log('trouble or empty');
       }
       else {
-        if($('#messages').has('#empty')){
+        if($('#messages').find('#empty').length){
           $('#messages').empty();
         }
         if(parsed.mult){
