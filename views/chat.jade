@@ -244,16 +244,18 @@ head
     script(src='js/bootstrap.min.js')  
     script.
       var discussions = [#{discussions}];
-      for(i=0;i<discussions.length;i++) {
-         getdisc(discussions[i],i);
-      }
-      function getavatar(uid,discid) {
+      var counter=0;
+      getdisc(discussions[counter],counter);
+      function getavatar(uid,discid,iter) {
       console.log('getting avatar for: '+uid);
       avatarrequest = new XMLHttpRequest();
       avatarrequest.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(avatarrequest.responseText);
+      counter++;
+      if(counter<discussions.length)
+      {getdisc(discussion[counter],counter)}
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -302,7 +304,7 @@ head
         var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h3 class='media-heading'>User №"+vuid+"</h3></div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
-         getavatar(parsed.mtext.rcv,discid);
+         getavatar(parsed.mtext.rcv,discid,iter);
       }
       }
       };
