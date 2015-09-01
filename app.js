@@ -273,6 +273,7 @@ app.get('/discussion/:id',function (req,res){
 });
 
 app.get('/dropdisc',function (req,res){
+  users.update({},{$unset:{disuccions:1}},false,true);
   discussions.remove({});
   res.redirect('/');
 });
@@ -284,6 +285,16 @@ app.get('/dropusers',function (req,res){
 
 app.get('/seedisc',function (req,res){
   discussions.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+app.get('/seeuser',function (req,res){
+  users.find({},function (err,done){
     if(err){
 
     }
@@ -390,6 +401,7 @@ app.post('/getavatar/:uid',function (req,res){
 });
 
 app.post('/getdisc/:id', function (req,res){
+  // API
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
   var ms ={};
@@ -422,6 +434,7 @@ app.post('/getdisc/:id', function (req,res){
 });
 
 app.post('/getdiscinfo/:id', function (req,res){
+  //API
   console.log('getting disc info');
   //TO DO if req.session present, otherwise go away
   var vdiscid = parseInt(req.params.id);
