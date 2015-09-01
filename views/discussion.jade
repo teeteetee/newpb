@@ -443,7 +443,7 @@ head
       };
       request.open('POST', '/disccheck/#{discid}/#{user}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "text/javascript");
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
