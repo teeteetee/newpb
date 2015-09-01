@@ -273,7 +273,8 @@ app.get('/discussion/:id',function (req,res){
 });
 
 app.get('/dropdisc',function (req,res){
-  users.update({},{$unset:{disuccions:1}});
+  users.update({},{$unset:{disuccions:1}},{upsert:false,
+                          multi:true});
   discussions.remove({});
   res.redirect('/');
 });
