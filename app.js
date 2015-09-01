@@ -493,7 +493,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
      res.send(ms);
     }
     else {
-      if(done) {
+      if(done.msgstore) {
          var mstorelength = done.msgstore.length-1;
         for (var i = done.msgstore.length; i > 0; --i) {
           if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > tmstmp) {
