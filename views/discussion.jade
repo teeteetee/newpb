@@ -342,6 +342,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
     script.
+      $('#sendmsg').click(sendmsg);
       var discid = #{discid};
       var tmstmp = 0;
       getdisc(discid);
@@ -440,4 +441,4 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send('tmstmp='+tmstmp+',uid='+#{user});
       }
-      setInterval(getmsg, 2500);
+      setInterval(getmsg, 5000);
