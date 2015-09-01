@@ -406,6 +406,7 @@ head
           $('#messages').empty();
         }
         $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
+        $("#messages").animate({ scrollTop: 0 }, 600);
       }
       }
       };
@@ -436,6 +437,7 @@ head
             if(parseInt(parsed.msgstore[i].rcvr) === #{user})
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
+            $("#messages").animate({ scrollTop: 0 }, 600);
             }    
           }
         //if(parsed.mult){
