@@ -423,13 +423,13 @@ head
           for(var i=0;i<parsed.msgstore.length;i++){
             if(parseInt(parsed.msgstore[i].rcvr) === #{user})
             {tmstmp = parsed.msgstore[i].tmstmp;
-            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+txtbody+"</div></div></div>");
+            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
         }
         else {
           tmstmp = parsed.msgstore[i].tmstmp;
-          $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+txtbody+"</div></div></div>");
+          $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
         }
       }
       }

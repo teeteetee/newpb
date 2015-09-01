@@ -469,7 +469,7 @@ app.post('/disc/:id',function (req,res){
   var vdiscid = parseInt(req.params.id);
   var vsndr = parseInt(req.body.sndr);
   var vrcvr = parseInt(req.body.rcvr);
-  var vtxtbody = req.body.vtxtbody;
+  var vtxtbody = req.body.txtbody;
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+txtbody);
   var ms = {};
   ms.trouble =0;
