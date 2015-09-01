@@ -498,7 +498,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
           if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
             ms.msgstore.push(done.msgstore[i]);
           }
-          else if(done.msgstore[i].tmstmp <= tmstmp){
+          else if(done.msgstore[i].tmstmp <= vtmstmp){
             break;
           }
         }
