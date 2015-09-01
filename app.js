@@ -470,10 +470,10 @@ app.post('/disc/:id',function (req,res){
   var vsndr = parseInt(req.body.sndr);
   var vrcvr = parseInt(req.body.rcvr);
   var vtxtbody = req.body.txtbody;
-  console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody);
   var ms = {};
   ms.trouble =0;
   var vtmstmp = Date().now;
+  console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
   //,{$set:{vsndr:vtmstmp}}
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
   res.send(ms);
@@ -494,7 +494,6 @@ app.post('/disccheck/:id/:uid',function (req,res){
     }
     else {
       if(done.msgstore) {
-         var mstorelength = done.msgstore.length-1;
         for (var i = done.msgstore.length; i > 0; --i) {
           if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > tmstmp) {
             ms.msgstore.push(done.msgstore[i]);
