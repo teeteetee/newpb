@@ -434,7 +434,7 @@ head
       }
       }
       };
-      request.open('POST', '/disc/#{discid}', true);
+      request.open('POST', '/disccheck/#{discid}/#{user}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "text/javascript");
       //Most libraries like jQuery/Prototype/Dojo do this
