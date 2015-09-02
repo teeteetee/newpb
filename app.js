@@ -419,6 +419,10 @@ app.post('/getavatar/:uid',function (req,res){
   }
 });
 
+app.get('/newindex',function (req,res){
+  res.render('userpage_empty');
+});
+
 app.post('/getdisc/:id', function (req,res){
   // API to populate discussion page
   //TO DO if req.session present, otherwise go away
