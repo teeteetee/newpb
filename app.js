@@ -272,6 +272,32 @@ app.get('/discussion/:id',function (req,res){
   });
 });
 
+app.get('/settings',function (req,res){
+  if(req.session.mail){
+    users.findOne({mail:req.session.mail},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
+            if(err){
+              //err page ?
+              res.redirect('/');
+              console.log('QUERY ERR');
+            }
+            else {
+              if(done){
+                  res.render('settings');
+              }
+              else {
+                res.redirect'/');
+                console.log('DOCUMENT ERR');
+              }
+            }
+          });
+  }
+  else {
+    res.redirect'/');
+  }
+});
+
 app.get('/dropdisc',function (req,res){
   users.update({},{$unset:{discussions:1}},{upsert:false,
                           multi:true});
