@@ -294,7 +294,7 @@ app.get('/settings',function (req,res){
           });
   }
   else {
-    res.redirect'/');
+    res.redirect('/');
   }
 });
 
