@@ -705,8 +705,11 @@ app.post('/usrp',function (req,res) {
                           fs.unlink(oldPath, function(){
                               if(err) throw err;
                               //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+                              fs.unlink(newPath, function(){
+                              if(err) throw err;
                               var dest = '/userpics/'+imageid;
                               res.render('crop',{'imgsrc':dest});
+                                 });
                                 });
     
                     }); 
