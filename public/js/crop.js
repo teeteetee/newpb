@@ -7,7 +7,7 @@ jQuery(function($){
 
 	$('#target').Jcrop({
 	    boxWidth: 450,
-	     boxHeight: 400		
+	     boxHeight: 400,	
 		onChange:   showCoords,
 		onSelect:   showCoords,
 		 aspectRatio: 1 ,
