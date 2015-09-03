@@ -201,7 +201,7 @@ head
           .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
             .col-xs-12
               h2 Welcome to Clandestine
-          .row.cpadding.txtleft(style='padding-bottom:10px;')
+          .row.cpadding.txtleft(style='padding-top:10px;')
             .col-xs-12
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through 
           .row.cpadding(style='text-align:center;')
@@ -209,9 +209,9 @@ head
                 button(class='btn btn-default')
                   span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
                   | Add item 
-          .row.cpadding.txtleft
+          .row.cpadding.txtleft(style='padding-top:10px;')
             .col-xs-12
-              p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') button located on the left panel. You can share your id, so other people can follow your lists and chat with you.
+              p(style='text-indent:0px;text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') button located on the left panel. You can share your id, so other people can follow your lists and chat with you.
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You can look people up by books they have listed. To do that simply touch a book from your list and click 
           .row.cpadding(style='text-align:center;')
             .col-xs-12
@@ -223,8 +223,8 @@ head
               button(class='btn btn-primary btn-lg' style='margin-top:20px;' id='closenews') I'm ready 
     .container
       #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
-          #emptyavatar(style='width:150px;height:150px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
+        #leftpanel.thun.col-md-2.col-lg-2.col-lg-offset-2
+          #emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
           h3(style='text-align:center;') 341 
             span(style='color:#ddd;') /
             | 1544
@@ -258,7 +258,7 @@ head
             .col-xs-12
               a(href='/logout')
                 h4  Logout      
-        #booklist.thun.col-md-10
+        #booklist.thun.col-md-10.col-lg-8
           .row.visible-lg.visible-md(style='background-color:#333;border-top-right-radius:10px;')
             .col-xs-12
               h2(style='color:white;') user №#{user} 
