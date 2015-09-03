@@ -75,8 +75,11 @@ jQuery(function($){
          data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
        }).done(function (data) {
            ///var response = JSON.parse(jqXHR.responseText);
-           var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
-           window.location=redurl;
+           //var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
+           var redurl = '/userpics/'+data.rdurl;
+           //window.location=redurl;
+           var insert = "<img class='img-circle' src='"+redurl+"'></img>";
+           $('#cropresult').append(insert);
            });
            
     });   

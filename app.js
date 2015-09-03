@@ -692,8 +692,6 @@ app.get('/user/:id', function (req,res){
 app.post('/usrp',function (req,res) {
   console.log('upl!');
   if(req.session.mail){
-    var ms = {};
-    ms.trouble=1;
     if (req.files) 
     { 
       function upload(filepath,imageid){
@@ -707,11 +705,8 @@ app.post('/usrp',function (req,res) {
                           fs.unlink(oldPath, function(){
                               if(err) throw err;
                               //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                              //var dest = '/userpics/'+imageid;
-                              //res.render('crop',{'imgsrc':dest});
-                              ms.trouble=0;
-                              ms.mtext='/userpics/'+imageid;
-                              res.send(ms);
+                              var dest = '/userpics/'+imageid;
+                              res.render('crop',{'imgsrc':dest});
                                 });
     
                     }); 
@@ -720,12 +715,12 @@ app.post('/usrp',function (req,res) {
       upload(req.files.userpic.path,req.files.userpic.name);
    }
    else {
-    ms.mtext='Trouble with files';
-    res.send(ms);
+    console.log('problem with files');
+    res.redirect('/');
    }}
    else {
-    ms.mtext='--';
-    res.send(ms);
+    console.log('somebody messing with us?');
+    res.redirect('/');
    }
 });
 
