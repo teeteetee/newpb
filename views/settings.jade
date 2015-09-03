@@ -259,7 +259,7 @@ head
                           //label(for="exampleInputFile") Userpic upload
                           input(type="file" id="exampleInputFile")
                           p(class="help-block") Jpg images only
-                        button(class='btn btn-warning' type='button' onclick='submitpic') Upload
+                        button(class='btn btn-warning' type='button' onclick='submitpic();') Upload
                       
                     dt Would you like your lists private ?
                     dd
@@ -311,7 +311,7 @@ head
           processData: false,
           contentType: "application/x-www-form-urlencoded",
           success: function (data) {
-              conoel.log(data);
+              console.log(data);
               alert(DONE);
           }
       });
