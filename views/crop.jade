@@ -79,5 +79,9 @@ head
       script(src='js/jquery.Jcrop.min.js')
       script(src='js/crop.js')
       script(async src='js/bootstrap.min.js')
+      script.
+        $(function() {
+            $('#target').Jcrop({ boxWidth: 450, boxHeight: 400 });
+        });
       
       
