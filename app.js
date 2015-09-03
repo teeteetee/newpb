@@ -287,7 +287,7 @@ app.get('/settings',function (req,res){
                   res.render('settings');
               }
               else {
-                res.redirect'/');
+                res.redirect('/');
                 console.log('DOCUMENT ERR');
               }
             }
