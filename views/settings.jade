@@ -257,7 +257,7 @@ head
                       form(id='userp' method='post' action='/userp' role='form')
                         .form-group
                           //label(for="exampleInputFile") Userpic upload
-                          input(type="file" name='userpic' id="exampleInputFile")
+                          input(type="file" name='userpic' id="exampleInputFile" enctype='multipart/form-data')
                           p(class="help-block") Jpg images only
                         button(class='btn btn-warning' type='submit') Upload
                       
