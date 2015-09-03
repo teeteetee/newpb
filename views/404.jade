@@ -20,19 +20,23 @@ head
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
-      h1 {
-        font-family:roboto-thin;
-        font-size:50px;
+      @font-face{
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      h3 {
-        font-family:roboto-thin;
+      h2{
+      font-family:boldproxima;
+      text-transform:uppercase;
+      color:white;
+      }
+      body {
+        background-color:black;
       }
   body
     .container
       .row
-        .col-xs-12(style='text-align:center;margin-top:20vh;') 
-          img(src='/images/pblogov3.png' style='margin-left:auto;margin-right:auto;height:200px;width:200px;')
-          h3(style='margin-top:15vh;') 404
-         
+        .col-xs-12(style='text-align:center;margin-top:20vh;margin-bottom:5vh;') 
+          h2(style='text-align:center;font-size:200px;margin-bottom:35px;') C  
+          h3(style='margin-top:15vh;color:white;') 404         
 
       
