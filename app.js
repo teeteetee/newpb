@@ -684,50 +684,50 @@ app.get('/user/:id', function (req,res){
     res.render('restricted');
   }
 });
-//app.post('/chat',function (req,res){
-//  if(req.session.mail){
-//    var vsender = req.body.sender;
-//    var vdest = req.body.dest;
-//    var vtextbody = req.body.textbody;
-//    var vdiscussion = req.body.vdiscussion;
-//
-//  }
-//    else {
-//      res.send('restricted. authorised only');
-//    }
-//});
 
 
 
 
-//app.post('/usrp',function (req,res) {
-//  console.log('upl!');
-//  if (req.files) 
-//  { 
-//    function upload(filepath,imageid){
-//                 console.log('into upload');
-//                 var oldPath = filepath;
-//                 console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-//                 var newPath = __dirname +"/public/userpics/"+ imageid;
-//                 console.log('UPLOAD 2 step, newPath:' + newPath );
-//                  fs.readFile(oldPath , function(err, data) {
-//                    fs.writeFile(newPath, data, function(err) {
-//                        fs.unlink(oldPath, function(){
-//                            if(err) throw err;
-//                            //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-//                            var dest = '/userpics/'+imageid;
-//                            res.render('crop',{'imgsrc':dest});
-//                              });
-//  
-//                  }); 
-//               }); 
-//               }
-//    upload(req.files.userpic.path,req.files.userpic.name);
-// }
-// else {
-//  res.send('Trouble with files');
-// }
-//});
+
+app.post('/usrp',function (req,res) {
+  console.log('upl!');
+  if(req.session.mail){
+    var ms = {};
+    ms.trouble=1;
+    if (req.files) 
+    { 
+      function upload(filepath,imageid){
+                   console.log('into upload');
+                   var oldPath = filepath;
+                   console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+                   var newPath = __dirname +"/public/userpics/"+ imageid;
+                   console.log('UPLOAD 2 step, newPath:' + newPath );
+                    fs.readFile(oldPath , function(err, data) {
+                      fs.writeFile(newPath, data, function(err) {
+                          fs.unlink(oldPath, function(){
+                              if(err) throw err;
+                              //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+                              //var dest = '/userpics/'+imageid;
+                              //res.render('crop',{'imgsrc':dest});
+                              ms.trouble=0;
+                              ms.mtext='/userpics/'+imageid;
+                              res.send(ms);
+                                });
+    
+                    }); 
+                 }); 
+                 }
+      upload(req.files.userpic.path,req.files.userpic.name);
+   }
+   else {
+    ms.mtext='Trouble with files';
+    res.send(ms);
+   }}
+   else {
+    ms.mtext='--';
+    res.send('Trouble with files');
+   }
+});
 
 
 

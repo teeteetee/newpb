@@ -54,7 +54,7 @@ head
       overflow:auto;
       min-height:500px;
       max-height:70vh;
-      padding-top:50px;
+      padding-top:20px;
       }
       #signup {
         padding-top:50px;
@@ -254,12 +254,12 @@ head
                   dl
                     dt Userpic upload
                     dd
-                      form
+                      form(id='userp')
                         .form-group
                           //label(for="exampleInputFile") Userpic upload
                           input(type="file" id="exampleInputFile")
                           p(class="help-block") Jpg images only
-                        button(class='btn btn-warning') Upload
+                        button(class='btn btn-warning' type='button' onclick='submitpic') Upload
                       
                     dt Would you like your lists private ?
                     dd
@@ -302,4 +302,17 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
+      }
+      function submitpic() {
+      $.ajax({
+          type: "POST",
+          url: '/usrp',
+          data: new FormData($('#userp')[0]),
+          processData: false,
+          contentType: "application/x-www-form-urlencoded",
+          success: function (data) {
+              conoel.log(data);
+              alert(DONE);
+          }
+      });
       }
