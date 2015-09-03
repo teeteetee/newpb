@@ -272,6 +272,21 @@ app.get('/discussion/:id',function (req,res){
   });
 });
 
+app.post('/settings',function (req,res){
+  var ms={};
+  var ms.trouble=1;
+  var vpub = parseInt(req.body.pub);// public
+  var vmrq = parseInt(req.body.mrq);// messaging request
+  if(req.session.mail){
+    users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
+    ms.trouble=0;
+    res.send(ms);
+  }
+  else {
+    res.send(ms);
+  }
+});
+
 app.get('/settings',function (req,res){
   if(req.session.mail){
     users.findOne({mail:req.session.mail},function(err,done){
