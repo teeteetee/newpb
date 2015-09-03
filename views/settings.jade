@@ -254,10 +254,10 @@ head
                   dl
                     dt Userpic upload
                     dd
-                      form(id='userp' method='post' action='/userp' role='form')
+                      form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
                         .form-group
                           //label(for="exampleInputFile") Userpic upload
-                          input(type="file" name='userpic' id="exampleInputFile" enctype='multipart/form-data')
+                          input(type="file" id='userpic' name='userpic' id="exampleInputFile")
                           p(class="help-block") Jpg images only
                         button(class='btn btn-warning' type='submit') Upload
                       
