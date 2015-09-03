@@ -294,7 +294,7 @@ head
       script(src='js/crop.js')
       script(async src='js/bootstrap.min.js')
       script.
-        $(function() {
-    $('#target').Jcrop({ boxHeight: 400 });
-});
+        if($('#target').height()>400)
+        {console.log('bigger than 400');$('#target').Jcrop({ boxHeight: 400 });}
+        
       
