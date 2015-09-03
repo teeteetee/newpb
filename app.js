@@ -725,7 +725,7 @@ app.post('/usrp',function (req,res) {
    }}
    else {
     ms.mtext='--';
-    res.send('Trouble with files');
+    res.send(ms);
    }
 });
 

@@ -309,7 +309,7 @@ head
           url: '/usrp',
           data: new FormData($('#userp')[0]),
           processData: false,
-          contentType: "application/x-www-form-urlencoded",
+          contentType: false,
           success: function (data) {
               console.log(data);
               alert('DONE!');
