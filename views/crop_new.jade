@@ -264,7 +264,7 @@ head
                 input(id='size_lock',type='checkbox')
               .row
                 .col-xs-8.col-xs-offset-4(id='targetbucket')
-                  img#target(src='#{imgsrc}', alt='[Jcrop Example]')
+                  img#target(src='#{imgsrc}', alt='[Jcrop Example]',style='height:400px;')
                   button#release Убрать выделение
                     button#crop Обрезать
                     .inline-labels
@@ -287,8 +287,8 @@ head
                         | H 
                         input#h(type='text', size='4', name='h')
                     p Результаты
-                    img(id='cropresult' class='img-circle')
-
+              .row
+                .col-xs-12#cropresult
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='js/jquery.Jcrop.min.js')
       script(src='js/crop.js')
