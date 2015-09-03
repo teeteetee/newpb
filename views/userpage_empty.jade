@@ -191,14 +191,17 @@ head
        padding-left:30px;
        padding-right:30px;
       }
+      .txtleft {
+        text-align:left;
+      }
   body
     .container(id='news' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
       .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;') 
         .col-xs-12
-          .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:30px;')
+          .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
             .col-xs-12
               h2 Welcome to Clandestine
-          .row.cpadding
+          .row.cpadding.txtleft(style='padding-bottom:10px;')
             .col-xs-12
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through 
           .row.cpadding(style='text-align:center;')
@@ -206,7 +209,7 @@ head
                 button(class='btn btn-default')
                   span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
                   | Add item 
-          .row.cpadding
+          .row.cpadding.txtleft
             .col-xs-12
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') button located on the left panel. You can share your id, so other people can follow your lists and chat with you.
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You can look people up by books they have listed. To do that simply touch a book from your list and click 
