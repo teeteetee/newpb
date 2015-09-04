@@ -31,6 +31,12 @@ head
       border-radius:10px;
       margin-bottom:30px;
       }
+      #userimg {
+      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
+      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
+      box-shadow: -9px 0px 40px 0px #c7c7c7;
+      width:100%;
+      }
       .emptybook {
       padding-left:23px;
       }
@@ -64,6 +70,10 @@ head
       #mainframe {
       margin-top:0px;
       }
+      #userimg {
+      width:130px;
+      height:130px;
+      }
       .book {
       border-bottom:1px solid #eee;
       text-align:center;
@@ -94,6 +104,10 @@ head
       @media (max-width: 992px) {
       #booklist {
       border-bottom-left-radius:10px;
+      }
+      #userimg {
+      width:150px;
+      height:150px;
       }
       .things{
       padding-top:50px;
@@ -281,7 +295,7 @@ head
       user= JSON.parse(user);
       if(user.userpic){
         $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' src='/userpics/id"+user.uid+user.picext+"'></img>");
+        $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
         $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves);
       } 
       $('#setsub').click(setsubmit);
