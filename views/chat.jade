@@ -305,9 +305,9 @@ head
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
         if(parseInt(parsed.mtext.rcv)===#{user})
-         {getavatar(parsed.mtext.rcv,discid,iter);}
+         {getavatar(parsed.mtext.snd,discid,iter);}
        else 
-       {getavatar(parsed.mtext.snd,discid,iter);
+       {getavatar(parsed.mtext.rcv,discid,iter);
        }
       }
       }
