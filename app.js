@@ -1094,7 +1094,19 @@ var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
-  console.log(socket.request.headers.cookie);
+   var cookie_string = socket_client.request.headers.cookie;
+  var parsed_cookies = connect.utils.parseCookie(cookie_string);
+  var connect_sid = parsed_cookies['connect.sid'];
+  if (connect_sid) {
+    session_store.get(connect_sid, function (error, session) {
+      if (error){
+        console.log('no session');
+      }
+      else {
+        console.log('SESSION: '+session);
+      }
+    });
+  }
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
 },1000);
