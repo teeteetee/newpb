@@ -1094,7 +1094,7 @@ var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
-  console.log('ANOTHER CUTOMER ON SOCKETS')
+  console.log(socket.request.headers.cookie);
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
 },1000);
