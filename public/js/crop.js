@@ -81,7 +81,7 @@ jQuery(function($){
            //var redurl = '/userpics/'+data.rdurl;
            //var insert = "<img class='img-circle' src='"+redurl+"'></img>";
            //$('#cropresult').append(insert);
-           window.location('http://vntrlst.com/');
+           window.location='http://vntrlst.com/';
            });
            
     });   
