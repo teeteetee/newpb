@@ -278,6 +278,7 @@ head
     script(src='js/bootstrap.min.js') 
     script.  
       var user = !{JSON.stringify(done)};
+      user= JSON.parse(user);
       if(user.userpic){
         $('#emptyavatar').remove();
         $('#leftpanel').prepend("<img id='userimg' src='/userpics/id"+user.uid+user.picext"'></img>");
