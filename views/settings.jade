@@ -167,12 +167,6 @@ head
       font-family:boldproxima;
       text-transform:uppercase;
       }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      border:7px solid white;
-      }
       .img-circle {
       -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
       -moz-filter: brightness(0.9) contrast(1.2) saturate(1.2);
@@ -296,7 +290,7 @@ head
       if(user.userpic){
         $('#emptyavatar').remove();
         $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves);
+        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       } 
       $('#setsub').click(setsubmit);
       function setsubmit() {
