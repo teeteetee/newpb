@@ -9,9 +9,6 @@ var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var http = require('http');
 
-var server = app.listen(80,'188.166.118.116');
-var io = require('socket.io').listen(server);
-
 
 
 var mongo = require('mongodb');
@@ -1093,6 +1090,8 @@ app.get('sockets',function (req,res){
 });
 
 ///sockets
+ar server = app.listen(80,'188.166.118.116');
+var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
   console.log('ANOTHER CUTOMER ON SOCKETS')
