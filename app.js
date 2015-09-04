@@ -55,7 +55,13 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
-                  res.render('userpage',{'user':done.uid});
+                  if(done.userpic)
+                  { var avatar = "<img id='userimg' src='/userpics/id"+done.uid+done.picext'></img>"
+                    res.render('userpage',{'user':done.uid,'userpic':done.userpic});}
+                   else {
+                    var emptyavatar = "#emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')";
+                    res.render('userpage',{'user':done.uid,'userpic':emptyavatar});
+                   }
               }
               else {
                 res.render('index_new');
@@ -727,36 +733,66 @@ app.post('/usrp',function (req,res) {
 
 app.post('/userp/crop',function (req,res){
   console.log(req.body);
-  var imgname = req.body.img.substring(10);
-  var fullimgname = __dirname +"/public/userpics/"+ imgname;
-  // TO DO check if info is present
-  lwip.open(fullimgname, function(err, image) {
-  if (err) throw err;
-  var _cropOpt = {
-   // left: req.body.x2,
-   // top: req.body.x1,
-   // right: req.body.y2,
-   // bottom: req.body.y1
-   left:parseInt(req.body.x2),
-   top:parseInt(req.body.y2),
-   right:parseInt(req.body.x1),
-   bottom:parseInt(req.body.y1)
-  }; // extract the face from the pic
- 
-  image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
+  if(req.session.mail)
+  {var imgname = req.body.img.substring(10);
+    var fullimgname = __dirname +"/public/userpics/"+ imgname;
+    // TO DO check if info is present
+    lwip.open(fullimgname, function(err, image) {
     if (err) throw err;
-    crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
+    var _cropOpt = {
+     // left: req.body.x2,
+     // top: req.body.x1,
+     // right: req.body.y2,
+     // bottom: req.body.y1
+     left:parseInt(req.body.x2),
+     top:parseInt(req.body.y2),
+     right:parseInt(req.body.x1),
+     bottom:parseInt(req.body.y1)
+    }; // extract the face from the pic
+   
+    image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
       if (err) throw err;
-      fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
-        if(err) throw err;
-        var ms={};
-        ms.rdurl = 'crop_'+imgname;
-        res.send(ms);
+      //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
+        //path.extname('index.html')
+        var vpicext = path.extname(imgname);
+        var newpath = __dirname +"/public/userpics/id"+req.session.uid+vpicext;
+      path.exists(newpath, function(exists) { 
+  if (exists) { 
+    // do something 
+
+      crpdImg.writeFile(newpath, function(err) {
+        if (err) throw err;
+        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
+          if(err) throw err;
+           users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+          var ms={};
+          ms.rdurl = 'crop_'+imgname;
+          res.send(ms);
+        });
       });
+       } 
+      else {
+        fs.unlink(newpath, function(){
+            if(err) throw err;
+            crpdImg.writeFile(newpath, function(err) {
+        if (err) throw err;
+        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
+          if(err) throw err;
+           users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+          var ms={};
+          ms.rdurl = 'crop_'+imgname;
+          res.send(ms);
+        });
+      });  
+             });
+      }
+     }); 
     });
-  });
- 
-});
+   
+  });}
+  else {
+    res.redirect('/');
+  }
 
   });
 

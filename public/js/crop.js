@@ -78,10 +78,10 @@ jQuery(function($){
        }).done(function (data) {
            ///var response = JSON.parse(jqXHR.responseText);
            //var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
-           var redurl = '/userpics/'+data.rdurl;
-           //window.location=redurl;
-           var insert = "<img class='img-circle' src='"+redurl+"'></img>";
-           $('#cropresult').append(insert);
+           //var redurl = '/userpics/'+data.rdurl;
+           //var insert = "<img class='img-circle' src='"+redurl+"'></img>";
+           //$('#cropresult').append(insert);
+           window.location('http://vntrlst.com/');
            });
            
     });   
