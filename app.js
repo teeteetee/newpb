@@ -1090,7 +1090,7 @@ app.get('sockets',function (req,res){
 });
 
 ///sockets
-ar server = app.listen(80,'188.166.118.116');
+var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
