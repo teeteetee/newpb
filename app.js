@@ -56,7 +56,7 @@ app.get('/',function(req,res) {
             else {
               if(done){
                   if(done.userpic)
-                  { var avatar = "<img id='userimg' src='/userpics/id"+done.uid+done.picext'></img>"
+                  { var avatar = "<img id='userimg' src='/userpics/id"+done.uid+done.picext+"'></img>";
                     res.render('userpage',{'user':done.uid,'userpic':done.userpic});}
                    else {
                     var emptyavatar = "#emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')";
