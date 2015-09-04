@@ -213,8 +213,17 @@ head
         .col-xs-12
           .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
             .col-xs-12
-              h2(style='color:gray;') Adding items to your list
+              h2(style='color:#bfbfbf;') Adding items to your list
           .row.cpadding.txtleft(style='padding-top:10px;')
+            .col-xs-12
+              form
+                .form-group
+                  label(for="title") Titile
+                  input(type="text" class="form-control" id="title" placeholder="Title")
+                .form-group
+                  label(for="author") Author
+                  input(type="text" class="form-control" id="author" placeholder="Author")
+          .row.cpadding.txtleft(id='extra')
             .col-xs-12
               form
                 .form-group
@@ -226,7 +235,7 @@ head
           .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;')
             .col-xs-12
               .btn-group
-                button(class=' btn btn-lg btn-default'  type='button')  Extra
+                button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
                 button(class='btn btn-warning btn-lg'  id='closenews') Add item
                 button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
               //button(class='btn btn-success btn-lg' style='margin-top:20px;' ) Go to Settings
@@ -302,5 +311,8 @@ head
         });
       $('#closeadd').click(function(){
         $('#add').css('display','none'); 
+        });
+      $('#openextra').click(function(){
+        $('extra').slideToggle();
         });
       
