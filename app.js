@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
+var io = require('socket.io');
+var http = require('http');
+
+
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
@@ -1082,6 +1086,22 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
+app.get('sockets',function (req,res){
+  res.render('sockets');
+});
+
+///sockets
+
+io.sockets.on('connection', function (socket) {
+  console.log('ANOTHER CUTOMER ON SOCKETS')
+  var interval = setInterval(function () {
+  socket.emit('news', { hello: 'world' });
+},1000);
+   socket.on("disconnect", function () {
+        clearInterval(interval);
+    });
+});
+
 
 
 // production error handler
@@ -1102,8 +1122,13 @@ app.use(function(err, req, res, next) {
 });
 
 
+var server = http.createServer(app);
 module.exports = app;
-app.listen(80,'188.166.118.116');
+server.listen(80,'188.166.118.116');
+var sio = io.listen(server);
+
+
+//app.listen(80,'188.166.118.116');
 // zero downtime with naught
 if (process.send) process.send('online');
 process.on('message', function(message) {
