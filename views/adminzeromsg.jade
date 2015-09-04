@@ -6,7 +6,7 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title P&B
+    title C
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -23,6 +23,14 @@ head
       @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+       @font-face{
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      }
+      @font-face{
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       body {
       min-width:768px;
@@ -53,11 +61,7 @@ head
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
             .navbar-header
-              a(class="navbar-brand" href="/") People & Books
-            .collapse.navbar-collapse#navbar-collapse-9
-              ul(class='nav navbar-nav')
-                li(class='active')
-                  a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+              a(class="navbar-brand" style='font-family:boldproxima;color:white;text-transform: uppercase;' href="/") Clandestine
     .container(style='min-height:100vh;')  
       .row(style='margin-top:10px;margin-bottom:10px;')
         .col-xs-6
