@@ -1102,6 +1102,11 @@ io.on('connection', function (socket) {
         console.log('disconnect');
         clearInterval(interval);
     });
+   socket.on("tweet", function (tweet) {
+        // we received a tweet from the browser
+
+        console.log('tweet: '+tweet);
+    });
 });
 
 
