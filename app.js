@@ -1107,6 +1107,7 @@ io.on('connection', function (socket) {
    socket.on("tweet", function (tweet) {
         // we received a tweet from the browser
         console.log(clients);
+        console.log('session id:'+socket.sessionId);
         console.log('tweet: '+tweet.text);
     });
 });
