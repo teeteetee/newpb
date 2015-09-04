@@ -1094,7 +1094,7 @@ var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
-   var cookie_string = socket_client.request.headers.cookie;
+   var cookie_string = socket.request.headers.cookie;
   var parsed_cookies = connect.utils.parseCookie(cookie_string);
   var connect_sid = parsed_cookies['connect.sid'];
   if (connect_sid) {
