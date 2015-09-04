@@ -270,7 +270,7 @@ head
       else 
       {
         console.log('HAS AVATAR');
-      eval("$('#img_cid"+discid+"').attr('src','/userpics/uid"+uid+"_small.jpg');");
+      eval("$('#img_cid"+discid+"').attr('src','/userpics/id"+uid+"_small.jpg');");
       }
       }
       }
@@ -304,7 +304,11 @@ head
         var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img id='img_cid"+parsed.mtext.discid+"' class='media-object' src='' alt='avatar'></div><div class='media-body'><h3 class='media-heading'>User №"+vuid+"</h3></div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
-         getavatar(parsed.mtext.rcv,discid,iter);
+        if(parseInt(parsed.mtext.rcv)===#{user})
+         {getavatar(parsed.mtext.rcv,discid,iter);}
+       else 
+       {getavatar(parsed.mtext.snd,discid,iter);
+       }
       }
       }
       };
