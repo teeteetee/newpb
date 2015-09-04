@@ -1085,7 +1085,7 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
-app.get('sockets',function (req,res){
+app.get('/sockets',function (req,res){
   res.render('sockets');
 });
 
