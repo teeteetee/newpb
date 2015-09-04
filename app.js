@@ -1099,6 +1099,7 @@ io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
 },1000);
    socket.on("disconnect", function () {
+        console.log('disconnect');
         clearInterval(interval);
     });
 });
