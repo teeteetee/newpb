@@ -281,7 +281,7 @@ head
       user= JSON.parse(user);
       if(user.userpic){
         $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' src='/userpics/id"+user.uid+user.picext"'></img>");
+        $('#leftpanel').prepend("<img id='userimg' src='/userpics/id"+user.uid+user.picext+"'></img>");
         $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves);
       } 
       $('#setsub').click(setsubmit);
