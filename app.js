@@ -56,10 +56,10 @@ app.get('/',function(req,res) {
             else {
               if(done){
                   if(done.userpic)
-                  { var avatar = "img(id='userimg' src='/userpics/id"+done.uid+done.picext+"')";
+                  { var avatar = "img id='userimg' src='/userpics/id"+done.uid+done.picext+"'";
                     res.render('userpage',{'user':done.uid,'avatar':avatar});}
                    else {
-                    var emptyavatar = "#emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')";
+                    var emptyavatar = "div id=emptyavatar style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
                     res.render('userpage',{'user':done.uid,'avatar':emptyavatar});
                    }
               }
