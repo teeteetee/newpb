@@ -1105,7 +1105,7 @@ io.on('connection', function (socket) {
    socket.on("tweet", function (tweet) {
         // we received a tweet from the browser
 
-        console.log('tweet: '+tweet);
+        console.log('tweet: '+tweet.text);
     });
 });
 
