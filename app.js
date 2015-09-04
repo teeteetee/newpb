@@ -305,7 +305,7 @@ app.get('/settings',function (req,res){
             }
             else {
               if(done){
-                  res.render('settings',{'done':done,'user':done.uid});
+                  res.render('settings',{'done':JSON.stringify(done),'user':done.uid});
               }
               else {
                 res.redirect('/');
