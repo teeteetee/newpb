@@ -235,7 +235,7 @@ app.get('/chat',function (req,res){
                   res.render('chat',{'user':done.uid,'discussions':done.discussions,'done':JSON.stringify(done)});
                   }
                   else {
-                   res.render('emptychat',{'user':done.uid});
+                   res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
                   }
               }
               else {
@@ -733,6 +733,8 @@ app.post('/usrp',function (req,res) {
 
 
 app.post('/userp/crop',function (req,res){
+  // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
+  // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
   if(req.session.mail)
   {var imgname = req.body.img.substring(10);
