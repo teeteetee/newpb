@@ -320,7 +320,9 @@ head
               .row
                 .col-xs-8.col-xs-offset-2.col-md-12(id='targetbucket')
                   img#target(src='#{imgsrc}',class='img-responsive center-block' alt='[Jcrop Example]')
-                  button(id='release' class='btn btn-primary') Убрать выделение
+              .row
+                .col-xs-12(style='text-align:center;')
+                  button(id='release' style='margin-right:10px;' class='btn btn-primary') Убрать выделение
                   button(id='crop' class='btn btn-primary') Обрезать
                   .inline-labels(style='display:none;')
                     label
@@ -341,7 +343,6 @@ head
                     label
                       | H 
                       input#h(type='text', size='4', name='h')
-                  p Результаты
               .row
                 .col-xs-12#cropresult
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -350,7 +351,6 @@ head
       script(async src='js/bootstrap.min.js')
       script.
         $('#target').load(function(){
-           alert('done!');
            $('#news').remove();
           });
         
