@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
-var io = require('socket.io');
 var http = require('http');
+
+var server = app.listen(0,'188.166.118.116');
+var io = require('socket.io').listen(server);
 
 
 
@@ -1092,7 +1094,7 @@ app.get('sockets',function (req,res){
 
 ///sockets
 
-io.sockets.on('connection', function (socket) {
+io.on('connection', function (socket) {
   console.log('ANOTHER CUTOMER ON SOCKETS')
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
@@ -1122,11 +1124,8 @@ app.use(function(err, req, res, next) {
 });
 
 
-var server = http.createServer(app);
-module.exports = app;
-server.listen(80,'188.166.118.116');
-var sio = io.listen(server);
 
+module.exports = app;
 
 //app.listen(80,'188.166.118.116');
 // zero downtime with naught
