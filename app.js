@@ -9,7 +9,7 @@ var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var http = require('http');
 
-var server = app.listen(0,'188.166.118.116');
+var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 
