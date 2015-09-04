@@ -767,7 +767,7 @@ app.post('/userp/crop',function (req,res){
           if(err) throw err;
            //00000000000000000000000000000
                     var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
-                     path.exists(, function(exists) { 
+                     path.exists(newpath_small, function(exists) { 
                     if (exists) 
                       { //remove existing userpic_small, write resized
                         fs.unlink(newpath_small, function(){
@@ -815,7 +815,7 @@ app.post('/userp/crop',function (req,res){
           if(err) throw err;
            //0000000000000000000000000000000
                         var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
-                         path.exists(, function(exists) { 
+                         path.exists(newpath_small, function(exists) { 
                         if (exists) 
                           { //remove existing userpic_small, write resized
                             fs.unlink(newpath_small, function(){
