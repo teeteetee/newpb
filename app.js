@@ -758,35 +758,104 @@ app.post('/userp/crop',function (req,res){
         var newpath = __dirname +"/public/userpics/id"+req.session.uid+vpicext;
       path.exists(newpath, function(exists) { 
   if (exists) { 
-    // do something 
-
-      crpdImg.writeFile(newpath, function(err) {
-        if (err) throw err;
-        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
-          if(err) throw err;
-           users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
-          var ms={};
-          ms.rdurl = 'crop_'+imgname;
-          res.send(ms);
-        });
-      });
-       } 
-      else {
-        fs.unlink(newpath, function(){
+    // remove existing userpic, write cropped imge, remove original image
+       fs.unlink(newpath, function(){
             if(err) throw err;
             crpdImg.writeFile(newpath, function(err) {
         if (err) throw err;
         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
           if(err) throw err;
-           users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
-          var ms={};
-          ms.rdurl = 'crop_'+imgname;
-          res.send(ms);
+           //00000000000000000000000000000
+                    var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
+                     path.exists(, function(exists) { 
+                    if (exists) 
+                      { //remove existing userpic_small, write resized
+                        fs.unlink(newpath_small, function(){
+                              if(err) throw err;
+                              //-----------------------
+                              lwip.open(fullimgname, function(err, image_trsz) {
+                                 if (err) throw err;
+                                  
+                                  image_trsz.resize(69,function(err,image_small){
+                                      image_small.writeFile(newpath_small, function(err) {
+                                         if (err) throw err;
+                                          users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                          res.send('ok');
+                                       });
+                                  });
+                                });
+                              //-----------------
+                            });
+                      }
+                      else{
+                         //write resized
+                        lwip.open(fullimgname, function(err, image_trsz) {
+                                 if (err) throw err;
+                                  
+                                  image_trsz.resize(69,function(err,image_small){
+                                      image_small.writeFile(newpath_small, function(err) {
+                                         if (err) throw err;
+                                            users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                            res.send('ok');
+                                       });
+                                  });
+                                });
+                      }
+                    });
+           //00000000000000000000000000000
         });
       });  
              });
+       } 
+      else {
+        //write cropped image, remove original
+        crpdImg.writeFile(newpath, function(err) {
+        if (err) throw err;
+        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
+          if(err) throw err;
+           //0000000000000000000000000000000
+                        var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
+                         path.exists(, function(exists) { 
+                        if (exists) 
+                          { //remove existing userpic_small, write resized
+                            fs.unlink(newpath_small, function(){
+                                  if(err) throw err;
+                                  //-----------------------
+                                  lwip.open(fullimgname, function(err, image_trsz) {
+                                     if (err) throw err;
+                                      
+                                      image_trsz.resize(69,function(err,image_small){
+                                          image_small.writeFile(newpath_small, function(err) {
+                                             if (err) throw err;
+                                              users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                              res.send('ok');
+                                           });
+                                      });
+                                    });
+                                  //-----------------
+                                });
+                          }
+                          else{
+                             //write resized
+                            lwip.open(fullimgname, function(err, image_trsz) {
+                                     if (err) throw err;
+                                      
+                                      image_trsz.resize(69,function(err,image_small){
+                                          image_small.writeFile(newpath_small, function(err) {
+                                             if (err) throw err;
+                                                users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                                res.send('ok');
+                                           });
+                                      });
+                                    });
+                          }
+                        });
+           //0000000000000000000000000000000
+        });
+      });
       }
      }); 
+      
     });
    
   });}
@@ -795,6 +864,9 @@ app.post('/userp/crop',function (req,res){
   }
 
   });
+
+    
+
 
 function messagescount () {
   insidemsg.count({},function(err,c){
