@@ -8,6 +8,7 @@ var sessions = require('client-sessions');
 var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var http = require('http');
+var connect = require('connect');
 
 
 
