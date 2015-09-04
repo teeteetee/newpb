@@ -773,7 +773,7 @@ app.post('/userp/crop',function (req,res){
                         fs.unlink(newpath_small, function(){
                               if(err) throw err;
                               //-----------------------
-                              lwip.open(fullimgname, function(err, image_trsz) {
+                              lwip.open(newpath, function(err, image_trsz) {
                                  if (err) throw err;
                                   
                                   image_trsz.resize(69,function(err,image_small){
@@ -789,7 +789,7 @@ app.post('/userp/crop',function (req,res){
                       }
                       else{
                          //write resized
-                        lwip.open(fullimgname, function(err, image_trsz) {
+                        lwip.open(newpath, function(err, image_trsz) {
                                  if (err) throw err;
                                   
                                   image_trsz.resize(69,function(err,image_small){
@@ -821,7 +821,7 @@ app.post('/userp/crop',function (req,res){
                             fs.unlink(newpath_small, function(){
                                   if(err) throw err;
                                   //-----------------------
-                                  lwip.open(fullimgname, function(err, image_trsz) {
+                                  lwip.open(newpath, function(err, image_trsz) {
                                      if (err) throw err;
                                       
                                       image_trsz.resize(69,function(err,image_small){
@@ -837,7 +837,7 @@ app.post('/userp/crop',function (req,res){
                           }
                           else{
                              //write resized
-                            lwip.open(fullimgname, function(err, image_trsz) {
+                            lwip.open(newpath, function(err, image_trsz) {
                                      if (err) throw err;
                                       
                                       image_trsz.resize(69,function(err,image_small){
