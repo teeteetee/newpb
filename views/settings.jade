@@ -277,12 +277,11 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js') 
     script.  
-      var user = #{done};
+      var user = !{JSON.stringify(done)};
       if(user.userpic){
         $('#emptyavatar').remove();
         $('#leftpanel').prepend("<img id='userimg' src='/userpics/id"+user.uid+user.picext"'></img>");
-         user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves)
+        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmoves);
       } 
       $('#setsub').click(setsubmit);
       function setsubmit() {
