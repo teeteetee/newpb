@@ -1092,7 +1092,7 @@ app.get('sockets',function (req,res){
 
 ///sockets
 
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
   console.log('ANOTHER CUTOMER ON SOCKETS')
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
