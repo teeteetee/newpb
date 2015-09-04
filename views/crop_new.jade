@@ -8,8 +8,7 @@ head
     title C     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet') 
-    link(href='/bootstrap/css/loading_anim.css', rel='stylesheet')  
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')  
     link(rel="stylesheet" href="/bootstrap/css/jquery.Jcrop.css"  type="text/css")  
     meta(liber de amicitia est)
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -211,23 +210,53 @@ head
       .mini{
           margin:5px;
       }  
+      .loader {
+      margin: 60px auto;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+    }
+    .loader,
+    .loader:after {
+      border-radius: 50%;
+      width: 10em;
+      height: 10em;
+    }
+    @-webkit-keyframes load8 {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes load8 {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
   body
     .container(id='news' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
-      .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-top:40%;') 
+      .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-top:30%;') 
         .col-xs-12(style='text-align:center;')
-          .sk-fading-circle
-          .sk-circle1.sk-circle
-          .sk-circle2.sk-circle
-          .sk-circle3.sk-circle
-          .sk-circle4.sk-circle
-          .sk-circle5.sk-circle
-          .sk-circle6.sk-circle
-          .sk-circle7.sk-circle
-          .sk-circle8.sk-circle
-          .sk-circle9.sk-circle
-          .sk-circle10.sk-circle
-          .sk-circle11.sk-circle
-          .sk-circle12.sk-circle
+          .loader
     .container
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
