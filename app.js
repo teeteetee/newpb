@@ -232,7 +232,7 @@ app.get('/chat',function (req,res){
               if(done){
                   if(done.discussions)
                   {
-                  res.render('chat',{'user':done.uid,'discussions':done.discussions,'done':done});
+                  res.render('chat',{'user':done.uid,'discussions':done.discussions,'done':JSON.stringify(done)});
                   }
                   else {
                    res.render('emptychat',{'user':done.uid});
