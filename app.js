@@ -1094,7 +1094,9 @@ app.get('/sockets',function (req,res){
 var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
+var clients = [];
 io.on('connection', function (socket) {
+  clients.push(socket);
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
 },1000);
@@ -1104,8 +1106,7 @@ io.on('connection', function (socket) {
     });
    socket.on("tweet", function (tweet) {
         // we received a tweet from the browser
-        var clients = io.sockets.clients();
-        console.log('clients: '+clients);
+        console.log(clients);
         console.log('tweet: '+tweet.text);
     });
 });
