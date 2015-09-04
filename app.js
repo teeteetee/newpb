@@ -8,7 +8,7 @@ var sessions = require('client-sessions');
 var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var http = require('http');
-var connect = require('connect');
+
 
 
 
@@ -1095,19 +1095,6 @@ var server = app.listen(80,'188.166.118.116');
 var io = require('socket.io').listen(server);
 
 io.on('connection', function (socket) {
-   var cookie_string = socket.request.headers.cookie;
-  var parsed_cookies = connect.utils.parseCookie(cookie_string);
-  var connect_sid = parsed_cookies['connect.sid'];
-  if (connect_sid) {
-    session_store.get(connect_sid, function (error, session) {
-      if (error){
-        console.log('no session');
-      }
-      else {
-        console.log('SESSION: '+session);
-      }
-    });
-  }
   var interval = setInterval(function () {
   socket.emit('news', { hello: 'world' });
 },1000);
@@ -1117,7 +1104,8 @@ io.on('connection', function (socket) {
     });
    socket.on("tweet", function (tweet) {
         // we received a tweet from the browser
-
+        var clients = io.sockets.clients();
+        console.log('clients: '+clients);
         console.log('tweet: '+tweet.text);
     });
 });
