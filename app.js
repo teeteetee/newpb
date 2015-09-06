@@ -1086,6 +1086,29 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
+app.post('/livesearch/:id',function (req,res){
+  var cond = req.params.id;
+  switch(cond){
+    case('title'):
+     var query = req.body.txt;
+     query = '.*\\'+query+'.*';
+     titles.find({myKey: { $regex: query, $options: 'i'}},function(err,docs){
+      if(err){
+        console.log('err');
+      }
+      else {
+        console.log(docs);
+        res.send(docs);
+      }
+     });
+    break;
+    case('author'):
+    break;
+    case('isbn'):
+    break;
+  }
+});
+
 app.get('/sockets',function (req,res){
   res.render('sockets');
 });

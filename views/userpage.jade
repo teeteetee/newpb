@@ -210,6 +210,9 @@ head
       #extra {
         display:none;
       }
+      #add {
+        display:none;
+      }
   body
     .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
       .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;') 
@@ -230,8 +233,8 @@ head
             .col-xs-12
               form
                 .form-group
-                  label(for="title") Titile
-                  input(type="text" class="form-control" id="title" placeholder="Title")
+                  label(for="isbn") ISBN
+                  input(type="text" class="form-control" id="isbn" placeholder="ISBN")
                 .form-group
                   label(for="author") Author
                   input(type="text" class="form-control" id="author" placeholder="Author")
@@ -317,5 +320,20 @@ head
         });
       $('#openextra').click(function(){
         $('#extra').slideToggle();
-        });
+        }); 
+      var lastentry;
+      $('#text').keyup(function(event) {
+        if($('#title').val() != lastentry) {       
+          //$('div').append('TEST'+$(this).val()+"<br>");
+          $.ajax({
+            method: "POST",
+            url: "/livesearch/title",
+            data: { txt: $('#title').val() }
+          })
+            .done(function( msg ) {
+              alert( "Data Saved: " + msg );
+            }); 
+        }
+       lastentry = $('#text').val()
+      });
       
