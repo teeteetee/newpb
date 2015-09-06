@@ -229,20 +229,20 @@ head
                 .form-group
                   label(for="author") Author
                   input(type="text" class="form-control" id="author" placeholder="Author")
+                .btn-group(style='margin-bottom:15px;')
+                  button(class='btn btn-lg btn-default' type='button') Fiction
+                  button(class=' btn btn-lg btn-default'  type='button' )  Nonfiction
           .row.cpadding.txtleft(id='extra')
             .col-xs-12
               form
-                .form-group
+                .form-group(style='margin-bottom:0px;')
                   label(for="authors") Additional authors
-                .btn-group#authors
+                .btn-group#authors(style='margin-bottom:15px;')
                   button(class='btn btn-lg btn-default' type='button') Add
                   button(class=' btn btn-lg btn-default'  type='button' )  Remove
                 .form-group
                   label(for="isbn") ISBN
                   input(type="text" class="form-control" id="isbn" placeholder="ISBN")
-                .form-group
-                  label(for="author") Author
-                  input(type="text" class="form-control" id="author" placeholder="Author")
           .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;')
             .col-xs-12
               .btn-group
