@@ -412,7 +412,8 @@ head
     script(src='js/bootstrap.min.js') 
     script(src='js/typehead.js')     
     script.
-      function getbooks(books) {
+      getbooks;
+      function getbooks() {
          $.ajax({
             method: "POST",
             url: "/getbook/#{user}",
