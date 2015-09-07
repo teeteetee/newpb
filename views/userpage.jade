@@ -410,14 +410,14 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-         $.ajax({
-            method: "POST",
-            url: "/getbook/#{user}",
-            data: 0
-          })
-            .done(function( msg ) {
-              console.log('msg is: '+msg);
-              });
+      $.ajax({
+         method: "POST",
+         url: "/getbook/#{user}",
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log('msg is: '+msg);
+           });
       var authorcount=0;
       $('#addauthor').click(function(){
         authorcount++;
