@@ -98,7 +98,7 @@ app.post('/getbooks/:uid',function (req,res){
 });
 
 app.post('/getbook/:id',function (req,res){
-  books.findOne({_id:parseInt(req.params.id)},function(err,doc){
+  books.findOne({_id:req.params.id},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
