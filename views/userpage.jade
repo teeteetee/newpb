@@ -237,7 +237,7 @@ head
                     label(for="author") Author surname
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
 
-          .row.cpadding(style='padding:10px;text-align:center;')
+          .row.cpadding(style='padding:10px;text-align:left;')
             .col-xs-12
               .btn-group(style='margin-bottom:15px;')
                 button(class='btn btn-lg btn-default active' id='newbook' type='button') New
@@ -260,14 +260,11 @@ head
                   input(type="text" class="form-control" id="isbn" placeholder="ISBN")
           .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;')
             .col-xs-12
-              //.btn-group
-              //  button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
-              //  button(class='btn btn-success btn-lg'  id='closenews') Add item
-              //  button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
-              button(class=' btn btn-lg btn-default pull-left'  type='button' id='openextra')  Extra
-              button(class='btn btn-success btn-lg center-block'  id='closenews') Add item
-              button(class=' btn btn-lg btn-default pull-right' id='closeadd' type='button')  Close
-              
+              .btn-group
+                button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
+                button(class='btn btn-success btn-lg'  id='closenews') Add item
+                button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
+             
     .container#main
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
