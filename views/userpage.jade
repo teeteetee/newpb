@@ -237,11 +237,11 @@ head
                     label(for="author") Author surname
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
 
-          .row.cpadding(style='padding:10px;text-align:left;')
+          .row.cpadding(style='text-align:left;')
             .col-xs-12
               .btn-group(style='margin-bottom:15px;')
-                button(class='btn btn-lg btn-default active' id='newbook' type='button') New
-                button(class=' btn btn-lg btn-default' id='oldbook'  type='button' )  I've read it
+                button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
+                button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
           .row.cpadding.txtleft(id='extra')
             .col-xs-12
               form
@@ -258,7 +258,7 @@ head
                 .form-group
                   label(for="isbn") ISBN
                   input(type="text" class="form-control" id="isbn" placeholder="ISBN")
-          .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;')
+          .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;border-top:1px solid #ddd;')
             .col-xs-12
               .btn-group
                 button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
