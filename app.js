@@ -1159,6 +1159,7 @@ app.post('/additem/:id',function (req,res){
          }
 
       function authors(authors_num, book_id, callback){
+        console.log('in authors, parameters: '+authors_num+', '+book_id);
          for(var i =0;i<authors_num;i++){
            eval("console.log('authors surname:'+req.body.author"+i+"_surname);authors.findOne({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,author){if(err) {console.log('err while author query');callback(0);}else {console.log('1');if(author.surname){console.log('author exists');var insert_author={};insert_author.name = author.name;insert_author.surname = author.surname;insert_author._id = author._id;books.update({_id:book_id},{$push:{authors:insert_author}});console.log('inserted '+author_surname+' to book '+book_id);}else{console.log('there was no author, created one');authors.insert({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,newauthor){if(err) {console.log('err while adding author');callback(0);}else {  var insert_author={};insert_author.name = newauthor.name;insert_author.surname = newauthor.surname;insert_author._id = newauthor._id;console.log('going to push our author id in the book');books.update({_id:book_id},{$push:{authors:insert_author}});console.log('inserted '+newauthor_surname+' to book '+book_id);}});}}});");
          }
