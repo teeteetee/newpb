@@ -254,11 +254,14 @@ head
                   input(type="text" class="form-control" id="isbn" placeholder="ISBN")
           .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;')
             .col-xs-12
-              .btn-group
-                button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
-                button(class='btn btn-success btn-lg'  id='closenews') Add item
-                button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
-              //button(class='btn btn-success btn-lg' style='margin-top:20px;' ) Go to Settings
+              //.btn-group
+              //  button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
+              //  button(class='btn btn-success btn-lg'  id='closenews') Add item
+              //  button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
+              button(class=' btn btn-lg btn-default pull-left'  type='button' id='openextra')  Extra
+              button(class='btn btn-success btn-lg center-block'  id='closenews') Add item
+              button(class=' btn btn-lg btn-default pull-right' id='closeadd' type='button')  Close
+              
     .container#main
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
