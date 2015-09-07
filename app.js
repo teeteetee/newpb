@@ -1156,7 +1156,6 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        for 
         res.send(docs);
       }
      });
@@ -1167,8 +1166,7 @@ app.post('/livesearch/:id',function (req,res){
         console.log('err');
       }
       else {
-        console.log(docs);
-        for 
+        console.log(docs); 
         res.send(docs);
       }
      });
@@ -1180,7 +1178,6 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        for 
         res.send(docs);
       }
      });
@@ -1192,7 +1189,6 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        for 
         res.send(docs);
       }
      });
@@ -1205,7 +1201,6 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        for 
         res.send(docs);
       }
      });
