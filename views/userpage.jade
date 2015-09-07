@@ -412,7 +412,16 @@ head
     script(src='js/bootstrap.min.js') 
     script(src='js/typehead.js')     
     script.
-      var books = !{books};
+      function getbooks(books) {
+         $.ajax({
+            method: "POST",
+            url: "/getbook/#{user}",
+            data: 0
+          })
+            .done(function( msg ) {
+              console.log('msg is: '+msg);
+              });
+          }
       console.log(books);
       var authorcount=0;
       $('#addauthor').click(function(){
