@@ -344,7 +344,8 @@ head
         });
       $('#removeauthor').click(function(){
         if(authorcount>0)
-        {eval("$('#author"+authorcount+"').remove();");
+        { eval("$('#author"+authorcount+"').slideToggle();");
+          setTimeout(function(){eval("$('#author"+authorcount+"').remove();");},1500);
                 authorcount--;
         if(authorcount===0){
           $('#removeauthor').addClass('disabled');
