@@ -14,7 +14,7 @@ var http = require('http');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),books = db.get('books'),authors = db.get('authors');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
