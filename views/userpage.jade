@@ -383,7 +383,8 @@ head
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='js/bootstrap.min.js')     
+    script(src='js/bootstrap.min.js') 
+    script(src='js/typehead.js')     
     script.
       var authorcount=0;
       $('#addauthor').click(function(){
@@ -454,15 +455,19 @@ head
             data: { txt: $('#title').val() }
           }).done(function( msg ) {
               console.log(msg);
-              var results =[];
-              for(var vtitle in msg){
-                results.push(msg.title);
-              }
-              $('#title').typeahead({
-                        source: function(query, process) {
-                            return results;
-                        }
-                    });
+              if(msg)
+                {var results =[];
+                            for(var vtitle in msg){
+                              results.push(msg.title);
+                            }
+                            $('#title').typeahead({
+                                      source: function(query, process) {
+                                          return results;
+                                      }
+                                  });}
+                            else {
+                              lastentry = $('#text').val();
+                            }
                 });
         }
        lastentry = $('#text').val()
