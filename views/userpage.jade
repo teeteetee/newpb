@@ -249,8 +249,8 @@ head
                 button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
                 button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
               .btn-group.pull-right(style='margin-bottom:15px;')
-                button(class='btn btn-lg btn-primary active' type='button') Nonfiction
-                button(class=' btn btn-lg btn-primary'  type='button' ) Fiction
+                button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
+                button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
           .row.cpadding.txtleft(id='extra')
             .col-xs-12
               form
@@ -377,6 +377,22 @@ head
         else{
           $('#newbook').addClass('active');
           $('#oldbook').removeClass('active');
+        }
+        });
+      $('#fiction').click(function(){
+        if($('#fiction').hasClass('active')){
+        }
+        else{
+          $('#fiction').addClass('active');
+          $('#nonfiction').removeClass('active');
+        }
+        });
+      $('#nonfiction').click(function(){
+        if($('#nonfiction').hasClass('active')){
+        }
+        else{
+          $('#nonfiction').addClass('active');
+          $('#fiction').removeClass('active');
         }
         });
       var lastentry;
