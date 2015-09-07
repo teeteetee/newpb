@@ -434,7 +434,7 @@ head
         var url = '/getbooks/'+books[i];
         $.ajax({
          method: "POST",
-         url: "/getbook/#{user}",
+         url: url,
          data: 0
        })
          .done(function( msg ) {
