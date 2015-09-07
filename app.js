@@ -78,7 +78,7 @@ app.get('/',function(req,res) {
   res.render('index_new');}
 });
 
-app.get('/getbooks/:uid',function (req,res){
+app.post('/getbooks/:uid',function (req,res){
   //TO DO auth?
   var vuid = parseInt(req.params.uid);
   users.findOne({uid:vuid},function(err,doc){
@@ -97,7 +97,7 @@ app.get('/getbooks/:uid',function (req,res){
   });
 });
 
-app.get('/getbook/:id',function (req,res){
+app.post('/getbook/:id',function (req,res){
   books.findOne({_id:parseInt(req.params.id)},function(err,doc){
     if(err) {
     console.log('err while users query');
