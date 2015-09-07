@@ -1132,7 +1132,7 @@ app.post('/additem/:uid/:id',function (req,res){
   switch(cond){
     case('book'):
     
-      newbook(req.body.title, authors)
+      newbook(req.body.title, doauthors)
       function newbook(vtitle, callback){
          books.findOne({title:vtitle},function(err,book){
            if(err) {
@@ -1158,7 +1158,7 @@ app.post('/additem/:uid/:id',function (req,res){
          });
          }
 
-      function authors(authors_num, book_id, callback){
+      function doauthors(authors_num, book_id, callback){
         console.log('in authors, parameters: '+authors_num+', '+book_id);
          if(!req.body.author0_name || !req.body.author0_surname)
           {callback(0);}
