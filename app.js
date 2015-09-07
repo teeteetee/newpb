@@ -1119,40 +1119,7 @@ app.post('/additem/:id',function (req,res){
 
       function authors(authors_num, book_id, callback){
          for(var i =0;i<authors_num;i++){
-           eval("authors.findOne({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,author){
-            if(err) {
-            console.log('err while author query');
-            callback(0);
-            }
-            else {
-              if(author.surname){
-               var insert_author={};
-               insert_author.name = author.name;
-               insert_author.surname = author.surname;
-               insert_author._id = author._id;
-               books.update({_id:book_id},{$push:{authors:insert_author}});
-               console.log('inserted '+author_surname+' to book '+book_id);
-              }
-              else{
-              authors.insert({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,newauthor){
-                     if(err) {
-                console.log('err while adding author');
-                callback(0);
-                }
-                else {
-                  
-                   var insert_author={};
-                   insert_author.name = newauthor.name;
-                   insert_author.surname = newauthor.surname;
-                   insert_author._id = newauthor._id;
-                   books.update({_id:book_id},{$push:{authors:insert_author}});
-                   console.log('inserted '+newauthor_surname+' to book '+book_id);
-                  
-                  }
-              });
-             }
-            }
-           });")
+           eval("authors.findOne({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,author){if(err) {console.log('err while author query');callback(0);}else {if(author.surname){var insert_author={};insert_author.name = author.name;insert_author.surname = author.surname;insert_author._id = author._id;books.update({_id:book_id},{$push:{authors:insert_author}});console.log('inserted '+author_surname+' to book '+book_id);}else{authors.insert({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,newauthor){if(err) {console.log('err while adding author');callback(0);}else {       var insert_author={};insert_author.name = newauthor.name;insert_author.surname = newauthor.surname;insert_author._id = newauthor._id;books.update({_id:book_id},{$push:{authors:insert_author}});console.log('inserted '+newauthor_surname+' to book '+book_id);       }});}}});")
          }
          console.log('all authors added');
          callback(1);
