@@ -445,12 +445,12 @@ head
         }
         });
       var lastentry;
-      $('#text').keyup(function(event) {
-        if($('#title').val() != lastentry) {       
+      $('#title').keyup(function(event) {
+        if($('#title').val() != lastentry && $('#title').val().length >3) {       
           //$('div').append('TEST'+$(this).val()+"<br>");
           $.ajax({
             method: "POST",
-            url: "/livesearch/title",
+            url: "/livesearch/btitle",
             data: { txt: $('#title').val() }
           })
             .done(function( msg ) {

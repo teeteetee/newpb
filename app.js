@@ -1141,10 +1141,12 @@ app.post('/additem/:uid/:id',function (req,res){
            else {
               if(book){
                users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id}});
+               tell_user(0);
                //respond to user with success
               }
               else{
                  books.insert({title:vtitle},function(err,newbook){
+
                   if(err){
                     console.log('err while adding a book');
                   }
@@ -1198,7 +1200,7 @@ app.post('/livesearch/:id',function (req,res){
   switch(cond){
     case('btitle'):
      //query = '.*\\'+query+'.*';
-     btitles.find({title: { $regex: query, $options: 'i'}},function(err,docs){
+     books.find({title: { $regex: query, $options: 'i'}},function(err,docs){
       if(err){
         console.log('err');
       }
