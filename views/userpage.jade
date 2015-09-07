@@ -461,9 +461,7 @@ head
                               results.push(msg.title);
                             }
                             $('#title').typeahead({
-                                      source: function(query, process) {
-                                          return results;
-                                      }
+                                      source: results
                                   });}
                             else {
                               lastentry = $('#text').val();
