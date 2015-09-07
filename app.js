@@ -380,6 +380,16 @@ app.get('/dropusers',function (req,res){
   res.redirect('/');
 });
 
+app.get('/dropbooks',function (req,res){
+  books.remove({});
+  res.redirect('/');
+});
+
+app.get('/dropauthors',function (req,res){
+  authors.remove({});
+  res.redirect('/');
+});
+
 app.get('/seedisc',function (req,res){
   discussions.find({},function (err,done){
     if(err){

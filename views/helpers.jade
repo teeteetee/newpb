@@ -39,18 +39,37 @@ head
           h1 Helpers
       .row 
         .col-xs-12
-          form
-            button(class='btn btn-lg btn-default' onclick='window.location="/seeuser"' id='showusers' type='button') Show users
-            button(class='btn btn-lg btn-default' onclick='window.location="/seedisc"' id='showdisc' type='button') Show discussion
-            button(class='btn btn-lg btn-default' onclick='window.location="/seebooks"' id='showbooks' type='button') Show books
-            button(class='btn btn-lg btn-default' onclick='window.location="/seeauthors"' id='showauthors' type='button') Show authors
-            button(class='btn btn-lg btn-default' onclick='window.location="/cs"' id='showsession' type='button') Show session
-            .form-group
-              label User id
-              input(type='text' id='userid' class='form-control')
-              button(class='btn btn-lg btn-default' id='showuser' type='button') Show user 
-            button(class='btn btn-lg btn-default' onclick='window.location="/dropdisc"' id='dropdisc' type='button') Drop discussions
-            button(class='btn btn-lg btn-default' onclick='window.location="/dropusers"' id='dropusers' type='button') Drop users 
+          button(class='btn btn-lg btn-default' onclick='window.location="/seeuser"' id='showusers' type='button') Show users
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/seedisc"' id='showdisc' type='button') Show discussion
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/seebooks"' id='showbooks' type='button') Show books
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/seeauthors"' id='showauthors' type='button') Show authors
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/cs"' id='showsession' type='button') Show session
+      .row 
+        .col-xs-12
+          .form-group
+            label User id
+            input(type='text' id='userid' class='form-control')
+            button(class='btn btn-lg btn-default' id='showuser' type='button') Show user 
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropdisc"' id='dropdisc' type='button') Drop discussions
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropusers"' id='dropusers' type='button') Drop users 
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropbooks"' id='dropusers' type='button') Drop books 
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropauthors"' id='dropusers' type='button') Drop authors 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
