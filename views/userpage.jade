@@ -452,8 +452,7 @@ head
             method: "POST",
             url: "/livesearch/btitle",
             data: { txt: $('#title').val() }
-          })
-            .done(function( msg ) {
+          }).done(function( msg ) {
               console.log(msg);
               var results =[];
               for(var vtitle in msg){
@@ -465,7 +464,6 @@ head
                         }
                     });
                 });
-            }); 
         }
        lastentry = $('#text').val()
       });
