@@ -110,7 +110,8 @@ app.get('/getbook/:id',function (req,res){
       else {
         res.send(0);
       }
-  });
+  }
+});
 });
 
 app.get('/signin', function (req,res){
