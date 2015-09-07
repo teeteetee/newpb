@@ -433,7 +433,7 @@ head
         if(!i){
           return 0;
         }
-        count--;
+        i--;
         var url = '/getbook/'+books[i];
         console.log('books: '+books[i]);
         $.ajax({
@@ -445,6 +445,7 @@ head
             var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>";
             $('#books').append(insert);
            });
+         count--;
         getbooks(books,count);
       }
       var authorcount=0;
