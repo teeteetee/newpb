@@ -329,6 +329,28 @@ app.get('/helpers',function(req,res){
   res.render('helpers');
 });
 
+app.get('/seebooks',function (req,res){
+  books.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
+app.get('/seeauthors',function (req,res){
+  authors.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
 app.get('/cs',function (req,res){
   res.send(req.session);
 });
