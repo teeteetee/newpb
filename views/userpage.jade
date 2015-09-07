@@ -214,7 +214,7 @@ head
         display:none;
       }
   body
-    .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
+    .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;overflow:auto;')
       .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-bottom:30px;') 
         .col-xs-12
           .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
@@ -259,7 +259,7 @@ head
                 button(class='btn btn-success btn-lg'  id='closenews') Add item
                 button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
               //button(class='btn btn-success btn-lg' style='margin-top:20px;' ) Go to Settings
-    .container
+    .container#main
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
           #{avatar}
@@ -327,10 +327,12 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       $('#openadd').click(function(){
-        $('#add').css('display','block'); 
+        $('#add').css('display','block');
+        $('#main').css('overflow','hidden');
         });
       $('#closeadd').click(function(){
         $('#add').css('display','none'); 
+        $('#main').css('overflow','auto');
         });
       $('#openextra').click(function(){
         $('#extra').slideToggle();
