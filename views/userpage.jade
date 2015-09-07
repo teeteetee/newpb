@@ -434,6 +434,7 @@ head
           return 0;
         }
         var url = '/getbook/'+books[i];
+        console.log('books: '+books[i]);
         $.ajax({
          method: "POST",
          url: url,
