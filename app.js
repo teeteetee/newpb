@@ -1086,25 +1086,162 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
-app.post('/livesearch/:id',function (req,res){
+app.post('/additem/:id',function (req,res){
   var cond = req.params.id;
   switch(cond){
-    case('title'):
-     var query = req.body.txt;
-     query = '.*\\'+query+'.*';
-     titles.find({myKey: { $regex: query, $options: 'i'}},function(err,docs){
+    case('book'):
+    
+      newbook(req.body.title, authors)
+      function newbook(vtitle, callback){
+         books.findOne({title:vtitle},function(err,book){
+           if(err) {
+               console.log('err while book query');
+           }
+           else {
+              if(book){
+               users.update({uid:vuid},{$push:{bookstore:book._id}});
+               //respond to user with success
+              }
+              else{
+                 books.insert({title:vtitle},function(err,newbook){
+                  if(err){
+                    console.log('err while adding a book');
+                  }
+                  else{
+                     console.log('created a book:'+newbook._id);
+                     callback(parseInt(req.body.authornum),newbook._id,tell_user);
+                  }
+                 });
+              }
+           }
+         });
+         }
+
+      function authors(authors_num, book_id, callback){
+         for(var i =0;i<authors_num;i++){
+           eval("authors.findOne({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,author){
+            if(err) {
+            console.log('err while author query');
+            callback(0);
+            }
+            else {
+              if(author.surname){
+               var insert_author={};
+               insert_author.name = author.name;
+               insert_author.surname = author.surname;
+               insert_author._id = author._id;
+               books.update({_id:book_id},{$push:{authors:insert_author}});
+               console.log('inserted '+author_surname+' to book '+book_id);
+              }
+              else{
+              authors.insert({name:req.body.author"+i+"_name,surname:req.body.author"+i+"_surname},function(err,newauthor){
+                     if(err) {
+                console.log('err while adding author');
+                callback(0);
+                }
+                else {
+                  
+                   var insert_author={};
+                   insert_author.name = newauthor.name;
+                   insert_author.surname = newauthor.surname;
+                   insert_author._id = newauthor._id;
+                   books.update({_id:book_id},{$push:{authors:insert_author}});
+                   console.log('inserted '+newauthor_surname+' to book '+book_id);
+                  
+                  }
+              });
+             }
+            }
+           });")
+         }
+         console.log('all authors added');
+         callback(1);
+       }
+
+       function tell_user (trouble){
+        console.log('reporting to the user');
+        var ms = {};
+        if(trouble){
+        ms.trouble = trouble;
+        res.send(ms);
+        }
+        else {
+        ms.trouble = trouble;
+        res.send(ms);
+        }
+       }
+      
+    break;
+    case('movie'):
+    break;
+  }
+});
+
+app.post('/livesearch/:id',function (req,res){
+  var cond = req.params.id;
+  var query = req.body.txt;
+  switch(cond){
+    case('btitle'):
+     //query = '.*\\'+query+'.*';
+     btitles.find({title: { $regex: query, $options: 'i'}},function(err,docs){
       if(err){
         console.log('err');
       }
       else {
         console.log(docs);
+        for 
         res.send(docs);
       }
      });
     break;
     case('author'):
+     authors.find({author: { $regex: query, $options: 'i'}},function(err,docs){
+      if(err){
+        console.log('err');
+      }
+      else {
+        console.log(docs);
+        for 
+        res.send(docs);
+      }
+     });
+    break;
+    case('mtitle'):
+     mtitles.find({title: { $regex: query, $options: 'i'}},function(err,docs){
+      if(err){
+        console.log('err');
+      }
+      else {
+        console.log(docs);
+        for 
+        res.send(docs);
+      }
+     });
+    break;
+    case('director'):
+     directors.find({director: { $regex: query, $options: 'i'}},function(err,docs){
+      if(err){
+        console.log('err');
+      }
+      else {
+        console.log(docs);
+        for 
+        res.send(docs);
+      }
+     });
     break;
     case('isbn'):
+     // lets not use that for now
+     isbn.find({isbn: { $regex: query, $options: 'i'}},function(err,docs){
+      if(err){
+        console.log('err');
+      }
+      else {
+        console.log(docs);
+        for 
+        res.send(docs);
+      }
+     });
     break;
   }
 });
