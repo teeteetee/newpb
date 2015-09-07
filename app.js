@@ -108,6 +108,7 @@ app.post('/getbook/:id',function (req,res){
         res.send(doc);
       }
       else {
+        console.log('doc===null');
         res.send(0);
       }
   }
