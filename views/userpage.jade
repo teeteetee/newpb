@@ -479,7 +479,7 @@ head
                 { $('#sr').empty();
                   var results =[];
                   for(var vtitle in msg){
-                    var click = '$('#title').val('+msg.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
+                    var click = '$("#title").val('+msg.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
                     $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>");
                    }
                   
