@@ -1197,6 +1197,7 @@ app.post('/additem/:uid/:id',function (req,res){
 app.post('/livesearch/:id',function (req,res){
   var cond = req.params.id;
   var query = req.body.txt;
+  console.log('txt: '+txt);
   switch(cond){
     case('btitle'):
      //query = '.*\\'+query+'.*';
@@ -1206,7 +1207,11 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        res.send(docs);
+        if(docs.length!=0)
+        {res.send(docs);}
+        else {
+          res.send(0);
+        }
       }
      });
     break;
