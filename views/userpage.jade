@@ -8,8 +8,7 @@ head
     title C     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')   
-    link(href='/bootstrap/css/typehead.css', rel='stylesheet')  
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')    
     meta(liber de amicitia est)
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
@@ -409,11 +408,8 @@ head
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='js/bootstrap.min.js') 
-    script(src='js/typehead.js')     
+    script(src='js/bootstrap.min.js')     
     script.
-      getbooks;
-      function getbooks() {
          $.ajax({
             method: "POST",
             url: "/getbook/#{user}",
@@ -422,7 +418,6 @@ head
             .done(function( msg ) {
               console.log('msg is: '+msg);
               });
-          }
       var authorcount=0;
       $('#addauthor').click(function(){
         authorcount++;
