@@ -269,6 +269,7 @@ head
         }
       }
       #autocomp {
+      display:none;
       background-color: white;
       border-radius: 3px;
       margin-left: 0px;
@@ -482,12 +483,12 @@ head
               console.log(msg);
               if(msg)
                 { $('#sr').empty();
-                  var results =[];
                   for(var vtitle in msg){
+                    console.log('vtitle: '+vtitle);
                     var click = '$("#title").val('+vtitle.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
                     $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'>"+vtitle.title+"</div></div>");
                    }
-                  
+                  $('#autocomp').fadeIn(350);
                   }
                             else {
                               lastentry = $('#text').val();
