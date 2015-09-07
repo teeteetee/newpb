@@ -411,7 +411,7 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       var books;
-      var count = books.length;
+      var count;
       $.ajax({
          method: "POST",
          url: "/getbooks/#{user}",
@@ -420,6 +420,7 @@ head
          .done(function( msg ) {
            console.log('msg is: '+msg);
            books = msg;
+           count = books.length;
            if(!books) {
             alert('server maintenence \n try again later');
            }
