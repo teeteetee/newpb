@@ -495,9 +495,11 @@ head
             data: data
           })
             .done(function( msg ) {
+              $('#title').val('');
+              $('#author0_name').val('');
+              $('#author0_surname').val('');
               $('#wait').fadeOut(350);
               console.log(msg);
-              alert( "Data Saved");
             });
         });
       

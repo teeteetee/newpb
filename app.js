@@ -1197,7 +1197,7 @@ app.post('/additem/:uid/:id',function (req,res){
 app.post('/livesearch/:id',function (req,res){
   var cond = req.params.id;
   var query = req.body.txt;
-  console.log('txt: '+txt);
+  console.log('txt: '+query);
   switch(cond){
     case('btitle'):
      //query = '.*\\'+query+'.*';
