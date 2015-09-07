@@ -1127,8 +1127,8 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
-app.post('/additem/:id',function (req,res){
-  var cond = req.params.id;
+app.post('/additem/:uid/:id',function (req,res){
+  var cond = req.params.id; 
   switch(cond){
     case('book'):
     
@@ -1140,7 +1140,7 @@ app.post('/additem/:id',function (req,res){
            }
            else {
               if(book){
-               users.update({uid:vuid},{$push:{bookstore:book._id}});
+               users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id}});
                //respond to user with success
               }
               else{

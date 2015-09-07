@@ -478,7 +478,7 @@ head
          console.log(JSON.stringify(data));
         $.ajax({
             method: "POST",
-            url: "/additem/book",
+            url: "/additem/#{user}/book",
             data: data
           })
             .done(function( msg ) {
