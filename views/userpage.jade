@@ -483,10 +483,10 @@ head
               console.log(msg);
               if(msg)
                 { $('#sr').empty();
-                  for(var vtitle in msg){
-                    console.log('vtitle: '+vtitle);
-                    var click = '$("#title").val('+vtitle.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
-                    $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'>"+vtitle.title+"</div></div>");
+                  for(var btitle =0;btitle<msg.length;btitle++){
+                    console.log('vtitle: '+msg[btitle]);
+                    var click = '$("#title").val('+msg[btitle].title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
+                    $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'>"+msg[btitle].title+"</div></div>");
                    }
                   $('#autocomp').fadeIn(350);
                   }
