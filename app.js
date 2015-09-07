@@ -323,6 +323,29 @@ app.get('/settings',function (req,res){
   }
 });
 
+//******************** HELPERS ********************//
+
+app.get('/helpers',function(req,res){
+  res.render('helpers');
+});
+
+app.get('/cs',function (req,res){
+  res.send(req.session);
+});
+
+app.get('/usr:id',function (req,res){
+  var vuid = parseInt(req.params.id);
+  users.findOne({uid:vuid},function (err,done){
+    if (err) {
+      console.log('err');
+      res.send('db err');
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
 app.get('/dropdisc',function (req,res){
   users.update({},{$unset:{discussions:1}},{upsert:false,
                           multi:true});
@@ -356,6 +379,8 @@ app.get('/seeuser',function (req,res){
     }
   });
 });
+
+//******************** HELPERS END ********************//
 
 app.get('/chat/:sndid/:recid',function (req,res){
    console.log(1);
@@ -652,22 +677,6 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
-app.get('/cs',function (req,res){
-  res.send(req.session);
-});
-
-app.get('/usr:id',function (req,res){
-  var vuid = parseInt(req.params.id);
-  users.findOne({uid:vuid},function (err,done){
-    if (err) {
-      console.log('err');
-      res.send('db err');
-    }
-    else {
-      res.send(done);
-    }
-  });
-});
 
 app.get('/user/:id', function (req,res){
   //TO DO if req.session
