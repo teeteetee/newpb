@@ -471,15 +471,16 @@ head
             eval("data.author"+i+"_name = $('#author"+i+"_name').val();data.author"+i+"_surname = $('#author"+i+"_surname').val();");
           }
          }
-        $.ajax({
-            method: "POST",
-            url: "/additem/book",
-            data: data
-          })
-            .done(function( msg ) {
-              $('#wait').css('display','none');
-              console.log(msg);
-              alert( "Data Saved");
-            });
+         console.log(JSON.stringify(data));
+        //$.ajax({
+        //    method: "POST",
+        //    url: "/additem/book",
+        //    data: data
+        //  })
+        //    .done(function( msg ) {
+        //      $('#wait').css('display','none');
+        //      console.log(msg);
+        //      alert( "Data Saved");
+        //    });
         });
       

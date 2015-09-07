@@ -1175,6 +1175,7 @@ app.post('/additem/:id',function (req,res){
         console.log('reporting to the user');
         var ms = {};
         if(trouble){
+        console.log('TROUBLE, REPORTING');
         ms.trouble = trouble;
         res.send(ms);
         }
