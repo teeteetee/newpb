@@ -349,10 +349,7 @@ head
       $('#removeauthor').click(function(){
         if(authorcount>0)
         { eval("$('#author"+authorcount+"').slideToggle();");
-          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;");},1100);
-        if(authorcount===0){
-          $('#removeauthor').addClass('disabled');
-        }
+          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;if(authorcount===0){$('#removeauthor').addClass('disabled');}");},1100);
               }
         });
       $('#openadd').click(function(){
