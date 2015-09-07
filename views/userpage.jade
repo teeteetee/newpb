@@ -458,12 +458,11 @@ head
               console.log(msg);
               if(msg)
                 {var results =[];
-                            for(var vtitle in msg){
-                              results.push(msg.title);
-                            }
-                            $('#title').typeahead({
-                                      local: results
-                                  });}
+                  for(var vtitle in msg){
+                    results.push(msg.title);
+                   }
+                  $('#title').typeahead({local: results});
+                  }
                             else {
                               lastentry = $('#text').val();
                             }
