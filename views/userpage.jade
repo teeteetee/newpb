@@ -222,7 +222,55 @@ head
          background-color:white;
          border-color:#ccc;
       }
+      label {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .loader {
+      margin: 60px auto;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+      }
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
   body
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader
     .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;overflow:auto;')
       .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-bottom:30px;') 
         .col-xs-12
@@ -259,14 +307,14 @@ head
                 .btn-group#authors(style='margin-bottom:15px;')
                   button(class='btn btn-lg btn-default' id='addauthor' type='button') Add
                   button(class=' btn btn-lg btn-default' id='removeauthor'  type='button' )  Remove
-                .form-group
-                  label(for="isbn") ISBN
-                  input(type="text" class="form-control" id="isbn" placeholder="ISBN")
+                //.form-group
+                //  label(for="isbn") ISBN
+                //  input(type="text" class="form-control" id="isbn" placeholder="ISBN")
           .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;border-top:1px solid #ddd;')
             .col-xs-12
               .btn-group
                 button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
-                button(class='btn btn-success btn-lg'  id='closenews') Add item
+                button(class='btn btn-success btn-lg'  id='submitbook') Submit
                 button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
              
     .container#main
@@ -410,4 +458,28 @@ head
         }
        lastentry = $('#text').val()
       });
+      //-----------------------------------//
+      $('#submit').click(function(){
+        $('#add').css('display','none');
+        $('#wait').css('display','block');
+         var data={};
+         data.authornum = authorcount;
+         data.title = $('#title').val();
+         if(authorcount>0) {
+          for(var i =0;i<authorcount;i++){
+            eval("data.author"+i+"_name = $('#author"+i+"_name').val();data.author"+i+"_surname = $('#author"+i+"_surname').val();");
+          }
+         }
+        $.ajax({
+            method: "POST",
+            url: "/additem/book",
+            data: data
+          })
+            .done(function( msg ) {
+              $('#wait').css('display','none');
+              console.log(msg);
+              alert( "Data Saved");
+            }
+            });
+        });
       
