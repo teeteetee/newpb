@@ -345,6 +345,7 @@ head
         var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
         $('#authoradd_here').append(insert);
         eval("$('#author"+authorcount+"').slideToggle();");
+      }
       $('#removeauthor').click(function(){
         if(authorcount>0)
         { eval("$('#author"+authorcount+"').slideToggle();");
