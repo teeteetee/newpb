@@ -345,7 +345,7 @@ head
       $('#removeauthor').click(function(){
         if(authorcount>0)
         { eval("$('#author"+authorcount+"').slideToggle();");
-          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;");},1500);
+          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;");},1100);
         if(authorcount===0){
           $('#removeauthor').addClass('disabled');
         }
