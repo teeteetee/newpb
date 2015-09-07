@@ -78,6 +78,41 @@ app.get('/',function(req,res) {
   res.render('index_new');}
 });
 
+app.get('/getbooks/:uid',function (req,res){
+  //TO DO auth?
+  var vuid = parseInt(req.params.uid);
+  users.findOne({uid:vuid},function(err,doc){
+    if(err) {
+    console.log('err while users query');
+     res.send(0);
+    }
+    else {
+      if(doc!=null) {
+        res.send(doc.bookstore);
+      }
+      else {
+        res.send(0);
+      }
+    }
+  });
+});
+
+app.get('/getbook/:id',function (req,res){
+  books.findOne({_id:parseInt(req.params.id)},function(err,doc){
+    if(err) {
+    console.log('err while users query');
+     res.send(0);
+    }
+    else {
+      if(doc!=null) {
+        res.send(doc);
+      }
+      else {
+        res.send(0);
+      }
+  });
+});
+
 app.get('/signin', function (req,res){
   res.render('signin');
 });

@@ -394,7 +394,7 @@ head
                 button(type="button" class="btn btncorr btn-default active") XBooks
                 button(type="button" class="btn btncorr btn-default") XFilms                  
           .list.row
-            .col-xs-12(style='padding:top:100px;')
+            .col-xs-12#books(style='padding:top:100px;')
               h2 Welcome to Clandestine
               p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through 
                 button(class='btn btn-default')
@@ -410,14 +410,40 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      var books;
+      var count = books.length;
       $.ajax({
+         method: "POST",
+         url: "/getbooks/#{user}",
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log('msg is: '+msg);
+           books = msg;
+           if(!books) {
+            alert('server maintenence \n try again later');
+           }
+           else {
+            getbooks(books);
+           }
+           });
+      function getbooks(books,i) {
+        if(!i){
+          return 0;
+        }
+        var url = '/getbooks/'+books[i];
+        $.ajax({
          method: "POST",
          url: "/getbook/#{user}",
          data: 0
        })
          .done(function( msg ) {
-           console.log('msg is: '+msg);
+            var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>";
+            $('#books').append(insert);
            });
+        count--;
+        getbooks(books,count);
+      }
       var authorcount=0;
       $('#addauthor').click(function(){
         authorcount++;
