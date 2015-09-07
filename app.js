@@ -1150,6 +1150,7 @@ app.post('/additem/:uid/:id',function (req,res){
                   }
                   else{
                      console.log('created a book:'+newbook._id);
+                     users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id}});
                      callback(parseInt(req.body.authornum),newbook._id,tell_user);
                   }
                  });
