@@ -268,7 +268,7 @@ head
           transform: rotate(360deg);
         }
       }
-      .autocomp {
+      #autocomp {
       background-color: white;
       border-radius: 3px;
       margin-left: 0px;
@@ -280,10 +280,15 @@ head
       max-width: 510;
       width: 100%;
       box-shadow: 1px 7px 30px #333;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
       .sritem:hover {
-       background-color:blue;
+       background-color:#02A7F9;
        color:white;
+      }
+      .sritem {
+        padding-top:2px;
+        padding-bottom:2px;
       }
   body
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
@@ -479,8 +484,8 @@ head
                 { $('#sr').empty();
                   var results =[];
                   for(var vtitle in msg){
-                    var click = '$("#title").val('+msg.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
-                    $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>");
+                    var click = '$("#title").val('+vtitle.title+');$("#autocomp").fadeOut(350);$("#sr").empty();';
+                    $('#sr').append("<div class='row sritem' onclick='"+click+"'><div class='col-xs-12'>"+vtitle.title+"</div></div>");
                    }
                   
                   }
