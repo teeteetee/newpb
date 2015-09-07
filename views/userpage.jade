@@ -209,6 +209,8 @@ head
       }
       #extra {
         display:none;
+        background-color:#f5f5f5;
+        padding-top:15px;
       }
       #add {
         display:none;
@@ -225,7 +227,7 @@ head
               h2(style='color:#bfbfbf;') Adding items to your list
           .row.cpadding.txtleft(style='padding-top:10px;')
             .col-xs-12
-              form
+              form(id='authoradd_here')
                 .form-group
                   label(for="title") Titile
                   input(type="text" class="form-control" id="title" placeholder="War and Peace")
@@ -243,15 +245,15 @@ head
                 button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
                 button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
               .btn-group.pull-right(style='margin-bottom:15px;')
-                button(class='btn btn-lg btn-default active' type='button') Nonfiction
-                button(class=' btn btn-lg btn-default'  type='button' ) Fiction
+                button(class='btn btn-lg btn-primary active' type='button') Nonfiction
+                button(class=' btn btn-lg btn-primary'  type='button' ) Fiction
           .row.cpadding.txtleft(id='extra')
             .col-xs-12
               form
                 .form-group(style='margin-bottom:0px;')
                   label(for="authors") Additional authors
                 .btn-group#authors(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-default' type='button') Add
+                  button(class='btn btn-lg btn-default' id='addauthor' type='button') Add
                   button(class=' btn btn-lg btn-default'  type='button' )  Remove
                 .form-group
                   label(for="isbn") ISBN
@@ -330,6 +332,24 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      var authorcount=1;
+      $('#addauthor').click(function(){
+        authorcount++;
+        if($('#removeauthor').hasClass('disabled')){
+          $('#removeauthor').removeClass('disabled');
+        }
+        var insert =   "<div class='well' id='author"+authorcount+"'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
+        $('#authoradd_here').append(insert);
+        });
+      $('#removeauthor').click(function(){
+        if(authorcount>0)
+        {eval("$('#author"+authorcount+"').remove();");
+                authorcount--;
+        if(authorcount===0){
+          $('#removeauthor').addClass('disabled');
+        }
+              }
+        });
       $('#openadd').click(function(){
         $('#add').css('display','block');
         $('#main').css('overflow','hidden');
