@@ -272,7 +272,7 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;overflow:auto;')
+    .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9998;overflow:auto;')
       .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-bottom:30px;') 
         .col-xs-12
           .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
@@ -283,7 +283,7 @@ head
               form(id='authoradd_here')
                 .form-group
                   label(for="title") Titile
-                  input(type="text" class="form-control" id="title" placeholder="War and Peace")
+                  input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
                 .well
                   .form-group
                     label(for="author") Author name
@@ -454,14 +454,24 @@ head
             data: { txt: $('#title').val() }
           })
             .done(function( msg ) {
-              alert( "Data Saved: " + msg );
+              console.log(msg);
+              var results =[];
+              for(var vtitle in msg){
+                results.push(msg.title);
+              }
+              $('#title').typeahead({
+                        source: function(query, process) {
+                            return results;
+                        }
+                    });
+                });
             }); 
         }
        lastentry = $('#text').val()
       });
       //-----------------------------------//
       $('#submitbook').click(function(){
-        $('#add').css('display','none');
+        $('#add').fadeOut(350);
         $('#wait').css('display','block');
          var data={};
          data.authornum = authorcount;
@@ -482,7 +492,7 @@ head
             data: data
           })
             .done(function( msg ) {
-              $('#wait').css('display','none');
+              $('#wait').fadeOut(350);
               console.log(msg);
               alert( "Data Saved");
             });
