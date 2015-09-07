@@ -412,6 +412,8 @@ head
     script(src='js/bootstrap.min.js') 
     script(src='js/typehead.js')     
     script.
+      var books = !{books};
+      console.log(books);
       var authorcount=0;
       $('#addauthor').click(function(){
         authorcount++;

@@ -61,10 +61,19 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+done.uid+done.picext+"'";
-                    res.render('userpage',{'user':done.uid,'avatar':avatar});}
+                     if(done.bookstore)
+                    {res.render('userpage',{'user':done.uid,'avatar':avatar,'books':done.bookstore});}
+                    else {
+                      res.render('userpage',{'user':done.uid,'avatar':avatar,'books':0});
+                    }
+                  }
                    else {
                     var emptyavatar = "div id=emptyavatar class='img-circle' style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
-                    res.render('userpage',{'user':done.uid,'avatar':emptyavatar});
+                    if(done.bookstore)
+                    {res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'books':done.bookstore});}
+                    else {
+                      res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'books':0});
+                    }
                    }
               }
               else {
