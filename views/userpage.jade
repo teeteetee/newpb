@@ -291,6 +291,17 @@ head
         padding-bottom:3px;
       }
   body
+    .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog"(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+            h4(class="modal-title" id="myModalLabel") Modal title
+          .modal-body
+          .modal-footer
+            button(type="button" class="btn btn-default" data-dismiss="modal") Close
+            button(type="button" class="btn btn-primary") Save changes
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -424,6 +435,7 @@ head
            console.log('books are: '+typeof books);
            if(!books) {
             alert('server maintenence \n try again later');
+            $('#mymodal').modal('show');
            }
            else {
             getbooks(books,count);
