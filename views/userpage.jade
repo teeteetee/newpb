@@ -292,7 +292,7 @@ head
       }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog"(role="document")
+      .modal-dialog(role="document")
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
@@ -435,7 +435,7 @@ head
            console.log('books are: '+typeof books);
            if(!books) {
             alert('server maintenence \n try again later');
-            $('#mymodal').modal('show');
+            $('#myModal').modal('show');
            }
            else {
             getbooks(books,count);
