@@ -298,12 +298,17 @@ head
       font-family:boldproxima;
       text-transform:uppercase;
       }
+      .modal-content{
+      border-radius:10px;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header(style='background-color:#eee;')
-            h2(class="modal-title" id="myModalLabel") Welcome to clandestine
+            .row
+              .col-xs-12
+                h2(class="modal-title" id="myModalLabel") Welcome to clandestine
           .modal-body
             .row
               .col-xs-12
