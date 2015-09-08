@@ -290,12 +290,20 @@ head
         padding-top:3px;
         padding-bottom:3px;
       }
+      .modeal-header {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-family:boldproxima;
+      text-transform:uppercase;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header(style='background-color:#eee;')
-            h2(class="modal-title" id="myModalLabel" style='font-family:boldproxima;text-transform:uppercase;') Welcome to clandestine
+            h2(class="modal-title" id="myModalLabel") Welcome to clandestine
           .modal-body
             .row
               .col-xs-12
