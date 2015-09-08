@@ -294,14 +294,22 @@ head
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
-            h4(class="modal-title" id="myModalLabel") Modal title
+          .modal-header(style='background-color:#eee;')
+            h2(class="modal-title" id="myModalLabel" style='font-family:boldproxima;text-transform:uppercase;') Welcome to clandestine
           .modal-body
+            .row
+              .col-xs-12
+                ol
+                  li Your username is your id
+                  li You might want to load a userpic &#40;avaliable in Settings&#41;
+                  li Add items to your lists now through 
+                    span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
+                    strong Add item 
+                    | button to your left
+                  li You can find people with whom you have corresponding items by clicking on an item in your list
           .modal-footer
             button(type="button" class="btn btn-default" data-dismiss="modal") Close
-            button(type="button" class="btn btn-primary") Save changes
+            button(type="button" class="btn btn-warning" onclick="document.location.href='/settings';") Proceed to Settings
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
