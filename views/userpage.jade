@@ -558,8 +558,9 @@ head
         $('#addbook').modal('show');
         });
       $('#closeadd').click(function(){
-        $('#add').css('display','none'); 
-        $('#main').css('overflow','auto');
+        //$('#add').css('display','none'); 
+        //$('#main').css('overflow','auto');
+        $('#addbook').modal('hide');
         });
       $('#openextra').click(function(){
         $('#extra').slideToggle();
