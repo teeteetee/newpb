@@ -302,6 +302,8 @@ head
       .modal-content{
       border-radius:10px;
       }
+      #22A795
+      #19796C
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -488,6 +490,11 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      setTimeout(function(){
+        if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
+          alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
+        }
+        },2000);
       var books=[];
       var count;
       $.ajax({
