@@ -378,6 +378,10 @@ app.get('/seebooks',function (req,res){
   });
 });
 
+app.get('/celarbooks/:id',function (req,res){
+  users.update({id:parseInt(req.params.id)},{$set:{bookstore:[]}};
+});
+
 app.get('/seeauthors',function (req,res){
   authors.find({},function (err,done){
     if(err){
