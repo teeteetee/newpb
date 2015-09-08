@@ -380,7 +380,7 @@ app.get('/seebooks',function (req,res){
 
 app.get('/clearbooks/:id',function (req,res){
   console.log('clear books: '+req.params.id);
-  users.update({id:parseInt(req.params.id)},{$unset:{bookstore:""}});
+  users.update({id:parseInt(req.params.id)},{$unset:{bookstore:[]}});
   res.redirect('/');
 });
 
