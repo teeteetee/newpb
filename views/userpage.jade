@@ -475,7 +475,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-           if($('#noitems').visible()){
+           if($('#noitems').css('display')==='block'){
             $('#noitems').remove();
            }
             var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>";
