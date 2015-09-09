@@ -480,7 +480,7 @@ head
           return 0;
         }
         i--;
-        var url = '/getbook/'+books[i];
+        var url = '/getbook/'+books[i]._id;
         console.log('books: '+books[i]);
         $.ajax({
          method: "POST",
