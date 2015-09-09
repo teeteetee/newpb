@@ -293,42 +293,7 @@ head
             .col-xs-12
               .row
                 #messages.col-md-10.col-md-offset-1.col-sm-12(style='border-radius:7px;min-height:300px;max-height:600px;margin-bottom:15px;padding-top:20px;overflow:auto;')
-                  .row.bubble
-                    .col-xs-12
-                      .bubblesndr.pull-right
-                        | Jesus christ ! We did it
-                  .row.bubble
-                    .col-xs-12
-                      .bubblercvr.pull-left
-                        | Jesus christ ! We did it ! We did it man !
-                  .row.bubble
-                    .col-xs-12
-                      .bubblesndr.pull-right
-                        | Jesus christ ! We did it and as far as I know, COlumbus first settled in america at around 1667 year, which is now a very imortant date 
-                  .row.bubble
-                    .col-xs-12
-                      .bubblercvr.pull-left
-                        | COlumbus first settled in america at around 1667 year, which is now a very imortant date, Jesus christ ! We did it ! We did it man ! So roll up another one for him
-                  .row.bubble
-                    .col-xs-12
-                      .bubblesndr.pull-right
-                        | Jesus christ ! We did it
-                  .row.bubble
-                    .col-xs-12
-                      .bubblercvr.pull-left
-                        | Jesus christ ! We did it ! We did it man !
-                  .row.bubble
-                    .col-xs-12
-                      .bubblercvr.pull-left
-                        | Jesus christ ! 
-                  .row.bubble
-                    .col-xs-12
-                      .bubblesndr.pull-right
-                        | Jesus christ ! We did it and as far as I know, COlumbus first settled in america at around 1667 year, which is now a very imortant date 
-                  .row.bubble
-                    .col-xs-12
-                      .bubblercvr.pull-left
-                        | COlumbus first settled in america at around 1667 year, which is now a very imortant date, Jesus christ ! We did it ! We did it man ! So roll up another one for hime
+                  h2(style='background-color:#ccc;') No messages
               .row(style='margin-bottom:20px;')
                 .col-md-10.col-md-offset-1.col-sm-12
                   textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
@@ -463,4 +428,4 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
-      //setInterval(getmsg, 5000);
+      setInterval(getmsg, 5000);
