@@ -423,12 +423,16 @@ head
               a(href='/logout')
                 h4  Logout      
         #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:#333;border-top-right-radius:10px;')
+          .row.visible-lg.visible-md(style='border-top-right-radius:10px;')
             .col-xs-12
               h2(style='color:white;') user №#{user} 
-              h4(id='bookstitle' style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;') Books 
-                span
-                  a(style='color:#545454;' href='#') / Films                                     
+                //
+                  h4(id='bookstitle' style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;') Books 
+                    span
+                      a(style='color:#545454;' href='#') / Films                        
+                .btn-group
+                  button(class='btn btn-default active') Books
+                  button(class='btn btn-default') Movies        
           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
               h2(style='color:white;text-align:center;') user №#{user} 
@@ -499,7 +503,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='col-xs-12'><h3 style='display:inline;'>"+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning pull-right' style='margin:5px;'>people</button><button class='btn btn-sm btn-default pull-right' onclick='markread("+msg._id+");' style='margin:5px;'>Mark as read</button></div></div>";
+            var insert = "<div class='row book'><div class='col-xs-12'><h3 style='display:inline;'>"+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning pull-right' style='margin:5px;background-color:#00C3FF;border-color:#00C3FF;'>people</button><button class='btn btn-sm btn-default pull-right' onclick='markread("+msg._id+");' style='margin:5px;'>Mark as read</button></div></div>";
             $('#books').append(insert);
            });
          count--;
@@ -598,6 +602,17 @@ head
         }
        lastentry = $('#text').val()
       });
+      //-----------------------------------//
+      function markread(bookid) {
+        $.ajax({
+              method: "POST",
+              url: "/markread/#{user}/bookid",
+              data: data
+            })
+              .done(function( msg ) {
+                
+              });
+      }
       //-----------------------------------//
       $('#submitbook').click(function(){
         if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val())

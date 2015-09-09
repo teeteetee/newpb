@@ -361,6 +361,33 @@ app.get('/settings',function (req,res){
   }
 });
 
+app.post('/markread/:uid/:bid',function (req,res){
+  users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+       res.send(1);
+    }
+    else {
+      if(doc!=null){
+       var temp_arr;
+       temp_arr = doc.bookstore;
+       for(var i=0;i<temp_arr.length;i++){
+         if(temp_arr[i]._id === parseInt(req.params.bid)){
+           temp_arr[i].newbook = 0;
+         }
+       }
+       users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
+       res.send(0);
+      }
+      else {
+        console.log('trouble finding the user');
+       res.send(1);
+      }
+    }
+  });
+});
+
 //******************** HELPERS ********************//
 
 app.get('/helpers',function(req,res){
