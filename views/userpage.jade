@@ -423,8 +423,8 @@ head
               a(href='/logout')
                 h4  Logout      
         #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;')
-            .col-xs-12
+          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;padding:20px;')
+            .col-xs-12(id='testinsert')
               //h2(style='color:white;') user №#{user} 
                 //
                   h4(id='bookstitle' style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;') Books 
@@ -481,8 +481,10 @@ head
            });
       function getbooks(books,i) {
         if(!i){
-          var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
-         $('#books').prepend(bnum);
+         // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
+         //$('#books').prepend(bnum);
+         var bnum = "<h2> You have read: "+user.newbooks+"<span style='border-'> / new:"+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
+       $('#testinsert').append(bnum);
           return 0;
         }
         i--;
