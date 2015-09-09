@@ -483,7 +483,7 @@ head
         if(!i){
          // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
          //$('#books').prepend(bnum);
-         var bnum = "<h2> You have read: "+user.newbooks+"<span style='border-'> / new:"+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
+         var bnum = "<h4 style='color:#ddd;'> You have read: <span style='color:#333;'>"+user.newbooks+"</span> / new:<span style='color:#333;'>"+user.readbooks+"</span></h4>";
        $('#testinsert').append(bnum);
           return 0;
         }
