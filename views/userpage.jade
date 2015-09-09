@@ -308,6 +308,10 @@ head
       text-align:left;
       border-bottom:1px solid #ddd;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      padding-top:10px;
+      }
+      .book > button {
+        vertical-align:super;
       }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -490,7 +494,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning' style='margin:5px;'>people</button><button class='btn btn-sm btn-default' style='margin:5px;'>to my list</button></div></div>";
+            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning pull-right' style='margin:5px;'>people</button><button class='btn btn-sm btn-default pull-right' style='margin:5px;'>to my list</button></div></div>";
             $('#books').append(insert);
            });
          count--;
