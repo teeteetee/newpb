@@ -309,6 +309,7 @@ head
       border-bottom:1px solid #ddd;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       padding-top:10px;
+      background-color:white;
       }
       .book > button {
         vertical-align:super;
@@ -475,7 +476,7 @@ head
            });
       function getbooks(books,i) {
         if(!i){
-          var bnum = "<h2>New: "+user.newbooks+"<span style='color:#ccc'>/ Read:"+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
+          var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
          $('#books').prepend(bnum);
           return 0;
         }
