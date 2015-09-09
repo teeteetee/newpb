@@ -1196,6 +1196,7 @@ app.post('/additem/:uid/:id',function (req,res){
                   }
                   else{
                      console.log('created a book:'+newbook._id);
+                     console.log('newbook: '+req.body.newbook+' '+typeof req.body.newbook);
                      if(parseInt(req.body.newbook))
                      {users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,newbooks:1}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
