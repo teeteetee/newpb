@@ -482,7 +482,11 @@ head
            if($('#noitems').css('display')==='block'){
             $('#noitems').remove();
            }
-            var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3><h4>"+msg.authors+"</h4></div></div>";
+            var authors_insert ;
+            for(var i=0;i<msg.authors.length;i++){
+              authors_insert+=' '+msg.authors[i];
+            }
+            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title+"</h3><h4>"+authors_insert+"</h4></div></div>";
             $('#books').append(insert);
            });
          count--;
