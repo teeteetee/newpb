@@ -475,6 +475,8 @@ head
            });
       function getbooks(books,i) {
         if(!i){
+          var bnum = "<h2>"+user.readbooks+"<span style='color:#ccc'>"+user.newbooks+"</span></h2>";
+         $('#books').prepend(bnum);
           return 0;
         }
         i--;
