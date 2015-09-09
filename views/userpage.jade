@@ -434,7 +434,7 @@ head
                 button(type="button" class="btn btncorr btn-default active") XBooks
                 button(type="button" class="btn btncorr btn-default") XFilms                  
           .list.row
-            .col-xs-12#books(style='padding:top:100px;')
+            .col-xs-12#books
               h2(id='noitems' style='color:#ccc;') No items
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
@@ -480,13 +480,13 @@ head
        })
          .done(function( msg ) {
            if($('#noitems').css('display')==='block'){
-            $('#list').css('padding-top','0px');
+            $('.list').css('padding-top','0px');
             $('#noitems').remove();
            }
             var authors_insert ;
             for(var i=0;i<msg.authors.length;i++){
               console.log(msg.authors[i]);
-              authors_insert+=msg.authors[i].name+' '+msg.authors[i].surname+' ';
+              authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
             var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title+"</h3><h4>"+authors_insert+"</h4></div></div>";
             $('#books').append(insert);
