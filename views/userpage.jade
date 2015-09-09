@@ -426,7 +426,7 @@ head
           .row.visible-lg.visible-md(style='background-color:#333;border-top-right-radius:10px;')
             .col-xs-12
               h2(style='color:white;') user №#{user} 
-              h4(style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;') Books 
+              h4(id='bookstitle' style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;') Books 
                 span
                   a(style='color:#545454;' href='#') / Films                                     
           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
@@ -446,6 +446,7 @@ head
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
