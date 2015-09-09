@@ -309,6 +309,7 @@ head
       .book {
       text-align:left;
       border-bottom:1px solid #ddd;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -488,7 +489,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title+"</h3><h4>"+authors_insert+"</h4></div></div>";
+            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title+"<small style='color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
             $('#books').append(insert);
            });
          count--;
