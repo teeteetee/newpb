@@ -440,6 +440,9 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+      }
       setTimeout(function(){
         if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
           alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
@@ -487,7 +490,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning' style='margin:5px;'>people</button><button class='btn btn-sm btn-default' style='margin:5px;'>to my list</button></div></div>";
+            var insert = "<div class='row book'><div class='col-xs-12'><h3>"+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning' style='margin:5px;'>people</button><button class='btn btn-sm btn-default' style='margin:5px;'>to my list</button></div></div>";
             $('#books').append(insert);
            });
          count--;
