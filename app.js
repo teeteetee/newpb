@@ -1184,11 +1184,15 @@ app.post('/additem/:uid/:id',function (req,res){
            }
            else {
               if(book){
+                var book_insert={};
+                book_insert._id = book._id;
                 if(parseInt(req.body.newbook))
-              { users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id},$inc:{totalbooks:1,newbooks:1}});
+              { book_insert.newbook = 1;
+                users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1}});
                              tell_user(0);}
                   else {
-                    users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id},$inc:{totalbooks:1,newbooks:1}});
+                    book_insert.newbook =0;
+                    users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1}});
                              tell_user(0);
                   }
                //respond to user with success
@@ -1202,11 +1206,15 @@ app.post('/additem/:uid/:id',function (req,res){
                   else{
                      console.log('created a book:'+newbook._id);
                      console.log('newbook: '+req.body.newbook+' '+typeof req.body.newbook);
+                      var book_insert={};
+                      book_insert._id = newbook._id;
                      if(parseInt(req.body.newbook))
-                     {users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,newbooks:1}});
+                     {book_insert.newbook = 1;
+                      users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,newbooks:1}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
-                      {users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,oldbooks:1}});
+                      {book_insert.newbook = 0;
+                        users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,oldbooks:1}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
