@@ -592,11 +592,17 @@ head
       //-----------------------------------//
       $('#submitbook').click(function(){
         if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val())
-        {$('#add').fadeOut(350);
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
           $('#wait').css('display','block');
+          //-------------
            var data={};
            data.authornum = authorcount;
            data.title = $('#title').val();
+           data.newbook = 1;
+           if($('#oldbook').hasClass('active')){
+           data.newbook = 0;
+           }
            if(authorcount>0) {
             for(var i =0;i<authorcount;i++){
               eval("data.author"+i+"_name = $('#author"+i+"_name').val();data.author"+i+"_surname = $('#author"+i+"_surname').val();");
