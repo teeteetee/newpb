@@ -153,7 +153,7 @@ head
       transition: background-color 0.3s ease;
       }
       .inleftblock:hover {
-      background-color: #333;
+      background-color: #ddd;
       color:white;
       }
       .inleftblock:hover h4 {
@@ -399,7 +399,7 @@ head
                  span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
                  | Add item
           .inleftblock.row.visible-lg.visible-md
-            .col-xs-12(style='background-color:#333;color:white;')
+            .col-xs-12(style='background-color:#ddd;')
               a(href='/')
                 h4  Lists   
           .inleftblock.row.visible-lg.visible-md
@@ -423,7 +423,7 @@ head
               a(href='/logout')
                 h4  Logout      
         #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;padding:20px;')
+          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;padding:20px;border-bottom:1px solid #ddd;')
             .col-xs-12(id='testinsert')
               //h2(style='color:white;') user №#{user} 
                 //
@@ -483,7 +483,7 @@ head
         if(!i){
          // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
          //$('#books').prepend(bnum);
-         var bnum = "<h4 style='color:#ddd;'> You have read: <span style='color:#333;'>"+user.newbooks+"</span> / new:<span style='color:#333;'>"+user.readbooks+"</span></h4>";
+         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.newbooks+"</span> / new: <span style='color:#333;'>"+user.readbooks+"</span></h4>";
        $('#testinsert').append(bnum);
           return 0;
         }
