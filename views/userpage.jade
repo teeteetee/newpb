@@ -563,6 +563,11 @@ head
         }
         });
       var lastentry;
+      $('#title').focusout(function(){
+        if(('#sr').css('display','block')) {
+          $('#sr').fadeOut(350);
+        }
+        });
       $('#title').keyup(function(event) {
         if($('#title').val() != lastentry && $('#title').val().length >3) {       
           //$('div').append('TEST'+$(this).val()+"<br>");
