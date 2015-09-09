@@ -306,6 +306,10 @@ head
       background-color:#22A795;
       border-color:#19796C;
       }
+      .book {
+      text-align:left;
+      border-bottom:1px solid #ddd;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -478,7 +482,7 @@ head
            if($('#noitems').css('display')==='block'){
             $('#noitems').remove();
            }
-            var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>";
+            var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3><h4>"+msg.authors+"</h4></div></div>";
             $('#books').append(insert);
            });
          count--;
