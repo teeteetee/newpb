@@ -431,7 +431,7 @@ head
                 button(type="button" class="btn btncorr btn-default") XFilms                  
           .list.row
             .col-xs-12#books(style='padding:top:100px;')
-              h2(style='color:#ccc;') No items
+              h2(id='notiems' style='color:#ccc;') No items
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -475,6 +475,9 @@ head
          data: 0
        })
          .done(function( msg ) {
+           if($('#noitems').visible()){
+            $('#noitems').remove();
+           }
             var insert = "<div class='row'><div class='col-xs-12'><h3>"+msg.title+"</h3></div></div>";
             $('#books').append(insert);
            });
