@@ -564,8 +564,8 @@ head
         });
       var lastentry;
       $('#title').focusout(function(){
-        if($('#sr').css('display','block')) {
-          $('#sr').fadeOut(350);
+        if($('#autocomp').css('display','block')) {
+          $('#autocomp').fadeOut(350);
         }
         });
       $('#title').keyup(function(event) {
@@ -581,8 +581,8 @@ head
                 { $('#sr').empty();
                   for(var btitle =0;btitle<msg.length;btitle++){
                     console.log('vtitle: '+msg[btitle]);
-                    var click = "$('#title').val('"+msg[btitle].title+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
-                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title+"</div></div>");
+                    var click = "$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
+                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"</div></div>");
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
                   $('#autocomp').fadeIn(350);
