@@ -318,13 +318,16 @@ head
             .row
               .col-xs-12
                 ol
-                  li Your username is your id
-                  li You might want to load a userpic &#40;avaliable in Settings&#41;
+                  li Your username is your id, which you can share with other people, so they can follow your lists and chat with you.
+                  li You might want to load a userpic &#40;avaliable in Settings&#41; (don't be silly with it)
                   li Add items to your lists now through 
                     span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
                     strong Add item 
                     | button to your left
-                  li You can find people with whom you have corresponding items by clicking on an item in your list
+                  li You can find people with whom you have corresponding items by clicking on this button in under an item in you list 
+                    button(class='btn btn-warning')
+                      span(style ='color:white;' class='glyphicon glyphicon-user') 
+                      | People
           .modal-footer
             button(type="button" class="btn btn-default" data-dismiss="modal") Close
             button(type="button" class="btn btn-warning" onclick="document.location.href='/settings';") Proceed to Settings
@@ -376,55 +379,6 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    //
-      .container(id='add' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9998;overflow:auto;')
-        .row(style='background-color:white;border-radius:10px;width:600px;margin:auto;margin-top:100px;margin-bottom:30px;') 
-          .col-xs-12
-            .row(style='background-color:#eee;text-align:center;border-top-left-radius:10px;border-top-right-radius:10px;padding-top:15px;padding-bottom:15px;')
-              .col-xs-12
-                h2(style='color:#bfbfbf;') Adding items to your list
-            .row.cpadding.txtleft(style='padding-top:10px;')
-              .col-xs-12
-                form(id='authoradd_here')
-                  .form-group
-                    label(for="title") Titile
-                    input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                    .row#autocomp
-                      .col-xs-12#sr
-                  .well
-                    .form-group
-                      label(for="author") Author name
-                      input(type="text" class="form-control" id="author0_name" placeholder="Leo")
-                    .form.-group
-                      label(for="author") Author surname
-                      input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
-
-          .row.cpadding(style='text-align:left;')
-            .col-xs-12
-              .btn-group(style='margin-bottom:15px;')
-                button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
-                button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
-              .btn-group.pull-right(style='margin-bottom:15px;')
-                button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
-                button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
-          .row.cpadding.txtleft(id='extra')
-            .col-xs-12
-              form
-                .form-group(style='margin-bottom:0px;')
-                  label(for="authors") Additional authors
-                .btn-group#authors(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-default' id='addauthor' type='button') Add
-                  button(class=' btn btn-lg btn-default' id='removeauthor'  type='button' )  Remove
-                //.form-group
-                //  label(for="isbn") ISBN
-                //  input(type="text" class="form-control" id="isbn" placeholder="ISBN")
-          .row.cpadding(style='padding-bottom:30px;text-align:center;padding-top:20px;border-top:1px solid #ddd;')
-            .col-xs-12
-              .btn-group
-                button(class=' btn btn-lg btn-default'  type='button' id='openextra')  Extra
-                button(class='btn btn-success btn-lg'  id='submitbook') Submit
-                button(class=' btn btn-lg btn-default' id='closeadd' type='button')  Close
-             
     .container#main
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
@@ -477,16 +431,7 @@ head
                 button(type="button" class="btn btncorr btn-default") XFilms                  
           .list.row
             .col-xs-12#books(style='padding:top:100px;')
-              h2 Welcome to Clandestine
-              p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You are supplied with id number wich will act as your username, you can upload a userpic, but please, don't be silly with it. From now on you can add items to your lists through 
-                button(class='btn btn-default')
-                  span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
-                  | Add item 
-                |  dutton located on the left panel. You can share your id, so other people can follow your lists and chat with you.
-              p(style='text-align:left;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') You can look people up by books they have listed. To do that simply touch a book from your list and click 
-                button(class='btn btn-warning')
-                  span(style ='color:white;' class='glyphicon glyphicon-user') 
-                  | People
+              h2(style='color:#ccc;') No items
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
