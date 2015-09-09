@@ -314,6 +314,9 @@ head
       .book > button {
         vertical-align:super;
       }
+      #testinsert {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -396,7 +399,7 @@ head
           .inleftblock.row.visible-lg.visible-md(id='openadd')
              .col-xs-12
                h4 
-                 span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
+                 span(style ='color:#333;' class='glyphicon glyphicon-plus') 
                  | Add item
           .inleftblock.row.visible-lg.visible-md
             .col-xs-12(style='background-color:#ddd;')
@@ -483,7 +486,7 @@ head
         if(!i){
          // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
          //$('#books').prepend(bnum);
-         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;'> You have read: <span style='color:#333;'>"+user.newbooks+"</span> / new: <span style='color:#333;'>"+user.readbooks+"</span></h4>";
+         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.newbooks+"</span> / new: <span style='color:#333;'>"+user.readbooks+"</span></h4>";
        $('#testinsert').append(bnum);
           return 0;
         }
