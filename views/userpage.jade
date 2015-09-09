@@ -309,6 +309,7 @@ head
       border-bottom:1px solid #ddd;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       padding-top:10px;
+      padding-bottom:10px;
       background-color:white;
       }
       .book > button {
@@ -508,7 +509,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='col-xs-12'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning pull-right' style='background-color:#00C3FF;border-color:#00C3FF;'>people</button><button class='btn btn-sm btn-default pull-right' onclick='markread("+msg._id+");'>Mark as read</button></div></div>";
+            var insert = "<div class='row book'><div class='col-xs-12'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3><button class='btn btn-sm btn-warning pull-right' style='background-color:#00C3FF;border-color:#00C3FF;'>people</button><button class='btn btn-sm btn-default pull-right' style='margin-right:15px;' onclick='markread("+msg._id+");'>Mark as read</button></div></div>";
             $('#books').append(insert);
            });
          count--;
