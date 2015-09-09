@@ -1184,8 +1184,13 @@ app.post('/additem/:uid/:id',function (req,res){
            }
            else {
               if(book){
-               users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id}});
-               tell_user(0);
+                if(parseInt(req.body.newbook))
+              { users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id},$inc:{totalbooks:1,newbooks:1}});
+                             tell_user(0);}
+                  else {
+                    users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book._id},$inc:{totalbooks:1,newbooks:1}});
+                             tell_user(0);
+                  }
                //respond to user with success
               }
               else{
