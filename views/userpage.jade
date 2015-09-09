@@ -618,20 +618,20 @@ head
              data.author0_surname = $('#author0_surname').val();
            }
            console.log(JSON.stringify(data));
-          //$.ajax({
-          //    method: "POST",
-          //    url: "/additem/#{user}/book",
-          //    data: data
-          //  })
-          //    .done(function( msg ) {
-          //      $('#title').val('');
-          //      $('#author0_name').val('');
-          //      $('#author0_surname').val('');
-          //      $('#addbook').modal('hide');
-          //      $('#wait').fadeOut(350);
-          //      console.log(msg);
-          //      window.location='/';
-          //    });
+          $.ajax({
+              method: "POST",
+              url: "/additem/#{user}/book",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#title').val('');
+                $('#author0_name').val('');
+                $('#author0_surname').val('');
+                $('#addbook').modal('hide');
+                $('#wait').fadeOut(350);
+                console.log(msg);
+                window.location='/';
+              });
           }
         });
       
