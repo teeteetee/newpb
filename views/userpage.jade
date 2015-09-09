@@ -444,11 +444,7 @@ head
     script.
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      if(user.userpic){
-        $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      } 
+      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
