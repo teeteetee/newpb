@@ -212,8 +212,9 @@ head
     .container
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
-          #emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
-          h3(id='numbers' style='text-align:center;')
+           h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C
+          //#emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
+          //h3(id='numbers' style='text-align:center;')
           .row(style='border-top:1px solid #eee;') 
           .inleftblock.row.visible-lg.visible-md
              .col-xs-12
@@ -260,11 +261,11 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js') 
     script.  
-      var user = !{JSON.stringify(done)};
-      user= JSON.parse(user);
-      if(user.userpic){
-        $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      } 
-      
+      //var user = !{JSON.stringify(done)};
+      //user= JSON.parse(user);
+      //if(user.userpic){
+      //  $('#emptyavatar').remove();
+      //  $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
+      //  $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //} 
+      //
