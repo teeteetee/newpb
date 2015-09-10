@@ -335,6 +335,10 @@ app.post('/settings',function (req,res){
   }
 });
 
+app.get('/about',function (req,res){
+  res.render('about');
+});
+
 app.get('/settings',function (req,res){
   if(req.session.mail){
     users.findOne({mail:req.session.mail},function(err,done){
@@ -386,6 +390,10 @@ app.post('/markread/:uid/:bid',function (req,res){
       }
     }
   });
+});
+
+app.post('/people/:item',function (req,res){
+
 });
 
 //******************** HELPERS ********************//
