@@ -190,7 +190,6 @@ head
         border-bottom:1px solid #ddd;
         padding-top:10px;
         padding-bottom:10px;
-        color:#ddd;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         background-color:white;
       }
@@ -324,7 +323,7 @@ head
           }
         // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
         }
-        var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body'><h4 style='color:gray;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
+        var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#eee;'><h4 style='color:gray;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
         //var insert "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-9' style='text-align:left;'><h3> User №"+vuid+"</h3></div></div>"
         $('#discussions').append(insert);
         if(parseInt(parsed.mtext.rcv)===#{user})
