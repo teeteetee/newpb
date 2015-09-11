@@ -98,7 +98,27 @@ app.post('/getbooks/:uid',function (req,res){
 });
 
 app.post('/getbook/:id',function (req,res){
+  //TO DO auth
   books.findOne({_id:req.params.id},function(err,doc){
+    if(err) {
+    console.log('err while users query');
+     res.send(0);
+    }
+    else {
+      if(doc!=null) {
+        res.send(doc);
+      }
+      else {
+        console.log('doc===null');
+        res.send(0);
+      }
+  }
+});
+});
+
+app.post('/getbook/:id',function (req,res){
+  //TO DO auth
+  users.findOne({_id:req.params.id},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
@@ -348,9 +368,7 @@ app.get('/people',function (req,res){
           }
           else {
             if(doc){
-                      
-                          res.render('people',{'user':doc.uid,'doc':JSON.stringify(doc)});
-                      
+                          res.render('people',{'user':doc.uid,'doc':JSON.stringify(doc)});  
                   }
                   else {
                     res.redirect('/');

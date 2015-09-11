@@ -264,26 +264,24 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      function getbooks(books,i) {
-        if(!i){
-         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
-       $('#testinsert').append(bnum); 
-        }
+      var users = user.userstore;
+      var count = users.length-1;
+      function getusers(users,i) {
         console.log('i:'+i);
-        var url = '/getbook/'+books[i]._id;
+        var url = '/getuser/'+users[i]._id;
         $.ajax({
          method: "POST",
          url: url,
          data: 0
        })
          .done(function( msg ) {
-                  
+            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg._id+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
            $('#books').append(insert);
            });
          count--;
          console.log('before iteration, count: '+count);
          if(count!=-1)
-        {getbooks(books,count);}
+        {getusers(users,count);}
         else {
           return 0;
         }
