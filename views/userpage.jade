@@ -548,7 +548,9 @@ head
        $('#testinsert').append(bnum);
           return 0;
         }
+        console.log('i before:'+i);
         i--;
+        console.log('i after incrementation: '+i);
         var url = '/getbook/'+books[i]._id;
         console.log('books: '+books[i]);
         $.ajax({
