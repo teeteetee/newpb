@@ -371,6 +371,7 @@ app.get('/settings',function (req,res){
 });
 
 app.post('/markread/:uid/:bid',function (req,res){
+  console.log('bid: '+req.params.bid);
   users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
     if(err)
     {
