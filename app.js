@@ -1253,6 +1253,7 @@ app.post('/additem/:uid/:id',function (req,res){
               if(book){
                 var book_insert={};
                 book_insert._id = book._id;
+                book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
                 users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1}});
@@ -1275,6 +1276,7 @@ app.post('/additem/:uid/:id',function (req,res){
                      console.log('newbook: '+req.body.newbook+' '+typeof req.body.newbook);
                       var book_insert={};
                       book_insert._id = newbook._id;
+                      book_insert.goodbook = 0;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
                       users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,newbooks:1}});
