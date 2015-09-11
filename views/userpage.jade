@@ -569,7 +569,7 @@ head
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
             }
             console.log('newbook :'+books[i].newbook);
-            console.log('newbook :'+books[i].goodbook);
+            console.log('goodbook :'+books[i].goodbook);
             var insert;
             switch(true){
               case(!books[i].newbook&&books[i].goodbook):
@@ -588,6 +588,7 @@ head
            $('#books').append(insert);
            });
          count--;
+         console.log('another iteration, count: '+count);
         getbooks(books,count);
       }
       function ops(id) {
