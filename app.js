@@ -389,7 +389,7 @@ app.post('/markread/:uid/:bid',function (req,res){
           temp_id = JSON.stringify(temp_arr[i]._id);
           console.log(typeof temp_id);
           console.log(temp_id);
-         if(temp_id === req.params.bid){
+         if(temp_id === JSON.stringify(req.params.bid)){
            console.log('modifying');
            temp_arr[i].newbook = 0;
            console.log(temp_arr[i].newbook);
