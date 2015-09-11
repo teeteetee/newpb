@@ -599,7 +599,6 @@ head
       }
       function ops(id) {
         //TO DO check if any of those menues are open and close them before showing a new one
-        if(eval("$('#sm"+id+"').css('display');") === 'block')
           $('.slideover').fadeOut(350);
           eval("$('#sm"+id+"').fadeToggle('fast');");
         }
