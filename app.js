@@ -340,7 +340,33 @@ app.get('/about',function (req,res){
 });
 
 app.get('/people',function (req,res){
-  res.render('people');
+   if(req.session.uid)
+  { if(parseInt(req.session.uid)===parseInt(req.params.id))
+    {
+     res.redirect('/');
+    }
+    else
+    {var vuid = parseInt(req.params.id);
+        users.findOne({uid:vuid},function (err,doc){
+          if(err) {
+          
+          }
+          else {
+            if(doc){
+                      
+                          res.render('people',{'user':doc.uid,'doc':JSON.stringify(doc)});
+                      
+                  }
+                  else {
+                    res.redirect('/');
+                  }
+          }
+        });
+      }
+  }
+  else {
+    res.render('restricted');
+  }
 });
 
 

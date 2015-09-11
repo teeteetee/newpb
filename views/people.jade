@@ -256,11 +256,43 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js') 
     script.  
-      //var user = !{JSON.stringify(done)};
-      //user= JSON.parse(user);
-      //if(user.userpic){
-      //  $('#emptyavatar').remove();
-      //  $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-      //  $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      //} 
-      //
+      var user = !{JSON.stringify(doc)};
+      user= JSON.parse(user);
+      console.log(user.userstore);
+      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
+      String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+      }
+      function getbooks(books,i) {
+        if(!i){
+         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
+       $('#testinsert').append(bnum); 
+        }
+        console.log('i:'+i);
+        var url = '/getbook/'+books[i]._id;
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 0
+       })
+         .done(function( msg ) {
+                  
+           $('#books').append(insert);
+           });
+         count--;
+         console.log('before iteration, count: '+count);
+         if(count!=-1)
+        {getbooks(books,count);}
+        else {
+          return 0;
+        }
+      }
+      function closeoptions(id){
+        eval("$('#sm"+id+"').fadeToggle('fast');");
+      }
+      function ops(id) {
+        //TO DO check if any of those menues are open and close them before showing a new one
+          $('.slideover').fadeOut(350);
+          eval("$('#sm"+id+"').fadeToggle('fast');");
+        }
