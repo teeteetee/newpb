@@ -382,7 +382,7 @@ app.post('/markread/:uid/:bid',function (req,res){
        var temp_arr;
        temp_arr = doc.bookstore;
        for(var i=0;i<temp_arr.length;i++){
-         if(temp_arr[i]._id === parseInt(req.params.bid)){
+         if(temp_arr[i]._id === req.params.bid){
            temp_arr[i].newbook = 0;
          }
        }
