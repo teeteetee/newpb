@@ -378,6 +378,7 @@ app.post('/markread/:uid/:bid',function (req,res){
        res.send(1);
     }
     else {
+      console.log('user found:'+doc);
       if(doc!=null){
        var temp_arr;
        temp_arr = doc.bookstore;
