@@ -397,9 +397,36 @@ app.post('/markread/:uid/:bid',function (req,res){
   });
 });
 
-app.post('/people/:item',function (req,res){
-
+app.post('/markgood/:uid/:bid',function (req,res){
+  users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+       res.send(1);
+    }
+    else {
+      if(doc!=null){
+       var temp_arr;
+       temp_arr = doc.bookstore;
+       for(var i=0;i<temp_arr.length;i++){
+         if(temp_arr[i]._id === parseInt(req.params.bid)){
+           temp_arr[i].goodbook = 0;
+         }
+       }
+       users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
+       res.send(0);
+      }
+      else {
+        console.log('trouble finding the user');
+       res.send(1);
+      }
+    }
+  });
 });
+
+//app.post('/people/:item',function (req,res){
+//
+//});
 
 //******************** HELPERS ********************//
 
