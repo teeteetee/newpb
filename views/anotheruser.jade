@@ -8,7 +8,7 @@ head
     title C     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')     
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')    
     meta(liber de amicitia est)
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
@@ -31,18 +31,19 @@ head
       border-radius:10px;
       margin-bottom:30px;
       }
+      #userimg {
+      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
+      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
+      box-shadow: -9px 0px 40px 0px #c7c7c7;
+      width:100%;
+      }
       .emptybook {
       padding-left:23px;
       }
       .book h4 {
       color:black;
       }
-      .book:hover {
-      background-color:#eee;
-      }
       .book {
-      padding-top:10px;
-      padding-bottom:10px;
       border-bottom:1px solid #eee;
       }
       #booklist {
@@ -64,6 +65,10 @@ head
       @media (max-width: 767px) {
       #mainframe {
       margin-top:0px;
+      }
+      #userimg {
+      width:130px;
+      height:130px;
       }
       .book {
       border-bottom:1px solid #eee;
@@ -95,6 +100,10 @@ head
       @media (max-width: 992px) {
       #booklist {
       border-bottom-left-radius:10px;
+      }
+      #userimg {
+      width:150px;
+      height:150px;
       }
       .things{
       padding-top:50px;
@@ -135,9 +144,13 @@ head
       .inleftblock {
       border-bottom:1px solid #eee;
       color:gray;
+      -webkit-transition: background-color 0.3s ease;
+      -moz-transition: background-color 0.3s ease;
+      -o-transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease;
       }
       .inleftblock:hover {
-      background-color: #333;
+      background-color: #ddd;
       color:white;
       }
       .inleftblock:hover h4 {
@@ -149,12 +162,6 @@ head
       .btncorr {
       font-family:boldproxima;
       text-transform:uppercase;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      border:7px solid white;
       }
       .img-circle {
       -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
@@ -171,6 +178,7 @@ head
       }
       .btn-success {
       background-color:#23BBA7;
+      }
       .btn-success:hover {
       background-color:#1F9E8E;
       } 
@@ -182,64 +190,449 @@ head
         text-indent:20px;
         font-size:18px;
       }
+      .cpadding {
+       padding-left:30px;
+       padding-right:30px;
+      }
+      .txtleft {
+        text-align:left;
+      }
+      ol li {
+      margin-bottom: 10px;
+      font-size:18px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      #extra {
+        display:none;
+        background-color:#f5f5f5;
+        padding-top:15px;
+      }
+      #add {
+        display:none;
+      }
+      .btn:focus,.btn:active {
+         outline: none !important;
+      }
+      .btn-default:focus,.btn-default:active {
+         background-color:white;
+         border-color:#ccc;
+      }
+      label {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .loader {
+      margin: 60px auto;
+      margin-top:20%;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+      }
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      #autocomp {
+      display:none;
+      background-color: white;
+      border-radius: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-top:3px;
+      padding-bottom:3px;
+      border: 1px solid #ddd;
+      position: absolute;
+      max-width: 510;
+      width: 100%;
+      box-shadow: 1px 7px 30px #A09F9F;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .sritem:hover {
+       background-color:#23A8E2;
+       color:white;
+      }
+      .sritem {
+        padding-top:3px;
+        padding-bottom:3px;
+      }
+      .modal-header {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-family:boldproxima;
+      text-transform:uppercase;
+      text-align:center;
+      }
+      .modal-content{
+      border-radius:10px;
+      }
+      .btn-success:active, .btn-success:focus, .btn-success:hover {
+      background-color:#22A795;
+      border-color:#19796C;
+      }
+      .book {
+      text-align:left;
+      border-bottom:1px solid #eee;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color:white;
+      }
+      .book > button {
+      vertical-align:super;
+      }
+      #testinsert {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      .bookpadding {
+      padding-top:10px;
+      padding-bottom:10px;
+      height:50px;
+      }
+      .hovershade:hover{
+       background-color:#eee;
+      }
+      .slideover {
+      display:none;
+      z-index:8888;
+      position:absolute;
+      background-color:rgba(0,0,0,0.8);
+      width:100%;
+      text-align:center;
+      }
+      .close {
+      font-size:30px
+      margin-top:14px;
+      margin-right:20px;
+      opacity:1;
+      text-ashadow:none;
+      color:white;
+      }
+      .btn-darkdefault{
+       background:none;
+       border:1px solid #ddd;
+       color:white;
+      }
+      .btn-darkwarning{
+       background:none;
+       border:1px solid #ff9900;
+       color:#ff9900;
+      }
+      .btn-darkdanger{
+       background:none;
+       border:1px solid red;
+       color:red;
+      }
+      .btn-darkprimary{
+       background:none;
+       border:1px solid  #00C3FF;;
+       color: #00C3FF;;
+      }
+      .btn.focus, .btn:focus, .btn:hover {
+          text-decoration: none;
+      }
+      .btn-ioslooklike {
+       border:1px solid black;
+       color:black;
+       background:none;
+      }
+      .iosactive {
+        background-color:black;
+        color:white;
+      }
+      .iosactive:hover{
+        color:#ff9900;
+      }
+      .btn-ioswarning {
+        border:1px solid #ec971f;
+        background-color:white;
+        color:#ec971f;
+      }
+      .btn-ioswarning.iosactive {
+        background-color:#ec971f;
+        color:white;
+      }
+      .btn-iosprimary {
+        background-color:white;
+        border:1px solid #2e6da4;
+        color:#2e6da4;
+      }
+      .btn-iosprimary.iosactive {
+        background-color:#2e6da4;
+        color:white;
+      }
   body
-    .container
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader
+    .container#main
       #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
+        #leftpanel.thun.col-md-2.visible-lg.visible-md
           #{avatar}
           h3(id='numbers' style='text-align:center;')
           .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row.visible-lg.visible-md
+          .inleftblock.row(id='openadd')
              .col-xs-12
-               a(href='/chat/#{sndr}/#{rcvr}')
-                 h4 
-                   span(style ='color:#23BBA7;' class='glyphicon glyphicon-envelope') 
-                   | Chat
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
+               h4 
+                 span(style ='color:#333;' class='glyphicon glyphicon-envelope') 
+                 | Chat
+          .inleftblock.row
+            .col-xs-12(style='background-color:#ddd;')
               a(href='/')
                 h4  Lists   
-          .inleftblock.row.visible-lg.visible-md
+          .inleftblock.row
             .col-xs-12
               a(href='/chat')
                 h4  Messages       
-          .inleftblock.row.visible-lg.visible-md
+          .inleftblock.row
             .col-xs-12
               a(href='/people')
                 h4  People 
-          .inleftblock.row.visible-lg.visible-md
+          .inleftblock.row
             .col-xs-12
               a(href='/settings')
-                h4  Settings     
-          .inleftblock.row.visible-lg.visible-md
+                h4  Settings    
+          .inleftblock.row
             .col-xs-12
               a(href='/about')
                 h4  About   
-          .inleftblock.row.visible-lg.visible-md
+          .inleftblock.row
             .col-xs-12
               a(href='/logout')
                 h4  Logout      
         #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:#white;border-top-right-radius:10px;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') User №#{user}                       
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Books 
-                span
-                  a(style='color:#545454;' href='#') / movies                                     
+          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;padding:20px;border-bottom:1px solid #eee;')
+            .col-xs-12(id='testinsert')
+              //TO DO do an IOS style flat kinda thing 
+              .btn-group
+                button(class='btn btn-ioslooklike iosactive') Books
+                button(class='btn btn-ioslooklike') Movies
           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
+            //TO DO make 50x50 avatar to redesign mobile list layout, no menu is visible - fix that as well
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
               h2(style='color:white;text-align:center;') user №#{user} 
               .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-                button(type="button" class="btn btncorr btn-default active") Books
-                button(type="button" class="btn btncorr btn-default") Movies   
+                button(type="button" class="btn btncorr btn-default active") XBooks
+                button(type="button" class="btn btncorr btn-default") XFilms                  
           .list.row
-            #discussions.col-xs-12(style='padding:top:100px;')
+            .col-xs-12#books
+              h2(id='noitems' style='color:#ccc;') No items
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='js/bootstrap.min.js')  
+    script(src='js/bootstrap.min.js')     
     script.
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      
+      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
+      String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+      }
+      setTimeout(function(){
+        if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
+          alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
+        }
+        },2000);
+      var books=[];
+      var count;
+      $.ajax({
+         method: "POST",
+         url: "/getbooks/#{user}",
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log('msg is: '+msg);
+           books = msg;
+           console.log(JSON.stringify(books));
+           count = books.length -1;
+           if(!books) {
+            //alert('server maintenence \n try again later');
+            $('#myModal').modal('show');
+           }
+           else {
+            getbooks(books,count);
+           }
+           });
+      function getbooks(books,i) {
+        if(!i){
+         // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
+         //$('#books').prepend(bnum);
+         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
+       $('#testinsert').append(bnum);
+          
+        }
+        console.log('i:'+i);
+        var url = '/getbook/'+books[i]._id;
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 0
+       })
+         .done(function( msg ) {
+           if($('#noitems').css('display')==='block'){
+            $('.list').css('padding-top','0px');
+            $('#noitems').remove();
+           }
+            var authors_insert ;
+            for(var xi=0;xi<msg.authors.length;xi++){
+              authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
+            }
+            console.log('newbook :'+books[i].newbook);
+            console.log('goodbook :'+books[i].goodbook);
+            var insert;
+            switch(true){
+              case(books[i].goodbook&&!books[i].newbook):
+              console.log('1st case');
+              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              break
+              case(books[i].newbook&&!books[i].goodbook):
+              console.log('2st case');
+              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as read & good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              break
+              case(!books[i].newbook&&!books[i].goodbook):
+              console.log('3st case');
+              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+i+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              break
+            }         
+           $('#books').append(insert);
+           });
+         count--;
+         console.log('before iteration, count: '+count);
+         if(count!=-1)
+        {getbooks(books,count);}
+        else {
+          return 0;
+        }
+      }
+      function closeoptions(id){
+        eval("$('#sm"+id+"').fadeToggle('fast');");
+      }
+      function ops(id) {
+        //TO DO check if any of those menues are open and close them before showing a new one
+          $('.slideover').fadeOut(350);
+          eval("$('#sm"+id+"').fadeToggle('fast');");
+        }
+      var authorcount=0;
+      $('#addauthor').click(function(){
+        authorcount++;
+        if($('#removeauthor').hasClass('disabled')){
+          $('#removeauthor').removeClass('disabled');
+        }
+        var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
+        $('#authoradd_here').append(insert);
+        eval("$('#author"+authorcount+"').slideToggle();");
+      });
+      $('#removeauthor').click(function(){
+        if(authorcount>0)
+        { eval("$('#author"+authorcount+"').slideToggle();");
+          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;if(authorcount===0){$('#removeauthor').addClass('disabled');}");},1100);
+              }
+        });
+      $('#openadd').click(function(){
+        //$('#add').css('display','block');
+        //$('#main').css('overflow','hidden');
+        $('#addbook').modal('show');
+        });
+      $('#closeadd').click(function(){
+        //$('#add').css('display','none'); 
+        //$('#main').css('overflow','auto');
+        $('#addbook').modal('hide');
+        });
+      $('#openextra').click(function(){
+        $('#extra').slideToggle();
+        }); 
+      $('#oldbook').click(function(){
+        if($('#oldbook').hasClass('active')){
+        }
+        else{
+          $('#oldbook').addClass('active');
+          $('#newbook').removeClass('active');
+        }
+        });
+      $('#newbook').click(function(){
+        if($('#newbook').hasClass('active')){
+        }
+        else{
+          $('#newbook').addClass('active');
+          $('#oldbook').removeClass('active');
+        }
+        });
+      $('#fiction').click(function(){
+        if($('#fiction').hasClass('active')){
+        }
+        else{
+          $('#fiction').addClass('active');
+          $('#nonfiction').removeClass('active');
+        }
+        });
+      $('#nonfiction').click(function(){
+        if($('#nonfiction').hasClass('active')){
+        }
+        else{
+          $('#nonfiction').addClass('active');
+          $('#fiction').removeClass('active');
+        }
+        });
+      var lastentry;
+      $('#title').focusout(function(){
+        if($('#autocomp').css('display','block')) {
+          $('#autocomp').fadeOut(350);
+        }
+        });
+      $('#title').keyup(function(event) {
+        if($('#title').val() != lastentry && $('#title').val().length >3) {       
+          //$('div').append('TEST'+$(this).val()+"<br>");
+          $.ajax({
+            method: "POST",
+            url: "/livesearch/btitle",
+            data: { txt: $('#title').val() }
+          }).done(function( msg ) {
+              console.log(msg);
+              if(msg)
+                { $('#sr').empty();
+                  for(var btitle =0;btitle<msg.length;btitle++){
+                    console.log('vtitle: '+msg[btitle]);
+                    var click = "$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
+                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"</div></div>");
+                    eval("$('#hint"+btitle+"').attr('onclick',click);");
+                   }
+                  $('#autocomp').fadeIn(350);
+                  }
+                            else {
+                              lastentry = $('#text').val();
+                            }
+                });
+        }
+       lastentry = $('#text').val()
+      });
