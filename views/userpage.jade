@@ -671,7 +671,7 @@ head
       function markread(bookid,books) {
         $.ajax({
               method: "POST",
-              url: "/markread/#{user}/"+books[bookid]._id,
+              url: "/markread/#{user}/"+books[parseInt(bookid)]._id,
               data: data
             })
               .done(function( msg ) {
