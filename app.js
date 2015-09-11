@@ -116,7 +116,7 @@ app.post('/getbook/:id',function (req,res){
 });
 });
 
-app.post('/getbook/:id',function (req,res){
+app.post('/getuser/:id',function (req,res){
   //TO DO auth
   users.findOne({_id:req.params.id},function(err,doc){
     if(err) {
