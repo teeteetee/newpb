@@ -387,6 +387,7 @@ app.post('/markread/:uid/:bid',function (req,res){
        for(var i=0;i<temp_arr.length;i++){
          console.log(typeof temp_arr[i]._id+', and '+typeof req.params.bid);
           temp_id = temp_arr[i]._id;
+          console.log(typeof temp_id);
          if(temp_id === req.params.bid){
            console.log('modifying');
            temp_arr[i].newbook = 0;
