@@ -375,6 +375,7 @@ head
       .btn-ioswarning {
         border:1px solid #ec971f;
         background-color:white;
+        color:#ec971f;
       }
       .btn-ioswarning.iosactive {
         background-color:#ec971f;
@@ -382,6 +383,7 @@ head
       .btn-iosprimary {
         background-color:white;
         border:1px solid #2e6da4;
+        color:#2e6da4;
       }
       .btn-iosprimary.iosactive {
         background-color:#2e6da4;
@@ -444,11 +446,11 @@ head
                     button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
                     button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
                 .btn-group(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-ioswarning iosactive' id='newbook' type='button') New
-                  button(class=' btn btn-lg btn-ioswarning' id='oldbook'  type='button' )  I've read it
+                  button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
+                  button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
                 .btn-group.pull-right(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-lg btn-iosprimary' id='fiction' type='button' ) Fiction
+                  button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
+                  button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction
             .row.cpadding.txtleft(id='extra')
               .col-xs-12
                 form
