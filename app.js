@@ -473,7 +473,7 @@ app.get('/cs',function (req,res){
   res.send(req.session);
 });
 
-app.get('/id:id',function (req,res){
+app.get('/ad:id',function (req,res){
   var vuid = parseInt(req.params.id);
   users.findOne({uid:vuid},function (err,done){
     if (err) {
