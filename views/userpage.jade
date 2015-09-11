@@ -530,7 +530,7 @@ head
          .done(function( msg ) {
            console.log('msg is: '+msg);
            books = msg;
-           count = books.length;
+           count = books.length -1;
            console.log('books are: '+typeof books);
            if(!books) {
             //alert('server maintenence \n try again later');
@@ -546,10 +546,9 @@ head
          //$('#books').prepend(bnum);
          var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
        $('#testinsert').append(bnum);
-          return 0;
+          
         }
         console.log('i before:'+i);
-        i--;
         console.log('i after incrementation: '+i);
         var url = '/getbook/'+books[i]._id;
         console.log('books: '+books[i]);
@@ -589,7 +588,11 @@ head
            });
          count--;
          console.log('another iteration, count: '+count);
-        getbooks(books,count);
+         if(count!=-1)
+        {getbooks(books,count);}
+        else {
+          return 0;
+        }
       }
       function ops(id) {
         //TO DO check if any of those menues are open and close them before showing a new one
