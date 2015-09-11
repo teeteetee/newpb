@@ -828,7 +828,7 @@ app.post('/checkdisc/:id/:last', function (req,res){
 });
 
 
-app.get('/user/:id', function (req,res){
+app.get('/id:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
   {var vuid = parseInt(req.params.id);
@@ -837,19 +837,7 @@ app.get('/user/:id', function (req,res){
       
       }
       else {
-        //---------------------//
-        //if(doc){
-        //  if(doc.pub)
-        //  {res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});}
-        //  else {
-        //    res.render('restricted');
-        //  }
-        //}
-        //else {
-        //  res.redirect('vntrlst.com');
-        //}
-      //----------------------//
-      if(doc){
+        if(doc){
                   if(doc.userpic)
                   { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+doc.uid+doc.picext+"'";
                       res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
