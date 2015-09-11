@@ -408,16 +408,18 @@ app.post('/markgood/:uid/:bid',function (req,res){
        res.send(1);
     }
     else {
-      if(doc!=null){
+     if(doc!=null){
        var temp_arr;
        temp_arr = doc.bookstore;
+       var temp_id;
        for(var i=0;i<temp_arr.length;i++){
-         if(temp_arr[i]._id === parseInt(req.params.bid)){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.bid)){
            temp_arr[i].goodbook = 0;
+           users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
+          res.send(0);
          }
        }
-       users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
-       res.send(0);
       }
       else {
         console.log('trouble finding the user');
