@@ -760,43 +760,6 @@ app.post('/disccheck/:id/:uid',function (req,res){
   });
 });
   
-  //discussions.findOne({discid:vdiscid},function (err,doc){
-  //  if(err) {
-  //  ms.trouble=1;
-  //  ms.mtext='db';
-  //  res.send(ms);
-  //  }
-  //  else {
-  //    if(doc){
-  //     
-  //    }
-  //    else {
-  //      ms.trouble=1;
-  //      ms.mtext='no discussion';
-  //      res.send(ms);
-  //    }
-  //  }
-  //});
-  //messages.find({},{limit:1,sort:{uid:-1}},function(err,doc){
-  //                  if(err){
-  //                      res.render('index_new');
-  //                       console.log('QUERY ERR');
-  //                     }
-  //                   else {
-  //                     if(doc.length>0){
-  //                         var newid = doc[0].uid;
-  //                         newid++;
-  //                         var vtmstmp = Date.now();
-  //                        messages.insert({txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp});
-  //                        //TO DO check for new messages 
-  //                        var ms={};
-  //                        var ms.trouble = 0;
-  //                        res.send(ms); 
-  //                       }
-  //                       }
-  //                     });
-
-
 app.post('/checkdisc/:id/:last', function (req,res){
   var vdiscid = req.params.id;
   var vlast = req.params.last;
@@ -1252,6 +1215,34 @@ app.post('/admin/insidemsg',function(req,res){
        }
    }
   });
+});
+
+app.post('/track/:id',function (req,res){
+  /// TO DO AUTH
+  //-------------------------//
+  var ms={};
+  ms.trouble = 1;
+   users.findOne({uid:parseInt(req.params.id)},function(err,user){
+           if(err) {
+               console.log('err while user query');
+               res.send(ms);
+           }
+           else {
+              if(user!=null){
+                var user_insert={};
+                user_insert._id = user._id;
+                users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}});
+                ms.trouble=0;
+                res.send(ms);    
+               //respond to user with success
+              }
+              else{
+                res.send(ms);
+              }
+           }
+         });
+  }
+ //---------------------------//
 });
 
 app.post('/additem/:uid/:id',function (req,res){

@@ -401,7 +401,7 @@ head
           #{avatar}
           h3(id='numbers' style='text-align:center;')
           .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row(id='openadd')
+          .inleftblock.row(id='track')
              .col-xs-12
                h4 
                  span(style ='color:#333;' class='glyphicon glyphicon-eye-open') 
@@ -564,80 +564,21 @@ head
           setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;if(authorcount===0){$('#removeauthor').addClass('disabled');}");},1100);
               }
         });
-      $('#openadd').click(function(){
-        //$('#add').css('display','block');
-        //$('#main').css('overflow','hidden');
-        $('#addbook').modal('show');
-        });
-      $('#closeadd').click(function(){
-        //$('#add').css('display','none'); 
-        //$('#main').css('overflow','auto');
-        $('#addbook').modal('hide');
-        });
       $('#openextra').click(function(){
         $('#extra').slideToggle();
         }); 
-      $('#oldbook').click(function(){
-        if($('#oldbook').hasClass('active')){
-        }
-        else{
-          $('#oldbook').addClass('active');
-          $('#newbook').removeClass('active');
-        }
-        });
-      $('#newbook').click(function(){
-        if($('#newbook').hasClass('active')){
-        }
-        else{
-          $('#newbook').addClass('active');
-          $('#oldbook').removeClass('active');
-        }
-        });
-      $('#fiction').click(function(){
-        if($('#fiction').hasClass('active')){
-        }
-        else{
-          $('#fiction').addClass('active');
-          $('#nonfiction').removeClass('active');
-        }
-        });
-      $('#nonfiction').click(function(){
-        if($('#nonfiction').hasClass('active')){
-        }
-        else{
-          $('#nonfiction').addClass('active');
-          $('#fiction').removeClass('active');
-        }
-        });
-      var lastentry;
-      $('#title').focusout(function(){
-        if($('#autocomp').css('display','block')) {
-          $('#autocomp').fadeOut(350);
-        }
-        });
-      $('#title').keyup(function(event) {
-        if($('#title').val() != lastentry && $('#title').val().length >3) {       
-          //$('div').append('TEST'+$(this).val()+"<br>");
-          $.ajax({
-            method: "POST",
-            url: "/livesearch/btitle",
-            data: { txt: $('#title').val() }
-          }).done(function( msg ) {
-              console.log(msg);
-              if(msg)
-                { $('#sr').empty();
-                  for(var btitle =0;btitle<msg.length;btitle++){
-                    console.log('vtitle: '+msg[btitle]);
-                    var click = "$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
-                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"</div></div>");
-                    eval("$('#hint"+btitle+"').attr('onclick',click);");
-                   }
-                  $('#autocomp').fadeIn(350);
-                  }
-                            else {
-                              lastentry = $('#text').val();
-                            }
-                });
-        }
-       lastentry = $('#text').val()
-      });
+      $('#track').click(track);
+      function track () {$.ajax({
+               method: "POST",
+               url: "/track/#{user}",
+               data: 0
+             })
+               .done(function( msg ) {
+                 if(msg.trouble) {
+                  alert('trouble');
+                 }
+                 else {
+                  alert('success');
+                 }
+                 });}
+      
