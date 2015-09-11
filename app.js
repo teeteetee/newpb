@@ -341,15 +341,10 @@ app.get('/about',function (req,res){
 
 app.get('/people',function (req,res){
    if(req.session.uid)
-  { if(parseInt(req.session.uid)===parseInt(req.params.id))
-    {
-     res.redirect('/');
-    }
-    else
-    {var vuid = parseInt(req.params.id);
-        users.findOne({uid:vuid},function (err,doc){
+  {
+        users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
           if(err) {
-          
+          // TO DO tell user
           }
           else {
             if(doc){
@@ -363,7 +358,6 @@ app.get('/people',function (req,res){
           }
         });
       }
-  }
   else {
     res.render('restricted');
   }
