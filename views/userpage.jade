@@ -530,6 +530,7 @@ head
          .done(function( msg ) {
            console.log('msg is: '+msg);
            books = msg;
+           console.log(JSON.stringify(books));
            count = books.length -1;
            if(!books) {
             //alert('server maintenence \n try again later');
