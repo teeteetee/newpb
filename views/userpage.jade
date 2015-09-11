@@ -596,8 +596,18 @@ head
       }
       function ops(id) {
         //TO DO check if any of those menues are open and close them before showing a new one
-        console.log(id);
-        eval("$('.slideover').fadeOut(350);$('#sm"+id+"').fadeToggle('fast');");
+        if(eval("$('#sm"+id+"').css('display');") === 'block')
+        {if($('.the_class:visible').length)
+                 {
+                  $('.slideover').fadeOut(350);
+                 }}
+        else {
+          if($('.the_class:visible').length)
+                 {
+                  $('.slideover').fadeOut(350);
+                 }}
+            eval("$('#sm"+id+"').fadeToggle('fast');");
+        }
       }
       var authorcount=0;
       $('#addauthor').click(function(){
