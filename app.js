@@ -473,7 +473,7 @@ app.get('/cs',function (req,res){
   res.send(req.session);
 });
 
-app.get('/usr:id',function (req,res){
+app.get('/id:id',function (req,res){
   var vuid = parseInt(req.params.id);
   users.findOne({uid:vuid},function (err,done){
     if (err) {
@@ -837,16 +837,31 @@ app.get('/user/:id', function (req,res){
       
       }
       else {
-        if(doc){
-          if(doc.pub)
-          {res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});}
-          else {
-            res.render('restricted');
-          }
-        }
-        else {
-          res.redirect('vntrlst.com');
-        }
+        //---------------------//
+        //if(doc){
+        //  if(doc.pub)
+        //  {res.render('anotheruser',{'sndr':req.session.uid,'rcvr':vuid,'books':doc.books,'movies':doc.movies});}
+        //  else {
+        //    res.render('restricted');
+        //  }
+        //}
+        //else {
+        //  res.redirect('vntrlst.com');
+        //}
+      //----------------------//
+      if(doc){
+                  if(doc.userpic)
+                  { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+doc.uid+doc.picext+"'";
+                      res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
+                  }
+                   else {
+                    var emptyavatar = "div id=emptyavatar class='img-circle' style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
+                    res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc)});
+                   }
+              }
+              else {
+                res.redirect('/');
+              }
       }
     });
   }

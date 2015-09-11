@@ -186,10 +186,8 @@ head
     .container
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2
-          #emptyavatar(style='width:150px;height:150px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
-          h3(style='text-align:center;') 341 
-            span(style='color:#ddd;') /
-            | 1544
+          #{avatar}
+          h3(id='numbers' style='text-align:center;')
           .row(style='border-top:1px solid #eee;') 
           .inleftblock.row.visible-lg.visible-md
              .col-xs-12
@@ -241,11 +239,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
     script.
-      var books = #{books};
-      for(i=0;i<disussions.length;i++) {
-         $('#books').append("<div class='row'><div class='col-xs-12'><h3>"+books[i].id+"</h3></div></div>");
-      }
-      var movies = #{movies};
-      for(i=0;i<disussions.length;i++) {
-         $('#movies').append("<div class='row'><div class='col-xs-12'><h3>"+movies[i].id+"</h3></div></div>");
-      }
+      var user = !{JSON.stringify(done)};
+      user= JSON.parse(user);
+      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      
