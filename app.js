@@ -409,12 +409,14 @@ app.post('/markgood/:uid/:bid',function (req,res){
     }
     else {
      if(doc!=null){
+      console.log('found user');
        var temp_arr;
        temp_arr = doc.bookstore;
        var temp_id;
        for(var i=0;i<temp_arr.length;i++){
           temp_id = JSON.stringify(temp_arr[i]._id);
          if(temp_id === JSON.stringify(req.params.bid)){
+          console.log('modifying');
            temp_arr[i].goodbook = 0;
            users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
           res.send(0);
