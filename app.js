@@ -371,7 +371,7 @@ app.get('/settings',function (req,res){
 });
 
 app.post('/markread/:uid/:bid',function (req,res){
-  console.log('bid: '+req.params.bid);
+  
   users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
     if(err)
     {
@@ -379,20 +379,14 @@ app.post('/markread/:uid/:bid',function (req,res){
        res.send(1);
     }
     else {
-      console.log('user found:'+doc);
       if(doc!=null){
        var temp_arr;
        temp_arr = doc.bookstore;
        var temp_id;
        for(var i=0;i<temp_arr.length;i++){
-         console.log(typeof temp_arr[i]._id+', and '+typeof req.params.bid);
           temp_id = JSON.stringify(temp_arr[i]._id);
-          console.log(typeof temp_id);
-          console.log(temp_id);
          if(temp_id === JSON.stringify(req.params.bid)){
-           console.log('modifying');
            temp_arr[i].newbook = 0;
-           console.log(temp_arr[i].newbook);
            users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
           res.send(0);
          }
