@@ -411,6 +411,11 @@ head
                h4 
                  span(style ='color:#333;' class='glyphicon glyphicon-envelope') 
                  | Chat
+          .inleftblock.row(id='openadd')
+            .col-xs-12
+              .btn-group
+                button(class='btn btn-ioslooklike' type='button') Follow
+                button(class='btn btn-ioslooklike' type='button') Chat
           .inleftblock.row
             .col-xs-12
               a(href='/')
@@ -464,38 +469,10 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      setTimeout(function(){
-        if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
-          alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
-        }
-        },2000);
-      var books=[];
-      var count;
-      $.ajax({
-         method: "POST",
-         url: "/getbooks/#{user}",
-         data: 0
-       })
-         .done(function( msg ) {
-           console.log('msg is: '+msg);
-           books = msg;
-           console.log(JSON.stringify(books));
-           count = books.length -1;
-           if(!books) {
-            //alert('server maintenence \n try again later');
-            $('#myModal').modal('show');
-           }
-           else {
-            getbooks(books,count);
-           }
-           });
       function getbooks(books,i) {
         if(!i){
-         // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
-         //$('#books').prepend(bnum);
          var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
-       $('#testinsert').append(bnum);
-          
+       $('#testinsert').append(bnum); 
         }
         console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
@@ -505,31 +482,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-           if($('#noitems').css('display')==='block'){
-            $('.list').css('padding-top','0px');
-            $('#noitems').remove();
-           }
-            var authors_insert ;
-            for(var xi=0;xi<msg.authors.length;xi++){
-              authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
-            }
-            console.log('newbook :'+books[i].newbook);
-            console.log('goodbook :'+books[i].goodbook);
-            var insert;
-            switch(true){
-              case(books[i].goodbook&&!books[i].newbook):
-              console.log('1st case');
-              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
-              break
-              case(books[i].newbook&&!books[i].goodbook):
-              console.log('2st case');
-              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as read & good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
-              break
-              case(!books[i].newbook&&!books[i].goodbook):
-              console.log('3st case');
-              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+i+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
-              break
-            }         
+                  
            $('#books').append(insert);
            });
          count--;
@@ -548,25 +501,6 @@ head
           $('.slideover').fadeOut(350);
           eval("$('#sm"+id+"').fadeToggle('fast');");
         }
-      var authorcount=0;
-      $('#addauthor').click(function(){
-        authorcount++;
-        if($('#removeauthor').hasClass('disabled')){
-          $('#removeauthor').removeClass('disabled');
-        }
-        var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
-        $('#authoradd_here').append(insert);
-        eval("$('#author"+authorcount+"').slideToggle();");
-      });
-      $('#removeauthor').click(function(){
-        if(authorcount>0)
-        { eval("$('#author"+authorcount+"').slideToggle();");
-          setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;if(authorcount===0){$('#removeauthor').addClass('disabled');}");},1100);
-              }
-        });
-      $('#openextra').click(function(){
-        $('#extra').slideToggle();
-        }); 
       $('#track').click(track);
       function track () {$.ajax({
                method: "POST",
