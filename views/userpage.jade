@@ -349,6 +349,9 @@ head
        border:1px solid  #00C3FF;;
        color: #00C3FF;;
       }
+      .btn.focus, .btn:focus, .btn:hover {
+          text-decoration: none;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -548,7 +551,7 @@ head
       }
       function ops(id) {
         console.log(id);
-        eval("$('#sm"+id+"').fadeToggle(350);");
+        eval("$('#sm"+id+"').fadeToggle(300);");
       }
       var authorcount=0;
       $('#addauthor').click(function(){
