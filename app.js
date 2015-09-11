@@ -339,6 +339,11 @@ app.get('/about',function (req,res){
   res.render('about');
 });
 
+app.get('/people',function (req,res){
+  res.render('people');
+});
+
+
 app.get('/settings',function (req,res){
   if(req.session.mail){
     users.findOne({mail:req.session.mail},function(err,done){
