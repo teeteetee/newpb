@@ -669,6 +669,7 @@ head
       });
       //-----------------------------------//
       function markread(bookid,books) {
+        console.log(books+', '+bookid);
         $.ajax({
               method: "POST",
               url: "/markread/#{user}/"+books[parseInt(bookid)]._id,
