@@ -387,10 +387,10 @@ app.post('/markread/:uid/:bid',function (req,res){
          if(temp_arr[i]._id === req.params.bid){
            console.log('modifying');
            temp_arr[i].newbook = 0;
+           users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
+          res.send(0);
          }
        }
-       users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
-       res.send(0);
       }
       else {
         console.log('trouble finding the user');
