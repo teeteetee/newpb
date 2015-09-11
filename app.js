@@ -417,7 +417,7 @@ app.post('/markgood/:uid/:bid',function (req,res){
           temp_id = JSON.stringify(temp_arr[i]._id);
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
-           temp_arr[i].goodbook = 0;
+           temp_arr[i].goodbook = 1;
            users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
           res.send(0);
          }
