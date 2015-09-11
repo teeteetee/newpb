@@ -338,6 +338,16 @@ head
        border:1px solid #ddd;
        color:white;
       }
+      .btn-darkwarning{
+       background:none;
+       border:1px solid #ff9900;
+       color:#ff9900;
+      }
+      .btn-darkprimary{
+       background:none;
+       border:1px solid  #00C3FF;;
+       color: #00C3FF;;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -529,7 +539,7 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='slideover col-xs-12' id='sm"+i+"'><button class='btn btn-sm btn-warning pull-right' style='background-color:#00C3FF;border-color:#00C3FF;'>people</button><button class='btn btn-sm btn-darkdefault pull-right' style='margin-right:15px;' onclick='ops("+i+");'>Mark as read</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding' onclick='ops("+i+");'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+            var insert = "<div class='row book'><div class='slideover col-xs-12' id='sm"+i+"'><button class='btn btn-sm btn-darkprimary pull-right' style='background-color:#00C3FF;border-color:#00C3FF;'>people</button><button class='btn btn-sm btn-darkdefault pull-right' style='margin-right:15px;' onclick='markread("+msg._id+");'>Mark as read</button><button class='btn btn-sm btn-darkwarning pull-right' style='margin-right:15px;'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding' onclick='ops("+i+");'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
             $('#books').append(insert);
            });
          count--;
