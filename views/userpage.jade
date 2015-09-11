@@ -673,7 +673,7 @@ head
         $.ajax({
               method: "POST",
               url: "/markread/#{user}/"+books[bid]._id,
-              data: data
+              data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
