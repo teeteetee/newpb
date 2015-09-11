@@ -372,6 +372,20 @@ head
       .iosactive:hover{
         color:#ff9900;
       }
+      .btn-ioswarning {
+        border:1px solid #ec971f;
+        background-color:white;
+      }
+      .btn-ioswarning.iosactive {
+        background-color:#ec971f;
+      }
+      .btn-iosprimary {
+        background-color:white;
+        border:1px solid #2e6da4;
+      }
+      .btn-iosprimary.iosactive {
+        background-color:#2e6da4;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -422,12 +436,19 @@ head
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
             .row.cpadding(style='text-align:left;')
               .col-xs-12
+                //
+                  .btn-group(style='margin-bottom:15px;')
+                    button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
+                    button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
+                  .btn-group.pull-right(style='margin-bottom:15px;')
+                    button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
+                    button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
                 .btn-group(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
-                  button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
+                  button(class='btn btn-lg btn-ioswarning active' id='newbook' type='button') New
+                  button(class=' btn btn-lg btn-ioswarning' id='oldbook'  type='button' )  I've read it
                 .btn-group.pull-right(style='margin-bottom:15px;')
-                  button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
+                  button(class='btn btn-lg btn-iosprimary active' id='nonfiction' type='button') Nonfiction
+                  button(class=' btn btn-lg btn-iosprimary' id='fiction' type='button' ) Fiction
             .row.cpadding.txtleft(id='extra')
               .col-xs-12
                 form
