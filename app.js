@@ -831,27 +831,33 @@ app.post('/checkdisc/:id/:last', function (req,res){
 app.get('/id:id', function (req,res){
   //TO DO if req.session
   if(req.session.uid)
-  {var vuid = parseInt(req.params.id);
-    users.findOne({uid:vuid},function (err,doc){
-      if(err) {
-      
-      }
-      else {
-        if(doc){
-                  if(doc.userpic)
-                  { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+doc.uid+doc.picext+"'";
-                      res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
+  { if(parseInt(req.session.uid)===parseInt(req.params.id))
+    {
+     res.redirect('/');
+    }
+    else
+    {var vuid = parseInt(req.params.id);
+        users.findOne({uid:vuid},function (err,doc){
+          if(err) {
+          
+          }
+          else {
+            if(doc){
+                      if(doc.userpic)
+                      { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+doc.uid+doc.picext+"'";
+                          res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
+                      }
+                       else {
+                        var emptyavatar = "div id=emptyavatar class='img-circle' style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
+                        res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc)});
+                       }
                   }
-                   else {
-                    var emptyavatar = "div id=emptyavatar class='img-circle' style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
-                    res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc)});
-                   }
-              }
-              else {
-                res.redirect('/');
-              }
+                  else {
+                    res.redirect('/');
+                  }
+          }
+        });
       }
-    });
   }
   else {
     res.render('restricted');
