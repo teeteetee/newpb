@@ -352,6 +352,15 @@ head
       .btn.focus, .btn:focus, .btn:hover {
           text-decoration: none;
       }
+      .btn-ioslooklike {
+       border:1px solid black;
+       color:black;
+       background:none;
+      }
+      .iosactive {
+        background-color:black;
+        color:white;
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -470,7 +479,11 @@ head
                       a(style='color:#545454;' href='#') / Films                        
               .btn-group
                 button(class='btn btn-default active') Books
-                button(class='btn btn-default') Movies        
+                button(class='btn btn-default') Movies       
+              //TO DO do an IOS style flat kinda thing 
+              .btn-group
+                button(class='btn btn-ioslooklike iosactive') Books
+                button(class='btn btn-ioslooklike') Movies
           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
             //TO DO make 50x50 avatar to redesign mobile list layout, no menu is visible - fix that as well
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
@@ -544,13 +557,14 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+msg._id+");'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+msg._id+");'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 style='display:inline;'><span style='color:red;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
             $('#books').append(insert);
            });
          count--;
         getbooks(books,count);
       }
       function ops(id) {
+        //TO DO check if any of those menues are open and close them before showing a new one
         console.log(id);
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
@@ -652,6 +666,17 @@ head
         $.ajax({
               method: "POST",
               url: "/markread/#{user}/bookid",
+              data: data
+            })
+              .done(function( msg ) {
+                
+              });
+      }
+      //-----------------------------------//
+      function markgood(bookid) {
+        $.ajax({
+              method: "POST",
+              url: "/markgood/#{user}/bookid",
               data: data
             })
               .done(function( msg ) {
