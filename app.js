@@ -1286,11 +1286,11 @@ app.post('/additem/:uid/:id',function (req,res){
                       book_insert.goodbook = 0;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
-                      users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,newbooks:1}});
+                      users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
-                        users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:newbook._id},$inc:{totalbooks:1,oldbooks:1}});
+                        users.update({uid:parseInt(req.params.uid)},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
