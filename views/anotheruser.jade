@@ -399,23 +399,22 @@ head
       #mainframe.row.cuttop
         #leftpanel.thun.col-md-2.visible-lg.visible-md
           #{avatar}
-          h3(id='numbers' style='text-align:center;')
+          //h3(id='numbers' style='text-align:center;')
+          .btn-group
+            button(class='btn btn-ioslooklike' type='button') Follow
+            button(class='btn btn-ioslooklike' type='button') Chat
           .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row(id='track')
-             .col-xs-12
-               h4 
-                 span(style ='color:#333;' class='glyphicon glyphicon-eye-open') 
-                 | Track
-          .inleftblock.row(id='openadd')
-             .col-xs-12
-               h4 
-                 span(style ='color:#333;' class='glyphicon glyphicon-envelope') 
-                 | Chat
-          .inleftblock.row(id='openadd')
-            .col-xs-12
-              .btn-group
-                button(class='btn btn-ioslooklike' type='button') Follow
-                button(class='btn btn-ioslooklike' type='button') Chat
+            //
+              .inleftblock.row(id='track')
+                 .col-xs-12
+                   h4 
+                     span(style ='color:#333;' class='glyphicon glyphicon-eye-open') 
+                     | Track
+              .inleftblock.row(id='openadd')
+                 .col-xs-12
+                   h4 
+                     span(style ='color:#333;' class='glyphicon glyphicon-envelope') 
+                     | Chat
           .inleftblock.row
             .col-xs-12
               a(href='/')
