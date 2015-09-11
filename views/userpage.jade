@@ -344,6 +344,11 @@ head
        border:1px solid #ff9900;
        color:#ff9900;
       }
+      .btn-darkdanger{
+       background:none;
+       border:1px solid red;
+       color:red;
+      }
       .btn-darkprimary{
        background:none;
        border:1px solid  #00C3FF;;
@@ -561,10 +566,11 @@ head
               console.log(msg.authors[i]);
               authors_insert = msg.authors[i].name+' '+msg.authors[i].surname+' ';
             }
-           var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='titlemsg._id' style='display:inline;color:gray;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+           var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='titlemsg._id' style='display:inline;color:gray;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
             if(books[i].newbook)
-           {var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='titlemsg._id' style='display:inline;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
-            }            $('#books').append(insert);
+           {var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkdefault ' style='margin-right:15px;' onclick='markread("+i+",books);'>Mark as read</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+msg._id+");'>Mark as good</button><button onclick='ops("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='titlemsg._id' style='display:inline;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+            }            
+            $('#books').append(insert);
            });
          count--;
         getbooks(books,count);
