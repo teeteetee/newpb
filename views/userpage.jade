@@ -531,7 +531,6 @@ head
            console.log('msg is: '+msg);
            books = msg;
            count = books.length -1;
-           console.log('books are: '+typeof books);
            if(!books) {
             //alert('server maintenence \n try again later');
             $('#myModal').modal('show');
@@ -548,10 +547,8 @@ head
        $('#testinsert').append(bnum);
           
         }
-        console.log('i before:'+i);
-        console.log('i after incrementation: '+i);
+        console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
-        console.log('books: '+books[i]);
         $.ajax({
          method: "POST",
          url: url,
@@ -564,7 +561,6 @@ head
            }
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
-              console.log(msg.authors[xi]);
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
             }
             console.log('newbook :'+books[i].newbook);
@@ -587,7 +583,7 @@ head
            $('#books').append(insert);
            });
          count--;
-         console.log('another iteration, count: '+count);
+         console.log('before iteration, count: '+count);
          if(count!=-1)
         {getbooks(books,count);}
         else {
