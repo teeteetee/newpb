@@ -702,7 +702,7 @@ head
         $.ajax({
               method: "POST",
               url: "/markgood/#{user}/"+books[bid]._id,
-              data: data
+              data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
