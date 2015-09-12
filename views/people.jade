@@ -459,16 +459,53 @@ head
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
            $('.list').css('padding-top','0px');
-            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
+           //var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
+           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><div class='media'><a href='/id"+msg.uid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+msg.uid+"</h4>"+lastmsg+"</div></div></a></div></div>";
            $('#users').append(insert);
            });
          count--;
          console.log('before iteration, count: '+count);
+         getavatar(msg.uid,msg._id);
          if(count!=-1)
         {getusers(users,count);}
         else {
           return 0;
         }
+      }
+      function getavatar(uid,discid) {
+      console.log('getting avatar for: '+uid);
+      avatarrequest = new XMLHttpRequest();
+      avatarrequest.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(avatarrequest.responseText);
+      counter++;
+      if(counter<discussions.length)
+      {getdisc(discussions[counter],counter)}
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+      eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      }
+      else {
+      if(parsed.mtext==='emptypic'){
+        console.log('EMPTY AVATAR');
+       eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      }
+      else 
+      {
+        console.log('HAS AVATAR');
+      eval("$('#img_cid"+discid+"').attr('src','/userpics/id"+uid+"_small"+parsed.ext+"');");
+      }
+      }
+      }
+      };
+      avatarrequest.open('POST', '/getavatar/'+uid, true);
+      avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      avatarrequest.send();
       }
       getusers(users,count);
       function closeoptions(id){
