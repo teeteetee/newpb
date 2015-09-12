@@ -759,7 +759,7 @@ app.post('/disc/:id',function (req,res){
   ms.trouble =0;
   var vtmstmp = Date.now();
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
-  discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}}},{$inc:{msgcnt:1}});
+  discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}},$inc:{msgcnt:1}});
   res.send(ms);
   });
 
@@ -772,6 +772,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
   var ms ={};
   ms.trouble=1;
   ms.msgstore=[];
+  var vlsttmstmp;
   discussions.findOne({discid:vdiscid},function (err,done){
     if (err) {
      res.send(ms);
@@ -782,11 +783,15 @@ app.post('/disccheck/:id/:uid',function (req,res){
         for (var i = done.msgstore.length-1; i > -1; --i) {
           if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
             ms.msgstore.push(done.msgstore[i]);
+            if(i=done.msgstore.length-1) {
+             vlsttmstmp=done.msgstore[i].tmstmp;
+           }
           }
           else if(done.msgstore[i].tmstmp <= vtmstmp){
             break;
           }
         }
+        users.update({uid:rcvr},{$set:{lsttmstmp:parseInt(vlsttmstmp)}});
         ms.trouble=0;
         console.log(ms);
         res.send(ms);
