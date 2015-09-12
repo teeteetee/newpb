@@ -791,6 +791,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
             break;
           }
         }
+        console.log('setting lsttmstmp');
         users.update({uid:rcvr},{$set:{lsttmstmp:parseInt(vlsttmstmp)}});
         ms.trouble=0;
         console.log(ms);
