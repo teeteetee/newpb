@@ -315,12 +315,15 @@ head
       }
       else {
         if(#{user} !=parsed.mtext.rcv)
-        {var vuid = parsed.mtext.rcv;}
+          {
+          var vuid = parsed.mtext.rcv;
+          }
         else {
-        var vuid = parsed.mtext.snd;}
+          var vuid = parsed.mtext.snd;
+           }
         var lastmsg = '...';
-        if(parsed.mtext.msgstore)
-        { 
+          if(parsed.mtext.msgstore)
+          { 
           var lastmsg_num = parsed.mtext.msgstore.length-1;
           var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
           lastmsg = parsed.mtext.msgstore[lastmsg_num].txt;
@@ -339,12 +342,12 @@ head
         insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
         }
         }   
-       }     
+            
         $('#discussions').append(insert);
         if(parseInt(parsed.mtext.rcv)===#{user})
          {getavatar(parsed.mtext.snd,discid,iter);}
-       else 
-       {getavatar(parsed.mtext.rcv,discid,iter);
+       else{
+        getavatar(parsed.mtext.rcv,discid,iter);
        }
       }
       }
