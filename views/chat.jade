@@ -330,7 +330,7 @@ head
         // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
         }
         var insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
-        if(lsttmstmp_msg && lsttmstmp_msg > parseInt(user.tmstmpstore.discid) ){
+        if(user.tmstmpstore && lsttmstmp_msg && lsttmstmp_msg > parseInt(user.tmstmpstore.discid) ){
         insert = "<div class='row discussion' id='cid"+parsed.mtext.discid+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/#{user}/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
         }        
         $('#discussions').append(insert);
