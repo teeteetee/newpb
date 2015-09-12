@@ -479,9 +479,6 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(avatarrequest.responseText);
-      counter++;
-      if(counter<discussions.length)
-      {getdisc(discussions[counter],counter)}
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
