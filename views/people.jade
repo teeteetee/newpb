@@ -459,7 +459,7 @@ head
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
            $('.list').css('padding-top','0px');
-            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg._id+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
+            var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
            $('#users').append(insert);
            });
          count--;
