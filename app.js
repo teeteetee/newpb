@@ -795,7 +795,11 @@ app.post('/disccheck/:id/:uid',function (req,res){
             console.log('setting lsttmstmp: '+vlsttmstmp);
             console.log('discid: '+vdiscid);
             vdisid=vdiscid.toString();
-            eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
+            //eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
+            function upd(did) {
+             users.update({uid:rcvr},{$set:{tmpstmpstore.did:vlsttmstmp}});
+            }
+            upd(vdiscid);
               }
         ms.trouble=0;
         console.log(ms);
