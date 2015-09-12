@@ -320,8 +320,9 @@ head
         var vuid = parsed.mtext.snd;}
         var lastmsg = '...';
         if(parsed.mtext.msgstore)
-        { var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
+        { 
           var lastmsg_num = parsed.mtext.msgstore.length-1;
+          var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
           lastmsg = parsed.mtext.msgstore[lastmsg_num].txt;
           if(lastmsg.length>25) {
             lastmsg=lastmsg.slice(0,25)+'...';
