@@ -440,7 +440,7 @@ head
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
       console.log(user.userstore);
-      $('.people_num').append(user.usercount.length);
+      $('.people_num').append(user.userstore.length);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
