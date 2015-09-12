@@ -316,7 +316,6 @@ head
       .bookpadding {
       padding-top:10px;
       padding-bottom:10px;
-      height:50px;
       }
       .hovershade:hover{
        background-color:#eee;
@@ -426,11 +425,11 @@ head
           .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;border-bottom:1px solid #eee;')
             .col-xs-12
               h2(style='color:#6CB7B7;') People                       
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Under constructioin
+              h4(class='people_num' style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  
            #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;') 
             .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
               h2(style='color:white;text-align:center;') People
-              h4(style='color:gray;') Under construction           
+              h4(class='people_num' style='color:gray;')            
           .list.row
             .col-xs-12#users
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -441,6 +440,7 @@ head
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
       console.log(user.userstore);
+      $('.people_num').append(user.usercount.length);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
@@ -460,7 +460,7 @@ head
            console.log(JSON.stringify(msg));
            $('.list').css('padding-top','0px');
            //var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
-           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding'><div class='media'><a href='/id"+msg.uid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+msg.uid+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/id"+msg.uid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+msg.uid+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
            $('#users').append(insert);
            getavatar(msg.uid,msg._id);
            });
