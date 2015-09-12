@@ -344,7 +344,7 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send();
       }
-      $('#sendmsg').scrollIntoView();
+      //$('#sendmsg').scrollIntoView();
       function sendmsg() {
       console.log('msg sendin');
       var rcvr = #{rcvrid};  
@@ -392,6 +392,7 @@ head
       console.log('trouble or empty');
       }
       else {
+        //TO DO what if no messages recieved from server?
         if($('#messages').find('#empty').length){
           $('#messages').empty();
         }
