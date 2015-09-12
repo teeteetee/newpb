@@ -793,7 +793,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
         }
         if(vlsttmstmp&&vlsttmstmp!=null){
             console.log('setting lsttmstmp: '+vlsttmstmp);
-            users.update({uid:rcvr},{$set:{tmpstmpstore.vdiscid:vlsttmstmp}});
+            users.update({uid:rcvr},{$set:{'tmpstmpstore.vdiscid':vlsttmstmp}});
               }
         ms.trouble=0;
         console.log(ms);
