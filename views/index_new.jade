@@ -395,6 +395,10 @@ head
          var vmail = $('#mail-lg').val();}
         $('.message').empty();
         console.log(vp.length);
+        var male=1;
+        if(!$('#male').hasClass('iosactive')){
+          male=0;
+        }
         if(vpc.length === 0 && vp.length === 0) {
         console.log('pass length 0');
         //$('.message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
@@ -451,5 +455,5 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp);
+        request.send("mail="+vmail+"&p="+vp+"&gn="+male);
           }

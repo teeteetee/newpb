@@ -214,7 +214,7 @@ app.post('/newuser',function(req,res){
           generateId(insert);
           function insert(vuid) {
             //lgn:vu
-          users.insert({pub:1,mail:vmail,uid:vuid,phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:1,mail:vmail,uid:vuid,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           req.session.mail=vmail;
           req.session.uid=vuid;
           ms.trouble =0;
