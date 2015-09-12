@@ -404,19 +404,8 @@ head
             .col-xs-12
               .btn-group
                 button(class='btn btn-ioslooklike' type='button') Follow
-                button(class='btn btn-ioslooklike' type='button') Chat
+                button(class='btn btn-ioslooklike' type='button' id='chatwith') Chat
           .row(style='border-top:1px solid #eee;') 
-            //
-              .inleftblock.row(id='track')
-                 .col-xs-12
-                   h4 
-                     span(style ='color:#333;' class='glyphicon glyphicon-eye-open') 
-                     | Track
-              .inleftblock.row(id='openadd')
-                 .col-xs-12
-                   h4 
-                     span(style ='color:#333;' class='glyphicon glyphicon-envelope') 
-                     | Chat
           .inleftblock.row
             .col-xs-12
               a(href='/')
@@ -465,6 +454,8 @@ head
     script.
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
+      var tmp_string = '/chat/'+user.uid;
+      $('#chatwith').attr('onclick',)
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {

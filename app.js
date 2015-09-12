@@ -570,9 +570,9 @@ app.get('/seeuser',function (req,res){
 
 //******************** HELPERS END ********************//
 
-app.get('/chat/:sndid/:recid',function (req,res){
+app.get('/chat/:recid',function (req,res){
    console.log(1);
-   var vsender = parseInt(req.params.sndid);
+   var vsender = parseInt(req.session.uid);
    var vdest =  parseInt(req.params.recid);
    if(vsender!=req.session.uid){
     res.redirect('/');
