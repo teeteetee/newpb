@@ -454,7 +454,7 @@ head
     script.
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
-      var tmp_string = '/chat/'+user.uid;
+      var tmp_string = 'window.location="/chat/'+user.uid+'";';
       $('#chatwith').attr('onclick',tmp_string);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
