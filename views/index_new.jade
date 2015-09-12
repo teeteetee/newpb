@@ -179,6 +179,15 @@ head
       text-decoration:none !important;
       color:inherit !important;
       }
+      .btn-ioslooklike {
+       border:1px solid #ccc;
+       color:#ccc;
+       background:none;
+      }
+      .iosactive {
+        background-color:#ccc;
+        color:white;
+      }
   body
     .container
       #mainframe.row.cuttop
@@ -250,8 +259,8 @@ head
                     .form-group 
                       .col-md-6.col-md-offset-3 
                         .btn-group(role="group" aria-label="...")
-                          button(type="button" class="btn btn-default active") Male
-                          button(type="button" class="btn btn-default") Female
+                          button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
+                          button(type="button" id='female' class="btn btn-ioslooklike") Female
                     .form-group 
                       .col-md-6.col-md-offset-3(style='padding-top:30px;') 
                         button(type="button" class="signup btn btn-success") Sign up
@@ -277,6 +286,22 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $('#male').click(function(){
+        if($('#male').hasClass('iosactive')){
+        }
+        else{
+          $('#male').addClass('iosactive');
+          $('#female').removeClass('iosactive');
+        }
+        });
+      $('#female').click(function(){
+        if($('#female').hasClass('iosactive')){
+        }
+        else{
+          $('#female').addClass('iosactive');
+          $('#male').removeClass('iosactive');
+        }
+        });
       $('.signup').click(function(){
           if($('.paddgroup-lg').css('display')==='none'){
           console.log('1');
