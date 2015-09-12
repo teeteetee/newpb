@@ -796,10 +796,8 @@ app.post('/disccheck/:id/:uid',function (req,res){
             console.log('discid: '+vdiscid);
             vdisid=vdiscid.toString();
             //eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
-            db.eval(function (did) {
-             users.update({uid:rcvr},{$set:{tmpstmpstore.did:vlsttmstmp}});
-            },vdiscid);
-            upd(vdiscid);
+            var sht_tmp = 'tmpstmpstore.'+vdiscdid;
+             eval("users.update({uid:rcvr},{$set:{"+sht_tmp+":vlsttmstmp}});");
               }
         ms.trouble=0;
         console.log(ms);
