@@ -735,7 +735,6 @@ app.post('/gtm/:discid',function(req,res){
     console.log('err while disc query');
     }
     else {
-      var d = new Date();
       if(doc){
         //---------------------------//
         if(doc.msgstore)
@@ -764,12 +763,12 @@ app.post('/gtm/:discid',function(req,res){
           ms.mtext = doc;
           res.send(ms);}
           else {
-             console.log('long poll empty '+d.getUnixTimestamp());
+             console.log('long poll empty '+Date.now());
             setTimeout(function(){checkdb(g_vdiscid);},2000);
           }
       }
       else {
-        console.log('long poll trouble '+d.getUnixTimestamp());
+        console.log('long poll trouble '+Date.now());
         setTimeout(function(){checkdb(g_vdiscid);},2000);
       }
     }
