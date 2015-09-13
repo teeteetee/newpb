@@ -737,7 +737,7 @@ app.post('/getdiscinfo/:id', function (req,res){
         //---------------------------//
         if(doc.msgstore)
            { console.log('changing timestamp'); 
-            var tmp_lngth = doc.msgstore.length-1;
+            var tmp_length = doc.msgstore.length-1;
              var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
              vdisid=vdiscid.toString();
              var sht_tmp ={};
