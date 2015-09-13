@@ -830,7 +830,6 @@ app.post('/gtm/:discid',function(req,res){
         setTimeout(function(){checkdb(g_vdiscid);},6000);
       }
     }
-  }
   });
   }
 });
