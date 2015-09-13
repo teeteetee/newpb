@@ -888,7 +888,7 @@ app.post('/disc/:id',function (req,res){
   var vtmstmp = Date.now();
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}},$inc:{msgcnt:1}});
-  users.update({uid:rcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
+  users.update({uid:vrcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
   res.send(ms);
   });
 
