@@ -733,6 +733,10 @@ app.get('/testloop', function (req,res){
               //       
               //     }
               //    }
+              if(i=tmp_l) {
+                      console.log('long poll in 9');
+                     
+                   }
               console.log(i);
             }
             console.log('done');
