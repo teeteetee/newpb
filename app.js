@@ -764,12 +764,12 @@ app.post('/gtm/:discid',function(req,res){
           res.send(ms);}
           else {
              console.log('long poll empty '+Date.now());
-            setTimeout(function(){checkdb(g_vdiscid);},2000);
+            setTimeout(function(){checkdb(g_vdiscid);},3000);
           }
       }
       else {
         console.log('long poll trouble '+Date.now());
-        setTimeout(function(){checkdb(g_vdiscid);},2000);
+        setTimeout(function(){checkdb(g_vdiscid);},3000);
       }
     }
   }
