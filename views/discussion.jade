@@ -436,8 +436,7 @@ head
               method: "POST",
               url: "/gtm/#{discid}",
               data: 'tmstmp='+tmstmp+'&uid='+#{user}
-            })
-              .done(function( msg ) {
+            }).done(function( msg ) {
                 console.log('success longpol');
                console.log(JSON.stringify(msg));
                 new_getmsg;
