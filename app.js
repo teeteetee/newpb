@@ -825,8 +825,11 @@ app.post('/gtm/:discid',function(req,res){
         setTimeout(function(){checkdb(g_vdiscid);},3000);
       }
     }
+    else{
      console.log('long poll trouble nodoc'+Date.now());
         setTimeout(function(){checkdb(g_vdiscid);},6000);
+      }
+    }
   }
   });
   }
