@@ -721,7 +721,27 @@ app.post('/getdisc/:id', function (req,res){
 });
 
 //-----------------LONGPOLLING------------------//
-// TO DO there should two types of long polling - one for chat window (refreshes timestamp upon recieved), other for everything else (makes notification, no timestamp chahges);
+app.post('/ntfc',function(req,res){
+  checkudb();
+   function checkudb() {
+    users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
+       if(err) {
+       console.log('err while disc query');
+       setTimeout(function(){checkudb();},6000);
+       }
+       else {
+         if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
+           var ms={};
+           ms.trouble=0;
+          res.send(ms);
+         }
+           else{
+             setTimeout(function(){checkudb();},6000);
+           }
+       }
+     });}
+});
+
 app.post('/gtm/:discid',function(req,res){
   var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
@@ -830,6 +850,7 @@ app.post('/disc/:id',function (req,res){
   var vtmstmp = Date.now();
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}},$inc:{msgcnt:1}});
+  users.update({uid:rcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
   res.send(ms);
   });
 

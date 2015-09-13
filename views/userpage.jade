@@ -538,6 +538,7 @@ head
     script.
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
+      var tmstmp = Date.now();
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
@@ -786,4 +787,24 @@ head
               });
           }
         });
+        function notifications() {
+        console.log('longpol');
+        $.ajax({
+              method: "POST",
+              url: "/ntfc",
+              data: 'tmstmp='+tmstmp+'&uid='+#{user}
+            }).done(function( msg ) {
+                console.log('success longpol');
+               if(msg.trouble === 1)
+                {
+                // TO DO do somewthing here
+                console.log('trouble or empty');
+                }
+                else {
+                  alert('something new');
+                }
+                notifications();
+              }).fail(function(){console.log('fault longpol');setTimeout(notifications,2000);});
+        }
+
       
