@@ -729,7 +729,6 @@ app.post('/gtm/:discid',function(req,res){
   function checkdb(vdiscid) {
     var ms={};
      discussions.findOne({discid:vdiscid},function (err,doc){
-    }
     if(err) {
     console.log('err while disc query');
     }
@@ -768,6 +767,7 @@ app.post('/gtm/:discid',function(req,res){
         setTimeout(checkdb(g_vdiscid),1000);
       }
     }
+  }
   });
   }
 });
