@@ -724,7 +724,7 @@ app.post('/getdisc/:id', function (req,res){
 app.post('/ntfc',function(req,res){
   checkudb();
    function checkudb() {
-    console.log('longpol routine');
+    console.log('longpol routine'+req.ip);
     users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
        if(err) {
        console.log('err while disc query');
