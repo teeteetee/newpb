@@ -438,7 +438,24 @@ head
               data: 'tmstmp='+tmstmp+'&uid='+#{user}
             }).done(function( msg ) {
                 console.log('success longpol');
-               console.log(JSON.stringify(msg));
+               if(msg.trouble === 1)
+                {
+                // TO DO do somewthing here
+                console.log('trouble or empty');
+                }
+                else {
+                  //TO DO what if no messages recieved from server?
+                  if($('#messages').find('#empty').length){
+                    $('#messages').empty();
+                  }
+                  for(var i=0;i<msg.msgstore.length;i++){
+                      if(parseInt(msg.msgstore[i].rcvr) === #{user})
+                      {tmstmp = msg.msgstore[i].tmstmp;
+                      $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
+                      $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+                      }    
+                    }
+                }
                 new_getmsg();
               }).fail(function(){console.log('fault longpol');setTimeout(new_getmsg,2000);});
       }
