@@ -755,6 +755,7 @@ app.post('/ntfc',function(req,res){
        else {
          if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
            var ms={};
+           ms.tmstmp = doc.g_tmstmp;
            ms.trouble=0;
           res.send(ms);
          }

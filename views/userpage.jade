@@ -803,6 +803,7 @@ head
                 }
                 else {
                   alert('something new');
+                  tmstmp = msg.tmstmp;
                 }
                 notifications();
               }).fail(function(){console.log('fault longpol');setTimeout(notifications,2000);});
