@@ -724,6 +724,7 @@ app.post('/getdisc/:id', function (req,res){
 app.post('/ntfc',function(req,res){
   checkudb();
    function checkudb() {
+    console.log('longpol routine');
     users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
        if(err) {
        console.log('err while disc query');
@@ -748,6 +749,7 @@ app.post('/gtm/:discid',function(req,res){
   checkdb(g_vdiscid);
   console.log('long poll 2');
   function checkdb(vdiscid) {
+    console.log('longpol msg');
     var ms={};
     ms.msgstore=[];
      discussions.findOne({discid:vdiscid},function (err,doc){
