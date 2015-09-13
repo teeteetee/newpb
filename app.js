@@ -733,8 +733,18 @@ app.post('/getdiscinfo/:id', function (req,res){
     res.send(ms);
     }
     else {
-      console.log('found discussion №'+doc.discid+': \n'+JSON.stringify(doc));
       if(doc){
+        //---------------------------//
+        if(doc.msgstore)
+           { console.log('changing timestamp'); 
+            var tmp_lngth = doc.msgstore.length-1;
+             var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
+             vdisid=vdiscid.toString();
+             var sht_tmp ={};
+              sht_tmp['$set'] = {};
+              sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
+              users.update({uid:parseInt(req.session.uid)},sht_tmp);}
+        //--------------------------//
         ms.mtext = doc;
         res.send(ms);
       }
