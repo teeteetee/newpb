@@ -728,6 +728,7 @@ app.post('/gtm/:discid',function(req,res){
   checkdb(g_vdiscid)
   function checkdb(vdiscid) {
     var ms={};
+    ms.msgstore=[];
      discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
     console.log('err while disc query');
