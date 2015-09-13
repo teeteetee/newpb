@@ -738,7 +738,7 @@ app.post('/gtm/:discid',function(req,res){
         if(doc.msgstore)
            {
             for (var i = doc.msgstore.length-1; i > -1; --i) {
-              if(doc.msgstore[i].rcvr === rcvr && doc.msgstore[i].tmstmp > vtmstmp) {
+              if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
                 ms.msgstore.push(doc.msgstore[i]);
                 if(i=doc.msgstore.length-1) {
                  vlsttmstmp=doc.msgstore[i].tmstmp;
