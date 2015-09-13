@@ -728,7 +728,7 @@ app.post('/gtm/:discid',function(req,res){
   checkdb(g_vdiscid)
   function checkdb(vdiscid) {
     var ms={};
-     discussions.findOne({discid:vdiscid},function (err,done){
+     discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
     console.log('err while disc query');
     }
@@ -737,14 +737,14 @@ app.post('/gtm/:discid',function(req,res){
         //---------------------------//
         if(doc.msgstore)
            {
-            for (var i = done.msgstore.length-1; i > -1; --i) {
-              if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
-                ms.msgstore.push(done.msgstore[i]);
-                if(i=done.msgstore.length-1) {
-                 vlsttmstmp=done.msgstore[i].tmstmp;
+            for (var i = doc.msgstore.length-1; i > -1; --i) {
+              if(doc.msgstore[i].rcvr === rcvr && doc.msgstore[i].tmstmp > vtmstmp) {
+                ms.msgstore.push(doc.msgstore[i]);
+                if(i=doc.msgstore.length-1) {
+                 vlsttmstmp=doc.msgstore[i].tmstmp;
                }
               }
-              else if(done.msgstore[i].tmstmp <= vtmstmp){
+              else if(doc.msgstore[i].tmstmp <= vtmstmp){
                 break;
               }
             }
