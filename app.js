@@ -720,6 +720,61 @@ app.post('/getdisc/:id', function (req,res){
 
 });
 
+//-----------------LONGPOLLING------------------//
+// TO DO there should two types of long polling - one for chat window (refreshes timestamp upon recieved), other for everything else (makes notification, no timestamp chahges);
+app.post('/gtm/:discid',function(req,res){
+  var vtmstmp = parseInt(req.body.tmstmp);
+  var g_vdiscid = parseInt(req.params.discid);
+  checkdb(g_gvdiscid)
+  function checkdb(vdiscid) {
+    var ms={};
+     discussions.findOne({discid:vdiscid},function (err,doc){
+    }
+    if(err) {
+    console.log('err while disc query');
+    }
+    else {
+      if(doc){
+        //---------------------------//
+        if(doc.msgstore)
+           {
+            for (var i = done.msgstore.length-1; i > -1; --i) {
+              if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
+                ms.msgstore.push(done.msgstore[i]);
+                if(i=done.msgstore.length-1) {
+                 vlsttmstmp=done.msgstore[i].tmstmp;
+               }
+              }
+              else if(done.msgstore[i].tmstmp <= vtmstmp){
+                break;
+              }
+            }
+         if(ms.msgstore.length)   
+        {vdisid=vdiscid.toString();
+          var sht_tmp ={};
+           sht_tmp['$set'] = {};
+           sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
+           users.update({uid:parseInt(req.session.uid)},sht_tmp);
+                
+          ms.trouble=0;
+          //--------------------------//
+          ms.mtext = doc;
+          res.send(ms);}
+          else {
+            setTimeout(checkdb(g_vdiscid),1000);
+          }
+      }
+      else {
+        setTimeout(checkdb(g_vdiscid),1000);
+      }
+    }
+  });
+  }
+});
+
+//-----------------LONGPOLLING END------------------//
+
+
 app.post('/getdiscinfo/:id', function (req,res){
   //API used when populating page with the list of conversations
   console.log('getting disc info');
@@ -789,7 +844,6 @@ app.post('/disccheck/:id/:uid',function (req,res){
     }
     else {
       if(done.msgstore) {
-        console.log('IIIIIIII'+done.msgstore+'IIIIIIII');
         for (var i = done.msgstore.length-1; i > -1; --i) {
           if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
             ms.msgstore.push(done.msgstore[i]);

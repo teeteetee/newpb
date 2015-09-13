@@ -428,4 +428,21 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
-      setInterval(getmsg, 5000);
+      //setInterval(getmsg, 5000);
+      new_getmsg;
+      function new_getmsg() {
+        console.log('longpol');
+        $.ajax({
+              method: "POST",
+              url: "/gtm/#{discid}",
+              data: 'tmstmp='+tmstmp+'&uid='+#{user}
+            })
+              .done(function( msg ) {
+                console.log('success longpol');
+               console.log(JSON.stringify(msg));
+                new_getmsg;
+              }).fail(
+                console.log('fault longpol');
+                setTimeout(new_getmsg,2000);
+                );
+      }
