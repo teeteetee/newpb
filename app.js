@@ -720,6 +720,24 @@ app.post('/getdisc/:id', function (req,res){
 
 });
 
+app.get('/testloop', function (req,res){
+  tmp_l=14;
+    for (var i = tmp_l; i>0; i--) {
+               console.log('i: '+i);
+               console.log('long poll in 7');
+              if(1) {
+                    console.log('long poll in 8');
+                    ms.msgstore.push(doc.msgstore[i]);
+                    if(i=tmp_l) {
+                      console.log('long poll in 9');
+                     vlsttmstmp=doc.msgstore[i].tmstmp;
+                   }
+                  }
+              
+            }
+            console.log('done');
+});
+
 //-----------------LONGPOLLING------------------//
 app.post('/ntfc',function(req,res){
   checkudb();
