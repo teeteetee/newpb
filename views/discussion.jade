@@ -323,6 +323,7 @@ head
       if(parsed.mtext==='empty'){
       $('#messages').empty();
       $('#messages').append("<div class='row'><div class='col-xs-12'><h4 id='empty' style='text-align:center;'>No messages</h4></div></div>");
+      new_getmsg(Date.now());
       }
       else 
       {
@@ -336,6 +337,7 @@ head
               $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
+          new_getmsg(tmstmp);
           $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
       }
       }
@@ -429,8 +431,7 @@ head
       request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
       //setInterval(getmsg, 5000);
-      new_getmsg();
-      function new_getmsg() {
+      function new_getmsg(tmstmp) {
         console.log('longpol');
         $.ajax({
               method: "POST",
