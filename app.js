@@ -793,7 +793,7 @@ app.post('/gtm/:discid',function(req,res){
                        console.log('long poll in 10');
                        break;
                      }
-              if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
+              else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
                     console.log('long poll in 8');
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
@@ -802,6 +802,7 @@ app.post('/gtm/:discid',function(req,res){
                    }
                   }
             }
+            console.log('FINISHED FUCKING FOR LOOP');
          if(ms.msgstore.length)   
         {console.log('long poll in 11');
           vdisid=vdiscid.toString();
