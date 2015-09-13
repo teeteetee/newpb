@@ -762,7 +762,7 @@ app.post('/gtm/:discid',function(req,res){
         if(doc.msgstore)
            {
             console.log('long poll in 6');
-            for (var i = doc.msgstore.length-1; i > -1; --i) {
+            for (var i = doc.msgstore.length-1; i=>0; --i) {
                console.log('i: '+i);
                console.log('long poll in 7');
               if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
