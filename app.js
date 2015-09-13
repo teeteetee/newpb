@@ -720,9 +720,9 @@ app.post('/getdisc/:id', function (req,res){
 
 });
 
-app.get('/testloop', function (req,res){
+app.get('/testloopx', function (req,res){
   tmp_l=14;
-    for (var i = tmp_l; i>0; i--) {
+    for (var i = tmp_l; i>-1; i--) {
               // console.log('i: '+i);
               // console.log('long poll in 7');
               //if(1) {
@@ -733,7 +733,7 @@ app.get('/testloop', function (req,res){
               //       
               //     }
               //    }
-              if(i=tmp_l) {
+              if(i===tmp_l) {
                       console.log('long poll in 9');
                      
                    }
@@ -786,7 +786,7 @@ app.post('/gtm/:discid',function(req,res){
            {
             console.log('long poll in 6');
              var tmp_l = doc.msgstore.length-1;
-            for (var i = tmp_l; i>0; i--) {
+            for (var i = tmp_l; i>-1; i--) {
                console.log('i: '+i);
                console.log('long poll in 7');
                if(doc.msgstore[i].tmstmp <= vtmstmp){
