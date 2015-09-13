@@ -766,11 +766,11 @@ app.post('/gtm/:discid',function(req,res){
           ms.mtext = doc;
           res.send(ms);}
           else {
-            setTimeout(checkdb(g_vdiscid),1000);
+            setTimeout(checkdb(g_vdiscid),2000);
           }
       }
       else {
-        setTimeout(checkdb(g_vdiscid),1000);
+        setTimeout(checkdb(g_vdiscid),2000);
       }
     }
   }
