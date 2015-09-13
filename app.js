@@ -789,17 +789,17 @@ app.post('/gtm/:discid',function(req,res){
             console.log('long poll in 6');
              var tmp_l = doc.msgstore.length-1;
             for (var i = tmp_l; i>-1; i--) {
-               console.log('i: '+i);
-               console.log('long poll in 7');
+               //console.log('i: '+i);
+               //console.log('long poll in 7');
                if(doc.msgstore[i].tmstmp <= vtmstmp){
-                       console.log('long poll in 10');
+                       console.log('BREAK FOR LOOP');
                        break;
                      }
               else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
-                    console.log('long poll in 8');
+                   // console.log('long poll in 8');
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
-                      console.log('long poll in 9');
+                     // console.log('long poll in 9');
                      vlsttmstmp=doc.msgstore[i].tmstmp;
                    }
                   }
