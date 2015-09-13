@@ -791,7 +791,7 @@ app.post('/gtm/:discid',function(req,res){
             for (var i = tmp_l; i>-1; i--) {
                //console.log('i: '+i);
                //console.log('long poll in 7');
-               if(doc.msgstore[i].tmstmp <= vtmstmp){
+               if(doc.msgstore[i].tmstmp < vtmstmp){
                        console.log('BREAK FOR LOOP');
                        break;
                      }
