@@ -768,12 +768,12 @@ app.post('/gtm/:discid',function(req,res){
           res.send(ms);}
           else {
             console.log('long poll in 7 LOOP');
-            setTimeout("checkdb(g_vdiscid)",2000);
+            setTimeout(function(){checkdb(g_vdiscid);},2000);
           }
       }
       else {
         console.log('long poll in 8 LOOP');
-        setTimeout("checkdb(g_vdiscid)",2000);
+        setTimeout(function(){checkdb(g_vdiscid);},2000);
       }
     }
   }
