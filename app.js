@@ -759,6 +759,7 @@ app.post('/ntfc',function(req,res){
           res.send(ms);
          }
            else{
+            console.log('LOOP ROUTINE');
              setTimeout(function(){checkudb();},6000);
            }
        }
