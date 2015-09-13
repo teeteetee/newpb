@@ -429,7 +429,7 @@ head
       request.send('tmstmp='+tmstmp+'&uid='+#{user});
       }
       //setInterval(getmsg, 5000);
-      new_getmsg;
+      new_getmsg();
       function new_getmsg() {
         console.log('longpol');
         $.ajax({
@@ -439,6 +439,6 @@ head
             }).done(function( msg ) {
                 console.log('success longpol');
                console.log(JSON.stringify(msg));
-                new_getmsg;
+                new_getmsg();
               }).fail(function(){console.log('fault longpol');setTimeout(new_getmsg,2000);});
       }
