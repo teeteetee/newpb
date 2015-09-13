@@ -723,17 +723,22 @@ app.post('/getdisc/:id', function (req,res){
 //-----------------LONGPOLLING------------------//
 // TO DO there should two types of long polling - one for chat window (refreshes timestamp upon recieved), other for everything else (makes notification, no timestamp chahges);
 app.post('/gtm/:discid',function(req,res){
+  console.log('long poll 1');
   var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
-  checkdb(g_vdiscid)
+  checkdb(g_vdiscid);
+  console.log('long poll 2');
   function checkdb(vdiscid) {
+    console.log('long poll in 3');
     var ms={};
     ms.msgstore=[];
      discussions.findOne({discid:vdiscid},function (err,doc){
+      console.log('long poll in 4');
     if(err) {
     console.log('err while disc query');
     }
     else {
+      console.log('long poll in 5');
       if(doc){
         //---------------------------//
         if(doc.msgstore)
