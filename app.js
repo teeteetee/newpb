@@ -751,6 +751,7 @@ app.post('/gtm/:discid',function(req,res){
   function checkdb(vdiscid) {
     console.log('longpol msg');
     var ms={};
+    var vlsttmstmp;
     ms.msgstore=[];
      discussions.findOne({discid:vdiscid},function (err,doc){
     if(err) {
@@ -774,7 +775,7 @@ app.post('/gtm/:discid',function(req,res){
                      vlsttmstmp=doc.msgstore[i].tmstmp;
                    }
                   }
-              else if(doc.msgstore[i].tmstmp <= vtmstmp){
+              if(doc.msgstore[i].tmstmp <= vtmstmp){
                 console.log('long poll in 10');
                 break;
               }
