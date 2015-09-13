@@ -727,10 +727,10 @@ app.get('/testloop', function (req,res){
                console.log('long poll in 7');
               if(1) {
                     console.log('long poll in 8');
-                    ms.msgstore.push(doc.msgstore[i]);
+                    
                     if(i=tmp_l) {
                       console.log('long poll in 9');
-                     vlsttmstmp=doc.msgstore[i].tmstmp;
+                     
                    }
                   }
               
