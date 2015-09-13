@@ -725,7 +725,7 @@ app.post('/getdisc/:id', function (req,res){
 app.post('/gtm/:discid',function(req,res){
   var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
-  checkdb(g_gvdiscid)
+  checkdb(g_vdiscid)
   function checkdb(vdiscid) {
     var ms={};
      discussions.findOne({discid:vdiscid},function (err,doc){
