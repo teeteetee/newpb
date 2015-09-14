@@ -773,12 +773,9 @@ app.post('/gtm/:discid',function(req,res){
   checkdb(g_vdiscid,req,res);
   console.log('long poll 2');
   function checkdb(vdiscid,req,res) {
-    if(req.on("close", function() {
+    req.on("close", function() {
        console.log('TRYING TO TERMINATE');
-       return 1;
-     }))
-      { console.log('terminating the loop CLIENT DISCONNECT');
-        return true;}  
+     }); 
      //if(req.on("end", function() {
      // console.log('TRYING TO TERMINATE');
      //  return 1;
