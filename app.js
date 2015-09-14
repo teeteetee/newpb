@@ -768,10 +768,11 @@ app.post('/ntfc',function(req,res){
 });
 
 app.post('/gtm/:discid',function(req,res){
-  
+    var vtmstmp = parseInt(req.body.tmstmp);
+  var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
-  function trampoline (func,arg1,arg2) {
-    var value = func(arg1,arg2);
+  function trampoline (func,arg1,arg2,arg3,arg4) {
+    var value = func(arg1,arg2,arg3,arg4);
 
     while(typeof value === "function") {
         value = setTimeout(function(){value();},3000);
@@ -779,11 +780,11 @@ app.post('/gtm/:discid',function(req,res){
     console.log('CHECKDB TERMINATED');
     return value;
  }
-  trampoline(checkdb,req,res);
+  trampoline(checkdb,req,res,vtmstmp,g_vdiscid);
   //-----------trampoline end------------//
-  function checkdb(vdiscid,req,res) {
-    var vtmstmp = parseInt(req.body.tmstmp);
-  var g_vdiscid = parseInt(req.params.discid);
+  function checkdb(vdiscid,req,res,vtmstmp,g_vdiscid) {
+     var vtmstmp = vtmstmp;
+  var g_vdiscid = g_vdiscid;
     var terminate=0;
     req.on("close", function() {
        terminate = 1;
