@@ -788,7 +788,7 @@ app.post('/gtm/:discid',function(req,res){
      console.log('g_discid: '+g_vdiscid);
     var terminate=0;
     req.on('close', function() {
-       terminate = 1;
+       terminate ++;
      }); 
     console.log('longpol msg');
     var ms={};
@@ -839,7 +839,7 @@ app.post('/gtm/:discid',function(req,res){
         }
           else {
             //setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
-            if(terminate) {
+            if(terminate===2) {
              return 1;
             }
             else
@@ -850,7 +850,7 @@ app.post('/gtm/:discid',function(req,res){
           }
       }
       else {
-        if(terminate) {
+        if(terminate===2) {
              return 1;
             }
             else
@@ -861,7 +861,7 @@ app.post('/gtm/:discid',function(req,res){
       }
     }
     else{
-      if(terminate) {
+      if(terminate===2) {
              return 1;
             }
             else
