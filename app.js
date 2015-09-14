@@ -771,8 +771,8 @@ app.post('/gtm/:discid',function(req,res){
     var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
-  function trampoline (func,arg1,arg2,arg3,arg4) {
-    var value = func(arg1,arg2,arg3,arg4);
+  function trampoline (func,arg1,arg2) {
+    var value = func(arg1,arg2);
 
     while(typeof value === "function") {
         value = setTimeout(function(){value();},3000);
@@ -782,11 +782,11 @@ app.post('/gtm/:discid',function(req,res){
  }
   trampoline(checkdb,req,res,vtmstmp,g_vdiscid);
   //-----------trampoline end------------//
-  function checkdb(vdiscid,req,res,vtmstmp,g_vdiscid) {
-     var vtmstmp = vtmstmp;
-  var g_vdiscid = g_vdiscid;
+  function checkdb(vdiscid,req,res) {
+     console.log('tmstmp: '+vtmstmp);
+     console.log('g_discid: '+g_vdiscid);
     var terminate=0;
-    req.on("close", function() {
+    req.on("end", function() {
        terminate = 1;
      }); 
      //if(req.on("end", function() {
