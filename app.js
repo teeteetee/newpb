@@ -796,6 +796,7 @@ app.post('/gtm/:discid',function(req,res){
                        break;
                      }
               else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
+                   console.log('HAS MESSAGES');
                    // console.log('long poll in 8');
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
