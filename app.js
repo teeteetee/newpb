@@ -775,6 +775,7 @@ app.post('/gtm/:discid',function(req,res){
   function trampoline (func,arg1,arg2,arg3) {
     var value = func(arg1,arg2,arg3);
    console.log('BREAKPOINT 2');
+   console.log(typeof value);
     while(typeof value === 'function') {
       console.log('SUCCESSFUL LOOP');
       value = value();
