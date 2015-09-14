@@ -773,14 +773,14 @@ app.post('/gtm/:discid',function(req,res){
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2,arg3) {
-    console.log('func: '+func);
-    var value = func;
+    
+    var value = func(arg1,arg2,arg3);
    console.log('BREAKPOINT 2');
    console.log(typeof checkdb);
-   console.log(typeof value);
+   console.log('value: '+typeof value);
     while(typeof value === 'function') {
       console.log('SUCCESSFUL LOOP');
-      value = value();
+      value = value(arg1,arg2,arg3);
     }
     console.log('BREAKPOINT 4');
     console.log('CHECKDB TERMINATED');
