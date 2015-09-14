@@ -775,10 +775,8 @@ app.post('/gtm/:discid',function(req,res){
   function trampoline (func,arg1,arg2,arg3) {
     var value = func(arg1,arg2,arg3);
    console.log('BREAKPOINT 2');
-    while( value === 2) {
-        console.log('BREAKPOINT 3');
-        console.log('LOOP');
-        setTimeout(function(){checkdb(g_vdiscid,req,res)},3000);
+    while(typeof value === 'function') {
+      value = value();
     }
     console.log('BREAKPOINT 4');
     console.log('CHECKDB TERMINATED');
@@ -856,29 +854,29 @@ app.post('/gtm/:discid',function(req,res){
           else {
             console.log('BREAKPOINT 18');
             //setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
-            if(terminate===2) {
+            if(terminate) {
              return 1;
             }
             else
             {console.log('BREAKPOINT 19');
               console.log('long poll empty '+Date.now());
-              return 2;
+              return value;
             }
           }
       }
       else {console.log('BREAKPOINT 20');
-        if(terminate===2) {
+        if(terminate) {
              return 1;
             }
             else
             {console.log('BREAKPOINT 21');
         console.log('long poll trouble '+Date.now());
-        return 2;
+        return value;
         }
       }
     }
     else{
-      if(terminate===2) {
+      if(terminate) {
         console.log('BREAKPOINT 22');
              return 1;
             }
@@ -886,7 +884,7 @@ app.post('/gtm/:discid',function(req,res){
             {
      console.log('long poll trouble nodoc'+Date.now());
         //setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
-        return 2;
+        return value;
        }
       }
     }
