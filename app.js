@@ -776,6 +776,7 @@ app.post('/gtm/:discid',function(req,res){
     var value = func(arg1,arg2,arg3);
    console.log('BREAKPOINT 2');
     while(typeof value === 'function') {
+      console.log('SUCCESSFUL LOOP');
       value = value();
     }
     console.log('BREAKPOINT 4');
@@ -860,7 +861,7 @@ app.post('/gtm/:discid',function(req,res){
             else
             {console.log('BREAKPOINT 19');
               console.log('long poll empty '+Date.now());
-              return value;
+              return checkdb;
             }
           }
       }
@@ -871,7 +872,7 @@ app.post('/gtm/:discid',function(req,res){
             else
             {console.log('BREAKPOINT 21');
         console.log('long poll trouble '+Date.now());
-        return value;
+        return checkdb;
         }
       }
     }
@@ -884,7 +885,7 @@ app.post('/gtm/:discid',function(req,res){
             {
      console.log('long poll trouble nodoc'+Date.now());
         //setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
-        return value;
+        return checkdb;
        }
       }
     }
