@@ -770,9 +770,23 @@ app.post('/ntfc',function(req,res){
 app.post('/gtm/:discid',function(req,res){
   var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
-  checkdb(g_vdiscid);
+  checkdb(g_vdiscid,req,res);
   console.log('long poll 2');
-  function checkdb(vdiscid) {
+  function checkdb(vdiscid,req,res) {
+    if(req.on("close", function() {
+       console.log('TRYING TO TERMINATE');
+       return 1;
+     });)
+      { console.log('terminating the loop CLIENT DISCONNECT');
+        return true;}
+     
+     if(req.on("end", function() {
+      console.log('TRYING TO TERMINATE');
+       return 1;
+     }):) {
+      console.log('terminating the loop CLIENT DISCONNECT');
+      return true;
+     }
     console.log('longpol msg');
     var ms={};
     var vlsttmstmp;
@@ -820,17 +834,17 @@ app.post('/gtm/:discid',function(req,res){
           res.send(ms);}
           else {
              console.log('long poll empty '+Date.now());
-            setTimeout(function(){checkdb(g_vdiscid);},3000);
+            setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
           }
       }
       else {
         console.log('long poll trouble '+Date.now());
-        setTimeout(function(){checkdb(g_vdiscid);},3000);
+        setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
       }
     }
     else{
      console.log('long poll trouble nodoc'+Date.now());
-        setTimeout(function(){checkdb(g_vdiscid);},6000);
+        setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
       }
     }
   });
