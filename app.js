@@ -864,6 +864,7 @@ app.post('/gtm/:discid',function(req,res){
             else
             {console.log('BREAKPOINT 19');
               console.log('long poll empty '+Date.now());
+              console.log(typeof checkdb);
               return checkdb;
             }
           }
