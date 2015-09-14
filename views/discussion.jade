@@ -445,6 +445,6 @@ head
                       }    
                     }
                 }
-                new_getmsg();
-              }).fail(function(){console.log('fault longpol');setTimeout(new_getmsg,2000);});
+                new_getmsg(tmstmp);
+              }).fail(function(){console.log('fault longpol');setTimeout(new_getmsg(tmstmp),2000);});
       }
