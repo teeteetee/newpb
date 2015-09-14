@@ -384,6 +384,7 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       sndrequest.send('sndr='+sndr+'&rcvr='+rcvr+'&txtbody='+txtbody);
       }
+      // getmsg is not used, switched to longpolling new_getmsg
       function getmsg() {
       console.log('getting msg');
       request = new XMLHttpRequest();
@@ -409,18 +410,6 @@ head
             $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
             }    
           }
-        //if(parsed.mult){
-        //  for(var i=0;i<parsed.msgstore.length;i++){
-        //    if(parseInt(parsed.msgstore[i].rcvr) === #{user})
-        //    {tmstmp = parsed.msgstore[i].tmstmp;
-        //    $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
-        //    }    
-        //  }
-        //}
-        //else {
-        //  tmstmp = parsed.msgstore[i].tmstmp;
-        //  $('#messages').append("<div class='row bubble'><div class='col-xs-12'><class='bubblercvr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
-        //}
       }
       }
       };
@@ -432,13 +421,11 @@ head
       }
       //setInterval(getmsg, 5000);
       function new_getmsg(tmstmp) {
-        console.log('longpol');
         $.ajax({
               method: "POST",
               url: "/gtm/#{discid}",
               data: 'tmstmp='+tmstmp+'&uid='+#{user}
             }).done(function( msg ) {
-                console.log('success longpol');
                if(msg.trouble === 1)
                 {
                 // TO DO do somewthing here
@@ -452,6 +439,7 @@ head
                   for(var i=0;i<msg.msgstore.length;i++){
                       if(parseInt(msg.msgstore[i].rcvr) === #{user})
                       {tmstmp = msg.msgstore[i].tmstmp;
+                        console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                       $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
                       }    

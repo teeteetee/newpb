@@ -786,7 +786,7 @@ app.post('/gtm/:discid',function(req,res){
         //---------------------------//
         if(doc.msgstore)
            {
-            console.log('long poll in 6');
+            console.log('TIMESTAMP: '+vtmstmp);
              var tmp_l = doc.msgstore.length-1;
             for (var i = tmp_l; i>-1; i--) {
                //console.log('i: '+i);
