@@ -772,11 +772,11 @@ app.post('/gtm/:discid',function(req,res){
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2,arg3) {
-    var value = func(arg1,arg2);
+    var value = func(arg1,arg2,arg3);
 
     while(typeof value === "function") {
         console.log('LOOP');
-        value = setTimeout(function(){value();},3000);
+        value = setTimeout(function(){value(arg1,arg2,arg3);},3000);
     }
     console.log('CHECKDB TERMINATED');
     return value;
