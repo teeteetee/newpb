@@ -776,8 +776,8 @@ app.post('/gtm/:discid',function(req,res){
     console.log('func: '+func);
     var value = func(arg1,arg2,arg3);
    console.log('BREAKPOINT 2');
+   console.log(typeof checkdb);
    console.log(typeof value);
-   console.log(value);
     while(typeof value === 'function') {
       console.log('SUCCESSFUL LOOP');
       value = value();
@@ -790,9 +790,6 @@ app.post('/gtm/:discid',function(req,res){
   trampoline(checkdb,g_vdiscid,req,res);
   //-----------trampoline end------------//
   function checkdb(vdiscid,req,res) {
-    console.log('BREAKPOINT 6');
-     console.log('tmstmp: '+vtmstmp);
-     console.log('g_discid: '+g_vdiscid);
     var terminate=0;
     req.on('close', function() {
       console.log('BREAKPOINT 7');
