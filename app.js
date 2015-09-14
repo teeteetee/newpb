@@ -768,8 +768,7 @@ app.post('/ntfc',function(req,res){
 });
 
 app.post('/gtm/:discid',function(req,res){
-  var vtmstmp = parseInt(req.body.tmstmp);
-  var g_vdiscid = parseInt(req.params.discid);
+  
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2) {
     var value = func(arg1,arg2);
@@ -783,6 +782,8 @@ app.post('/gtm/:discid',function(req,res){
   trampoline(checkdb,req,res);
   //-----------trampoline end------------//
   function checkdb(vdiscid,req,res) {
+    var vtmstmp = parseInt(req.body.tmstmp);
+  var g_vdiscid = parseInt(req.params.discid);
     var terminate=0;
     req.on("close", function() {
        terminate = 1;
