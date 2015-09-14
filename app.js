@@ -771,7 +771,7 @@ app.post('/gtm/:discid',function(req,res){
     var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
-  function trampoline (func,arg1,arg2) {
+  function trampoline (func,arg1,arg2,arg3) {
     var value = func(arg1,arg2);
 
     while(typeof value === "function") {
@@ -780,7 +780,7 @@ app.post('/gtm/:discid',function(req,res){
     console.log('CHECKDB TERMINATED');
     return value;
  }
-  trampoline(checkdb,req,res,vtmstmp,g_vdiscid);
+  trampoline(checkdb,g_vdiscid,req,res);
   //-----------trampoline end------------//
   function checkdb(vdiscid,req,res) {
      console.log('tmstmp: '+vtmstmp);
@@ -789,13 +789,6 @@ app.post('/gtm/:discid',function(req,res){
     req.on('close', function() {
        terminate = 1;
      }); 
-     //if(req.on("end", function() {
-     // console.log('TRYING TO TERMINATE');
-     //  return 1;
-     //})) {
-     // console.log('terminating the loop CLIENT DISCONNECT');
-     // return true;
-     //}
     console.log('longpol msg');
     var ms={};
     var vlsttmstmp;
