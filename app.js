@@ -775,6 +775,7 @@ app.post('/gtm/:discid',function(req,res){
     var value = func(arg1,arg2);
 
     while(typeof value === "function") {
+        console.log('LOOP');
         value = setTimeout(function(){value();},3000);
     }
     console.log('CHECKDB TERMINATED');
