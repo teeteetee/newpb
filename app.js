@@ -786,7 +786,7 @@ app.post('/gtm/:discid',function(req,res){
      console.log('tmstmp: '+vtmstmp);
      console.log('g_discid: '+g_vdiscid);
     var terminate=0;
-    req.on("end", function() {
+    req.on('close', function() {
        terminate = 1;
      }); 
      //if(req.on("end", function() {
