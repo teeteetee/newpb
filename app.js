@@ -770,11 +770,22 @@ app.post('/ntfc',function(req,res){
 app.post('/gtm/:discid',function(req,res){
   var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
-  checkdb(g_vdiscid,req,res);
-  console.log('long poll 2');
+  //-----------trampoline-------------//
+  function trampoline (func,arg1,arg2) {
+    var value = func(arg);
+
+    while(typeof value === "function") {
+        value = setTimeout(function(){value();},3000);
+    }
+    console.log('CHECKDB TERMINATED');
+    return value;
+ }
+  trampoline(checkdb,req,res);
+  //-----------trampoline end------------//
   function checkdb(vdiscid,req,res) {
+    var terminate=0;
     req.on("close", function() {
-       console.log('TRYING TO TERMINATE');
+       terminate = 1;
      }); 
      //if(req.on("end", function() {
      // console.log('TRYING TO TERMINATE');
@@ -802,11 +813,11 @@ app.post('/gtm/:discid',function(req,res){
                //console.log('i: '+i);
                //console.log('long poll in 7');
                if(doc.msgstore[i].tmstmp < vtmstmp){
-                       console.log('BREAK FOR LOOP');
+                       //console.log('BREAK FOR LOOP');
                        break;
                      }
               else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
-                   console.log('HAS MESSAGES');
+                   //console.log('HAS MESSAGES');
                    // console.log('long poll in 8');
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
@@ -815,7 +826,7 @@ app.post('/gtm/:discid',function(req,res){
                    }
                   }
             }
-            console.log('FINISHED FUCKING FOR LOOP');
+            //console.log('FINISHED FUCKING FOR LOOP');
          if(ms.msgstore.length)   
         {console.log('long poll in 11');
           vdisid=vdiscid.toString();
@@ -827,20 +838,42 @@ app.post('/gtm/:discid',function(req,res){
           ms.trouble=0;
           //--------------------------//
           ms.mtext = doc;
-          res.send(ms);}
+          res.send(ms);
+          return 1;
+        }
           else {
-             console.log('long poll empty '+Date.now());
-            setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
+            //setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
+            if(terminate) {
+             return 1;
+            }
+            else
+            {
+              console.log('long poll empty '+Date.now());
+              return checkdb(g_vdiscid,req,res);
+            }
           }
       }
       else {
+        if(terminate) {
+             return 1;
+            }
+            else
+            {
         console.log('long poll trouble '+Date.now());
-        setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
+        return checkdb(g_vdiscid,req,res);
+        }
       }
     }
     else{
+      if(terminate) {
+             return 1;
+            }
+            else
+            {
      console.log('long poll trouble nodoc'+Date.now());
-        setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
+        //setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
+        return checkdb(g_vdiscid,req,res);
+       }
       }
     }
   });
