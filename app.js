@@ -768,33 +768,41 @@ app.post('/ntfc',function(req,res){
 });
 
 app.post('/gtm/:discid',function(req,res){
+   console.log('BREAKPOINT 1');
     var vtmstmp = parseInt(req.body.tmstmp);
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2,arg3) {
     var value = func(arg1,arg2,arg3);
-
+   console.log('BREAKPOINT 2');
     while( value === 2) {
+        console.log('BREAKPOINT 3');
         console.log('LOOP');
         setTimeout(function(){checkdb(g_vdiscid,req,res)},3000);
     }
+    console.log('BREAKPOINT 4');
     console.log('CHECKDB TERMINATED');
     return value;
  }
+ console.log('BREAKPOINT 5');
   trampoline(checkdb,g_vdiscid,req,res);
   //-----------trampoline end------------//
   function checkdb(vdiscid,req,res) {
+    console.log('BREAKPOINT 6');
      console.log('tmstmp: '+vtmstmp);
      console.log('g_discid: '+g_vdiscid);
     var terminate=0;
     req.on('close', function() {
+      console.log('BREAKPOINT 7');
        terminate ++;
      }); 
     console.log('longpol msg');
     var ms={};
+    console.log('BREAKPOINT 8');
     var vlsttmstmp;
     ms.msgstore=[];
      discussions.findOne({discid:vdiscid},function (err,doc){
+      console.log('BREAKPOINT 9');
     if(err) {
     console.log('err while disc query');
     }
@@ -803,34 +811,41 @@ app.post('/gtm/:discid',function(req,res){
         //---------------------------//
         if(doc.msgstore)
            {
+            console.log('BREAKPOINT 10');
             console.log('TIMESTAMP: '+vtmstmp);
              var tmp_l = doc.msgstore.length-1;
             for (var i = tmp_l; i>-1; i--) {
                //console.log('i: '+i);
                //console.log('long poll in 7');
+               console.log('BREAKPOINT 11');
                if(doc.msgstore[i].tmstmp < vtmstmp){
                        //console.log('BREAK FOR LOOP');
+                       console.log('BREAKPOINT 12');
                        break;
                      }
               else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
+                console.log('BREAKPOINT 13');
                    //console.log('HAS MESSAGES');
                    // console.log('long poll in 8');
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
+                      console.log('BREAKPOINT 14');
                      // console.log('long poll in 9');
                      vlsttmstmp=doc.msgstore[i].tmstmp;
                    }
                   }
             }
             //console.log('FINISHED FUCKING FOR LOOP');
+            console.log('BREAKPOINT 15');
          if(ms.msgstore.length)   
         {console.log('long poll in 11');
+      console.log('BREAKPOINT 16');
           vdisid=vdiscid.toString();
           var sht_tmp ={};
            sht_tmp['$set'] = {};
            sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
            users.update({uid:parseInt(req.session.uid)},sht_tmp);
-                
+                console.log('BREAKPOINT 17');
           ms.trouble=0;
           //--------------------------//
           ms.mtext = doc;
@@ -838,23 +853,24 @@ app.post('/gtm/:discid',function(req,res){
           return 1;
         }
           else {
+            console.log('BREAKPOINT 18');
             //setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
             if(terminate===2) {
              return 1;
             }
             else
-            {
+            {console.log('BREAKPOINT 19');
               console.log('long poll empty '+Date.now());
               return 2;
             }
           }
       }
-      else {
+      else {console.log('BREAKPOINT 20');
         if(terminate===2) {
              return 1;
             }
             else
-            {
+            {console.log('BREAKPOINT 21');
         console.log('long poll trouble '+Date.now());
         return 2;
         }
@@ -862,6 +878,7 @@ app.post('/gtm/:discid',function(req,res){
     }
     else{
       if(terminate===2) {
+        console.log('BREAKPOINT 22');
              return 1;
             }
             else
