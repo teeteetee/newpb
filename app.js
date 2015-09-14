@@ -772,7 +772,7 @@ app.post('/gtm/:discid',function(req,res){
   var g_vdiscid = parseInt(req.params.discid);
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2) {
-    var value = func(arg);
+    var value = func(arg1,arg2);
 
     while(typeof value === "function") {
         value = setTimeout(function(){value();},3000);
