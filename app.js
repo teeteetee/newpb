@@ -774,7 +774,7 @@ app.post('/gtm/:discid',function(req,res){
   //-----------trampoline-------------//
   function trampoline (func,arg1,arg2,arg3) {
     console.log('func: '+func);
-    var value = func(arg1,arg2,arg3);
+    var value = func;
    console.log('BREAKPOINT 2');
    console.log(typeof checkdb);
    console.log(typeof value);
