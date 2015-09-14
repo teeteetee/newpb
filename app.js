@@ -795,6 +795,7 @@ app.post('/gtm/:discid',function(req,res){
     req.on('close', function() {
       console.log('BREAKPOINT 7');
        terminate ++;
+       console.log('TERMINATE: '+terminate);
      }); 
     console.log('longpol msg');
     var ms={};
