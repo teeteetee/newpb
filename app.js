@@ -776,14 +776,14 @@ app.post('/gtm/:discid',function(req,res){
     if(req.on("close", function() {
        console.log('TRYING TO TERMINATE');
        return 1;
-     });)
+     }))
       { console.log('terminating the loop CLIENT DISCONNECT');
         return true;}
      
      if(req.on("end", function() {
       console.log('TRYING TO TERMINATE');
        return 1;
-     }):) {
+     })) {
       console.log('terminating the loop CLIENT DISCONNECT');
       return true;
      }
