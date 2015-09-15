@@ -801,6 +801,7 @@ app.post('/gtm/:discid',function(req,res){
         }
       }
     });
+  }
     function sort_response () {
       if(dynamic_msgstore)
            {
@@ -835,6 +836,9 @@ app.post('/gtm/:discid',function(req,res){
           else {
             console.warn('empty');
           }
+      }
+      else {
+         console.warn('empty');
       }
     }
    }
