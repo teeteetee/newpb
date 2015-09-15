@@ -802,8 +802,7 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
-      var d_m_length = dynamic_msgstore.length-1;
-      if(dynamic_msgstore && dynamic_msgstore[d_m_length].tmstmp>vtmstmp)
+      if(dynamic_msgstore && dynamic_msgstore[dynamic_store.length-1].tmstmp>vtmstmp)
            {
             console.log('TIMESTAMP: '+vtmstmp);
              var tmp_l = dynamic_msgstore.length-1;
