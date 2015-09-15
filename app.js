@@ -772,7 +772,8 @@ app.post('/gtm/:discid',function(req,res){
     var g_vdiscid = parseInt(req.params.discid);
     var dynamic_msgstore;
     var vlsttmstmp;
-    var ms;
+    var ms={};
+    ms.msgstore =[];
 
     var terminate=0;
     req.on('close', function() {
@@ -781,10 +782,12 @@ app.post('/gtm/:discid',function(req,res){
        console.log('TERMINATE: '+terminate);
      }); 
    
-   while(!terminate) {
+   var db_cont_check = setInterval(function(){check_db()},2500);
+
+   var value = sort_response();
+   while(value === 'function' && !terminate) {
     console.info('still looping');
-    setTimeout(function(){check_db()},2500);
-    setTimeout(function(){sort_response()},2600);
+    value();
    }
 
    function check_db () {
@@ -803,7 +806,8 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
-      if(dynamic_msgstore)
+      var d_m_length = dynamic_msgstore.length-1;
+      if(dynamic_msgstore && dynamic_msgstore[d_m_length].tmstmp>vtmstmp)
            {
             console.log('TIMESTAMP: '+vtmstmp);
              var tmp_l = dynamic_msgstore.length-1;
@@ -832,13 +836,16 @@ app.post('/gtm/:discid',function(req,res){
           ms.mtext = doc;
           res.send(ms);
           terminate++;
+          clearInterval(db_cont_check);
         }
           else {
             console.warn('empty');
+            return sort_response;
           }
       }
       else {
          console.warn('empty');
+         return sort_response;
       }
     }
    });
