@@ -787,7 +787,7 @@ app.post('/gtm/:discid',function(req,res){
    var tick = setInterval(function(){sort_response()},1500);
 
    function check_db () {
-    discussions.findOne({dscid:g_vdiscid},function(err,done){
+    discussions.findOne({discid:g_vdiscid},function(err,done){
       if(err) {
         console.warn('db err disc query');
       }
