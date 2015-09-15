@@ -812,7 +812,7 @@ app.post('/gtm/:discid',function(req,res){
                        break;
                      }
               else if(dynamic_msgstore[i].rcvr === parseInt(req.session.uid) && dynamic_msgstore[i].tmstmp > vtmstmp) {
-                    ms.msgstore.push(doc.msgstore[i]);
+                    ms.msgstore.push(dynamic_msgstore[i]);
                     if(i===tmp_l) {
                      vlsttmstmp=dynamic_msgstore[i].tmstmp;
                    }
