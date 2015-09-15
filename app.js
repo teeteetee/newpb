@@ -841,7 +841,7 @@ app.post('/gtm/:discid',function(req,res){
          console.warn('empty');
       }
     }
-   }
+   });
 //-----------------LONGPOLLING END------------------//
 
 
