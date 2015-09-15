@@ -802,6 +802,7 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
+      console.info('sorting: '+dynamic_msgstore[dynamic_store.length-1].tmstmp);
       if(dynamic_msgstore && dynamic_msgstore[dynamic_store.length-1].tmstmp>vtmstmp)
            {
             console.log('TIMESTAMP: '+vtmstmp);
@@ -813,7 +814,7 @@ app.post('/gtm/:discid',function(req,res){
               else if(dynamic_msgstore[i].rcvr === parseInt(req.session.uid) && dynamic_msgstore[i].tmstmp > vtmstmp) {
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
-                     vlsttmstmp=doc.msgstore[i].tmstmp;
+                     vlsttmstmp=dynamic_msgstore[i].tmstmp;
                    }
                   }
             }
