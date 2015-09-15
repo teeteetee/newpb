@@ -794,6 +794,7 @@ app.post('/gtm/:discid',function(req,res){
       else {
         if(done&&done.msgstore) {
            dynamic_msgstore = done.msgstore;
+           console.log('dynamic_store set: '+dynamic_msgstore[1]);
         }
         else {
           console.warn('empty');
@@ -802,7 +803,6 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
-      console.info('sorting: '+dynamic_msgstore[dynamic_store.length-1].tmstmp);
       if(dynamic_msgstore && dynamic_msgstore[dynamic_store.length-1].tmstmp>vtmstmp)
            {
             console.log('TIMESTAMP: '+vtmstmp);
