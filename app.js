@@ -784,14 +784,10 @@ app.post('/gtm/:discid',function(req,res){
    
    var db_cont_check = setInterval(function(){check_db()},2500);
 
-   var value = sort_response();
-   while(value === 'function' && !terminate) {
-    console.info('still looping');
-    value();
-   }
+   var tick = setInterval(function(){sort_response()},1500);
 
    function check_db () {
-    discussion.findOne({dscid:g_vdiscid},function(err,done){
+    discussions.findOne({dscid:g_vdiscid},function(err,done){
       if(err) {
         console.warn('db err disc query');
       }
@@ -837,15 +833,16 @@ app.post('/gtm/:discid',function(req,res){
           res.send(ms);
           terminate++;
           clearInterval(db_cont_check);
+          clearInterval(tick);
         }
           else {
             console.warn('empty');
-            return sort_response;
+            return 0
           }
       }
       else {
          console.warn('empty');
-         return sort_response;
+         return 0
       }
     }
    });
