@@ -821,10 +821,9 @@ app.post('/gtm/:discid',function(req,res){
          if(ms.msgstore.length)   
         {console.log('long poll in 11');
       console.log('BREAKPOINT 16');
-          vdisid=vdiscid.toString();
           var sht_tmp ={};
            sht_tmp['$set'] = {};
-           sht_tmp['$set']['tmstmpstore.'+g_vdiscid] =vlsttmstmp;
+           sht_tmp['$set']['tmstmpstore.'+g_vdiscid.toString()] =vlsttmstmp;
            users.update({uid:parseInt(req.session.uid)},sht_tmp);
                 console.log('BREAKPOINT 17');
           ms.trouble=0;
