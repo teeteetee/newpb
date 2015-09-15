@@ -768,132 +768,76 @@ app.post('/ntfc',function(req,res){
 });
 
 app.post('/gtm/:discid',function(req,res){
-   console.log('BREAKPOINT 1');
     var vtmstmp = parseInt(req.body.tmstmp);
-  var g_vdiscid = parseInt(req.params.discid);
-  //-----------trampoline-------------//
-  function trampoline (func,arg1,arg2,arg3) {
-    
-    var value = func(arg1,arg2,arg3);
-   console.log('BREAKPOINT 2');
-   console.log(typeof checkdb);
-   console.log('value: '+typeof value);
-    while(typeof value === 'function') {
-      console.log('SUCCESSFUL LOOP');
-      value = value(arg1,arg2,arg3);
-    }
-    console.log('BREAKPOINT 4');
-    console.log('CHECKDB TERMINATED');
-    return value;
- }
- console.log('BREAKPOINT 5');
-  trampoline(checkdb,g_vdiscid,req,res);
-  //-----------trampoline end------------//
-  function checkdb(vdiscid,req,res) {
+    var g_vdiscid = parseInt(req.params.discid);
+    var dynamic_msgstore;
+    var vlsttmstmp;
+    var ms;
+
     var terminate=0;
     req.on('close', function() {
       console.log('BREAKPOINT 7');
        terminate ++;
        console.log('TERMINATE: '+terminate);
      }); 
-    console.log('longpol msg');
-    var ms={};
-    console.log('BREAKPOINT 8');
-    var vlsttmstmp;
-    ms.msgstore=[];
-     discussions.findOne({discid:vdiscid},function (err,doc){
-      console.log('BREAKPOINT 9');
-    if(err) {
-    console.log('err while disc query');
-    }
-    else {
-      if(doc){
-        //---------------------------//
-        if(doc.msgstore)
+   
+   while(!terminate) {
+    console.info('still looping');
+    setTimeout(function(){check_db()},2500);
+    setTimeout(function(){sort_response()},2600);
+   }
+
+   function check_db () {
+    discussion.findOne({dscid:g_vdiscid},function(err,done){
+      if(err) {
+        console.warn('db err disc query');
+      }
+      else {
+        if(done&&done.msgstore) {
+           dynamic_msgstore = done.msgstore;
+        }
+        else {
+          console.warn('empty');
+        }
+      }
+    });
+    function sort_response () {
+      if(dynamic_msgstore)
            {
-            console.log('BREAKPOINT 10');
             console.log('TIMESTAMP: '+vtmstmp);
-             var tmp_l = doc.msgstore.length-1;
+             var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>-1; i--) {
-               //console.log('i: '+i);
-               //console.log('long poll in 7');
-               console.log('BREAKPOINT 11');
-               if(doc.msgstore[i].tmstmp < vtmstmp){
-                       //console.log('BREAK FOR LOOP');
-                       console.log('BREAKPOINT 12');
+               if(dynamic_msgstore[i].tmstmp < vtmstmp){
                        break;
                      }
-              else if(doc.msgstore[i].rcvr === parseInt(req.session.uid) && doc.msgstore[i].tmstmp > vtmstmp) {
-                console.log('BREAKPOINT 13');
-                   //console.log('HAS MESSAGES');
-                   // console.log('long poll in 8');
+              else if(dynamic_msgstore[i].rcvr === parseInt(req.session.uid) && dynamic_msgstore[i].tmstmp > vtmstmp) {
                     ms.msgstore.push(doc.msgstore[i]);
                     if(i===tmp_l) {
-                      console.log('BREAKPOINT 14');
-                     // console.log('long poll in 9');
                      vlsttmstmp=doc.msgstore[i].tmstmp;
                    }
                   }
             }
-            //console.log('FINISHED FUCKING FOR LOOP');
-            console.log('BREAKPOINT 15');
          if(ms.msgstore.length)   
         {console.log('long poll in 11');
       console.log('BREAKPOINT 16');
           vdisid=vdiscid.toString();
           var sht_tmp ={};
            sht_tmp['$set'] = {};
-           sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
+           sht_tmp['$set']['tmstmpstore.'+g_vdiscid] =vlsttmstmp;
            users.update({uid:parseInt(req.session.uid)},sht_tmp);
                 console.log('BREAKPOINT 17');
           ms.trouble=0;
           //--------------------------//
           ms.mtext = doc;
           res.send(ms);
-          return 1;
+          terminate++;
         }
           else {
-            console.log('BREAKPOINT 18');
-            //setTimeout(function(){checkdb(g_vdiscid,req,res);},3000);
-            if(terminate) {
-             return 1;
-            }
-            else
-            {console.log('BREAKPOINT 19');
-              console.log('long poll empty '+Date.now());
-              console.log(typeof checkdb);
-              return checkdb;
-            }
+            console.warn('empty');
           }
       }
-      else {console.log('BREAKPOINT 20');
-        if(terminate) {
-             return 1;
-            }
-            else
-            {console.log('BREAKPOINT 21');
-        console.log('long poll trouble '+Date.now());
-        return checkdb;
-        }
-      }
     }
-    else{
-      if(terminate) {
-        console.log('BREAKPOINT 22');
-             return 1;
-            }
-            else
-            {
-     console.log('long poll trouble nodoc'+Date.now());
-        //setTimeout(function(){checkdb(g_vdiscid,req,res);},6000);
-        return checkdb;
-       }
-      }
-    }
-  });
-  }
-});
-
+   }
 //-----------------LONGPOLLING END------------------//
 
 
