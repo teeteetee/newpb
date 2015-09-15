@@ -829,7 +829,6 @@ app.post('/gtm/:discid',function(req,res){
                 console.log('BREAKPOINT 17');
           ms.trouble=0;
           //--------------------------//
-          ms.mtext = doc;
           res.send(ms);
           terminate++;
           clearInterval(db_cont_check);
