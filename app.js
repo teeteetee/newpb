@@ -777,7 +777,6 @@ app.post('/gtm/:discid',function(req,res){
 
     var terminate=0;
     req.on('close', function() {
-      console.log('BREAKPOINT 7');
        terminate ++;
        console.log('TERMINATE: '+terminate);
      }); 
@@ -794,7 +793,6 @@ app.post('/gtm/:discid',function(req,res){
       else {
         if(done&&done.msgstore) {
            dynamic_msgstore = done.msgstore;
-           console.log('dynamic_store set: '+dynamic_msgstore[1]);
         }
         else {
           console.warn('empty');
@@ -805,7 +803,7 @@ app.post('/gtm/:discid',function(req,res){
     function sort_response () {
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
-            console.log('TIMESTAMP: '+vtmstmp);
+            //console.log('TIMESTAMP: '+vtmstmp);
              var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>-1; i--) {
                if(dynamic_msgstore[i].tmstmp < vtmstmp){
@@ -819,13 +817,12 @@ app.post('/gtm/:discid',function(req,res){
                   }
             }
          if(ms.msgstore.length)   
-        {console.log('long poll in 11');
-      console.log('BREAKPOINT 16');
+        {
           var sht_tmp ={};
            sht_tmp['$set'] = {};
            sht_tmp['$set']['tmstmpstore.'+g_vdiscid.toString()] =vlsttmstmp;
            users.update({uid:parseInt(req.session.uid)},sht_tmp);
-                console.log('BREAKPOINT 17');
+                
           ms.trouble=0;
           //--------------------------//
           res.send(ms);
@@ -834,12 +831,12 @@ app.post('/gtm/:discid',function(req,res){
           clearInterval(tick);
         }
           else {
-            console.warn('empty');
+            
             return 0
           }
       }
       else {
-         console.warn('empty');
+        
          return 0
       }
     }
