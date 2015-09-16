@@ -764,6 +764,7 @@ app.post('/ntfc',function(req,res){
        }
      });}
     function sort_response() {
+      console.info('running sort_response');
       if(dynamic_tmstmp){
           ms.tmstmp = dynamic_tmstmp;
           ms.trouble=0;
