@@ -757,7 +757,7 @@ app.post('/ntfc',function(req,res){
        }
        else {
          if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
-           dynamic_msgstore=doc.g_tmstmp;
+           dynamic_tmstmp=doc.g_tmstmp;
            console.log('timestamp set');
            clearInterval(db_cont_check);
          }
