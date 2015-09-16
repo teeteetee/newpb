@@ -767,7 +767,10 @@ app.post('/ntfc',function(req,res){
       if(dynamic_tmstmp){
           ms.tmstmp = dynamic_tmstmp;
           ms.trouble=0;
-         res.send(ms);}
+          console.log('MS: '+dynamic_tmstmp);
+         res.send(ms);
+       clearInterval(db_cont_check);
+          clearInterval(tick);}
     }
 });
 
