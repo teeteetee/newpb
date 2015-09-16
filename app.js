@@ -759,6 +759,7 @@ app.post('/ntfc',function(req,res){
          if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
            dynamic_msgstore=doc.g_tmstmp;
            console.log('timestamp set');
+           clearInterval(db_cont_check);
          }
            else{
             console.log('LOOP ROUTINE');
@@ -772,7 +773,6 @@ app.post('/ntfc',function(req,res){
           ms.trouble=0;
           console.log('MS: '+dynamic_tmstmp);
          res.send(ms);
-       clearInterval(db_cont_check);
           clearInterval(tick);}
     }
 });
