@@ -744,6 +744,7 @@ app.get('/testloopx', function (req,res){
 
 //-----------------LONGPOLLING------------------//
 app.post('/ntfc',function(req,res){
+  console.log('timestamp: '+req.body.tmstmp)
   var dynamic_tmstmp;
   var ms={};
   var db_cont_check = setInterval(function(){check_udb()},7000);
@@ -757,6 +758,7 @@ app.post('/ntfc',function(req,res){
        else {
          if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
            dynamic_msgstore=doc.g_tmstmp;
+           console.log('timestamp set');
          }
            else{
             console.log('LOOP ROUTINE');
