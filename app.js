@@ -746,7 +746,7 @@ app.get('/testloopx', function (req,res){
 app.post('/ntfc',function(req,res){
   var dynamic_tmstmp;
   var ms={};
-  var db_cont_check = setInterval(function(){check_udb()},2500);
+  var db_cont_check = setInterval(function(){check_udb()},7000);
    var tick = setInterval(function(){sort_response()},1500);
    function check_udb() {
     console.log('longpol routine'+req.ip);
