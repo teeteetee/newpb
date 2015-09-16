@@ -744,27 +744,31 @@ app.get('/testloopx', function (req,res){
 
 //-----------------LONGPOLLING------------------//
 app.post('/ntfc',function(req,res){
-  checkudb();
-   function checkudb() {
+  var dynamic_tmstmp;
+  var ms={};
+  var db_cont_check = setInterval(function(){check_udb()},2500);
+   var tick = setInterval(function(){sort_response()},1500);
+   function check_udb() {
     console.log('longpol routine'+req.ip);
     users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
        if(err) {
        console.log('err while disc query');
-       setTimeout(function(){checkudb();},6000);
        }
        else {
          if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
-           var ms={};
-           ms.tmstmp = doc.g_tmstmp;
-           ms.trouble=0;
-          res.send(ms);
+           dynamic_msgstore=doc.g_tmstmp;
          }
            else{
             console.log('LOOP ROUTINE');
-             setTimeout(function(){checkudb();},6000);
            }
        }
      });}
+    function sort_response() {
+      if(dynamic_tmstmp){
+          ms.tmstmp = dynamic_tmstmp;
+          ms.trouble=0;
+         res.send(ms);}
+    }
 });
 
 app.post('/gtm/:discid',function(req,res){
