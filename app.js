@@ -356,7 +356,7 @@ app.post('/settings',function (req,res){
 });
 
 app.get('/about',function (req,res){
-  if(req.session)
+  if(req.session.mail)
   {res.render('about');}
 else {
   res.render('about_out');
