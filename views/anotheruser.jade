@@ -417,7 +417,9 @@ head
           #{avatar}           
           h2(style='margin-top:50px;')  ????
           h3(id='numbers' style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary(type='button' id='openadd')  Add item
+          .btn-group                   
+            button.btn.btn-iosprimary.pull-right(type='button')  Follow
+            button.btn.btn-iosprimary.pull-right(type='button' id='chatwith')  Chat
       .row
         #booklist.thun.col-md-12
           .row.visible-sm.visible-xs
@@ -431,7 +433,9 @@ head
                     .media-body
                       h3.media-heading(style='margin-top:10px;') ????                      
                       h4(id='numbers')                   
-                      button.btn.btn-iosprimary.pull-right(type='button' id='openadd')  Add item
+                      .btn-group                   
+                        button.btn.btn-iosprimary.pull-right(type='button')  Follow
+                        button.btn.btn-iosprimary.pull-right(type='button' id='chatwith')  Chat
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
