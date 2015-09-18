@@ -64,7 +64,7 @@ app.get('/',function(req,res) {
                       res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
                   }
                    else {
-                    var emptyavatar = "div id=emptyavatar class='img-circle' style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
+                    var emptyavatar = "div id=emptyavatar class='img-circle pull-left' style='width:193px;height:193px;margin:20;margin-left:0;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
                     res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'done':JSON.stringify(done)});
                    }
               }
