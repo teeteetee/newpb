@@ -17,26 +17,6 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #leftpanel {
-      border-right:1px solid #eee;
-      min-width:100px;
-      padding-top:25px;
-      }
-      #mainframe {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      margin-top:50px;
-      background-color:white;
-      border-radius:10px;
-      margin-bottom:30px;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      width:100%;
-      }
       .emptybook {
       padding-left:23px;
       }
@@ -50,17 +30,6 @@ head
       padding-top:10px;
       padding-bottom:10px;
       border-bottom:1px solid #eee;
-      }
-      #booklist {
-      background-color:#F7F7F7;
-      border-top-right-radius:10px;
-      border-bottom-right-radius:10px;
-      }
-      .list {
-      overflow:auto;
-      min-height:500px;
-      max-height:70vh;
-      padding-top:20px;
       }
       #signup {
         padding-top:50px;
@@ -112,9 +81,6 @@ head
       .things{
       padding-top:50px;
       }
-      .list {
-      padding-top:50px;
-      }
       }
       @font-face {
       font-family:roboto-thin;
@@ -128,17 +94,6 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      body {
-      background-color:#eee;
-      font-family:roboto-thin;
-      }
-      h1{
-      font-family:intro;
-      }
-      h2{
-      font-family:boldproxima;
-      text-transform:uppercase;
-      }
       h4 {
       color:gray;
       }
@@ -148,10 +103,6 @@ head
       .inleftblock {
       border-bottom:1px solid #eee;
       color:gray;
-      -webkit-transition: background-color 0.3s ease;
-      -moz-transition: background-color 0.3s ease;
-      -o-transition: background-color 0.3s ease;
-      transition: background-color 0.3s ease;
       }
       .inleftblock:hover {
       background-color: #333;
@@ -182,7 +133,6 @@ head
       }
       .btn-success {
       background-color:#23BBA7;
-      border-color:#1FAB98;
       }
       .btn-success:hover {
       background-color:#1F9E8E;
@@ -191,12 +141,9 @@ head
         text-decoration:none !important;
         color:inherit !important;
       }
-      .cpadding {
-       padding-left:30px;
-       padding-right:30px;
-      }
-      .txtleft {
-        text-align:left;
+      p{
+        text-indent:20px;
+        font-size:18px;
       }
       dl {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -209,69 +156,56 @@ head
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
   body
-    .container
-      #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
-          #emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
-          h3(id='numbers' style='text-align:center;')
-          .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/')
-                h4  Lists   
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/chat')
-                h4  Messages       
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/people')
-                h4  People 
-          .inleftblock.row.visible-lg.visible-md(style='background-color:#ddd;color:white;')
-            .col-xs-12
-              a(href='/settings')
-                h4  Settings    
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/about')
-                h4  About   
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/logout')
-                h4  Logout      
-        #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') User №#{user}                       
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Settings 
-           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;') 
-            .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;') User №#{user} 
-              h4(style='color:gray;') Settings           
-          .list.row
-            .col-xs-12
-              .row
-                .col-xs-12
-                  dl
-                    dt Userpic upload
-                    dd
-                      form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
-                        .form-group
-                          //label(for="exampleInputFile") Userpic upload
-                          input(type="file" id='userpic' name='userpic' )
-                          p(class="help-block") Jpg images only
-                        button(class='btn btn-warning' type='submit') Upload
-                      
-                    dt Would you like your lists private ?
-                    dd
-                      .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-                        button(type="button" class="btn btncorr btn-default active") Private
-                        button(type="button" class="btn btncorr btn-default") Public
-                    dt Allow users to send you messages straight away, or request to authorise chat first ? 
-                    dd
-                      .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-                        button(type="button" class="btn btncorr btn-default active") Request
-                        button(type="button" class="btn btncorr btn-default") No request
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='#')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/')  My lists 
+            li
+              a( id='chat' href='/chat') Messages             
+            li
+              a(href='/people') People           
+            li.active
+              a(href='/settings')  Settings             
+            li
+              a(href='/about')  About         
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/logout') Logout    
+    .container(style='padding-top:50px;')       
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          dl
+            dt Userpic upload
+            dd
+              form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
+                .form-group
+                  //label(for="exampleInputFile") Userpic upload
+                  input(type="file" id='userpic' name='userpic' )
+                  p(class="help-block") Jpg images only
+                button(class='btn btn-warning' type='submit') Upload
+              
+            dt Would you like your lists private ?
+            dd
+              .btn-group(style='display:inline-block;'  role="group" aria-label="...")
+                button(type="button" class="btn btncorr btn-default active") Private
+                button(type="button" class="btn btncorr btn-default") Public
+            dt Allow users to send you messages straight away, or request to authorise chat first ? 
+            dd
+              .btn-group(style='display:inline-block;'  role="group" aria-label="...")
+                button(type="button" class="btn btncorr btn-default active") Request
+                button(type="button" class="btn btncorr btn-default") No request
               .row 
                 .col-xs-12
                   button(class='btn btn-primary' id='setsub') Save
