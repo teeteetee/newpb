@@ -466,7 +466,7 @@ head
             li.active
               a(href='#')  My lists 
             li
-              a(href='/chat') Messages             
+              a( id='chat' href='/chat') Messages             
             li
               a(href='/people') People           
             li
@@ -574,7 +574,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-            $('#noitems').remove();
+            $('#books').empty();
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
@@ -773,6 +773,7 @@ head
               });
           }
         });
+        var new_messages =1;
         function notifications() {
           // TO DO when recieved a notification update user on a server and keep checking
         console.log('longpol');
@@ -789,8 +790,15 @@ head
                 notifications();
                 }
                 else {
-                  alert('something new');
                   tmstmp = msg.tmstmp;
+                  if($('#notifications').length) {
+                   $('#notifications').text(new_messages);
+                   new_messages++;
+                  }
+                  else {
+                    $('#chat').append('<span id="notifications" class="bagde">'+new_messages+'</span>');
+                    new_messages++;
+                  }
                 }
                 notifications();
               }).fail(function(){console.log('fault longpol');setTimeout(notifications,2000);});
