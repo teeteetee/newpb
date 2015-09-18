@@ -174,47 +174,39 @@ head
       color:inherit !important;
       }
   body
-    .container
-      #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
-          h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C      
-          .row(style='border-top:1px solid #eee;')      
-          .inleftblock.row.visible-lg.visible-md(style='background-color:#333;')
-            .col-xs-12
-              h4(style='color:white;')
-                span.glyphicon.glyphicon-log-in(style='color:#B2D4D4;')
-                | Sign in
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='http://vntrlst.com')
-                h4  Sign up
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/about')
-                h4  About      
-        #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') Clandestine                        
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies              
-          #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
-            .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;')  Clandestine                        
-              h4(style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies                  
-          #signinblock.list.row
-            .col-xs-12(style='padding:top:100px;')
-              form(class="form-horizontal paddgroup")
-                .form-group
-                  .col-md-6.col-md-offset-3.message
-                .form-group
-                  .col-md-6.col-md-offset-3
-                    input(type="email" class="form-control" id="mail" name='mail' placeholder="Email")
-                .form-group 
-                  .col-md-6.col-md-offset-3
-                    input(type="password" class="form-control" id="p" name='p' placeholder="Password")
-                .form-group 
-                  .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                    button(type="button" id='login' class=" btn btn-warning") Sign in
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='#')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/signin')  Sign in            
+            li
+              a(href='/about')  About  
+    .container(style='padding-top:50px;')
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:100px;')      
+          form(class="form-horizontal paddgroup")
+            .form-group
+              .col-md-6.col-md-offset-3.message
+            .form-group
+              .col-md-6.col-md-offset-3
+                input(type="email" class="form-control" id="mail" name='mail' placeholder="Email")
+            .form-group 
+              .col-md-6.col-md-offset-3
+                input(type="password" class="form-control" id="p" name='p' placeholder="Password")
+            .form-group 
+              .col-md-6.col-md-offset-3(style='padding-top:30px;') 
+                button(type="button" id='login' class=" btn btn-warning") Sign in
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
