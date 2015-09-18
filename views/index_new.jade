@@ -17,19 +17,13 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #leftpanel {
-      border-right:1px solid #eee;
-      min-width:100px;
-      padding-top:25px;
-      }
-      #mainframe {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      margin-top:50px;
-      background-color:white;
-      border-radius:10px;
-      margin-bottom:30px;
+      #userimg {
+      width:100%;
+      max-width:200px;
+      margin:30px;
+      margin-left:50px;
+      margin-right:50px;
+      display:block;
       }
       .emptybook {
       padding-left:23px;
@@ -37,16 +31,10 @@ head
       .book h4 {
       color:black;
       }
-      .book:hover {
-      background-color:#eee;
-      }
       .book {
-      padding-top:10px;
-      padding-bottom:10px;
       border-bottom:1px solid #eee;
       }
       #booklist {
-      background-color:#F7F7F7;
       border-top-right-radius:10px;
       border-bottom-right-radius:10px;
       }
@@ -115,17 +103,6 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      body {
-      background-color:#eee;
-      font-family:roboto-thin;
-      }
-      h1{
-      font-family:intro;
-      }
-      h2{
-      font-family:boldproxima;
-      text-transform:uppercase;
-      }
       h4 {
       color:gray;
       }
@@ -135,9 +112,13 @@ head
       .inleftblock {
       border-bottom:1px solid #eee;
       color:gray;
+      -webkit-transition: background-color 0.3s ease;
+      -moz-transition: background-color 0.3s ease;
+      -o-transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease;
       }
       .inleftblock:hover {
-      background-color: #333;
+      background-color: #ddd;
       color:white;
       }
       .inleftblock:hover h4 {
@@ -149,12 +130,6 @@ head
       .btncorr {
       font-family:boldproxima;
       text-transform:uppercase;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      border:7px solid white;
       }
       .img-circle {
       -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
@@ -176,8 +151,182 @@ head
       background-color:#1F9E8E;
       } 
       a:hover, a:focus, a:active {
-      text-decoration:none !important;
-      color:inherit !important;
+        text-decoration:none !important;
+        color:inherit !important;
+      }
+      p{
+        text-indent:20px;
+        font-size:18px;
+      }
+      .cpadding {
+       padding-left:30px;
+       padding-right:30px;
+      }
+      .txtleft {
+        text-align:left;
+      }
+      ol li {
+      margin-bottom: 10px;
+      font-size:18px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      #extra {
+        display:none;
+        background-color:#f5f5f5;
+        padding-top:15px;
+      }
+      #add {
+        display:none;
+      }
+      .btn:focus,.btn:active {
+         outline: none !important;
+      }
+      .btn-default:focus,.btn-default:active {
+         background-color:white;
+         border-color:#ccc;
+      }
+      label {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .loader {
+      margin: 60px auto;
+      margin-top:20%;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+      }
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      #autocomp {
+      display:none;
+      background-color: white;
+      border-radius: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-top:3px;
+      padding-bottom:3px;
+      border: 1px solid #ddd;
+      position: absolute;
+      max-width: 510;
+      width: 100%;
+      box-shadow: 1px 7px 30px #A09F9F;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .sritem:hover {
+       background-color:#23A8E2;
+       color:white;
+      }
+      .sritem {
+        padding-top:3px;
+        padding-bottom:3px;
+      }
+      .modal-header {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-family:boldproxima;
+      text-transform:uppercase;
+      text-align:center;
+      }
+      .modal-content{
+      border-radius:10px;
+      }
+      .btn-success:active, .btn-success:focus, .btn-success:hover {
+      background-color:#22A795;
+      border-color:#19796C;
+      }
+      .book {
+      text-align:left;
+      border-bottom:1px solid #eee;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color:white;
+      }
+      .book > button {
+      vertical-align:super;
+      }
+      #testinsert {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      .bookpadding {
+      padding-top:10px;
+      padding-bottom:10px;
+      height:50px;
+      }
+      .hovershade:hover{
+       background-color:#eee;
+      }
+      .slideover {
+      display:none;
+      z-index:8888;
+      position:absolute;
+      background-color:rgba(0,0,0,0.8);
+      width:100%;
+      text-align:center;
+      }
+      .close {
+      font-size:30px
+      margin-top:14px;
+      margin-right:20px;
+      opacity:1;
+      text-ashadow:none;
+      color:white;
+      }
+      .btn-darkdefault{
+       background:none;
+       border:1px solid #ddd;
+       color:white;
+      }
+      .btn-darkwarning{
+       background:none;
+       border:1px solid #ff9900;
+       color:#ff9900;
+      }
+      .btn-darkdanger{
+       background:none;
+       border:1px solid red;
+       color:red;
+      }
+      .btn-darkprimary{
+       background:none;
+       border:1px solid  #00C3FF;;
+       color: #00C3FF;;
+      }
+      .btn.focus, .btn:focus, .btn:hover {
+          text-decoration: none;
       }
       .btn-ioslooklike {
        border:1px solid #ccc;
@@ -188,99 +337,118 @@ head
         background-color:#ccc;
         color:white;
       }
+      .iosactive:hover{
+        color:#ff9900;
+      }
+      .btn-ioswarning {
+        border:1px solid #ec971f;
+        background-color:white;
+        color:#ec971f;
+      }
+      .btn-ioswarning.iosactive {
+        background-color:#ec971f;
+        color:white;
+      }
+      .btn-iosprimary {
+        background-color:white;
+        border:1px solid #4197E2;
+        color:#4197E2;
+      }
+      .btn-iosprimary:focus, .btn-iosprimary:active, .btn-iosprimary:hover {
+        background-color:#4197E2;
+        color:white;
+      }
+      .btn-iosprimary.iosactive {
+        background-color:#4197E2;
+        color:white;
+      .medialeft > img {
+        width:64px !important;
+        height:64px !important;
+      }
   body
-    .container
-      #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
-          h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C      
-          .row(style='border-top:1px solid #eee;')      
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/signin')
-                h4
-                  span.glyphicon.glyphicon-log-in(style='color:#23BBA7;')
-                  | Sign in
-          .inleftblock.row.visible-lg.visible-md(style='background-color:#333;color:white;')
-            .col-xs-12
-              h4  Sign up
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              h4  About      
-        #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') Clandestine                        
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies              
-          #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;')
-            .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;')  Clandestine                        
-              h4(style='color:#ff9900;font-family:boldproxima;text-transform:uppercase;')  people&apos;s books and movies                  
-          #signinblock.list.row(style='display:none;')
-            .col-xs-12(style='padding:top:100px;')
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='#')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/signin')  Sign in            
+            li
+              a(href='/about')  About         
+    .container(style='padding-top:50px;')
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
+          //
+            form(class="form-horizontal paddgroup")
+              .form-group
+                .col-md-6.col-md-offset-3.message
+              .form-group
+                .col-md-6.col-md-offset-3
+                  input(type="email" class="form-control" id="mail" name='mail' placeholder="Email")
+              .form-group 
+                .col-md-6.col-md-offset-3
+                  input(type="password" class="form-control" id="p" name='p' placeholder="Password")
+              .form-group 
+                .col-md-6.col-md-offset-3(style='padding-top:30px;') 
+                  button(type="button" id='login' class=" btn btn-success") Sign in
+          .row
+            .col-md-4
+              img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')        
+              h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Find new
+            // booklist block
+            .col-md-4.things
+              img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')       
+              h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Keep track  
+            .col-md-4.things
+              img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')
+              h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Connections
+          #signup.row(style='text-align:center;margin-top:50px;')
+            .col-xs-12.visible-md.visible-lg(id='paddgroup-lg')
               form(class="form-horizontal paddgroup")
                 .form-group
                   .col-md-6.col-md-offset-3.message
                 .form-group
                   .col-md-6.col-md-offset-3
-                    input(type="email" class="form-control" id="mail" name='mail' placeholder="Email")
+                    input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
                 .form-group 
                   .col-md-6.col-md-offset-3
-                    input(type="password" class="form-control" id="p" name='p' placeholder="Password")
+                    input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
+                .form-group 
+                  .col-md-6.col-md-offset-3 
+                    input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
+                .form-group 
+                  .col-md-6.col-md-offset-3 
+                    .btn-group(role="group" aria-label="...")
+                      button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
+                      button(type="button" id='female' class="btn btn-ioslooklike") Female
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                    button(type="button" id='login' class=" btn btn-success") Sign in
-          #signupblock.list.row
-            .col-xs-12
-              .row
-                .col-md-4
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')        
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Find new
-                // booklist block
-                .col-md-4.things
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')       
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Keep track  
-                .col-md-4.things
-                  img.img-circle(src='images/pp.jpeg', style='width:200px;height:200px;box-shadow: -9px 0px 40px 0px #c7c7c7;')
-                  h4(style='font-family:boldproxima;text-transform:uppercase;padding-top:20px;color:#333;') Connections
-              #signup.row(style='text-align:center;margin-top:50px;')
-                .col-xs-12.visible-md.visible-lg(id='paddgroup-lg')
-                  form(class="form-horizontal paddgroup")
-                    .form-group
-                      .col-md-6.col-md-offset-3.message
-                    .form-group
-                      .col-md-6.col-md-offset-3
-                        input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
-                    .form-group 
-                      .col-md-6.col-md-offset-3
-                        input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
-                    .form-group 
-                      .col-md-6.col-md-offset-3 
-                        input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
-                    .form-group 
-                      .col-md-6.col-md-offset-3 
-                        .btn-group(role="group" aria-label="...")
-                          button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
-                          button(type="button" id='female' class="btn btn-ioslooklike") Female
-                    .form-group 
-                      .col-md-6.col-md-offset-3(style='padding-top:30px;') 
-                        button(type="button" class="signup btn btn-success") Sign up
-                .col-xs-12.visible-sm.visible-xs(id='paddgroup-sm')
-                  form(class="form-horizontal paddgroup")
-                    .form-group
-                      .col-md-10.message
-                    .form-group
-                      .col-md-10
-                        input(type="email" class="form-control input-lg" id="mail-sm" name='mail' placeholder="Email")
-                    .form-group 
-                      .col-md-10 
-                        input(type="password" class="form-control input-lg" id="p-sm" name='p' placeholder="Password")
-                    .form-group 
-                      .col-md-10 
-                        input(type="password" class="form-control input-lg" id="pc-sm" name='pc' placeholder="Confirm password") 
-                    .form-group 
-                      .col-md-10(style='padding-top:30px;') 
-                        button(type="button" class="signup btn btn-success btn-lg") Sign up
-  
+                    button(type="button" class="signup btn btn-success") Sign up
+            .col-xs-12.visible-sm.visible-xs(id='paddgroup-sm')
+              form(class="form-horizontal paddgroup")
+                .form-group
+                  .col-md-10.message
+                .form-group
+                  .col-md-10
+                    input(type="email" class="form-control input-lg" id="mail-sm" name='mail' placeholder="Email")
+                .form-group 
+                  .col-md-10 
+                    input(type="password" class="form-control input-lg" id="p-sm" name='p' placeholder="Password")
+                .form-group 
+                  .col-md-10 
+                    input(type="password" class="form-control input-lg" id="pc-sm" name='pc' placeholder="Confirm password") 
+                .form-group 
+                  .col-md-10(style='padding-top:30px;') 
+                    button(type="button" class="signup btn btn-success btn-lg") Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
