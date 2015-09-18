@@ -17,26 +17,6 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #leftpanel {
-      border-right:1px solid #eee;
-      min-width:100px;
-      padding-top:25px;
-      }
-      #mainframe {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      margin-top:50px;
-      background-color:white;
-      border-radius:10px;
-      margin-bottom:30px;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      width:100%;
-      }
       .emptybook {
       padding-left:23px;
       }
@@ -50,16 +30,6 @@ head
       padding-top:10px;
       padding-bottom:10px;
       border-bottom:1px solid #eee;
-      }
-      #booklist {
-      background-color:#F7F7F7;
-      border-top-right-radius:10px;
-      border-bottom-right-radius:10px;
-      }
-      .list {
-      overflow:auto;
-      min-height:500px;
-      max-height:70vh;
       }
       #signup {
         padding-top:50px;
@@ -123,17 +93,6 @@ head
       @font-face{
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
-      }
-      body {
-      background-color:#eee;
-      font-family:roboto-thin;
-      }
-      h1{
-      font-family:intro;
-      }
-      h2{
-      font-family:boldproxima;
-      text-transform:uppercase;
       }
       h4 {
       color:gray;
@@ -206,8 +165,44 @@ head
         margin-left:30px;
       }
   body
-    .container
-      #mainframe.row.cuttop
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='#')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='#')  My lists 
+            li
+              a( id='chat' href='/chat') Messages             
+            li
+              a(href='/people') People           
+            li
+              a(href='/settings')  Settings             
+            li
+              a(href='/about')  About         
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/logout') Logout
+    .container(style='padding-top:50px;')
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          h3 Conversations
+      .panel.panel-default
+        .panel-body#discussions
+           #noitmes.row(style='text-align:center;')  
+             .col-xs-12
+               h2(style='color:#ccc;margin-bottom:20px;') No items 
+
+      //
         #leftpanel.thun.col-md-2
           #emptyavatar(style='width:150px;height:150px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
           h3(id='numbers' style='text-align:center;')
@@ -255,11 +250,11 @@ head
       //TO DO userpics seem to be cut from the sides, look into that
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      if(user.userpic){
-        $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      } 
+      //if(user.userpic){
+      //  $('#emptyavatar').remove();
+      //  $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
+      //  $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //} 
       var discussions = [#{discussions}];
       var counter=0;
       getdisc(discussions[counter],counter);
@@ -314,6 +309,7 @@ head
       return 0;
       }
       else {
+        $('#noitems').remove();
         if(#{user} !=parsed.mtext.rcv)
           {
           var vuid = parsed.mtext.rcv;
