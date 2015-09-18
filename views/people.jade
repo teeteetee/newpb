@@ -17,46 +17,19 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #leftpanel {
-      border-right:1px solid #eee;
-      min-width:100px;
-      padding-top:25px;
-      }
-      #mainframe {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      margin-top:50px;
-      background-color:white;
-      border-radius:10px;
-      margin-bottom:30px;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      width:100%;
-      }
       .emptybook {
       padding-left:23px;
       }
       .book h4 {
       color:black;
       }
+      .book:hover {
+      background-color:#eee;
+      }
       .book {
+      padding-top:10px;
+      padding-bottom:10px;
       border-bottom:1px solid #eee;
-      }
-      #booklist {
-      background-color:#F7F7F7;
-      border-top-right-radius:10px;
-      border-bottom-right-radius:10px;
-      }
-      .list {
-      overflow:auto;
-      min-height:500px;
-      max-height:70vh;
-      text-align:center;
-      padding-top:50px;
       }
       #signup {
         padding-top:50px;
@@ -108,9 +81,6 @@ head
       .things{
       padding-top:50px;
       }
-      .list {
-      padding-top:50px;
-      }
       }
       @font-face {
       font-family:roboto-thin;
@@ -124,17 +94,6 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      body {
-      background-color:#eee;
-      font-family:roboto-thin;
-      }
-      h1{
-      font-family:intro;
-      }
-      h2{
-      font-family:boldproxima;
-      text-transform:uppercase;
-      }
       h4 {
       color:gray;
       }
@@ -144,13 +103,9 @@ head
       .inleftblock {
       border-bottom:1px solid #eee;
       color:gray;
-      -webkit-transition: background-color 0.3s ease;
-      -moz-transition: background-color 0.3s ease;
-      -o-transition: background-color 0.3s ease;
-      transition: background-color 0.3s ease;
       }
       .inleftblock:hover {
-      background-color: #ddd;
+      background-color: #333;
       color:white;
       }
       .inleftblock:hover h4 {
@@ -190,248 +145,62 @@ head
         text-indent:20px;
         font-size:18px;
       }
-      .cpadding {
-       padding-left:30px;
-       padding-right:30px;
+      .discussion {
+        border-bottom:1px solid #ddd;
+        padding-top:10px;
+        padding-bottom:10px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color:white;
       }
-      .txtleft {
-        text-align:left;
+      .discussion:hover {
+        background-color:#f3f3f3;
       }
-      ol li {
-      margin-bottom: 10px;
-      font-size:18px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      .media-body, .media-left, .media-right {
+      vertical-align: middle;
       }
-      #extra {
-        display:none;
-        background-color:#f5f5f5;
-        padding-top:15px;
-      }
-      #add {
-        display:none;
-      }
-      .btn:focus,.btn:active {
-         outline: none !important;
-      }
-      .btn-default:focus,.btn-default:active {
-         background-color:white;
-         border-color:#ccc;
-      }
-      label {
+      .media-heading{
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
-      .loader {
-      margin: 60px auto;
-      margin-top:20%;
-      font-size: 10px;
-      position: relative;
-      text-indent: -9999em;
-      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-      border-left: 1.1em solid #ffffff;
-      -webkit-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      transform: translateZ(0);
-      -webkit-animation: load8 1.1s infinite linear;
-      animation: load8 1.1s infinite linear;
-      }
-      .loader,
-      .loader:after {
-        border-radius: 50%;
-        width: 10em;
-        height: 10em;
-      }
-      @-webkit-keyframes load8 {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes load8 {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      #autocomp {
-      display:none;
-      background-color: white;
-      border-radius: 3px;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-top:3px;
-      padding-bottom:3px;
-      border: 1px solid #ddd;
-      position: absolute;
-      max-width: 510;
-      width: 100%;
-      box-shadow: 1px 7px 30px #A09F9F;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .sritem:hover {
-       background-color:#23A8E2;
-       color:white;
-      }
-      .sritem {
-        padding-top:3px;
-        padding-bottom:3px;
-      }
-      .modal-header {
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      font-family:boldproxima;
-      text-transform:uppercase;
-      text-align:center;
-      }
-      .modal-content{
-      border-radius:10px;
-      }
-      .btn-success:active, .btn-success:focus, .btn-success:hover {
-      background-color:#22A795;
-      border-color:#19796C;
-      }
-      .book {
-      text-align:left;
-      border-bottom:1px solid #eee;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color:white;
-      }
-      .book > button {
-      vertical-align:super;
-      }
-      #testinsert {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      }
-      .bookpadding {
-      padding-top:10px;
-      padding-bottom:10px;
-      }
-      .hovershade:hover{
-       background-color:#eee;
-      }
-      .slideover {
-      display:none;
-      z-index:8888;
-      position:absolute;
-      background-color:rgba(0,0,0,0.8);
-      width:100%;
-      text-align:center;
-      }
-      .close {
-      font-size:30px
-      margin-top:14px;
-      margin-right:20px;
-      opacity:1;
-      text-ashadow:none;
-      color:white;
-      }
-      .btn-darkdefault{
-       background:none;
-       border:1px solid #ddd;
-       color:white;
-      }
-      .btn-darkwarning{
-       background:none;
-       border:1px solid #ff9900;
-       color:#ff9900;
-      }
-      .btn-darkdanger{
-       background:none;
-       border:1px solid red;
-       color:red;
-      }
-      .btn-darkprimary{
-       background:none;
-       border:1px solid  #00C3FF;;
-       color: #00C3FF;;
-      }
-      .btn.focus, .btn:focus, .btn:hover {
-          text-decoration: none;
-      }
-      .btn-ioslooklike {
-       border:1px solid #ddd;
-       color:#ddd;
-       background:none;
-      }
-      .iosactive {
-        background-color:#ddd;
-        color:white;
-      }
-      .iosactive:hover{
-        color:#ff9900;
-      }
-      .btn-ioswarning {
-        border:1px solid #ec971f;
-        background-color:white;
-        color:#ec971f;
-      }
-      .btn-ioswarning.iosactive {
-        background-color:#ec971f;
-        color:white;
-      }
-      .btn-iosprimary {
-        background-color:white;
-        border:1px solid #2e6da4;
-        color:#2e6da4;
-      }
-      .btn-iosprimary.iosactive {
-        background-color:#2e6da4;
-        color:white;
+      .media {
+        margin-left:30px;
       }
   body
-    .container
-      #mainframe.row.cuttop
-        #leftpanel.thun.col-md-2
-          h2(style='text-align:center;font-size:100px;margin-bottom:35px;') C
-          //#emptyavatar(style='width:130px;height:130px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
-          //h3(id='numbers' style='text-align:center;')
-          .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/')
-                h4  Lists   
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/chat')
-                h4  Messages       
-          .inleftblock.row.visible-lg.visible-md(style='background-color:#ddd;color:white;')
-            .col-xs-12
-              a(href='/people')
-                h4  People 
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/settings')
-                h4  Settings    
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/about')
-                h4  About   
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/logout')
-                h4  Logout      
-        #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;border-bottom:1px solid #eee;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') People                       
-              h4(class='people_num' style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  
-           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;') 
-            .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;') People
-              h4(class='people_num' style='color:gray;')            
-          .list.row
-            .col-xs-12#users
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='#')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/')  My lists 
+            li
+              a( id='chat' href='/chat') Messages             
+            li.active
+              a(href='/people') People           
+            li
+              a(href='/settings')  Settings             
+            li
+              a(href='/about')  About         
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/logout') Logout
+    .container(style='padding-top:50px;')
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          h3 Conversations
+          .panel.panel-default
+            .panel-body#users
+               #noitmes.row(style='text-align:center;')  
+                 .col-xs-12
+                   h2(style='color:#ccc;margin-bottom:20px;') No items 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
