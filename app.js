@@ -60,7 +60,7 @@ app.get('/',function(req,res) {
             else {
               if(done){
                   if(done.userpic)
-                  { var avatar = "img id='userimg' class='img-circle center-block' src='/userpics/id"+done.uid+done.picext+"'";
+                  { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done.uid+done.picext+"'";
                       res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
                   }
                    else {
