@@ -356,7 +356,11 @@ app.post('/settings',function (req,res){
 });
 
 app.get('/about',function (req,res){
-  res.render('about');
+  if(req.session)
+  {res.render('about');}
+else {
+  res.render('about_out');
+}
 });
 
 app.get('/people',function (req,res){
