@@ -483,7 +483,7 @@ head
           #{avatar}           
           h2(style='margin-top:50px;')  ????
           h3(id='numbers' style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary(type='button')  Add item
+          button.btn.btn-iosprimary(type='button' id='openadd')  Add item
       .row
         #booklist.thun.col-md-12
           .row.visible-sm.visible-xs
@@ -497,7 +497,7 @@ head
                     .media-body
                       h3.media-heading(style='margin-top:10px;') ????                      
                       h4(id='numbers')                   
-                      button.btn.btn-iosprimary.pull-right(type='button')  Add item
+                      button.btn.btn-iosprimary.pull-right(type='button' id='openadd')  Add item
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
@@ -516,7 +516,7 @@ head
                 .panel-body#books
                    .row#noitmes(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;') No items             
+                       h2(style='color:#ccc;margin-bottom:20px;') No items             
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
