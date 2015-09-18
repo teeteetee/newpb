@@ -201,47 +201,6 @@ head
                #noitmes.row(style='text-align:center;')  
                  .col-xs-12
                    h2(style='color:#ccc;margin-bottom:20px;') No items 
-
-      //
-        #leftpanel.thun.col-md-2
-          #emptyavatar(style='width:150px;height:150px;margin:auto;border:7px dotted #eee;bakcground-color:white;border-radius:50%;')
-          h3(id='numbers' style='text-align:center;')
-          .row(style='border-top:1px solid #eee;') 
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/')
-                h4  Lists   
-          .inleftblock.row.visible-lg.visible-md(style='background-color:#ddd;color:white;')
-            .col-xs-12
-              a(href='/chat')
-                h4  Messages       
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/people')
-                h4  People 
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/settings')
-                h4  Settings     
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/about')
-                h4  About   
-          .inleftblock.row.visible-lg.visible-md
-            .col-xs-12
-              a(href='/logout')
-                h4  Logout      
-        #booklist.thun.col-md-10
-          .row.visible-lg.visible-md(style='background-color:white;border-top-right-radius:10px;border-bottom:1px solid #ddd;')
-            .col-xs-12
-              h2(style='color:#6CB7B7;') User №#{user}                       
-              h4(style='color:#B2D4D4;font-family:boldproxima;text-transform:uppercase;')  Conversations 
-           #mobilehead.row.visible-sm.visible-xs(style='background-color:#333;box-shadow: 0 5px 25px -5px #333;') 
-            .col-xs-12(style='min-width:100px;text-align:center;padding-bottom:10px;')
-              h2(style='color:white;text-align:center;') user №#{user} 
-              h4(style='color:gray;') Conversations
-          .list.row
-            #discussions.col-xs-12
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -309,7 +268,7 @@ head
       return 0;
       }
       else {
-        $('#noitems').empty();
+        $('#discussions').empty();
         if(#{user} !=parsed.mtext.rcv)
           {
           var vuid = parsed.mtext.rcv;
