@@ -1005,7 +1005,7 @@ app.get('/id:id', function (req,res){
           else {
             if(doc){
                       if(doc.userpic)
-                      { var avatar = "img id='userimg' class='img-circle pull-left' style='width:100%;max-width:200px;margin:20px;margin-left:0px;display:block;' src='/userpics/id"+doc.uid+doc.picext+"'";
+                      { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc.uid+doc.picext+"'";
                           res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
                       }
                        else {
