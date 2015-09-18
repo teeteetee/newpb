@@ -179,9 +179,9 @@ head
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              a(href='#')  My lists 
             li
+              a(href='/')  My lists 
+            li.active
               a( id='chat' href='/chat') Messages             
             li
               a(href='/people') People           
@@ -196,11 +196,11 @@ head
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h3 Conversations
-      .panel.panel-default
-        .panel-body#discussions
-           #noitmes.row(style='text-align:center;')  
-             .col-xs-12
-               h2(style='color:#ccc;margin-bottom:20px;') No items 
+        .panel.panel-default
+          .panel-body#discussions
+             #noitmes.row(style='text-align:center;')  
+               .col-xs-12
+                 h2(style='color:#ccc;margin-bottom:20px;') No items 
 
       //
         #leftpanel.thun.col-md-2
@@ -309,7 +309,7 @@ head
       return 0;
       }
       else {
-        $('#noitems').remove();
+        $('#noitems').empty();
         if(#{user} !=parsed.mtext.rcv)
           {
           var vuid = parsed.mtext.rcv;
