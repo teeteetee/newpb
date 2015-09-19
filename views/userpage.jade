@@ -496,7 +496,7 @@ head
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           #{avatar}           
           h2(style='margin-top:50px;')  ????
-          h3(id='numbers' style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
+          h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           button.btn.btn-iosprimary(type='button' id='openadd')  Add item
       .row
         #booklist.thun.col-md-12
@@ -510,7 +510,7 @@ head
                         #{avatar}         
                     .media-body
                       h3.media-heading(style='margin-top:10px;') ????                      
-                      h4(id='numbers')                   
+                      h4.numbers                 
                       button.btn.btn-iosprimary(type='button' id='openadd')  Add item
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
@@ -539,7 +539,7 @@ head
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       var tmstmp = Date.now();
-      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
