@@ -64,7 +64,7 @@ app.get('/',function(req,res) {
                       res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
                   }
                    else {
-                    var emptyavatar = "div id=emptyavatar class='img-circle pull-left' style='width:193px;height:193px;margin:30;margin-left:50;margin-right:50px;border:7px dotted #eee;bakcground-color:white;border-radius:50%;'";
+                    var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
                     res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'done':JSON.stringify(done)});
                    }
               }
