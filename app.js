@@ -61,10 +61,12 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done.uid+done.picext+"'";
+                     req.session.userstore = done.userstore;
                       res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
                   }
                    else {
                     var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
+                    req.session.userstore = done.userstore;
                     res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'done':JSON.stringify(done)});
                    }
               }
