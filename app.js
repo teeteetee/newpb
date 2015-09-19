@@ -1435,7 +1435,6 @@ app.post('/follow/:id',function (req,res){
                 user_insert._id = user._id;
                 users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
                   if(err){
-                    ms.trouble=1;
                 res.send(ms);  
                   }
                   else {
@@ -1454,6 +1453,30 @@ app.post('/follow/:id',function (req,res){
          });
   
  //---------------------------//
+});
+
+app.post('/unfollow/:id',function (req,res){
+  var ms={};
+  ms.trouble = 1;
+ users.findOne({uid:parseInt(req.session.uid)},function(err,user){
+           if(err) {
+               console.log('err while user query');
+               res.send(ms);
+           }
+           else {
+              if(user!=null){
+                console.log('unfollow');
+                delete user.userstore[parseInt(req.params.id)];  
+                users.update({uid:parseInt(req.session.uid)},{$set:{userstore:user.userstore}});
+                ms.trouble =0;
+                res.send(ms);
+               //respond to user with success
+              }
+              else{
+                res.send(ms);
+              }
+           }
+         });
 });
 
 app.post('/additem/:uid/:id',function (req,res){
