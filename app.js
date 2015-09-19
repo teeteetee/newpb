@@ -1433,9 +1433,18 @@ app.post('/follow/:id',function (req,res){
               if(user!=null){
                 var user_insert={};
                 user_insert._id = user._id;
-                users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}});
-                ms.trouble=0;
-                res.send(ms);    
+                users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
+                  if(err){
+                    ms.trouble=1;
+                res.send(ms);  
+                  }
+                  else {
+                    console.log('setting userstore: '+jees.userstore);
+                    req.session.userstore = jees.userstore;
+                    ms.trouble=0;
+                    res.send(ms);
+                  }
+                });    
                //respond to user with success
               }
               else{
