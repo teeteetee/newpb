@@ -1019,7 +1019,6 @@ app.get('/id:id', function (req,res){
                         var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc.uid+doc.picext+"'";
                           res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
-                      }
                        else {
                         if(req.session.userstore[doc.uid]){
                         console.log('have got him in userstore');
@@ -1027,7 +1026,7 @@ app.get('/id:id', function (req,res){
                        }
                         var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
                         res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
-                       }
+                  }     
                   }
                   else {
                     res.redirect('/');
