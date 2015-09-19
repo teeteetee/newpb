@@ -1012,7 +1012,7 @@ app.get('/id:id', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { if(req.session.userstore[parseInt(doc.uid)]){
+                      { if(req.session.userstore[parseInt(doc._id)]){
                         console.log('have got him in userstore');
                          unfollow=1;
                        }
@@ -1020,7 +1020,7 @@ app.get('/id:id', function (req,res){
                           res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
-                        if(req.session.userstore[parseInt(doc.uid)]){
+                        if(req.session.userstore[parseInt(doc._id)]){
                         console.log('have got him in userstore');
                          unfollow=1;
                        }
@@ -1477,7 +1477,7 @@ app.post('/unfollow/:id',function (req,res){
            else {
               if(user!=null){
                 console.log('unfollow');
-                delete user.userstore[parseInt(req.params.id)];  
+                delete user.userstore[parseInt(req.params._id)];  
                 users.update({uid:parseInt(req.session.uid)},{$set:{userstore:user.userstore}});
                 ms.trouble =0;
                 res.send(ms);
