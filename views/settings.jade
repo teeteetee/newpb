@@ -186,29 +186,31 @@ head
     .container(style='padding-top:50px;')       
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          dl
-            dt Userpic upload
-            dd
-              form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
-                .form-group
-                  //label(for="exampleInputFile") Userpic upload
-                  input(type="file" id='userpic' name='userpic' )
-                  p(class="help-block") Jpg images only
-                button(class='btn btn-warning' type='submit') Upload
-              
-            dt Would you like your lists private ?
-            dd
-              .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-                button(type="button" class="btn btncorr btn-default active") Private
-                button(type="button" class="btn btncorr btn-default") Public
-            dt Allow users to send you messages straight away, or request to authorise chat first ? 
-            dd
-              .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-                button(type="button" class="btn btncorr btn-default active") Request
-                button(type="button" class="btn btncorr btn-default") No request
-              .row 
-                .col-xs-12
-                  button(class='btn btn-primary' id='setsub') Save
+          .panel.panel-default
+            .panel-body
+              dl
+                dt Userpic upload
+                dd
+                  form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
+                    .form-group
+                      //label(for="exampleInputFile") Userpic upload
+                      input(type="file" id='userpic' name='userpic' )
+                      p(class="help-block") Jpg images only
+                    button(class='btn btn-warning' type='submit') Upload
+                  
+                dt Would you like your lists private ?
+                dd
+                  .btn-group(style='display:inline-block;'  role="group" aria-label="...")
+                    button(type="button" class="btn btncorr btn-default active") Private
+                    button(type="button" class="btn btncorr btn-default") Public
+                dt Allow users to send you messages straight away, or request to authorise chat first ? 
+                dd
+                  .btn-group(style='display:inline-block;'  role="group" aria-label="...")
+                    button(type="button" class="btn btncorr btn-default active") Request
+                    button(type="button" class="btn btncorr btn-default") No request
+                  .row 
+                    .col-xs-12
+                      button(class='btn btn-primary' id='setsub') Save
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
