@@ -81,6 +81,10 @@ head
       }
       }
       @media (max-width: 992px) {
+      #main {
+      height: 100vh;
+      background-color: #eee;
+      }
       #booklist {
       border-bottom-left-radius:10px;
       }
@@ -472,7 +476,7 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    .container(style='padding-top:50px;')
+    .container#main(style='padding-top:50px;')
       .row.visible-lg.visible-md
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           #{avatar}           
