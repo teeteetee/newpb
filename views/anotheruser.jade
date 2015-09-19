@@ -17,14 +17,15 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #mainframe {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      margin-top:50px;
-      background-color:white;
-      border-radius:10px;
-      margin-bottom:30px;
+      #emptyavatar {
+      width:193px;
+      height:193px;
+      margin:30;
+      margin-left:50;
+      margin-right:50;
+      border:7px dotted #eee;
+      bakcground-color:white;
+      border-radius:50%;
       }
       #userimg {
       width:100%;
@@ -90,6 +91,10 @@ head
       }
       }
       @media (max-width: 992px) {
+      #emptyavatar {
+      height:130px;
+      width:130px;
+      }
       #booklist {
       border-bottom-left-radius:10px;
       }
