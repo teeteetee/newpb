@@ -59,18 +59,6 @@ head
         padding-top:50px;
         padding-bottom:100px;
       }
-      @media (max-width: @screen-xs-max) { 
-       #emptyavatar {
-        margin:10px;
-        height:100px;
-        width:100px;
-      }
-      #userimg {
-      height:100px;
-      width:100px;
-      margin:10px;
-      }
-       }
       @media (max-width: 767px) {
       #mainframe {
       margin-top:0px;
@@ -445,7 +433,7 @@ head
           h2(style='margin-top:50px;')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           .btn-group                   
-            button.btn.btn-iosprimary(type='button')  Follow
+            button.btn.btn-iosprimary.follow(type='button')  Follow
             button.btn.btn-iosprimary(type='button' id='chatwith')  Chat
       .row
         #booklist.thun.col-md-12
@@ -461,7 +449,7 @@ head
                       h3.media-heading(style='margin-top:10px;') ????                      
                       h4.numbers                
                       .btn-group                   
-                        button.btn.btn-iosprimary(type='button')  Follow
+                        button.btn.btn-iosprimary.follow(type='button')  Follow
                         button.btn.btn-iosprimary(type='button' id='chatwith')  Chat
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
@@ -565,10 +553,10 @@ head
           $('.slideover').fadeOut(350);
           eval("$('#sm"+id+"').fadeToggle('fast');");
         }
-      $('#track').click(track);
-      function track () {$.ajax({
+      $('.follow').click(follow);
+      function follow () {$.ajax({
                method: "POST",
-               url: "/track/#{user}",
+               url: "/follow/#{user}",
                data: 0
              })
                .done(function( msg ) {

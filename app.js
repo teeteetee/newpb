@@ -1419,7 +1419,7 @@ app.post('/admin/insidemsg',function(req,res){
   });
 });
 
-app.post('/track/:id',function (req,res){
+app.post('/follow/:id',function (req,res){
   /// TO DO AUTH
   //-------------------------//
   var ms={};
