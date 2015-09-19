@@ -1012,7 +1012,7 @@ app.get('/id:id', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { if(req.session.userstore[doc.uid]){
+                      { if(req.session.userstore[parseInt(doc.uid)]){
                         console.log('have got him in userstore');
                          unfollow=1;
                        }
@@ -1020,7 +1020,7 @@ app.get('/id:id', function (req,res){
                           res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
-                        if(req.session.userstore[doc.uid]){
+                        if(req.session.userstore[parseInt(doc.uid)]){
                         console.log('have got him in userstore');
                          unfollow=1;
                        }
