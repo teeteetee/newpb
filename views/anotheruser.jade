@@ -475,6 +475,8 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      var unfollow= #{unfollow};
+      alert(typeof unfollow+' unfollow: '+unfollow);
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
       var tmp_string = "window.location='/chat/"+user.uid+"';";

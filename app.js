@@ -1010,13 +1010,23 @@ app.get('/id:id', function (req,res){
           }
           else {
             if(doc){
+              var unfollow=0;
                       if(doc.userpic)
-                      { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc.uid+doc.picext+"'";
-                          res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc)});
+                      { if(req.session.userstore[doc.uid]){
+                        console.log('have got him in userstore');
+                         unfollow=1;
+                       }
+                        var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc.uid+doc.picext+"'";
+                          res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                      }
                       }
                        else {
+                        if(req.session.userstore[doc.uid]){
+                        console.log('have got him in userstore');
+                         unfollow=1;
+                       }
                         var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                        res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc)});
+                        res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                        }
                   }
                   else {
