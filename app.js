@@ -61,13 +61,17 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done.uid+done.picext+"'";
-                     req.session.userstore = done.userstore;
                       res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
+                      if(done.userstore){
+                        req.session.userstore = done.userstore;
+                      }
                   }
                    else {
                     var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                    req.session.userstore = done.userstore;
                     res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'done':JSON.stringify(done)});
+                    if(done.userstore){
+                        req.session.userstore = done.userstore;
+                      }
                    }
               }
               else {
@@ -483,6 +487,14 @@ app.post('/markgood/:uid/:bid',function (req,res){
 
 app.get('/helpers',function(req,res){
   res.render('helpers');
+});
+
+app.get('clearuserstore',function (req,res){
+  if(req.session.uid)
+  {
+    users.update({uid:parseInt(req.session.uid)},{$unset:{userstore:0}});
+    res.redirect('/seeuser');
+ }
 });
 
 app.get('/seebooks',function (req,res){
@@ -1442,9 +1454,8 @@ app.post('/follow/:id',function (req,res){
            }
            else {
               if(user!=null){
-                var user_insert={};
-                user_insert._id = user._id;
-                users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
+                //users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
+                users.update({uid:parseInt(req.session.uid)},{$set:{userstore[user._id]:1}},function(err,jees){
                   if(err){
                 res.send(ms);  
                   }
@@ -1469,25 +1480,45 @@ app.post('/follow/:id',function (req,res){
 app.post('/unfollow/:id',function (req,res){
   var ms={};
   ms.trouble = 1;
- users.findOne({uid:parseInt(req.session.uid)},function(err,user){
-           if(err) {
-               console.log('err while user query');
-               res.send(ms);
-           }
-           else {
-              if(user!=null){
-                console.log('unfollow');
-                delete user.userstore[parseInt(req.params._id)];  
-                users.update({uid:parseInt(req.session.uid)},{$set:{userstore:user.userstore}});
-                ms.trouble =0;
-                res.send(ms);
-               //respond to user with success
-              }
-              else{
-                res.send(ms);
-              }
-           }
-         });
+
+  users.findOne({uid:parseInt(req.params.id)},function(err,user){
+             if(err) {
+                 console.log('err while user query');
+                 res.send(ms);
+             }
+             else {
+                if(user!=null){
+                  console.log('unfollow');  
+                  users.update({uid:parseInt(req.session.uid)},{$unset:{userstore[user._id]:0]}});
+                  ms.trouble =0;
+                  res.send(ms);
+                 //respond to user with success
+                }
+                else{
+                  res.send(ms);
+                }
+             }
+           });
+  
+   //users.findOne({uid:parseInt(req.session.uid)},function(err,user){
+   //          if(err) {
+   //              console.log('err while user query');
+   //              res.send(ms);
+   //          }
+   //          else {
+   //             if(user!=null){
+   //               console.log('unfollow');
+   //               delete user.userstore[parseInt(req.params._id)];  
+   //               users.update({uid:parseInt(req.session.uid)},{$set:{userstore:user.userstore}});
+   //               ms.trouble =0;
+   //               res.send(ms);
+   //              //respond to user with success
+   //             }
+   //             else{
+   //               res.send(ms);
+   //             }
+   //          }
+   //        });
 });
 
 app.post('/additem/:uid/:id',function (req,res){
