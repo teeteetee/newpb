@@ -62,14 +62,14 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done.uid+done.picext+"'";
-                      res.render('userpage',{'user':done.uid,'avatar':avatar,'done':JSON.stringify(done)});
+                      res.render('userpage',{'user':done._id,'avatar':avatar,'done':JSON.stringify(done)});
                       if(done.userstore){
                         req.session.userstore = done.userstore;
                       }
                   }
                    else {
                     var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                    res.render('userpage',{'user':done.uid,'avatar':emptyavatar,'done':JSON.stringify(done)});
+                    res.render('userpage',{'user':done._id,'avatar':emptyavatar,'done':JSON.stringify(done)});
                     if(done.userstore){
                         req.session.userstore = done.userstore;
                       }
@@ -87,8 +87,7 @@ app.get('/',function(req,res) {
 
 app.post('/getbooks/:uid',function (req,res){
   //TO DO auth?
-  var vuid = parseInt(req.params.uid);
-  users.findOne({uid:vuid},function(err,doc){
+  users.findOne({_id:req.params.uid},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
