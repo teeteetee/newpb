@@ -380,11 +380,10 @@ head
             .row
               .col-xs-12
                 h2 Your nickname
-                #nickgroup.form-group.has-error.has-feedback
+                #nickgroup.form-group.has-feedback
                   input(type="text" class="form-control" id='nickinput')
-                  span(id='errorsign' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  span(id='successsign' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  button(class='btn btn-lg') Submit
+                  span(id='errorsign' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                  span(id='successsign'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   script.
                     $('#nickinput').keyup(function(event) {
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
@@ -413,8 +412,7 @@ head
                       });
 
           .modal-footer
-            button(type="button" class="btn btn-default" data-dismiss="modal") Close
-            button(type="button" class="btn btn-warning" onclick="document.location.href='/settings';") Proceed to Settings
+            button(type="button" class="btn btn-default" data-dismiss="modal") Lets go!
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
         // Brand and toggle get grouped for better mobile display
