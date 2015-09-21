@@ -486,11 +486,14 @@ head
                             console.log(msg);
                             if(msg)
                               { 
+                                console.log('msg present');
                                 $('#successsign').css('display','none');
                                 $('#nickgroup').removeClass('has-success').addClass('has-error');
                                 $('#error').css('display','block');
+                                 lastentry = $('#nickinput').val();
                                 }
                                           else {
+                                            console.log('no msg');
                                             $('#error').css('display','none');
                                             $('#nickgroup').removeClass('has-error').addClass('has-success');
                                             $('#successsign').css('display','block');
