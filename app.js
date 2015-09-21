@@ -74,7 +74,7 @@ app.get('/test_users',function (req,res) {
 });
 
 app.get('/test_clearup',function (req,res){
-  test_user.remove({});
+  test_users.remove({});
   counters.remove({});
   counters.insert({_id: "userid",seq: 0});
   res.send('CLEARED');
