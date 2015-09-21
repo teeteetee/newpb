@@ -196,9 +196,7 @@ app.post('/newuser',function(req,res){
           // end of generate date
           
           users.insert({pub:1,mail:vmail,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
-          follow({uid:vuid});
           req.session.mail=vmail;
-          req.session.uid=vuid;
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
@@ -983,17 +981,16 @@ app.post('/checkdisc/:id/:last', function (req,res){
 });
 
 
-app.get('/id:id', function (req,res){
+app.get('/id:nick', function (req,res){
   //TO DO if req.session
-  follow.update({uid:parseInt(req.session.uid)},{$set:{}})
   if(req.session.uid)
-  { if(parseInt(req.session.uid)===parseInt(req.params.id))
+  { if(req.session.nick===req.params.nick)
     {
      res.redirect('/');
     }
     else
-    {var vuid = parseInt(req.params.id);
-        users.findOne({uid:vuid},function (err,doc){
+    {var vnick = req.params.nick;
+        users.findOne({nick:vnick},function (err,doc){
           if(err) {
           
           }
@@ -1001,20 +998,20 @@ app.get('/id:id', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { if(req.session.userstore[parseInt(doc._id)]){
-                        console.log('have got him in userstore');
-                         unfollow=1;
-                       }
-                        var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc.uid+doc.picext+"'";
-                          res.render('anotheruser',{'user':doc.uid,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                      { //if(req.session.userstore[parseInt(doc._id)]){
+                        //console.log('have got him in userstore');
+                        // unfollow=1;
+                        // }
+                        var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc._id+doc.picext+"'";
+                          res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
-                        if(req.session.userstore[parseInt(doc._id)]){
-                        console.log('have got him in userstore');
-                         unfollow=1;
-                       }
+                          //if(req.session.userstore[parseInt(doc._id)]){
+                          //console.log('have got him in userstore');
+                          // unfollow=1;
+                          // }
                         var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                        res.render('anotheruser',{'user':doc.uid,'avatar':emptyavatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                        res.render('anotheruser',{'user':doc._id,'avatar':emptyavatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
                   }     
                   }
                   else {
@@ -1095,7 +1092,7 @@ app.post('/userp/crop',function (req,res){
       //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
         //path.extname('index.html')
         var vpicext = path.extname(imgname);
-        var newpath = __dirname +"/public/userpics/id"+req.session.uid+vpicext;
+        var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
       path.exists(newpath, function(exists) { 
   if (exists) { 
     // remove existing userpic, write cropped imge, remove original image
@@ -1106,7 +1103,7 @@ app.post('/userp/crop',function (req,res){
         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
           if(err) throw err;
            //00000000000000000000000000000
-                    var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
+                    var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
                      path.exists(newpath_small, function(exists) { 
                     if (exists) 
                       { //remove existing userpic_small, write resized
@@ -1154,7 +1151,7 @@ app.post('/userp/crop',function (req,res){
         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
           if(err) throw err;
            //0000000000000000000000000000000
-                        var newpath_small = __dirname +"/public/userpics/id"+req.session.uid+"_small"+vpicext;
+                        var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
                          path.exists(newpath_small, function(exists) { 
                         if (exists) 
                           { //remove existing userpic_small, write resized
