@@ -369,6 +369,52 @@ head
         text-align:center;
       }
   body
+    .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header(style='background-color:#eee;')
+            .row
+              .col-xs-12
+                h2(class="modal-title" id="myModalLabel" style='margin-top:10px;margin-bottom:5px;text-align:center;') One little thing left
+          .modal-body
+            .row
+              .col-xs-12
+                h2 Your nickname
+                #nickgroup.form-group.has-error.has-feedback
+                  input(type="text" class="form-control" id='nickinput')
+                  span(id='errorsign' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                  span(id='successsign' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  button(class='btn btn-lg') Submit
+                  script.
+                    $('#nickinput').keyup(function(event) {
+                      if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
+                        //$('div').append('TEST'+$(this).val()+"<br>");
+                        $.ajax({
+                          method: "POST",
+                          url: "/checknick",
+                          data: { txt: $('#nickinput').val() }
+                        }).done(function( msg ) {
+                            console.log(msg);
+                            if(msg)
+                              { 
+                                $('#successsign').css('display','none');
+                                $('#nickgroup').removeClass('has-success').addClass('has-error');
+                                $('#error').css('display','block');
+                                }
+                                          else {
+                                            $('#error').css('display','none');
+                                            $('#nickgroup').removeClass('has-error').addClass('has-success');
+                                            $('#successsign').css('display','block');
+                                            lastentry = $('#text').val();
+                                          }
+                              });
+                      }
+                       lastentry = $('#text').val()
+                      });
+
+          .modal-footer
+            button(type="button" class="btn btn-default" data-dismiss="modal") Close
+            button(type="button" class="btn btn-warning" onclick="document.location.href='/settings';") Proceed to Settings
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
         // Brand and toggle get grouped for better mobile display
@@ -474,14 +520,15 @@ head
         }
         });
       $('.signup').click(function(){
-          if($('.paddgroup-lg').css('display')==='none'){
-          console.log('1');
-           runregister(1);
-          }
-          else {
-            console.log('2');
-           runregister(2)
-          }
+          //if($('.paddgroup-lg').css('display')==='none'){
+          //console.log('1');
+          // runregister(1);
+          //}
+          //else {
+          //  console.log('2');
+          // runregister(2)
+          //}
+          $('#myModal').modal('show');
         });
         $('#login').click(authsubmit);
         $(document).keypress(function(e) { 
