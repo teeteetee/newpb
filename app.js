@@ -633,13 +633,13 @@ app.get('/chat/:recid',function (req,res){
 });
 
 app.post('/getavatar/:uid',function (req,res){
-  var vuid = parseInt(req.params.uid);
+  var vuid = req.params.uid
   if(vuid)
   {
-    if(req.session.mail&&req.session.uid){
+    if(req.session.mail&&req.session._id){
       var ms={};
       ms.trouble=1;
-      users.findOne({uid:vuid},function(err,doc){
+      users.findOne({_id:vuid},function(err,doc){
            if(err) {
        ms.mtext='db';
        res.send(ms);
@@ -1069,7 +1069,7 @@ app.post('/userp/crop',function (req,res){
   // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
   // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
-  if(req.session.mail)
+  if(req.session.mail&&req.session._id)
   {var imgname = req.body.img.substring(10);
     var fullimgname = __dirname +"/public/userpics/"+ imgname;
     // TO DO check if info is present
