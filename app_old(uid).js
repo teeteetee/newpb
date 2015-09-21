@@ -156,8 +156,7 @@ app.post('/newuser',function(req,res){
     ms.trouble=1;
     ms.mtext='email incorrect';
     var vmail = req.body.mail; 
-    var vnick = req.body.nick;
-    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30) {
+    if(req.body.p.length >30 || req.body.mail.length>30) {
       ms.mtext('fail');
       res.send(ms);
       return;
@@ -171,8 +170,33 @@ app.post('/newuser',function(req,res){
     return re.test(email);
     } 
 
+    function generateId(callback) {
+     users.find({},{limit:1,sort:{uid:-1}},function(err,doc){
+     if(err){
+         console.log('DB ERR WHILE GENERATING ID');
+         callback(0);
+        }
+      else {
+        if(doc.length>0){
+            var newid = doc[0].uid;
+                newid++;
+                console.log('returning uid='+newid);
+                callback(newid);
+          }
+        else {
+              console.log('returning uid=');
+                callback(1);
+          }
+            }
+          });
+     } // generateId declaration end
+
+     function blanktest () {
+      return 1;
+     }
+
     if (validateEmail(vmail) === true) {
-    users.find({mail:vmail,nick:vnick},function(err,doc){
+    users.find({mail:vmail},function(err,doc){
       if (err)
       {
         //DO SMTH
@@ -194,8 +218,10 @@ app.post('/newuser',function(req,res){
           var fulldate = vyear+vmonth+vday;
           fulldate = parseInt(fulldate);
           // end of generate date
-          
-          users.insert({pub:1,mail:vmail,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          generateId(insert);
+          function insert(vuid) {
+            //lgn:vu
+          users.insert({pub:1,mail:vmail,uid:vuid,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
           follow({uid:vuid});
           req.session.mail=vmail;
           req.session.uid=vuid;
@@ -203,7 +229,7 @@ app.post('/newuser',function(req,res){
           ms.mtext='success';
           res.send(ms);
           
-           
+           }
         }
         else {
            ms.mtext='email exists'
@@ -1506,23 +1532,6 @@ app.post('/additem/:uid/:id',function (req,res){
     case('movie'):
     break;
   }
-});
-
-app.post('/nickcheck',function (req,res){
-  var query = req.body.txt;
-  users.find({title: { $regex: query,}},function(err,docs){
-      if(err){
-        console.log('err');
-      }
-      else {
-        console.log(docs);
-        if(docs.length!=0)
-        {res.send(1);}
-        else {
-          res.send(0);
-        }
-      }
-     });
 });
 
 app.post('/livesearch/:id',function (req,res){
