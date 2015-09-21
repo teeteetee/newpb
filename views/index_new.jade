@@ -559,7 +559,6 @@ head
         var allowauth = 1;
         function authsubmit() {
         allowauth = 0;
-        var vnick = $('#nickinput').val();
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
@@ -599,13 +598,14 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        request.send("phr="+vphr+"&lgn="+vlgn+"&nick="+vnick);
+        request.send("phr="+vphr+"&lgn="+vlgn);
         }
         //END OF AUTHSUBMIT FUNCTION
         //---------------------
         // RUNREGISTER FUNCTION
         //---------------------
         function runregister(arg) {
+        var vnick = $('#nickinput').val();
          var errcount =0;
          if(arg===1){
           var vp = $('#p-sm').val();
@@ -677,5 +677,5 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp+"&gn="+male);
+        request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vnick);
           }
