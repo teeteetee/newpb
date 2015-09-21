@@ -480,7 +480,7 @@ head
                         //$('div').append('TEST'+$(this).val()+"<br>");
                         $.ajax({
                           method: "POST",
-                          url: "/checknick",
+                          url: "/nickcheck",
                           data: { txt: $('#nickinput').val() }
                         }).done(function( msg ) {
                             console.log(msg);

@@ -1517,8 +1517,10 @@ app.post('/nickcheck',function (req,res){
       else {
         console.log(docs);
         if(docs.length!=0)
-        {res.send(1);}
+        { console.log('someone');
+          res.send(1);}
         else {
+          console.log('clear');
           res.send(0);
         }
       }
