@@ -1514,28 +1514,28 @@ app.post('/follow/:id',function (req,res){
  //---------------------------//
 });
 
-app.post('/unfollow/:id',function (req,res){
-  var ms={};
-  ms.trouble = 1;
-
-  users.findOne({uid:parseInt(req.params.id)},function(err,user){
-             if(err) {
-                 console.log('err while user query');
-                 res.send(ms);
-             }
-             else {
-                if(user!=null){
-                  console.log('unfollow');  
-                  users.update({uid:parseInt(req.session.uid)},{$unset:{userstore[user._id]:0]}});
-                  ms.trouble =0;
-                  res.send(ms);
-                 //respond to user with success
-                }
-                else{
-                  res.send(ms);
-                }
-             }
-           });
+//app.post('/unfollow/:id',function (req,res){
+//  var ms={};
+//  ms.trouble = 1;
+//
+//  users.findOne({uid:parseInt(req.params.id)},function(err,user){
+//             if(err) {
+//                 console.log('err while user query');
+//                 res.send(ms);
+//             }
+//             else {
+//                if(user!=null){
+//                  console.log('unfollow');  
+//                  users.update({uid:parseInt(req.session.uid)},{$unset:{userstore[user._id]:0]}});
+//                  ms.trouble =0;
+//                  res.send(ms);
+//                 //respond to user with success
+//                }
+//                else{
+//                  res.send(ms);
+//                }
+//             }
+//           });
   
    //users.findOne({uid:parseInt(req.session.uid)},function(err,user){
    //          if(err) {
