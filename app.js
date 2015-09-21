@@ -343,15 +343,15 @@ else {
 });
 
 app.get('/people',function (req,res){
-   if(req.session.uid)
+   if(req.session._id)
   {
-        users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
+        users.findOne({_id:req.session._id},function (err,doc){
           if(err) {
           // TO DO tell user
           }
           else {
             if(doc){
-                          res.render('people',{'user':doc.uid,'doc':JSON.stringify(doc)});  
+                          res.render('people',{'user':doc._id,'doc':JSON.stringify(doc)});  
                   }
                   else {
                     res.redirect('/');
