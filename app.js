@@ -62,17 +62,15 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   { var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done._id+done.picext+"'";
+                      req.session=done;
                       res.render('userpage',{'user':done._id,'avatar':avatar,'done':JSON.stringify(done)});
-                      if(done.userstore){
-                        req.session.userstore = done.userstore;
-                      }
+                     
                   }
                    else {
                     var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
+                    req.session = done;
                     res.render('userpage',{'user':done._id,'avatar':emptyavatar,'done':JSON.stringify(done)});
-                    if(done.userstore){
-                        req.session.userstore = done.userstore;
-                      }
+                    
                    }
               }
               else {
