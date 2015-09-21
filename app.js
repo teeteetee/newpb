@@ -14,7 +14,7 @@ var http = require('http');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),books = db.get('books'),authors = db.get('authors');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),books = db.get('books'),authors = db.get('authors'),follow = db.get('follow'),counters=db.get('counters'),test_user=db.get('test_user');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -44,6 +44,40 @@ app.use(sessions({
   domain:'vntrlst.com'
   }
 }));
+
+app.get('/test_nu/:boo',function (req,res){
+  var boo = req.params.boo;
+   function getNextSequence(name) {
+   var ret = counters.findAndModify(
+          {
+            query: { _id: name },
+            update: { $inc: { seq: 1 } },
+            new: true
+          }
+   );
+
+   return ret.seq;
+}
+test_users.insert(
+   {
+     _id: getNextSequence("userid"),
+     name: boo
+   }
+);
+res.redirect('/test_users');
+});
+
+app.get('/test_users',function (req,res) {
+  test_users.find({},function (err,done){
+    res.send(done);
+  });
+});
+
+app.get('/test_clearup',function (req,res){
+  test_user.remove({});
+  counters.remove({});
+  res.send('CLEARED');
+});
 
 
 app.get('/',function(req,res) {
@@ -221,6 +255,7 @@ app.post('/newuser',function(req,res){
           function insert(vuid) {
             //lgn:vu
           users.insert({pub:1,mail:vmail,uid:vuid,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          follow({uid:vuid});
           req.session.mail=vmail;
           req.session.uid=vuid;
           ms.trouble =0;
@@ -492,7 +527,7 @@ app.get('/helpers',function(req,res){
 app.get('clearuserstore',function (req,res){
   if(req.session.uid)
   {
-    users.update({uid:parseInt(req.session.uid)},{$unset:{userstore:0}});
+    users.update({uid:parseInt(req.session.uid)},{$set:{userstore:[{_id:0}]}});
     res.redirect('/seeuser');
  }
 });
@@ -1009,6 +1044,7 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 app.get('/id:id', function (req,res){
   //TO DO if req.session
+  follow.update({uid:parseInt(req.session.uid)},{$set:{}})
   if(req.session.uid)
   { if(parseInt(req.session.uid)===parseInt(req.params.id))
     {
@@ -1454,8 +1490,9 @@ app.post('/follow/:id',function (req,res){
            }
            else {
               if(user!=null){
-                //users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
-                users.update({uid:parseInt(req.session.uid)},{$set:{userstore[user._id]:1}},function(err,jees){
+                var user_insert;
+                user_insert._id = user._id;
+                 users.update({uid:parseInt(req.session.uid)},{$push:{userstore:user_insert}},function(err,jees){
                   if(err){
                 res.send(ms);  
                   }
