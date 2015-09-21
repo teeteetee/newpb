@@ -1510,6 +1510,7 @@ app.post('/additem/:uid/:id',function (req,res){
 
 app.post('/nickcheck',function (req,res){
   var query = req.body.txt;
+  var msg = {};
   users.find({title: { $regex: query,}},function(err,docs){
       if(err){
         console.log('err');
@@ -1518,10 +1519,12 @@ app.post('/nickcheck',function (req,res){
         console.log(docs);
         if(docs.length!=0)
         { console.log('someone');
-          res.send(1);}
+          msg.present =1;
+          res.send(msg);}
         else {
           console.log('clear');
-          res.send(0);
+          msg.present=0;
+          res.send(msg);
         }
       }
      });

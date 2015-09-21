@@ -484,7 +484,7 @@ head
                           data: { txt: $('#nickinput').val() }
                         }).done(function( msg ) {
                             console.log(msg);
-                            if(msg)
+                            if(msg.present)
                               { 
                                 console.log('msg present');
                                 $('#successsign').css('display','none');
