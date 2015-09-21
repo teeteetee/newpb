@@ -384,33 +384,6 @@ head
                   input(type="text" class="form-control" id='nickinput')
                   span(id='errorsign' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                   span(id='successsign'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  script.
-                    $('#nickinput').keyup(function(event) {
-                      if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
-                        //$('div').append('TEST'+$(this).val()+"<br>");
-                        $.ajax({
-                          method: "POST",
-                          url: "/checknick",
-                          data: { txt: $('#nickinput').val() }
-                        }).done(function( msg ) {
-                            console.log(msg);
-                            if(msg)
-                              { 
-                                $('#successsign').css('display','none');
-                                $('#nickgroup').removeClass('has-success').addClass('has-error');
-                                $('#error').css('display','block');
-                                }
-                                          else {
-                                            $('#error').css('display','none');
-                                            $('#nickgroup').removeClass('has-error').addClass('has-success');
-                                            $('#successsign').css('display','block');
-                                            lastentry = $('#text').val();
-                                          }
-                              });
-                      }
-                       lastentry = $('#text').val()
-                      });
-
           .modal-footer
             button(type="button" class="btn btn-default" data-dismiss="modal") Lets go!
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
@@ -501,6 +474,32 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $('#nickinput').keyup(function(event) {
+                      if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
+                        //$('div').append('TEST'+$(this).val()+"<br>");
+                        $.ajax({
+                          method: "POST",
+                          url: "/checknick",
+                          data: { txt: $('#nickinput').val() }
+                        }).done(function( msg ) {
+                            console.log(msg);
+                            if(msg)
+                              { 
+                                $('#successsign').css('display','none');
+                                $('#nickgroup').removeClass('has-success').addClass('has-error');
+                                $('#error').css('display','block');
+                                }
+                                          else {
+                                            $('#error').css('display','none');
+                                            $('#nickgroup').removeClass('has-error').addClass('has-success');
+                                            $('#successsign').css('display','block');
+                                            lastentry = $('#nickinput').val();
+                                          }
+                              });
+                      }
+                       lastentry = $('#nickinput').val()
+                      });
+
       $('#male').click(function(){
         if($('#male').hasClass('iosactive')){
         }
