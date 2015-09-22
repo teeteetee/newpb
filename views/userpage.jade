@@ -735,7 +735,7 @@ head
                 console.log(msg);
                 eval("$('#title"+bookid+"').css('color','#aaa');");
                 eval("$('#sm"+bookid+"').empty();");
-                var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>":
+                var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>";
                 eval("$('#sm"+bookid+"').append(insert);");
               });
       }
