@@ -585,6 +585,7 @@ head
             getbooks(books,count);
            }
            });
+      var modal_data_store=[];
       function getbooks(books,i) {
         if(!i){
          // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
@@ -609,7 +610,6 @@ head
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
             var insert;
-            var modal_data_store=[];
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
