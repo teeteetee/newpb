@@ -395,6 +395,17 @@ head
         height:64px !important;
       }
   body
+    .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class='modal-title' style='color:#ddd;') Modify
+          .modal-body
+            h4(id='modaltitle' style='text-align:center;' class='lead')
+            h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-default  form-control' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -507,6 +518,12 @@ head
             getbooks(books,count);
            }
            });
+      function redactmodal (i) {
+        $('#modaltitle').text(modal_data_store[i].title);
+        $('#modalauthor').text(modal_data_store[i].author);
+        $('#smallmodal').modal('show');
+      }
+      var modal_data_store=[];
       function getbooks(books,i) {
         if(!i){
          var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
@@ -535,7 +552,11 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darksuccess ' >Add to my list</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darksuccess ' >Add to my list</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              var thisbook={};
+              thisbook.author = authors_insert;
+              thisbook.title = msg.title.capitalizeFirstLetter();
+              modal_data_store.push(thisbook);
               break
             }        
            $('#books').append(insert);
