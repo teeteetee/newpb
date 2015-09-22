@@ -799,7 +799,7 @@ head
         $.ajax({
               method: "POST",
               url: "/ntfc",
-              data: 'tmstmp='+tmstmp+'&uid='+#{user}
+              data: 'tmstmp='+tmstmp+'&uid=#{user}'
             }).done(function( msg ) {
                 console.log('success longpol');
                if(msg.trouble === 1)
