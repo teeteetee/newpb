@@ -390,6 +390,13 @@ head
         height:64px !important;
       }
   body
+    .modal.fade.modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          button(style='margin-right:15px;' class='btn btn-sm btn-darkprimary ')Find people
+          button(class='btn btn-sm btn-darkdefault ' style='margin-right:15px;')Mark as read
+          button(class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' ) Mark as read & good
+          button(class='btn btn-sm btn-darkdanger' style='margin-right:15px;')Remove
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -650,6 +657,9 @@ head
         //$('#add').css('display','block');
         //$('#main').css('overflow','hidden');
         $('#addbook').modal('show');
+        });
+      $('.book').click(function(){
+         $('#smallmodal').modal('show');
         });
       $('#closeadd').click(function(){
         //$('#add').css('display','none'); 
