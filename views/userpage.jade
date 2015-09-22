@@ -391,7 +391,7 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            button(type="button" class="close" data-dismiss="mySmallModalLabel" aria-label="Close")
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body
@@ -429,9 +429,9 @@ head
       .modal-dialog(role="document")
         .modal-content
           .modal-header(style='background-color:#eee;')
-            .row
-              .col-xs-12
-                h2(class="modal-title" id="myModalLabel" style='margin-top:10px;margin-bottom:5px;text-align:center;') Adding a book
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" id="myModalLabel" ) Adding a book
           .modal-body
             .row.cpadding.txtleft(style='padding-top:10px;')
             .col-xs-12
