@@ -980,7 +980,7 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 app.get('/u/:nick', function (req,res){
   //TO DO if req.session
-  if(req.session.uid)
+  if(req.session.mail)
   { if(req.session.nick===req.params.nick)
     {
      res.redirect('/');
