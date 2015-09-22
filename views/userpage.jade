@@ -502,7 +502,7 @@ head
           #{avatar}           
           h2(style='margin-top:50px;')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary(type='button' id='openadd')  Add item
+          button.btn.btn-iosprimary.openadd(type='button' )  Add item
       .row
         #booklist.thun.col-md-12
           .row.visible-sm.visible-xs
@@ -516,7 +516,7 @@ head
                     .media-body
                       h3.media-heading(style='margin-top:10px;') ????                      
                       h4.numbers                 
-                      button.btn.btn-iosprimary(type='button' id='openadd')  Add item
+                      button.btn.btn-iosprimary.openadd(type='button' )  Add item
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
@@ -646,7 +646,7 @@ head
           setTimeout(function(){eval("$('#author"+authorcount+"').remove();authorcount--;if(authorcount===0){$('#removeauthor').addClass('disabled');}");},1100);
               }
         });
-      $('#openadd').click(function(){
+      $('.openadd').click(function(){
         //$('#add').css('display','block');
         //$('#main').css('overflow','hidden');
         $('#addbook').modal('show');
