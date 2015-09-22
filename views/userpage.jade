@@ -511,7 +511,7 @@ head
       .row.visible-lg.visible-md
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           #{avatar}           
-          h2(style='margin-top:50px;')  ????
+          h2(style='margin-top:50px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           button.btn.btn-iosprimary.openadd(type='button' )  Add item
       .row
@@ -525,7 +525,7 @@ head
                       a(href='#')
                         #{avatar}         
                     .media-body
-                      h3.media-heading(style='margin-top:10px;') ????                      
+                      h3.media-heading.usernick(style='margin-top:10px;') ????                      
                       h4.numbers                 
                       button.btn.btn-iosprimary.openadd(type='button' )  Add item
           #list.row
@@ -554,6 +554,7 @@ head
     script.
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
+      $('.usernick').text(user.nick);
       var tmstmp = Date.now();
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
