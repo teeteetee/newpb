@@ -398,8 +398,8 @@ head
             h4(id='modaltitle')
             h4(id='modalauthor' style='color:gray;')
             button(class='btn btn-default  form-control' style='margin-top:5px;margin-bottom:5px;') Mark as read
-            button(class='btn btn-success  form-control'  style='margin-top:5px;margin-bottom:5px;') Mark as read & good
-            button(class='btn btn-primary  form-control' style='margin-top:5px;margin-bottom:5px;') Find people
+            button(class='btn btn-default  form-control'  style='margin-top:5px;margin-bottom:5px;') Mark as read & good
+            button(class='btn btn-default form-control' style='margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-danger form-control' style='margin-top:5px;margin-bottom:5px;') Remove
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -664,8 +664,7 @@ head
               }
         });
       $('.openadd').click(function(){
-        
-        $('#smallmodal').modal('show');
+        $('#addbook').modal('show');
         });
       function redactmodal (i) {
         $('#modaltitle').text(modal_data_store[i].title);
