@@ -393,10 +393,13 @@ head
     .modal.fade.modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
-          button(style='margin-right:15px;' class='btn btn-sm btn-darkprimary ') Find people
-          button(class='btn btn-sm btn-darkdefault ' style='margin-right:15px;') Mark as read
-          button(class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' ) Mark as read & good
-          button(class='btn btn-sm btn-darkdanger' style='margin-right:15px;') Remove
+          .modal-header
+            h4 Such a book
+          .modal-body
+            button(style='margin-right:15px;' class='btn btn-sm btn-darkprimary ') Find people
+            button(class='btn btn-sm btn-darkdefault ' style='margin-right:15px;') Mark as read
+            button(class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' ) Mark as read & good
+            button(class='btn btn-sm btn-darkdanger' style='margin-right:15px;') Remove
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
