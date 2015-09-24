@@ -619,7 +619,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-            if ($(".books > div.noitems").length)
+            if ($(".noitems")[0])
             { console.log('HAS LENGTH');
               $('.books').empty();}
             else {
