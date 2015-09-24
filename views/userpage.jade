@@ -619,6 +619,7 @@ head
          data: 0
        })
          .done(function( msg ) {
+            console.log($('.noitems')[0]);
             if ($(".noitems")[0])
             { console.log('HAS LENGTH');
               $('.books').empty();}
