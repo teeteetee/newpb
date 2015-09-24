@@ -5,7 +5,7 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    title C     
+    title P&B     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')    
@@ -86,9 +86,6 @@ head
       @media (max-width: 767px) {
       #mainframe {
       margin-top:0px;
-      }
-      #main {
-        background-color:white;
       }
       #bigscreens .book {
       border-bottom:1px solid #eee;
@@ -456,24 +453,8 @@ head
                     .btn-group#authors(style='padding-bottom:15px;display:block;')
                       button(class='btn btn-default' id='addauthor' type='button') Add
                       button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
-                  //
-                    .row.cpadding.txtleft(id='extra')
-                      .col-xs-12
-                        form
-                          .form-group(style='margin-bottom:0px;')
-                            label(for="authors") Additional authors
-                          .btn-group#authors(style='margin-bottom:15px;')
-                            button(class='btn btn-lg btn-default' id='addauthor' type='button') Add
-                            button(class=' btn btn-lg btn-default' id='removeauthor'  type='button' )  Remove
             .row.cpadding(style='text-align:center;')
               .col-sm-6
-                //
-                  .btn-group(style='margin-bottom:15px;')
-                    button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
-                    button(class=' btn btn-lg btn-warning' id='oldbook'  type='button' )  I've read it
-                  .btn-group.pull-right(style='margin-bottom:15px;')
-                    button(class='btn btn-lg btn-primary active' id='nonfiction' type='button') Nonfiction
-                    button(class=' btn btn-lg btn-primary' id='fiction' type='button' ) Fiction
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
                   button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
@@ -525,18 +506,7 @@ head
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')
-              //
-                .panel.panel-default
-                  .panel-body
-                    .media
-                      .media-left
-                        a(href='#')
-                          #{avatar}         
-                      .media-body
-                        h3.media-heading.usernick(style='margin-top:10px;') ????                      
-                        h4.numbers                 
-                        button.btn.btn-iosprimary.openadd(type='button' )  Add item          
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
               h3.usernick(style='margin-top:10px;') ????                      
               h4.numbers                 
               button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')
@@ -685,11 +655,6 @@ head
       function closeoptions(id){
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
-      function ops(id) {
-        //TO DO check if any of those menues are open and close them before showing a new one
-          $('.slideover').fadeOut(350);
-          eval("$('#sm"+id+"').fadeToggle('fast');");
-        }
       var authorcount=0;
       $('#addauthor').click(function(){
         authorcount++;

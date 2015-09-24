@@ -999,16 +999,16 @@ app.get('/u/:nick', function (req,res){
                         //console.log('have got him in userstore');
                         // unfollow=1;
                         // }
-                        var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc._id+doc.picext+"'";
-                          res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                        //var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc._id+doc.picext+"'";
+                          res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
                           //if(req.session.userstore[parseInt(doc._id)]){
                           //console.log('have got him in userstore');
                           // unfollow=1;
                           // }
-                        var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                        res.render('anotheruser',{'user':doc._id,'avatar':emptyavatar,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                        //var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
+                        res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),'unfollow':unfollow});
                   }     
                   }
                   else {
