@@ -194,7 +194,7 @@ app.post('/newuser',function(req,res){
           fulldate = parseInt(fulldate);
           // end of generate date
           
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}},function (err,done){
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday},userstore:[]},function (err,done){
             if(err)
             {
               ms.mtext='db';
@@ -467,6 +467,11 @@ app.post('/markgood/:uid/:bid',function (req,res){
 
 app.get('/helpers',function(req,res){
   res.render('helpers');
+});
+
+app.get('/sus',function(req,res){
+  users.update({_id:req.session._id},{$set:{userstore:[]}});
+  res.redirect('/seeuser');
 });
 
 app.get('clearuserstore',function (req,res){
