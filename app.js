@@ -62,12 +62,14 @@ app.get('/',function(req,res) {
               if(done){
                   if(done.userpic)
                   {   //var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done._id+done.picext+"'";
+                      delete done.phr;
                       req.session=done;
                       res.render('userpage',{'user':done._id,'avatar':1,'done':JSON.stringify(done)});
                      
                   }
                    else {
                     //var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
+                    delete done.phr;
                     req.session = done;
                     res.render('userpage',{'user':done._id,'avatar':0,'done':JSON.stringify(done)});
                     
@@ -1019,23 +1021,23 @@ app.get('/u/:nick', function (req,res){
                       if(doc.userpic)
                       {   delete doc.bookstore;
                           delete doc.phr;
-                          req.session.userstore.some(function(el,index,ar){
+                          if(req.session.userstore) {req.session.userstore.some(function(el,index,ar){
                             if(element._id===doc._id) {
                               unfollow=1;
                               return true;
                             }
-                          });
+                          });}
                           res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),unfollow:unfollow});
                       }
                        else {
                          delete doc.bookstore;
                          delete doc.phr;
-                         req.session.userstore.some(function(el,index,ar){
+                         if (req.session.userstore) {req.session.userstore.some(function(el,index,ar){
                             if(element._id===doc._id) {
                               unfollow=1;
                               return true;
                             }
-                          });
+                          });}
                         res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),unfollow:unfollow});
                   }     
                   }
