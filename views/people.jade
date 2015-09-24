@@ -273,7 +273,8 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       avatarrequest.send();
       }
-      getusers(users,count);
+      if(users.length){
+            getusers(users,count);}
       function closeoptions(id){
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
