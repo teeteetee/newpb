@@ -387,6 +387,9 @@ head
         width:64px !important;
         height:64px !important;
       }
+      #smallscreens > .bookpadding {
+        padding:0px;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -555,7 +558,7 @@ head
                    #noitmes.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.visible-xs(style='border-top:1px solid #eee;')
+              #smallscreens.row.visible-xs(style='border-top:1px solid #eee;')
                 .col-xs-12.books           
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
