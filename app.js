@@ -1063,8 +1063,7 @@ app.get('/u/:nick', function (req,res){
                               return true;
                             }
                           });}
-                          var update_tmstmp = {};
-                          update_tmstmp[doc._id].tmstmp = Date.now();
+                          var update_tmstmp = {doc._id.toString()].tmstmp: Date.now() };
                           follow.update({user:req.session._id},{$set:update_tmstmp});
                           res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),unfollow:unfollow});
                       
