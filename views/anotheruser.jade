@@ -14,7 +14,6 @@ head
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
       script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-        
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       #emptyavatar {
@@ -358,12 +357,12 @@ head
           text-decoration: none;
       }
       .btn-ioslooklike {
-       border:1px solid #333;
-       color:#333;
+       border:1px solid #ccc;
+       color:#ccc;
        background:none;
       }
       .iosactive {
-        background-color:#333;
+        background-color:#ccc;
         color:white;
       }
       .iosactive:hover{
@@ -403,7 +402,7 @@ head
               span(aria-hidden="true") ×
             h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body
-            h4(id='modaltitle' style='text-align:center;' class='lead')
+            h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-default  form-control' style='margin-top:5px;margin-bottom:5px;') 
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') Add to my list
@@ -463,24 +462,38 @@ head
                         button.btn.btn-iosprimary.follow(type='button')  Follow
                         button.btn.btn-iosprimary(type='button' id='chatwith')  Chat
           #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.visible-md.visible-lg(style='margin-bottom:10px;')
-                .col-xs-12
-                  ul.nav.nav-pills
-                    li.active(role='presentation')
-                      a(href='#') Books                 
-                    li(role='presentation')
-                      a(href='#') Movies            
-              .row.visible-sm.visible-xs(style='padding-bottom:10px;background-color:#eee;text-align:center;')
-                .col-xs-12
-                  .btn-group
-                    button.btn.btn-ioslooklike.iosactive Books                 
-                    button.btn.btn-ioslooklike Movies           
-              .panel.panel-default
-                .panel-body#books
-                   #noitmes.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items
+            #booklist.thun.col-md-12
+              .row.visible-xs
+                #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
+                  h3.usernick(style='margin-top:10px;') ????                      
+                  h4.numbers                 
+                  button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')
+                    span(class='glyphicon glyphicon-plus')  
+                    | Add item
+              #list.row
+                .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+                  .row.visible-md.visible-lg(style='margin-bottom:10px;')
+                    .col-xs-12
+                      ul.nav.nav-pills
+                        li.active(role='presentation')
+                          a(href='#') Books                 
+                        li(role='presentation')
+                          a(href='#') Movies            
+                  .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
+                    .col-xs-12
+                      .btn-group
+                        button.btn.btn-ioslooklike.iosactive Books                 
+                        button.btn.btn-ioslooklike Movies           
+                  .panel.panel-default.visible-lg.visible-md.visible-sm
+                    .panel-body.books#bigscreens
+                       .noitems.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items  
+                  .row.visible-xs(style='border-top:1px solid #eee;')
+                    #smallscreens.col-xs-12.books         
+                      .noitems.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -549,6 +562,10 @@ head
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
               insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darksuccess ' >Add to my list</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
+              var thisbook={};
+              thisbook.author = authors_insert;
+              thisbook.title = msg.title.capitalizeFirstLetter();
+              modal_data_store.push(thisbook);
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
@@ -559,7 +576,7 @@ head
               modal_data_store.push(thisbook);
               break
             }        
-           $('#books').append(insert);
+           $('.books').append(insert);
            });
          count--;
          console.log('before iteration, count: '+count);
