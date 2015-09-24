@@ -622,6 +622,9 @@ head
             if($('.noitems').length)
             { console.log('HAS LENGTH');
               $('.books').empty();}
+            else {
+              console.log('HASNT GOT LENGTH');
+            }
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
