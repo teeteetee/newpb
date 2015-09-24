@@ -1034,6 +1034,7 @@ app.get('/u/:nick', function (req,res){
                             console.log(el._id+'\n'+doc._id);
                             if(el._id===doc._id) {
                               unfollow=1;
+                              console.log('good');
                               return true;
                             }
                           });}
