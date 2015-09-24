@@ -1032,7 +1032,7 @@ app.get('/u/:nick', function (req,res){
                           delete doc.phr;
                           if(req.session.userstore) {req.session.userstore.some(function(el,index,ar){
                             console.log(el._id+'\n'+JSON.stringify(doc._id));
-                            if(el._id===JSON.stringify(doc._id)) {
+                            if(el._id===doc._id.toString()) {
                               unfollow=1;
                               console.log('good');
                               return true;
