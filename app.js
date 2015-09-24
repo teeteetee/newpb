@@ -1029,7 +1029,7 @@ app.get('/u/:nick', function (req,res){
                       {   delete doc.bookstore;
                           delete doc.phr;
                           if(req.session.userstore) {req.session.userstore.some(function(el,index,ar){
-                            if(element._id===doc._id) {
+                            if(el._id===doc._id) {
                               unfollow=1;
                               return true;
                             }
