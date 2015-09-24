@@ -475,6 +475,7 @@ head
       var unfollow= #{unfollow};
       alert(typeof unfollow+' unfollow: '+unfollow);
       var user = !{JSON.stringify(doc)};
+      var avatar = #{avatar};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
       var tmp_string = "window.location='/chat/"+user._id+"';";
