@@ -352,12 +352,12 @@ head
           text-decoration: none;
       }
       .btn-ioslooklike {
-       border:1px solid #333;
-       color:#333;
+       border:1px solid #ccc;
+       color:#bbb;
        background:none;
       }
       .iosactive {
-        background-color:#333;
+        background-color:#ccc;
         color:white;
       }
       .iosactive:hover{
@@ -534,7 +534,7 @@ head
                         button.btn.btn-iosprimary.openadd(type='button' )  Add item          
               h3.usernick(style='margin-top:10px;') ????                      
               h4.numbers                 
-              button.btn.btn-iosprimary.openadd(type='button' )
+              button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')
                 span(class='glyphicon glyphicon-plus')  
                 | Add item
           #list.row
@@ -574,7 +574,7 @@ head
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar class='img-circle'></div>");
+        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;' class='img-circle'></div>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
