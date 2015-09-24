@@ -511,7 +511,7 @@ head
           .loader
     .container#main(style='padding-top:50px;')
       .row.visible-lg.visible-md.visible-sm
-        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1         
+        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
           h2(style='margin-top:30px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
@@ -569,8 +569,8 @@ head
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
-        $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' src='/userpics/id"+user._id+user.picext+"'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
