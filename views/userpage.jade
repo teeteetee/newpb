@@ -569,14 +569,12 @@ head
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
-        console.log('HAS AVATAR');
-        $('#avatrabig').prepend("<img id='userimg' class='img-circle pull-left' src='/userpics/id"+user._id+user.picext+"'></img>");
-        $('#avatrasmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
-        console.log('NO AVATAR');
-        $('#avatrabig').append("<div id=emptyavatar class='img-circle pull-left'></div>");
-        $('#avatrasmall').append("<div id=emptyavatar class='img-circle'></div>");
+        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
+        $('#avatarsmall').prepend("<div id=emptyavatar class='img-circle'></div>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
