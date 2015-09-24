@@ -198,7 +198,7 @@ head
           h3 You follow
           .panel.panel-default
             .panel-body#users
-               #noitmes.row(style='text-align:center;')  
+               #noitems.row(style='text-align:center;')  
                  .col-xs-12
                    h2(style='color:#ccc;margin-bottom:20px;') No Items
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -227,11 +227,16 @@ head
        })
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
-           $('.list').css('padding-top','0px');
+           $('#users').empty();
            //var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
-           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/u/"+msg._id+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           if(userpic)
+          {var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/u/"+msg._id+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='/userpics/id"+msg._id+"_small"+msg.picext+"' alt='avatar'></div><div class='media-body' ><h4 class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           }           
+           else {
+           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/u/"+msg._id+"'><div class='media-left'><div style='height:50px;border:3px dotted #ddd;width:50px;' id='img_cid"+msg._id+"' class='media-object' alt='avatar'></div></div><div class='media-body' ><h4 class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           }
            $('#users').append(insert);
-           getavatar(msg.uid,msg._id);
+           //getavatar(msg.uid,msg._id);
            });
          count--;
          console.log('before iteration, count: '+count);
