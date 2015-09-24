@@ -998,7 +998,7 @@ app.post('/follow/:id',function (req,res){
     var new_user={};
     new_user._id=req.params.id;
     new_user.tmstmp = Date.now();
-   users.update({user:req.session._id},{$push:{userstore:new_user}});
+   users.update({_id:req.session._id},{$push:{userstore:new_user}});
     var ms={};
     ms.trouble=0;
     res.send(ms);
