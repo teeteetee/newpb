@@ -1017,17 +1017,17 @@ app.get('/u/:nick', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { if(req.session.userstore[doc._id]){
-                        console.log('have got him in userstore');
-                         unfollow=1;
-                         }
+                      { //if(req.session.userstore[doc._id]){
+                        //console.log('have got him in userstore');
+                        // unfollow=1;
+                        // }
                           res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
-                          if(req.session.userstore[doc._id]){
-                          console.log('have got him in userstore');
-                           unfollow=1;
-                           }
+                         // if(req.session.userstore[doc._id]){
+                         // console.log('have got him in userstore');
+                         //  unfollow=1;
+                         //  }
                         res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),'unfollow':unfollow});
                   }     
                   }
