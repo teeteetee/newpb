@@ -90,7 +90,7 @@ head
       #main {
         background-color:white;
       }
-      .book {
+      #bigscreens .book {
       border-bottom:1px solid #eee;
       text-align:center;
       padding-left:15px;
@@ -292,21 +292,8 @@ head
       background-color:#22A795;
       border-color:#19796C;
       }
-      .book {
-      text-align:left;
-      border-bottom:1px solid #eee;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color:white;
-      }
-      .book > button {
-      vertical-align:super;
-      }
       #testinsert {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      }
-      .bookpadding {
-      padding-top:10px;
-      padding-bottom:10px;
       }
       .hovershade:hover{
        background-color:#eee;
@@ -387,13 +374,12 @@ head
         width:64px !important;
         height:64px !important;
       }
-      #smallscreens > .book {
-        padding:0px !important;
-        background-color:red;
+      #bigscreens > .book {
+
       }
-      #smallscreens > .book >.bookpadding {
-        padding:0px !important;
-        background-color:red;
+      #bigscreens > .book > .bookpadding {
+       padding-top:10px;
+      padding-bottom:10px;
       }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -559,7 +545,7 @@ head
                     button.btn.btn-ioslooklike.iosactive Books                 
                     button.btn.btn-ioslooklike Movies           
               .panel.panel-default.visible-lg.visible-md.visible-sm
-                .panel-body.books
+                .panel-body.books#bigscreens
                    #noitmes.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
