@@ -478,6 +478,18 @@ head
       }
       var books=[];
       var count;
+      var booktmstmp;
+      function gettimestamp() {
+        $.ajax({
+         method: "POST",
+         url: "/gettimestamp/#{user}",
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log(msgtmstmp);
+           booktmstmp = msg.tmstmp;
+           });
+      }
       function populate () {
       $.ajax({
          method: "POST",
