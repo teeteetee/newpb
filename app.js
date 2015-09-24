@@ -1033,7 +1033,7 @@ app.get('/u/:nick', function (req,res){
                           if(req.session.userstore) {req.session.userstore.some(function(el,index,ar){
                             if(el._id===doc._id) {
                               unfollow=1;
-                              console.log('found him');
+                              console.log(el._id+'\n'+doc._id);
                               return true;
                             }
                           });}
