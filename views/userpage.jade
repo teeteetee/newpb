@@ -387,9 +387,13 @@ head
         width:64px !important;
         height:64px !important;
       }
-      #smallscreens .bookpadding .book {
-        padding-top:0px !important;
-        padding-bottom:0px !important;
+      #smallscreens > .book {
+        padding:0px !important;
+        background-color:red;
+      }
+      #smallscreens > .book >.bookpadding {
+        padding:0px !important;
+        background-color:red;
       }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -559,8 +563,8 @@ head
                    #noitmes.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
-              #smallscreens.row.visible-xs(style='border-top:1px solid #eee;')
-                .col-xs-12.books           
+              .row.visible-xs(style='border-top:1px solid #eee;')
+                #smallscreens.col-xs-12.books           
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
