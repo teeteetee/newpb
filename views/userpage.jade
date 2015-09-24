@@ -620,7 +620,8 @@ head
        })
          .done(function( msg ) {
             if($('.noitems').length)
-            {$('.books').empty();}
+            { console.log('HAS LENGTH');
+              $('.books').empty();}
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
