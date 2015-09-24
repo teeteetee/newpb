@@ -358,6 +358,8 @@ app.get('/people',function (req,res){
           }
           else {
             if(doc){
+                          delete doc.bookstore;
+                          delete doc.phr;
                           res.render('people',{'user':doc._id,'doc':JSON.stringify(doc)});  
                   }
                   else {
