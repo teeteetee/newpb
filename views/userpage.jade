@@ -714,11 +714,11 @@ head
         $('#extra').slideToggle();
         }); 
       $('#oldbook').click(function(){
-        if($('#oldbook').hasClass('active')){
+        if($('#oldbook').hasClass('iosactive')){
         }
         else{
-          $('#oldbook').addClass('active');
-          $('#newbook').removeClass('active');
+          $('#oldbook').addClass('iosactive');
+          $('#newbook').removeClass('iosactive');
         }
         });
       $('#newbook').click(function(){
@@ -738,11 +738,11 @@ head
         }
         });
       $('#nonfiction').click(function(){
-        if($('#nonfiction').hasClass('active')){
+        if($('#nonfiction').hasClass('iosactive')){
         }
         else{
-          $('#nonfiction').addClass('active');
-          $('#fiction').removeClass('active');
+          $('#nonfiction').addClass('iosactive');
+          $('#fiction').removeClass('iosactive');
         }
         });
       var lastentry;
