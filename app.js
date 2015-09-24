@@ -352,7 +352,7 @@ else {
 app.get('/people',function (req,res){
    if(req.session._id)
   {
-        users.findOne({user:req.session._id},function (err,doc){
+        users.findOne({_id:req.session._id},function (err,doc){
           if(err) {
           // TO DO tell user
           }
