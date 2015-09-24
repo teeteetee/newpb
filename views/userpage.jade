@@ -510,16 +510,17 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container#main(style='padding-top:50px;')
-      .row.visible-lg.visible-md
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          #{avatar}           
+      .row.visible-lg.visible-md.visible-sm
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#avatarbig          
           h2(style='margin-top:50px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary.openadd(type='button' )  Add item
+          button.btn.btn-iosprimary.openadd(type='button' )  
+            span(class='glyphicon glyphicon-plus')  
+            | Add item
       .row
         #booklist.thun.col-md-12
-          .row.visible-sm.visible-xs
-            .col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;')
+          .row.visible-xs
+            .col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')#avatarsmall
               //
                 .panel.panel-default
                   .panel-body
@@ -530,11 +531,12 @@ head
                       .media-body
                         h3.media-heading.usernick(style='margin-top:10px;') ????                      
                         h4.numbers                 
-                        button.btn.btn-iosprimary.openadd(type='button' )  Add item
-              #{avatar}            
+                        button.btn.btn-iosprimary.openadd(type='button' )  Add item          
               h3.usernick(style='margin-top:10px;') ????                      
               h4.numbers                 
-              button.btn.btn-iosprimary.openadd(type='button' )  Add item
+              button.btn.btn-iosprimary.openadd(type='button' )
+                span(class='glyphicon glyphicon-plus')  
+                | Add item
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
@@ -549,11 +551,13 @@ head
                   .btn-group
                     button.btn.btn-ioslooklike.iosactive Books                 
                     button.btn.btn-ioslooklike Movies           
-              .panel.panel-default
-                .panel-body#books
+              .panel.panel-default.visible-lg.visible-md.visible-sm
+                .panel-body.books
                    #noitmes.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items             
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.visible-xs
+                .col-xs-12.books           
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -563,6 +567,15 @@ head
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
       var tmstmp = Date.now();
+      var avatar = #{avatar};
+      if(avatar) {
+        $('#avatrabig').prepend("<img id='userimg' class='img-circle pull-left' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatrasmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
+      }
+      else {
+        $('#avatrabig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
+        $('#avatrasmall').prepend("<div id=emptyavatar class='img-circle'></div>");
+      }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
@@ -610,7 +623,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-            $('#books').empty();
+            $('.books').empty();
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
               authors_insert = msg.authors[xi].name+' '+msg.authors[xi].surname+' ';
@@ -637,7 +650,7 @@ head
               insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+i+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Remove</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+i+"' style='display:inline;margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small style='margin-left:10px;color:#ddd;'>"+authors_insert+"</small></h3></div></div>";
               break
             }         
-           $('#books').append(insert);
+           $('.books').append(insert);
            });
          count--;
          console.log('before iteration, count: '+count);
