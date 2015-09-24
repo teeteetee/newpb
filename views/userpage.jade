@@ -546,12 +546,12 @@ head
                     button.btn.btn-ioslooklike Movies           
               .panel.panel-default.visible-lg.visible-md.visible-sm
                 .panel-body.books#bigscreens
-                   .noitmes.row(style='text-align:center;')  
+                   .noitems.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
               .row.visible-xs(style='border-top:1px solid #eee;')
                 #smallscreens.col-xs-12.books         
-                  .noitmes.row(style='text-align:center;')  
+                  .noitems.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -559,7 +559,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      console.log($('.noitems')[0]);
+      console.log($('.noitems').length);
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
