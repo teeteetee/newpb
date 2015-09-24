@@ -408,7 +408,7 @@ head
           h2(style='margin-top:30px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           .btn-group
-            button.btn.btn-iosprimary.follow(type='button' style='margin-bottom:20px;') 
+            button.btn.btn-iosprimary(type='button' style='margin-bottom:20px;') 
               span.glyphicon.glyphicon-user 
               | Follow
             button.btn.btn-iosprimary(id='chatwith') Chat
@@ -419,7 +419,7 @@ head
               h3.usernick(style='margin-top:10px;') ????                      
               h4.numbers                 
               .btn-group
-                button.btn.btn-iosprimary.follow(type='button' style='margin-bottom:20px;') 
+                button.btn.btn-iosprimary(type='button' style='margin-bottom:20px;') 
                   span.glyphicon.glyphicon-user 
                   | Follow
                 button.btn.btn-iosprimary(id='chatwith') Chat
@@ -456,7 +456,7 @@ head
       if(unfollow) {
         $('.follow').txt('Unfollow')
       }
-      alert(typeof unfollow+' unfollow: '+unfollow);
+      console.log(typeof unfollow+' unfollow: '+unfollow);
       var user = !{JSON.stringify(doc)};
       var avatar = #{avatar};
       user= JSON.parse(user);
