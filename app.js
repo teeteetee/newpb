@@ -192,13 +192,21 @@ app.post('/newuser',function(req,res){
           fulldate = parseInt(fulldate);
           // end of generate date
           
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}});
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday}},function (err,done){
+            if(err)
+            {
+              ms.mtext='db';
+             res.send(ms); 
+            }
+          else {
+          follow.insert({user:done._id});
           req.session.mail=vmail;
+          req.session._id=done._id;
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
-          
-           
+          }
+          });
         }
         else {
            ms.mtext='email exists'
@@ -977,6 +985,20 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
+app.post('/follow/:id',function (req,res){
+  if(req.session._id){
+    var new_user={};
+    new_user[req.params.id]=1;
+   follow.update({user:req.session._id},{$set:new_user});
+    var ms={};
+    ms.trouble=0;
+    res.send(ms);
+  }
+  else {
+    res.send(0);
+  }
+});
+
 
 app.get('/u/:nick', function (req,res){
   //TO DO if req.session
@@ -995,19 +1017,17 @@ app.get('/u/:nick', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { //if(req.session.userstore[parseInt(doc._id)]){
-                        //console.log('have got him in userstore');
-                        // unfollow=1;
-                        // }
-                        //var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+doc._id+doc.picext+"'";
+                      { if(req.session.userstore[doc._id]){
+                        console.log('have got him in userstore');
+                         unfollow=1;
+                         }
                           res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),'unfollow':unfollow});
                       }
                        else {
-                          //if(req.session.userstore[parseInt(doc._id)]){
-                          //console.log('have got him in userstore');
-                          // unfollow=1;
-                          // }
-                        //var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
+                          if(req.session.userstore[doc._id]){
+                          console.log('have got him in userstore');
+                           unfollow=1;
+                           }
                         res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),'unfollow':unfollow});
                   }     
                   }
