@@ -443,8 +443,8 @@ head
                   .form.-group
                     label(for="author") Author surname
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
-            .row.cpadding
-              .col-sm-6
+            .row.cpadding(style='text-align:center;')
+              .col-xs-6
                 //
                   .btn-group(style='margin-bottom:15px;')
                     button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
@@ -455,10 +455,13 @@ head
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
                   button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
-              .col-sm-6
+              .col-xs-6
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
                   button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction
+            .row.cpadding
+              .col-xs-12(style='text-align:center;')
+                button(class=' btn btn-default'  type='button' id='openextra')  Extra
             .row.cpadding.txtleft(id='extra')
               .col-xs-12
                 form
@@ -468,9 +471,7 @@ head
                     button(class='btn btn-lg btn-default' id='addauthor' type='button') Add
                     button(class=' btn btn-lg btn-default' id='removeauthor'  type='button' )  Remove
             .modal-footer(style='text-align:center;')
-              .btn-group
-                button(class=' btn btn-default'  type='button' id='openextra')  Extra
-                button(class='btn btn-success'  id='submitbook') Submit
+              button(class='btn btn-success'  id='submitbook') Submit
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
         // Brand and toggle get grouped for better mobile display
