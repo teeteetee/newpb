@@ -440,11 +440,13 @@ head
                   .form-group
                     label(for="author") Author name
                     input(type="text" class="form-control" id="author0_name" placeholder="Leo")
-                  .form.-group
+                  .form-group
                     label(for="author") Author surname
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
+                  .form-group(style='text-align:center;')
+                    button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
             .row.cpadding(style='text-align:center;')
-              .col-sm-4
+              .col-sm-6
                 //
                   .btn-group(style='margin-bottom:15px;')
                     button(class='btn btn-lg btn-warning active' id='newbook' type='button') New
@@ -455,12 +457,10 @@ head
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
                   button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
-              .col-sm-4
+              .col-sm-6
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction
-              .col-sm-4
-                button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
+                  button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
             .row.cpadding.txtleft(id='extra')
               .col-xs-12
                 form
