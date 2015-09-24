@@ -511,7 +511,7 @@ head
           .loader
     .container#main(style='padding-top:50px;')
       .row.visible-lg.visible-md.visible-sm
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#avatarbig          
+        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1         
           h2(style='margin-top:50px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           button.btn.btn-iosprimary.openadd(type='button' )  
@@ -520,7 +520,7 @@ head
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            .col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')#avatarsmall
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')
               //
                 .panel.panel-default
                   .panel-body
@@ -569,10 +569,12 @@ head
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
+        console.log('HAS AVATAR');
         $('#avatrabig').prepend("<img id='userimg' class='img-circle pull-left' src='/userpics/id"+user._id+user.picext+"'></img>");
         $('#avatrasmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
+        console.log('NO AVATAR');
         $('#avatrabig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
         $('#avatrasmall').prepend("<div id=emptyavatar class='img-circle'></div>");
       }
