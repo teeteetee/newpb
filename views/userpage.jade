@@ -514,7 +514,7 @@ head
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1         
           h2(style='margin-top:50px;' class='usernick')  ????
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:10px;')  
+          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
             span(class='glyphicon glyphicon-plus')  
             | Add item
       .row
@@ -573,7 +573,7 @@ head
         $('#avatarsmall').prepend("<img id='userimg' class='img-circle' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
+        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
         $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;' class='img-circle'></div>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
