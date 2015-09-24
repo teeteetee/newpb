@@ -443,6 +443,7 @@ head
                   .form.-group
                     label(for="author") Author surname
                     input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
+                  button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
             .row.cpadding(style='text-align:center;')
               .col-xs-6
                 //
@@ -459,9 +460,6 @@ head
                 .btn-group(style='margin-bottom:15px;')
                   button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
                   button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction
-            .row.cpadding
-              .col-xs-12(style='text-align:center;')
-                button(class=' btn btn-default'  type='button' id='openextra')  Extra
             .row.cpadding.txtleft(id='extra')
               .col-xs-12
                 form
