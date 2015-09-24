@@ -546,11 +546,14 @@ head
                     button.btn.btn-ioslooklike Movies           
               .panel.panel-default.visible-lg.visible-md.visible-sm
                 .panel-body.books#bigscreens
-                   #noitmes.row(style='text-align:center;')  
+                   .noitmes.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
               .row.visible-xs(style='border-top:1px solid #eee;')
-                #smallscreens.col-xs-12.books           
+                #smallscreens.col-xs-12.books         
+                  .noitmes.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -616,7 +619,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-            if($('#noitems').length)
+            if($('.noitems').length)
             {$('.books').empty();}
             var authors_insert ;
             for(var xi=0;xi<msg.authors.length;xi++){
