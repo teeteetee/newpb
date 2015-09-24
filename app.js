@@ -199,7 +199,6 @@ app.post('/newuser',function(req,res){
              res.send(ms); 
             }
           else {
-          follow.insert({user:done._id});
           req.session.mail=vmail;
           req.session._id=done._id;
           ms.trouble =0;
@@ -351,7 +350,7 @@ else {
 app.get('/people',function (req,res){
    if(req.session._id)
   {
-        users.findOne({_id:req.session._id},function (err,doc){
+        users.findOne({user:req.session._id},function (err,doc){
           if(err) {
           // TO DO tell user
           }
@@ -988,8 +987,9 @@ app.post('/checkdisc/:id/:last', function (req,res){
 app.post('/follow/:id',function (req,res){
   if(req.session._id){
     var new_user={};
-    new_user[req.params.id]=1;
-   follow.update({user:req.session._id},{$set:new_user});
+    new_user._id=req.params.id;
+    new_user.tmstmp = Date.now();
+   users.update({user:req.session._id},{$push:{userstore:new_user}});
     var ms={};
     ms.trouble=0;
     res.send(ms);
@@ -1017,18 +1017,26 @@ app.get('/u/:nick', function (req,res){
             if(doc){
               var unfollow=0;
                       if(doc.userpic)
-                      { //if(req.session.userstore[doc._id]){
-                        //console.log('have got him in userstore');
-                        // unfollow=1;
-                        // }
-                          res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                      {   delete doc.bookstore;
+                          delete doc.phr;
+                          req.session.userstore.some(function(el,index,ar){
+                            if(element._id===doc._id) {
+                              unfollow=1;
+                              return true;
+                            }
+                          });
+                          res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),unfollow:unfollow});
                       }
                        else {
-                         // if(req.session.userstore[doc._id]){
-                         // console.log('have got him in userstore');
-                         //  unfollow=1;
-                         //  }
-                        res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),'unfollow':unfollow});
+                         delete doc.bookstore;
+                         delete doc.phr;
+                         req.session.userstore.some(function(el,index,ar){
+                            if(element._id===doc._id) {
+                              unfollow=1;
+                              return true;
+                            }
+                          });
+                        res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),unfollow:unfollow});
                   }     
                   }
                   else {

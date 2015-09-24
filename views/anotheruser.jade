@@ -452,12 +452,12 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')     
     script.
-      var unfollow= #{unfollow};
+      var user = !{JSON.stringify(doc)};
+      var unfollow =#{unfollow};
       if(unfollow) {
         $('.follow').txt('Unfollow')
       }
       console.log(typeof unfollow+' unfollow: '+unfollow);
-      var user = !{JSON.stringify(doc)};
       var avatar = #{avatar};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
@@ -478,6 +478,7 @@ head
       }
       var books=[];
       var count;
+      function populate () {
       $.ajax({
          method: "POST",
          url: "/getbooks/#{user}",
@@ -496,6 +497,7 @@ head
             getbooks(books,count);
            }
            });
+       }
       function redactmodal (i) {
         $('#modaltitle').text(modal_data_store[i].title);
         $('#modalauthor').text(modal_data_store[i].author);
@@ -553,6 +555,7 @@ head
          if(count!=-1)
         {getbooks(books,count);}
         else {
+          $('#wait').css('display','none');
           return 0;
         }
       }
