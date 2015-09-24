@@ -1025,28 +1025,21 @@ app.get('/u/:nick', function (req,res){
           else {
             if(doc){
               var unfollow=0;
+              var avatar=0
                       if(doc.userpic)
-                      {   delete doc.bookstore;
+                      { avatar=1; }
+                        delete doc.bookstore;
                           delete doc.phr;
                           if(req.session.userstore) {req.session.userstore.some(function(el,index,ar){
                             if(el._id===doc._id) {
                               unfollow=1;
+                              console.log('found him');
                               return true;
                             }
                           });}
-                          res.render('anotheruser',{'user':doc._id,'avatar':1,'doc':JSON.stringify(doc),unfollow:unfollow});
-                      }
-                       else {
-                         delete doc.bookstore;
-                         delete doc.phr;
-                         if (req.session.userstore) {req.session.userstore.some(function(el,index,ar){
-                            if(element._id===doc._id) {
-                              unfollow=1;
-                              return true;
-                            }
-                          });}
-                        res.render('anotheruser',{'user':doc._id,'avatar':0,'doc':JSON.stringify(doc),unfollow:unfollow});
-                  }     
+                          res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),unfollow:unfollow});
+                      
+                       
                   }
                   else {
                     res.redirect('/');
