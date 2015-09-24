@@ -575,8 +575,8 @@ head
       }
       else {
         console.log('NO AVATAR');
-        $('#avatrabig').prepend("<div id=emptyavatar class='img-circle pull-left'></div>");
-        $('#avatrasmall').prepend("<div id=emptyavatar class='img-circle'></div>");
+        $('#avatrabig').append("<div id=emptyavatar class='img-circle pull-left'></div>");
+        $('#avatrasmall').append("<div id=emptyavatar class='img-circle'></div>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
