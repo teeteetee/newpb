@@ -239,7 +239,7 @@ head
               .col-xs-12
                 button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                   span(aria-hidden="true") ×
-                h4(class="modal-title" id="myModalLabel") One little thing left
+                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') One little thing left
           .modal-body
             .row
               .col-xs-12
@@ -375,7 +375,6 @@ head
                       }
                        lastentry = $('#nickinput').val()
                       });
-
       $('#male').click(function(){
         if($('#male').hasClass('iosactive')){
         }
@@ -396,7 +395,7 @@ head
           $('#myModal').modal('show');
         });
        $('#runreg').click(function(){
-        if($('.paddgroup-lg').css('display')==='none'){
+        if($('#paddgroup-lg').css('display')==='none'){
           console.log('1');
            runregister(1);
           }
@@ -426,54 +425,6 @@ head
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
         //--------------------
-        // AUTHSUBMIT FUNCTION
-        //--------------------
-        var allowauth = 1;
-        function authsubmit() {
-        allowauth = 0;
-        var vlgn = $('#mail').val();
-        var vphr = $('#p').val();
-        console.log(vlgn +" , "+vphr);
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        var index;
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        $('.message').empty();
-        $('.message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        allowauth = 1;
-        break;
-        case('wrong pas'):
-        $('.message').empty();
-        $('.message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-        allowauth = 1;
-        break;
-        case('wronguser'):
-        $('.message').empty();
-        $('.message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-        allowauth =1;
-        break;
-        }}
-        else {
-        window.location = 'http://vntrlst.com';
-        }
-        }
-        };
-        request.open('POST', '/check', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        request.send("phr="+vphr+"&lgn="+vlgn);
-        }
-        //END OF AUTHSUBMIT FUNCTION
-        //---------------------
         // RUNREGISTER FUNCTION
         //---------------------
         function runregister(arg) {
