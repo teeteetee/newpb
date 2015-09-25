@@ -592,6 +592,7 @@ head
                   alert('trouble');
                  }
                  else {
+                  unfollow=1;
                   $('.follow').text('Unfollow').css({'color':'#4197E2','background-color':'white'})
                  }
                  });}
@@ -605,6 +606,7 @@ head
                   alert('trouble');
                  }
                  else {
+                  unfollow=0;
                   $('.follow').empty();
                   $('.follow').append('<span class="glyphicon glyphicon-user"></span> Follow').css({'color':'#4197E2','background-color':'white'})
                  }
