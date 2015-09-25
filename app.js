@@ -1036,18 +1036,24 @@ app.post('/follow/:id',function (req,res){
 
 app.post('/unfollow/:id',function (req,res){
   if(req.session._id){
+    console.log(1);
     var tmp_id = req.params.id;
     var tmp_unset={}
+    console.log(2);
     tmp_unset[tmp_id]=0;
+    console.log(3);
    follow.update({user:req.session._id},{$unset:tmp_unset});
+   console.log(4);
    var rem_user={
     'userstore':{
       tmp_id:0
     }
    };
+   console.log(5);
     var tmstmp = Date.now();
     //rem_user.userstore[tmp_id:0}
    users.update({_id:req.session._id},{$unset:rem_user});
+   console.log(6);
    delete req.session.userstore[req.params.id];
    console.log('req.session.userstore');
    var ms={};
