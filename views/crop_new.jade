@@ -27,28 +27,9 @@ head
       padding-top:20px;
       }
       @media (max-width: 767px) {
-      #mainframe {
-      margin-top:0px;
-      }
       #spin {
       margin-top:30%
       }
-      .book {
-      border-bottom:1px solid #eee;
-      text-align:center;
-      padding-left:15px;
-      padding-right:15px;
-      }
-      .emptybook {
-      margin-left:0px;
-      }
-      #leftpanel {
-      border-right:0px;
-      }
-      #booklist {
-      border-bottom-left-radius:10px;
-      }
-      
       .list {
         max-height:inherit;
       }
@@ -97,30 +78,9 @@ head
       -o-transition: background-color 0.3s ease;
       transition: background-color 0.3s ease;
       }
-      .inleftblock:hover {
-      background-color: #333;
-      color:white;
-      }
-      .inleftblock:hover h4 {
-      color:white;
-      }
-      .glyphicon {
-      margin-right:5px;
-      }
       .btncorr {
       font-family:boldproxima;
       text-transform:uppercase;
-      }
-      #userimg {
-      -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
-      box-shadow: -9px 0px 40px 0px #c7c7c7;
-      border:7px solid white;
-      }
-      .img-circle {
-      -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
-      -moz-filter: brightness(0.9) contrast(1.2) saturate(1.2);
-      filter:brightness(0.9) contrast(1.2) saturate(1.2);
       }
       #heyopen {
       -webkit-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
@@ -242,39 +202,37 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container#main(style='padding-top:50px;')          
-          .list.row
-            .col-xs-12
-              .row.optlist(style='display:none;')
-                input(id='ar_lock',type='checkbox')
-                input(id='size_lock',type='checkbox')
-              .row
-                .col-xs-12(id='targetbucket')
-                  img#target(src='#{imgsrc}',class='img-responsive center-block' alt='[Jcrop Example]')
-              .row
-                .col-xs-12(style='text-align:center;padding-top:30px;')
-                  button(id='release' style='margin-right:10px;display:none' class='btn btn-primary') Убрать выделение
-                  button(id='crop' class='btn btn-primary') Обрезать
-                  .inline-labels(style='display:none;')
-                    label
-                      | X1 
-                      input#x1(type='text', size='4', name='x1')    
-                    label
-                      | Y1 
-                      input#y1(type='text', size='4', name='y1')    
-                    label
-                      | X2 
-                      input#x2(type='text', size='4', name='x2')    
-                    label
-                      | Y2 
-                      input#y2(type='text', size='4', name='y2')    
-                    label
-                      | W 
-                      input#w(type='text', size='4', name='w')    
-                    label
-                      | H 
-                      input#h(type='text', size='4', name='h')
-              .row
-                .col-xs-12#cropresult
+      .row.optlist(style='display:none;')
+        input(id='ar_lock',type='checkbox')
+        input(id='size_lock',type='checkbox')
+      .row
+        .col-xs-12(id='targetbucket')
+          img#target(src='#{imgsrc}',class='img-responsive center-block' alt='[Jcrop Example]')
+      .row
+        .col-xs-12(style='text-align:center;padding-top:30px;')
+          button(id='release' style='margin-right:10px;display:none' class='btn btn-primary') Убрать выделение
+          button(id='crop' class='btn btn-primary') Обрезать
+          .inline-labels(style='display:none;')
+            label
+              | X1 
+              input#x1(type='text', size='4', name='x1')    
+            label
+              | Y1 
+              input#y1(type='text', size='4', name='y1')    
+            label
+              | X2 
+              input#x2(type='text', size='4', name='x2')    
+            label
+              | Y2 
+              input#y2(type='text', size='4', name='y2')    
+            label
+              | W 
+              input#w(type='text', size='4', name='w')    
+            label
+              | H 
+              input#h(type='text', size='4', name='h')
+      .row
+        .col-xs-12#cropresult
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/jquery.Jcrop.min.js')
       script(src='/js/crop.js')
