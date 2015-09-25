@@ -244,19 +244,20 @@ head
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
            $('#users').empty();
+           var newitems ='';
            console.log(msg._id);
            console.log(msg.last_item);
            console.log(tmstmps[msg._id].tmstmp);
            if(tmstmps[msg._id].tmstmp<msg.last_item) {
-            alert('SUCCESS!');
+            newitems = "<span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span>";
            }
-           //var insert = "<div class='row book'><div class='slideover col-xs-12 bookpadding' id='sm"+i+"'><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+msg._id+");'>Unfollow</button><button onclick='closeoptions("+i+");' type='button' class='"+msg._id+" close pull-right'><span aria-hidden='true'>&times;</span></button></div><div class='col-xs-12 bookpadding hovershade' onclick='ops("+i+");'><h3 id='title"+msg._id+"' style='display:inline;color:#aaa;'> User №"+msg.uid+" books: "+msg.readbooks+", movies: "+msg.seenmovies+"<small style='margin-left:10px;color:#ddd;'>something</small></h3></div></div>";
+           var avinsert = "<div style='height:50px;border:3px dotted #ddd;width:50px;' id='img_cid"+msg._id+"' class='media-object' alt='avatar'></div>";
            if(msg.userpic)
-          {var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'><img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='/userpics/id"+msg._id+"_small"+msg.picext+"' alt='avatar'></div><div class='media-body' ><h4 class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
-           }           
-           else {
-           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'><div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'><div style='height:50px;border:3px dotted #ddd;width:50px;' id='img_cid"+msg._id+"' class='media-object' alt='avatar'></div></div><div class='media-body' ><h4 class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           {
+            avinsert ="<img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='/userpics/id"+msg._id+"_small"+msg.picext+"' alt='avatar'>";
            }
+          var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12 bookpadding hovershade'>"+newitems+"<div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'>"+avinsert+"</div><div class='media-body' ><h4 class='media-heading'>"+msg.nick+"</h4>"+msg.totalbooks+"</div></div></a></div></div>";
+           insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
            $('#users').append(insert);
            //getavatar(msg.uid,msg._id);
            });
