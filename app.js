@@ -1118,16 +1118,13 @@ app.get('/u/:nick', function (req,res){
                       { avatar=1; }
                         delete doc.bookstore;
                           delete doc.phr;
-                          if(req.session.userstore && req.session.userstore[req.params.id]) {
-                          //  req.session.userstore.some(function(el,index,ar){
-                          //  console.log(el._id+'\n'+JSON.stringify(doc._id));
-                          //  if(el._id===doc._id.toString()) {
-                          //    unfollow=1;
-                          //    console.log('good');
-                          //    return true;
-                          //  }
-                          //});
-                          unfollow=1;
+                          if(req.session.userstore ) {
+                          for(var i=0;i<req.session.userstore.length;i++){
+                            if(req.session.userstore[i]===doc._id.toString()) {
+                            unfollow=1;
+                            break
+                            }
+                          }
                           }
                           var update_tmstmp = {};
                           var tmp_str = doc._id.toString();
