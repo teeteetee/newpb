@@ -554,6 +554,12 @@ app.get('/dropauthors',function (req,res){
   res.redirect('/');
 });
 
+app.get('/dropfollow',function (req,res){
+  follow.remove({});
+  res.redirect('/');
+});
+
+
 app.get('/seedisc',function (req,res){
   discussions.find({},function (err,done){
     if(err){
