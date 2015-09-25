@@ -214,7 +214,7 @@ head
       if(!discussions[0])
       {}
       else
-      {getdisc(discussions[counter],counter);}
+      {getdisc(discussions[counter]._id,counter);}
       function getavatar(uid,discid,iter) {
       console.log('getting avatar for: '+uid);
       avatarrequest = new XMLHttpRequest();
@@ -224,7 +224,7 @@ head
       var parsed = JSON.parse(avatarrequest.responseText);
       counter++;
       if(counter<discussions.length)
-      {getdisc(discussions[counter],counter)}
+      {getdisc(discussions[counter]._id,counter)}
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
@@ -305,7 +305,7 @@ head
       }
       }
       };
-      request.open('POST', '/getdiscinfo/'+discid.toString(), true);
+      request.open('POST', '/getdiscinfo/'+discid, true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
