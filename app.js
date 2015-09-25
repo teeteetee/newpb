@@ -473,7 +473,7 @@ app.get('/helpers',function(req,res){
 });
 
 app.get('/sus',function(req,res){
-  users.update({_id:req.session._id},{$set:{userstore:[]});
+  users.update({_id:req.session._id},{$set:{userstore:[]}});
   res.redirect('/seeuser');
 });
 
