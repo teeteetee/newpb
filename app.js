@@ -844,6 +844,7 @@ app.post('/getdiscinfo/:id', function (req,res){
   console.log('getting disc info');
   //TO DO if req.session present, otherwise go away
   var vdiscid = req.params.id;
+  console.log(typeof vdiscid+' '+vdiscid);
   var ms ={};
   ms.trouble = 0;
   discussions.findOne({_id:vdiscid},function (err,doc){
