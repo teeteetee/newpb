@@ -226,10 +226,10 @@ head
        })
          .done(function( msg ) {
            for(var x in msg) {
-             console.log(x);
-             if(x.length>4) {
-              console.log(x.tmstmp);
-             }
+             console.log(typeof x);
+             //if(x.length>4) {
+             // console.log(x[]);
+             //}
            }
            });
       }
