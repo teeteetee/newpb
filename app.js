@@ -1042,7 +1042,7 @@ app.post('/unfollow/:id',function (req,res){
    follow.update({user:req.session._id},{$unset:tmp_unset});
    var rem_user={
     'userstore':{
-      tmp_id:0;
+      tmp_id:0
     }
    };
     var tmstmp = Date.now();
