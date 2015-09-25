@@ -459,7 +459,7 @@ app.get('/helpers',function(req,res){
 });
 
 app.get('/lstitm',function (req,res){
-  users.update(,{$set:{last_item:0}});
+  users.update({},{$set:{last_item:0}});
   res.redirect('/seeuser');
 })
 
