@@ -193,7 +193,6 @@ app.post('/newuser',function(req,res){
           var fulldate = vyear+vmonth+vday;
           fulldate = parseInt(fulldate);
           // end of generate date
-          
           users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday},userstore:[]},function (err,done){
             if(err)
             {
@@ -201,6 +200,7 @@ app.post('/newuser',function(req,res){
              res.send(ms); 
             }
           else {
+          follow.insert({user:done._id.toString()});
           req.session.mail=vmail;
           req.session._id=done._id;
           ms.trouble =0;
@@ -1002,6 +1002,11 @@ app.post('/checkdisc/:id/:last', function (req,res){
     }
   });
 
+});
+
+app.post('/supfollow',function (req,res){
+  follow.insert({user:req.session._id});
+  res.redirect('/');
 });
 
 app.post('/follow/:id',function (req,res){

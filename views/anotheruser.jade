@@ -605,7 +605,8 @@ head
                   alert('trouble');
                  }
                  else {
-                  $('.follow').text('<span class="glyphicon glyphicon-user"></span> Follow').css({'color':'#4197E2','background-color':'white'})
+                  $('.follow').empty();
+                  $('.follow').append('<span class="glyphicon glyphicon-user"></span> Follow').css({'color':'#4197E2','background-color':'white'})
                  }
                  });}
       populate();
