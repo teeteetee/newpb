@@ -225,7 +225,9 @@ head
          data: 0
        })
          .done(function( msg ) {
-           console.log(msg);
+           for(var x in msg) {
+             console.log(x);
+           }
            });
       }
       getfollow();
