@@ -873,6 +873,7 @@ app.post('/getdiscinfo/:id', function (req,res){
         res.send(ms);
       }
     }
+  }
   });
 
 });
