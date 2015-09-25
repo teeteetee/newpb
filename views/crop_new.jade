@@ -234,27 +234,14 @@ head
       .row
         .col-xs-12#cropresult
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(src='/js/jquery.Jcrop.min.js')
+      script(src='/js/crop.js')
       script(src='/js/bootstrap.min.js')
       script.
-        //var event = $(document).click(function(e) {
-        //   e.stopPropagation();
-        //   e.preventDefault();
-        //   e.stopImmediatePropagation();
-        //   return false;
-        //});
-        //// disable right click
-        //$(document).bind('contextmenu', function(e) {
-        //    e.stopPropagation();
-        //    e.preventDefault();
-        //    e.stopImmediatePropagation();
-        //    return false;
-        //});
+      
         $('#target').load(function(){
           console.log('remove');
            $('#wait').remove();
-           //$(document).unbind('click');
-           //$(document).unbind('contextmenu');
-           $('body').append("<script src='/js/jquery.Jcrop.min.js'></script><script src='/js/crop.js'></script>");
           });
         
       
