@@ -235,11 +235,13 @@ head
       if(parsed.mtext==='emptypic'){
         console.log('EMPTY AVATAR');
        eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+       eval("$('#head"+discid+"').text('"+parsed.nick+"');");
       }
       else 
       {
         console.log('HAS AVATAR');
       eval("$('#img_cid"+discid+"').attr('src','/userpics/id"+uid+"_small"+parsed.picext+"');");
+      eval("$('#head"+discid+"').text('"+parsed.nick+"');");
       }
       }
       }
@@ -285,14 +287,14 @@ head
           }
         // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
         }
-        var insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
+        var insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
         if(user.tmstmpstore){ 
           console.log('BREAKPOINT 1');
           console.log('lsttmstmp_msg: '+lsttmstmp_msg);
           console.log('user last timestamp: '+user.tmstmpstore.discid);
           if (lsttmstmp_msg && lsttmstmp_msg > user.tmstmpstore[discid] ){
           console.log('from timestamp store: '+user.tmstmpstore.discid);
-        insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
+        insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
         }
         }   
             
