@@ -280,11 +280,11 @@ app.get('/chat',function (req,res){
               if(done){
                   if(done.discussions)
                   {
-                  res.render('chat',{'user':done.uid,'discussions':done.discussions,'done':JSON.stringify(done)});
+                  res.render('chat',{'user':done._id,'discussions':done.discussions,'done':JSON.stringify(done)});
                   }
                   else {
                    //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
-                   res.render('chat',{'user':done.uid,'discussions':0,'done':JSON.stringify(done)});
+                   res.render('chat',{'user':done._id,'discussions':0,'done':JSON.stringify(done)});
                   }
               }
               else {
