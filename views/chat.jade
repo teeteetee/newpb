@@ -244,7 +244,7 @@ head
       }
       }
       };
-      avatarrequest.open('POST', '/getavatar/'+uid, true);
+      avatarrequest.open('POST', '/getavatar/'+uid.toString(), true);
       avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
