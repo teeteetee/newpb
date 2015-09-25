@@ -244,7 +244,7 @@ head
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
            $('#users').empty();
-           console.log(tmstmps[msg._id]+' '+typeof parseInt(tmstmps[msg._id])+' - 1;');
+           console.log(parseInt(tmstmps[msg._id])+' '+typeof parseInt(tmstmps[msg._id])+' - 1;');
            console.log(msg.last_item+' '+typeof msg.last_item+' - 2;');
            if(parseInt(tmstmps[msg._id])<msg.last_item) {
             alert('SUCCESS!');
