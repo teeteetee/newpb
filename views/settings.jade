@@ -198,12 +198,12 @@ head
               dl
                 dt Userpic upload
                 dd
-                  form(method='post',action='/usrp',role='form', enctype='multipart/form-data')
+                  form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
                     .form-group
                       //label(for="exampleInputFile") Userpic upload
                       input(type="file" id='userpic' name='userpic' )
                       p(class="help-block") Jpg images only
-                    button(class='btn btn-warning' type='submit') Upload
+                    button(class='btn btn-warning' type='button' id='picupload') Upload
               .row(style='border-top:1px solid #eee;')
               dl  
                 dt Would you like your lists private ?
@@ -233,6 +233,14 @@ head
         $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
         $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       } 
+      $('#pickupload').click(function(){
+        if( document.getElementById("userpic").files.length == 0 ){
+        alert('Select an image');
+       }
+       else {
+         $('#picform').submit();
+       }
+        });
       $('#setsub').click(setsubmit);
       function setsubmit() {
       request = new XMLHttpRequest();
