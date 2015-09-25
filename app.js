@@ -1018,8 +1018,9 @@ app.post('/follow/:id',function (req,res){
     var tmp_id = req.params.id;
     var tmstmp = Date.now();
     //var new_user={};
-    var new_user = {'userstore':{}};
-    new_user.userstore[tmp_id] = {'tmstmp':tmstmp};
+    var new_user = {};
+    var tmp_tmp = {'tmstmp':tmstmp};
+    new_user.userstore[tmp_id] = tmp_tmp;
     var update_tmstmp = {};
     update_tmstmp[req.params.id]={'tmstmp': tmstmp};
     follow.update({user:req.session._id},{$set:update_tmstmp});
