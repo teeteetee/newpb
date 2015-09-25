@@ -268,18 +268,6 @@ head
         padding-top:3px;
         padding-bottom:3px;
       }
-      #modal-header {
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      font-family:boldproxima;
-      text-transform:uppercase;
-      text-align:center;
-      }
-      #modal-content{
-      border-radius:10px;
-      }
       #testinsert {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
@@ -293,14 +281,6 @@ head
       background-color:rgba(0,0,0,0.8);
       width:100%;
       text-align:center;
-      }
-      #close {
-      font-size:30px
-      margin-top:14px;
-      margin-right:20px;
-      opacity:1;
-      text-ashadow:none;
-      color:white;
       }
       .btn-darkdefault{
        background:none;
@@ -401,9 +381,9 @@ head
       .modal-dialog(role="document")
         .modal-content
           .modal-header(style='background-color:#eee;')
-            .row
-              .col-xs-12
-                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Welcome 
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Welcome 
           .modal-body
             .row
               .col-xs-12
