@@ -259,7 +259,7 @@ app.get('/chat',function (req,res){
             console.log(done);
             if(err){
               //err page ?
-              res.render('index_new');
+              res.redirect('/');
               console.log('QUERY ERR');
             }
             else {
@@ -274,7 +274,7 @@ app.get('/chat',function (req,res){
                   }
               }
               else {
-                res.render('index_new');
+                res.redirect('/');
                 console.log('DOCUMENT ERR');
               }
             }
@@ -578,9 +578,9 @@ app.get('/seeuser',function (req,res){
 
 app.get('/chat/:recid',function (req,res){
    console.log(1);
-   var vsender = parseInt(req.session.uid);
+   var vsender = parseInt(req.session._id);
    var vdest =  parseInt(req.params.recid);
-   if(vsender!=req.session.uid){
+   if(vsender!=req.session._id){
     res.redirect('/');
    }
    else{
@@ -595,7 +595,7 @@ app.get('/chat/:recid',function (req,res){
               if(done){
                 console.log(3);
                 console.log('discussion '+done.discid);
-                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done.discid});
+                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done._id});
               }
               else{
                discussions.findOne({rcv:vsender,snd:vdest},function (err,done2){
@@ -609,35 +609,14 @@ app.get('/chat/:recid',function (req,res){
                           if(done2){
                             console.log(3);
                             console.log('discussion '+done2.discid);
-                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done2.discid});
+                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done2._id});
                           }
                 else {
-                  console.log(4);
-                  discussions.find({},{limit:1,sort:{discid:-1}},function (err,doc){
-                    console.log(5);
-                    if(err){
-                        res.render('index_new');
-                         console.log('QUERY ERR');
-                       }
-                     else {
-                      console.log(6);
-                       if(doc.length>0){
-                        console.log(7);
-                           var newid = doc[0].discid;
-                           newid++;
-                           discussions.insert({discid:newid,snd:vsender,rcv:vdest,msgcnt:0});
-                           users.update({uid:vsender},{$push:{discussions:newid}});
-                           users.update({uid:vdest},{$push:{discussions:newid}});
-                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newid});
-                         }
-                         else{
-                          discussions.insert({discid:1,snd:vsender,rcv:vdest,msgcnt:0});
-                          users.update({uid:vsender},{$push:{discussions:1}});
-                          users.update({uid:vdest},{$push:{discussions:1}});
-                           res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':1});
-                         }
-                       }
-                     });
+                  discussions.insert({snd:vsender,rcv:vdest,msgcnt:0},function(err,newdisc){
+                  users.update({_id:vsender},{$push:{discussions:newdisc}});
+                  users.update({_id:vdest},{$push:{discussions:newdisc}});
+                  res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
+                  });
                 }//else
               }
              });
