@@ -1016,6 +1016,7 @@ app.get('/delfollow',function (req,res){
 app.post('/follow/:id',function (req,res){
   if(req.session._id){
     var tmp_id = req.params.id;
+    console.log(typeof tmp_id);
     var tmstmp = Date.now();
     //var new_user={};
     var new_user = {};
