@@ -869,10 +869,15 @@ app.post('/getdiscinfo/:id', function (req,res){
         res.send(ms);
       }
       else {
-        ms.trouble=1;
-        ms.mtext='no discussion';
+        ms.trouble=0;
+        ms.mtext='empty';
         res.send(ms);
       }
+    }
+    else {
+      ms.trouble=1;
+        ms.mtext='no discussion';
+        res.send(ms);
     }
   }
   });
