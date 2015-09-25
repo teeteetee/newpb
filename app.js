@@ -1019,17 +1019,12 @@ app.post('/follow/:id',function (req,res){
     console.log(typeof tmp_id);
     var tmstmp = Date.now();
     //var new_user={};
-    var new_user = {};
-    var tmp_tmp = {'tmstmp':tmstmp};
-    new_user.userstore =0;
-    new_user.userstore[tmp_id] = tmp_tmp;
-    console.log(new_user.userstore);
     var update_tmstmp = {};
     update_tmstmp[req.params.id]={'tmstmp': tmstmp};
     follow.update({user:req.session._id},{$set:update_tmstmp});
    //users.update({_id:req.session._id},{$push:{userstore:new_user}});
-   users.update({_id:req.session._id},{$set:new_user});
-   req.session.userstore[req.params.id]={'tmstmp':tmstmp};
+   //users.update({_id:req.session._id},{$set:new_user});
+   //req.session.userstore[req.params.id]={'tmstmp':tmstmp};
     var ms={};
     ms.trouble=0;
     res.send(ms);
@@ -1037,6 +1032,24 @@ app.post('/follow/:id',function (req,res){
   else {
     res.send(0);
   }
+});
+
+app.post('/getfollow',function (req,res){
+  if(req.session._id){
+    var ms={};
+    ms.trouble=1;
+    follow.findOne({user:req.session._id},function(err,done){
+     if(err){
+        res.send(ms);
+     }
+     else {
+       res.send(done);
+     }
+    });
+  }
+    else{
+      res.send(0);
+    }
 });
 
 app.post('/unfollow/:id',function (req,res){

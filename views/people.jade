@@ -217,6 +217,19 @@ head
       }
       var users = user.userstore;
       var count = users.length-1;
+      function getfollow() {
+        console.log('i:'+i);
+        var url = '/getfollow';
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log(msg);
+           });
+      }
+      getfollow();
       function getusers(users,i) {
         console.log('i:'+i);
         var url = '/getuser/'+users[i]._id;
@@ -278,8 +291,8 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       avatarrequest.send();
       }
-      if(users.length){
-            getusers(users,count);}
+      //if(users.length){
+      //      getusers(users,count);}
       function closeoptions(id){
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
