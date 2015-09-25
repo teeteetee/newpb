@@ -999,7 +999,7 @@ app.post('/follow/:id',function (req,res){
     new_user._id=req.params.id;
     new_user.tmstmp = Date.now();
     var update_tmstmp = {};
-    update_tmstmp[req.params.id].tmstmp = Date.now();
+    update_tmstmp[req.params.id]={'tmstmp': Date.now()};
     follow.update({user:req.session._id},{$set:update_tmstmp});
    users.update({_id:req.session._id},{$push:{userstore:new_user}});
     var ms={};
@@ -1021,7 +1021,7 @@ app.post('/gettimestamp/:id',function (req,res){
       }
       else {
         var update_tmstmp = {};
-        update_tmstmp[req.params.id].tmstmp = Date.now();
+        update_tmstmp[req.params.id]={'tmstmp': Date.now()};
         follow.update({user:req.session._id},{$set:update_tmstmp});
         var ms={};
         ms.tmstmp = done[req.params.id.toString()];
@@ -1065,7 +1065,7 @@ app.get('/u/:nick', function (req,res){
                           });}
                           var update_tmstmp = {};
                           var tmp_str = doc._id.toString();
-                          update_tmstmp[tmp_str].tmstmp = Date.now();
+                          update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                           follow.update({user:req.session._id},{$set:update_tmstmp});
                           res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),unfollow:unfollow});
                       
