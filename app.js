@@ -1549,11 +1549,11 @@ app.post('/additem/:uid/:id',function (req,res){
                 book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
-                users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date().now}});
+                users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                              tell_user(0);}
                   else {
                     book_insert.newbook =0;
-                    users.update({_id:req.params._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date().now}});
+                    users.update({_id:req.params._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                              tell_user(0);
                   }
                //respond to user with success
@@ -1572,11 +1572,11 @@ app.post('/additem/:uid/:id',function (req,res){
                       book_insert.goodbook = 0;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
-                      users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date().now}});
+                      users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
-                        users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date().now}});
+                        users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
