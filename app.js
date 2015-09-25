@@ -178,22 +178,8 @@ app.post('/newuser',function(req,res){
       }
       else {
         if(doc.length === 0)
-        { //generate date
-          var dd= new Date();
-          var vday = dd.getDate().toString();
-          if (vday.length===1){
-            vday='0'+vday;
-          }
-          var vmonth = dd.getMonth()+1;
-          vmonth = vmonth.toString();
-          if (vmonth.length===1){
-            vmonth='0'+vmonth;
-          }
-          var vyear = dd.getUTCFullYear().toString();
-          var fulldate = vyear+vmonth+vday;
-          fulldate = parseInt(fulldate);
-          // end of generate date
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday},userstore:{}},function (err,done){
+        { 
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:{}},function (err,done){
             if(err)
             {
               ms.mtext='db';
@@ -1558,11 +1544,11 @@ app.post('/additem/:uid/:id',function (req,res){
                 book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
-                users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1}});
+                users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date().now}});
                              tell_user(0);}
                   else {
                     book_insert.newbook =0;
-                    users.update({_id:req.params._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1}});
+                    users.update({_id:req.params._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date().now}});
                              tell_user(0);
                   }
                //respond to user with success
@@ -1581,11 +1567,11 @@ app.post('/additem/:uid/:id',function (req,res){
                       book_insert.goodbook = 0;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
-                      users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1}});
+                      users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date().now}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
-                        users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1}});
+                        users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date().now}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
