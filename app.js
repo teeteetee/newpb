@@ -578,8 +578,8 @@ app.get('/seeuser',function (req,res){
 
 app.get('/chat/:recid',function (req,res){
    console.log(1);
-   var vsender = parseInt(req.session._id);
-   var vdest =  parseInt(req.params.recid);
+   var vsender = req.session._id;
+   var vdest =  req.params.recid;
    if(!req.session._id){
     res.redirect('/');
    }
