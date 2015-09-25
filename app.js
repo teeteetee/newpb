@@ -676,7 +676,7 @@ app.get('/newindex',function (req,res){
 app.post('/getdisc/:id', function (req,res){
   // API to populate discussion page
   //TO DO if req.session present, otherwise go away
-  var vdiscid = req.params._id;
+  var vdiscid = req.params.id;
   var ms ={};
   ms.trouble = 0;
   discussions.findOne({_id:vdiscid},function (err,doc){
@@ -843,10 +843,10 @@ app.post('/getdiscinfo/:id', function (req,res){
   //API used when populating page with the list of conversations
   console.log('getting disc info');
   //TO DO if req.session present, otherwise go away
-  var vdiscid = parseInt(req.params.id);
+  var vdiscid = req.params.id;
   var ms ={};
   ms.trouble = 0;
-  discussions.findOne({discid:vdiscid},function (err,doc){
+  discussions.findOne({_id:vdiscid},function (err,doc){
     if(err) {
     ms.trouble=1;
     res.send(ms);
@@ -862,7 +862,7 @@ app.post('/getdiscinfo/:id', function (req,res){
              var sht_tmp ={};
               sht_tmp['$set'] = {};
               sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
-              users.update({uid:parseInt(req.session.uid)},sht_tmp);}
+              users.update({_id:req.session._id},sht_tmp})
         //--------------------------//
         ms.mtext = doc;
         res.send(ms);
