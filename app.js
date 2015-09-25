@@ -1023,6 +1023,21 @@ app.post('/follow/:id',function (req,res){
   }
 });
 
+app.post('/unfollow/:id',function (req,res){
+  if(req.session._id){
+    var tmp_unset = {req.params.id:0};
+   follow.update({user:req.session._id},{$unset:tmp_unset});
+   delete req.session.userstore[req.params.id];
+   console.log('req.session.userstore');
+   var ms={};
+    ms.trouble=0;
+    res.send(ms);
+  }
+    else {
+    res.send(0);
+  }
+});
+
 app.post('/gettimestamp/:id',function (req,res){
   if(req.session._id){
     follow.findOne({user:req.session._id},function (err,done){
