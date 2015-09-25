@@ -283,7 +283,8 @@ app.get('/chat',function (req,res){
                   res.render('chat',{'user':done.uid,'discussions':done.discussions,'done':JSON.stringify(done)});
                   }
                   else {
-                   res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
+                   //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
+                   res.render('chat',{'user':done.uid,'discussions':0,'done':JSON.stringify(done)});
                   }
               }
               else {

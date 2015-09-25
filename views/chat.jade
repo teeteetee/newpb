@@ -216,7 +216,10 @@ head
       //} 
       var discussions = [#{discussions}];
       var counter=0;
-      getdisc(discussions[counter],counter);
+      if(!discussions[0])
+      {}
+      else
+      {getdisc(discussions[counter],counter);}
       function getavatar(uid,discid,iter) {
       console.log('getting avatar for: '+uid);
       avatarrequest = new XMLHttpRequest();
