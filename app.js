@@ -1022,7 +1022,7 @@ app.post('/follow/:id',function (req,res){
     var update_tmstmp = {};
     update_tmstmp[req.params.id]={'tmstmp': tmstmp};
     follow.update({user:req.session._id},{$set:update_tmstmp});
-    users.update({_id:req.session._id},{$push:{userstore:tmp_id}});
+    users.update({_id:req.session._id},{$push:{userstore:req.params.id}});
    //users.update({_id:req.session._id},{$set:new_user});
    //req.session.userstore[req.params.id]={'tmstmp':tmstmp};
     var ms={};
