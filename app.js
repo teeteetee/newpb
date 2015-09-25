@@ -1009,6 +1009,11 @@ app.get('/supfollow',function (req,res){
   res.redirect('/');
 });
 
+app.get('delfollow',function (req,res){
+  follow.remove({user:req.session._id});
+  res.redirect('/');
+});
+
 app.post('/follow/:id',function (req,res){
   if(req.session._id){
     var new_user={};
