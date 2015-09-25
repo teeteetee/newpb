@@ -871,7 +871,7 @@ app.post('/getdiscinfo/:id', function (req,res){
       }
       else {
         ms.trouble=0;
-        ms.mtext='empty';
+        ms.mtext=doc;
         res.send(ms);
       }
     }
