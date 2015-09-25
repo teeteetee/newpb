@@ -862,7 +862,7 @@ app.post('/getdiscinfo/:id', function (req,res){
              var sht_tmp ={};
               sht_tmp['$set'] = {};
               sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
-              users.update({_id:req.session._id},sht_tmp})
+              users.update({_id:req.session._id},sht_tmp);
         //--------------------------//
         ms.mtext = doc;
         res.send(ms);
