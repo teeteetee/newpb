@@ -1059,7 +1059,7 @@ app.post('/unfollow/:id',function (req,res){
     var tmp_unset={}
     tmp_unset[tmp_id]=0;
    follow.update({user:req.session._id},{$unset:tmp_unset});
-   for(var i =  req.session.userstore.length-1;i=>0 ;i--;){
+   for(var i =  req.session.userstore.length-1;i>=0 ;i--;){
     console.log(req.session.userstore[i]+','+typeof req.session.userstore[i]);
     console.log('\n'+tmp_id);
   if ( req.session.userstore[i] === tmp_id) { req.session.userstore.splice(i, 1);break}
