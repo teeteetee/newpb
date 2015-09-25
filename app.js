@@ -1026,7 +1026,8 @@ app.post('/follow/:id',function (req,res){
 app.post('/unfollow/:id',function (req,res){
   if(req.session._id){
     var tmp_id = req.params.id;
-    var tmp_unset[tmp_id]=0;
+    var tmp_unset={}
+    tmp_unset[tmp_id]=0;
    follow.update({user:req.session._id},{$unset:tmp_unset});
    delete req.session.userstore[req.params.id];
    console.log('req.session.userstore');
