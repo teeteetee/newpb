@@ -1120,6 +1120,7 @@ app.get('/u/:nick', function (req,res){
                           delete doc.phr;
                           if(req.session.userstore ) {
                           for(var i=0;i<req.session.userstore.length;i++){
+                            console.log(req.session.userstore[i]);
                             if(req.session.userstore[i]===doc._id.toString()) {
                             unfollow=1;
                             break
