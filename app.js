@@ -1059,12 +1059,10 @@ app.post('/unfollow/:id',function (req,res){
     var tmp_unset={}
     tmp_unset[tmp_id]=0;
    follow.update({user:req.session._id},{$unset:tmp_unset});
-   var rem_user={};
-    var tmstmp = Date.now();
-    rem_user.userstore[req.params.id]=0;
-   users.update({_id:req.session._id},{$unset:rem_user});
-   delete req.session.userstore[req.params.id];
-   console.log('req.session.userstore');
+   for(var i =  req.session.userstore.length-1; i--;){
+  if (array[i] === tmp_id) { req.session.userstore.splice(i, 1);break}
+} 
+   users.update({_id:req.session._id},{$set:{userstore:req.session.userstore}});
    var ms={};
     ms.trouble=0;
     res.send(ms);
