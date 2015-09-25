@@ -243,14 +243,14 @@ head
            e.preventDefault();
            e.stopImmediatePropagation();
            return false;
-       });
-       // disable right click
-       $(document).bind('contextmenu', function(e) {
-           e.stopPropagation();
-           e.preventDefault();
-           e.stopImmediatePropagation();
-           return false;
-       });
+        });
+        // disable right click
+        $(document).bind('contextmenu', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return false;
+        });
         $('#target').load(function(){
           console.log('remove');
            $('#wait').remove();
