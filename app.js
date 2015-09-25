@@ -676,10 +676,10 @@ app.get('/newindex',function (req,res){
 app.post('/getdisc/:id', function (req,res){
   // API to populate discussion page
   //TO DO if req.session present, otherwise go away
-  var vdiscid = parseInt(req.params.id);
+  var vdiscid = req.params._id;
   var ms ={};
   ms.trouble = 0;
-  discussions.findOne({discid:vdiscid},function (err,doc){
+  discussions.findOne({_id:vdiscid},function (err,doc){
     if(err) {
     res.send(ms);
     }
