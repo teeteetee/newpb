@@ -576,7 +576,7 @@ head
       }
       $('.follow').click(function(){
         if(unfollow) {
-          unfollow();
+          unfollowfnc();
         }
         else {
           follow();
@@ -595,7 +595,7 @@ head
                   $('.follow').text('Unfollow').css({'color':'#4197E2','background-color':'white'})
                  }
                  });}
-      function unfollow () {$.ajax({
+      function unfollowfnc () {$.ajax({
                method: "POST",
                url: "/unfollow/#{user}",
                data: 0
