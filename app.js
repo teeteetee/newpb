@@ -458,6 +458,11 @@ app.get('/helpers',function(req,res){
   res.render('helpers');
 });
 
+app.get('/lstitm',function (req,res){
+  users.update(,{$set:{last_item:0}});
+  res.redirect('/seeuser');
+})
+
 app.get('/sus',function(req,res){
   users.update({_id:req.session._id},{$set:{userstore:[]}});
   res.redirect('/seeuser');
