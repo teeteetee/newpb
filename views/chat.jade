@@ -209,11 +209,6 @@ head
       //TO DO userpics seem to be cut from the sides, look into that
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      //if(user.userpic){
-      //  $('#emptyavatar').remove();
-      //  $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-      //  $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      //} 
       var discussions = [#{discussions}];
       var counter=0;
       if(!discussions[0])
@@ -272,7 +267,7 @@ head
       }
       else {
         $('#discussions').empty();
-        if(#{user} !=parsed.mtext.rcv)
+        if('#{user}' !=parsed.mtext.rcv)
           {
           var vuid = parsed.mtext.rcv;
           }
