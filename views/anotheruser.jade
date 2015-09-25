@@ -582,7 +582,9 @@ head
           follow();
         }
         });
-      function follow () {$.ajax({
+      function follow () {
+        $('.follow').addClass('disabled');
+        $.ajax({
                method: "POST",
                url: "/follow/#{user}",
                data: 0
@@ -593,10 +595,13 @@ head
                  }
                  else {
                   unfollow=1;
-                  $('.follow').text('Unfollow').css({'color':'#4197E2','background-color':'white'})
+                  $('.follow').text('Unfollow').css({'color':'#4197E2','background-color':'white'});
+                  $('.follow').removeClass('disabled');
                  }
                  });}
-      function unfollowfnc () {$.ajax({
+      function unfollowfnc () {
+       $('.follow').addClass('disabled');
+        $.ajax({
                method: "POST",
                url: "/unfollow/#{user}",
                data: 0
@@ -608,7 +613,8 @@ head
                  else {
                   unfollow=0;
                   $('.follow').empty();
-                  $('.follow').append('<span class="glyphicon glyphicon-user"></span> Follow').css({'color':'#4197E2','background-color':'white'})
+                  $('.follow').append('<span class="glyphicon glyphicon-user"></span> Follow').css({'color':'#4197E2','background-color':'white'});
+                  $('.follow').removeClass('disabled');
                  }
                  });}
       populate();

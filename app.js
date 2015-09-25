@@ -193,7 +193,7 @@ app.post('/newuser',function(req,res){
           var fulldate = vyear+vmonth+vday;
           fulldate = parseInt(fulldate);
           // end of generate date
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday},userstore:[]},function (err,done){
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,regdateint:fulldate,regdate:{year:vyear,month:vmonth,day:vday},userstore:{}},function (err,done){
             if(err)
             {
               ms.mtext='db';
@@ -472,16 +472,8 @@ app.get('/helpers',function(req,res){
 });
 
 app.get('/sus',function(req,res){
-  users.update({_id:req.session._id},{$set:{userstore:[]}});
+  users.update({_id:req.session._id},{$set:{userstore:{}}});
   res.redirect('/seeuser');
-});
-
-app.get('clearuserstore',function (req,res){
-  if(req.session.uid)
-  {
-    users.update({uid:parseInt(req.session.uid)},{$set:{userstore:[{_id:0}]}});
-    res.redirect('/seeuser');
- }
 });
 
 app.get('/seebooks',function (req,res){
@@ -1017,13 +1009,15 @@ app.get('/delfollow',function (req,res){
 app.post('/follow/:id',function (req,res){
   if(req.session._id){
     var new_user={};
-    new_user._id=req.params.id;
+    var tmstmp = Date.now();
+    new_user.userstore[req.params.id]={'tmstmp':tmstmp};
     new_user.tmstmp = Date.now();
     var update_tmstmp = {};
-    update_tmstmp[req.params.id]={'tmstmp': Date.now()};
+    update_tmstmp[req.params.id]={'tmstmp': tmstmp};
     follow.update({user:req.session._id},{$set:update_tmstmp});
-   users.update({_id:req.session._id},{$push:{userstore:new_user}});
-   req.session.userstore.push(new_user);
+   //users.update({_id:req.session._id},{$push:{userstore:new_user}});
+   users.update({_id:req.session._id},{$set:new_user});
+   req.session.userstore[req.params.id]={'tmstmp':tmstmp};
     var ms={};
     ms.trouble=0;
     res.send(ms);
@@ -1039,6 +1033,10 @@ app.post('/unfollow/:id',function (req,res){
     var tmp_unset={}
     tmp_unset[tmp_id]=0;
    follow.update({user:req.session._id},{$unset:tmp_unset});
+   var rem_user={};
+    var tmstmp = Date.now();
+    rem_user.userstore[req.params.id]=0;
+   users.update({_id:req.session._id},{$unset:rem_user});
    delete req.session.userstore[req.params.id];
    console.log('req.session.userstore');
    var ms={};
@@ -1064,6 +1062,7 @@ app.post('/gettimestamp/:id',function (req,res){
         follow.update({user:req.session._id},{$set:update_tmstmp});
         var ms={};
         ms.tmstmp = done[req.params.id.toString()];
+        console.log(ms.tmstmp);
         res.send(ms);
       }
     });
