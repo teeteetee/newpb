@@ -201,7 +201,7 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    .container#main(style='padding-top:50px;')          
+    .container#main(style='padding-top:100px;')          
       .row.optlist(style='display:none;')
         input(id='ar_lock',type='checkbox')
         input(id='size_lock',type='checkbox')
@@ -234,8 +234,6 @@ head
       .row
         .col-xs-12#cropresult
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(src='/js/jquery.Jcrop.min.js')
-      script(src='/js/crop.js')
       script(src='/js/bootstrap.min.js')
       script.
         var event = $(document).click(function(e) {
@@ -256,6 +254,7 @@ head
            $('#wait').remove();
            $(document).unbind('click');
            $(document).unbind('contextmenu');
+           $('body').append("<script src='/js/jquery.Jcrop.min.js'></script><script src='/js/crop.js'></script>");
           });
         
       
