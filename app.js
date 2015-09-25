@@ -626,8 +626,8 @@ app.get('/chat/:recid',function (req,res){
 }
 });
 
-app.post('/getavatar/:uid',function (req,res){
-  var vuid = req.params.uid
+app.post('/getavatar/:id',function (req,res){
+  var vuid = req.params.id
   if(vuid)
   {
     if(req.session.mail&&req.session._id){
@@ -643,8 +643,9 @@ app.post('/getavatar/:uid',function (req,res){
             console.log('userpic: '+parseInt(doc.userpic));
             if(parseInt(doc.userpic)!=0)
             {ms.trouble = 0;
+             ms.nick= doc.nick;
              ms.mtext = doc.userpic;
-             ms.ext= doc.picext;
+             ms.picext= doc.picext;
              res.send(ms);}
              else {
                 ms.trouble = 0;
