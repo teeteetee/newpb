@@ -224,7 +224,7 @@ head
       var parsed = JSON.parse(avatarrequest.responseText);
       counter++;
       if(counter<discussions.length)
-      {getdisc(discussions[counter],counter)}
+      {getdisc(discussions[counter].toString(),counter)}
       if(parsed.trouble === 1)
       {
       // TO DO do somewthing here
