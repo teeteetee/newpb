@@ -1004,7 +1004,7 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
-app.post('/supfollow',function (req,res){
+app.get('/supfollow',function (req,res){
   follow.insert({user:req.session._id});
   res.redirect('/');
 });
