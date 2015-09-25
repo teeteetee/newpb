@@ -1018,7 +1018,7 @@ app.post('/follow/:id',function (req,res){
     var tmp_id = req.params.id;
     var tmstmp = Date.now();
     //var new_user={};
-    var new_user = {'userstore':0};
+    var new_user = {'userstore':{}};
     new_user.userstore[tmp_id] = {'tmstmp':tmstmp};
     var update_tmstmp = {};
     update_tmstmp[req.params.id]={'tmstmp': tmstmp};
