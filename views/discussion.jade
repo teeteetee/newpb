@@ -240,6 +240,8 @@ head
               a(href='/logout') Logout
     .container(style='padding-top:70px;')
       .row
+        .col-xs-12#avatars
+      .row
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='min-height:50vh;max-height:70vh;')
           h2(style='color:#ddd;text-align:center;margin-top:100px;') No messages
           //
@@ -305,9 +307,10 @@ head
       request.send();
       }
       //$('#sendmsg').scrollIntoView();
+      var rcvr = #{rcvrid}; 
       function sendmsg() {
-      console.log('msg sendin');
-      var rcvr = #{rcvrid};  
+      console.log('msg sendin'); 
+      //var rcvr = #{rcvrid}; 
       var sndr = #{user};
       var txtbody = $('#gettext').val();
       console.log(txtbody);
@@ -402,3 +405,20 @@ head
                 new_getmsg(tmstmp);
               }).fail(function(){console.log('fault longpol');setTimeout(new_getmsg(tmstmp),2000);});
       }
+      function getavatar(uid) {
+      avatarrequest = new XMLHttpRequest();
+      avatarrequest.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(avatarrequest.responseText);
+       var insert = "<img src='/userpics/id"+uid+"_small"+parsed.picext+"' class='pull-left img-circle'>";
+       $('#avatars').append(insert);
+      }
+      };
+      avatarrequest.open('POST', '/getavatar/'+uid.toString(), true);
+      avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      avatarrequest.send();
+      }
+      getavatar(rcvr);
