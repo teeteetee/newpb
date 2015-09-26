@@ -271,7 +271,8 @@ head
       return 0;
       }
       else {
-        //$('#discussions').empty();
+        if($('#noitems').length)
+        {$('#discussions').empty();}
         if('#{user}' !=parsed.mtext.rcv)
           {
           var vuid = parsed.mtext.rcv;

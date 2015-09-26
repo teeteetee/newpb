@@ -234,7 +234,8 @@ head
        })
          .done(function( msg ) {
            console.log(JSON.stringify(msg));
-           $('#users').empty();
+           if($('#noitems').length)
+           {$('#users').empty();}           
            var newitems ='';
            console.log(msg._id);
            console.log(msg.last_item);
