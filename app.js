@@ -608,7 +608,7 @@ app.get('/chat/:recid',function (req,res){
                           console.log(2);
                           if(done2){
                             console.log(3);
-                            console.log('discussion '+done2.discid);
+                            console.log('discussion '+done2._id);
                             res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done2._id});
                           }
                 else {
@@ -649,8 +649,11 @@ app.post('/getavatar/:id',function (req,res){
              res.send(ms);}
              else {
                 ms.trouble = 0;
-             ms.mtext = 'emptypic';
-             res.send(ms);
+                ms.nick= doc.nick;
+                ms.mtext = doc.userpic;
+                ms.picext= doc.picext;
+                ms.mtext = 'emptypic';
+                res.send(ms);
              }
          }
          else {
