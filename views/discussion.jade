@@ -240,7 +240,7 @@ head
               a(href='/logout') Logout
     .container(style='padding-top:70px;')
       .row
-        .col-xs-12#avatars
+        .col-md-8.col-md-offset-2.col-sm-12#avatars
       .row
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='min-height:50vh;max-height:70vh;')
           h2(style='color:#ddd;text-align:center;margin-top:100px;') No messages
@@ -411,7 +411,8 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(avatarrequest.responseText);
-       var insert = "<img src='/userpics/id"+uid+"_small"+parsed.picext+"' class='pull-left img-circle'>";
+       //var insert = "<img src='/userpics/id"+uid+"_small"+parsed.picext+"' class='pull-left img-circle'>";
+       var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><img style='height:50px;' class='media-object img-circle' src='/userpics/id"+uid+"_small"+parsed.picext+"' alt='avatar'></div><div class='media-body'><h4 class='media-heading' style='color:#333;'>"+parsed.nick+"</h4></div></div></a></div>";
        $('#avatars').append(insert);
       }
       };
