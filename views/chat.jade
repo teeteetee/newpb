@@ -197,7 +197,7 @@ head
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;') Conversations
+          h3(style='font-weight:200;color:#ddd;') Conversations
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#discussions
           #noitems.row(style='text-align:center;')  
@@ -239,13 +239,15 @@ head
       else {
       if(parsed.mtext==='emptypic'){
         console.log('EMPTY AVATAR');
-       eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      var insert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+       eval("$('#cid"+discid+"').append(insert);");
        eval("$('#head"+discid+"').text('"+parsed.nick+"');");
       }
       else 
       {
         console.log('HAS AVATAR');
-      eval("$('#img_cid"+discid+"').attr('src','/userpics/id"+uid+"_small"+parsed.picext+"');");
+      var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
+      eval("$('#cid"+discid+"').append(insert);");
       eval("$('#head"+discid+"').text('"+parsed.nick+"');");
       }
       }
@@ -293,14 +295,14 @@ head
           }
         // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
         }
-        var insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading' style='color:#333;'></h4>"+lastmsg+"</div></div></a></div></div>";
+        var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading' style='color:#333;'></h4>"+lastmsg+"</div></div></a></div></div>";
         if(user.tmstmpstore){ 
           console.log('BREAKPOINT 1');
           console.log('lsttmstmp_msg: '+lsttmstmp_msg);
           console.log('user last timestamp: '+user.tmstmpstore.discid);
           if (lsttmstmp_msg && lsttmstmp_msg > user.tmstmpstore[discid] ){
           console.log('from timestamp store: '+user.tmstmpstore.discid);
-        insert = "<div class='row discussion' id='cid"+parsed.mtext._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext._id+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' style='color:#333;' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
+        insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' style='color:#333;' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
         }
         }   
             
