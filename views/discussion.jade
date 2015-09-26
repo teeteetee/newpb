@@ -285,7 +285,7 @@ head
       {
       $('#messages').empty();
       for(var i=0;i<parsed.msgstore.length;i++){
-            if(parseInt(parsed.msgstore[i].rcvr) === #{user})
+            if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }
@@ -311,7 +311,7 @@ head
       function sendmsg() {
       console.log('msg sendin'); 
       //var rcvr = #{rcvrid}; 
-      var sndr = #{user};
+      var sndr = '#{user}';
       var txtbody = $('#gettext').val();
       console.log(txtbody);
       sndrequest = new XMLHttpRequest();
@@ -361,7 +361,7 @@ head
           $('#messages').empty();
         }
         for(var i=0;i<parsed.msgstore.length;i++){
-            if(parseInt(parsed.msgstore[i].rcvr) === #{user})
+            if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
@@ -374,14 +374,14 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send('tmstmp='+tmstmp+'&uid='+#{user});
+      request.send('tmstmp='+tmstmp+'&uid='+'#{user}');
       }
       //setInterval(getmsg, 5000);
       function new_getmsg(tmstmp) {
         $.ajax({
               method: "POST",
               url: "/gtm/#{discid}",
-              data: 'tmstmp='+tmstmp+'&uid='+#{user}
+              data: 'tmstmp='+tmstmp+'&uid='+'#{user}'
             }).done(function( msg ) {
                if(msg.trouble === 1)
                 {
@@ -394,7 +394,7 @@ head
                     $('#messages').empty();
                   }
                   for(var i=0;i<msg.msgstore.length;i++){
-                      if(parseInt(msg.msgstore[i].rcvr) === #{user})
+                      if(parseInt(msg.msgstore[i].rcvr) === '#{user}')
                       {tmstmp = msg.msgstore[i].tmstmp;
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
