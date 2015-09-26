@@ -193,9 +193,12 @@ head
             li
               a(href='/logout') Logout
     .container(style='padding-top:50px;')
-      .row
+      .row.visible-lg.visible-md
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h3(style='color:#aaa;') Conversations
+      .row.visible-sm.visible-xs(style='background-color:gray;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          h3(style='color:white;') Conversations
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#discussions
           #noitmes.row(style='text-align:center;')  
