@@ -594,7 +594,7 @@ app.get('/chat/:recid',function (req,res){
               console.log(2);
               if(done){
                 console.log(3);
-                console.log('discussion '+done.discid);
+                console.log('discussion '+done._id);
                 res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done._id});
               }
               else{
