@@ -423,22 +423,20 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a book
           .modal-body
-            .row.cpadding.txtleft(style='padding-top:10px;')
-            .col-xs-12
-              form(id='authoradd_here')
-                .form-group
-                  label(for="title") Titile
-                  input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                  .row#autocomp
-                    .col-xs-12#sr
-                .form-group
-                  label(for="title") Author
-                  input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+            form(id='authoradd_here')
               .form-group
-                label(for='authors') Additional authors
-                .btn-group#authors(style='padding-bottom:15px;display:block;')
-                  button(class='btn btn-default' id='addauthor' type='button') Add
-                  button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
+                label(for="title") Titile
+                input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                .row#autocomp
+                  .col-xs-12#sr
+              .form-group
+                label(for="title") Author
+                input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+            .form-group
+              label(for='authors') Additional authors
+              .btn-group#authors(style='padding-bottom:15px;display:block;')
+                button(class='btn btn-default' id='addauthor' type='button') Add
+                button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
               //  
                 .well
                   .form-group
