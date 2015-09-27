@@ -173,6 +173,9 @@ head
       text-decoration:none !important;
       color:inherit !important;
       }
+      .navbar-inverse .navbar-nav>li>a {
+        font-weight:200;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -188,11 +191,14 @@ head
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
+            li
               a(href='/')  Sign up            
             li
               a(href='/about')  About  
     .container(style='padding-top:50px;')
+      .row
+        .col-xs-12
+          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:200;') Sign in
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:100px;')      
           form(class="form-horizontal paddgroup")
