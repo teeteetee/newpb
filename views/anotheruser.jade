@@ -373,6 +373,16 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
+      .btn-success {
+        border:1px solid #3ACA6D;
+        background-color:#3ACA6D;
+        color:white;
+      }
+      .btn-success:focus, .btn-success:active, .btn-success:hover {
+        background-color:#3EAF66;
+        border-color:#3EAF66;
+        color:white;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -384,7 +394,7 @@ head
           .modal-body
             h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-default  form-control' style='margin-top:5px;margin-bottom:5px;') Add to my list
+            button(class='btn btn-success  form-control' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
