@@ -437,6 +437,14 @@ head
               .btn-group#authors(style='padding-bottom:15px;display:block;')
                 button(class='btn btn-default' id='addauthor' type='button') Add
                 button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
+            .form-group
+              label(for='authors') Statistics
+              .btn-group(style='margin-bottom:15px;')
+                button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
+                button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
+              .btn-group(style='margin-bottom:15px;')
+                button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
+                button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction 
               //  
                 .well
                   .form-group
@@ -451,15 +459,16 @@ head
                     .btn-group#authors(style='padding-bottom:15px;display:block;')
                       button(class='btn btn-default' id='addauthor' type='button') Add
                       button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
-            .row.cpadding(style='text-align:center;')
-              .col-sm-6
-                .btn-group(style='margin-bottom:15px;')
-                  button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
-                  button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
-              .col-sm-6
-                .btn-group(style='margin-bottom:15px;')
-                  button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
+            //
+              .row.cpadding(style='text-align:center;')
+                .col-sm-6
+                  .btn-group(style='margin-bottom:15px;')
+                    button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
+                    button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
+                .col-sm-6
+                  .btn-group(style='margin-bottom:15px;')
+                    button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
+                    button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
             .modal-footer(style='text-align:center;')
               button(class='btn btn-success'  id='submitbook') Submit
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
