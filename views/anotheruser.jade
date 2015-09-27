@@ -348,6 +348,7 @@ head
       .btn-iosprimary.iosactive {
         background-color:#4197E2;
         color:white;
+      }
       .medialeft > img {
         width:64px !important;
         height:64px !important;
@@ -358,6 +359,16 @@ head
       #bigscreens > .book > .bookpadding {
        padding-top:10px;
       padding-bottom:10px;
+      }
+      .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+        color:#333 ;
+        background-color:#ddd ;
+      }
+      h3 {
+        font-weight:200;
+      }
+      a {
+        color:#333;
       }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -437,8 +448,10 @@ head
                   .btn-group
                     button.btn.btn-ioslooklike.iosactive Books                 
                     button.btn.btn-ioslooklike Movies           
-              .panel.panel-default.visible-lg.visible-md.visible-sm
-                .panel-body.books#bigscreens
+              //.panel.panel-default.visible-lg.visible-md.visible-sm
+              //  .panel-body.books#bigscreens
+              .row.visible-lg.visible-md.visible-sm
+                .col-xs-12.books#bigscreens
                    .noitems.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
