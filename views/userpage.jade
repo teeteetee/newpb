@@ -434,12 +434,11 @@ head
                 .form-group
                   label(for="title") Authoer
                   input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-                .form-group
-                    //button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
-                    label(for='authors') Additional authors
-                    .btn-group#authors(style='padding-bottom:15px;display:block;')
-                      button(class='btn btn-default' id='addauthor' type='button') Add
-                      button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
+              .form-group
+                label(for='authors') Additional authors
+                .btn-group#authors(style='padding-bottom:15px;display:block;')
+                  button(class='btn btn-default' id='addauthor' type='button') Add
+                  button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
               //  
                 .well
                   .form-group
