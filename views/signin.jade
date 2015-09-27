@@ -17,32 +17,17 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      #mainheading {
+        text-align:center;
+        margin-top:90px;
+      }
       #signup {
         padding-top:50px;
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
-      #mainframe {
-      margin-top:0px;
-      }
-      .book {
-      border-bottom:1px solid #eee;
-      text-align:center;
-      padding-left:15px;
-      padding-right:15px;
-      }
-      .emptybook {
-      margin-left:0px;
-      }
-      #leftpanel {
-      border-right:0px;
-      }
-      #booklist {
-      border-bottom-left-radius:10px;
-      }
-      
-      .list {
-        max-height:inherit;
+      #mainheading {
+        margin-top:20px;
       }
       .paddgroup {
       padding-left:25px;
@@ -53,14 +38,8 @@ head
       }
       }
       @media (max-width: 992px) {
-      #booklist {
-      border-bottom-left-radius:10px;
-      }
-      .things{
-      padding-top:50px;
-      }
-      .list {
-      padding-top:50px;
+       #mainheading {
+        margin-top:60px;
       }
       }
       @font-face {
@@ -128,9 +107,9 @@ head
             li
               a(href='/about')  About  
     .container(style='padding-top:50px;')
-      .row
+      #mainheading.row
         .col-xs-12
-          h1(style='text-align:center;text-transform:uppercase;letter-spacing:4px;font-weight:200;padding-top:30px;padding-bottom:30px;') Sign in
+          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:200;') Sign in
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:100px;')      
           form(class="form-horizontal paddgroup")
