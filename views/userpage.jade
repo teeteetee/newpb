@@ -431,6 +431,16 @@ head
                   input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
                   .row#autocomp
                     .col-xs-12#sr
+                .form-group
+                  label(for="title") Authoer
+                  input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+                .form-group
+                    //button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
+                    label(for='authors') Additional authors
+                    .btn-group#authors(style='padding-bottom:15px;display:block;')
+                      button(class='btn btn-default' id='addauthor' type='button') Add
+                      button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
+              //  
                 .well
                   .form-group
                     label(for="author") Author name
@@ -658,7 +668,8 @@ head
         if($('#removeauthor').hasClass('disabled')){
           $('#removeauthor').removeClass('disabled');
         }
-        var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
+        //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
+        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
         $('#authoradd_here').append(insert);
         eval("$('#author"+authorcount+"').slideToggle();");
       });
