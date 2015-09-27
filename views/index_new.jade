@@ -251,7 +251,7 @@ head
               .col-xs-12
                 button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                   span(aria-hidden="true") ×
-                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') One little thing left
+                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Little things
           .modal-body
             .row
               .col-xs-12
@@ -260,6 +260,10 @@ head
                   input(type="text" class="form-control" id='nickinput')
                   span(id='errorsign' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                   span(id='successsign'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+              .col-xs-12(style='text-align:center;')
+                .btn-group(role="group" aria-label="...")
+                  button(type="button" id='male' class="btn btn-lg btn-ioslooklike iosactive") Male
+                  button(type="button" id='female' class="btn btn-lg btn-ioslooklike") Female
           .modal-footer
             button(type="button" class="btn btn-default" data-dismiss="modal" id='runreg') Lets go!
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
@@ -324,11 +328,12 @@ head
                 .form-group 
                   .col-md-6.col-md-offset-3 
                     input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
-                .form-group 
-                  .col-md-6.col-md-offset-3 
-                    .btn-group(role="group" aria-label="...")
-                      button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
-                      button(type="button" id='female' class="btn btn-ioslooklike") Female
+                //
+                  .form-group 
+                    .col-md-6.col-md-offset-3 
+                      .btn-group(role="group" aria-label="...")
+                        button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
+                        button(type="button" id='female' class="btn btn-ioslooklike") Female
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
                     button(type="button" class="signup btn btn-success") Sign up
@@ -345,11 +350,6 @@ head
                 .form-group 
                   .col-md-10 
                     input(type="password" class="form-control " id="pc-sm" name='pc' placeholder="Confirm password") 
-                .form-group 
-                  .col-md-10
-                    .btn-group(role="group" aria-label="...")
-                      button(type="button" id='male' class="btn btn-lg btn-ioslooklike iosactive") Male
-                      button(type="button" id='female' class="btn btn-lg btn-ioslooklike") Female
                 .form-group 
                   .col-md-10(style='padding-top:30px;') 
                     button(type="button" class="signup btn btn-success btn-lg") Sign up
