@@ -33,9 +33,6 @@ head
       padding-left:25px;
       padding-right:25px;
       }
-      #signup {
-        background-color:#333;
-      }
       }
       @media (max-width: 992px) {
        #mainheading {
@@ -87,6 +84,14 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
+      .btn-warning {
+        background-color:#ff9900;
+        border-color:#ff9900;
+        color:white;
+        font-weight:200;
+       letter-spcing:1px;
+       text-transform: uppercase;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -111,7 +116,7 @@ head
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:200;') Sign in
       .row
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:100px;')      
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1     
           form(class="form-horizontal paddgroup")
             .form-group
               .col-md-6.col-md-offset-3.message
