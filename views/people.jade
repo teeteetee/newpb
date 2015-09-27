@@ -243,8 +243,10 @@ head
            console.log(msg._id);
            console.log(msg.last_item);
            console.log(tmstmps[msg._id].tmstmp);
+           var move_list_up = 0;
            if(tmstmps[msg._id].tmstmp<msg.last_item) {
             newitems = "<span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span>";
+            move_list_up=1;
            }
            var avinsert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' id='img_cid"+msg._id+"' class='media-object' alt='avatar'></div>";
            if(msg.userpic)
@@ -253,7 +255,11 @@ head
            }
           var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'>"+newitems+"<div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'>"+avinsert+"</div><div class='media-body' ><h4 class='media-heading' style='color:#333 !important;'>"+msg.nick+"</h4>"+msg.readbooks+" / "+msg.seenmovies+"</div></div></a></div></div>";
            //insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
-           $('#users').append(insert);
+           if(move_list_up) {
+            $('#users').prepend(insert);
+           }
+           else
+           {$('#users').append(insert);}
            //getavatar(msg.uid,msg._id);
            });
          count--;
