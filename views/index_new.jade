@@ -21,6 +21,9 @@ head
         border:1px solid #3ACA6D;
         background-color:#3ACA6D;
         color:white;
+        font-weight:200;
+       letter-spcing:1px;
+       text-transform: uppercase;
       }
       .btn-success:focus, .btn-success:active, .btn-success:hover {
         background-color:#3EAF66;
@@ -237,11 +240,6 @@ head
       .navbar-inverse .navbar-nav>li>a {
          font-weight:200;
       }
-      .signup {
-      font-weight:200;
-      letter-spcing:1px;
-      text-transform: uppercase;
-      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -260,13 +258,13 @@ head
                   input(type="text" class="form-control" id='nickinput')
                   span(id='errorsign' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                   span(id='successsign'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-              .col-xs-12(style='text-align:center;')
+              .col-xs-12
                 h4 Gender:
                 .btn-group(role="group" aria-label="...")
-                  button(type="button" id='male' class="btn btn-lg btn-ioslooklike iosactive") Male
-                  button(type="button" id='female' class="btn btn-lg btn-ioslooklike") Female
+                  button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
+                  button(type="button" id='female' class="btn btn-ioslooklike") Female
           .modal-footer
-            button(type="button" class="btn btn-default" data-dismiss="modal" id='runreg') Lets go!
+            button(type="button" class="btn btn-success" data-dismiss="modal" id='runreg') Done
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
         // Brand and toggle get grouped for better mobile display
