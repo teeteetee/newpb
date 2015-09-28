@@ -1704,26 +1704,26 @@ app.get('/sockets',function (req,res){
 });
 
 ///sockets
-var server = app.listen(80,'188.166.118.116');
-var io = require('socket.io').listen(server);
-
-var clients = [];
-io.on('connection', function (socket) {
-  clients.push(socket);
-  var interval = setInterval(function () {
-  socket.emit('news', { hello: 'world' });
-},1000);
-   socket.on("disconnect", function () {
-        console.log('disconnect');
-        clearInterval(interval);
-    });
-   socket.on("tweet", function (tweet) {
-        // we received a tweet from the browser
-        console.log(clients);
-        console.log('session id:'+socket.sessionId);
-        console.log('tweet: '+tweet.text);
-    });
-});
+//var server = app.listen(80,'188.166.118.116');
+//var io = require('socket.io').listen(server);
+//
+//var clients = [];
+//io.on('connection', function (socket) {
+//  clients.push(socket);
+//  var interval = setInterval(function () {
+//  socket.emit('news', { hello: 'world' });
+//},1000);
+//   socket.on("disconnect", function () {
+//        console.log('disconnect');
+//        clearInterval(interval);
+//    });
+//   socket.on("tweet", function (tweet) {
+//        // we received a tweet from the browser
+//        console.log(clients);
+//        console.log('session id:'+socket.sessionId);
+//        console.log('tweet: '+tweet.text);
+//    });
+//});
 
 
 
@@ -1748,7 +1748,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-//app.listen(80,'188.166.118.116');
+app.listen(80,'188.166.118.116');
 // zero downtime with naught
 if (process.send) process.send('online');
 process.on('message', function(message) {
