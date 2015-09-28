@@ -41,14 +41,6 @@ head
         padding-top:60px;
       }
       @media (max-width: 992px) {
-      #signupbutton{
-        height:100px;
-        width:100;
-        border-radius:50%;
-        border:none;
-        background-color:#FF9C47;
-      }
-  
       }
       @media (max-width: 767px) {
        #signupblock {
@@ -251,6 +243,21 @@ head
       .navbar-inverse .navbar-nav>li>a {
          font-weight:200;
       }
+      #roundbutton {
+       height:100px;
+       width:100;
+       border-radius:50%;
+       border:none;
+       background-color:#FF9C47;
+       color:white;
+       font-weight:200;
+       letter-spacing:1px;
+       text-transform: uppercase;
+      }
+      #roundbutton:hover, #roundbutton:active, #roundbutton:focus {
+        background-color:#e87e22;
+        color:white
+      }
   body
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -321,9 +328,12 @@ head
                       .btn-group(role="group" aria-label="...")
                         button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
                         button(type="button" id='female' class="btn btn-ioslooklike") Female
-                .form-group#signupblock 
+                .form-group#signupblock.visible-xs
                   .col-md-6.col-md-offset-3
-                    button(type="button" id='signupbutton' class="signup btn btn-success") Sign up
+                    button(type="button" class="signup btn btn-success") Sign up
+                .form-group.visible-sm.visible-md.visible-lg
+                  .col-md-6.col-md-offset-3
+                    button(type="button" id='roundbutton' class="signup btn") Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
