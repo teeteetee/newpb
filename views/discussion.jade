@@ -397,7 +397,7 @@ head
                     $('#messages').empty();
                   }
                   for(var i=0;i<msg.msgstore.length;i++){
-                      if(parseInt(msg.msgstore[i].rcvr) === '#{user}')
+                      if(msg.msgstore[i].rcvr === '#{user}')
                       {tmstmp = msg.msgstore[i].tmstmp;
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
