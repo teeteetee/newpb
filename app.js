@@ -819,7 +819,8 @@ app.post('/gtm/:discid',function(req,res){
         {
           var sht_tmp ={};
            sht_tmp['$set'] = {};
-           sht_tmp['$set'['tmstmpstore'[g_vdiscid.toString()]]] = vlsttmstmp;
+           sht_tmp['$set'['tmstmpstore'[g_vdiscid]]] = vlsttmstmp;
+           console.log('sht_tmp: '+sht_tmp);
            users.update({_id:req.session._id},sht_tmp);
                 
           ms.trouble=0;
