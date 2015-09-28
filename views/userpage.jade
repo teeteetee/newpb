@@ -759,7 +759,7 @@ head
                       else {
                         eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");
                       }
-                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();");
+                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
                     }
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
