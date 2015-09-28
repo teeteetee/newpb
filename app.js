@@ -768,6 +768,7 @@ app.post('/ntfc',function(req,res){
 
 app.post('/gtm/:discid',function(req,res){
     var vtmstmp = parseInt(req.body.tmstmp);
+    console.log('tmstmp: '+vtmstmp);
     var g_vdiscid = req.params.discid;
     var dynamic_msgstore;
     var vlsttmstmp;
