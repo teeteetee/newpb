@@ -309,19 +309,16 @@ head
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:200;') Intellect  personified
           #signup.row(style='text-align:center;')
-            .col-xs-12(id='paddgroup-lg')
+            ..col-md-6.col-md-offset-3(id='paddgroup-lg')
               form(class="form-horizontal paddgroup")
                 .form-group
-                  .col-md-6.col-md-offset-3.message
+                  .message
                 .form-group
-                  .col-md-6.col-md-offset-3
-                    input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
+                  input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
                 .form-group 
-                  .col-md-6.col-md-offset-3
-                    input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
+                  input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
                 .form-group 
-                  .col-md-6.col-md-offset-3 
-                    input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
+                  input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
                 //
                   .form-group 
                     .col-md-6.col-md-offset-3 
@@ -331,7 +328,7 @@ head
                 .form-group#signupblock.visible-xs
                   .col-md-6.col-md-offset-3
                     button(type="button" class="signup btn btn-success") Sign up
-                .form-group.visible-sm.visible-md.visible-lg
+                .form-group#signupround.visible-sm.visible-md.visible-lg
                   .col-md-6.col-md-offset-3
                     button(type="button" id='roundbutton' class="signup btn") Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
