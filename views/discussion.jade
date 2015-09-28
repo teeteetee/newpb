@@ -17,6 +17,9 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      #keypad {
+        margin-bottom:20px;
+      }
       .messages {
       -webkit-box-shadow: -9px 0px 40px 0px #c7c7c7;
       -moz-box-shadow: -9px 0px 40px 0px #c7c7c7;
@@ -41,6 +44,9 @@ head
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
+      #keypad {
+        margin-bottom:10px;
+      }
       #mainframe {
       margin-top:0px;
       }
@@ -255,7 +261,7 @@ head
               .panel-body#messages
               //
                 #messages.col-md-10.col-md-offset-1.col-sm-12(style='border-radius:7px;min-height:300px;max-height:600px;margin-bottom:15px;padding-top:20px;overflow:auto;')    
-      .row(style='margin-bottom:20px;')
+      .row#keypad
         .col-md-8.col-md-offset-2.col-sm-12
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
@@ -418,7 +424,11 @@ head
       if (this.readyState === DONE){
       var parsed = JSON.parse(avatarrequest.responseText);
        //var insert = "<img src='/userpics/id"+uid+"_small"+parsed.picext+"' class='pull-left img-circle'>";
-       var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><img style='height:50px;' class='media-object img-circle' src='/userpics/id"+uid+"_small"+parsed.picext+"' alt='avatar'></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></div></a></div>";
+       if(parsed.mtext === 'emptypic') {
+        var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></div></a></div>";
+       }
+       else {
+       var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><img style='height:50px;' class='media-object img-circle' src='/userpics/id"+uid+"_small"+parsed.picext+"' alt='avatar'></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></div></a></div>";}
        $('#avatars').append(insert);
       }
       };
