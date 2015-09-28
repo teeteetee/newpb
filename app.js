@@ -819,6 +819,8 @@ app.post('/gtm/:discid',function(req,res){
         {
           var tmp_val={};
           tmp_val[g_vdiscid] = vlsttmstmp;
+          console.log(g_vdiscid);
+          console.log(vlsttmstmp);
           console.log(JSON.stringify(tmp_val));
            var sht_tmp={'$set':{'tmstmpstore':tmp_val}};
            //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
