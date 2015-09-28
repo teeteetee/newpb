@@ -288,7 +288,7 @@ head
       {
       $('#messages').empty();
       for(var i=0;i<parsed.msgstore.length;i++){
-            if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
+            if(parsed.msgstore[i].rcvr === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }
