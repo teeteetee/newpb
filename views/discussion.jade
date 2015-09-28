@@ -250,10 +250,10 @@ head
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/logout') Logout
-    .container(style='padding-top:70px;max-height:100vh;')
-      .row
+    .container(style='padding-top:70px;max-height:100vh;display:flex;flex-direction: column;')
+      .row(style=' flex: 1;display: flex;justify-content: center;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#avatars
-      .row
+      .row(style=' flex: 1;justify-content: center;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='padding-bottom:10px;overflow:auto;')
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
           //
@@ -261,7 +261,7 @@ head
               .panel-body#messages
               //
                 #messages.col-md-10.col-md-offset-1.col-sm-12(style='border-radius:7px;min-height:300px;max-height:600px;margin-bottom:15px;padding-top:20px;overflow:auto;')    
-      .row#keypad
+      .row#keypad(style=' flex: 1;justify-content: center;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
