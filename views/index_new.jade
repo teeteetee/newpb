@@ -313,7 +313,7 @@ head
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:200;') Intelligence  personified
           #signup.row(style='text-align:center;')
-            .col-xs-12.visible-md.visible-lg(id='paddgroup-lg')
+            .col-xs-12(id='paddgroup-lg')
               form(class="form-horizontal paddgroup")
                 .form-group
                   .col-md-6.col-md-offset-3.message
@@ -403,7 +403,7 @@ head
         }
         });
       $('.signup').click(function(){
-          if( $('#mail-lg').val(); && $('#p-lg').val(); &&  $('#pc-lg').val();) {
+          if( $('#mail-lg').val() && $('#p-lg').val() &&  $('#pc-lg').val()) {
               $('#myModal').modal('show');
           }
         });
@@ -422,7 +422,7 @@ head
           //var temp_p = $('#p-lg').val();
           //var temp_pc = $('#pc-lg').val();
           //console.log('s: '+temp_mail+' '+temp_p);
-          if(e.wich ==13 $('#mail-lg').val(); && $('#p-lg').val(); &&  $('#pc-lg').val();) {
+          if(e.wich ==13 $('#mail-lg').val() && $('#p-lg').val() &&  $('#pc-lg').val()) {
               $('#myModal').modal('show');
           }
       });
