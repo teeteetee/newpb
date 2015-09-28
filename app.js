@@ -815,7 +815,7 @@ app.post('/gtm/:discid',function(req,res){
                    }
                   }
             }
-         if(ms.msgstore.length)   
+         if(ms.msgstore.length&&vlsttmstmp)   
         {
           var tmp_val={};
           tmp_val[g_vdiscid] = vlsttmstmp;
