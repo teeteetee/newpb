@@ -335,6 +335,7 @@ head
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
                     button(type="button" class="signup btn btn-success") Sign up
+          //          
             .col-xs-12.visible-sm.visible-xs(id='paddgroup-sm')
               form(class="form-horizontal paddgroup")
                 .form-group
@@ -402,7 +403,9 @@ head
         }
         });
       $('.signup').click(function(){
-          $('#myModal').modal('show');
+          if( $('#mail-lg').val(); && $('#p-lg').val(); &&  $('#pc-lg').val();) {
+              $('#myModal').modal('show');
+          }
         });
        $('#runreg').click(function(){
         if($('#paddgroup-lg').css('display')==='none'){
@@ -414,21 +417,15 @@ head
            runregister(2)
           }
         });
-        $('#login').click(authsubmit);
-        //$(document).keypress(function(e) { 
-        //  if($('#mail-lg').val() || $('#mail-sm').val() ) {
-        //    if(e.which == 13) {
-        //        runregister();
-        //    }
-        //  }
-        //  else {
-        //     if($('#mail').val()) {
-        //        if(e.which == 13) {
-        //        authsubmit();
-        //    }
-        //     }
-        //  }
-        //});
+        $(document).keypress(function(e) { 
+          //var temp_mail = $('#mail-lg').val();
+          //var temp_p = $('#p-lg').val();
+          //var temp_pc = $('#pc-lg').val();
+          //console.log('s: '+temp_mail+' '+temp_p);
+          if(e.wich ==13 $('#mail-lg').val(); && $('#p-lg').val(); &&  $('#pc-lg').val();) {
+              $('#myModal').modal('show');
+          }
+      });
          //-------REGISTER--------
         function validateEmail(email) { 
         console.log('checking email');

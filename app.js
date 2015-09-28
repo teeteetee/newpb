@@ -1550,7 +1550,6 @@ app.post('/additem/:uid/:id',function (req,res){
               }
               else{
                  books.insert({title:vtitle,authors:[]},function(err,newbook){
-
                   if(err){
                     console.log('err while adding a book');
                   }
