@@ -17,6 +17,12 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      #mcont{
+      flex: 1;
+      flex-direction: column;
+      overflow:auto;
+      flex-grow:4;
+      }
       #keypad {
         margin-bottom:20px;
       }
@@ -44,6 +50,9 @@ head
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
+      #mcont {
+        flex-grow:3;
+      }
       #keypad {
         margin-bottom:10px;
       }
@@ -253,7 +262,7 @@ head
     .container(style='padding-top:70px;height:100vh;display:flex;flex-direction: column;')
       .row(style=' flex: 1;display: flex;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#avatars
-      .row(style=' flex: 1;flex-direction: column;overflow:auto;flex-grow:4;')
+      .row#mcont
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='overflow:auto;')
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
           //
