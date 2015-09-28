@@ -434,12 +434,12 @@ head
                 input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
             .form-group
               label(for='authors') Additional authors
-              .btn-group#authors(style='padding-bottom:15px;display:block;')
+              .btn-group#authors(style='padding-bottom:32px;display:block;')
                 button(class='btn btn-default' id='addauthor' type='button') Add
                 button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
-            .form-group
-              label(for='authors') Statistics
-              .btn-group(style='margin-bottom:15px;display:block;')
+            .form-group(style='margin-top:32px;')
+              label(for='new_old') Statistics
+              .btn-group#new_old(style='margin-bottom:15px;display:block;')
                 button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
                 button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
               .btn-group(style='margin-bottom:15px;display:block;')
