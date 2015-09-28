@@ -751,7 +751,14 @@ head
                   for(var btitle =0;btitle<msg.length;btitle++){
                     console.log('vtitle: '+msg[btitle]);
                     var click = "$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
-                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span style='color:#eee;margin-left:10px;'>"+msg[btitle].authors[0].capitalizeFirstLetter()+"</span></div></div>");
+                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span id='authors"+btitle+"' style='color:#eee;margin-left:10px;'></span></div></div>");
+                    for(var xx=0;xx<msg[btitle].authors.length;xx++){
+                      if(xx===0)
+                      {eval("$('#authors"+btitle+"').append('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");}
+                      else {
+                        eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");
+                      }
+                    }
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
                   $('#autocomp').fadeIn(350);
