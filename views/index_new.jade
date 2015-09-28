@@ -44,8 +44,10 @@ head
   
       }
       @media (max-width: 767px) {
-       #signupbutton {
+       #signupblock {
         margin-top:90px;
+      }
+      #signupbutton{
         height:100px;
         width:100;
         border-radius:50%;
@@ -319,9 +321,9 @@ head
                       .btn-group(role="group" aria-label="...")
                         button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
                         button(type="button" id='female' class="btn btn-ioslooklike") Female
-                .form-group#signupbutton 
+                .form-group#signupblock 
                   .col-md-6.col-md-offset-3
-                    button(type="button" class="signup btn btn-success") Sign up
+                    button(type="button" id='signupbutton' class="signup btn btn-success") Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
