@@ -1080,9 +1080,8 @@ app.post('/gettimestamp/:id',function (req,res){
 });
 
 app.get('/u/:nick', function (req,res){
-  //TO DO if req.session
-  if(req.session.mail)
-  { if(req.session.nick===req.params.nick)
+  
+   if(req.session && req.session.nick===req.params.nick)
     {
      res.redirect('/');
     }
@@ -1094,39 +1093,44 @@ app.get('/u/:nick', function (req,res){
           }
           else {
             if(doc){
-              var unfollow=0;
-              var avatar=0
-                      if(doc.userpic)
-                      { avatar=1; }
-                        delete doc.bookstore;
-                          delete doc.phr;
-                          if(req.session.userstore ) {
-                          for(var i=0;i<req.session.userstore.length;i++){
-                            console.log(req.session.userstore[i]);
-                            if(req.session.userstore[i]===doc._id.toString()) {
-                            unfollow=1;
-                            break
-                            }
-                          }
-                          }
-                          var update_tmstmp = {};
-                          var tmp_str = doc._id.toString();
-                          update_tmstmp[tmp_str]={'tmstmp': Date.now()};
-                          follow.update({user:req.session._id},{$set:update_tmstmp});
-                          res.render('anotheruser',{'user':doc._id,'avatar':avatar,'doc':JSON.stringify(doc),unfollow:unfollow});
-                      
-                       
-                  }
+              if(doc.pub)
+              {var unfollow=0;
+               delete doc.bookstore;
+               delete doc.phr;
+               if(req.session.userstore ) {
+               for(var i=0;i<req.session.userstore.length;i++){
+                 console.log(req.session.userstore[i]);
+                 if(req.session.userstore[i]===doc._id.toString()) {
+                 unfollow=1;
+                 break
+                 }
+               }
+               }
+               if(req.session.nick)
+               {var update_tmstmp = {};
+               var tmp_str = doc._id.toString();
+               update_tmstmp[tmp_str]={'tmstmp': Date.now()};
+               follow.update({user:req.session._id},{$set:update_tmstmp});
+               res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),unfollow:unfollow});
+               }
+               else {
+                 if(doc.pub)
+                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
+                 else {
+                   res.render('private');
+                 }
+               }
+             }//doc pub
+             else {
+               res.render('private');
+             }
+                  }//if doc exists
                   else {
                     res.redirect('/');
                   }
           }
         });
       }
-  }
-  else {
-    res.render('restricted');
-  }
 });
 
 
