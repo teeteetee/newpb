@@ -802,7 +802,7 @@ app.post('/gtm/:discid',function(req,res){
     function sort_response () {
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
-            //console.log('TIMESTAMP: '+vtmstmp);
+            console.log(dynamic_msgstore[dynamic_msgstore.length-1].tmstmp+' >>>>>> '+vtmstmp);
              var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>=0; i--) {
               console.log('timestamp: '+i);
