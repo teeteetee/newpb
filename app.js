@@ -820,7 +820,7 @@ app.post('/gtm/:discid',function(req,res){
           var sht_tmp ={};
           var tmp_val={};
           tmp_val[g_vdiscid] = vlsttmstmp;
-           sht_tmp={'$set':{tmstmpstore:tmp_val};
+           sht_tmp={'$set':{tmstmpstore:tmp_val}};
            //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
            console.log('sht_tmp: '+JSON.stringify(sht_tmp));
            users.update({_id:req.session._id},sht_tmp);
