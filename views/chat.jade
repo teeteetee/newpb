@@ -237,7 +237,10 @@ head
       {
       // TO DO do somewthing here
       //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-      eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      var insert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+       eval("$('#cid"+discid+"').append(insert);");
+       eval("$('#head"+discid+"').text('Error');");
+       eval("$('#head"+discid+"').css('color','#eee');");
       }
       else {
       if(parsed.mtext==='emptypic'){
