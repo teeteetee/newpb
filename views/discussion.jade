@@ -354,7 +354,7 @@ head
         var tmstmp = Date.now();
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-        scroll(tmstmp.toString(),'messages');
+        scroll(tmstmp.toString());
       }
       }
       };
@@ -422,7 +422,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       scroll(tmstmp.toString(),'messages');
+                       scroll(tmstmp.toString());
                       }    
                     }
                 }
@@ -451,6 +451,6 @@ head
       avatarrequest.send();
       }
       getavatar(rcvr);
-      function scroll(element, parent){
-      $(parent).animate({ scrollTop: $(element).offset().top - $(parent).offset().top }, { duration: 'slow', easing: 'swing'});
+      function scroll(element){
+      $(element).animate({ scrollTop: $(element)[0].scrollHeight}, 1000);
       }
