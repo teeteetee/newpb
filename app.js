@@ -891,16 +891,16 @@ app.post('/getdiscinfo/:id', function (req,res){
 app.post('/disc/:id',function (req,res){
   // Incoming message 
   //TO DO if req.session present, otherwise go away
-  var vdiscid = parseInt(req.params.id);
-  var vsndr = parseInt(req.body.sndr);
-  var vrcvr = parseInt(req.body.rcvr);
+  var vdiscid = req.params.id;
+  var vsndr = req.body.sndr;
+  var vrcvr = req.body.rcvr;
   var vtxtbody = req.body.txtbody;
   var ms = {};
   ms.trouble =0;
   var vtmstmp = Date.now();
   console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
   discussions.update({discid:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,discid:vdiscid,tmstmp:vtmstmp}},$inc:{msgcnt:1}});
-  users.update({uid:vrcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
+  users.update({_id:vrcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
   res.send(ms);
   });
 
