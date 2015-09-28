@@ -505,7 +505,7 @@ head
     .container#main(style='padding-top:50px;')
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
-          h2(style='margin-top:30px;' class='usernick')  ????
+          h2(style='margin-top:30px;' class='usernick')  ...
           h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
           button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
             span(class='glyphicon glyphicon-plus')  
@@ -514,7 +514,7 @@ head
         #booklist.thun.col-md-12
           .row.visible-xs
             #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
-              h3.usernick(style='margin-top:10px;') ????                      
+              h3.usernick(style='margin-top:10px;') ...                      
               h4.numbers                 
               button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')
                 span(class='glyphicon glyphicon-plus')  
@@ -759,7 +759,7 @@ head
                       else {
                         eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");
                       }
-                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
+                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();$('#addauthor').addClass('disabled');";
                     }
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
