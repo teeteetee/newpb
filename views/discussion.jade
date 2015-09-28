@@ -309,11 +309,12 @@ head
       for(var i=0;i<parsed.msgstore.length;i++){
             if(parsed.msgstore[i].rcvr === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
-              console.log(tmstmp+'CHECK');
+              console.log('1tmstmp: '+tmstmp);
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }
             else {
               tmstmp = parsed.msgstore[i].tmstmp;
+              console.log('2tmstmp: '+tmstmp);
               $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
