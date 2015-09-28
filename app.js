@@ -512,8 +512,8 @@ app.get('/cs',function (req,res){
 });
 
 app.get('/ad:id',function (req,res){
-  var vuid = parseInt(req.params.id);
-  users.findOne({uid:vuid},function (err,done){
+  var vuid = req.params.id;
+  users.findOne({nick:vuid},function (err,done){
     if (err) {
       console.log('err');
       res.send('db err');
