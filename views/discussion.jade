@@ -246,7 +246,7 @@ head
         .col-md-8.col-md-offset-2.col-sm-12#avatars
       .row
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='min-height:50vh;max-height:70vh;')
-          h2(style='color:#ddd;text-align:center;margin-top:100px;') No messages
+          h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
           //
             .panel.panel-default
               .panel-body#messages
@@ -360,7 +360,7 @@ head
       }
       else {
         //TO DO what if no messages recieved from server?
-        if($('#messages').find('#empty').length){
+        if($('#empty').length){
           $('#messages').empty();
         }
         for(var i=0;i<parsed.msgstore.length;i++){
