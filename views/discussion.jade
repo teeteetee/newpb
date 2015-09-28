@@ -182,14 +182,14 @@ head
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       text-align:left;
       margin-bottom:10px;
-      color:white;
+      color:#333;
       position: relative;
       max-width: 385px;
       padding-top: 5px;
       padding-bottom: 7px;
       padding-left: 15px;
       padding-right: 15px;
-      background: #ff9900;
+      background: #eee;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
       border-radius: 10px;
@@ -199,7 +199,7 @@ head
       position: absolute;
       border-style: solid;
       border-width: 10px 10px 10px 0;
-      border-color: transparent #ff9900;
+      border-color: transparent #eee;
       display: block;
       width: 0;
       z-index: 1;
@@ -244,11 +244,11 @@ head
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/logout') Logout
-    .container(style='padding-top:70px;')
+    .container(style='padding-top:70px;max-height:100vh;')
       .row
         .col-md-8.col-md-offset-2.col-sm-12#avatars
       .row
-        .col-md-8.col-md-offset-2.col-sm-12#messages(style='min-height:50vh;max-height:70vh;')
+        .col-md-8.col-md-offset-2.col-sm-12#messages(style='padding-bottom:10px;')
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
           //
             .panel.panel-default
