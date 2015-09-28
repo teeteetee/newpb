@@ -669,14 +669,14 @@ head
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
       var authorcount=0;
-      $('#addauthor').click(addauthor());
-      function addauthor(){
+      $('#addauthor').click(addauthor;
+      function addauthor() {
         authorcount++;
         if($('#removeauthor').hasClass('disabled')){
           $('#removeauthor').removeClass('disabled');
         }
         //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
-        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
+        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
         $('#authoradd_here').append(insert);
         eval("$('#author"+authorcount+"').slideToggle();");
       }
