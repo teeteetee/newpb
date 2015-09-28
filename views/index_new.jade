@@ -335,23 +335,6 @@ head
                 .form-group 
                   .col-md-6.col-md-offset-3(style='padding-top:30px;') 
                     button(type="button" class="signup btn btn-success") Sign up
-          //          
-            .col-xs-12.visible-sm.visible-xs(id='paddgroup-sm')
-              form(class="form-horizontal paddgroup")
-                .form-group
-                  .col-md-10.message
-                .form-group
-                  .col-md-10
-                    input(type="email" class="form-control " id="mail-sm" name='mail' placeholder="Email")
-                .form-group 
-                  .col-md-10 
-                    input(type="password" class="form-control " id="p-sm" name='p' placeholder="Password")
-                .form-group 
-                  .col-md-10 
-                    input(type="password" class="form-control " id="pc-sm" name='pc' placeholder="Confirm password") 
-                .form-group 
-                  .col-md-10(style='padding-top:30px;') 
-                    button(type="button" class="signup btn btn-success btn-lg") Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -408,14 +391,7 @@ head
           }
         });
        $('#runreg').click(function(){
-        if($('#paddgroup-lg').css('display')==='none'){
-          console.log('1');
-           runregister(1);
-          }
-          else {
-            console.log('2');
-           runregister(2)
-          }
+           runregister(2);
         });
         $(document).keypress(function(e) { 
           //var temp_mail = $('#mail-lg').val();
