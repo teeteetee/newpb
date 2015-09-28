@@ -418,8 +418,9 @@ head
                       if(msg.msgstore[i].rcvr === '#{user}')
                       {tmstmp = msg.msgstore[i].tmstmp;
                         console.log('SETTING TIMESTAMP: '+tmstmp);
-                      $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
-                      $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+                      $('#messages').append("<div class='row bubble' id='"tmstmp"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
+                     // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+                       scroll(tmstmp.toString());
                       }    
                     }
                 }
@@ -448,3 +449,7 @@ head
       avatarrequest.send();
       }
       getavatar(rcvr);
+      function scroll(element){ 
+        var ele = document.getElementById(element); 
+        window.scrollTo(ele.offsetLeft,ele.offsetTop);
+      }
