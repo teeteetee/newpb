@@ -768,7 +768,7 @@ app.post('/ntfc',function(req,res){
 
 app.post('/gtm/:discid',function(req,res){
     var vtmstmp = parseInt(req.body.tmstmp);
-    var g_vdiscid = parseInt(req.params.discid);
+    var g_vdiscid = req.params.discid;
     var dynamic_msgstore;
     var vlsttmstmp;
     var ms={};
@@ -808,7 +808,7 @@ app.post('/gtm/:discid',function(req,res){
                if(dynamic_msgstore[i].tmstmp < vtmstmp){
                        break;
                      }
-              else if(dynamic_msgstore[i].rcvr === parseInt(req.session.uid) && dynamic_msgstore[i].tmstmp > vtmstmp) {
+              else if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
                     ms.msgstore.push(dynamic_msgstore[i]);
                     if(i===tmp_l) {
                      vlsttmstmp=dynamic_msgstore[i].tmstmp;
@@ -820,7 +820,7 @@ app.post('/gtm/:discid',function(req,res){
           var sht_tmp ={};
            sht_tmp['$set'] = {};
            sht_tmp['$set']['tmstmpstore.'+g_vdiscid.toString()] =vlsttmstmp;
-           users.update({uid:parseInt(req.session.uid)},sht_tmp);
+           users.update({_id:req.session._id},sht_tmp);
                 
           ms.trouble=0;
           //--------------------------//
