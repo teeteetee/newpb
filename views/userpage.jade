@@ -755,11 +755,11 @@ head
                     $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span id='authors"+btitle+"' style='color:#ddd;margin-left:10px;'></span></div></div>");
                     for(var xx=0;xx<msg[btitle].authors.length;xx++){
                       if(xx===0)
-                      {eval("$('#authors"+btitle+"').append('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");}
+                      {eval("$('#authors"+btitle+"').append('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");}
                       else {
-                        eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');");
+                        eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");
                       }
-                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();$('#addauthor').addClass('disabled');";
+                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].name.capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();$('#addauthor').addClass('disabled');";
                     }
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
