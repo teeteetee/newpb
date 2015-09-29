@@ -739,7 +739,6 @@ app.get('/testloopx', function (req,res){
 
 //-----------------LONGPOLLING------------------//
 app.post('/ntfc',function(req,res){
-  console.log('timestamp: '+req.body.tmstmp)
   var dynamic_tmstmp;
   var ms={};
   var db_cont_check = setInterval(function(){check_udb()},7000);
@@ -762,11 +761,10 @@ app.post('/ntfc',function(req,res){
        }
      });}
     function sort_response() {
-      console.info('running sort_response');
       if(dynamic_tmstmp){
           ms.tmstmp = dynamic_tmstmp;
           ms.trouble=0;
-          console.log('MS: '+dynamic_tmstmp);
+          console.log('sending new stuff to the user: '+dynamic_tmstmp);
          res.send(ms);
           clearInterval(tick);}
     }
@@ -833,7 +831,7 @@ app.post('/gtm/:discid',function(req,res){
           console.log(g_vdiscid);
           console.log(vlsttmstmp);
           console.log(JSON.stringify(tmp_val));
-           var sht_tmp={'$set':{'tmstmpstore':tmp_val}};
+           var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
            //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
            console.log('sht_tmp: '+JSON.stringify(sht_tmp));
            users.update({_id:req.session._id},sht_tmp);
