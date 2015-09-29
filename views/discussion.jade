@@ -320,7 +320,7 @@ head
             }    
           }
           new_getmsg(tmstmp);
-          eval("$('#messages').scrollTo('#"+tmstmp.toString()+"');");
+          eval("$('#messages').scrollTo($('#"+tmstmp.toString()+"'),1500);"); 
       }
       }
       }
@@ -360,7 +360,7 @@ head
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
        //scroll('#'+tmstmp.toString()); 
-       eval("$('#messages').scrollTo('#"+tmstmp.toString()+"');");
+       eval("$('#messages').scrollTo($('#"+tmstmp.toString()+"'),1500);"); 
       }
       }
       };
@@ -428,7 +428,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       eval("$('#messages').scrollTo('#"+tmstmp.toString()+"');"); 
+                       eval("$('#messages').scrollTo($('#"+tmstmp.toString()+"'),1500);"); 
                       }    
                     }
                 }
