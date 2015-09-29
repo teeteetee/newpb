@@ -746,7 +746,7 @@ app.post('/ntfc',function(req,res){
    var tick = setInterval(function(){sort_response()},1500);
    function check_udb() {
     console.log('longpol routine'+req.ip);
-    users.findOne({uid:parseInt(req.session.uid)},function (err,doc){
+    users.findOne({_id:req.session._id},function (err,doc){
        if(err) {
        console.log('err while disc query');
        }
@@ -814,10 +814,11 @@ app.post('/gtm/:discid',function(req,res){
             for (var i = tmp_l; i>=0; i--) {
               console.log('timestamp: '+i);
                if(dynamic_msgstore[i].tmstmp < vtmstmp){
+                      console.log('break');
                        break;
-                       console.log('break');
                      }
              if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
+                   console.log('into second one');
                     ms.msgstore.push(dynamic_msgstore[i]);
                     if(i===tmp_l) {
                      vlsttmstmp=dynamic_msgstore[i].tmstmp;
