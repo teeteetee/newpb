@@ -805,65 +805,53 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
+      console.log('Sort response running');
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
-            console.log(dynamic_msgstore[dynamic_msgstore.length-1].tmstmp+' >>>>>> '+vtmstmp);
+            //console.log(dynamic_msgstore[dynamic_msgstore.length-1].tmstmp+' >>>>>> '+vtmstmp);
+            console.log('Last message of the lot has greater timestamp than stored');
              var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>=0; i--) {
-              console.log('timestamp: '+i);
-              console.log(typeof dynamic_msgstore[i].rcvr+', '+typeof req.session._id);
+              console.log('Iterating through messages: '+i);
                if(dynamic_msgstore[i].tmstmp < vtmstmp){
-                      console.log('break');
+                      console.log('Break, because message has smaller timestamp');
                        break;
                      }
-             if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
-                   console.log('into second one');
-                    ms.msgstore.push(dynamic_msgstore[i]);
-                    if(i===tmp_l) {
-                     vlsttmstmp=dynamic_msgstore[i].tmstmp;
-                     console.log('setting vlsttmstmp');
-                   }
-                  }
-            }
-         if(ms.msgstore.length&&vlsttmstmp)   
-        {
-          var tmp_val={};
-          tmp_val[g_vdiscid] = vlsttmstmp;
-          console.log(g_vdiscid);
-          console.log(vlsttmstmp);
-          console.log(JSON.stringify(tmp_val));
-           var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-           //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
-           console.log('sht_tmp: '+JSON.stringify(sht_tmp));
-           users.update({_id:req.session._id},sht_tmp,function (err,dodo){
-            if(err )
-            { console.log('TROUBLE TROUBLE');}
-          else
-            {console.log('written: '+JSON.stringify(dodo));
-              ms.trouble=0;
-                        res.send(ms);
-                        terminate++;
-                        clearInterval(db_cont_check);
-                        clearInterval(tick);}
-           });
-                
-          //ms.trouble=0;
-          ////--------------------------//
-          //res.send(ms);
-          //terminate++;
-          //clearInterval(db_cont_check);
-          //clearInterval(tick);
+               if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
+                     console.log('Unshifting message to ms object');
+                      ms.msgstore.unshift(dynamic_msgstore[i]);
+                      if(i===tmp_l) {
+                       vlsttmstmp=dynamic_msgstore[i].tmstmp;
+                       console.log('Setting supposedly largest vlsttmstmp');
+                     }
+                    }
+             }
+             if(ms.msgstore.length&&vlsttmstmp)   
+            {console.log('ms object has length and vlsttmstmp is present');
+              console.log()
+              var tmp_val={};
+              tmp_val[g_vdiscid] = vlsttmstmp;
+              //console.log(g_vdiscid);
+              //console.log(vlsttmstmp);
+              //console.log(JSON.stringify(tmp_val));
+               var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+               //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
+               //console.log('sht_tmp: '+JSON.stringify(sht_tmp));
+               users.update({_id:req.session._id},sht_tmp);
+                  ms.trouble=0;
+                  console.log('sending to client: '+JSON.stringify(ms));
+                  res.send(ms);
+                  terminate++;
+                  clearInterval(db_cont_check);
+                  clearInterval(tick);
+                }
         }
           else {
             
             return 0
           }
-      }
-      else {
-        
-         return 0
-      }
-    }
+        }
+     
    });
 //-----------------LONGPOLLING END------------------//
 
