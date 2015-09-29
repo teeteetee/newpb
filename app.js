@@ -798,6 +798,10 @@ app.post('/gtm/:discid',function(req,res){
    var tick = setInterval(function(){sort_response()},1500);
 
    function check_db () {
+    if(!req.ip){
+        clearInterval(db_cont_check);
+                  clearInterval(tick);
+      }
     discussions.findOne({_id:g_vdiscid},function(err,done){
       if(err) {
         console.warn('db err disc query');
@@ -814,7 +818,8 @@ app.post('/gtm/:discid',function(req,res){
   }
     function sort_response () {
       if(!req.ip){
-        terminate++;
+        clearInterval(db_cont_check);
+                  clearInterval(tick);
       }
       console.log('Sort response running');
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
