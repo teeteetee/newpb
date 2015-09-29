@@ -808,31 +808,30 @@ app.post('/gtm/:discid',function(req,res){
       console.log('Sort response running');
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
-            //console.log(dynamic_msgstore[dynamic_msgstore.length-1].tmstmp+' >>>>>> '+vtmstmp);
-             console.log('timestamp in the beggining: '+vtmstmp);
-            console.log('Last message of the lot has greater timestamp than stored');
-             var tmp_l = dynamic_msgstore.length-1;
+            
+            console.log(req.ip+'timestamp in the beggining: '+vtmstmp);
+            console.log(req.ip+'Last message of the lot has greater timestamp than stored');
+            var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>=0; i--) {
-              console.log('Iterating through messages: '+i);
-               if(dynamic_msgstore[i].tmstmp < vtmstmp){
-                      console.log('Break, because message has smaller timestamp');
-                       break;
+                 console.log(req.ip+'Iterating through messages: '+i);
+                 if(dynamic_msgstore[i].tmstmp < vtmstmp){
+                    console.log(req.ip+'Break, because message has smaller timestamp');
+                     break;
                      }
-               if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
-                     console.log('Unshifting message to ms object');
-                      ms.msgstore.unshift(dynamic_msgstore[i]);
-                      if(i===tmp_l) {
+                 if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
+                     console.log(req.ip+'Unshifting message to ms object');
+                     ms.msgstore.unshift(dynamic_msgstore[i]);
+                     if(i===tmp_l) {
                        vlsttmstmp=dynamic_msgstore[i].tmstmp;
-                       console.log('Setting supposedly largest vlsttmstmp');
+                       console.log(req.ip+'Setting supposedly largest vlsttmstmp');
                      }
                     }
              }
              if(ms.msgstore.length&&vlsttmstmp)   
-            {console.log('ms object has length and vlsttmstmp is present');
-              console.log()
+            {console.log(req.ip+'ms object has length and vlsttmstmp is present');
               var tmp_val={};
               vtmstmp = vlsttmstmp;
-              console.log('timestamp in the end: '+vtmstmp);
+              console.log(req.ip+'timestamp in the end: '+vtmstmp);
               tmp_val[g_vdiscid] = vlsttmstmp;
               //console.log(g_vdiscid);
               //console.log(vlsttmstmp);
@@ -842,7 +841,7 @@ app.post('/gtm/:discid',function(req,res){
                //console.log('sht_tmp: '+JSON.stringify(sht_tmp));
                users.update({_id:req.session._id},sht_tmp);
                   ms.trouble=0;
-                  console.log('sending to client: '+JSON.stringify(ms));
+                  console.log(req.ip+'sending to client: '+JSON.stringify(ms));
                   res.send(ms);
                   terminate++;
                   clearInterval(db_cont_check);
