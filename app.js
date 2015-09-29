@@ -811,6 +811,7 @@ app.post('/gtm/:discid',function(req,res){
              var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>=0; i--) {
               console.log('timestamp: '+i);
+              console.log(typeof dynamic_msgstore[i].rcvr+', '+typeof req.session._id);
                if(dynamic_msgstore[i].tmstmp < vtmstmp){
                       console.log('break');
                        break;
