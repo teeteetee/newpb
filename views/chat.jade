@@ -294,9 +294,22 @@ head
           if(parsed.mtext.msgstore)
           { 
           var lastmsg_num = parsed.mtext.msgstore.length-1;
-          var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
           lastmsg = parsed.mtext.msgstore[lastmsg_num].txt;
-           console.log('last message according to lsttmstmp: '+lastmsg);
+         // var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
+           var lsttmstmp_msg = Date.now();
+          for(var yy=lastmsg_num;yy>=0;yy--)
+           {
+            if(parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
+              if(parsed.mtext.msgstore[yy].rcvr === vuid){
+                var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[yy].tmstmp);
+                break
+              }
+            }
+            else {
+              break
+            }
+           }
+          console.log('last message according to lsttmstmp: '+lastmsg);
           if(lastmsg.length>25) {
             lastmsg=lastmsg.slice(0,25)+'...';
           }
