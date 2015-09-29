@@ -319,7 +319,9 @@ head
             }    
           }
           new_getmsg(tmstmp);
-          $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+          
+       $('#messages').scrollTop = $('#messages').scrollHeight;
+          //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
       }
       }
       }
@@ -392,7 +394,7 @@ head
             if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
             $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
-            $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+           // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
             }    
           }
       }
