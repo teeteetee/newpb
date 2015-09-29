@@ -441,10 +441,10 @@ head
       var parsed = JSON.parse(avatarrequest.responseText);
        //var insert = "<img src='/userpics/id"+uid+"_small"+parsed.picext+"' class='pull-left img-circle'>";
        if(parsed.mtext === 'emptypic') {
-        var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></div></a></div>";
+        var insert = "<div class='media' style='margin-top:0px;'><a href='/u/"+parsed.nick+"'><div class='media-left'><div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></a></div>";
        }
        else {
-       var insert = "<div class='media' style='margin-top:0px;'><div class='media-left'><img style='height:50px;' class='media-object img-circle' src='/userpics/id"+uid+"_small"+parsed.picext+"' alt='avatar'></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></div></a></div>";}
+       var insert = "<div class='media' style='margin-top:0px;'><a href='/u/"+parsed.nick+"'><div class='media-left'><img style='height:50px;' class='media-object img-circle' src='/userpics/id"+uid+"_small"+parsed.picext+"' alt='avatar'></div><div class='media-body'><h4 class='media-heading' style='color:#333;margin-top: 15;'>"+parsed.nick+"</h4></div></a></div>";}
        $('#avatars').append(insert);
       }
       };
