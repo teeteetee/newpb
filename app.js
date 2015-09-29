@@ -835,14 +835,24 @@ app.post('/gtm/:discid',function(req,res){
            var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
            //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
            console.log('sht_tmp: '+JSON.stringify(sht_tmp));
-           users.update({_id:req.session._id},sht_tmp);
+           users.update({_id:req.session._id},sht_tmp,function (err,dodo){
+            if(err )
+            { console.log('TROUBLE TROUBLE');}
+          else
+            {console.log('written: '+JSON.srringify(dodo));
+              ms.trouble=0;
+                        res.send(ms);
+                        terminate++;
+                        clearInterval(db_cont_check);
+                        clearInterval(tick);}
+           });
                 
-          ms.trouble=0;
-          //--------------------------//
-          res.send(ms);
-          terminate++;
-          clearInterval(db_cont_check);
-          clearInterval(tick);
+          //ms.trouble=0;
+          ////--------------------------//
+          //res.send(ms);
+          //terminate++;
+          //clearInterval(db_cont_check);
+          //clearInterval(tick);
         }
           else {
             
