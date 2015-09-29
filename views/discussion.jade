@@ -17,11 +17,14 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      #mcont{
+      #mcont2{
       flex: 1;
       flex-direction: column;
       overflow:auto;
       flex-grow:4;
+      }
+      #mcont {
+        max-height:500px;
       }
       #keypad {
         margin-bottom:20px;
@@ -50,8 +53,11 @@ head
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
-      #mcont {
+      #mcont2 {
         flex-grow:3;
+      }
+      #mcont{
+        max-height:300px;
       }
       #keypad {
         margin-bottom:10px;
@@ -260,20 +266,22 @@ head
             li
               a(href='/logout') Logout
     .container(style='padding-top:70px;height:100vh;display:flex;flex-direction: column;')
-      .row(style=' flex: 0.6;display: flex;flex-direction: column;')
+      .row
         .col-md-8.col-md-offset-2.col-sm-12#avatars
       .row#mcont
         .col-md-8.col-md-offset-2.col-sm-12#messages(style='overflow:auto;')
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
-          //
-            .panel.panel-default
-              .panel-body#messages
-              //
-                #messages.col-md-10.col-md-offset-1.col-sm-12(style='border-radius:7px;min-height:300px;max-height:600px;margin-bottom:15px;padding-top:20px;overflow:auto;')    
-      .row#keypad(style=' flex: 1.2;flex-direction: column;margin-top:10px')
+      .row#keypad(style='margin-top:10px')
         .col-md-8.col-md-offset-2.col-sm-12
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
+      //
+        .row(style=' flex: 0.6;display: flex;flex-direction: column;')
+        .col-md-8.col-md-offset-2.col-sm-12#avatars
+        .row#mcont
+          .col-md-8.col-md-offset-2.col-sm-12#messages(style='overflow:auto;')
+            h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
+        .row#keypad(style=' flex: 1.2;flex-direction: column;margin-top:10px')
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js")
