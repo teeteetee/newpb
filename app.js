@@ -468,6 +468,11 @@ app.get('/sus',function(req,res){
   res.redirect('/seeuser');
 });
 
+app.get('/sdi',function(req,res) {
+  users.update({},{$set:{discussions:[],tmstmpstore:{}}});
+  discussions.remove({});
+});
+
 app.get('/seebooks',function (req,res){
   books.find({},function (err,done){
     if(err){
