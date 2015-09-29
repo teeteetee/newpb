@@ -299,7 +299,7 @@ head
            var lsttmstmp_msg = Date.now();
           for(var yy=lastmsg_num;yy>=0;yy--)
            {
-            if(parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
+            if(user.tmstmpstore && parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
               if(parsed.mtext.msgstore[yy].rcvr === vuid){
                 var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[yy].tmstmp);
                 break
