@@ -320,16 +320,16 @@ head
             if(parsed.msgstore[i].rcvr === '#{user}')
             {tmstmp = parsed.msgstore[i].tmstmp;
               console.log('1tmstmp: '+tmstmp);
-            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
+            $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }
             else {
               tmstmp = parsed.msgstore[i].tmstmp;
               console.log('2tmstmp: '+tmstmp);
-              $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+              $('#messages').append("<div class='row bubble'  id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }    
           }
           new_getmsg(tmstmp);
-          $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
+          $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),400);
       }
       }
       }
@@ -370,7 +370,7 @@ head
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
        //scroll('#'+tmstmp.toString()); 
        console.log('LENGTH :'+document.getElementById(tmstmp.toString()));
-       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
+       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),400);
       }
       }
       };
@@ -439,7 +439,7 @@ head
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
                         console.log('LENGTH :'+document.getElementById(tmstmp.toString()));
-                       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
+                       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),400);
                       }    
                     }
                 }
