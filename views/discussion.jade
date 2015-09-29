@@ -319,8 +319,7 @@ head
             }    
           }
           new_getmsg(tmstmp);
-       var message = $('#messages');
-       message.scrollTop(message[0].scrollHeight);
+       scroll('#'+tmstmp.toString()); 
           //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
       }
       }
@@ -361,8 +360,7 @@ head
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
        //scroll('#'+tmstmp.toString()); 
-        var message = $('#messages');
-       message.scrollTop(message[0].scrollHeight); 
+        scroll('#'+tmstmp.toString()); 
       }
       }
       };
@@ -430,8 +428,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       var message = $('#messages');
-                    message.scrollTop(message[0].scrollHeight);   
+                       scroll('#'+tmstmp.toString());  
                       }    
                     }
                 }
@@ -462,7 +459,7 @@ head
       getavatar(rcvr);
       function scroll(element){
         console.log('SUPPOSED TO: '+element);
-        $('#messages').animate({
-             scrollTop: $(element).offset().top
-         }, 1000);
+        var scrollTop = $(element).offset().top;
+        // скроллим страницу на значение равное позиции элемента
+        $(document).scrollTop(scrollTop);
       }
