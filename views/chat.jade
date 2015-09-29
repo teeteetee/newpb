@@ -296,7 +296,7 @@ head
           var lastmsg_num = parsed.mtext.msgstore.length-1;
           lastmsg = parsed.mtext.msgstore[lastmsg_num].txt;
          // var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
-           var lsttmstmp_msg = Date.now();
+           var lsttmstmp_msg = 0;
           for(var yy=lastmsg_num;yy>=0;yy--)
            {
             if(user.tmstmpstore && parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
