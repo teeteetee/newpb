@@ -285,10 +285,10 @@ head
         {$('#discussions').empty();}
         if('#{user}' !=parsed.mtext.rcv)
           {
-          var vuid = parsed.mtext.rcv;
+          var vuid = parsed.mtext.snd;
           }
         else {
-          var vuid = parsed.mtext.snd;
+          var vuid = parsed.mtext.rcv;
            }
         var lastmsg = '...';
           if(parsed.mtext.msgstore)
