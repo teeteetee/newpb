@@ -469,8 +469,9 @@ app.get('/sus',function(req,res){
 });
 
 app.get('/sdi',function(req,res) {
-  users.update({},{$set:{discussions:[],tmstmpstore:{}}});
+  users.update({},{$unset:{discussions:[],tmstmpstore:{}}});
   discussions.remove({});
+  res.redirect('/seeuser');
 });
 
 app.get('/seebooks',function (req,res){
