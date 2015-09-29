@@ -839,7 +839,7 @@ app.post('/gtm/:discid',function(req,res){
             if(err )
             { console.log('TROUBLE TROUBLE');}
           else
-            {console.log('written: '+JSON.srringify(dodo));
+            {console.log('written: '+JSON.stringify(dodo));
               ms.trouble=0;
                         res.send(ms);
                         terminate++;
