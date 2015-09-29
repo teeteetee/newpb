@@ -456,6 +456,7 @@ head
       }
       getavatar(rcvr);
       function scroll(element){
-        console.log(element);
-      $(element).animate({ scrollTop: $(element)[0].scrollHeight}, 1000);
+        function() {
+        var elem = document.getElementById(element);
+        elem.scrollTop = elem.scrollHeight;
       }
