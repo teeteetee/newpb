@@ -358,7 +358,7 @@ head
         var tmstmp = Date.now();
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-        scroll('#messages');
+        scroll('messages');
       }
       }
       };
@@ -426,7 +426,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       scroll('#messages');
+                       scroll('messages');
                       }    
                     }
                 }
