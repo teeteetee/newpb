@@ -897,7 +897,7 @@ app.post('/getdiscinfo/:id', function (req,res){
              vdisid=vdiscid.toString();
              var tmp_val={};
               vtmstmp = vlsttmstmp;
-              tmp_val[g_vdiscid] = vlsttmstmp;
+              tmp_val[vdiscid] = vlsttmstmp;
             var sht_tmp ={};
             var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
             console.log(sht_tmp);
@@ -972,7 +972,7 @@ app.post('/disccheck/:id/:uid',function (req,res){
             //eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
             var tmp_val={};
               vtmstmp = vlsttmstmp;
-              tmp_val[g_vdiscid] = vlsttmstmp;
+              tmp_val[vdiscid] = vlsttmstmp;
             var sht_tmp ={};
             var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
             console.log(sht_tmp);
