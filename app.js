@@ -830,6 +830,7 @@ app.post('/gtm/:discid',function(req,res){
             {console.log('ms object has length and vlsttmstmp is present');
               console.log()
               var tmp_val={};
+              vtmstmp = vlsttmstmp;
               tmp_val[g_vdiscid] = vlsttmstmp;
               //console.log(g_vdiscid);
               //console.log(vlsttmstmp);
