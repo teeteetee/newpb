@@ -627,6 +627,7 @@ head
             }
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
+            //var redactmodal_num = (books.length-1)-i;
             var insert;
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
@@ -635,7 +636,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
+              modal_data_store.unshift(thisbook);
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('2st case');
@@ -643,7 +644,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
+              modal_data_store.unshift(thisbook);
               console.log(modal_data_store);
               break
               case(!books[i].newbook&&!books[i].goodbook):
@@ -652,7 +653,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
+              modal_data_store.unshift(thisbook);
               break
             }         
            $('.books').append(insert);
