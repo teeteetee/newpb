@@ -269,8 +269,8 @@ head
     .container(style='padding-top:70px;height:100vh;')
       .row
         .col-md-8.col-md-offset-2.col-sm-12#avatars
-      .row#mcont
-        .col-md-8.col-md-offset-2.col-sm-12#messages(style='overflow:auto;')
+      .row#mcont(style='overflow:auto;')
+        .col-md-8.col-md-offset-2.col-sm-12#messages
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
       .row#keypad(style='margin-top:10px')
         .col-md-8.col-md-offset-2.col-sm-12
@@ -329,7 +329,7 @@ head
             }    
           }
           new_getmsg(tmstmp);
-          $('#messages').scrollTo(document.getElementById(tmstmp.toString()),1500);
+          $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
       }
       }
       }
@@ -370,7 +370,7 @@ head
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
        //scroll('#'+tmstmp.toString()); 
        console.log('LENGTH :'+document.getElementById(tmstmp.toString()));
-       $('#messages').scrollTo(document.getElementById(tmstmp.toString()),1500);
+       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
       }
       }
       };
@@ -439,7 +439,7 @@ head
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
                         console.log('LENGTH :'+document.getElementById(tmstmp.toString()));
-                       $('#messages').scrollTo(document.getElementById(tmstmp.toString()),1500);
+                       $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),1500);
                       }    
                     }
                 }
