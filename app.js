@@ -744,6 +744,10 @@ app.post('/ntfc',function(req,res){
   var db_cont_check = setInterval(function(){check_udb()},7000);
    var tick = setInterval(function(){sort_response()},1500);
    function check_udb() {
+    if(!req.ip){
+         clearInterval(db_cont_check);
+         clearInterval(tick);
+      }
     console.log('longpol routine'+req.ip);
     users.findOne({_id:req.session._id},function (err,doc){
        if(err) {
@@ -761,6 +765,10 @@ app.post('/ntfc',function(req,res){
        }
      });}
     function sort_response() {
+      if(!req.ip){
+         clearInterval(db_cont_check);
+         clearInterval(tick);
+      }
       if(dynamic_tmstmp){
           ms.tmstmp = dynamic_tmstmp;
           ms.trouble=0;
@@ -805,6 +813,9 @@ app.post('/gtm/:discid',function(req,res){
     });
   }
     function sort_response () {
+      if(!req.ip){
+        terminate++;
+      }
       console.log('Sort response running');
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
