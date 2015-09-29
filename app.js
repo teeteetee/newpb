@@ -895,10 +895,13 @@ app.post('/getdiscinfo/:id', function (req,res){
             var tmp_length = doc.msgstore.length-1;
              var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
              vdisid=vdiscid.toString();
-             var sht_tmp ={};
-              sht_tmp['$set'] = {};
-              sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
-              users.update({_id:req.session._id},sht_tmp);
+             var tmp_val={};
+              vtmstmp = vlsttmstmp;
+              tmp_val[g_vdiscid] = vlsttmstmp;
+            var sht_tmp ={};
+            var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+            console.log(sht_tmp);
+             users.update({_id:req.session._id},sht_tmp);
         //--------------------------//
         ms.mtext = doc;
         res.send(ms);
@@ -938,8 +941,8 @@ app.post('/disc/:id',function (req,res){
 app.post('/disccheck/:id/:uid',function (req,res){
   // Client checking for messages 
   //TO DO if req.session present, otherwise go away
-  var rcvr = parseInt(req.params.uid);
-  var vdiscid = parseInt(req.params.id);
+  var rcvr = req.params.uid;
+  var vdiscid = req.params.id;
   var vtmstmp = parseInt(req.body.tmstmp);
   var ms ={};
   ms.trouble=1;
@@ -967,12 +970,13 @@ app.post('/disccheck/:id/:uid',function (req,res){
             console.log('discid: '+vdiscid);
             vdisid=vdiscid.toString();
             //eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
+            var tmp_val={};
+              vtmstmp = vlsttmstmp;
+              tmp_val[g_vdiscid] = vlsttmstmp;
             var sht_tmp ={};
-             sht_tmp['$set'] = {};
-             sht_tmp['$set']['tmstmpstore.'+vdiscid] =vlsttmstmp;
-             
+            var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
             console.log(sht_tmp);
-             users.update({uid:rcvr},sht_tmp);
+             users.update({_id:rcvr},sht_tmp);
               }
         ms.trouble=0;
         console.log(ms);
