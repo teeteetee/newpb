@@ -319,7 +319,6 @@ head
             }    
           }
           new_getmsg(tmstmp);
-          
        $('#messages').scrollTop = $('#messages').scrollHeight;
           //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
       }
@@ -360,8 +359,7 @@ head
         var tmstmp = Date.now();
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-        //scroll('messages');
-        eval("$('#"+tmstmp+"').scrollIntoView();");
+       scroll('#'+tmstmp.toString());  
       }
       }
       };
@@ -429,8 +427,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       //scroll('messages');
-                       eval("$('#"+tmstmp+"').scrollIntoView();");
+                       scroll('#'+tmstmp.toString());    
                       }    
                     }
                 }
@@ -461,6 +458,7 @@ head
       getavatar(rcvr);
       function scroll(element){
         console.log('SUPPOSED TO: '+element);
-        var elem = document.getElementById(element);
-        elem.scrollTop = elem.scrollHeight;
+        $('#messages').animate({
+             scrollTop: $(element).offset().top
+         }, 1000);
       }
