@@ -809,6 +809,7 @@ app.post('/gtm/:discid',function(req,res){
       if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
            {
             //console.log(dynamic_msgstore[dynamic_msgstore.length-1].tmstmp+' >>>>>> '+vtmstmp);
+             console.log('timestamp in the beggining: '+vtmstmp);
             console.log('Last message of the lot has greater timestamp than stored');
              var tmp_l = dynamic_msgstore.length-1;
             for (var i = tmp_l; i>=0; i--) {
@@ -831,6 +832,7 @@ app.post('/gtm/:discid',function(req,res){
               console.log()
               var tmp_val={};
               vtmstmp = vlsttmstmp;
+              console.log('timestamp in the end: '+vtmstmp);
               tmp_val[g_vdiscid] = vlsttmstmp;
               //console.log(g_vdiscid);
               //console.log(vlsttmstmp);
