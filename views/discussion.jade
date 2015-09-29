@@ -275,6 +275,7 @@ head
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
     // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')  
@@ -319,8 +320,7 @@ head
             }    
           }
           new_getmsg(tmstmp);
-      eval("scroll('#"+tmstmp.toString()+"');"); 
-          //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+          $('#messages').scrollTo('#'+tmstmp.toString(),350);
       }
       }
       }
@@ -360,7 +360,7 @@ head
         $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+txtbody+"</div></div></div>");
         //$("#messages").animate({ scrollTop: $('#messages').height() }, 600);
        //scroll('#'+tmstmp.toString()); 
-       eval("scroll('#"+tmstmp.toString()+"');"); 
+       $('#messages').scrollTo('#'+tmstmp.toString(),350);
       }
       }
       };
@@ -428,7 +428,7 @@ head
                         console.log('SETTING TIMESTAMP: '+tmstmp);
                       $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-                       eval("scroll('#"+tmstmp.toString()+"');");  
+                       $('#messages').scrollTo('#'+tmstmp.toString(),350); 
                       }    
                     }
                 }
