@@ -301,7 +301,7 @@ head
           for(var yy=lastmsg_num;yy>=0;yy--)
            {
             if(user.tmstmpstore && parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
-              if(parsed.mtext.msgstore[yy].rcvr === vuid){
+              if(parsed.mtext.msgstore[yy].rcvr === '#{user}'){
                 var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[yy].tmstmp);
                 console.log('we have a message');
                 break
