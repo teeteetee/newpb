@@ -704,7 +704,16 @@ app.post('/getdisc/:id', function (req,res){
     else {
       if(doc){
         if(doc.msgstore)
-        {
+        {//----------- SETTING TIMESTAMP ----------//
+         var tmp_length = doc.msgstore.length-1;
+         var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
+         var tmp_val={};
+         vtmstmp = vlsttmstmp;
+         tmp_val[vdiscid] = vlsttmstmp;
+         var sht_tmp ={};
+         var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+         users.update({_id:req.session._id},sht_tmp);
+         //-----------END SETTING TIMESTAMP ----------//
          var vlast = doc.msgstore.length - 10;
          ms.msgstore=doc.msgstore.slice(vlast,doc.msgstore.length);
          res.send(ms);}
