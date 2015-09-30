@@ -17,6 +17,22 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      body{
+      background: #2eb9c9; /* Old browsers */
+      background: -moz-linear-gradient(top, #ccd6d8 0%, #789096 35%, #405a65 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ccd6d8), color-stop(35%,#789096), color-stop(100%,#405a65)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #ccd6d8 0%,#789096 35%,#405a65 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, #ccd6d8 0%,#789096 35%,#405a65 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, #ccd6d8 0%,#789096 35%,#405a65 100%); /* IE10+ */
+      background: linear-gradient(to bottom, #ccd6d8 0%,#789096 35%,#405a65 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccd6d8', endColorstr='#405a65',GradientType=0 ); /* IE6-9 */
+      }
+      .signuplink:focus, .signuplink:hover, .signuplink:active {
+        color:white;
+      }
+      .signuplink {
+       margin-top:30px;
+        }
       #mainheading {
         text-align:center;
         margin-top:90px;
@@ -26,6 +42,9 @@ head
         text-align:center;
       }
       @media (max-width: 767px) {
+      .signuplink {
+       margin-top:20px;
+        }
       #mainheading {
         margin-top:20px;
       }
@@ -88,25 +107,7 @@ head
         border-color:#EC971F;
         color:white;
       }
-  body
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
-      .container-fluid
-        // Brand and toggle get grouped for better mobile display
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-            span.sr-only Toggle navigation         
-            span.icon-bar         
-            span.icon-bar         
-            span.icon-bar       
-          a.navbar-brand(style='padding-top:5px;', href='/')
-            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
-        // Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li
-              a(href='/')  Sign up            
-            li
-              a(href='/about')  About  
+  body 
     .container(style='padding-top:50px;')
       #mainheading.row
         .col-xs-12
@@ -121,14 +122,16 @@ head
             .form-group 
               input(type="password" class="form-control" id="p" name='p' placeholder="Password")
             .form-group(style='padding-top:30px;') 
-              button(type="button" id='login' class=" btn btn-warning") Sign in
+              button(type="button" class="login btn btn-warning visible-lg visible-md") Sign in
+              button(type="button" class="login btn btn-lg btn-warning visible-xs visible-sm") Sign in
+              a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')     
     script.
-      $('#login').click(authsubmit);
+      $('.login').click(authsubmit);
       $(document).keypress(function(e) { 
           var temp_mail = $('#mail').val();
           var temp_p = $('#p').val();
