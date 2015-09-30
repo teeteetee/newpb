@@ -46,6 +46,9 @@ head
         text-align:center;
       }
       @media (max-width: 767px) {
+      #mainheading {
+        padding-top:60px;
+      }
       .signuplink {
        margin-top:20px;
         }
@@ -54,9 +57,6 @@ head
       }
       }
       @media (max-width: 992px) {
-       #mainheading {
-        padding-top:60px;
-      }
       }
       @font-face {
       font-family:roboto-thin;
@@ -131,9 +131,11 @@ head
               input(type="email" class="change_phc form-control" id="mail" name='mail' placeholder="Email")
             .form-group 
               input(type="password" class="change_phc form-control" id="p" name='p' placeholder="Password")
-            .form-group(style='padding-top:30px;text-align:center;') 
-              button(type="button" class="login btn btn-warning visible-lg visible-md visible-sm") Sign in
-              button(type="button" class="login btn btn-lg btn-warning visible-xs") Sign in
+            .form-group.visible-lg.visible-md.visible-sm(style='padding-top:30px;text-align:center;') 
+              button(type="button" class="login btn btn-warning") Sign in
+              a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
+            .form-group.visible-xs(style='padding-top:30px;text-align:center;') 
+              button(type="button" class="login btn btn-lg btn-warning") Sign in
               a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
          
     // jQuery (necessary for Bootstrap's JavaScript plugins)
