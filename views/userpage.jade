@@ -376,6 +376,9 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
+      .read {
+        background-color:#f7f7f7;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -387,10 +390,10 @@ head
           .modal-body
             h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-success  form-control' style='margin-top:5px;margin-bottom:5px;') Mark as read
-            button(class='btn btn-success  form-control'  style='margin-top:5px;margin-bottom:5px;') Mark as read & good
-            button(class='btn btn-success form-control' style='margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-danger form-control' style='margin-top:5px;margin-bottom:5px;') Remove
+            button(class='btn btn-default  form-control' id='mkr' style='margin-top:5px;margin-bottom:5px;') Mark as read
+            button(class='btn btn-default  form-control' id='mkrg' style='margin-top:5px;margin-bottom:5px;') Mark as read & good
+            button(class='btn btn-default form-control' id='mkf' style='margin-top:5px;margin-bottom:5px;') Find people
+            button(class='btn btn-default form-control' id='mkrm' style='margin-top:5px;margin-bottom:5px;') Remove
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -624,7 +627,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book''><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+i+"' style='color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+i+"' style='color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -641,7 +644,7 @@ head
               break
               case(!books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+i+"' style='margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+i+"' style='margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();

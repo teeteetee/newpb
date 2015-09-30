@@ -387,38 +387,42 @@ app.get('/settings',function (req,res){
   }
 });
 
-app.post('/markread/:uid/:bid',function (req,res){
-  
-  users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
-    if(err)
-    {
-     console.log('trouble finding the user');
-       res.send(1);
-    }
-    else {
-      if(doc!=null){
-       var temp_arr;
-       temp_arr = doc.bookstore;
-       var temp_id;
-       for(var i=0;i<temp_arr.length;i++){
-          temp_id = JSON.stringify(temp_arr[i]._id);
-         if(temp_id === JSON.stringify(req.params.bid)){
-           temp_arr[i].newbook = 0;
-           users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
-          res.send(0);
-         }
-       }
+app.post('/markread/:bid',function (req,res){
+  if(req.session._id){
+    users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
+      if(err)
+      {
+       console.log('trouble finding the user');
+         res.send(1);
       }
       else {
-        console.log('trouble finding the user');
-       res.send(1);
+        if(doc!=null){
+         var temp_arr;
+         temp_arr = doc.bookstore;
+         var temp_id;
+         for(var i=0;i<temp_arr.length;i++){
+            temp_id = JSON.stringify(temp_arr[i]._id);
+           if(temp_id === JSON.stringify(req.params.bid)){
+             temp_arr[i].newbook = 0;
+             users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
+            res.send(0);
+           }
+         }
+        }
+        else {
+          console.log('trouble finding the user');
+         res.send(1);
+        }
       }
-    }
-  });
+    });
+  }
+  else {
+    res.send('go away');
+  }
 });
 
-app.post('/markgood/:uid/:bid',function (req,res){
-  users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
+app.post('/markgood/:bid',function (req,res){
+  users.findOne({_id:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -435,7 +439,7 @@ app.post('/markgood/:uid/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodbook = 1;
-           users.update({uid:parseInt(req.params.uid)},{$set:{bookstore:temp_arr}});
+           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
           res.send(0);
          }
        }
