@@ -392,11 +392,11 @@ head
         });
         $(document).keypress(function(e) { 
           console.log('keypress');
-          if(e.wich ==13 && validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val()) {
+          if(e.wich ==13 && !validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val()) {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.wich == 13&& validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val() && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
+          if(e.wich == 13&& !validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val() && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
             console.log('keypress second scenario');
             runregister(2);
           }
