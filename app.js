@@ -1649,7 +1649,7 @@ app.post('/additem/:uid/:id',function (req,res){
 app.post('/nickcheck',function (req,res){
   var query = req.body.txt;
   var msg = {};
-  users.find({title: { $regex: query,}},function(err,docs){
+  users.find({nick: query},function(err,docs){
       if(err){
         console.log('err');
       }
