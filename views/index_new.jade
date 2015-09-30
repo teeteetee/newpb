@@ -27,6 +27,12 @@ head
         -o-background-size: cover;
         background-size: cover;
       }
+      input::-webkit-input-placeholder {
+        color:rgba(255, 255, 255, 0.30);
+      }
+      input:-moz-placeholder {
+        color:rgba(255, 255, 255, 0.30);
+      }
       .signinlink{
         margin-top:30px;
       }
@@ -258,6 +264,7 @@ head
       }
       .form-control {
        border-color: rgba(255, 255, 255, 0.46);
+       background-color:transparent;
       }
       .navbar-inverse .navbar-nav>li>a {
          font-weight:200;
