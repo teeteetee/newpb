@@ -622,11 +622,12 @@ app.get('/chat/:recid',function (req,res){
                   //--------- ADDING TMSTMPSTORE --------//
                   var vlsttmstmp = Date.now();
                   tmp_val[newdisc._id] = vlsttmstmp;
-                  var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+                  var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp},'$push':{'discussions':newdisc}};
                   console.log()
                     //---------END ADDING TMSTMPSTORE --------//
-                  users.update({_id:vsender},{$push:{discussions:newdisc},sht_tmp});
-                  users.update({_id:vdest},{$push:{discussions:newdisc},sht_tmp});
+                  //users.update({_id:vsender},{$push:{discussions:newdisc},sht_tmp});
+                  users.update({_id:vsender},sht_tmp);
+                  users.update({_id:vdest},sht_tmp);
                   console.log('SUPPOSEDLY SET TMSTMPSTORE');
                   res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
                   });
