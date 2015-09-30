@@ -392,6 +392,7 @@ head
         });
         $(document).keypress(function(e) { 
           console.log('keypress');
+          console.log(validateEmail($('#mail-lg').val())+'\n'+$('#p-lg').val()+'\n'+$('#pc-lg').val());
           if(e.wich ==13 && !validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val()) {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
