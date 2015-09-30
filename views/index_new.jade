@@ -391,12 +391,14 @@ head
            runregister(2);
         });
         $(document).keypress(function(e) { 
-          //var temp_mail = $('#mail-lg').val();
-          //var temp_p = $('#p-lg').val();
-          //var temp_pc = $('#pc-lg').val();
-          //console.log('s: '+temp_mail+' '+temp_p);
+          console.log('keypress');
           if(e.wich ==13 && validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val()) {
+              console.log('keypress first scenario');
               $('#myModal').modal('show');
+          }
+          if(e.wich == 13&& validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val() && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
+            console.log('keypress second scenario');
+            runregister(2);
           }
       });
          //-------REGISTER--------
