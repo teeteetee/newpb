@@ -34,12 +34,10 @@ head
         -o-background-size: cover;
         background-size: cover;
       }
-      input::-webkit-input-placeholder {
-        color:rgba(255, 255, 255, 0.30);
-      }
-      input:-moz-placeholder {
-        color:rgba(255, 255, 255, 0.30);
-      }
+      .change_phc::-webkit-input-placeholder {color:rgba(255, 255, 255, 0.30);;}
+      .change_phc::-moz-placeholder          {color:rgba(255, 255, 255, 0.30);;}/* Firefox 19+ */
+      .change_phc:-moz-placeholder           {color:rgba(255, 255, 255, 0.30);;}/* Firefox 18- */
+      .change_phc:-ms-input-placeholder      {color:rgba(255, 255, 255, 0.30);;}
       .signinlink{
         margin-top:30px;
       }
@@ -354,11 +352,11 @@ head
             .form-group
               .message
             .form-group
-              input(type="email" class="form-control" id="mail-lg" name='mail' placeholder="Email")
+              input(type="email" class="form-control change_phc" id="mail-lg" name='mail' placeholder="Email")
             .form-group 
-              input(type="password" class="form-control" id="p-lg" name='p' placeholder="Password")
+              input(type="password" class="form-control change_phc" id="p-lg" name='p' placeholder="Password")
             .form-group 
-              input(type="password" class="form-control" id="pc-lg" name='pc' placeholder="Confirm password") 
+              input(type="password" class="form-control change_phc" id="pc-lg" name='pc' placeholder="Confirm password") 
             //
               .form-group 
                 .col-md-6.col-md-offset-3 
