@@ -627,6 +627,7 @@ app.get('/chat/:recid',function (req,res){
                     //---------END ADDING TMSTMPSTORE --------//
                   users.update({_id:vsender},{$push:{discussions:newdisc}},sht_tmp);
                   users.update({_id:vdest},{$push:{discussions:newdisc}},sht_tmp);
+                  console.log('SUPPOSEDLY SET TMSTMPSTORE');
                   res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
                   });
                 }//else
