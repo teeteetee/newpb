@@ -891,17 +891,18 @@ app.post('/getdiscinfo/:id', function (req,res){
       if(doc){
         //---------------------------//
         if(doc.msgstore)
-           { console.log('changing timestamp'); 
-            var tmp_length = doc.msgstore.length-1;
-             var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
-             vdisid=vdiscid.toString();
-             var tmp_val={};
-              vtmstmp = vlsttmstmp;
-              tmp_val[vdiscid] = vlsttmstmp;
-            var sht_tmp ={};
-            var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-            console.log(sht_tmp);
-             users.update({_id:req.session._id},sht_tmp);
+           { //This block resets timestamps, which is probably not a good thing, since it just serves info to show discussions
+            //console.log('changing timestamp'); 
+            //var tmp_length = doc.msgstore.length-1;
+            // var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
+            // vdisid=vdiscid.toString();
+            // var tmp_val={};
+            //  vtmstmp = vlsttmstmp;
+            //  tmp_val[vdiscid] = vlsttmstmp;
+            //var sht_tmp ={};
+            //var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+            //console.log(sht_tmp);
+            // users.update({_id:req.session._id},sht_tmp);
         //--------------------------//
         ms.mtext = doc;
         res.send(ms);
