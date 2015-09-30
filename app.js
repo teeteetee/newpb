@@ -291,7 +291,7 @@ app.get('/temp_disc',function (req,res){
 
 app.get('/discussion/:id',function (req,res){
   //TO DO if req.session
-  discussions.findOne({discid:vdiscid},function (err,doc){
+  discussions.findOne({_id:req.params.id},function (err,doc){
     if(err) {
     ms.trouble=1;
     ms.mtext='db';
