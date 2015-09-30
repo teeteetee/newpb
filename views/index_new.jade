@@ -18,7 +18,7 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       body{
-        background-color:none;
+        background-color:transparent;
       }
       html { 
         background: url('/images/lake_man.jpg') no-repeat center center fixed; 
@@ -257,7 +257,7 @@ head
         color:white;
       }
       .form-control {
-       border-color:#eee;
+       border-color: rgba(255, 255, 255, 0.46);
       }
       .navbar-inverse .navbar-nav>li>a {
          font-weight:200;
@@ -266,18 +266,24 @@ head
        height:100px;
        width:100;
        border-radius:50%;
-       border:none;
-       background-color:#FF9C47;
+       border:1px solid rgba(255, 255, 255, 0.46);
+       background-color:transparent;
        color:white;
        font-weight:200;
        letter-spacing:1px;
        text-transform: uppercase;
       }
       #roundbutton:hover, #roundbutton:active, #roundbutton:focus {
-        background-color:#e87e22;
-        color:white
+        background-color:rgba(255, 255, 255, 0.30);
+        color:white;
       }
+      .form-control:focus {
+       border-color: white;
+       outline: 0px none;
+       box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.6);
+       }
   body
+    //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -345,11 +351,11 @@ head
             .form-group#signupblock.visible-xs
               .col-md-6.col-md-offset-3
                 button(type="button" class="signup btn btn-lg btn-success") Sign up
-                a(href='/signin' class='signinlink' style='color:#bbb;text-decoration:underline;display:block;') Sign in
+                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.46);text-decoration:underline;display:block;') Sign in
             .form-group#signupround.visible-sm.visible-md.visible-lg
               .col-md-6.col-md-offset-3
                 button(type="button" id='roundbutton' class="signup btn") Sign up
-                a(href='/signin' class='signinlink' style='color:#bbb;text-decoration:underline;display:block;') Sign in
+                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.46);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
