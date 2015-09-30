@@ -554,7 +554,6 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      console.log($('.noitems').length);
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
@@ -592,7 +591,8 @@ head
            count = books.length -1;
            if(!books) {
             //alert('server maintenence \n try again later');
-            $('#myModal').modal('show');
+           // $('#myModal').modal('show');
+           console.log('no items');
            }
            else {
             getbooks(books,count);
@@ -600,13 +600,6 @@ head
            });
       var modal_data_store=[];
       function getbooks(books,i) {
-        if(!i){
-         // var bnum = "<h2 style='font-size:70px;'>"+user.newbooks+"<span style='color:#ccc'> / "+user.readbooks+"</span></h2><div class='row' style='border-bottom:1px solid #ddd;'></div>";
-         //$('#books').prepend(bnum);
-         var bnum = "<h4 style='color:#ddd;display:inline;margin-left:20px;'> You have read: <span style='color:#333;'>"+user.readbooks+"</span> / new: <span style='color:#333;'>"+user.newbooks+"</span></h4>";
-       $('#testinsert').append(bnum);
-          
-        }
         console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
         $.ajax({
