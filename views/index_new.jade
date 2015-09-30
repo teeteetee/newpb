@@ -340,11 +340,11 @@ head
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
-                        //$('div').append('TEST'+$(this).val()+"<br>");
+                        str = $('#nickinput').val().replace(/\s+/g, '');
                         $.ajax({
                           method: "POST",
                           url: "/nickcheck",
-                          data: { txt: $('#nickinput').val() }
+                          data: { txt: str }
                         }).done(function( msg ) {
                             console.log(msg);
                             if(msg.present)
@@ -352,12 +352,12 @@ head
                                 console.log('msg present');
                                 $('#successsign').css('display','none');
                                 $('#nickgroup').removeClass('has-success').addClass('has-error');
-                                $('#error').css('display','block');
+                                $('#errorsign').css('display','block');
                                  lastentry = $('#nickinput').val();
                                 }
                                           else {
                                             console.log('no msg');
-                                            $('#error').css('display','none');
+                                            $('#errorsign').css('display','none');
                                             $('#nickgroup').removeClass('has-error').addClass('has-success');
                                             $('#successsign').css('display','block');
                                             lastentry = $('#nickinput').val();
