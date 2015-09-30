@@ -391,16 +391,14 @@ head
            runregister(2);
         });
         $(document).keypress(function(e) { 
-          console.log('keypress');
           var vm = $('#mail-lg').val();
           var vp = $('#p-lg').val();
           var vpc = $('#pc-lg').val();
-          console.log(validateEmail(vm)+'\n'+vp+'\n'+vpc);
-          if(e.wich ==13 && validateEmail(vm) && vp === vpc) {
+          if(e.which ==13 && validateEmail(vm) && vp === vpc) {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.wich == 13&& validateEmail(vm) && vp === vpc && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
+          if(e.which == 13&& validateEmail(vm) && vp === vpc && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
             console.log('keypress second scenario');
             runregister(2);
           }
