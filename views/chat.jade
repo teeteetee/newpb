@@ -312,9 +312,9 @@ head
                 {var lasttmstmp_msg = user.tmstmpstore[discid];}
                 else {
                   move_discussion_up=1;
+                  console.log('no new messages')
+                   break
                 }
-              console.log('no new messages')
-              break
             }
            }
           console.log('last message according to lsttmstmp: '+lastmsg);
