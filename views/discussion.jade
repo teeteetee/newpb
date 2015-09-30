@@ -237,6 +237,9 @@ head
       #avatars {
         margin-bottom:20px;
       }
+      .attention {
+        background-color:#eee;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -289,6 +292,9 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')  
     script.
+      $('#gettext').focus(function(){
+        $('.attention').removeClass('attention');
+        });
       $('#sendmsg').click(sendmsg);
       var discid = '#{discid}';
       var tmstmp = 0;
@@ -323,9 +329,11 @@ head
             $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
             }
             else {
-              tmstmp = parsed.msgstore[i].tmstmp;
-              console.log('2tmstmp: '+tmstmp);
+              //tmstmp = parsed.msgstore[i].tmstmp;
               $('#messages').append("<div class='row bubble'  id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblesndr pull-right'>"+parsed.msgstore[i].txt+"</div></div></div>");
+              if(i===parsed.msgstore.length-1){
+                tmstmp = parsed.msgstore[i].tmstmp;
+              }
             }    
           }
           new_getmsg(tmstmp);
@@ -436,7 +444,7 @@ head
                       if(msg.msgstore[i].rcvr === '#{user}')
                       {tmstmp = msg.msgstore[i].tmstmp;
                         console.log('SETTING TIMESTAMP: '+tmstmp);
-                      $('#messages').append("<div class='row bubble' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
+                      $('#messages').append("<div class='row bubble attention' id='"+tmstmp+"'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+msg.msgstore[i].txt+"</div></div></div>");
                      // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
                         console.log('LENGTH :'+document.getElementById(tmstmp.toString()));
                        $('#mcont').scrollTo(document.getElementById(tmstmp.toString()),400);
