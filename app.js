@@ -583,13 +583,12 @@ app.get('/seeuser',function (req,res){
 //******************** HELPERS END ********************//
 
 app.get('/chat/:recid',function (req,res){
-   console.log(1);
-   var vsender = req.session._id;
-   var vdest =  req.params.recid;
    if(!req.session._id){
     res.redirect('/');
    }
    else{
+   var vsender = req.session._id;
+   var vdest =  req.params.recid;
    discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
      if(err){
               //err page ?
@@ -624,9 +623,10 @@ app.get('/chat/:recid',function (req,res){
                   var vlsttmstmp = Date.now();
                   tmp_val[newdisc._id] = vlsttmstmp;
                   var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+                  console.log()
                     //---------END ADDING TMSTMPSTORE --------//
-                  users.update({_id:vsender},{$push:{discussions:newdisc}},sht_tmp);
-                  users.update({_id:vdest},{$push:{discussions:newdisc}},sht_tmp);
+                  users.update({_id:vsender},{$push:{discussions:newdisc},sht_tmp});
+                  users.update({_id:vdest},{$push:{discussions:newdisc},sht_tmp});
                   console.log('SUPPOSEDLY SET TMSTMPSTORE');
                   res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
                   });
