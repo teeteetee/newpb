@@ -111,6 +111,15 @@ head
         border-color:white;
         color:white;
       }
+      .form-control:focus {
+       border-color: white;
+       outline: 0px none;
+       box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.6);
+       }
+      .form-control {
+       border-color: rgba(255, 255, 255, 0.46);
+       background-color:transparent;
+      }
   body 
     .container(style='padding-top:50px;')
       #mainheading.row
@@ -125,7 +134,7 @@ head
               input(type="email" class="change_phc form-control" id="mail" name='mail' placeholder="Email")
             .form-group 
               input(type="password" class="change_phc form-control" id="p" name='p' placeholder="Password")
-            .form-group(style='padding-top:30px;') 
+            .form-group(style='padding-top:30px;text-align:center;') 
               button(type="button" class="login btn btn-warning visible-lg visible-md") Sign in
               button(type="button" class="login btn btn-lg btn-warning visible-xs visible-sm") Sign in
               a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
