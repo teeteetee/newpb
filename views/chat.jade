@@ -281,6 +281,7 @@ head
       return 0;
       }
       else {
+        var move_discussion_up=0;
         if($('#noitems').length)
         {$('#discussions').empty();}
         if('#{user}' !=parsed.mtext.rcv)
@@ -307,7 +308,12 @@ head
               }
             }
             else {
-              var lasttmstmp_msg = user.tmstmpstore[discid];
+              if(user.tmstmpstore) 
+                {var lasttmstmp_msg = user.tmstmpstore[discid];}
+                else {
+                  move_discussion_up=1;
+                }
+              move
               console.log('no new messages')
               break
             }
@@ -318,7 +324,6 @@ head
           }
         // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
         }
-        var move_discussion_up=0;
         var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading' style='color:#333;'></h4>"+lastmsg+"</div></div></a></div></div>";
         if(user.tmstmpstore ){ 
           console.log('BREAKPOINT 1');
