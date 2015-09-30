@@ -237,9 +237,6 @@ head
       #avatars {
         margin-bottom:20px;
       }
-      .attention {
-        background-color:#eee;
-      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -292,9 +289,9 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')  
     script.
-      $('#gettext').focus(function(){
-        $('.attention').removeClass('attention');
-        });
+      //$('#gettext').focus(function(){
+      //  $('.attention').removeClass('attention');
+      //  });
       $('#sendmsg').click(sendmsg);
       var discid = '#{discid}';
       var tmstmp = 0;
