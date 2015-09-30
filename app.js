@@ -619,8 +619,14 @@ app.get('/chat/:recid',function (req,res){
                           }
                 else {
                   discussions.insert({snd:vsender,rcv:vdest,msgcnt:0},function(err,newdisc){
-                  users.update({_id:vsender},{$push:{discussions:newdisc}});
-                  users.update({_id:vdest},{$push:{discussions:newdisc}});
+                  var tmp_val={};
+                  //--------- ADDING TMSTMPSTORE --------//
+                  var vlsttmstmp = Date.now();
+                  tmp_val[newdisc._id] = vlsttmstmp;
+                  var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
+                    //---------END ADDING TMSTMPSTORE --------//
+                  users.update({_id:vsender},{$push:{discussions:newdisc}},sht_tmp);
+                  users.update({_id:vdest},{$push:{discussions:newdisc}},sht_tmp);
                   res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
                   });
                 }//else
