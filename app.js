@@ -496,9 +496,9 @@ app.get('/seefollow',function (req,res){
   });
 });
 
-app.get('/clearbooks/:id',function (req,res){
+app.get('/clearbooks',function (req,res){
   console.log('clear books: '+req.params.id);
-  users.update({uid:parseInt(req.params.id)},{$unset:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
+  users.update({_id:req.session._id},{$unset:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
   res.redirect('/');
 });
 
@@ -1592,6 +1592,7 @@ app.post('/additem/:uid/:id',function (req,res){
            else {
               if(book){
                 var book_insert={};
+                book_insert.tmstmp = Date.now();
                 book_insert._id = book._id;
                 book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
@@ -1613,6 +1614,7 @@ app.post('/additem/:uid/:id',function (req,res){
                   else{
                      console.log('created a book:'+newbook._id);
                      console.log('newbook: '+req.body.newbook+' '+typeof req.body.newbook);
+                     book_insert.tmstmp = Date.now();
                       var book_insert={};
                       book_insert._id = newbook._id;
                       book_insert.goodbook = 0;
