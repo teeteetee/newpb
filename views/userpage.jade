@@ -1008,26 +1008,25 @@ head
       //-----------------------------------//
       //got rid of second argument in both functions (books arr) because there is only one
       function markread(bookid) {
-        var bid = parseInt(bookid);
         $.ajax({
               method: "POST",
-              url: "/markread/"+books[bid]._id,
+              url: "/markread/"+books[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
-                eval("$('#btitle"+bookid+"').css('color','#aaa');");
-                eval("$('#sm"+bookid+"').empty();");
-                var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>";
-                eval("$('#sm"+bookid+"').append(insert);");
+                alert(msg);
+                //eval("$('#btitle"+bookid+"').css('color','#aaa');");
+                //eval("$('#sm"+bookid+"').empty();");
+                //var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>";
+                //eval("$('#sm"+bookid+"').append(insert);");
               });
       }
       //-----------------------------------//
       function markgood(bookid) {
-        var bid = parseInt(bookid);
         $.ajax({
               method: "POST",
-              url: "/markgood/"+books[bid]._id,
+              url: "/markgood/"+books[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
