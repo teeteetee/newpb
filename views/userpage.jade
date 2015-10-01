@@ -596,11 +596,17 @@ head
                       a(href='#') Movies            
               .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
                 .col-xs-12
+                  ul.nav.nav-pills
+                    li.active.showbooks(role='presentation')
+                      a(href='#') Books                 
+                    li.showmovies(role='presentation')
+                      a(href='#') Movies 
+                //
                   ul(class='nav nav-tabs nav-justified')
                    li(role="presentation" class="showbooks active")
-                     a(href="#") Home
+                     a(href="#") Books
                    li(role="presentation" class='showmovies')
-                     a(href="#") Profile
+                     a(href="#") Movies
                   //
                     .btn-group
                       button.btn.btn-lg.btn-default.showbooks.active Books                 
