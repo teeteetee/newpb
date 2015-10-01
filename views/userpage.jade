@@ -602,8 +602,8 @@ head
       $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
           console.log('show brow');
-          $('showmovies').removeClass('active');
-          $('showbooks').addClass('active');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').addClass('active');
           $('.brow').css('display','block')
           $('.mrow').css('display','none !important');
         }
@@ -611,8 +611,8 @@ head
       $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
           console.log('show mrow');
-          $('showbooks').removeClass('active');
-          $('showmovies').addClass('active');
+          $('.showbooks').removeClass('active');
+          $('.showmovies').addClass('active');
           $('.mrow').css('display','block')
           $('.brow').css('display','none !important');
         }
