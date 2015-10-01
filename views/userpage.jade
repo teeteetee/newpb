@@ -805,7 +805,7 @@ head
               thismovie.title = msg.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               break
-              case(books[i].newbook&&!books[i].goodbook):
+              case(movies[i].newmovie&&!movies[i].goodmovie):
               console.log('2st case');
               insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+i+"' style='margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
@@ -814,7 +814,7 @@ head
               movie_modal_data_store.unshift(thismovie);
               console.log(modal_data_store);
               break
-              case(!books[i].newbook&&!books[i].goodbook):
+              case(!movies[i].newmovie&&!movies[i].goodmovie):
               console.log('3st case');
               insert = "<div class='row book read'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+i+"' style='margin-left:17px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
