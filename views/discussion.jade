@@ -53,6 +53,12 @@ head
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
+      li a {
+        font-size:20px;
+        letter-spacing:1px;
+        padding-top:15px !important;
+        padding-bottom:15px !important;
+      }
       #mcont2 {
         flex-grow:3;
       }
@@ -386,40 +392,40 @@ head
       sndrequest.send('sndr='+sndr+'&rcvr='+rcvr+'&txtbody='+txtbody);
       }
       // getmsg is not used, switched to longpolling new_getmsg
-      function getmsg() {
-      console.log('getting msg');
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if(request.readyState==4 && request.status==200){
-      //if (this.readyState === DONE){
-      var parsed = JSON.parse(request.responseText);
-      if(parsed.trouble === 1)
-      {
-      // TO DO do somewthing here
-      console.log('trouble or empty');
-      }
-      else {
-        //TO DO what if no messages recieved from server?
-        if($('#empty').length){
-          $('#messages').empty();
-        }
-        for(var i=0;i<parsed.msgstore.length;i++){
-            if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
-            {tmstmp = parsed.msgstore[i].tmstmp;
-            $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
-           // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
-            }    
-          }
-      }
-      }
-      };
-      request.open('POST', '/disccheck/#{discid}/#{user}', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      request.send('tmstmp='+tmstmp+'&uid='+'#{user}');
-      }
+      //function getmsg() {
+      //console.log('getting msg');
+      //request = new XMLHttpRequest();
+      //request.onreadystatechange = function () {
+      //var DONE = this.DONE || 4;
+      //if(request.readyState==4 && request.status==200){
+      ////if (this.readyState === DONE){
+      //var parsed = JSON.parse(request.responseText);
+      //if(parsed.trouble === 1)
+      //{
+      //// TO DO do somewthing here
+      //console.log('trouble or empty');
+      //}
+      //else {
+      //  //TO DO what if no messages recieved from server?
+      //  if($('#empty').length){
+      //    $('#messages').empty();
+      //  }
+      //  for(var i=0;i<parsed.msgstore.length;i++){
+      //      if(parseInt(parsed.msgstore[i].rcvr) === '#{user}')
+      //      {tmstmp = parsed.msgstore[i].tmstmp;
+      //      $('#messages').append("<div class='row bubble'><div class='col-xs-12'><div class='bubblercvr pull-left'>"+parsed.msgstore[i].txt+"</div></div></div>");
+      //     // $("#messages").animate({ scrollTop: $('#messages').height() }, 600);
+      //      }    
+      //    }
+      //}
+      //}
+      //};
+      //request.open('POST', '/disccheck/#{discid}/#{user}', true);
+      //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      ////Most libraries like jQuery/Prototype/Dojo do this
+      //request.send('tmstmp='+tmstmp+'&uid='+'#{user}');
+      //}
       //setInterval(getmsg, 5000);
       function new_getmsg(tmstmp) {
         $.ajax({
