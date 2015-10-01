@@ -814,7 +814,7 @@ head
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
               case(movies[i].newmovie&&!movies[i].goodmovie):
               console.log('2st case');
@@ -822,7 +822,7 @@ head
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               console.log(modal_data_store);
               break
               case(!movies[i].newmovie&&!movies[i].goodmovie):
@@ -831,7 +831,7 @@ head
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
             }         
            $('.movies').append(insert);
