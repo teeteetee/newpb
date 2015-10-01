@@ -383,7 +383,7 @@ head
         background-color:#f7f7f7;
       }
       .mrow {
-        display:none;
+        display:none !important;
       }
   body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -604,7 +604,7 @@ head
           $('showmovies').removeClass('active');
           $('showbooks').addClass('active');
           $('.brow').css('display','block')
-          $('.mrow').css('display','none');
+          $('.mrow').css('display','none !important');
         }
         });
       $('.showmovies').click(function(){
@@ -612,7 +612,7 @@ head
           $('showbooks').removeClass('active');
           $('showmovies').addClass('active');
           $('.mrow').css('display','block')
-          $('.brow').css('display','none');
+          $('.brow').css('display','none !important');
         }
         });
       setTimeout(function(){
