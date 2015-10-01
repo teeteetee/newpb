@@ -308,17 +308,17 @@ head
       .btn.focus, .btn:focus, .btn:hover {
           text-decoration: none;
       }
-      .btn-ioslooklike {
+      .btn-default{
        border:1px solid #ccc;
        color:#bbb;
        background:none;
       }
-      .iosactive {
+      .btn-default.active {
         background-color:#ccc;
         color:white;
       }
-      .iosactive:hover{
-        color:#ff9900;
+      .btn-default:hover{
+        color:#bbb;
       }
       .btn-success {
         border:1px solid #3ACA6D;
@@ -453,11 +453,11 @@ head
               .form-group
                 label(for="title") Year
                 input(type="text" class="form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-            .form-group(style='margin-top:49px;')
+            .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
                 button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
-                button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it             
+                button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-success'  id='submitmovie') Submit
     .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
