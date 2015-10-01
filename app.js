@@ -85,23 +85,26 @@ app.get('/',function(req,res) {
   res.render('index_new');}
 });
 
-app.post('/getbooks/:uid',function (req,res){
-  //TO DO auth?
-  users.findOne({_id:req.params.uid},function(err,doc){
-    if(err) {
-    console.log('err while users query');
-     res.send(0);
-    }
-    else {
-      if(doc!=null) {
-        res.send(doc.bookstore);
-      }
-      else {
-        res.send(0);
-      }
-    }
-  });
-});
+//DISCONTINUED BECAUSE WE STORE BOOKS IN THE USER OBJECT WICH IS PASSED AROUND
+//if it will be the case, that we decide to optimize loading time, than bookstore and moviestore will be
+//separated into separate dbs, and this scenario will be back on track
+//app.post('/getbooks',function (req,res){
+//  //TO DO auth?
+//  users.findOne({_id:req.session._id},function(err,doc){
+//    if(err) {
+//    console.log('err while users query');
+//     res.send(0);
+//    }
+//    else {
+//      if(doc!=null) {
+//        res.send(doc.bookstore);
+//      }
+//      else {
+//        res.send(0);
+//      }
+//    }
+//  });
+//});
 
 app.post('/getbook/:id',function (req,res){
   //TO DO auth
@@ -1582,7 +1585,7 @@ app.post('/admin/insidemsg',function(req,res){
 
 
 
-app.post('/additem/:uid/:id',function (req,res){
+app.post('/additem/:id',function (req,res){
   var cond = req.params.id; 
   switch(cond){
     case('book'):
@@ -1601,11 +1604,11 @@ app.post('/additem/:uid/:id',function (req,res){
                 book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
-                users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
+                users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                              tell_user(0);}
                   else {
                     book_insert.newbook =0;
-                    users.update({_id:req.params._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
+                    users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                              tell_user(0);
                   }
                //respond to user with success
@@ -1624,11 +1627,11 @@ app.post('/additem/:uid/:id',function (req,res){
                       book_insert.goodbook = 0;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
-                      users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
+                      users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
-                        users.update({_id:req.params.uid},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
+                        users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
@@ -1666,6 +1669,57 @@ app.post('/additem/:uid/:id',function (req,res){
       
     break;
     case('movie'):
+    movies.findOne({title:req.body.title},function(err,movie){
+           if(err) {
+               console.log('err while movie query');
+           }
+           else {
+              if(movie){
+                var movie_insert={};
+                movie_insert.tmstmp = Date.now();
+                movie_insert._id = movie._id;
+                movie_insert.goodmovie = 0;
+                if(parseInt(req.body.newmovie))
+              { movie_insert.newmovie = 1;
+                users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                             ms.trouble = 0;
+                             res.send(ms);
+                           }
+                  else {
+                    movie_insert.newmovie =0;
+                    users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
+                             ms.trouble = 0;
+                             res.send(ms);
+                  }
+               //respond to user with success
+              }
+              else{
+                 movies.insert({title:req.body.title,year:req.body.year},function(err,newmovie){
+                  if(err){
+                    console.log('err while adding a movie');
+                  }
+                  else{
+                     console.log('created a movie:'+newmovie._id);
+                     console.log('newmovie: '+req.body.newmovie+' '+typeof req.body.newmovie);
+                     movie_insert.tmstmp = Date.now();
+                      var movie_insert={};
+                      movie_insert._id = newmovie._id;
+                      movie_insert.goodmovie = 0;
+                     if(parseInt(req.body.newmovie))
+                     {movie_insert.newmovie = 1;
+                      users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                                         ms.trouble = 0;
+                                         res.send(ms);}
+                                          else
+                      {movie_insert.newmovie = 0;
+                        users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
+                                          ms.trouble =0;
+                                           res.send(ms);}
+                  }
+                 });
+              }
+           }
+         })
     break;
   }
 });
@@ -1731,7 +1785,11 @@ app.post('/livesearch/:id',function (req,res){
       }
       else {
         console.log(docs);
-        res.send(docs);
+        if(docs.length!=0)
+        {res.send(docs);}
+        else {
+          res.send(0);
+        }
       }
      });
     break;

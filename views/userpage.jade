@@ -248,7 +248,7 @@ head
           transform: rotate(360deg);
         }
       }
-      #autocomp {
+      .autocomp {
       display:none;
       background-color: white;
       border-radius: 3px;
@@ -447,13 +447,13 @@ head
           .modal-body
             form(id='authoradd_here')
               .form-group
-                label(for="title") Titile
-                input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                .row#autocomp
-                  .col-xs-12#sr
+                label(for="mtitle") Titile
+                input(type="text" class="form-control" id="mtitle" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                .row.autocomp#autocompmovies
+                  .col-xs-12#srm
               .form-group
-                label(for="title") Year
-                input(type="text" class="form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+                label(for="year") Year
+                input(type="text" class="form-control" id="year" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
@@ -471,10 +471,10 @@ head
           .modal-body
             form(id='authoradd_here')
               .form-group
-                label(for="title") Titile
-                input(type="text" class="form-control" id="title" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                .row#autocomp
-                  .col-xs-12#sr
+                label(for="btitle") Titile
+                input(type="text" class="form-control" id="btitle" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                .row.autocomp#autocompbooks
+                  .col-xs-12#srb
               .form-group
                 label(for="title") Author
                 input(type="text" class="form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
@@ -647,31 +647,40 @@ head
         }
         });
       setTimeout(function(){
-        if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
-          alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
+        if($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val()){
+          alert($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val());
         }
         },2000);
-      var books=[];
+      var books=user.bookstore;
+      if(!books) {
+       console.log('no items');
+       }
+       else {
+        getbooks(books,count);
+       }
       var count;
-      $.ajax({
-         method: "POST",
-         url: "/getbooks/#{user}",
-         data: 0
-       })
-         .done(function( msg ) {
-           console.log('msg is: '+msg);
-           books = msg;
-           console.log(JSON.stringify(books));
-           count = books.length -1;
-           if(!books) {
-            //alert('server maintenence \n try again later');
-           // $('#myModal').modal('show');
-           console.log('no items');
-           }
-           else {
-            getbooks(books,count);
-           }
-           });
+      // Discontinued because we supply boooks and movies through user object. 
+      // When we will do optimization and user's books and movies might move into separate db
+      // this might will be brought back
+      //$.ajax({
+      //   method: "POST",
+      //   url: "/getbooks/#{user}",
+      //   data: 0
+      // })
+      //   .done(function( msg ) {
+      //     console.log('msg is: '+msg);
+      //     books = msg;
+      //     console.log(JSON.stringify(books));
+      //     count = books.length -1;
+      //     if(!books) {
+      //      //alert('server maintenence \n try again later');
+      //     // $('#myModal').modal('show');
+      //     console.log('no items');
+      //     }
+      //     else {
+      //      getbooks(books,count);
+      //     }
+      //     });
       var modal_data_store=[];
       function getbooks(books,i) {
         console.log('i:'+i);
@@ -804,44 +813,75 @@ head
         }
         });
       var lastentry;
-      $('#title').focusout(function(){
-        if($('#autocomp').css('display','block')) {
-          $('#autocomp').fadeOut(350);
+      $('#btitle').focusout(function(){
+        if($('#autocompbooks').css('display','block')) {
+          $('#autocompbooks').fadeOut(350);
         }
         });
-      $('#title').keyup(function(event) {
-        if($('#title').val() != lastentry && $('#title').val().length >3) {       
+      $('#mtitle').focusout(function(){
+        if($('#autocompmovies').css('display','block')) {
+          $('#autocompmovies').fadeOut(350);
+        }
+        });
+      $('#btitle').keyup(function(event) {
+        if($('#btitle').val() != lastentry && $('#btitle').val().length >3) {       
           //$('div').append('TEST'+$(this).val()+"<br>");
           $.ajax({
             method: "POST",
             url: "/livesearch/btitle",
-            data: { txt: $('#title').val() }
+            data: { txt: $('#btitle').val() }
           }).done(function( msg ) {
               console.log(msg);
               if(msg)
-                { $('#sr').empty();
+                { $('#srb').empty();
                   for(var btitle =0;btitle<msg.length;btitle++){
                     console.log('vtitle: '+msg[btitle]);
-                    //var click = "$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();";
-                    $('#sr').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span id='authors"+btitle+"' style='color:#ddd;margin-left:10px;'></span></div></div>");
+                    //var click = "$('#btitle').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#srb').empty();";
+                    $('#srb').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span id='authors"+btitle+"' style='color:#ddd;margin-left:10px;'></span></div></div>");
                     for(var xx=0;xx<msg[btitle].authors.length;xx++){
                       if(xx===0)
                       {eval("$('#authors"+btitle+"').append('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");}
                       else {
                         eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");
                       }
-                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}$('#title').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#sr').empty();$('#addauthor').addClass('disabled');";
+                      var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}$('#btitle').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocompbooks').fadeOut(350);$('#srb').empty();$('#addauthor').addClass('disabled');";
                     }
                     eval("$('#hint"+btitle+"').attr('onclick',click);");
                    }
-                  $('#autocomp').fadeIn(350);
+                  $('#autocompbooks').fadeIn(350);
                   }
                             else {
-                              lastentry = $('#text').val();
+                              lastentry = $('#btitle').val();
                             }
                 });
         }
-       lastentry = $('#text').val()
+       lastentry = $('#btitle').val()
+      });
+      $('#mtitle').keyup(function(event) {
+        if($('#mtitle').val() != lastentry && $('#mtitle').val().length >3) {       
+          //$('div').append('TEST'+$(this).val()+"<br>");
+          $.ajax({
+            method: "POST",
+            url: "/livesearch/mtitle",
+            data: { txt: $('#mtitle').val() }
+          }).done(function( msg ) {
+              console.log(msg);
+              if(msg)
+                { $('#srm').empty();
+                  for(var mtitle =0;mtitle<msg.length;mtitle++){
+                    console.log('vtitle: '+msg[mtitle]);
+                    $('#srm').append("<div class='row sritem' id='hint"+mtitle+"'><div class='col-xs-12'>"+msg[mtitle].title.capitalizeFirstLetter()+"<span style='color:#ddd;margin-left:10px;'>"+msg[mtitle].year+"</span></div></div>");
+                    var click="if($('#year').length){$('#year').val('"+msg[mtitle].year+"');}else{addauthor();$('#year').val('"+msg[mtitle].year+"');}$('#mtitle').val('"+msg[mtitle].title.capitalizeFirstLetter()+"');$('#autocompmovies').fadeOut(350);$('#srm').empty();$('#year').addClass('disabled');";
+                    eval("$('#hint"+mtitle+"').attr('onclick',click);");
+                   }
+                  $('#autocompmovies').fadeIn(350);
+                  }
+                            else {
+                              lastentry = $('#mtitle').val();
+                            }
+                });
+        }
+       lastentry = $('#mtitle').val()
       });
       //-----------------------------------//
       function markread(bookid,books) {
@@ -853,7 +893,7 @@ head
             })
               .done(function( msg ) {
                 console.log(msg);
-                eval("$('#title"+bookid+"').css('color','#aaa');");
+                eval("$('#btitle"+bookid+"').css('color','#aaa');");
                 eval("$('#sm"+bookid+"').empty();");
                 var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>";
                 eval("$('#sm"+bookid+"').append(insert);");
@@ -874,14 +914,14 @@ head
       }
       //-----------------------------------//
       $('#submitbook').click(function(){
-        if($('#title').val() && $('#author0_name').val())
+        if($('#btitle').val() && $('#author0_name').val())
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
            data.authornum = authorcount;
-           data.title = $('#title').val();
+           data.title = $('#btitle').val();
            data.newbook = 1;
            if($('#oldbook').hasClass('active')){
            data.newbook = 0;
@@ -898,13 +938,42 @@ head
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/additem/#{user}/book",
+              url: "/additem/book",
               data: data
             })
               .done(function( msg ) {
-                $('#title').val('');
+                $('#btitle').val('');
                 $('#author0_name').val('');
                 $('#addbook').modal('hide');
+                $('#wait').fadeOut(350);
+                console.log(msg);
+                window.location='/';
+              });
+          }
+        });
+        $('#submitmovie').click(function(){
+        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.title = $('#mtitle').val();
+           data.newmovie = 1;
+           if($('#oldmovie').hasClass('active')){
+           data.newmovie = 0;
+           }
+           data.year = $('#year').val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/additem/movie",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#mtitle').val('');
+                $('#year').val('');
+                $('#addmovie').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
                 window.location='/';
