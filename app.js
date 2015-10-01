@@ -14,7 +14,7 @@ var http = require('http');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),books = db.get('books'),authors = db.get('authors'),follow = db.get('follow');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),books = db.get('books'),movies = db.get('movies'),authors = db.get('authors'),follow = db.get('follow');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -109,6 +109,25 @@ app.get('/',function(req,res) {
 app.post('/getbook/:id',function (req,res){
   //TO DO auth
   books.findOne({_id:req.params.id},function(err,doc){
+    if(err) {
+    console.log('err while users query');
+     res.send(0);
+    }
+    else {
+      if(doc!=null) {
+        res.send(doc);
+      }
+      else {
+        console.log('doc===null');
+        res.send(0);
+      }
+  }
+});
+});
+
+app.post('/getmovie/:id',function (req,res){
+  //TO DO auth
+  movies.findOne({_id:req.params.id},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
