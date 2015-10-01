@@ -1807,7 +1807,7 @@ app.post('/livesearch/:id',function (req,res){
      });
     break;
     case('mtitle'):
-     mtitles.find({title: { $regex: query, $options: 'i'}},function(err,docs){
+     movies.find({title: { $regex: query, $options: 'i'}},function(err,docs){
       if(err){
         console.log('err');
       }
