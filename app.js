@@ -1709,6 +1709,7 @@ app.post('/additem/:id',function (req,res){
     break;
     case('movie'):
     var movie_insert={};
+    var ms={};
     movies.findOne({title:req.body.title},function(err,movie){
            if(err) {
                console.log('err while movie query');
