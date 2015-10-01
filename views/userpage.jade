@@ -596,9 +596,15 @@ head
                       a(href='#') Movies            
               .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
                 .col-xs-12
-                  .btn-group
-                    button.btn.btn-lg.btn-default.showbooks.active Books                 
-                    button.btn.btn-lg.btn-default.showmovies Movies  
+                  ul(class='nav nav-tabs nav-justified')
+                   li(role="presentation" class="showbooks active")
+                     a(href="#") Home
+                   li(role="presentation" class='showmovies')
+                     a(href="#")Profile
+                  //
+                    .btn-group
+                      button.btn.btn-lg.btn-default.showbooks.active Books                 
+                      button.btn.btn-lg.btn-default.showmovies Movies  
               .row.mrow
                 .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
                   .nomovies.row(style='text-align:center;')  
