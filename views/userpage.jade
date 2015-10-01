@@ -390,6 +390,12 @@ head
         -webkit-box-shadow:none;
         box-shadow:none;
       }
+      .centered-pills { text-align:center; }
+      .centered-pills ul.nav-pills { display:inline-block; }
+      .centered-pills li { display:inline; }
+      .centered-pills a { float:left; }
+      * html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+      *+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
   body
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -468,12 +474,12 @@ head
             form(id='authoradd_here')
               .form-group
                 label(for="mtitle") Titile
-                input(type="text" class="form-control" id="mtitle" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                input(type="text" class="form-control" id="mtitle" autocomplete='off' data-provide="typeahead" placeholder="The Matrix")
                 .row.autocomp#autocompmovies
                   .col-xs-12#srm
               .form-group
                 label(for="year") Year
-                input(type="text" class="form-control" id="year" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+                input(type="text" class="form-control" id="year" autocomplete='off' data-provide="typeahead" placeholder="1999")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
@@ -595,7 +601,7 @@ head
                     li.showmovies(role='presentation')
                       a(href='#') Movies                          
               .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
-                .col-xs-12
+                .col-xs-12.centered-pills
                   ul.nav.nav-pills
                     li.active.showbooks(role='presentation')
                       a(href='#') Books                 
