@@ -651,14 +651,15 @@ head
           alert($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val());
         }
         },2000);
+       var count;
       var books=user.bookstore;
       if(!books) {
        console.log('no items');
        }
        else {
+        var count = books.length-1;
         getbooks(books,count);
        }
-      var count;
       // Discontinued because we supply boooks and movies through user object. 
       // When we will do optimization and user's books and movies might move into separate db
       // this might will be brought back
