@@ -538,16 +538,21 @@ head
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
                 .col-xs-12
                   ul.nav.nav-pills
-                    li.active(role='presentation')
+                    li.active.showbooks(role='presentation')
                       a(href='#') Books                 
-                    li(role='presentation')
+                    li.showmovies(role='presentation')
                       a(href='#') Movies            
               .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
                 .col-xs-12
                   .btn-group
-                    button.btn.btn-lg.btn-ioslooklike.iosactive Books                 
-                    button.btn.btn-lg.btn-ioslooklike Movies  
-              .row.visible-lg.visible-md.visible-sm
+                    button.btn.btn-lg.btn-ioslooklike.showbooks.iosactive Books                 
+                    button.btn.btn-lg.btn-ioslooklike.showmovies Movies  
+              .row.visible-lg.visible-md.visible-sm.mrow
+                .col-xs-12.movies#bigscreens
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.visible-lg.visible-md.visible-sm.brow
                 .col-xs-12.books#bigscreens
                   .noitems.row(style='text-align:center;')  
                      .col-xs-12
@@ -558,8 +563,13 @@ head
                    .noitems.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.visible-xs(style='border-top:1px solid #eee;')
+              .row.visible-xs.brow(style='border-top:1px solid #eee;')
                 #smallscreens.col-xs-12.books         
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.visible-xs.mrow(style='border-top:1px solid #eee;')
+                #smallscreens.col-xs-12.movies        
                   .noitems.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
@@ -586,6 +596,22 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
+      $('#showbooks').click(function(){
+        if($('.brow').css('display')==='none'){
+          $('showmovies').removeClass('active');
+          $('showbooks').addClass('active');
+          $('.brow').css('display','block')
+          $('.mrow').css('display','none');
+        }
+        });
+      $('#showmovies').click(function(){
+        if($('.mrow').css('display')==='none'){
+          $('showbooks').removeClass('active');
+          $('showmovies').addClass('active');
+          $('.mrow').css('display','block')
+          $('.brow').css('display','none');
+        }
+        });
       setTimeout(function(){
         if($('#title').val() && $('#author0_name').val() && $('#author0_surname').val()){
           alert($('#title').val() && $('#author0_name').val() && $('#author0_surname').val());
