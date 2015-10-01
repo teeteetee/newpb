@@ -411,7 +411,7 @@ app.get('/settings',function (req,res){
 
 app.post('/markread/:bid',function (req,res){
   if(req.session._id){
-    users.findOne({uid:parseInt(req.params.uid)},function(err,doc){
+    users.findOne({_id:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
