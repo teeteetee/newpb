@@ -1697,12 +1697,12 @@ app.post('/additem/:id',function (req,res){
       
     break;
     case('movie'):
+    var movie_insert={};
     movies.findOne({title:req.body.title},function(err,movie){
            if(err) {
                console.log('err while movie query');
            }
            else {
-              var movie_insert={};
               if(movie){
                 movie_insert.tmstmp = Date.now();
                 movie_insert._id = movie._id;
