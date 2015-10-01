@@ -873,8 +873,8 @@ head
       }
         });
       function redactbookmodal (i) {
-        $('.bookmodaltitle').text(modal_data_store[i].title);
-        $('.bookmodalauthor').text(modal_data_store[i].author);
+        $('.bookmodaltitle').text(books[i].title);
+        $('.bookmodalauthor').text(books[i].author);
         $('#bookmodal').modal('show');
       }
       function redactmoviemodal (i) {
@@ -992,11 +992,12 @@ head
        lastentry = $('#mtitle').val()
       });
       //-----------------------------------//
-      function markread(bookid,books) {
+      //got rid of second argument in both functions (books arr) because there is only one
+      function markread(bookid) {
         var bid = parseInt(bookid);
         $.ajax({
               method: "POST",
-              url: "/markread/#{user}/"+books[bid]._id,
+              url: "/markread/"+books[bid]._id,
               data: 0
             })
               .done(function( msg ) {
@@ -1008,11 +1009,11 @@ head
               });
       }
       //-----------------------------------//
-      function markgood(bookid,books) {
+      function markgood(bookid) {
         var bid = parseInt(bookid);
         $.ajax({
               method: "POST",
-              url: "/markgood/#{user}/"+books[bid]._id,
+              url: "/markgood/"+books[bid]._id,
               data: 0
             })
               .done(function( msg ) {
