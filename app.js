@@ -523,8 +523,12 @@ app.get('/seefollow',function (req,res){
 });
 
 app.get('/clearbooks',function (req,res){
-  console.log('clear books: '+req.params.id);
   users.update({_id:req.session._id},{$unset:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
+  res.redirect('/');
+});
+
+app.get('/clearmovies',function (req,res){
+  users.update({_id:req.session._id},{$unset:{moviestore:[]},$set:{totalmovies:0,readmovies:0,newmovies:0}});
   res.redirect('/');
 });
 
@@ -570,6 +574,11 @@ app.get('/dropusers',function (req,res){
 
 app.get('/dropbooks',function (req,res){
   books.remove({});
+  res.redirect('/');
+});
+
+app.get('/dropmovies',function (req,res){
+  movies.remove({});
   res.redirect('/');
 });
 
@@ -1693,8 +1702,8 @@ app.post('/additem/:id',function (req,res){
                console.log('err while movie query');
            }
            else {
+              var movie_insert={};
               if(movie){
-                var movie_insert={};
                 movie_insert.tmstmp = Date.now();
                 movie_insert._id = movie._id;
                 movie_insert.goodmovie = 0;
