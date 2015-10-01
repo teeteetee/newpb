@@ -511,6 +511,17 @@ app.get('/seebooks',function (req,res){
   });
 });
 
+app.get('/seemovies',function (req,res){
+  movies.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
 app.get('/seefollow',function (req,res){
  follow.find({},function (err,done){
     if(err){
