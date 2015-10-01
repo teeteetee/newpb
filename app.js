@@ -1155,6 +1155,7 @@ app.post('/unfollow/:id',function (req,res){
 });
 
 app.post('/gettimestamp/:id',function (req,res){
+  //WHY DO WE NEED THAT ? THE OTHER PART OF THIS IS INSIDE "ANOTHERUSER"
   if(req.session._id){
     follow.findOne({user:req.session._id},function (err,done){
       if(err)
@@ -1742,7 +1743,6 @@ app.post('/additem/:id',function (req,res){
                      console.log('created a movie:'+newmovie._id);
                      console.log('newmovie: '+req.body.newmovie+' '+typeof req.body.newmovie);
                      movie_insert.tmstmp = Date.now();
-                      var movie_insert={};
                       movie_insert._id = newmovie._id;
                       movie_insert.goodmovie = 0;
                      if(parseInt(req.body.newmovie))
