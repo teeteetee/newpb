@@ -596,7 +596,7 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      $('#showbooks').click(function(){
+      $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
           $('showmovies').removeClass('active');
           $('showbooks').addClass('active');
@@ -604,7 +604,7 @@ head
           $('.mrow').css('display','none');
         }
         });
-      $('#showmovies').click(function(){
+      $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
           $('showbooks').removeClass('active');
           $('showmovies').addClass('active');
