@@ -601,6 +601,7 @@ head
       }
       $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
+          console.log('show brow');
           $('showmovies').removeClass('active');
           $('showbooks').addClass('active');
           $('.brow').css('display','block')
@@ -609,6 +610,7 @@ head
         });
       $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
+          console.log('show mrow');
           $('showbooks').removeClass('active');
           $('showmovies').addClass('active');
           $('.mrow').css('display','block')
