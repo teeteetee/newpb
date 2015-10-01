@@ -539,7 +539,7 @@ app.get('/clearbooks',function (req,res){
 });
 
 app.get('/clearmovies',function (req,res){
-  users.update({_id:req.session._id},{$unset:{moviestore:[]},$set:{totalmovies:0,readmovies:0,newmovies:0}});
+  users.update({_id:req.session._id},{$unset:{moviestore:[]},$set:{totalmovies:0,seenmovies:0,newmovies:0}});
   res.redirect('/');
 });
 
