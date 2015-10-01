@@ -1716,19 +1716,16 @@ app.post('/additem/:id',function (req,res){
            }
            else {
               if(movie){
-                console.log('we have that movie');
                 movie_insert.tmstmp = Date.now();
                 movie_insert._id = movie._id;
                 movie_insert.goodmovie = 0;
                 if(parseInt(req.body.newmovie))
               { movie_insert.newmovie = 1;
-                console.log('its a new movie');
-                users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
                              ms.trouble = 0;
                              res.send(ms);
                            }
                   else {
-                    console.log('old movie');
                     movie_insert.newmovie =0;
                     users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
                              ms.trouble = 0;
@@ -1737,7 +1734,6 @@ app.post('/additem/:id',function (req,res){
                //respond to user with success
               }
               else{
-                console.log('adding a movie');
                  movies.insert({title:req.body.title,year:req.body.year},function(err,newmovie){
                   if(err){
                     console.log('err while adding a movie');
@@ -1751,14 +1747,12 @@ app.post('/additem/:id',function (req,res){
                       movie_insert.goodmovie = 0;
                      if(parseInt(req.body.newmovie))
                      {movie_insert.newmovie = 1;
-                      console.log('goint to update user with new movie');
-                      users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                      users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
                                          ms.trouble = 0;
                                          res.send(ms);}
                                           else
                       {movie_insert.newmovie = 0;
-                        console.log('goint to update user with old movie');
-                        users.update({_id:req.session._uid},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
+                        users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
                                           ms.trouble =0;
                                            res.send(ms);}
                   }
