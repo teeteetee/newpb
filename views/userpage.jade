@@ -396,6 +396,10 @@ head
       .centered-pills a { float:left; }
       * html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
       *+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+      .centered-pills.nav-pills>li.active>a, .centered-pills.nav-pills>li.active>a:focus, .centered-pills.nav-pills>li.active>a:hover {
+        color:#eee;
+        border:2px solid #eee;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
