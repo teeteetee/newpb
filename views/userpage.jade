@@ -757,7 +757,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='title"+i+"' style='color:#aaa;'><span style='color:#37D6BB;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+i+"' style='color:#aaa;'><span style='color:#37D6BB;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -765,7 +765,7 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('2st case');
-              insert = "<div class='row book' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='title"+i+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+i+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -774,7 +774,7 @@ head
               break
               case(!books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='title"+i+"' style='margin-left:25px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+i+"' style='margin-left:25px;color:#aaa;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -1018,7 +1018,7 @@ head
                 $('#bookmodal').modal('hide');
                 books[bookid].newbook=0;
                 eval("$('#btitle"+bookid+"').css('color','#aaa');");
-                eval("$('#book"+bookid+"').addClass('read');");
+                eval("$('#book"+books[bookid]._id+"').addClass('read');");
                 //eval("$('#sm"+bookid+"').empty();");
                 //var insert= "button style='margin-right:15px;' class='btn btn-sm btn-darkprimary ' >Find people</button><button class='btn btn-sm btn-darkwarning ' style='margin-right:15px;' onclick='markgood("+bookid+",books);'>Mark as good</button><button class='btn btn-sm btn-darkdanger' style='margin-right:15px;' onclick='removebook("+books[bid]._id+");'>Remove</button><button onclick='closeoptions("+bookid+");' type='button' class='"+books[bid]._id+" close pull-right'><span aria-hidden='true'>&times;</span></button>";
                 //eval("$('#sm"+bookid+"').append(insert);");
@@ -1034,9 +1034,9 @@ head
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
                 var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
-                eval("$('#title"+bookid+"').prepend(insert);");
-                eval("$('#sm_hd"+bookid+"').css('margin-left','25px');");
-                eval("$('#title"+bookid+"').css('margin-left','0px');");
+                eval("$('#btitle"+bookid+"').prepend(insert);");
+                eval("$('#sm_hd"+books[bookid]._id+"').css('margin-left','25px');");
+                eval("$('#btitle"+bookid+"').css('margin-left','0px');");
                 books[bookid].goodbook=0;
               });
       }
