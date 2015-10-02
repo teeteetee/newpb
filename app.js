@@ -492,7 +492,7 @@ app.post('/removebook/:bid',function (req,res) {
     }
 });
 
-app.post('/markgood/:bid',function (req,res){
+app.post('/markbookgood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
   users.findOne({_id:req.session._id},function(err,doc){
@@ -513,18 +513,43 @@ app.post('/markgood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodbook = 1;
-           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}},function(err,doc_upd){
-              if(err)
-              {  
-                ms.trouble=1;
-                console.log('err updating');
-                res.send(ms);
-              }
-              else {
-                req.session.bookstore = doc_upd.bookstore;
-                res.send(ms);
-              }
-         });
+           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
+           res.send(ms);
+       }
+      }
+    }
+      else {
+        console.log('trouble finding the user');
+        ms.trouble=1;
+       res.send(ms);
+      }
+    }
+  });
+});
+
+app.post('/markmoviegood/:bid',function (req,res){
+  var ms={};
+  ms.trouble=0;
+  users.findOne({_id:req.session._id},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+      ms.trouble=1;
+       res.send(ms);
+    }
+    else {
+     if(doc!=null){
+      console.log('found user');
+       var temp_arr;
+       temp_arr = doc.moviestore;
+       var temp_id;
+       for(var i=0;i<temp_arr.length;i++){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.bid)){
+          console.log('modifying');
+           temp_arr[i].goodmovie = 1;
+           users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
+           res.send(ms);
        }
       }
     }

@@ -439,17 +439,17 @@ head
           .modal-body.visible-md.visible-lg
             h4.moviemodaltitle(style='text-align:center;')
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-primary  form-control mkr' style='margin-top:5px;margin-bottom:5px;') Mark as seen
-            button(class='btn btn-primary  form-control mkrg' style='margin-top:5px;margin-bottom:5px;') Mark as seen & good
-            button(class='btn btn-primary form-control mkf' style='margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-primary form-control mkrm' style='margin-top:5px;margin-bottom:5px;') Remove
+            button(class='btn btn-primary  form-control movie_seen' style='margin-top:5px;margin-bottom:5px;') Mark as seen
+            button(class='btn btn-primary  form-control movie_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary form-control movie_people' style='margin-top:5px;margin-bottom:5px;') Find people
+            button(class='btn btn-primary form-control movie_remove' style='margin-top:5px;margin-bottom:5px;') Remove
           .modal-body.visible-sm.visible-xs
             h4.moviemodaltitle(style='text-align:center;')
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-primary btn-lg  form-control mkr' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as seen
-            button(class='btn btn-primary btn-lg  form-control mkrg' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as seen & good
-            button(class='btn btn-primary btn-lg form-control mkf' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-primary btn-lg form-control mkrm' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
+            button(class='btn btn-primary btn-lg  form-control movie_seen' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as seen
+            button(class='btn btn-primary btn-lg  form-control movie_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary btn-lg form-control movie_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
+            button(class='btn btn-primary btn-lg form-control movie_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -885,7 +885,7 @@ head
           $('.book_good').css('display','none');
         }
         else {
-          var insert = 'markgood('+i+')';
+          var insert = 'markbookgood('+i+')';
           $('.book_good').attr('onclick',insert);
         }
         insert = 'removebook('+i+')';
@@ -895,6 +895,23 @@ head
         $('#bookmodal').modal('show');
       }
       function redactmoviemodal (i) {
+        if(!movies[i].newmovie){
+         $('.movie_seen').css('display','none');
+        }
+        else {
+          var insert = 'markseen('+i+')';
+          $('.movie_seen').attr('onclick',insert);
+          $('.movie_good').css('display','none');
+        }
+        if(movies[i].goodmovie){
+          $('.movie_good').css('display','none');
+        }
+        else {
+          var insert = 'markmoviegood('+i+')';
+          $('.movie_good').attr('onclick',insert);
+        }
+        insert = 'removemovie('+i+')';
+        $('.movie_remove').attr('onclick',insert);
         $('.moviemodaltitle').text(movie_modal_data_store[i].title);
         $('.moviemodalyear').text(movie_modal_data_store[i].year);
         $('#moviemodal').modal('show');
@@ -1029,10 +1046,10 @@ head
               });
       }
       //-----------------------------------//
-      function markgood(bookid) {
+      function markbookgood(bookid) {
         $.ajax({
               method: "POST",
-              url: "/markgood/"+books[bookid]._id,
+              url: "/markbookgood/"+books[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
@@ -1064,6 +1081,64 @@ head
                 }
                   else{
                     user.readbooks--;
+                  }
+              });
+      }
+      //-----------------------------------//
+      function markseen(movieid) {
+        $.ajax({
+              method: "POST",
+              url: "/markseen/"+movies[movieid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                console.log(msg);
+                $('#moviemodal').modal('hide');
+                console.log('talk to me');
+                movies[movieid].newmovie=0;
+                var vname = '#movie'+movies[movieid]._id;
+                var vname2 = '#btitle'+movies[movieid]._id;
+                console.log('vname: '+vname);
+                $(vname2).css('color','#aaa');
+                $(vname).addClass('read');
+              });
+      }
+      //-----------------------------------//
+      function markmoviegood(movieid) {
+        $.ajax({
+              method: "POST",
+              url: "/markmoviegood/"+movies[movieid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#moviemodal').modal('hide');
+                var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
+                var vname = '#btitle'+movies[movieid]._id;
+                var vname2 = '#sm_hd'+movies[movieid]._id;
+                $(vname).prepend(insert);
+                $(vname2).css('margin-left','25px');
+                $(vname).css('margin-left','0px');
+                movies[movieid].goodmovie=0;
+              });
+      }
+      //-----------------------------------//
+      //-----------------------------------//
+      function removemovie(movieid) {
+        $.ajax({
+              method: "POST",
+              url: "/removemovie/"+movies[movieid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#moviemodal').modal('hide');
+                var vname = '#movie'+movies[movieid]._id;
+                $(vname).empty();
+                user.totalmovies--;
+                if(movies[movieid].newmovie){
+                  user.newmovie--;
+                }
+                  else{
+                    user.readmovies--;
                   }
               });
       }
