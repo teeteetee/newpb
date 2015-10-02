@@ -879,7 +879,7 @@ head
         else {
           var insert = 'markread('+i+')';
           $('.book_read').attr('onclick',insert);
-          $('.book_good').addClass('disabled');
+          $('.book_good').css('display','none');
         }
         if(books[i].goodbook){
           $('.book_good').css('display','none');
