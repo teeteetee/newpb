@@ -473,7 +473,6 @@ app.post('/removebook/:bid',function (req,res) {
         if(doc!=null){
         var rem_item={};
          var temp_arr;
-         var db_insert={};
          temp_arr = doc.bookstore;
          var temp_id;
          for(var i=0;i<temp_arr.length;i++){
@@ -483,15 +482,14 @@ app.post('/removebook/:bid',function (req,res) {
              break
            }
          }//forloop
-         db_insert['$set'] ={'bookstore':temp_arr};
          if(rem_item.newbook){
-          db_insert['$inc'] = {totalbooks:-1,newbooks:-1};
+         users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
+         res.send(ms);
          }
          else {
-          db_insert['$inc'] = {totalbooks:-1,readbooks:-1};
-         }
-         users.update({_id:req.session._id},db_insert);
+          users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,readbooks:-1}});
          res.send(ms);
+         }
        }
      }
 
