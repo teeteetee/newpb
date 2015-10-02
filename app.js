@@ -469,7 +469,7 @@ app.post('/removebook/:bid',function (req,res) {
           console.log(JSON.stringify(temp_arr[i]._id)+'\n'+req.params.bid+' '+typeof temp_arr[i]._id);
            if(JSON.stringify(temp_arr[i]._id) === JSON.stringify(req.params.bid) ){
              rem_item = temp_arr.splice(i, 1);
-             console.log('rem_item: '+rem_item);
+             console.log('rem_item: '+JSON.stringify(rem_item));
              break
            }
          }//forloop
