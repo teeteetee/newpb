@@ -459,6 +459,7 @@ app.post('/markread/:bid',function (req,res){
 });
 
 app.post('/removebook/:bid',function (req,res) {
+  console.log(req.params.bid+' '+typeof req.params.bid);
   if(req.session._id){
     var ms={};
     ms.trouble=0;
@@ -476,6 +477,7 @@ app.post('/removebook/:bid',function (req,res) {
          temp_arr = doc.bookstore;
          var temp_id;
          for(var i=0;i<temp_arr.length;i++){
+          console.log(typeof temp_arr[i]._id);
            if(temp_arr[i]._id === req.params.bid){
              rem_item = temp_arr.splice(i, 1);
              console.log('rem_item: '+rem_item);
