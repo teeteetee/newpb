@@ -330,30 +330,17 @@ head
         background-color:#2EA056;
         color:white;
       }
-      .btn-ioswarning {
-        border:1px solid #ec971f;
+      .btn-iosdark {
         background-color:white;
-        color:#ec971f;
+        border:1px solid #333;
+        color:#333;
       }
-      .btn-ioswarning.iosactive {
-        background-color:#ec971f;
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
         color:white;
       }
-      .btn-ioswarning:focus, .btn-ioswarning:active, .btn-ioswarning:hover {
-        background-color:#ec971f;
-        color:white;
-      }
-      .btn-iosprimary {
-        background-color:white;
-        border:1px solid #4197E2;
-        color:#4197E2;
-      }
-      .btn-iosprimary:focus, .btn-iosprimary:active, .btn-iosprimary:hover {
-        background-color:#4197E2;
-        color:white;
-      }
-      .btn-iosprimary.iosactive {
-        background-color:#4197E2;
+      .btn-iosdark.iosactive {
+        background-color:#333;
         color:white;
       }
       .medialeft > img {
@@ -494,8 +481,8 @@ head
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
-                button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've seen it             
+                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
+                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-success'  id='submitmovie') Submit
     .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -523,11 +510,11 @@ head
             .form-group(style='margin-top:49px;')
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
-                button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
+                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
+                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
               .btn-group(style='margin-bottom:100px;display:block;')
-                button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
-                button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction 
+                button(class='btn btn-iosdark iosactive' id='nonfiction' type='button') Nonfiction
+                button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction 
               //  
                 .well
                   .form-group
