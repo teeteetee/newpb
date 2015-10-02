@@ -1045,6 +1045,27 @@ head
               });
       }
       //-----------------------------------//
+      //-----------------------------------//
+      function removebook(bookid) {
+        $.ajax({
+              method: "POST",
+              url: "/removebook/"+books[bookid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#bookmodal').modal('hide');
+                var vname = '#book'+books[bookid]._id;
+                $(vname).empty();
+                user.totalbooks--;
+                if(books[bookid].newbook){
+                  user.newbook--;
+                }
+                  else{
+                    user.readbooks--;
+                  }
+              });
+      }
+      //-----------------------------------//
       $('#submitbook').click(function(){
         if($('#btitle').val() && $('#author0_name').val())
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
