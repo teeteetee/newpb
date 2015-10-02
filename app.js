@@ -490,25 +490,8 @@ app.post('/removebook/:bid',function (req,res) {
          else {
           db_insert['$inc'] = {totalbooks:-1,readbooks:-1};
          }
-         users.update({_id:req.session._id},db_insert,function (err,done){
-          if(err) {
-            console.log('err updating');
-          }
-          else {
-            console.log('done: '+done);
-            if(done.bookstore){
-              req.session.bookstore = done.bookstore;
-              req.session.readbooks = done.readbooks;
-              req.session.totalbooks = done.totalbooks;
-              req.session.newbooks = done.newbooks;
-              res.send(ms);
-            }
-            else {
-              console.log('update didnt return an object');
-              res.send(ms);
-            }
-          }
-         });
+         users.update({_id:req.session._id},db_insert});
+         res.send(ms);
        }
      }
 
