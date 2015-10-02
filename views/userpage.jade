@@ -1018,10 +1018,9 @@ head
                 $('#bookmodal').modal('hide');
                 console.log('talk to me');
                 books[bookid].newbook=0;
-                eval("$('#btitle"+books[bookid]._id+"').css('color','#aaa');");
-                console.log('talk to me pete '+books[bookid]._id);
-                eval("$('#book"+books[bookid]._id+"').addClass('read');");
-                console.log('talk to me pete you crazy fucking fool'+books[bookid]._id);
+                var vname = '#book'+books[bookid]._id;
+                $(vname).css('color','#aaa');
+                $(vname).addClass('read');
               });
       }
       //-----------------------------------//
