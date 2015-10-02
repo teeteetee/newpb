@@ -1016,11 +1016,11 @@ head
             })
               .done(function( msg ) {
                 console.log(msg);
-                var tmp_tst = '#bookmodal';
-                $(tmp_tst).modal('hide');
+                $('#bookmodal').modal('hide');
                 console.log('talk to me');
                 books[bookid].newbook=0;
                 var vname = '#book'+books[bookid]._id;
+                console.log('vname: '+vname;)
                 $(vname).css('color','#aaa');
                 $(vname).addClass('read');
               });
