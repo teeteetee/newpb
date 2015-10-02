@@ -107,9 +107,6 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      h4 {
-      color:gray;
-      }
       .thin {
       height:85%;
       }
@@ -229,20 +226,20 @@ head
               input(type="file" id='userpic' name='userpic' )
               p(class="help-block") Jpg images only
             button(class='btn btn-warning' type='button' id='picupload') Upload
-      .row.setrow(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           h4 Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Private
             button(type="button" class="btn btncorr btn-iosdark") Public
-      .row.setrow(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           h4 Allow users to send you messages straight away, or request to authorise chat first ? 
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Request
             button(type="button" class="btn btncorr btn-iosdark") No request
-      .row.setrow(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           button(class='btn btn-primary' id='setsub') Save
       //
         .row
