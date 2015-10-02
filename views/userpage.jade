@@ -888,6 +888,8 @@ head
           var insert = 'markgood('+i+')';
           $('.book_good').attr('onclick',insert);
         }
+        insert = 'removebook('+i+')';
+        $('.book_remove').attr('onclick',insert);
         $('.bookmodaltitle').text(modal_data_store[i].title);
         $('.bookmodalauthor').text(modal_data_store[i].author);
         $('#bookmodal').modal('show');
