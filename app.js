@@ -485,6 +485,7 @@ app.post('/markgood/:bid',function (req,res){
          });
        }
       }
+    }
       else {
         console.log('trouble finding the user');
        res.send(1);
