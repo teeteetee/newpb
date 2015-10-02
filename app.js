@@ -411,11 +411,14 @@ app.get('/settings',function (req,res){
 
 app.post('/markread/:bid',function (req,res){
   if(req.session._id){
+    var ms={};
+    ms.trouble=0;
     users.findOne({_id:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
-         res.send(1);
+         ms.trouble=1;
+         res.send(ms);
       }
       else {
         if(doc!=null){
@@ -428,15 +431,15 @@ app.post('/markread/:bid',function (req,res){
              temp_arr[i].newbook = 0;
              users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}},function(err,doc_upd){
               if(err)
-              {  
-                res.send(0);
-                console.log('err updating');
+              { console.log('err updating'); 
+                ms.trouble=1;
+                res.send(ms);
               }
               else {
                 req.session.bookstore = doc_upd.bookstore;
                 req.session.readbooks = doc_upd.readbooks;
                 req.session.newbooks = doc_upd.newbooks;
-                res.send(0);
+                res.send(ms);
               }
              });
            }
@@ -444,7 +447,8 @@ app.post('/markread/:bid',function (req,res){
         }
         else {
           console.log('trouble finding the user');
-         res.send(1);
+          ms.trouble=1;
+         res.send(ms);
         }
       }
     });
@@ -455,11 +459,14 @@ app.post('/markread/:bid',function (req,res){
 });
 
 app.post('/markgood/:bid',function (req,res){
+  var ms={};
+  ms.trouble=0;
   users.findOne({_id:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
-       res.send(1);
+      ms.trouble=1;
+       res.send(ms);
     }
     else {
      if(doc!=null){
@@ -475,12 +482,13 @@ app.post('/markgood/:bid',function (req,res){
            users.update({_id:req.session._id},{$set:{bookstore:temp_arr}},function(err,doc_upd){
               if(err)
               {  
-                res.send(0);
+                ms.trouble=1;
                 console.log('err updating');
+                res.send(ms);
               }
               else {
                 req.session.bookstore = doc_upd.bookstore;
-                res.send(0);
+                res.send(ms);
               }
          });
        }
@@ -488,7 +496,8 @@ app.post('/markgood/:bid',function (req,res){
     }
       else {
         console.log('trouble finding the user');
-       res.send(1);
+        ms.trouble=1;
+       res.send(ms);
       }
     }
   });
