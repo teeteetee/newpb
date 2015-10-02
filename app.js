@@ -447,6 +447,44 @@ app.post('/markread/:bid',function (req,res){
   }
 });
 
+app.post('/markseen/:mid',function (req,res){
+  if(req.session._id){
+    var ms={};
+    ms.trouble=0;
+    users.findOne({_id:req.session._id},function(err,doc){
+      if(err)
+      {
+       console.log('trouble finding the user');
+         ms.trouble=1;
+         res.send(ms);
+      }
+      else {
+        if(doc!=null){
+         var temp_arr;
+         temp_arr = doc.moviestore;
+         var temp_id;
+         for(var i=0;i<temp_arr.length;i++){
+            temp_id = JSON.stringify(temp_arr[i]._id);
+           if(temp_id === JSON.stringify(req.params.mid)){
+             temp_arr[i].newmovie = 0;
+             users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{seenmovies:1,newmovies:-1}});
+             res.send(ms);
+           }
+         }
+        }
+        else {
+          console.log('trouble finding the user');
+          ms.trouble=1;
+         res.send(ms);
+        }
+      }
+    });
+  }
+  else {
+    res.send('go away');
+  }
+});
+
 app.post('/removebook/:bid',function (req,res) {
   console.log(req.params.bid+' '+typeof req.params.bid);
   if(req.session._id){
