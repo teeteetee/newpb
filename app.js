@@ -490,7 +490,7 @@ app.post('/removebook/:bid',function (req,res) {
          else {
           db_insert['$inc'] = {totalbooks:-1,readbooks:-1};
          }
-         user.update({_id:req.session._id},db_insert,function (err,done){
+         users.update({_id:req.session._id},db_insert,function (err,done){
           if(err) {
             console.log('err updating');
           }
