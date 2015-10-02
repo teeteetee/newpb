@@ -184,6 +184,10 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
+      .setrow {
+        padding-top:20px;
+        padding-bottom:10px;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -217,28 +221,28 @@ head
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h3(style='font-weight:200;color:#ddd;') Settings     
-      .row
-        .col-xs-12
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h4 Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .form-group
               input(type="file" id='userpic' name='userpic' )
               p(class="help-block") Jpg images only
             button(class='btn btn-warning' type='button' id='picupload') Upload
-      .row(style='border-top:1px solid #eee;')
-        .col-xs-12
+      .row.setrow(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h4 Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Private
             button(type="button" class="btn btncorr btn-iosdark") Public
-      .row(style='border-top:1px solid #eee;')
-        .col-xs-12
+      .row.setrow(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h4 Allow users to send you messages straight away, or request to authorise chat first ? 
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Request
             button(type="button" class="btn btncorr btn-iosdark") No request
-      .row(style='border-top:1px solid #eee;')
-        .col-xs-12
+      .row.setrow(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           button(class='btn btn-primary' id='setsub') Save
       //
         .row
