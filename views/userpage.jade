@@ -1015,7 +1015,7 @@ head
             })
               .done(function( msg ) {
                 console.log(msg);
-                alert(msg);
+                $('#bookmodal').modal('hide');
                 books[bookid].newbook=0;
                 eval("$('#btitle"+bookid+"').css('color','#aaa');");
                 eval("$('#book"+bookid+"').addClass('read');");
@@ -1032,8 +1032,11 @@ head
               data: 0
             })
               .done(function( msg ) {
-                console.log(msg);
-                alert('markgood: '+msg);
+                $('#bookmodal').modal('hide');
+                var insert = "<span style='color:#37D6BB;'>&#8226;</span>";
+                eval("$('#title"+bookid+"').prepend(insert);");
+                eval("$('#title"+bookid+"').css('margin-left','0px');");
+                books[bookid].goodbook=0;
               });
       }
       //-----------------------------------//

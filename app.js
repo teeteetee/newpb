@@ -472,8 +472,16 @@ app.post('/markgood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodbook = 1;
-           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
-          res.send(0);
+           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}},function(err,doc_upd){
+              if(err)
+              {  
+                res.send(0);
+                console.log('err updating');
+              }
+              else {
+                req.session.bookstore = doc_upd.bookstore;
+                res.send(0);
+              });
          }
        }
       }
