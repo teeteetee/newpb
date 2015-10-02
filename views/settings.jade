@@ -163,7 +163,7 @@ head
         background-color:#333;
         color:white;
       }
-      .btn-iosdark.iosactive {
+      .btn-iosdark.active {
         background-color:#333;
         color:white;
       }
@@ -219,7 +219,7 @@ head
           h3(style='font-weight:200;color:#ddd;') Settings     
       .row
         .col-xs-12
-          h3 Userpic upload
+          h4 Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .form-group
               input(type="file" id='userpic' name='userpic' )
@@ -227,16 +227,16 @@ head
             button(class='btn btn-warning' type='button' id='picupload') Upload
       .row(style='border-top:1px solid #eee;')
         .col-xs-12
-          h3 Would you like your lists private?
+          h4 Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Private
             button(type="button" class="btn btncorr btn-iosdark") Public
       .row(style='border-top:1px solid #eee;')
         .col-xs-12
-          h3 Allow users to send you messages straight away, or request to authorise chat first ? 
+          h4 Allow users to send you messages straight away, or request to authorise chat first ? 
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-            button(type="button" class="btn btncorr btn-default active") Request
-            button(type="button" class="btn btncorr btn-default") No request
+            button(type="button" class="btn btncorr btn-iosdark active") Request
+            button(type="button" class="btn btncorr btn-iosdark") No request
       .row(style='border-top:1px solid #eee;')
         .col-xs-12
           button(class='btn btn-primary' id='setsub') Save
