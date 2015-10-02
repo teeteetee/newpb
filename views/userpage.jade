@@ -1017,7 +1017,7 @@ head
                 console.log(msg);
                 $('#bookmodal').modal('hide');
                 books[bookid].newbook=0;
-                eval("$('#btitle"+bookid+"').css('color','#aaa');");
+                eval("$('#btitle"+books[bookid]._id+"').css('color','#aaa');");
                 eval("$('#book"+books[bookid]._id+"').addClass('read');");
               });
       }
@@ -1031,9 +1031,9 @@ head
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
                 var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
-                eval("$('#btitle"+bookid+"').prepend(insert);");
+                eval("$('#btitle"+books[bookid]._id+"').prepend(insert);");
                 eval("$('#sm_hd"+books[bookid]._id+"').css('margin-left','25px');");
-                eval("$('#btitle"+bookid+"').css('margin-left','0px');");
+                eval("$('#btitle"+books[bookid]._id+"').css('margin-left','0px');");
                 books[bookid].goodbook=0;
               });
       }
