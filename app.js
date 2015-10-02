@@ -490,7 +490,7 @@ app.post('/removebook/:bid',function (req,res) {
          else {
           db_insert['$inc'] = {totalbooks:-1,readbooks:-1};
          }
-         users.update({_id:req.session._id},db_insert});
+         users.update({_id:req.session._id},db_insert);
          res.send(ms);
        }
      }
