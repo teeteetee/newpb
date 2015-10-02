@@ -471,7 +471,7 @@ app.post('/removebook/:bid',function (req,res) {
       }
       else {
         if(doc!=null){
-        var rem_item;
+        var rem_item={};
          var temp_arr;
          var db_insert={};
          temp_arr = doc.bookstore;
@@ -479,6 +479,7 @@ app.post('/removebook/:bid',function (req,res) {
          for(var i=0;i<temp_arr.length;i++){
            if(temp_arr[i]._id === req.params.bid){
              rem_item = temp_arr.splice(i, 1);
+             console.log('rem_item: '+rem_item);
              break
            }
          }//forloop
