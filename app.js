@@ -426,8 +426,19 @@ app.post('/markread/:bid',function (req,res){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.bid)){
              temp_arr[i].newbook = 0;
-             users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
-            res.send(0);
+             users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}},function(err,doc_upd){
+              if(err)
+              {  
+                res.send(0);
+                console.log('err updating');
+              }
+              else {
+                req.session.bookstore = doc_upd.bookstore;
+                req.session.readbooks = doc_upd.readbooks;
+                req.session.newbooks = doc_upd.newbooks;
+                res.send(0);
+              }
+             });
            }
          }
         }
