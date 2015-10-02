@@ -481,8 +481,8 @@ app.post('/markgood/:bid',function (req,res){
               else {
                 req.session.bookstore = doc_upd.bookstore;
                 res.send(0);
-              });
-         }
+              }
+         });
        }
       }
       else {
