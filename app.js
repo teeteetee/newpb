@@ -458,6 +458,65 @@ app.post('/markread/:bid',function (req,res){
   }
 });
 
+app.post('/removebook/:bid',function (req,res) {
+  if(req.session._id){
+    var ms={};
+    ms.trouble=0;
+    users.findOne({_id:req.session._id},function(err,doc){
+      if(err)
+      {
+       console.log('trouble finding the user');
+         ms.trouble=1;
+         res.send(ms);
+      }
+      else {
+        if(doc!=null){
+        var rem_item;
+         var temp_arr;
+         var db_insert;
+         temp_arr = doc.bookstore;
+         var temp_id;
+         for(var i=0;i<temp_arr.length;i++){
+           if(temp_arr[i]._id) === req.params.bid){
+             rem_item = temp_arr.splice(i, 1);
+             break
+           }
+         }//forloop
+         db_insert['$set'] ={'bookstore':temp_arr};
+         if(rem_item.newbook){
+          db_insert['$inc'] = {totalbooks:-1,newbooks:-1};
+         }
+         else {
+          db_insert['$inc'] = {totalbooks:-1,readbooks:-1};
+         }
+         user.update({_id:req.session._id},db_insert,function (err,done){
+          if(err) {
+            console.log('err updating');
+          }
+          else {
+            if(done.bookstore){
+              req.session.bookstore = done.bookstore;
+              req.session.readbooks = done.readbooks;
+              req.session.totalbooks = done.totalbooks;
+              req.session.newbooks = done.newbooks;
+              res.send(ms);
+            }
+            else {
+              console.log('update didnt return an object');
+              res.send(ms);
+            }
+          }
+         });
+       }
+     }
+
+         });
+  }
+    else {
+      res.send('go away');
+    }
+});
+
 app.post('/markgood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
