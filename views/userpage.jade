@@ -564,7 +564,7 @@ head
             span.icon-bar         
             span.icon-bar       
           a.navbar-brand(style='padding-top:5px;', href='/')
-            img(src='/images/october_pb_logo2.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
@@ -1020,8 +1020,9 @@ head
                 console.log('talk to me');
                 books[bookid].newbook=0;
                 var vname = '#book'+books[bookid]._id;
+                var vname2 = '#btitle'+books[bookid]._id;
                 console.log('vname: '+vname);
-                $(vname).css('color','#aaa');
+                $(vname2).css('color','#aaa');
                 $(vname).addClass('read');
               });
       }
@@ -1035,9 +1036,11 @@ head
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
                 var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
-                eval("$('#btitle"+books[bookid]._id+"').prepend(insert);");
-                eval("$('#sm_hd"+books[bookid]._id+"').css('margin-left','25px');");
-                eval("$('#btitle"+books[bookid]._id+"').css('margin-left','0px');");
+                var vname = '#btitle'+books[bookid]._id;
+                var vname2 = '#sm_hd'+books[bookid]._id;
+                $(vname).prepend(insert);
+                $(vname2).css('margin-left','25px');
+                $(vname).css('margin-left','0px');
                 books[bookid].goodbook=0;
               });
       }
