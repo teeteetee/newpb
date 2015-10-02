@@ -473,7 +473,7 @@ app.post('/removebook/:bid',function (req,res) {
         if(doc!=null){
         var rem_item;
          var temp_arr;
-         var db_insert;
+         var db_insert={};
          temp_arr = doc.bookstore;
          var temp_id;
          for(var i=0;i<temp_arr.length;i++){
