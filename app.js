@@ -495,6 +495,7 @@ app.post('/removebook/:bid',function (req,res) {
             console.log('err updating');
           }
           else {
+            console.log('done: '+done);
             if(done.bookstore){
               req.session.bookstore = done.bookstore;
               req.session.readbooks = done.readbooks;
