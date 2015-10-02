@@ -530,6 +530,51 @@ app.post('/removebook/:bid',function (req,res) {
     }
 });
 
+app.post('/removemovie/:mid',function (req,res) {
+  console.log(req.params.mid+' '+typeof req.params.mid);
+  if(req.session._id){
+    var ms={};
+    ms.trouble=0;
+    users.findOne({_id:req.session._id},function(err,doc){
+      if(err)
+      {
+       console.log('trouble finding the user');
+         ms.trouble=1;
+         res.send(ms);
+      }
+      else {
+        if(doc!=null){
+        var rem_item={};
+         var temp_arr;
+         temp_arr = doc.moviestore;
+         var temp_id;
+         for(var i=0;i<temp_arr.length;i++){
+          console.log(JSON.stringify(temp_arr[i]._id)+'\n'+req.params.mid+' '+typeof temp_arr[i]._id);
+           if(JSON.stringify(temp_arr[i]._id) === JSON.stringify(req.params.mid) ){
+             rem_item = temp_arr.splice(i, 1);
+             console.log('rem_item: '+JSON.stringify(rem_item));
+             break
+           }
+         }//forloop
+         console.log('newmovie: '+rem_item.newmovie);
+         if(rem_item[0].newmovie){
+         users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,newmovies:-1}});
+         res.send(ms);
+         }
+         else {
+          users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,seenmovies:-1}});
+         res.send(ms);
+         }
+       }
+     }
+
+         });
+  }
+    else {
+      res.send('go away');
+    }
+});
+
 app.post('/markbookgood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
