@@ -474,7 +474,7 @@ app.post('/removebook/:bid',function (req,res) {
            }
          }//forloop
          console.log('newbook: '+rem_item.newbook);
-         if(rem_item.newbook){
+         if(rem_item[0].newbook){
          users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
          res.send(ms);
          }
