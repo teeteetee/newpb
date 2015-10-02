@@ -477,7 +477,7 @@ app.post('/removebook/:bid',function (req,res) {
          temp_arr = doc.bookstore;
          var temp_id;
          for(var i=0;i<temp_arr.length;i++){
-           if(temp_arr[i]._id) === req.params.bid){
+           if(temp_arr[i]._id === req.params.bid){
              rem_item = temp_arr.splice(i, 1);
              break
            }
