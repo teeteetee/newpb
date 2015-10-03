@@ -201,6 +201,25 @@ head
         margin-top:20px;
         font-weight:200;
       }
+      .btn-file {
+          position: relative;
+          overflow: hidden;
+      }
+      .btn-file input[type=file] {
+          position: absolute;
+          top: 0;
+          right: 0;
+          min-width: 100%;
+          min-height: 100%;
+          font-size: 100px;
+          text-align: right;
+          filter: alpha(opacity=0);
+          opacity: 0;
+          outline: none;
+          background: white;
+          cursor: inherit;
+          display: block;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -242,6 +261,14 @@ head
               input(type="file" id='userpic' name='userpic' )
               p(class="help-block") Jpg images only
             button(class='btn btn-iosdark' type='button' id='picupload') Upload
+          .input-group
+            span.input-group-btn
+              span.btn.btn-default.btn-file Browse&hellip; 
+               input(type="file" multiple)
+            input(type="text" class="form-control" readonly)
+            span.help-block Jpg images only
+    Browse <input type="file">
+    Browse <input type="file">
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           h4 Would you like your lists private?
@@ -332,3 +359,10 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
+      $(document).on('change', '.btn-file :file', function() {
+          //var input = $(this),
+          //    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+          //    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+          //input.trigger('fileselect', [numFiles, label]);
+          alert('get');
+      });
