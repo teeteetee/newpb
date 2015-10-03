@@ -293,9 +293,12 @@ head
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" class="btn btncorr btn-iosdark active") Request
             button(type="button" class="btn btncorr btn-iosdark") No request
-      .row.setrow
+      .row.setrow.visible-lg.visible-md.visible-sm
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
-          button(class='btn btn-primary' id='setsub') Save
+          button(class='btn btn-primary setsub') Save
+      .row.setrow.visible-xs
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;text-align:center;')
+          button(class='btn btn-primary setsub') Save
       //
         .row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
@@ -347,7 +350,7 @@ head
          $('#picform').submit();
        }
         });
-      $('#setsub').click(setsubmit);
+      $('.setsub').click(setsubmit);
       function setsubmit() {
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
