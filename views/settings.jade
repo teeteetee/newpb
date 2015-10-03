@@ -188,6 +188,14 @@ head
         text-transform:uppercase;
         letter-spacing:2px;
       }
+       .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2988DA;
+        background-color:#2988DA;
+      }
+      .btn-primary{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
   body
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
@@ -228,7 +236,7 @@ head
             .form-group
               input(type="file" id='userpic' name='userpic' )
               p(class="help-block") Jpg images only
-            button(class='btn btn-warning' type='button' id='picupload') Upload
+            button(class='btn btn-iosdark' type='button' id='picupload') Upload
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           h4 Would you like your lists private?
