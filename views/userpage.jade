@@ -356,6 +356,14 @@ head
         background-color:#4197E2;
         color:white;
       }
+      .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2E98F3;
+        background-color:#2E98F3;
+      }
+      .btn-primary{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
       .medialeft > img {
         width:64px !important;
         height:64px !important;
@@ -501,7 +509,7 @@ head
                 button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
                 button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
-            button(class='btn btn-success'  id='submitmovie') Submit
+            button(class='btn btn-primary'  id='submitmovie') Submit
     .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -557,7 +565,7 @@ head
                     button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
                     button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
           .modal-footer(style='text-align:center;')
-            button(class='btn btn-success'  id='submitbook') Submit
+            button(class='btn btn-primary'  id='submitbook') Submit
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container-fluid
         // Brand and toggle get grouped for better mobile display
