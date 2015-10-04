@@ -215,28 +215,16 @@ head
         padding-top:3px;
         padding-bottom:3px;
       }
-      .btn-darkdefault{
-       background:none;
-       border:1px solid #ddd;
-       color:white;
-      }
-      .btn-darkwarning{
-       background:none;
-       border:1px solid #ff9900;
-       color:#ff9900;
-      }
-      .btn-darkdanger{
-       background:none;
-       border:1px solid red;
-       color:red;
-      }
-      .btn-darkprimary{
-       background:none;
-       border:1px solid  #00C3FF;;
-       color: #00C3FF;;
-      }
       .btn.focus, .btn:focus, .btn:hover {
           text-decoration: none;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.iosactive {
+        background-color:#333;
+        color:white;
       }
       .btn-ioslooklike {
        border:1px solid #ccc;
@@ -303,6 +291,14 @@ head
         text-transform:uppercase;
         letter-spacing:2px;
        }
+       .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2988DA;
+        background-color:#2988DA;
+       }
+       .btn-primary{
+         background-color:#2E98F3;
+         border-color:#2E98F3;
+       }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -326,10 +322,10 @@ head
               .col-xs-12
                 h4 Gender:
                 .btn-group(role="group" aria-label="...")
-                  button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
-                  button(type="button" id='female' class="btn btn-ioslooklike") Female
+                  button(type="button" id='male' class="btn btn-iosdark active") Male
+                  button(type="button" id='female' class="btn btn-iosdark") Female
           .modal-footer(style='text-align:center;')
-            button(type="button" class="btn btn-lg btn-success" data-dismiss="modal" id='runreg') Done
+            button(type="button" class="btn btn-lg btn-primary" data-dismiss="modal" id='runreg') Done
      // 
       nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
         .container-fluid
