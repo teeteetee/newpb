@@ -422,7 +422,7 @@ head
       #smallscreens h3 {
         font-size:18px;
       }
-  body
+  body(style='background-color:#eee;')
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -596,11 +596,11 @@ head
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/logout') Logout
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;border-left:1px solid #eee;border-right:1px solid #eee;')
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    .container#main(style='padding-top:50px;')
+    .container#main(style='padding-top:50px;height:100%;background-color:white;')
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
           h2(style='margin-top:30px;' class='usernick')  ...
