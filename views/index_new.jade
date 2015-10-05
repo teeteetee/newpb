@@ -309,8 +309,12 @@ head
                   button(type="button" id='male' class="btn btn-iosdark active") Male
                   button(type="button" id='female' class="btn btn-iosdark") Female
           .modal-footer(style='text-align:center;')
-            button(type="button" class="btn btn-lg btn-primary runreg visible-xs" data-dismiss="modal") Done
-            button(type="button" class="btn btn-primary runreg visible-lg visible-md visible-sm" data-dismiss="modal") Done
+            .row
+              .col-xs-12.visible-xs
+                button(type="button" class="btn btn-lg btn-primary runreg" data-dismiss="modal") Done
+            .row.visible-lg.visible-md.visible-sm
+              .col-xs-12
+                button(type="button" class="btn btn-primary runreg" data-dismiss="modal") Done
      // 
       nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
         .container-fluid
