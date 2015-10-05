@@ -381,3 +381,10 @@ head
           //input.trigger('fileselect', [numFiles, label]);
           alert('get');
       });
+      $(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+            //console.log(numFiles);
+            //console.log(label);
+            $('#picform').submit();
+        });
+    });
