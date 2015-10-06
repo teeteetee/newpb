@@ -607,6 +607,11 @@ head
           button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
             span(class='glyphicon glyphicon-plus')  
             | Add item
+          ul.nav.nav-pills
+            li.active.showbooks(role='presentation')
+              a(href='#') Books                 
+            li.showmovies(role='presentation')
+              a(href='#') Movies 
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -626,20 +631,21 @@ head
                   | - обратить внимание
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.visible-md.visible-lg(style='margin-bottom:10px;')
-                .col-xs-12
-                  ul.nav.nav-pills
-                    li.active.showbooks(role='presentation')
-                      a(href='#') Books                 
-                    li.showmovies(role='presentation')
-                      a(href='#') Movies                          
-              .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
-                .col-xs-12.centered-pills
-                  ul.nav.nav-pills
-                    li.active.showbooks(role='presentation')
-                      a(href='#') Books                 
-                    li.showmovies(role='presentation')
-                      a(href='#') Movies  
+              //
+                .row.visible-md.visible-lg(style='margin-bottom:10px;')
+                  .col-xs-12
+                    ul.nav.nav-pills
+                      li.active.showbooks(role='presentation')
+                        a(href='#') Books                 
+                      li.showmovies(role='presentation')
+                        a(href='#') Movies                          
+                .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
+                  .col-xs-12.centered-pills
+                    ul.nav.nav-pills
+                      li.active.showbooks(role='presentation')
+                        a(href='#') Books                 
+                      li.showmovies(role='presentation')
+                        a(href='#') Movies  
               .row.mrow
                 .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
                   .nomovies.row(style='text-align:center;')  
@@ -779,7 +785,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span style='color:#37D6BB;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span style='color:#2E98F3;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
