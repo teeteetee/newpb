@@ -44,6 +44,9 @@ head
       .book .col-xs-12 {
       border-bottom: 1px solid #eee;
       }
+      .new{
+        border-left:10px solid #333;
+      }
       #booklist {
       border-top-right-radius:10px;
       border-bottom-right-radius:10px;
@@ -90,7 +93,7 @@ head
       #mainframe {
       margin-top:0px;
       }
-      .book{
+      .new{
         border-color:#4197e2;
       }
       #bigscreens .book {
@@ -808,7 +811,7 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('2st case');
-              insert = "<div class='row book' id='book"+books[i]._id+"' style='border-left:10px solid #333;' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book new' id='book"+books[i]._id+"' style='border-left:10px solid #333;' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
