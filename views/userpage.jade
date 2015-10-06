@@ -608,21 +608,22 @@ head
             span(class='glyphicon glyphicon-plus')  
             | Add item
           ul(class="nav nav-pills" style='margin-top:20px;')
-            li(role="presentation" class='active') 
+            li.showbooks.active(role="presentation") 
               a(href="#") Books
                 span(class='badge' style='margin-left:10px;') 143
-            li(role="presentation") 
+            li.showmovies(role="presentation") 
               a(href="#") Movies
                 span(class='badge' style='margin-left:10px;') 561
-      .row
-        .col-xs-12.centered-pills
-          ul(class="nav nav-pills" style='margin-top:20px;')
-            li(role="presentation" class='active') 
-              a(href="#") Books
-                span(class='badge' style='margin-left:10px;') 143
-            li(role="presentation") 
-              a(href="#") Movies
-                span(class='badge' style='margin-left:10px;') 561
+      //
+        .row
+          .col-xs-12.centered-pills
+            ul(class="nav nav-pills" style='margin-top:20px;')
+              li(role="presentation" class='active') 
+                a(href="#") Books
+                  span(class='badge' style='margin-left:10px;') 143
+              li(role="presentation") 
+                a(href="#") Movies
+                  span(class='badge' style='margin-left:10px;') 561
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
