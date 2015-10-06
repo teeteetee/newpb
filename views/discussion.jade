@@ -243,7 +243,7 @@ head
       #avatars {
         margin-bottom:20px;
       }
-  body
+  body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
         // Brand and toggle get grouped for better mobile display
@@ -272,7 +272,7 @@ head
             li
               a(href='/logout') Logout
     //.container(style='padding-top:70px;height:100vh;display:flex;flex-direction: column;')
-    .container(style='padding-top:70px;height:100vh;')
+    .container(style='padding-top:70px;height:100%;background-color:white;')
       .row
         .col-md-8.col-md-offset-2.col-sm-12#avatars
       .row#mcont(style='overflow:auto;')
