@@ -41,8 +41,8 @@ head
       .book h4 {
       color:black;
       }
-      .book {
-      border-bottom:1px solid #eee;
+      .book .col-xs-12 {
+      border-bottom: 1px solid #eee;
       }
       #booklist {
       border-top-right-radius:10px;
@@ -389,7 +389,6 @@ head
         font-weight:200;
       }
       .read {
-        background-color:#f7f7f7;
       }
       .mrow {
         display:none;
@@ -617,13 +616,14 @@ head
               button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
                 span(class='glyphicon glyphicon-plus')  
                 | Add item
-          #legend.row(style='text-align:center;')
-            .col-xs-12
-              h4(style='color:#ddd;') Легенда:
-                span(style='color:#2988DA;') Новое 
-                span(style='color:#333;') &#124; Старое  &#124;
-                span(style='color:#37D6BB;margin-right:6px;') &#8226;
-                | - обратить внимание
+          //
+            #legend.row(style='text-align:center;')
+              .col-xs-12
+                h4(style='color:#ddd;') Легенда:
+                  span(style='color:#2988DA;') Новое 
+                  span(style='color:#333;') &#124; Старое  &#124;
+                  span(style='color:#37D6BB;margin-right:6px;') &#8226;
+                  | - обратить внимание
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
@@ -779,7 +779,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='color:#aaa;'><span style='color:#37D6BB;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span style='color:#37D6BB;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -787,7 +787,7 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('2st case');
-              insert = "<div class='row book' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book' id='book"+books[i]._id+"' style='border-left:10px solid #333;' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
