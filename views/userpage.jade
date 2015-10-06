@@ -1093,9 +1093,12 @@ head
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
+                var insert = "<span class='dot-sm'>&#8226;</span>";
+                var insert2 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
                 var vname = '#btitle'+books[bookid]._id;
                 var vname2 = '#sm_hd'+books[bookid]._id;
+                var vname3 = '#book'+books[bookid]._id;
+                $(vname3).prepend(insert2);
                 $(vname).prepend(insert);
                 $(vname2).css('margin-left','25px');
                 $(vname).css('margin-left','0px');
