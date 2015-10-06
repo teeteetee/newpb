@@ -243,6 +243,12 @@ head
       #avatars {
         margin-bottom:20px;
       }
+      #smallkeypad{
+        position:fixed;
+        bottom:0px;
+        padding-top:5px;
+        padding-bottom:5px;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -278,10 +284,15 @@ head
       .row#mcont(style='overflow:auto;')
         .col-md-8.col-md-offset-2.col-sm-12#messages
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
-      .row#keypad(style='margin-top:10px')
+      .row.visible-lg.visible-md.visible-sm#keypad(style='margin-top:10px')
         .col-md-8.col-md-offset-2.col-sm-12
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
+      .row#smallkeypad.visible-xs
+        .col-xs-12
+          form(class="form-inline")
+            input(type="text" class="form-control")
+            button(type="button" class="btn btn-primary") Send
       //
         .row(style=' flex: 0.6;display: flex;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#avatars
