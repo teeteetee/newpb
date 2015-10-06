@@ -607,9 +607,13 @@ head
           button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
             span(class='glyphicon glyphicon-plus')  
             | Add item
-          p 
-            a(class='disabled') Books
-            a Movies
+          ul(class="nav nav-pills")
+            li(role="presentation") 
+              a(href="#")Books
+                span(class='badge') 43
+            li(role="presentation" class="disabled") 
+              a(href="#") Movies
+                span(class='badge') 43
         //
           ul.nav.nav-pills
             li.active.showbooks(role='presentation')
