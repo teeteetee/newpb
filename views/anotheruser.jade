@@ -506,10 +506,10 @@ head
           ul(class="nav nav-pills" style='margin-top:20px;')
             li.showbooks.active(role="presentation") 
               a(href="#") Books
-                span(class='badge' style='margin-left:10px;') 143
+                span(class='badge booknum' style='margin-left:10px;') 143
             li.showmovies(role="presentation") 
               a(href="#") Movies
-                span(class='badge' style='margin-left:10px;') 561
+                span(class='badge movienum' style='margin-left:10px;') 561
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -523,9 +523,9 @@ head
                 .col-xs-12
                   .btn-group(style='margin-top:10px;margin-bottom:10px;')
                     .btn.btn-default.active.showbooks(type='button') Books
-                      span(class='badge' style='margin-left:10px;') 130
+                      span(class='badge booknum' style='margin-left:10px;') 130
                     .btn.btn-default.showmovies(type='button') Movies
-                      span(class='badge' style='margin-left:10px;') 561
+                      span(class='badge movienum' style='margin-left:10px;') 561
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-lg.visible-md.visible-sm
@@ -544,6 +544,8 @@ head
     script(src='/js/bootstrap.min.js')     
     script.
       var user = !{JSON.stringify(doc)};
+      $('.booknum').text(user.readbooks);
+      $('.movienum').text(user.seenmovies);
       var unfollow =#{unfollow};
       if(unfollow) {
         $('.follow').text('Unfollow');
@@ -562,7 +564,7 @@ head
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
         $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
       }
-      $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
