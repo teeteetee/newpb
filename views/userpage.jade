@@ -376,8 +376,15 @@ head
       padding-bottom:10px;
       }
       .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-        color:#333 ;
+        color:white ;
         background-color:#ddd ;
+      }
+      .nav-pills>li>a badge {
+        color:white;
+        background-color:#c7c6c6;
+      }
+      .nav-pills>li.active>a .badge {
+        color:#c7c6c6;
       }
       h3 {
         font-weight:200;
@@ -610,10 +617,10 @@ head
           ul(class="nav nav-pills" style='margin-top:20px;')
             li(role="presentation" class='active') 
               a(href="#") Books
-                span(class='badge') 143
+                span(class='badge' style='margin-left:10px;') 143
             li(role="presentation") 
               a(href="#") Movies
-                span(class='badge') 561
+                span(class='badge' style='margin-left:10px;') 561
         //
           ul.nav.nav-pills
             li.active.showbooks(role='presentation')
