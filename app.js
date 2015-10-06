@@ -1371,7 +1371,6 @@ app.get('/u/:nick', function (req,res){
             if(doc){
               if(doc.pub)
               {var unfollow=0;
-               delete doc.bookstore;
                delete doc.phr;
                if(req.session.userstore ) {
                for(var i=0;i<req.session.userstore.length;i++){
