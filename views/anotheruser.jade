@@ -17,6 +17,14 @@ head
 
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      #userimg {
+      width:100%;
+      max-width:200px;
+      margin:30px;
+      margin-left:50px;
+      margin-right:50px;
+      display:block;
+      }
       #emptyavatar {
       width:193px;
       height:193px;
@@ -27,22 +35,17 @@ head
       bakcground-color:white;
       border-radius:50%;
       }
-      #userimg {
-      width:100%;
-      max-width:200px;
-      margin:30px;
-      margin-left:50px;
-      margin-right:50px;
-      display:block;
-      }
       .emptybook {
       padding-left:23px;
       }
       .book h4 {
       color:black;
       }
-      .book {
-      border-bottom:1px solid #eee;
+      .book .col-xs-12 {
+      border-bottom: 1px solid #eee;
+      }
+      .new{
+        border-left:10px solid #333;
       }
       #booklist {
       border-top-right-radius:10px;
@@ -58,8 +61,36 @@ head
       #signup {
         padding-top:50px;
         padding-bottom:100px;
+      } 
+      .dot-sm {
+        color:#2E98F3;
+        margin-right:6px;
+      }
+      @media (max-width: 992px) {
+      #emptyavatar2 {
+        margin:10px;
+        height:130px;
+        width:130px;
+      }
+      #userimg2 {
+      height:130px;
+      width:130px;
+      margin:10px;
+      }
+      #booklist {
+      border-bottom-left-radius:10px;
+      }
+      .things{
+      padding-top:50px;
+      }
+      .list {
+      padding-top:50px;
+      }
       }
       @media (max-width: 767px) {
+      .dot-sm {
+        color:white;
+      }
       li a {
         font-size:20px;
         letter-spacing:1px;
@@ -68,6 +99,9 @@ head
       }
       #mainframe {
       margin-top:0px;
+      }
+      .new{
+        border-color:#4197e2;
       }
       #bigscreens .book {
       border-bottom:1px solid #eee;
@@ -94,27 +128,6 @@ head
       }
       #signup {
         background-color:#333;
-      }
-      }
-      @media (max-width: 992px) {
-      #emptyavatar {
-      height:130px;
-      width:130px;
-      margin:10px;
-      }
-      #userimg {
-      height:130px;
-      width:130px;
-      margin:10px;
-      }
-      #booklist {
-      border-bottom-left-radius:10px;
-      }
-      .things{
-      padding-top:50px;
-      }
-      .list {
-      padding-top:50px;
       }
       }
       @font-face {
@@ -164,14 +177,9 @@ head
       -moz-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       }
-      .btn {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .btn-success {
-      background-color:#23BBA7;
-      }
       .btn-success:hover {
-      background-color:#1F9E8E;
+      background-color:#33AF5F;
+      border:1px solid #33AF5F;
       } 
       a:hover, a:focus, a:active {
         text-decoration:none !important;
@@ -253,7 +261,7 @@ head
           transform: rotate(360deg);
         }
       }
-      #autocomp {
+      .autocomp {
       display:none;
       background-color: white;
       border-radius: 3px;
@@ -275,9 +283,6 @@ head
       .sritem {
         padding-top:3px;
         padding-bottom:3px;
-      }
-      .book > button {
-      vertical-align:super;
       }
       #testinsert {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -313,33 +318,42 @@ head
        border:1px solid  #00C3FF;;
        color: #00C3FF;;
       }
-      .btn-darksuccess{
-        background:none;
-        color:#00FF95;
-        border:1px solid #00FF95;
-      }
       .btn.focus, .btn:focus, .btn:hover {
           text-decoration: none;
       }
-      .btn-ioslooklike {
-       border:1px solid #ccc;
-       color:#ccc;
+      .btn-default{
+       border:1px solid #ccc !important;
+       color:#bbb;
        background:none;
       }
-      .iosactive {
+      .btn-default.active {
         background-color:#ccc;
         color:white;
       }
-      .iosactive:hover{
-        color:#ff9900;
+      .btn-default:focus, .btn-default:active, .btn-default:hover {
+        color:inherit;
+        background-color:inherit;
       }
-      .btn-ioswarning {
-        border:1px solid #ec971f;
+      .btn-success {
+        border:1px solid #3ACA6D;
+        background-color:#3ACA6D;
+        color:white;
+      }
+      .btn-success:focus, .btn-success:active, .btn-success:hover {
+        background-color:#2EA056;
+        color:white;
+      }
+      .btn-iosdark {
         background-color:white;
-        color:#ec971f;
+        border:1px solid #333;
+        color:#333;
       }
-      .btn-ioswarning.iosactive {
-        background-color:#ec971f;
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.iosactive {
+        background-color:#333;
         color:white;
       }
       .btn-iosprimary {
@@ -355,6 +369,14 @@ head
         background-color:#4197E2;
         color:white;
       }
+      .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2988DA;
+        background-color:#2988DA;
+      }
+      .btn-primary{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
       .medialeft > img {
         width:64px !important;
         height:64px !important;
@@ -367,8 +389,19 @@ head
       padding-bottom:10px;
       }
       .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-        color:#333 ;
+        color:white ;
         background-color:#ddd ;
+      }
+      .nav-pills>li>a .badge {
+        font-weight:500;
+        color:white;
+        background-color:#c7c6c6;
+      }
+      .nav-pills>li>a {
+        color:#c7c6c6;
+      }
+      .nav-pills>li.active>a .badge {
+        color:#c7c6c6;
       }
       h3 {
         font-weight:200;
@@ -379,15 +412,44 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
-      .btn-success {
-        border:1px solid #3ACA6D;
-        background-color:#3ACA6D;
-        color:white;
+      .read {
       }
-      .btn-success:focus, .btn-success:active, .btn-success:hover {
-        background-color:#3EAF66;
-        border-color:#3EAF66;
+      .btn-default .badge {
+        background-color:white;
+        color:#c7c6c6;
+        font-weight:500;
+      }
+      .btn-default .active .badge {
+        background-color:white;
+        color:#c7c6c6;
+      }
+       .btn-default.active:focus, .btn-default.active:hover {
         color:white;
+       }
+      .mrow {
+        display:none;
+      }
+      .btn.active, .btn:active {
+        -webkit-box-shadow:none;
+        box-shadow:none;
+      }
+      .centered-pills { text-align:center; }
+      .centered-pills ul.nav-pills { display:inline-block; }
+      .centered-pills li { display:inline; }
+      .centered-pills a { float:left; }
+      * html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+      *+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+      .btn {
+        text-transform:uppercase;
+        letter-spacing:2px;
+      }
+      #smallscreens h3 {
+        font-size:18px;
+      }
+      .dot {
+       position: absolute;
+       margin-top: 8px;
+       left: 10px;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -435,24 +497,33 @@ head
     .container#main(style='padding-top:50px;height:100%;background-color:white;')
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
-          h2(style='margin-top:30px;' class='usernick')  ????
-          h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
+          h2(style='margin-top:30px;' class='usernick')  ????           
           .btn-group
             button.btn.btn-iosprimary.follow(type='button' style='margin-bottom:20px;') 
               span.glyphicon.glyphicon-user 
               | Follow
             button.btn.btn-iosprimary.chatwith Chat
+          ul(class="nav nav-pills" style='margin-top:20px;')
+            li.showbooks.active(role="presentation") 
+              a(href="#") Books
+                span(class='badge' style='margin-left:10px;') 143
+            li.showmovies(role="presentation") 
+              a(href="#") Movies
+                span(class='badge' style='margin-left:10px;') 561
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
-              h3.usernick(style='margin-top:10px;') ????                      
-              h4.numbers                 
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                          
               .btn-group
                 button.btn.btn-iosprimary.follow(type='button' style='margin-bottom:20px;') 
                   span.glyphicon.glyphicon-user 
                   | Follow
                 button.btn.btn-iosprimary.chatwith Chat
+              .btn-group(style='margin-top:10px;margin-bottom:10px;')
+                .btn.btn-default.active.showbooks(type='button') Books
+                  span(class='badge' style='margin-left:10px;') 130
+                .btn.btn-default.showmovies(type='button') Movies
+                  span(class='badge' style='margin-left:10px;') 561
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-md.visible-lg(style='margin-bottom:10px;')
@@ -497,11 +568,11 @@ head
       $('.chatwith').attr('onclick',tmp_string);
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
+        $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
@@ -596,13 +667,13 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+msg._id+"' style='color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book new'><div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+msg._id+"' style='color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
               modal_data_store.push(thisbook);
               break
-              case(books[i].newbook&&!books[i].goodbook):
+              case(!books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
               insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal("+i+");'><h3 id='title"+msg._id+"' style='margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
