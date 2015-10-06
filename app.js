@@ -709,6 +709,11 @@ app.get('/clearbooks',function (req,res){
   res.redirect('/');
 });
 
+app.get('/setbooks',function (req,res){
+  users.update({_id:req.session._id},{$set:{bookstore:[]}});
+  res.redirect('/');
+});
+
 app.get('/clearmovies',function (req,res){
   users.update({_id:req.session._id},{$unset:{moviestore:[]},$set:{totalmovies:0,seenmovies:0,newmovies:0}});
   res.redirect('/');
