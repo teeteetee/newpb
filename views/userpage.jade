@@ -62,6 +62,10 @@ head
         padding-top:50px;
         padding-bottom:100px;
       } 
+      .dot-sm {
+        color:#2E98F3;
+        margin-right:6px;
+      }
       @media (max-width: 992px) {
       #emptyavatar2 {
         margin:10px;
@@ -84,7 +88,7 @@ head
       }
       }
       @media (max-width: 767px) {
-      h3 span {
+      .dot-sm {
         color:white;
       }
       li a {
@@ -828,7 +832,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span style='color:#2E98F3;margin-right:6px;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
