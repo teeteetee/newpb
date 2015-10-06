@@ -291,10 +291,9 @@ head
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
       .row#smallkeypad.visible-xs
-        .col-xs-12
-          form(class="form-inline")
-            input(type="text" class="form-control")
-            button(type="button" class="btn btn-primary") Send
+        .col-xs-12.form-inline
+          input(type="text" class="form-control")
+          button(type="button" class="btn btn-primary") Send
       //
         .row(style=' flex: 0.6;display: flex;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#avatars
