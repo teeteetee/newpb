@@ -251,6 +251,14 @@ head
         padding-top:5px;
         padding-bottom:5px;
       }
+      .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2988DA;
+        background-color:#2988DA;
+      }
+      .btn-primary{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -291,9 +299,11 @@ head
           textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
           button(class='btn btn-default' id='sendmsg') Отправить
       .row#smallkeypad.visible-xs
-        .col-xs-12.form-inline
-          input(type="text" class="form-control")
-          button(type="button" class="btn btn-primary") Send
+        .col-xs-12
+          .input-group
+            input(type="text" class="form-control")
+            span(class="input-group-btn")
+              button(class="btn btn-primary" type="button") Send
       //
         .row(style=' flex: 0.6;display: flex;flex-direction: column;')
         .col-md-8.col-md-offset-2.col-sm-12#avatars
