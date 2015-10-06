@@ -259,6 +259,11 @@ head
         background-color:#2E98F3;
         border-color:#2E98F3;
       }
+      .form-control:focus {
+       border-color: white;
+       outline: 0px none;
+       box-shadow: none;
+       }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -296,12 +301,12 @@ head
           h2#empty(style='color:#ddd;text-align:center;margin-top:100px;') No messages
       .row.visible-lg.visible-md.visible-sm#keypad(style='margin-top:10px')
         .col-md-8.col-md-offset-2.col-sm-12
-          textarea(id='gettext' class='form-control' style='margin-bottom:15px;')
-          button(class='btn btn-default' id='sendmsg') Отправить
+          textarea(id='gettext-lg' class='form-control txtfield' style='margin-bottom:15px;')
+          button(class='btn btn-default sendmsg') Отправить
       .row#smallkeypad.visible-xs
         .col-xs-12
           .input-group
-            input(type="text" class="form-control")
+            input(type="text" class="form-control txtfield" id='gettext-sm')
             span(class="input-group-btn")
               button(class="btn btn-primary" type="button") Send
       //
@@ -320,7 +325,7 @@ head
       //$('#gettext').focus(function(){
       //  $('.attention').removeClass('attention');
       //  });
-      $('#sendmsg').click(sendmsg);
+      $('.sendmsg').click(sendmsg);
       var discid = '#{discid}';
       var tmstmp = 0;
       getdisc(discid);
@@ -380,7 +385,18 @@ head
       console.log('msg sendin'); 
       //var rcvr = #{rcvrid}; 
       var sndr = '#{user}';
-      var txtbody = $('#gettext').val();
+      var txtbody; 
+      if($('#gettext-lg').val()){
+        txtbody = $('#gettext-lg').val();
+      }
+      else {
+        if(!$('#gettext-sm').val();){
+          break
+        }
+        else {
+          txtbody=$('#gettext-sm').val();
+        }
+      }
       console.log(txtbody);
       sndrequest = new XMLHttpRequest();
       sndrequest.onreadystatechange = function () {
@@ -394,7 +410,7 @@ head
       alert('trouble');
       }
       else {
-         $('#gettext').val('');
+         $('.txtfield').val('');
          if($('#messages').find('#empty').length){
           $('#messages').empty();
         }
