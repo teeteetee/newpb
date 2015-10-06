@@ -417,7 +417,7 @@ head
       .btn-default .badge {
         background-color:white;
         color:#c7c6c6;
-        font-weight:500;
+        font-weight:400;
       }
       .btn-default .active .badge {
         background-color:white;
@@ -519,11 +519,13 @@ head
                   span.glyphicon.glyphicon-user 
                   | Follow
                 button.btn.btn-iosprimary.chatwith Chat
-              .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                .btn.btn-default.active.showbooks(type='button') Books
-                  span(class='badge' style='margin-left:10px;') 130
-                .btn.btn-default.showmovies(type='button') Movies
-                  span(class='badge' style='margin-left:10px;') 561
+              .row 
+                .col-xs-12
+                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
+                    .btn.btn-default.active.showbooks(type='button') Books
+                      span(class='badge' style='margin-left:10px;') 130
+                    .btn.btn-default.showmovies(type='button') Movies
+                      span(class='badge' style='margin-left:10px;') 561
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.visible-lg.visible-md.visible-sm
