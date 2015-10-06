@@ -508,10 +508,9 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-             var count_b;
-       var count_m;
-      var books=user.bookstore;
-      if(!books) {
+       //------------------//
+       var books=user.bookstore;
+      if(!books.length) {
        console.log('no books');
        }
        else {
@@ -519,13 +518,14 @@ head
         getbooks(books,count_b);
        }
        var movies=user.moviestore;
-      if(!movies) {
+      if(!movies.length) {
        console.log('no movies');
        }
        else {
         var count_m = movies.length-1;
         getmovies(movies,count_m);
        }
+       //------------------//
       var booktmstmp;
       function gettimestamp() {
         $.ajax({
