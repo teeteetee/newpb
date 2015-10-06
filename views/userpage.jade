@@ -603,13 +603,11 @@ head
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
           h2(style='margin-top:30px;' class='usernick')  ...
-          h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;')  
+          h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
+          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
             span(class='glyphicon glyphicon-plus')  
             | Add item
-      .row(style='text-align:center;')
-        .col-xs-12
-          ul(class="nav nav-pills")
+          ul(class="nav nav-pills" style='margin-top:20px;')
             li(role="presentation" class='active') 
               a(href="#") Books
                 span(class='badge') 143
