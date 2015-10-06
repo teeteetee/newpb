@@ -657,8 +657,7 @@ head
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
-              h3.usernick(style='margin-top:10px;') ...                      
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
               //h4.numbers                 
               button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
                 span(class='glyphicon glyphicon-plus')  
@@ -731,11 +730,11 @@ head
       var avatar = #{avatar};
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
+        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
       }
       $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
