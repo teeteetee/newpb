@@ -1206,7 +1206,7 @@ head
       }
       //-----------------------------------//
       $('#submitbook').click(function(){
-        if($('#btitle').val() && $('#author0_name').val())
+        if($('#btitle').val() )
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
@@ -1225,7 +1225,9 @@ head
            }
            else {
              data.author0_name = $('#author0_name').val();
-             data.author0_surname = $('#author0_surname').val();
+             if(!data.author0_name) {
+               data.author0_name = ' ';
+             }
            }
            console.log(JSON.stringify(data));
           $.ajax({
