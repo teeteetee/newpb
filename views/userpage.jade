@@ -922,7 +922,7 @@ head
         else {
           var insert = 'markread('+i+')';
           $('.book_read').attr('onclick',insert);
-          $('.book_read').attr('display','block');
+          $('.book_read').css('display','block');
           $('.book_good').css('display','none');
         }
         if(books[i].goodbook){
@@ -935,7 +935,7 @@ head
           $('.book_unmark_good').css('display','none');
           var insert = 'markbookgood('+i+')';
           $('.book_good').attr('onclick',insert);
-          $('.book_good').attr('display','block');
+          $('.book_good').css('display','block');
         }
         insert = 'removebook('+i+')';
         $('.book_remove').attr('onclick',insert);
