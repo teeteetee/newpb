@@ -451,6 +451,12 @@ head
        margin-top: 8px;
        left: 10px;
       }
+      .label {
+        font-weight:200;
+      }
+      .label-primary {
+        background-color:#333;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -603,23 +609,10 @@ head
        var count_b;
        var count_m;
        var books=user.bookstore;
-      if(!books.length) {
-       console.log('no books');
-       }
-       else {
-        var count_b = books.length-1;
-        getbooks(books,count_b);
-       }
        var movies=user.moviestore;
-      if(!movies.length) {
-       console.log('no movies');
-       }
-       else {
-        var count_m = movies.length-1;
-        getmovies(movies,count_m);
-       }
        //------------------//
-      var booktmstmp;
+       //GETTIMESTAMP  gets timestamp upon which new items will be marked, so it runs first starting the cascade
+      var general_tmstmp;
       function gettimestamp() {
         $.ajax({
          method: "POST",
@@ -627,8 +620,25 @@ head
          data: 0
        })
          .done(function( msg ) {
-           console.log(msgtmstmp);
-           booktmstmp = msg.tmstmp;
+           general_tmstmp = msg.tmstmp;
+           alert('general timestamp: '+general_tmstmp);
+           if(!general_tmstmp) {
+            general_tmstmp = Date.now();
+           }
+          if(!books.length) {
+          console.log('no books');
+          }
+          else {
+           var count_b = books.length-1;
+           getbooks(books,count_b);
+          }
+      i   f(!movies.length) {
+          console.log('no movies');
+          }
+          else {
+           var count_m = movies.length-1;
+           getmovies(movies,count_m);
+          }
            });
       }
       //function populate () {
@@ -679,11 +689,15 @@ head
             }
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
+            var label_new_insert =' ';
+            if(books[i].tmstmp>general_tmstmp){
+              label_new_insert= '<span class="label label-primary pull-right">New</span>';
+            }
             var insert;
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small>"+label_new_insert+"</h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -691,7 +705,7 @@ head
               break
               case(!books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small>"+label_new_insert+"</h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -723,11 +737,15 @@ head
             else {
               console.log('HASNT GOT LENGTH');
             }
+            var label_new_insert =' ';
+            if(movies[i].tmstmp>general_tmstmp){
+              label_new_insert= '<span class="label label-primary pull-right">New</span>';
+            }
             var insert;   
             switch(true){
               case(movies[i].goodmovie&&!movies[i].newmovie):
               console.log('1st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' ><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' ><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small>"+label_new_insert+"</h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
@@ -735,7 +753,7 @@ head
               break
               case(!movies[i].newmovie&&!movies[i].goodmovie):
               console.log('3st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small>"+label_new_insert+"</h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
