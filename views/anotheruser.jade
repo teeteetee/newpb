@@ -458,7 +458,7 @@ head
         background-color:#333;
       }
   body(style='background-color:#fbfbfb;')
-    .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -468,7 +468,18 @@ head
           .modal-body
             h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-default  form-control' style='margin-top:5px;margin-bottom:5px;') Add to my list
+            button(class='btn btn-primary  form-control' id='addbook' style='margin-top:5px;margin-bottom:5px;') Add to my list
+    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class='modal-title' style='color:#ddd;') Modify
+          .modal-body
+            h4(id='modaltitle' style='text-align:center;')
+            h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-primary  form-control' id='addmovie' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -662,10 +673,19 @@ head
       //     }
       //     });
       // }
-      function redactmodal (i) {
+      function redactbookmodal (i) {
         $('#modaltitle').text(modal_data_store[i].title);
         $('#modalauthor').text(modal_data_store[i].author);
-        $('#smallmodal').modal('show');
+        var insert = 'addbook('+i+')';
+        $('addbook').attr('onclick',insert);
+        $('#bookmodal').modal('show');
+      }
+       function redactmoviemodal (i) {
+        $('#modaltitle').text(modal_data_store[i].title);
+        $('#modalayear').text(modal_data_store[i].year);
+        var insert = 'addmovie('+i+')';
+        $('addmovie').attr('onclick',insert);
+        $('#moviemodal').modal('show');
       }
       var modal_data_store=[];
       var movie_modal_data_store=[];
