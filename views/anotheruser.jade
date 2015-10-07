@@ -704,7 +704,7 @@ head
         $.ajax({
          method: "POST",
          url: url,
-         data: 'movie_id='+movie[i]._id
+         data: 'movie_id='+movies[i]._id
        })
          .done(function( msg ) {
            $('#moviemodal').modal('hide');
