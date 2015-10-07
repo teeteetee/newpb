@@ -681,8 +681,8 @@ head
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
-        $('#modaltitle').text(modal_data_store[i].title);
-        $('#modalayear').text(modal_data_store[i].year);
+        $('#modaltitle').text(movie_modal_data_store[i].title);
+        $('#modalayear').text(movie_modal_data_store[i].year);
         var insert = 'addmovie('+i+')';
         $('#addmovie').attr('onclick',insert);
         $('#moviemodal').modal('show');
