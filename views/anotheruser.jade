@@ -620,7 +620,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-           general_tmstmp = parseInt(msg.tmstmp);
+           general_tmstmp = JSON.stringify(msg.tmstmp);
            alert('general timestamp: '+general_tmstmp);
            if(!general_tmstmp) {
             general_tmstmp = Date.now();
