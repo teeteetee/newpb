@@ -1807,13 +1807,13 @@ app.post('/additem/:id',function (req,res){
     
       newbook(req.body.title, doauthors)
       function newbook(vtitle, callback){
+         var book_insert={};
          books.findOne({title:vtitle},function(err,book){
            if(err) {
                console.log('err while book query');
            }
            else {
               if(book){
-                var book_insert={};
                 book_insert.tmstmp = Date.now();
                 book_insert._id = book._id;
                 book_insert.goodbook = 0;
