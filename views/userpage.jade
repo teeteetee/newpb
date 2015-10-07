@@ -1096,7 +1096,9 @@ head
                 console.log('vname: '+vname);
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
+                console.log('old booknum: '+user.readbooks);
                 user.readbooks++;
+                console.log('new booknum: '+user.readbooks);
                 $('.booknum').text(user.readbooks);
               });
       }
