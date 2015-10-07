@@ -464,6 +464,7 @@ head
             h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary  form-control book_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary  form-control book_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary  form-control book_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-primary form-control book_people' style='margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-primary form-control book_remove' style='margin-top:5px;margin-bottom:5px;') Remove
           .modal-body.visible-sm.visible-xs
@@ -471,6 +472,7 @@ head
             h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary btn-lg  form-control book_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary btn-lg  form-control book_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary btn-lg  form-control book_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-primary btn-lg form-control book_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-primary btn-lg form-control book_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -484,7 +486,8 @@ head
             h4.moviemodaltitle(style='text-align:center;')
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary  form-control movie_seen' style='margin-top:5px;margin-bottom:5px;') Mark as seen
-            button(class='btn btn-primary  form-control movie_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary  form-control movie_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
+            button(class='btn btn-primary  form-control movie_unmark_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
             button(class='btn btn-primary form-control movie_people' style='margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-primary form-control movie_remove' style='margin-top:5px;margin-bottom:5px;') Remove
           .modal-body.visible-sm.visible-xs
@@ -492,6 +495,7 @@ head
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary btn-lg  form-control movie_seen' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as seen
             button(class='btn btn-primary btn-lg  form-control movie_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary btn-lg  form-control movie_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-primary btn-lg form-control movie_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-primary btn-lg form-control movie_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -922,8 +926,11 @@ head
         }
         if(books[i].goodbook){
           $('.book_good').css('display','none');
+          var insert = 'unmarkbookgood('+i+')';
+          $('.book_unmark_good').attr('onclick',insert);
         }
         else {
+          $('.book_unmark_good').css('display','none');
           var insert = 'markbookgood('+i+')';
           $('.book_good').attr('onclick',insert);
         }
