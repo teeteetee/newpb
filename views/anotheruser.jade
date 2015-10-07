@@ -625,14 +625,14 @@ head
            if(!general_tmstmp) {
             general_tmstmp = Date.now();
            }
-          if(!books.length) {
+          if(!books || !books.length) {
           console.log('no books');
           }
           else {
            count_b = books.length-1;
            getbooks(books,count_b);
           }
-          if(!movies.length) {
+          if(!movies || !movies.length) {
           console.log('no movies');
           }
           else {
