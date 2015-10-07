@@ -695,7 +695,7 @@ head
          data: 'book_id='+books[i]._id
        })
          .done(function( msg ) {
-           $('bookmodal').modal('hide');
+           $('#bookmodal').modal('hide');
            console.log('added book');
           });
       }
@@ -707,7 +707,7 @@ head
          data: 'movie_id='+movie[i]._id
        })
          .done(function( msg ) {
-           $('moviemodal').modal('hide');
+           $('#moviemodal').modal('hide');
            console.log('added movie');
           });
       }
