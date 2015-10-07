@@ -569,6 +569,24 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
+      $('.showbooks').click(function(){
+        if($('.brow').css('display')==='none'){
+          console.log('show brow');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').addClass('active');
+          $('.brow').css('display','block')
+          $('.mrow').css('display','none');
+        }
+        });
+      $('.showmovies').click(function(){
+        if($('.mrow').css('display')==='none'){
+          console.log('show mrow');
+          $('.showbooks').removeClass('active');
+          $('.showmovies').addClass('active');
+          $('.mrow').css('display','block')
+          $('.brow').css('display','none');
+        }
+        });
        //------------------//
        var count_b;
        var count_m;
