@@ -375,6 +375,9 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $(document).ready(function(){
+           $('#wait').remove();
+          });
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
@@ -524,6 +527,4 @@ head
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vnick);
           }
-        $(document).load(function(){
-           $('#wait').remove();
-          });
+        
