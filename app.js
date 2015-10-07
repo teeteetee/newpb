@@ -1807,8 +1807,8 @@ app.post('/additem/:id',function (req,res){
     
       newbook(req.body.title, doauthors)
       function newbook(vtitle, callback){
-         var book_insert={};
          books.findOne({title:vtitle},function(err,book){
+          var book_insert={};
            if(err) {
                console.log('err while book query');
            }
@@ -1830,6 +1830,7 @@ app.post('/additem/:id',function (req,res){
               }
               else{
                  books.insert({title:vtitle,authors:[]},function(err,newbook){
+                  var book_insert={};
                   if(err){
                     console.log('err while adding a book');
                   }
