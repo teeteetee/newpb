@@ -1141,6 +1141,7 @@ head
                 }
                   else{
                     user.readbooks--;
+                    $('.booknum').text(user.readbooks);
                   }
                 if(!user.totalbooks){
                   $('.books').append("<div class='nobooks row' style='text-align:center;'><div class='col-xs-12'><h2 style='color:#ccc;margin-bottom:20px;'> No items</h2></div></div>");
@@ -1164,6 +1165,8 @@ head
                 console.log('vname: '+vname);
                 $(vname2).css('color','#aaa');
                 $(vname).addClass('read');
+                user.seenmovies++;
+                $('.movienum').text(user.seenmovies)
               });
       }
       //-----------------------------------//
