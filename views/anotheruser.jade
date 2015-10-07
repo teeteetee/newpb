@@ -691,7 +691,9 @@ head
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
             var label_new_insert =' ';
+            console.log(parseInt(books[i].tmstmp)+' \n'+general_tmstmp);
             if(parseInt(books[i].tmstmp)>general_tmstmp){
+              consol.log('LABELING NEW');
               label_new_insert= '<span class="label label-primary pull-right">New</span>';
             }
             var insert;
