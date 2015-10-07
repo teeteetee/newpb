@@ -38,10 +38,10 @@ head
       body{
         background-color:transparent;
       }
-      .change_phc::-webkit-input-placeholder {color:rgba(255, 255, 255, 0.30);;}
-      .change_phc::-moz-placeholder          {color:rgba(255, 255, 255, 0.30);;}/* Firefox 19+ */
-      .change_phc:-moz-placeholder           {color:rgba(255, 255, 255, 0.30);;}/* Firefox 18- */
-      .change_phc:-ms-input-placeholder      {color:rgba(255, 255, 255, 0.30);;}
+      .change_phc::-webkit-input-placeholder {color:rgba(255, 255, 255, 0.50);;}
+      .change_phc::-moz-placeholder          {color:rgba(255, 255, 255, 0.50);;}/* Firefox 19+ */
+      .change_phc:-moz-placeholder           {color:rgba(255, 255, 255, 0.50);;}/* Firefox 18- */
+      .change_phc:-ms-input-placeholder      {color:rgba(255, 255, 255, 0.50);;}
       .change_phc {
         color:white;
       }
@@ -248,7 +248,7 @@ head
         color:white;
       }
       .form-control {
-       border-color: rgba(255, 255, 255, 0.46);
+       border-color: rgba(255, 255, 255, 0.65);
        background-color:transparent;
       }
       .navbar-inverse .navbar-nav>li>a {
@@ -258,15 +258,15 @@ head
        height:100px;
        width:100;
        border-radius:50%;
-       background-color:rgba(255, 255, 255, 0.3);
+       background-color:rgba(255, 255, 255, 0.5);
         color:white;
        font-weight:200;
        letter-spacing:1px;
        text-transform: uppercase;
       }
       #roundbutton:hover, #roundbutton:active, #roundbutton:focus {
-        border:1px solid rgba(255, 255, 255, 0.46);
-        background-color:rgba(255, 255, 255, 0.30);
+        border:1px solid rgba(255, 255, 255, 0.7);
+        background-color:rgba(255, 255, 255, 0.5);
         color:white;
       }
       .form-control:focus {
@@ -336,7 +336,11 @@ head
               li
                 a(href='/signin')  Sign in            
               li
-                a(href='/about')  About         
+                a(href='/about')  About  
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader       
     .container
       #mainheading.row
         .col-xs-12
@@ -361,11 +365,11 @@ head
             .form-group#signupblock.visible-xs
               .col-md-6.col-md-offset-3
                 button(type="button" class="signup btn btn-lg btn-success") Sign up
-                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
+                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.8);text-decoration:underline;display:block;') Sign in
             .form-group#signupround.visible-sm.visible-md.visible-lg
               .col-md-6.col-md-offset-3
                 button(type="button" id='roundbutton' class="signup btn") Sign up
-                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign in
+                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.8);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -520,3 +524,6 @@ head
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vnick);
           }
+        $('html').load(function(){
+           $('#wait').remove();
+          });
