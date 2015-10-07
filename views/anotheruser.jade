@@ -621,7 +621,7 @@ head
        })
          .done(function( msg ) {
            general_tmstmp = parseInt(msg.tmstmp);
-           alert('general timestamp: '+general_tmstmp);
+          // alert('general timestamp: '+general_tmstmp);
            if(!general_tmstmp) {
             general_tmstmp = Date.now();
            }
