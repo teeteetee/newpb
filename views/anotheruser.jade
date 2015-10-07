@@ -544,6 +544,7 @@ head
     script(src='/js/bootstrap.min.js')     
     script.
       var user = !{JSON.stringify(doc)};
+      alert(user.readbooks);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
       var unfollow =#{unfollow};
