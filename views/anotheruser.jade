@@ -620,7 +620,7 @@ head
          data: 0
        })
          .done(function( msg ) {
-           general_tmstmp = msg.tmstmp;
+           general_tmstmp = parseInt(msg.tmstmp);
            alert('general timestamp: '+general_tmstmp);
            if(!general_tmstmp) {
             general_tmstmp = Date.now();
@@ -629,14 +629,14 @@ head
           console.log('no books');
           }
           else {
-           var count_b = books.length-1;
+           count_b = books.length-1;
            getbooks(books,count_b);
           }
           if(!movies.length) {
           console.log('no movies');
           }
           else {
-           var count_m = movies.length-1;
+           count_m = movies.length-1;
            getmovies(movies,count_m);
           }
            });
@@ -691,7 +691,7 @@ head
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
             var label_new_insert =' ';
-            if(books[i].tmstmp>general_tmstmp){
+            if(parseInt(books[i].tmstmp)>general_tmstmp){
               label_new_insert= '<span class="label label-primary pull-right">New</span>';
             }
             var insert;
@@ -739,7 +739,7 @@ head
               console.log('HASNT GOT LENGTH');
             }
             var label_new_insert =' ';
-            if(movies[i].tmstmp>general_tmstmp){
+            if(parseInt(movies[i].tmstmp)>general_tmstmp){
               label_new_insert= '<span class="label label-primary pull-right">New</span>';
             }
             var insert;   
