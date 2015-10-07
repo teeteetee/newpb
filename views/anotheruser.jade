@@ -687,6 +687,30 @@ head
         $('addmovie').attr('onclick',insert);
         $('#moviemodal').modal('show');
       }
+      function addbook(i) {
+        var url = '/additem/book_out';
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 'book_id='+books[i]._id
+       })
+         .done(function( msg ) {
+           $('bookmodal').modal('hide');
+           console.log('added book');
+          });
+      }
+      function addmovie(i) {
+        var url = '/additem/movie_out';
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 'movie_id='+movie[i]._id
+       })
+         .done(function( msg ) {
+           $('moviemodal').modal('hide');
+           console.log('added movie');
+          });
+      }
       var modal_data_store=[];
       var movie_modal_data_store=[];
       function getbooks(books,i) {

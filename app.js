@@ -1799,10 +1799,26 @@ app.post('/admin/insidemsg',function(req,res){
 });
 
 
-
 app.post('/additem/:id',function (req,res){
+  //TODO req session check with every post
   var cond = req.params.id; 
   switch(cond){
+    case('book_out'):
+    console.log('book_out');
+    var book_id = req.body.book_id;
+    users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:Date.now(),_id:book_id,newbook:1,goodbook:0}},$set:{last_item:Date.now()},$inc:{totalbooks:1,newbooks:1}});
+    var ms ={};
+    ms.trouble=0;
+    res.send(ms);
+    break;
+    case('movie_out'):
+    console.log('movie_out');
+    var movie_id = req.body.movie_id;
+    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:bmovie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
+    var ms ={};
+    ms.trouble=0;
+    res.send(ms);
+    break;
     case('book'):
     
       newbook(req.body.title, doauthors)
