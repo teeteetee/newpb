@@ -1382,10 +1382,10 @@ app.get('/u/:nick', function (req,res){
                }
                }
                if(req.session.nick)
-               {var update_tmstmp = {};
-               var tmp_str = doc._id.toString();
-               update_tmstmp[tmp_str]={'tmstmp': Date.now()};
-               follow.update({user:req.session._id},{$set:update_tmstmp});
+               {//var update_tmstmp = {};
+                //var tmp_str = doc._id.toString();
+                //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
+                //follow.update({user:req.session._id},{$set:update_tmstmp});
                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),unfollow:unfollow});
                }
                else {
