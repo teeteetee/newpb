@@ -916,15 +916,6 @@ head
       }
         });
       function redactbookmodal (i) {
-        if(!books[i].newbook){
-         $('.book_read').css('display','none');
-        }
-        else {
-          var insert = 'markread('+i+')';
-          $('.book_read').attr('onclick',insert);
-          $('.book_read').css('display','block');
-          $('.book_good').css('display','none');
-        }
         if(books[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
@@ -937,12 +928,22 @@ head
           $('.book_good').attr('onclick',insert);
           $('.book_good').css('display','block');
         }
+        if(!books[i].newbook){
+         $('.book_read').css('display','none');
+        }
+        else {
+          var insert = 'markread('+i+')';
+          $('.book_read').attr('onclick',insert);
+          $('.book_read').css('display','block');
+          $('.book_good').css('display','none');
+        }
         insert = 'removebook('+i+')';
         $('.book_remove').attr('onclick',insert);
         $('.bookmodaltitle').text(modal_data_store[i].title);
         $('.bookmodalauthor').text(modal_data_store[i].author);
         $('#bookmodal').modal('show');
       }
+      //
       function redactmoviemodal (i) {
         if(!movies[i].newmovie){
          $('.movie_seen').css('display','none');
