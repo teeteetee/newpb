@@ -1814,7 +1814,7 @@ app.post('/additem/:id',function (req,res){
     case('movie_out'):
     console.log('movie_out');
     var movie_id = req.body.movie_id;
-    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:bmovie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
+    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
     var ms ={};
     ms.trouble=0;
     res.send(ms);
