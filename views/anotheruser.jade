@@ -477,7 +477,7 @@ head
               span(aria-hidden="true") ×
             h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body
-            h4(id='modaltitle' style='text-align:center;')
+            h4(id='modalmovietitle' style='text-align:center;')
             h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary  form-control' id='addmovie' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
@@ -681,8 +681,8 @@ head
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
-        $('#modaltitle').text(movie_modal_data_store[i].title);
-        $('#modalayear').text(movie_modal_data_store[i].year);
+        $('#modalmovietitle').text(movie_modal_data_store[i].title);
+        $('#modalyear').text(movie_modal_data_store[i].year);
         var insert = 'addmovie('+i+')';
         $('#addmovie').attr('onclick',insert);
         $('#moviemodal').modal('show');
