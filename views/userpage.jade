@@ -736,7 +736,7 @@ head
        var count_b;
        var count_m;
       var books=user.bookstore;
-      if(!books.length) {
+      if(!books || !books.length) {
        console.log('no books');
        }
        else {
@@ -744,7 +744,7 @@ head
         getbooks(books,count_b);
        }
        var movies=user.moviestore;
-      if(!movies.length) {
+      if(!movies || !movies.length) {
        console.log('no movies');
        }
        else {
