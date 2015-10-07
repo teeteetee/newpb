@@ -922,12 +922,14 @@ head
         else {
           var insert = 'markread('+i+')';
           $('.book_read').attr('onclick',insert);
+          $('.book_read').attr('display','block');
           $('.book_good').css('display','none');
         }
         if(books[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
           $('.book_unmark_good').attr('onclick',insert);
+          $('.book_unmark_good').css('display','block');
         }
         else {
           $('.book_unmark_good').css('display','none');
