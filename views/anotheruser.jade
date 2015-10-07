@@ -497,24 +497,26 @@ head
     .container#main(style='padding-top:50px;height:100%;background-color:white;')
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
-          h2(style='margin-top:30px;' class='usernick')  ????           
+          h2(style='margin-top:30px;' class='usernick')  ...
+          //h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
           .btn-group(style='margin-bottom:20px;margin-top:30px;')
-            button.btn.btn-iosprimary.follow(type='button') 
-              span.glyphicon.glyphicon-user 
-              | Follow
-            button.btn.btn-iosprimary.chatwith Chat
+                button.btn.btn-iosprimary.follow(type='button') 
+                  span.glyphicon.glyphicon-user 
+                  | Follow
+                button.btn.btn-iosprimary.chatwith Chat
           ul(class="nav nav-pills" style='margin-top:20px;')
             li.showbooks.active(role="presentation") 
               a(href="#") Books
-                span(class='badge booknum' style='margin-left:10px;') 0
+                span(class='badge booknum' style='margin-left:10px;') 143
             li.showmovies(role="presentation") 
               a(href="#") Movies
-                span(class='badge movienum' style='margin-left:10px;') 0
+                span(class='badge movienum' style='margin-left:10px;') 561
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                          
-              .btn-group(style='margin-bottom:20px;')
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
+              //h4.numbers                 
+              .btn-group(style='margin-bottom:20px;margin-top:30px;')
                 button.btn.btn-iosprimary.follow(type='button') 
                   span.glyphicon.glyphicon-user 
                   | Follow
@@ -523,21 +525,31 @@ head
                 .col-xs-12
                   .btn-group(style='margin-top:10px;margin-bottom:10px;')
                     .btn.btn-default.active.showbooks(type='button') Books
-                      span(class='badge booknum' style='margin-left:10px;') 0
+                      span(class='badge booknum' style='margin-left:10px;') 130
                     .btn.btn-default.showmovies(type='button') Movies
-                      span(class='badge movienum' style='margin-left:10px;') 0
+                      span(class='badge movienum' style='margin-left:10px;') 561
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.visible-lg.visible-md.visible-sm
-                .col-xs-12.books#bigscreens
-                   .noitems.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.visible-xs(style='border-top:1px solid #eee;')
-                #smallscreens.col-xs-12.books         
-                  .noitems.row(style='text-align:center;')  
+              .row.mrow
+                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
+                  .nomovies.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.mrow
+                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
