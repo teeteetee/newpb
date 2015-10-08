@@ -1281,7 +1281,12 @@ app.get('/people/:kind/:item',function (req,res){
     switch(req.params.kind){
     case('b'):
     users.find({bookstore:{$elemMatch:{_id:req.params.item}}},function (err,docs){
-      res.send(docs);
+      if(err){
+        console.log('err while find query');
+      }
+      else
+      {
+       res.send(docs);}
     });
     break;
     case('m'):
