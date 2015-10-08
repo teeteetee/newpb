@@ -736,7 +736,7 @@ head
             console.log('goodbook :'+books[i].goodbook);
             var label_new_insert =' ';
             console.log(parseInt(books[i].tmstmp)+' \n'+general_tmstmp);
-            if(parseInt(books[i].tmstmp)>general_tmstmp){
+            if(parseInt(books[i].tmstmp)>general_tmstmp && !unfollow){
               console.log('LABELING NEW');
               label_new_insert= '<span class="label label-primary pull-right">New</span>';
             }
@@ -785,7 +785,7 @@ head
               console.log('HASNT GOT LENGTH');
             }
             var label_new_insert =' ';
-            if(parseInt(movies[i].tmstmp)>general_tmstmp){
+            if(parseInt(movies[i].tmstmp)>general_tmstmp && !unfollow){
               label_new_insert= '<span class="label label-primary pull-right">New</span>';
             }
             var insert;   
