@@ -1280,6 +1280,7 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
     case('b'):
+    console.log('in b, type of item: '+typeof req.params.item);
     users.find({bookstore:{$elemMatch:{_id:req.params.item}}},function (err,docs){
       if(err){
         console.log('err while find query');
