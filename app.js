@@ -1264,6 +1264,12 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
+app.get('/showitems',function (req,res){
+  items.find({},function (err,done){
+    res.send(done);
+  });
+});
+
 app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
