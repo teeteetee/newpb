@@ -1259,6 +1259,26 @@ app.post('/checkdisc/:id/:last', function (req,res){
 
 });
 
+app.get('/people/:kind/:item',function (req,res){
+  if(req.session._id){
+    switch(req.params.kind){
+    case('b'):
+    users.find({bookstore:{_id:req.params.item}},function (err,docs){
+      res.send(docs);
+    });
+    break;
+    case('m'):
+    users.find({moviestore:{_id:req.params.item}},function (err,docs){
+      res.send(docs);
+    });
+    break;
+  }
+  }
+  else {
+    res.redirect('/');
+  }
+});
+
 app.get('/supfollow',function (req,res){
   follow.insert({user:req.session._id});
   res.redirect('/');
