@@ -1280,13 +1280,14 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
     case('b'):
-    items.find({bookstore:req.params.item.toString()},function (err,docs){
+    users.find({bookstore:{$elemMatch:{_id:req.params.item}}},function (err,docs){
       res.send(docs);
     });
     break;
     case('m'):
-    items.find({moviestore:req.params.item},function (err,docs){
+    users.find({moviestore:{$elemMatch:{_id:req.params.item}}},function (err,docs){
       res.send(docs);
+    });
     });
     break;
   }
