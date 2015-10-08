@@ -1288,7 +1288,6 @@ app.get('/people/:kind/:item',function (req,res){
     users.find({moviestore:{$elemMatch:{_id:req.params.item}}},function (err,docs){
       res.send(docs);
     });
-    });
     break;
   }
   }
