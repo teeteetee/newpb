@@ -712,7 +712,7 @@ app.get('/seefollow',function (req,res){
 app.get('/clearbooks',function (req,res){
   if(req.session._id)
   {users.update({_id:req.session._id},{$unset:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
-    items.update({user:req.session._id},{$unset:{bookstore:[]}});
+    items.update({user:req.session._id},{$set:{bookstore:[]}});
     res.redirect('/');}
     else {
       res.redirect('/');
