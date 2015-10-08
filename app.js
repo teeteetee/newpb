@@ -515,12 +515,12 @@ app.post('/removebook/:bid',function (req,res) {
          console.log('newbook: '+rem_item.newbook);
          if(rem_item[0].newbook){
          users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
-         items.update({user:req.sesion._id},{$pull:{bookstore:rem_item[0]._id}});
+         items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id}});
          res.send(ms);
          }
          else {
           users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,readbooks:-1}});
-          items.update({user:req.sesion._id},{$pull:{bookstore:rem_item[0]._id}});
+          items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id}});
          res.send(ms);
          }
        }
@@ -562,12 +562,12 @@ app.post('/removemovie/:mid',function (req,res) {
          console.log('newmovie: '+rem_item.newmovie);
          if(rem_item[0].newmovie){
          users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,newmovies:-1}});
-         items.update({user:req.sesion._id},{$pull:{moviestore:rem_item[0]._id}});
+         items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id}});
          res.send(ms);
          }
          else {
           users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,seenmovies:-1}});
-          items.update({user:req.sesion._id},{$pull:{moviestore:rem_item[0]._id}});
+          items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id}});
          res.send(ms);
          }
        }
