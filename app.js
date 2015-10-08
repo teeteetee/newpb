@@ -1345,7 +1345,6 @@ app.post('/gettimestamp/:id',function (req,res){
         follow.update({user:req.session._id},{$set:update_tmstmp});
         var ms={};
         ms = done[req.params.id.toString()];
-        console.log(ms.tmstmp);
         res.send(ms);
       }
     });
