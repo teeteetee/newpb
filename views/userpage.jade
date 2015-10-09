@@ -948,6 +948,8 @@ head
         }
         insert = 'removebook('+i+')';
         $('.book_remove').attr('onclick',insert);
+        insert = 'window.location="/people/b/'+books[i]._id+'"';
+        $('#book_people').attr('onclick',insert);
         $('.bookmodaltitle').text(modal_data_store[i].title);
         $('.bookmodalauthor').text(modal_data_store[i].author);
         $('#bookmodal').modal('show');
@@ -971,6 +973,8 @@ head
         }
         insert = 'removemovie('+i+')';
         $('.movie_remove').attr('onclick',insert);
+        insert = 'window.location="/people/m/'+movies[i]._id+'"';
+        $('#movie_people').attr('onclick',insert);
         $('.moviemodaltitle').text(movie_modal_data_store[i].title);
         $('.moviemodalyear').text(movie_modal_data_store[i].year);
         $('#moviemodal').modal('show');
