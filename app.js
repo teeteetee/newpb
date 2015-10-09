@@ -1278,6 +1278,19 @@ app.get('/showitems',function (req,res){
   });
 });
 
+app.get('/testtest',function (req,res){
+  items.insert({bookstore:['a','b','c','d','e']});
+});
+
+app.get('/checktest',function (req,res) {
+  users.find({bookstore:'a'},function(err,done){
+    if(err){} 
+      else{
+        res.send(done);
+      }
+  });
+});
+
 
 
 app.get('/people/:kind/:item',function (req,res){
