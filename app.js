@@ -12,7 +12,7 @@ var http = require('http');
 
 
 
-var mongo = require('mongodb');
+var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
   , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),items = db.get('items'),books = db.get('books'),movies = db.get('movies'),authors = db.get('authors'),follow = db.get('follow');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
@@ -1296,18 +1296,26 @@ app.get('/checktest',function (req,res) {
 
 app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
+    mongo.connect('localhost/tav', function(err, db) {
+      if(err){
+        console.log('err')
+      }
+      else
+   {console.log('connected through native driver'); 
     switch(req.params.kind){
-    case('b'):
-    items.find({bookstore:req.params.item}, function(err,done){
-      res.send(done);
-    });
-    break;
-    case('m'):
-    items.find({moviestore:req.params.item}, function(err,done){
-      res.send(done);
-    });
-    break;
-  }
+       case('b'):
+       db.collection('items').find({bookstore:req.params.item}, function(err,done){
+         res.send(done);
+       });
+       break;
+       case('m'):
+        db.collection('items').find({moviestore:req.params.item}, function(err,done){
+         res.send(done);
+       });
+       break;}
+     }
+  db.close();
+  });
   }
   else {
     res.redirect('/');
