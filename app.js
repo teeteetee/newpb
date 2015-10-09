@@ -1296,27 +1296,38 @@ app.get('/checktest',function (req,res) {
 
 app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
-    mongo.connect('mongodb://localhost/tav', function(err, db) {
-      if(err){
-        console.log('err')
-      }
-      else
-   {console.log('connected through native driver'); 
-  console.log('\n params: '+req.params.item);
+//    mongo.connect('mongodb://localhost/tav', function(err, db) {
+//      if(err){
+//        console.log('err')
+//      }
+//      else
+//   {console.log('connected through native driver'); 
+//  console.log('\n params: '+req.params.item);
+//    switch(req.params.kind){
+//       case('b'):
+//       db.collection('users').find({}, function(err,done){
+//         res.send(done);
+//       });
+//       break;
+//       case('m'):
+//        db.collection('items').find({moviestore:req.params.item}, function(err,done){
+//         res.send(done);
+//       });
+//       break;}
+//     }
+//  db.close();
+//  });
     switch(req.params.kind){
        case('b'):
-       db.collection('users').find({}, function(err,done){
+       items.find({}, function(err,done){
          res.send(done);
        });
        break;
        case('m'):
-        db.collection('items').find({moviestore:req.params.item}, function(err,done){
+        items.find({moviestore:req.params.item}, function(err,done){
          res.send(done);
        });
        break;}
-     }
-  db.close();
-  });
   }
   else {
     res.redirect('/');
