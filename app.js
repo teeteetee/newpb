@@ -1305,7 +1305,7 @@ app.get('/people/:kind/:item',function (req,res){
   console.log('\n params: '+req.params.item);
     switch(req.params.kind){
        case('b'):
-       db.collection('users').find({nick:'London'}, function(err,done){
+       db.collection('users').find({}, function(err,done){
          res.send(done);
        });
        break;
