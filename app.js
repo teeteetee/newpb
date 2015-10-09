@@ -711,7 +711,7 @@ app.get('/seefollow',function (req,res){
 
 app.get('/clearbooks',function (req,res){
   if(req.session._id)
-  {users.update({_id:req.session._id},{$set:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
+  {users.update({_id:req.session._id.toString()},{$set:{bookstore:[]},$set:{totalbooks:0,readbooks:0,newbooks:0}});
     console.log('empty items');
     items.update({user:req.session._id.toString()},{$set:{bookstore:[]}});
     res.redirect('/');}
