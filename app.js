@@ -1281,7 +1281,7 @@ app.get('/people/:kind/:item',function (req,res){
     switch(req.params.kind){
     case('b'):
     console.log(req.params.item);
-    items.find({bookstore:req.params.item}, function(err,done){
+    users.find({bookstore:{_id: "560a33b8b442403a05000005"}, function(err,done){
       res.send(done);
     });
     break;
