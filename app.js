@@ -515,12 +515,12 @@ app.post('/removebook/:bid',function (req,res) {
          console.log('newbook: '+rem_item.newbook);
          if(rem_item[0].newbook){
          users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
-         items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id}});
+         items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
          res.send(ms);
          }
          else {
           users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,readbooks:-1}});
-          items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id}});
+          items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
          res.send(ms);
          }
        }
@@ -562,12 +562,12 @@ app.post('/removemovie/:mid',function (req,res) {
          console.log('newmovie: '+rem_item.newmovie);
          if(rem_item[0].newmovie){
          users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,newmovies:-1}});
-         items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id}});
+         items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
          res.send(ms);
          }
          else {
           users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,seenmovies:-1}});
-          items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id}});
+          items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
          res.send(ms);
          }
        }
@@ -1882,7 +1882,7 @@ app.post('/additem/:id',function (req,res){
     console.log('book_out');
     var book_id = req.body.book_id;
     users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:Date.now(),_id:book_id,newbook:1,goodbook:0}},$set:{last_item:Date.now()},$inc:{totalbooks:1,newbooks:1}});
-    items.update({user:req.session._id},{$push:{bookstore:book_id}});
+    items.update({user:req.session._id},{$push:{bookstore:book_id.toString()}});
     var ms ={};
     ms.trouble=0;
     res.send(ms);
@@ -1891,7 +1891,7 @@ app.post('/additem/:id',function (req,res){
     console.log('movie_out');
     var movie_id = req.body.movie_id;
     users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
-    items.update({user:req.session._id},{$push:{moviestore:movie_id}});
+    items.update({user:req.session._id},{$push:{moviestore:movie_id.toString()}});
     var ms ={};
     ms.trouble=0;
     res.send(ms);
@@ -1913,12 +1913,12 @@ app.post('/additem/:id',function (req,res){
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
                 users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
-                items.update({user:req.session._id},{$push:{bookstore:book._id}});
+                items.update({user:req.session._id},{$push:{bookstore:book._id.toString()}});
                              tell_user(0);}
                   else {
                     book_insert.newbook =0;
                     users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
-                    items.update({user:req.session._id},{$push:{bookstore:book._id}});
+                    items.update({user:req.session._id},{$push:{bookstore:book._id.toString()}});
                              tell_user(0);
                   }
                //respond to user with success
@@ -1939,12 +1939,12 @@ app.post('/additem/:id',function (req,res){
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
                       users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
-                      items.update({user:req.session._id},{$push:{bookstore:newbook._id}});
+                      items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
                         users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
-                        items.update({user:req.session._id},{$push:{bookstore:newbook._id}});
+                        items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
                                           callback(parseInt(req.body.authornum),newbook._id,tell_user);}
                   }
                  });
@@ -1996,14 +1996,14 @@ app.post('/additem/:id',function (req,res){
                 if(parseInt(req.body.newmovie))
               { movie_insert.newmovie = 1;
                 users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
-                items.update({user:req.session._id},{$push:{moviestore:movie._id}});
+                items.update({user:req.session._id},{$push:{moviestore:movie._id.toString()}});
                              ms.trouble = 0;
                              res.send(ms);
                            }
                   else {
                     movie_insert.newmovie =0;
                     users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
-                    items.update({user:req.session._id},{$push:{moviestore:movie._id}});
+                    items.update({user:req.session._id},{$push:{moviestore:movie._id.toString()}});
                              ms.trouble = 0;
                              res.send(ms);
                   }
@@ -2023,13 +2023,13 @@ app.post('/additem/:id',function (req,res){
                      if(parseInt(req.body.newmovie))
                      {movie_insert.newmovie = 1;
                       users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
-                      items.update({user:req.session._id},{$push:{moviestore:newmovie._id}});
+                      items.update({user:req.session._id},{$push:{moviestore:newmovie._id.toString()}});
                                          ms.trouble = 0;
                                          res.send(ms);}
                                           else
                       {movie_insert.newmovie = 0;
                         users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
-                        items.update({user:req.session._id},{$push:{moviestore:newmovie._id}});
+                        items.update({user:req.session._id},{$push:{moviestore:newmovie._id.toString()}});
                                           ms.trouble =0;
                                            res.send(ms);}
                   }
