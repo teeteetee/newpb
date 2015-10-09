@@ -1298,12 +1298,12 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
     case('b'):
-    items.find({bookstore:{$in:[req.params.item]}}, function(err,done){
+    items.find({bookstore:req.params.item}, function(err,done){
       res.send(done);
     });
     break;
     case('m'):
-    items.find({moviestore:{$in:[req.params.item]}}, function(err,done){
+    items.find({moviestore:req.params.item}, function(err,done){
       res.send(done);
     });
     break;
