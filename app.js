@@ -767,6 +767,8 @@ app.get('/dropdisc',function (req,res){
 
 app.get('/dropusers',function (req,res){
   users.remove({});
+  items.remove({});
+  follow.remove({});
   res.redirect('/');
 });
 
