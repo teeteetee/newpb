@@ -1296,7 +1296,7 @@ app.get('/checktest',function (req,res) {
 
 app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
-    mongo.connect('localhost/tav', function(err, db) {
+    mongo.connect('mongodb://localhost/tav', function(err, db) {
       if(err){
         console.log('err')
       }
