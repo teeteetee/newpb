@@ -1319,7 +1319,7 @@ app.get('/people/:kind/:item',function (req,res){
 //  });
     switch(req.params.kind){
        case('b'):
-       items.find({bookstore:'b'}, function(err,done){
+       items.find({bookstore:req.params.item}, function(err,done){
          res.send(done);
        });
        break;
