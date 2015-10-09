@@ -1302,6 +1302,7 @@ app.get('/people/:kind/:item',function (req,res){
       }
       else
    {console.log('connected through native driver'); 
+  console.log('\n params: '+req.params.item);
     switch(req.params.kind){
        case('b'):
        db.collection('items').find({bookstore:req.params.item}, function(err,done){
