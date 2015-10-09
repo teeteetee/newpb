@@ -1279,7 +1279,7 @@ app.get('/showitems',function (req,res){
 });
 
 app.get('/testtest',function (req,res){
-  items.insert({bookstore:['a','b','c','d','e']});
+  items.insert({option_one:'people',option_two:'books',bookstore:['a','b','c','d','e']});
   res.send('ok');
 });
 
@@ -1320,6 +1320,7 @@ app.get('/people/:kind/:item',function (req,res){
     switch(req.params.kind){
        case('b'):
        items.find({bookstore:req.params.item}, function(err,done){
+        console.log(done);
          res.send(done);
        });
        break;
