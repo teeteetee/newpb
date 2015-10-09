@@ -1282,8 +1282,9 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
     case('b'):
-    console.log(req.params.item);
-    users.find({bookstore:req.params.item}, function(err,done){
+    var query = '"'+req.params.item+'"';
+    console.log(query);
+    users.find({bookstore:query}, function(err,done){
       res.send(done);
     });
     break;
