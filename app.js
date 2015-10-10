@@ -1299,7 +1299,7 @@ app.get('/people/:kind/:item',function (req,res){
             console.log(done);
             books.findOne({_id:req.params.item}, function (err2,book){
               if(err2){
-                console.log('err while book query');
+                console.log('err while book query');}
               else if(done){
                  res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors});
               }
