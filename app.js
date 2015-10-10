@@ -1302,10 +1302,10 @@ app.get('/people/:kind/:item',function (req,res){
               if(err2){
                 console.log('err while book query');}
               else if(done){
-                 res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors});
+                 res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors,'me':req.session._id});
               }
               else {
-                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--'});
+                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--','me':req.session._id});
               }
               });
             }
