@@ -346,6 +346,7 @@ app.post('/settings',function (req,res){
     res.send(ms);
   }
   else {
+    ms.trouble=1;
     res.send(ms);
   }
 });
