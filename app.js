@@ -1313,9 +1313,25 @@ app.get('/people/:kind/:item',function (req,res){
           });
        break;
        case('m'):
-        items.find({moviestore:req.params.item}, function(err,done){
-         res.send(done);
-       });
+        items.find({moviestore:req.params.item},{fields:{bookstore:0,moviestore:0,_id:0}}, function(err,done){
+        if(err){
+          console.log('err while items query');
+        }
+          else {
+            console.log(done);
+            movies.findOne({_id:req.params.item}, function (err2,movie){
+              if(err2){
+                console.log('err while book query');}
+              else if(done){
+                 res.render('findpeople',{'doc':JSON.stringify(done),'title':movie.title,'author':movie.year,'me':req.session._id});
+              }
+              else {
+                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--','me':req.session._id});
+              }
+              });
+            }
+            //res.render('findpeople',{'doc':JSON.stringify(done)});
+          });
        break;}
   }
   else {
