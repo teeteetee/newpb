@@ -51,7 +51,7 @@ app.get('/',function(req,res) {
    if (req.session.mail)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
-          users.findOne({mail:req.session.mail},{fields:{regdate:0,male:0,pub:0,mail:0,phr:0,userstore:0}},function(err,done){
+          users.findOne({mail:req.session.mail},{fields:{regdate:0,male:0,pub:0,phr:0,userstore:0}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -61,15 +61,12 @@ app.get('/',function(req,res) {
             else {
               if(done){
                   if(done.userpic)
-                  {   //var avatar = "img id='userimg' class='img-circle pull-left' src='/userpics/id"+done._id+done.picext+"'";
-                      delete done.phr;
+                  {  
                       req.session=done;
                       res.render('userpage',{'user':done._id,'avatar':1,'done':JSON.stringify(done)});
                      
                   }
                    else {
-                    //var emptyavatar = "div id=emptyavatar class='img-circle pull-left'";
-                    delete done.phr;
                     req.session = done;
                     res.render('userpage',{'user':done._id,'avatar':0,'done':JSON.stringify(done)});
                     
@@ -1432,7 +1429,6 @@ app.get('/u/:nick', function (req,res){
             if(doc){
               if(doc.pub)
               {var unfollow=0;
-               delete doc.phr;
                if(req.session.userstore ) {
                for(var i=0;i<req.session.userstore.length;i++){
                  console.log(req.session.userstore[i]);
