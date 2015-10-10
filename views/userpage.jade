@@ -100,6 +100,9 @@ head
       .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{
         background-color:#d8d8d8;
       }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        border-color:#ddd;
+      }
       .dot-sm {
         color:transparent;
       }
@@ -636,7 +639,7 @@ head
             span.icon-bar         
             span.icon-bar       
           a.navbar-brand(style='padding-top:5px;', href='/')
-            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+            img(src='/images/pb_inf_logo.png',class='hidden-xs', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
