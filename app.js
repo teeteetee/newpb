@@ -383,7 +383,7 @@ app.get('/people',function (req,res){
 
 app.get('/settings',function (req,res){
   if(req.session.mail){
-    users.findOne({mail:req.session.mail},function(err,done){
+    users.findOne({mail:req.session.mail},{fields:{pub:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -393,7 +393,7 @@ app.get('/settings',function (req,res){
             }
             else {
               if(done){
-                  res.render('settings',{'done':JSON.stringify(done),'user':done.uid});
+                  res.render('settings',{'done':JSON.stringify(done),'user':done._id});
               }
               else {
                 res.redirect('/');

@@ -233,7 +233,7 @@ head
        outline: 0px none;
        box-shadow: none;
       }
-      .btn.active, .btn:active {
+      .btn.active, .btn:active, .btn:focus {
        -webkit-box-shadow:none;
        box-shadow:none;
       }
@@ -291,7 +291,7 @@ head
           h4 Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
-            button(type="button" id='bpb' class="btn btncorr btn-iosdark active") Public
+            button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
       //
         .row.setrow
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
@@ -343,11 +343,12 @@ head
     script.  
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      if(user.userpic){
-        $('#emptyavatar').remove();
-        $('#leftpanel').prepend("<img id='userimg' class='img-circle center-block' src='/userpics/id"+user.uid+user.picext+"'></img>");
-        $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      } 
+      if(user.pub) {
+        $('#bpb').addClass('active');
+      }
+      else {
+        $('#bpr').addClass('active');
+      }
       $('#picupload').click(function(){
         if( document.getElementById("userpic").files.length == 0 ){
         alert('Select an image');
