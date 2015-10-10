@@ -455,6 +455,7 @@ head
       //}
       //setInterval(getmsg, 5000);
       function new_getmsg(tmstmp) {
+        console.log('WAITING FOR MESSAGES');
         $.ajax({
               method: "POST",
               url: "/gtm/#{discid}",
