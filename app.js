@@ -51,7 +51,7 @@ app.get('/',function(req,res) {
    if (req.session.mail)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
-          users.findOne({mail:req.session.mail},function(err,done){
+          users.findOne({mail:req.session.mail},{fields:{regdate:0,male:0,pub:0,mail:0,phr:0,userstore:0}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -1423,7 +1423,8 @@ app.get('/u/:nick', function (req,res){
     }
     else
     {var vnick = req.params.nick;
-        users.findOne({nick:vnick},function (err,doc){
+        users.findOne({nick:vnick},{fields:{regdate:0,male:0,pub:0,mail:0,phr:0,userstore:0}},function (err,doc){
+          //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
           if(err) {
           
           }
