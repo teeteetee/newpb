@@ -192,7 +192,7 @@ head
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') You follow
+          h3(style='font-weight:200;color:#ddd;') Find people
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#users
           #noitems.row(style='text-align:center;')  
@@ -210,15 +210,14 @@ head
     script(src='/js/bootstrap.min.js') 
     script.  
       var users = !{JSON.stringify(doc)};
-      user= JSON.parse(user);
-      console.log(user.userstore);
-      $('.people_num').append(user.userstore.length);
-      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //user= JSON.parse(user);
+      //console.log(user.userstore);
+      //$('.people_num').append(user.userstore.length);
+      //$('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      var users = user.userstore;
       var count = users.length-1;
       var tmstmps ={};
       function getfollow() {
@@ -238,7 +237,7 @@ head
       getfollow();
       function getusers(users,i) {
         console.log('i:'+i);
-        var url = '/getuser/'+users[i];
+        var url = '/getuser/'+users[i].user;
         $.ajax({
          method: "POST",
          url: url,
@@ -311,8 +310,8 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       avatarrequest.send();
       }
-      //if(users.length){
-      //      getusers(users,count);}
+      if(users.length){
+            getusers(users,count);}
       function closeoptions(id){
         eval("$('#sm"+id+"').fadeToggle('fast');");
       }
