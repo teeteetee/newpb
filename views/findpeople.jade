@@ -189,14 +189,13 @@ head
             li
               a(href='/logout') Logout
     .container(style='padding-top:50px;height:100%;background-color:white;')
-      .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h3(style='font-weight:200;color:#ddd;') Find people
       .row
         .col-xs-12('text-align:center;')
-          h3 #{title}
-          h5 #{author}
+          h3(style='font-weight:200;') #{title}
+          h5(style='font-weight:400;color:#ddd;') #{author}
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#users
           #noitems.row(style='text-align:center;')  
