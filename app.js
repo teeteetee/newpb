@@ -1301,11 +1301,12 @@ app.get('/people/:kind/:item',function (req,res){
        items.find({bookstore:req.params.item},{_id:1}, function(err,done){
         if(err){
           console.log('err while items query');
+        }
           else {
             console.log(done);
             res.render('findpeople',{'doc':JSON.stringify(done)});
           }
-        }
+        
        });
        break;
        case('m'):
