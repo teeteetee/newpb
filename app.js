@@ -1298,7 +1298,7 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
        case('b'):
-       items.find({bookstore:req.params.item},{bookstore:0,moviestore:0,_id:0}, function(err,done){
+       items.find({bookstore:req.params.item},{fields:{bookstore:0,moviestore:0,_id:0}}, function(err,done){
         if(err){
           console.log('err while items query');
         }
