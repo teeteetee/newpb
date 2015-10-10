@@ -1296,32 +1296,16 @@ app.get('/checktest',function (req,res) {
 
 app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
-//    mongo.connect('mongodb://localhost/tav', function(err, db) {
-//      if(err){
-//        console.log('err')
-//      }
-//      else
-//   {console.log('connected through native driver'); 
-//  console.log('\n params: '+req.params.item);
-//    switch(req.params.kind){
-//       case('b'):
-//       db.collection('users').find({}, function(err,done){
-//         res.send(done);
-//       });
-//       break;
-//       case('m'):
-//        db.collection('items').find({moviestore:req.params.item}, function(err,done){
-//         res.send(done);
-//       });
-//       break;}
-//     }
-//  db.close();
-//  });
     switch(req.params.kind){
        case('b'):
-       items.find({bookstore:req.params.item}, function(err,done){
-        console.log(done);
-         res.send(done);
+       items.find({bookstore:req.params.item},{_id:1}, function(err,done){
+        if(err){
+          console.log('err while items query');
+          else {
+            console.log(done);
+            res.render('findpeople',{'doc':JSON.stringify(done)});
+          }
+        }
        });
        break;
        case('m'):

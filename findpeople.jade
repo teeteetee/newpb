@@ -1,0 +1,323 @@
+doc
+html(lang='en')
+head
+    meta(charset='utf-8')     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    title P&B    
+    link(rel='icon', href='', sizes='16x16', type='image/png')
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')     
+    meta(liber de amicitia est)
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+        
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      .emptybook {
+      padding-left:23px;
+      }
+      .book:hover {
+      background-color:#eee;
+      }
+      .book {
+      padding-top:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid #eee;
+      background-color:white;
+      }
+      #signup {
+        padding-top:50px;
+        padding-bottom:100px;
+      }
+      @media (max-width: 767px) {
+      li a {
+        font-size:20px;
+        letter-spacing:1px;
+        padding-top:15px !important;
+        padding-bottom:15px !important;
+      }
+      #mainframe {
+      margin-top:0px;
+      }
+      #userimg {
+      width:130px;
+      height:130px;
+      }
+      .book {
+      border-bottom:1px solid #eee;
+      padding-left:15px;
+      padding-right:15px;
+      }
+      .emptybook {
+      margin-left:0px;
+      }
+      #leftpanel {
+      border-right:0px;
+      }
+      #booklist {
+      border-bottom-left-radius:10px;
+      }
+      
+      .list {
+        max-height:inherit;
+      }
+      .paddgroup {
+      padding-left:25px;
+      padding-right:25px;
+      }
+      #signup {
+        background-color:#333;
+      }
+      }
+      @media (max-width: 992px) {
+      #booklist {
+      border-bottom-left-radius:10px;
+      }
+      #userimg {
+      width:150px;
+      height:150px;
+      }
+      .things{
+      padding-top:50px;
+      }
+      }
+      @font-face {
+      font-family:roboto-thin;
+      src: url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face{
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      }
+      @font-face{
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      .glyphicon {
+      margin-right:5px;
+      }
+      .btncorr {
+      font-family:boldproxima;
+      text-transform:uppercase;
+      }
+      .img-circle {
+      -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
+      -moz-filter: brightness(0.9) contrast(1.2) saturate(1.2);
+      filter:brightness(0.9) contrast(1.2) saturate(1.2);
+      }
+      #heyopen {
+      -webkit-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
+      -moz-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
+      box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
+      }
+      .btn {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .btn-success {
+      background-color:#23BBA7;
+      }
+      .btn-success:hover {
+      background-color:#1F9E8E;
+      } 
+      a:hover, a:focus, a:active {
+        text-decoration:none !important;
+        color:#ddd !important;
+      }
+      a{
+        color:#ddd;
+      }
+      p{
+        text-indent:20px;
+        font-size:18px;
+      }
+      .discussion {
+        border-bottom:1px solid #ddd;
+        padding-top:10px;
+        padding-bottom:10px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color:white;
+      }
+      .discussion:hover {
+        background-color:#f3f3f3;
+      }
+      .media-body, .media-left, .media-right {
+      vertical-align: middle;
+      }
+      .media-heading{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .media {
+        margin-left:30px;
+        margin-top:0px;
+      }
+      .media-left{
+        padding-right:20px;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+        font-weight:200;
+      }
+  body(style='background-color:#fbfbfb;')
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+      .container
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation         
+            span.icon-bar         
+            span.icon-bar         
+            span.icon-bar       
+          a.navbar-brand(style='padding-top:5px;', href='/')
+            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/')  My lists 
+            li
+              a( id='chat' href='/chat') Messages             
+            li.active
+              a(href='/people') People           
+            li
+              a(href='/settings')  Settings             
+            li
+              a(href='/about')  About         
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/logout') Logout
+    .container(style='padding-top:50px;height:100%;background-color:white;')
+      .row.visible-lg.visible-md.visible-sm(style='height:50px;')
+      .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          h3(style='font-weight:200;color:#ddd;') You follow
+      .row
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#users
+          #noitems.row(style='text-align:center;')  
+            .col-xs-12
+              h2(style='color:#ccc;margin-bottom:20px;') No Items
+          //  
+            .panel.panel-default
+              .panel-body#users
+               #noitems.row(style='text-align:center;')  
+                 .col-xs-12
+                   h2(style='color:#ccc;margin-bottom:20px;') No Items
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='/js/bootstrap.min.js') 
+    script.  
+      var users = !{JSON.stringify(doc)};
+      user= JSON.parse(user);
+      console.log(user.userstore);
+      $('.people_num').append(user.userstore.length);
+      $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
+      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
+      String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+      }
+      var users = user.userstore;
+      var count = users.length-1;
+      var tmstmps ={};
+      function getfollow() {
+        var url = '/getfollow';
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 0
+       })
+         .done(function( msg ) {
+           tmstmps=msg;
+           //for(var x in msg) {
+           //  console.log(typeof x);
+           //}
+           });
+      }
+      getfollow();
+      function getusers(users,i) {
+        console.log('i:'+i);
+        var url = '/getuser/'+users[i];
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 0
+       })
+         .done(function( msg ) {
+           console.log(JSON.stringify(msg));
+           if($('#noitems').length)
+           {$('#users').empty();}           
+           var newitems ='';
+           console.log(msg._id);
+           console.log(msg.last_item);
+           console.log(tmstmps[msg._id].tmstmp);
+           var move_list_up = 0;
+           if(tmstmps[msg._id].tmstmp<msg.last_item) {
+            newitems = "<span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span>";
+            move_list_up=1;
+           }
+           var avinsert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' id='img_cid"+msg._id+"' class='media-object' alt='avatar'></div>";
+           if(msg.userpic)
+           {
+            avinsert ="<img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='/userpics/id"+msg._id+"_small"+msg.picext+"' alt='avatar'>";
+           }
+          var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'>"+newitems+"<div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'>"+avinsert+"</div><div class='media-body' ><h4 class='media-heading' style='color:#333 !important;'>"+msg.nick+"</h4>"+msg.readbooks+" / "+msg.seenmovies+"</div></div></a></div></div>";
+           //insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
+           if(move_list_up) {
+            $('#users').prepend(insert);
+           }
+           else
+           {$('#users').append(insert);}
+           //getavatar(msg.uid,msg._id);
+           });
+         count--;
+         console.log('before iteration, count: '+count);
+         if(count!=-1)
+        {getusers(users,count);}
+        else {
+          return 0;
+        }
+      }
+      function getavatar(uid,discid) {
+      console.log('getting avatar for: '+uid);
+      avatarrequest = new XMLHttpRequest();
+      avatarrequest.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(avatarrequest.responseText);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+      eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      }
+      else {
+      if(parsed.mtext==='emptypic'){
+        console.log('EMPTY AVATAR');
+       eval("$('#img_cid"+discid+"').attr('src','/images/emptyuserpic.png');");
+      }
+      else 
+      {
+        console.log('HAS AVATAR');
+      eval("$('#img_cid"+discid+"').attr('src','/userpics/id"+uid+"_small"+parsed.ext+"');");
+      }
+      }
+      }
+      };
+      avatarrequest.open('POST', '/getavatar/'+uid, true);
+      avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      avatarrequest.send();
+      }
+      //if(users.length){
+      //      getusers(users,count);}
+      function closeoptions(id){
+        eval("$('#sm"+id+"').fadeToggle('fast');");
+      }
+      function ops(id) {
+        //TO DO check if any of those menues are open and close them before showing a new one
+          $('.slideover').fadeOut(350);
+          eval("$('#sm"+id+"').fadeToggle('fast');");
+        }
