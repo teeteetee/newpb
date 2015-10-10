@@ -457,6 +457,12 @@ head
        margin-top: 8px;
        left: 10px;
       }
+      .label {
+        font-weight:200;
+      }
+      .label-primary {
+        background-color:#333;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -809,7 +815,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' '><span class='dot-sm'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+" style='margin-left:15px;'>"+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
