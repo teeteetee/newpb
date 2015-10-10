@@ -208,7 +208,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js') 
     script.  
-      var me= #{me};
+      var me= '#{me}';
       var users = !{JSON.stringify(doc)};
       users= JSON.parse(users);
       //console.log(user.userstore);
