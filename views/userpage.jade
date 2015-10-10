@@ -8,7 +8,8 @@ head
     title P&B     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')    
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')  
+    link(href='/bootstrap/css/simple-sidebar.css', rel='stylesheet')    
     meta(liber de amicitia est)
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
@@ -632,89 +633,113 @@ head
                     button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitbook') Submit
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
-      .container
-        // Brand and toggle get grouped for better mobile display
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button' ,id='menutoggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-            span.sr-only Toggle navigation         
-            span.icon-bar         
-            span.icon-bar         
-            span.icon-bar       
-          a.navbar-brand(style='padding-top:5px;', href='/')
-            img(src='/images/pb_inf_logo.png',class='hidden-xs', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
-        // Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li.active
-              a(href='#')  My lists 
+    //
+      nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
+        .container
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button' ,id='menutoggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation         
+              span.icon-bar         
+              span.icon-bar         
+              span.icon-bar       
+            a.navbar-brand(style='padding-top:5px;', href='/')
+              img(src='/images/pb_inf_logo.png',class='hidden-xs', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
+          // Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li.active
+                a(href='#')  My lists 
+              li
+                a( id='chat' href='/chat') Messages             
+              li
+                a(href='/people') People           
+              li
+                a(href='/settings')  Settings             
+              li
+                a(href='/about')  About         
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href='/logout') Logout
+    #wrapper
+      //<!-- Sidebar -->
+      #sidebar-wrapper
+          ul.sidebar-nav
+            li.sidebar-brand
+                  a(href="#") Start Bootstrap
             li
-              a( id='chat' href='/chat') Messages             
+              a(href="#") Dashboard
             li
-              a(href='/people') People           
+              a(href="#") Shortcuts
             li
-              a(href='/settings')  Settings             
+              a(href="#") Overview
             li
-              a(href='/about')  About         
-          ul.nav.navbar-nav.navbar-right
+              a(href="#") Events
             li
-              a(href='/logout') Logout
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-      .row(id='spin') 
-        .col-xs-12(style='text-align:center;')
-          .loader
-    .container#main(style='padding-top:50px;height:100%;background-color:white;')
-      .row.visible-lg.visible-md.visible-sm
-        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
-          h2(style='margin-top:30px;' class='usernick')  ...
-          //h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
-          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
-            span(class='glyphicon glyphicon-plus')  
-            | Add item
-          ul(class="nav nav-pills" style='margin-top:20px;')
-            li.showbooks.active(role="presentation") 
-              a(href="#") Books
-                span(class='badge booknum' style='margin-left:10px;') 143
-            li.showmovies(role="presentation") 
-              a(href="#") Movies
-                span(class='badge movienum' style='margin-left:10px;') 561
-      .row
-        #booklist.thun.col-md-12
-          .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
-              //h4.numbers                 
-              button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
+              a(href="#") About
+            li
+              a(href="#") Services
+            li
+              a(href="#") Contact
+      <!-- /#sidebar-wrapper -->      
+      <!-- Page Content -->
+      #page-content-wrapper
+        .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+          .row(id='spin') 
+            .col-xs-12(style='text-align:center;')
+              .loader
+        .container#main(style='padding-top:50px;height:100%;background-color:white;')
+          .row.visible-lg.visible-md.visible-sm
+            #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
+              h2(style='margin-top:30px;' class='usernick')  ...
+              //h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
+              button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
                 span(class='glyphicon glyphicon-plus')  
                 | Add item
-              .row 
-                .col-xs-12
-                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                    .btn.btn-default.active.showbooks(type='button') Books
-                      span(class='badge booknum' style='margin-left:10px;') 130
-                    .btn.btn-default.showmovies(type='button') Movies
-                      span(class='badge movienum' style='margin-left:10px;') 561
-          #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.mrow
-                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                  .nobooks.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.brow
-                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
-                  .nobooks.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.mrow
-                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              ul(class="nav nav-pills" style='margin-top:20px;')
+                li.showbooks.active(role="presentation") 
+                  a(href="#") Books
+                    span(class='badge booknum' style='margin-left:10px;') 143
+                li.showmovies(role="presentation") 
+                  a(href="#") Movies
+                    span(class='badge movienum' style='margin-left:10px;') 561
+          .row
+            #booklist.thun.col-md-12
+              .row.visible-xs
+                #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
+                  //h4.numbers                 
+                  button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
+                    span(class='glyphicon glyphicon-plus')  
+                    | Add item
+                  .row 
+                    .col-xs-12
+                      .btn-group(style='margin-top:10px;margin-bottom:10px;')
+                        .btn.btn-default.active.showbooks(type='button') Books
+                          span(class='badge booknum' style='margin-left:10px;') 130
+                        .btn.btn-default.showmovies(type='button') Movies
+                          span(class='badge movienum' style='margin-left:10px;') 561
+              #list.row
+                .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+                  .row.mrow
+                    .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
+                      .nomovies.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items 
+                  .row.brow
+                    .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
+                      .nobooks.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items  
+                  .row.brow
+                    #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
+                      .nobooks.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items 
+                  .row.mrow
+                    #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
+                      .nomovies.row(style='text-align:center;')  
+                         .col-xs-12
+                           h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
