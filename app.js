@@ -143,7 +143,8 @@ app.post('/getmovie/:id',function (req,res){
 
 app.post('/getuser/:id',function (req,res){
   //TO DO auth
-  users.findOne({_id:req.params.id},function(err,doc){
+  //used in 'people'
+  users.findOne({_id:req.params.id},{fields:{regdate:0,male:0,pub:0,phr:0,userstore:0,bookstore:0,moviestore:0,newbooks:0,newmovies:0,totalbooks:0,totalmovies:0}},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
@@ -190,7 +191,7 @@ app.post('/newuser',function(req,res){
     } 
 
     if (validateEmail(vmail) === true) {
-    users.find({mail:vmail,nick:vnick},function(err,doc){
+    users.find({mail:vmail,nick:vnick},{fields:{mail:1}},function(err,doc){
       if (err)
       {
         //DO SMTH
@@ -274,7 +275,7 @@ app.post('/check',function(req,res){
 
 app.get('/chat',function (req,res){
   if(req.session.mail){
-    users.findOne({mail:req.session.mail},function(err,done){
+    users.findOne({mail:req.session.mail},{fields:{discussions:1,}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -359,14 +360,12 @@ else {
 app.get('/people',function (req,res){
    if(req.session._id)
   {
-        users.findOne({_id:req.session._id},function (err,doc){
+        users.findOne({_id:req.session._id},{fields:{userstore:1,readbooks:1,seenmovies:1}},function (err,doc){
           if(err) {
           // TO DO tell user
           }
           else {
             if(doc){
-                          delete doc.bookstore;
-                          delete doc.phr;
                           res.render('people',{'user':doc._id,'doc':JSON.stringify(doc)});  
                   }
                   else {
