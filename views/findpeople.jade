@@ -191,9 +191,11 @@ head
     .container(style='padding-top:50px;height:100%;background-color:white;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') Find people
-      .row
-        .col-xs-12('text-align:center;')
+          //h3(style='font-weight:200;color:#ddd;') Find people
+          h3(style='font-weight:200;') #{title}
+          h5(style='font-weight:400;color:#ddd;') #{author}
+      .row(style='text-align:center;padding-top:20px;padding-bottom:30px;')
+        .col-xs-12
           h3(style='font-weight:200;') #{title}
           h5(style='font-weight:400;color:#ddd;') #{author}
       .row
