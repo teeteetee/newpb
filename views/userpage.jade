@@ -717,14 +717,6 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      $('#menutoggle').click(function(){
-        if($('.modal-backdrop').css('display')==='block'){
-           $('.modal-backdrop').remove();
-        }
-        else {
-          $('body').append('<div class="modal-backdrop"></div>');
-        }
-        });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
