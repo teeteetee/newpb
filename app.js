@@ -1306,12 +1306,10 @@ app.get('/people/:kind/:item',function (req,res){
               else {
                 res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--'});
               }
-              }
-            });
+              });
+            }
             //res.render('findpeople',{'doc':JSON.stringify(done)});
-          }
-        
-       });
+          });
        break;
        case('m'):
         items.find({moviestore:req.params.item}, function(err,done){
