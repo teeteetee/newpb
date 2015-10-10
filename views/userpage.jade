@@ -659,7 +659,7 @@ head
             // Brand and toggle get grouped for better mobile display
             .navbar-header
               //button.navbar-toggle.collapsed(type='button' ,id='menu-toggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-              button.navbar-toggle.collapsed(type='button' )
+              button.navbar-toggle.collapsed(type='button' ,id='menu-toggle')
                 span.sr-only Toggle navigation         
                 span.icon-bar         
                 span.icon-bar         
@@ -709,7 +709,6 @@ head
                   button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
                     span(class='glyphicon glyphicon-plus')  
                     | Add item
-                  a(href='#menu-toggle',id='menu-toggle', class='btn btn-default') Get it
                   .row 
                     .col-xs-12
                       .btn-group(style='margin-top:10px;margin-bottom:10px;')
@@ -744,6 +743,10 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
