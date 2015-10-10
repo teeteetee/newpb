@@ -338,9 +338,10 @@ app.post('/settings',function (req,res){
   var ms={};
   ms.trouble=1;
   var vpub = parseInt(req.body.pub);// public
-  var vmrq = parseInt(req.body.mrq);// messaging request
+  //var vmrq = parseInt(req.body.mrq);// messaging request
   if(req.session.mail){
-    users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
+    //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
+    users.update({mail:req.session.mail},{pub:vpub});
     ms.trouble=0;
     res.send(ms);
   }
