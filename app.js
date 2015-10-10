@@ -646,9 +646,6 @@ app.post('/markmoviegood/:bid',function (req,res){
   });
 });
 
-//app.post('/people/:item',function (req,res){
-//
-//});
 
 //******************** HELPERS ********************//
 
@@ -1300,7 +1297,18 @@ app.get('/people/:kind/:item',function (req,res){
         }
           else {
             console.log(done);
-            res.render('findpeople',{'doc':JSON.stringify(done)});
+            books.findOne({_id:req.params.item}, function (err2,book){
+              if(err2){
+                console.log('err while book query');
+              else if(done){
+                 res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors});
+              }
+              else {
+                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--'});
+              }
+              }
+            });
+            //res.render('findpeople',{'doc':JSON.stringify(done)});
           }
         
        });
