@@ -718,12 +718,11 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       $('#menutoggle').click(function(){
-        if($('#main').hasClass('fade')){
-          $('#main').removeClass('fade');
+        if($('.modal-backdrop').css('display')==='block'){
+           $('.modal-backdrop').remove();
         }
-        else
-        {
-          $('#main').addClass('fade');
+        else {
+          $('body').append('<div class="modal-backdrop"></div>');
         }
         });
       var user = !{JSON.stringify(done)};
