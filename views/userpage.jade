@@ -633,7 +633,7 @@ head
       .container
         // Brand and toggle get grouped for better mobile display
         .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+          button.navbar-toggle.collapsed(type='button' ,id='menutoggle', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
             span.sr-only Toggle navigation         
             span.icon-bar         
             span.icon-bar         
@@ -717,6 +717,15 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $('#menutoggle').click(function(){
+        if($('#main').hasClass('fade')){
+          $('#main').removeClass('fade');
+        }
+        else
+        {
+          $('#main').addClass('fade');
+        }
+        });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
