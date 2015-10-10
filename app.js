@@ -1298,7 +1298,7 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
        case('b'):
-       items.find({bookstore:req.params.item},{_id:1}, function(err,done){
+       items.find({bookstore:req.params.item},{user:1}, function(err,done){
         if(err){
           console.log('err while items query');
         }
