@@ -1540,6 +1540,7 @@ app.get('/u/:nick', function (req,res){
                   if(!done){
                     done=[];
                   }
+                  console.log('item done: '+done);
                 res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'unfollow':unfollow});
                 });
 
