@@ -679,13 +679,12 @@ head
       //     });
       // }
       function redactbookmodal (i) {
-        $('#addbook').disable(false);
-        $('#addbook').text('Add to my list');
+        $('#addbook').prop('disabled',false).text('Add to my list');
         var already=0;
         for(var x=b_checkagainst.length-1;x>=0;x--){
           if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
             $('#addbook').text('Already on the list');
-            $('#addbook').disable(true);
+            $('#addbook').prop('disabled',true);
             already=1;
           }
         }
@@ -693,7 +692,6 @@ head
         $('#modalauthor').text(modal_data_store[i].author);
         var insert = 'addbook('+i+')';
         if(already){
-               $('#addbook').disable(false);
                 $('#addbook').attr('onclick',insert);}
         $('#bookmodal').modal('show');
       }
