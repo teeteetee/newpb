@@ -684,7 +684,7 @@ head
         for(var x=b_checkagainst.length-1;x>=0;x--){
           if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
             $('#addbook').text('Already on the list');
-            $('#addbook').attr('disabled');
+            $('#addbook').attr('disabled','disabled');
             already=1;
           }
         }
