@@ -702,7 +702,7 @@ head
             li.showmovies(role="presentation") 
               a(href="#") Movies
                 span(class='badge movienum' style='margin-left:10px;') 561
-            li.showweb(role="presentation") 
+            li.showarticles(role="presentation") 
               a(href="#") Articles
                 span(class='badge articlenum' style='margin-left:10px;') 561
       .row
@@ -782,7 +782,7 @@ head
       $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
           console.log('show brow');
-          $('.showweb').removeClass('active');
+          $('.showarticles').removeClass('active');
           $('.showmovies').removeClass('active');
           $('.showbooks').addClass('active');
           $('.brow').css('display','block')
@@ -793,7 +793,7 @@ head
       $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
           console.log('show mrow');
-          $('.showweb').removeClass('active');
+          $('.showarticles').removeClass('active');
           $('.showbooks').removeClass('active');
           $('.showmovies').addClass('active');
           $('.mrow').css('display','block')
@@ -806,7 +806,7 @@ head
           console.log('show brow');
           $('.showmovies').removeClass('active');
           $('.showbooks').removeClass('active');
-          $('.showweb').addClass('active');
+          $('.showarticles').addClass('active');
           $('.brow').css('display','none')
           $('.mrow').css('display','none');
           $('.arow').css('display','block');
