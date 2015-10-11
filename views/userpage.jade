@@ -450,7 +450,7 @@ head
       .mrow {
         display:none;
       }
-      .wrow {
+      .arow {
         display:none;
       }
       .btn.active, .btn:active {
@@ -734,9 +734,9 @@ head
                   .nobooks.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items
-              .row.wrow
-                .col-xs-12.visible-lg.visible-md.visible-sm.pages#bigscreens
-                  .nopages.row(style='text-align:center;')  
+              .row.arow
+                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
+                  .noarticles.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
               .row.brow
@@ -749,9 +749,9 @@ head
                   .nomovies.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.wrow
-                #smallscreens.visible-xs.col-xs-12.pages(style='border-top:1px solid #eee;')       
-                  .nopages.row(style='text-align:center;')  
+              .row.arow
+                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
+                  .noarticles.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -787,7 +787,7 @@ head
           $('.showbooks').addClass('active');
           $('.brow').css('display','block')
           $('.mrow').css('display','none');
-          $('.wrow').css('display','none');
+          $('.arow').css('display','none');
         }
         });
       $('.showmovies').click(function(){
@@ -798,10 +798,10 @@ head
           $('.showmovies').addClass('active');
           $('.mrow').css('display','block')
           $('.brow').css('display','none');
-          $('.wrow').css('display','none');
+          $('.arow').css('display','none');
         }
         });
-      $('.showweb').click(function(){
+      $('.showarticles').click(function(){
         if($('.brow').css('display')==='none'){
           console.log('show brow');
           $('.showmovies').removeClass('active');
@@ -809,7 +809,7 @@ head
           $('.showweb').addClass('active');
           $('.brow').css('display','none')
           $('.mrow').css('display','none');
-          $('.wrow').css('display','block');
+          $('.arow').css('display','block');
         }
         });
       setTimeout(function(){
