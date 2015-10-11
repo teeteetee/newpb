@@ -681,7 +681,7 @@ head
       function redactbookmodal (i) {
         var already=0
         for(var x=b_checkagainst.length-1;x>=0;x--){
-          if(b_checkagainst[x]===modal_data_store[i]._id) {
+          if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
             $('#addbook').addClass('disabled').text('Already on the list');
             already=1;
           }
