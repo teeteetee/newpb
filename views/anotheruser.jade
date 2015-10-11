@@ -691,8 +691,7 @@ head
         $('#modaltitle').text(modal_data_store[i].title);
         $('#modalauthor').text(modal_data_store[i].author);
         var insert = 'addbook('+i+')';
-        if(already){
-                $('#addbook').attr('onclick',insert);}
+        $('#addbook').attr('onclick',insert);
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
