@@ -2002,7 +2002,17 @@ app.post('/additem/:id',function (req,res){
            }
            else {
               if(book){
-                book_insert.tmstmp = Date.now();
+                //checking if we have the book already
+                 var already = 0;
+                 for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
+                   if(book._id === req.session.bookstore[xx].toString()){
+                     console.log('trying to add a book, which is already on the list');
+                    already =1;
+                   }
+                 }
+                 if(!already)
+                 {
+                   book_insert.tmstmp = Date.now();
                 book_insert._id = book._id;
                 book_insert.goodbook = 0;
                 if(parseInt(req.body.newbook))
@@ -2016,6 +2026,14 @@ app.post('/additem/:id',function (req,res){
                     items.update({user:req.session._id},{$push:{bookstore:book._id.toString()}});
                              tell_user(0);
                   }
+
+                 }
+                 else {
+                   var ms ={};
+                     ms.trouble=0;
+                     res.send(ms);
+                 }
+
                //respond to user with success
               }
               else{
