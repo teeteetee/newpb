@@ -683,7 +683,8 @@ head
         var already=0;
         for(var x=b_checkagainst.length-1;x>=0;x--){
           if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
-            $('#addbook').attr('disabled').text('Already on the list');
+            $('#addbook').text('Already on the list');
+            $('#addbook').attr('disabled');
             already=1;
           }
         }
@@ -692,7 +693,7 @@ head
         var insert = 'addbook('+i+')';
         if(already){
                $('#addbook').removeAttr('disabled');
-                $('#addbook').prop('onclick',insert);}
+                $('#addbook').attr('onclick',insert);}
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
