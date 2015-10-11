@@ -239,6 +239,51 @@ head
       #contacts{
         display:none;
       }
+      .loader {
+      margin: 60px auto;
+      margin-top:20%;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+      }
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      #wait{
+        dispaly:none;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -263,6 +308,10 @@ head
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/logout') Logout    
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader
     .container(style='padding-top:50px;height:100%;background-color:white;')  
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
@@ -382,6 +431,7 @@ head
           //    numFiles = input.get(0).files ? input.get(0).files.length : 1,
           //    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
           //input.trigger('fileselect', [numFiles, label]);
+          $('#wait').css('display','block');
           console.log('hey');
           $('#picform').submit();
       });
