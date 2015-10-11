@@ -89,6 +89,9 @@ head
       }
       }
       @media (max-width: 767px) {
+      .navbar-inverse .navbar-nav>.active>a {
+        background-color:#333;
+      }
       .navbar-inverse .navbar-nav>li>a {
         padding-left:25px;
         font-weight:100 !important;
@@ -97,7 +100,9 @@ head
         background-color:white;
       }
       .navbar-inverse .navbar-toggle {
-        border-color:#ddd;
+        border-color: #eee;
+        background-color: white;
+        border-bottom: 1px solid #eee;
       }
       .navbar-inverse .navbar-toggle .icon-bar{
         background-color:#bbb;
@@ -489,6 +494,9 @@ head
       }
       .label-primary {
         background-color:#333;
+      }
+      .navbar-header {
+      border-bottom: 1px solid #eee;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1183,18 +1191,13 @@ head
               .done(function( msg ) {
                 console.log(msg);
                 $('#bookmodal').modal('hide');
-                console.log('talk to me');
                 books[bookid].newbook=0;
                 var vname = '#book'+books[bookid]._id;
-                console.log('vname is:'+vname);
                 var vname2 = '#btitle'+books[bookid]._id;
-                console.log('vname: '+vname);
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
-                console.log('old booknum: '+user.readbooks);
                 user.readbooks++;
-                console.log('new booknum: '+user.readbooks);
                 $('.booknum').text(user.readbooks);
               });
       }
