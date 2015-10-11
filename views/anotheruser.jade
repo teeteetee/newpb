@@ -574,8 +574,8 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')     
     script.
-      var bookstore_checkagainst = #{bookstorecheck};
-      var moviestore_checkagainst = #{moviestorecheck};
+      var bookstore_checkagainst = !{JSON.stringify(bookstorecheck)};
+      var moviestore_checkagainst = !{JSON.stringify(moviestorecheck)};
       console.log('typeof bookstore:'+typeof bookstore_checkagainst);
       var user = !{JSON.stringify(doc)};
       var unfollow =#{unfollow};
