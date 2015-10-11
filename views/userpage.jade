@@ -677,6 +677,9 @@ head
             li.showmovies(role="presentation") 
               a(href="#") Movies
                 span(class='badge movienum' style='margin-left:10px;') 561
+            li.showweb(role="presentation") 
+              a(href="#") Web
+                span(class='badge webnum' style='margin-left:10px;') 561
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -703,6 +706,11 @@ head
                 .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
                   .nobooks.row(style='text-align:center;')  
                      .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items
+              .row.wrow
+                .col-xs-12.visible-lg.visible-md.visible-sm.webpages#bigscreens
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
               .row.brow
                 #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
@@ -711,6 +719,11 @@ head
                        h2(style='color:#ccc;margin-bottom:20px;') No items 
               .row.mrow
                 #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.wrow
+                #smallscreens.visible-xs.col-xs-12.webpages(style='border-top:1px solid #eee;')       
                   .nomovies.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
@@ -742,19 +755,34 @@ head
       $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
           console.log('show brow');
+          $('.showweb').removeClass('active');
           $('.showmovies').removeClass('active');
           $('.showbooks').addClass('active');
           $('.brow').css('display','block')
           $('.mrow').css('display','none');
+          $('.wrow').css('display','none');
         }
         });
       $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
           console.log('show mrow');
+          $('.showweb').removeClass('active');
           $('.showbooks').removeClass('active');
           $('.showmovies').addClass('active');
           $('.mrow').css('display','block')
           $('.brow').css('display','none');
+          $('.wrow').css('display','none');
+        }
+        });
+      $('.showweb').click(function(){
+        if($('.brow').css('display')==='none'){
+          console.log('show brow');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').removeClass('active');
+          $('.showweb').addClass('active');
+          $('.brow').css('display','none')
+          $('.mrow').css('display','none');
+          $('.wrow').css('display','block');
         }
         });
       setTimeout(function(){
