@@ -1964,7 +1964,7 @@ app.post('/additem/:id',function (req,res){
     console.log('book_out');
     var book_id = req.body.book_id;
     var already = 0;
-    for(var xx =req.session.bookstore.length;xx>=0;xx--){
+    for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
       if(book_id === req.session.bookstore[xx].toString()){
         console.log('trying to add a book, which is already on the list');
        already =1;
