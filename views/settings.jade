@@ -240,6 +240,9 @@ head
       #contacts{
         display:none;
       }
+      .form-group {
+        padding-left:15px;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -290,17 +293,17 @@ head
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
             button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
       #contacts.row.setrow
-        .col-xs-12.col-lg-6.col-md-6.col-sm-8(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           h4 Your contacts avaliable to other users
           .form-group
             label(for="mail") Email
-            input(type="email" class="form-control" id="mail")
+            input(type="email" style='width:300px;' class="form-control" id="mail")
           .form-group
             label(for="phone") Phone
-            input(type="tel" class="form-control" id="phone")
+            input(type="tel" style='width:300px;' class="form-control" id="phone")
           .form-group
             label(for="web") Web 
-            input(type="text" class="form-control" id="web")
+            input(type="text" style='width:300px;' class="form-control" id="web")
       //
         .row.setrow
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
