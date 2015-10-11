@@ -710,7 +710,9 @@ head
          data: 'book_id='+books[i]._id
        })
          .done(function( msg ) {
+           console.log('arr length: '+b_checkagainst.length);
            b_checkagainst.push(books[i]._id);
+           console.log('arr length after: '+b_checkagainst.length);
            $('#bookmodal').modal('hide');
            console.log('added book');
           });
