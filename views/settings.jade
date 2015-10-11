@@ -223,7 +223,6 @@ head
       .form-control{
         background-color:white;
         border-color:#333;
-        border-left: none;
       }
       .form-control[readonly] {
         background-color:white;
@@ -239,9 +238,6 @@ head
       }
       #contacts{
         display:none;
-      }
-      .form-group {
-        padding-left:15px;
       }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
@@ -283,7 +279,7 @@ head
             .input-group
               span.input-group-btn
                 span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
-                  input(type="file" id='userpic' name='userpic' multiple)
+                  input(type="file" style='border-left:none;max-width:350px;' id='userpic' name='userpic' multiple)
               input(type="text" class="form-control" readonly)
             span.help-block Jpg images only
       .row.setrow
@@ -297,13 +293,13 @@ head
           h4 Your contacts avaliable to other users
           .form-group
             label(for="mail") Email
-            input(type="email" style='width:300px;' class="form-control" id="mail")
+            input(type="email" style='max-width:350px;' class="form-control" id="mail")
           .form-group
             label(for="phone") Phone
-            input(type="tel" style='width:300px;' class="form-control" id="phone")
+            input(type="tel" style='max-width:350px;' class="form-control" id="phone")
           .form-group
             label(for="web") Web 
-            input(type="text" style='width:300px;' class="form-control" id="web")
+            input(type="text" style='max-width:350px;' class="form-control" id="web")
       //
         .row.setrow
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
