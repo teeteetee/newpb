@@ -710,6 +710,7 @@ head
          data: 'book_id='+books[i]._id
        })
          .done(function( msg ) {
+           b_checkagainst.push(books[i]._id);
            $('#bookmodal').modal('hide');
            console.log('added book');
           });
@@ -722,6 +723,7 @@ head
          data: 'movie_id='+movies[i]._id
        })
          .done(function( msg ) {
+          m_checkagainst.push(movies[i]._id);
            $('#moviemodal').modal('hide');
            console.log('added movie');
           });
