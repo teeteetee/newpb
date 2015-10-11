@@ -566,15 +566,15 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a movie
           .modal-body
-            form(id='authoradd_here')
+            form()
               .form-group
                 label(for="mtitle") Titile
-                input(type="text" class="form-control" id="mtitle" autocomplete='off' data-provide="typeahead" placeholder="The Matrix")
+                input(type="text" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
                 .row.autocomp#autocompmovies
                   .col-xs-12#srm
               .form-group
                 label(for="year") Year
-                input(type="text" class="form-control" id="year" autocomplete='off' data-provide="typeahead" placeholder="1999")
+                input(type="text" class="form-control" id="year" autocomplete='off'  placeholder="1999")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
@@ -582,6 +582,28 @@ head
                 button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitmovie') Submit
+    .modal.fade(id="addarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a web article
+          .modal-body
+            form(id='authoradd_here')
+              .form-group
+                label(for="pagetitle") Titile
+                input(type="text" class="form-control" id="page" autocomplete='off' placeholder="/")
+              .form-group
+                label(for="pagelink") Link
+                input(type="text" class="form-control" id="pagelink" autocomplete='off' placeholder="/")
+            .form-group
+              label(for='new_old') Statistics
+              .btn-group#new_old(style='margin-bottom:50px;display:block;')
+                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
+                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it             
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn-primary'  id='submitarticle') Submit
     .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -974,10 +996,13 @@ head
       $('.openadd').click(function(){
         if($('.brow').css('display')==='block')
         {$('#addbook').modal('show');}
-      else{
+      else if($('.mrow').css('display')==='block'){
         $('#addmovie').modal('show');
       }
+      else {
+        $('#addarticle').modal('show');
         });
+      }
       function redactbookmodal (i) {
         if(books[i].goodbook){
           $('.book_good').css('display','none');
