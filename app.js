@@ -613,6 +613,41 @@ app.post('/markbookgood/:bid',function (req,res){
   });
 });
 
+app.post('/unmarkbookgood/:bid',function (req,res){
+  var ms={};
+  ms.trouble=0;
+  users.findOne({_id:req.session._id},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+      ms.trouble=1;
+       res.send(ms);
+    }
+    else {
+     if(doc!=null){
+      console.log('found user');
+       var temp_arr;
+       temp_arr = doc.bookstore;
+       var temp_id;
+       for(var i=0;i<temp_arr.length;i++){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.bid)){
+          console.log('modifying');
+           temp_arr[i].goodbook = 0;
+           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
+           res.send(ms);
+       }
+      }
+    }
+      else {
+        console.log('trouble finding the user');
+        ms.trouble=1;
+       res.send(ms);
+      }
+    }
+  });
+});
+
 app.post('/markmoviegood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
@@ -634,6 +669,41 @@ app.post('/markmoviegood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodmovie = 1;
+           users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
+           res.send(ms);
+       }
+      }
+    }
+      else {
+        console.log('trouble finding the user');
+        ms.trouble=1;
+       res.send(ms);
+      }
+    }
+  });
+});
+
+app.post('/unmarkmoviegood/:bid',function (req,res){
+  var ms={};
+  ms.trouble=0;
+  users.findOne({_id:req.session._id},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+      ms.trouble=1;
+       res.send(ms);
+    }
+    else {
+     if(doc!=null){
+      console.log('found user');
+       var temp_arr;
+       temp_arr = doc.moviestore;
+       var temp_id;
+       for(var i=0;i<temp_arr.length;i++){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.bid)){
+          console.log('modifying');
+           temp_arr[i].goodmovie = 0;
            users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
            res.send(ms);
        }
