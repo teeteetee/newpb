@@ -530,7 +530,7 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal();'><h3 id='title"+msg._id+"' style='margin-left:17px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal();'><h3 id='title"+msg._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
               break
             }        
            $('.books').append(insert);
