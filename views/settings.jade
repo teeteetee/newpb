@@ -17,9 +17,6 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      .form-group{
-        padding-left:15px;
-      }
       #savebutton {
         border-top:1px solid #eee;
         padding-top:20px;
@@ -43,9 +40,6 @@ head
         padding-bottom:100px;
       }
       @media (max-width: 767px) {
-      .form-group{
-        padding-left:0px;
-      }
       li a {
         font-size:20px;
         letter-spacing:1px;
@@ -261,15 +255,11 @@ head
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a(href='/')  My lists 
-            li
-              a( id='chat' href='/chat') Messages             
+              a(href='#')  My lists             
             li
               a(href='/people') People           
             li.active
-              a(href='/settings')  Settings             
-            li
-              a(href='/about')  About         
+              a(href='/settings')  Settings                      
           ul.nav.navbar-nav.navbar-right
             li
               a(href='/logout') Logout    
@@ -280,7 +270,7 @@ head
           h3(style='font-weight:200;color:#ddd;') Settings     
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1
-          h4 Userpic upload
+          h4(style='margin-bottom:30px;') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .input-group
               span.input-group-btn
