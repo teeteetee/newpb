@@ -995,14 +995,14 @@ head
         });
       $('.openadd').click(function(){
         if($('.brow').css('display')==='block')
-        {$('#addbook').modal('show');}
-      else if($('.mrow').css('display')==='block'){
-        $('#addmovie').modal('show');
-      }
-      else {
+          {$('#addbook').modal('show');}
+        else if($('.mrow').css('display')==='block'){
+            $('#addmovie').modal('show');
+           }
+        else {
         $('#addarticle').modal('show');
+        }
         });
-      }
       function redactbookmodal (i) {
         if(books[i].goodbook){
           $('.book_good').css('display','none');
