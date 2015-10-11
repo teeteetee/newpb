@@ -1536,7 +1536,13 @@ app.get('/u/:nick', function (req,res){
                 //var tmp_str = doc._id.toString();
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
-               res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':req.session.bookstore,'unfollow':unfollow});
+                items.findOne({user:req.session_id},function(err,done){
+                  if(!done){
+                    done=[];
+                  }
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'unfollow':unfollow});
+                });
+
                }
                else {
                  if(doc.pub)

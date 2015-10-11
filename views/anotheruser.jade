@@ -575,6 +575,7 @@ head
     script(src='/js/bootstrap.min.js')     
     script.
       var bookstore_checkagainst = #{bookstorecheck};
+      var moviestore_checkagainst = #{moviestorecheck};
       console.log('typeof bookstore:'+typeof bookstore_checkagainst);
       var user = !{JSON.stringify(doc)};
       var unfollow =#{unfollow};
