@@ -1973,20 +1973,26 @@ app.post('/additem/:id',function (req,res){
     if(!already)
     {users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:Date.now(),_id:book_id,newbook:1,goodbook:0}},$set:{last_item:Date.now()},$inc:{totalbooks:1,newbooks:1}});
         items.update({user:req.session._id},{$push:{bookstore:book_id.toString()}});
+      }
         var ms ={};
         ms.trouble=0;
-        res.send(ms);}
-    else {
-      var ms ={};
-        ms.trouble=0;
         res.send(ms);
-    }
     break;
     case('movie_out'):
     console.log('movie_out');
     var movie_id = req.body.movie_id;
+    var already = 0;
+    for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
+      if(movie_id === req.session.moviestore[xx].toString()){
+        console.log('trying to add a book, which is already on the list');
+       already =1;
+      }
+    }
+    if(!already)
+    {
     users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
     items.update({user:req.session._id},{$push:{moviestore:movie_id.toString()}});
+    }
     var ms ={};
     ms.trouble=0;
     res.send(ms);
