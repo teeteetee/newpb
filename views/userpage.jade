@@ -590,7 +590,7 @@ head
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='newmovie' type='button') New
+                button(class='btn btn-iosdark active' id='newmovie' type='button') New
                 button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitmovie') Submit
@@ -612,7 +612,7 @@ head
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='newarticle' type='button') New
+                button(class='btn btn-iosdark active' id='newarticle' type='button') New
                 button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitarticle') Submit
@@ -641,10 +641,10 @@ head
             .form-group(style='margin-top:49px;')
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
+                button(class='btn btn-iosdark active' id='newbook' type='button') New
                 button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
               .btn-group(style='margin-bottom:100px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='nonfiction' type='button') Nonfiction
+                button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
                 button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction 
               //  
                 .well
@@ -1514,7 +1514,7 @@ head
           }
         });
         $('#submitarticle').click(function(){
-        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        if($('#article_title').val() && $('#article_link').val())//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
