@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
+var ObjectID = require('mongodb').ObjectID;
 var http = require('http');
 
 
@@ -2001,10 +2002,10 @@ app.post('/additem/:id',function (req,res){
     var newarticle = parseInt(req.body.newarticle);
     if(newarticle)
     {
-      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:ObjectId(),title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:new ObjectId(),title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
     }
     else {
-      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:ObjectId(),title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,readarticles:1}});
+      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:new ObjectId(),title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,readarticles:1}});
     }
     var ms ={};
     ms.trouble=0;
