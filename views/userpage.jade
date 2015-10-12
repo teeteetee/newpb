@@ -1104,7 +1104,7 @@ head
         if(checktitle!='http'){
          var link = "http://"+link;}
          $('.article_view').attr('href',link);
-        if(articles[i].goodbook){
+        if(articles[i].goodarticle){
           $('.article_good').css('display','none');
           var insert = 'unmarkarticlegood('+i+')';
           $('.article_unmark_good').attr('onclick',insert);
