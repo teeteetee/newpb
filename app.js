@@ -1965,7 +1965,7 @@ app.post('/additem/:id',function (req,res){
     var book_id = req.body.book_id;
     var already = 0;
     for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
-      if(book_id === req.session.bookstore[xx].toString()){
+      if(book_id === req.session.bookstore[xx]._id.toString()){
         console.log('trying to add a book, which is already on the list');
        already =1;
       }
@@ -1983,7 +1983,7 @@ app.post('/additem/:id',function (req,res){
     var movie_id = req.body.movie_id;
     var already = 0;
     for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
-      if(movie_id === req.session.moviestore[xx].toString()){
+      if(movie_id === req.session.moviestore[xx]._id.toString()){
         console.log('trying to add a book, which is already on the list');
        already =1;
       }
