@@ -605,7 +605,7 @@ head
             form(id='authoradd_here')
               .form-group
                 label(for="pagetitle") Titile
-                input(type="text" class="form-control" id="article_tite" autocomplete='off' placeholder="Neuroscience")
+                input(type="text" class="form-control" id="article_title" autocomplete='off' placeholder="Neuroscience")
               .form-group
                 label(for="pagelink") Link
                 input(type="text" class="form-control" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
@@ -1534,7 +1534,7 @@ head
             })
               .done(function( msg ) {
                 $('#article_title').val('');
-                $('#article_').val('');
+                $('#article_link').val('');
                 $('#addarticle').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
