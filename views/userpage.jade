@@ -551,37 +551,13 @@ head
             button(class='btn btn-primary btn-lg  form-control movie_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-primary btn-lg form-control movie_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-primary btn-lg form-control movie_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
-    .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Welcome 
-          .modal-body
-            .row
-              .col-xs-12
-                ol
-                  li Your username is your id, which you can share with other people, so they can follow your lists and chat with you.
-                  li You might want to load a userpic &#40;avaliable in Settings&#41; (don't be silly with it)
-                  li Add items to your lists now through 
-                    span(style ='color:#23BBA7;' class='glyphicon glyphicon-plus') 
-                    strong Add item 
-                    | button to your left
-                  li You can find people with whom you have corresponding items by clicking on this button in under an item in you list 
-                    button(class='btn btn-warning')
-                      span(style ='color:white;' class='glyphicon glyphicon-user') 
-                      | People
-          .modal-footer
-            button(type="button" class="btn btn-default" data-dismiss="modal") Close
-            button(type="button" class="btn btn-warning" onclick="document.location.href='/settings';") Proceed to Settings
     .modal.fade(id="addmovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a movie
+            h4(class="modal-title" style='color:#ddd;') Adding a movie
           .modal-body
             form()
               .form-group
@@ -605,20 +581,20 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a web article
+            h4(class="modal-title" style='color:#ddd;') Adding an article
           .modal-body
             form(id='authoradd_here')
               .form-group
                 label(for="pagetitle") Titile
-                input(type="text" class="form-control" id="page" autocomplete='off' placeholder="/")
+                input(type="text" class="form-control" id="article_tite" autocomplete='off' placeholder="Neuroscience")
               .form-group
                 label(for="pagelink") Link
-                input(type="text" class="form-control" id="pagelink" autocomplete='off' placeholder="/")
+                input(type="text" class="form-control" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
-                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it             
+                button(class='btn btn-iosdark iosactive' id='newarticle' type='button') New
+                button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitarticle') Submit
     .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -627,7 +603,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Adding a book
+            h4(class="modal-title"  style='color:#ddd;') Adding a book
           .modal-body
             form(id='authoradd_here')
               .form-group
@@ -1098,6 +1074,22 @@ head
         else{
           $('#newbook').addClass('iosactive');
           $('#oldbook').removeClass('iosactive');
+        }
+        });
+      $('#oldarticle').click(function(){
+        if($('#oldarticle').hasClass('iosactive')){
+        }
+        else{
+          $('#oldarticle').addClass('iosactive');
+          $('#newarticle').removeClass('iosactive');
+        }
+        });
+      $('#newarticle').click(function(){
+        if($('#newarticle').hasClass('iosactive')){
+        }
+        else{
+          $('#newarticle').addClass('iosactive');
+          $('#oldarticle').removeClass('iosactive');
         }
         });
       $('#fiction').click(function(){
