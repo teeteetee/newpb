@@ -485,6 +485,44 @@ app.post('/markseen/:mid',function (req,res){
   }
 });
 
+app.post('/markarticleread/:aid',function (req,res){
+  if(req.session._id){
+    var ms={};
+    ms.trouble=0;
+    users.findOne({_id:req.session._id},function(err,doc){
+      if(err)
+      {
+       console.log('trouble finding the user');
+         ms.trouble=1;
+         res.send(ms);
+      }
+      else {
+        if(doc!=null){
+         var temp_arr;
+         temp_arr = doc.articlestore;
+         var temp_id;
+         for(var i=0;i<temp_arr.length;i++){
+            temp_id = JSON.stringify(temp_arr[i]._id);
+           if(temp_id === JSON.stringify(req.params.aid)){
+             temp_arr[i].newarticle = 0;
+             users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{readarticles:1,newarticles:-1}});
+             res.send(ms);
+           }
+         }
+        }
+        else {
+          console.log('trouble finding the user');
+          ms.trouble=1;
+         res.send(ms);
+        }
+      }
+    });
+  }
+  else {
+    res.send('go away');
+  }
+});
+
 app.post('/removebook/:bid',function (req,res) {
   console.log(req.params.bid+' '+typeof req.params.bid);
   if(req.session._id){

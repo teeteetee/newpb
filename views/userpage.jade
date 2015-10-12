@@ -1388,6 +1388,26 @@ head
               });
       }
       //-----------------------------------//
+      function markarticleread(articleid) {
+        $.ajax({
+              method: "POST",
+              url: "/markarticleread/"+articles[articleid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                console.log(msg);
+                $('#articlemodal').modal('hide');
+                articles[articleid].newarticle=0;
+                var vname = '.article'+articles[articleid]._id;
+                var vname2 = '.atitle'+articles[articleid]._id;
+                $(vname2).css('margin-left','25px');
+                $(vname).css('border-left','none');
+                $(vname).removeClass('new');
+                user.readarticles++;
+                $('.articlenum').text(user.readarticles);
+              });
+      }
+      //-----------------------------------//
       function markseen(movieid) {
         $.ajax({
               method: "POST",
