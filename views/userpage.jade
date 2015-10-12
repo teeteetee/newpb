@@ -511,7 +511,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
+            h4(class='modal-title' style='color:#ddd;margin-bottom:30px;') Modify
           .modal-body.visible-md.visible-lg
             h4.articlemodaltitle(style='text-align:center;')
             button(class='btn btn-primary  form-control article_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
@@ -1013,21 +1013,21 @@ head
             switch(true){
               case(articles[xx].goodarticle&&!articles[xx].newarticle):
               console.log('1st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;' href='"+link+"'>(go)</a><span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a><span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
               var thisarticle={};
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
               break
               case(articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('2st case');
-              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;' href='"+link+"'>(go)</a></h3></div></div>";
+              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a></h3></div></div>";
               var thisarticle={};
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
               break
               case(!articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('3st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;' href='"+link+"'>(go)</a></h3></div></div>";
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a></h3></div></div>";
               var thisarticle={};
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
