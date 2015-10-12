@@ -905,7 +905,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:25px;'>"+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small><span id='good"+books[i]._id+"' class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 class='btitle"+books[i]._id+"' style='margin-left:25px;'>"+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small><span class='good"+books[i]._id+"' class='label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+books[i]._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -913,7 +913,7 @@ head
               break
               case(books[i].newbook&&!books[i].goodbook):
               console.log('2st case');
-              insert = "<div class='row book new' id='book"+books[i]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book new book"+books[i]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 class='btitle"+books[i]._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -922,7 +922,7 @@ head
               break
               case(!books[i].newbook&&!books[i].goodbook):
               console.log('3st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 class='btitle"+books[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -958,7 +958,7 @@ head
             switch(true){
               case(movies[i].goodmovie&&!movies[i].newmovie):
               console.log('1st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small><span id='good"+movies[i]._id+"' class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read "+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 class='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small><span class='good"+movies[i]._id+"' class='label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+movies[i]._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
@@ -966,7 +966,7 @@ head
               break
               case(movies[i].newmovie&&!movies[i].goodmovie):
               console.log('2st case');
-              insert = "<div class='row book new' id='movie"+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book new "+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 class='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+movies[i]._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
@@ -975,7 +975,7 @@ head
               break
               case(!movies[i].newmovie&&!movies[i].goodmovie):
               console.log('3st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read "+movies[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 class='mtitle"+movies[i]._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+movies[i]._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
@@ -993,7 +993,7 @@ head
         }
       }
       function closeoptions(id){
-        eval("$('#sm"+id+"').fadeToggle('fast');");
+        eval("$('.sm"+id+"').fadeToggle('fast');");
       }
       var authorcount=0;
       $('#addauthor').click(addauthor);
@@ -1199,8 +1199,8 @@ head
                 console.log(msg);
                 $('#bookmodal').modal('hide');
                 books[bookid].newbook=0;
-                var vname = '#book'+books[bookid]._id;
-                var vname2 = '#btitle'+books[bookid]._id;
+                var vname = '.book'+books[bookid]._id;
+                var vname2 = '.btitle'+books[bookid]._id;
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
@@ -1217,10 +1217,10 @@ head
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right'>GOOD</span>";
+                var insert = "<span class='label label-primary pull-right good"+books[bookid]._id+"'>GOOD</span>";
                 //var insert2 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
-                var vname = '#btitle'+books[bookid]._id;
-                var vname2 = '#sm_hd'+books[bookid]._id;
+                var vname = '.btitle'+books[bookid]._id;
+                var vname2 = '.sm_hd'+books[bookid]._id;
                 //var vname3 = '#book'+books[bookid]._id;
                 //$(vname3).prepend(insert2);
                 $(vname).append(insert);
@@ -1238,7 +1238,7 @@ head
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var vname = '#good'+books[bookid]._id;
+                var vname = '.good'+books[bookid]._id;
                 $(vname).remove();
                 books[bookid].goodbook=0;
                 $('#wait').css('display','none');
@@ -1254,7 +1254,7 @@ head
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var vname = '#good'+movies[movieid]._id;
+                var vname = '.good'+movies[movieid]._id;
                 $(vname).remove();
                 movies[movieid].goodmovie=0;
                 $('#wait').css('display','none');
@@ -1269,7 +1269,7 @@ head
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var vname = '#book'+books[bookid]._id;
+                var vname = '.book'+books[bookid]._id;
                 $(vname).empty();
                 user.totalbooks--;
                 if(books[bookid].newbook){
@@ -1296,10 +1296,10 @@ head
                 $('#moviemodal').modal('hide');
                 console.log('talk to me');
                 movies[movieid].newmovie=0;
-                var vname = '#movie'+movies[movieid]._id;
-                var vname2 = '#btitle'+movies[movieid]._id;
+                var vname = '.movie'+movies[movieid]._id;
+                var vname2 = '.mtitle'+movies[movieid]._id;
                 console.log('vname: '+vname);
-                $(vname2).css('color','#aaa');
+                //$(vname2).css('color','#aaa'); - what is this?
                 $(vname).addClass('read');
                 user.seenmovies++;
                 $('.movienum').text(user.seenmovies)
@@ -1315,8 +1315,8 @@ head
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
                 var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
-                var vname = '#btitle'+movies[movieid]._id;
-                var vname2 = '#sm_hd'+movies[movieid]._id;
+                var vname = '.mtitle'+movies[movieid]._id;
+                var vname2 = '.sm_hd'+movies[movieid]._id;
                 $(vname).prepend(insert);
                 $(vname2).css('margin-left','25px');
                 $(vname).css('margin-left','0px');
@@ -1333,7 +1333,7 @@ head
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var vname = '#movie'+movies[movieid]._id;
+                var vname = '.movie'+movies[movieid]._id;
                 $(vname).empty();
                 user.totalmovies--;
                 if(movies[movieid].newmovie){
