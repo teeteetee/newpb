@@ -384,7 +384,7 @@ head
         background-color:#333;
         color:white;
       }
-      .btn-iosdark.iosactive {
+      .btn-iosdark.active {
         background-color:#333;
         color:white;
       }
@@ -571,8 +571,8 @@ head
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark iosactive' id='newbook' type='button') New
-                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've seen it             
+                button(class='btn btn-iosdark iosactive' id='newmovie' type='button') New
+                button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-primary'  id='submitmovie') Submit
     .modal.fade(id="addarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -1061,51 +1061,67 @@ head
         $('#extra').slideToggle();
         }); 
       $('#oldbook').click(function(){
-        if($('#oldbook').hasClass('iosactive')){
+        if($('#oldbook').hasClass('active')){
         }
         else{
-          $('#oldbook').addClass('iosactive');
-          $('#newbook').removeClass('iosactive');
+          $('#oldbook').addClass('active');
+          $('#newbook').removeClass('active');
         }
         });
       $('#newbook').click(function(){
-        if($('#newbook').hasClass('iosactive')){
+        if($('#newbook').hasClass('active')){
         }
         else{
-          $('#newbook').addClass('iosactive');
-          $('#oldbook').removeClass('iosactive');
+          $('#newbook').addClass('active');
+          $('#oldbook').removeClass('active');
+        }
+        });
+      $('#oldmovie').click(function(){
+        if($('#oldmovie').hasClass('active')){
+        }
+        else{
+          $('#oldmovie').addClass('active');
+          $('#newmovie').removeClass('active');
+        }
+        });
+      $('#newmovie').click(function(){
+        if($('#newmovie').hasClass('active')){
+        }
+        else{
+          $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
         }
         });
       $('#oldarticle').click(function(){
-        if($('#oldarticle').hasClass('iosactive')){
+        if($('#oldarticle').hasClass('active')){
         }
         else{
-          $('#oldarticle').addClass('iosactive');
-          $('#newarticle').removeClass('iosactive');
+          $('#oldarticle').addClass('active');
+          $('#newarticle').removeClass('active');
         }
         });
       $('#newarticle').click(function(){
-        if($('#newarticle').hasClass('iosactive')){
+        if($('#newarticle').hasClass('active')){
         }
         else{
-          $('#newarticle').addClass('iosactive');
-          $('#oldarticle').removeClass('iosactive');
+          $('#newarticle').addClass('active');
+          $('#oldarticle').removeClass('active');
         }
         });
       $('#fiction').click(function(){
-        if($('#fiction').hasClass('iosactive')){
+        if($('#fiction').hasClass('active')){
         }
         else{
-          $('#fiction').addClass('iosactive');
-          $('#nonfiction').removeClass('iosactive');
+          $('#fiction').addClass('active');
+          $('#nonfiction').removeClass('active');
         }
         });
       $('#nonfiction').click(function(){
-        if($('#nonfiction').hasClass('iosactive')){
+        if($('#nonfiction').hasClass('active')){
         }
         else{
-          $('#nonfiction').addClass('iosactive');
-          $('#fiction').removeClass('iosactive');
+          $('#nonfiction').addClass('active');
+          $('#fiction').removeClass('active');
         }
         });
       var lastentry;
@@ -1385,7 +1401,7 @@ head
            var data={};
            data.title = $('#mtitle').val();
            data.newmovie = 1;
-           if($('#oldmovie').hasClass('active')){
+           if($('#oldmovie').hasClass('iosactive')){
            data.newmovie = 0;
            }
            data.year = $('#year').val();
@@ -1399,6 +1415,35 @@ head
                 $('#mtitle').val('');
                 $('#year').val('');
                 $('#addmovie').modal('hide');
+                $('#wait').fadeOut(350);
+                console.log(msg);
+                window.location='/';
+              });
+          }
+        });
+        $('#submitarticle').click(function(){
+        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.title = $('#article_title').val();
+           data.newmovie = 1;
+           if($('#oldarticle').hasClass('iosactive')){
+           data.newmovie = 0;
+           }
+           data.link = $('#article_link').val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/additem/article",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#article_title').val('');
+                $('#article_').val('');
+                $('#addarticle').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
                 window.location='/';
