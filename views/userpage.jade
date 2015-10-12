@@ -505,6 +505,25 @@ head
       border-bottom: 1px solid #eee;
       }
   body(style='background-color:#fbfbfb;')
+    .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class='modal-title' style='color:#ddd;') Modify
+          .modal-body.visible-md.visible-lg
+            h4.articlemodaltitle(style='text-align:center;')
+            button(class='btn btn-primary  form-control article_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
+            button(class='btn btn-primary  form-control article_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary  form-control article_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
+            button(class='btn btn-primary form-control article_remove' style='margin-top:5px;margin-bottom:5px;') Remove
+          .modal-body.visible-sm.visible-xs
+            h4.articlemodaltitle(style='text-align:center;')
+            button(class='btn btn-primary btn-lg  form-control article_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
+            button(class='btn btn-primary btn-lg  form-control article_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
+            button(class='btn btn-primary btn-lg  form-control article_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
+            button(class='btn btn-primary btn-lg form-control article_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -758,6 +777,7 @@ head
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
+      $('.articlenum').text(user.readarticles);
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
@@ -813,6 +833,7 @@ head
         },2000);
        var count_b;
        var count_m;
+       var count_a;
       var books=user.bookstore;
       if(!books || !books.length) {
        console.log('no books');
@@ -828,6 +849,14 @@ head
        else {
         var count_m = movies.length-1;
         getmovies(movies,count_m);
+       }
+       var articles=user.articlestore;
+      if(!articles || !articles.length) {
+       console.log('no articles');
+       }
+       else {
+        var count_b = articles.length-1;
+        populatearticles(articles,count_a);
        }
       // Discontinued because we supply boooks and movies through user object. 
       // When we will do optimization and user's books and movies might move into separate db
@@ -853,6 +882,7 @@ head
       //     });
       var modal_data_store=[];
       var movie_modal_data_store=[];
+      var article_modal_data_store=[];
       function getbooks(books,i) {
         console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
@@ -881,7 +911,7 @@ head
             switch(true){
               case(books[i].goodbook&&!books[i].newbook):
               console.log('1st case');
-              insert = "<div class='row book read book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 class='btitle"+books[i]._id+"' style='margin-left:25px;'>"+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small><span class='good"+books[i]._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+books[i]._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read book"+books[i]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 class='btitle"+books[i]._id+"' style='margin-left:25px;'>"+msg.title.capitalizeFirstLetter()+"<span class='good"+books[i]._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+books[i]._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
@@ -968,6 +998,40 @@ head
           return 0;
         }
       }
+      //---------------------------------//
+      function populatearticles(articles) {
+        
+        for(var xx=articles.length-1;xx>=0;xx--){
+            if ($(".noarticles")[0])
+            { $('.articles').empty();}
+            var insert;
+            switch(true){
+              case(articles[xx].goodarticle&&!articles[xx].newarticle):
+              console.log('1st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+i+");'><a href='"+articles[xx].link+"'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
+              var thisarticle={};
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('2st case');
+              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+i+");'><a href='"+articles[xx].link+"'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></a></div></div>";
+              var thisarticle={};
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(!articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('3st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+i+");'><a href='"+articles[xx].link+"'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></a></div></div>";
+              var thisarticle={};
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+            }         
+           $('.articles').append(insert);
+         }// for
+      }
+      //----------------------------//
       function closeoptions(id){
         eval("$('.sm"+id+"').fadeToggle('fast');");
       }
@@ -1028,6 +1092,34 @@ head
         $('.bookmodaltitle').text(modal_data_store[i].title);
         $('.bookmodalauthor').text(modal_data_store[i].author);
         $('#bookmodal').modal('show');
+      }
+      //
+      function redactarticlemodal (i) {
+        if(articles[i].goodbook){
+          $('.article_good').css('display','none');
+          var insert = 'unmarkarticlegood('+i+')';
+          $('.article_unmark_good').attr('onclick',insert);
+          $('.article_unmark_good').css('display','block');
+        }
+        else {
+          $('.article_unmark_good').css('display','none');
+          var insert = 'markarticlegood('+i+')';
+          $('.article_good').attr('onclick',insert);
+          $('.article_good').css('display','block');
+        }
+        if(!articles[i].newarticle){
+         $('.article_read').css('display','none');
+        }
+        else {
+          var insert = 'markread('+i+')';
+          $('.article_read').attr('onclick',insert);
+          $('.article_read').css('display','block');
+          $('.article_good').css('display','none');
+        }
+        insert = 'removearticle('+i+')';
+        $('.article_remove').attr('onclick',insert);
+        $('.articlemodaltitle').text(modal_data_store[i].title);
+        $('#articlemodal').modal('show');
       }
       //
       function redactmoviemodal (i) {
@@ -1401,7 +1493,7 @@ head
            var data={};
            data.title = $('#mtitle').val();
            data.newmovie = 1;
-           if($('#oldmovie').hasClass('iosactive')){
+           if($('#oldmovie').hasClass('active')){
            data.newmovie = 0;
            }
            data.year = $('#year').val();
@@ -1429,9 +1521,9 @@ head
           //-------------
            var data={};
            data.title = $('#article_title').val();
-           data.newmovie = 1;
-           if($('#oldarticle').hasClass('iosactive')){
-           data.newmovie = 0;
+           data.newarticle = 1;
+           if($('#oldarticle').hasClass('active')){
+           data.newarticle = 0;
            }
            data.link = $('#article_link').val();
            console.log(JSON.stringify(data));
