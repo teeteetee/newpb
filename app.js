@@ -2087,13 +2087,30 @@ app.post('/additem/:id',function (req,res){
         ms.trouble=0;
         res.send(ms);
     break;
+    case('article_out'):
+    console.log('article_out');
+    var article_id = req.body.article_id;
+    var already = 0;
+    for(var xx =req.session.articlestore.length-1;xx>=0;xx--){
+      if(article_id === req.session.articlestore[xx]._id.toString()){
+        console.log('trying to add an article, which is already on the list');
+       already =1;
+      }
+    }
+    if(!already)
+    {users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:book_id,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+      }
+        var ms ={};
+        ms.trouble=0;
+        res.send(ms);
+    break;
     case('movie_out'):
     console.log('movie_out');
     var movie_id = req.body.movie_id;
     var already = 0;
     for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
       if(movie_id === req.session.moviestore[xx]._id.toString()){
-        console.log('trying to add a book, which is already on the list');
+        console.log('trying to add a movie, which is already on the list');
        already =1;
       }
     }
