@@ -2109,6 +2109,15 @@ app.post('/additem/:id',function (req,res){
            }
            else {
               if(movie){
+                var already = 0;
+                 for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
+                   if(movie._id.toString() === req.session.moviestore[xx]._id.toString()){
+                     console.log('trying to add a book, which is already on the list');
+                    already =1;
+                   }
+                 }
+                 if(!already)
+                 {
                 movie_insert.tmstmp = Date.now();
                 movie_insert._id = movie._id;
                 movie_insert.goodmovie = 0;
@@ -2126,7 +2135,13 @@ app.post('/additem/:id',function (req,res){
                              ms.trouble = 0;
                              res.send(ms);
                   }
+                }//if(!already)
                //respond to user with success
+               else {
+                   var ms ={};
+                     ms.trouble=0;
+                     res.send(ms);
+                 }
               }
               else{
                  movies.insert({title:req.body.title,year:req.body.year},function(err,newmovie){
