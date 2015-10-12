@@ -1139,20 +1139,23 @@ head
           $('.movie_unmark_good').css('display','block');
         }
         else {
+          $('.movie_unmark_good').css('display','none');
           var insert = 'markmoviegood('+i+')';
           $('.movie_good').attr('onclick',insert);
+          $('.movie_good').css('display','block');
         }
         if(!movies[i].newmovie){
          $('.movie_seen').css('display','none');
         }
         else {
-          var insert = 'markseen('+i+')';
+          var insert = 'markread('+i+')';
           $('.movie_seen').attr('onclick',insert);
+          $('.movie_seen').css('display','block');
           $('.movie_good').css('display','none');
         }
         insert = 'removemovie('+i+')';
         $('.movie_remove').attr('onclick',insert);
-        insert = 'window.location="/people/m/'+movies[i]._id+'"';
+        insert = 'window.location="/people/b/'+movies[i]._id+'"';
         $('.movie_people').attr('onclick',insert);
         $('.moviemodaltitle').text(movie_modal_data_store[i].title);
         $('.moviemodalyear').text(movie_modal_data_store[i].year);
