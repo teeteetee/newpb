@@ -505,7 +505,7 @@ app.post('/markarticleread/:aid',function (req,res){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.aid)){
              temp_arr[i].newarticle = 0;
-             users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{readarticles:1,newarticles:-1}});
+             users.update({_id:req.session._id},{$set:{articlestore:temp_arr},$inc:{readarticles:1,newarticles:-1}});
              res.send(ms);
            }
          }
