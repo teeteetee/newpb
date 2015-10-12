@@ -1218,11 +1218,8 @@ head
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
                 var insert = "<span class='label label-primary pull-right good"+books[bookid]._id+"'>GOOD</span>";
-                //var insert2 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
                 var vname = '.btitle'+books[bookid]._id;
                 var vname2 = '.sm_hd'+books[bookid]._id;
-                //var vname3 = '#book'+books[bookid]._id;
-                //$(vname3).prepend(insert2);
                 $(vname).append(insert);
                 $(vname).css('margin-left','25px');
                 books[bookid].goodbook=1;
@@ -1298,9 +1295,9 @@ head
                 movies[movieid].newmovie=0;
                 var vname = '.movie'+movies[movieid]._id;
                 var vname2 = '.mtitle'+movies[movieid]._id;
-                console.log('vname: '+vname);
-                //$(vname2).css('color','#aaa'); - what is this?
-                $(vname).addClass('read');
+                $(vname2).css('margin-left','25px');
+                $(vname).css('border-left','none');
+                $(vname).removeClass('new');
                 user.seenmovies++;
                 $('.movienum').text(user.seenmovies)
               });
@@ -1314,12 +1311,11 @@ head
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var insert = "<span style='color:#37D6BB;margin-right:6px;'>&#8226;</span>";
+                var insert = "<span class='label label-primary pull-right good"+movies[movieid]._id+"'>GOOD</span>";
                 var vname = '.mtitle'+movies[movieid]._id;
                 var vname2 = '.sm_hd'+movies[movieid]._id;
                 $(vname).prepend(insert);
-                $(vname2).css('margin-left','25px');
-                $(vname).css('margin-left','0px');
+                $(vname).css('margin-left','25px');
                 movies[movieid].goodmovie=1;
               });
       }
