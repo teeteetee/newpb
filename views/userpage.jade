@@ -1099,9 +1099,9 @@ head
         var link = articles[i].link;
         var checktitle = article_modal_data_store[i].link.substring(0, 4);
         if(checktitle!='http'){
-         var link = 'window.location="http://'+link+'"';}
+         var link = "window.location='http://"+link+"'";}
          else{
-          var link ='window.locatioin="'+link+'"';
+          var link ="window.locatioin='"+link+"'";
          }
          $('.article_view').attr('onlick',link);
         if(articles[i].goodbook){
