@@ -514,12 +514,14 @@ head
             h4(class='modal-title' style='color:#ddd;margin-bottom:30px;') Modify
           .modal-body.visible-md.visible-lg
             h4.articlemodaltitle(style='text-align:center;')
+            button(class='btn btn-primary  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View 
             button(class='btn btn-primary  form-control article_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary  form-control article_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
             button(class='btn btn-primary  form-control article_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-primary form-control article_remove' style='margin-top:5px;margin-bottom:5px;') Remove
           .modal-body.visible-sm.visible-xs
             h4.articlemodaltitle(style='text-align:center;margin-bottom:30px;')
+            button(class='btn btn-primary  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View
             button(class='btn btn-primary btn-lg  form-control article_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary btn-lg  form-control article_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
             button(class='btn btn-primary btn-lg  form-control article_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
@@ -1004,31 +1006,29 @@ head
         for(var xx=articles.length-1;xx>=0;xx--){
             if ($(".noarticles")[0])
             { $('.articles').empty();}
-            var insert;
-            var link = articles[xx].link;
-            var checktitle = articles[xx].link.substring(0, 4);
-            if(checktitle!='http'){
-             var link = 'http://'+link;
             }
             switch(true){
               case(articles[xx].goodarticle&&!articles[xx].newarticle):
               console.log('1st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a><span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
               var thisarticle={};
+              thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
               break
               case(articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('2st case');
-              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a></h3></div></div>";
+              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
               var thisarticle={};
+              thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
               break
               case(!articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('3st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<a style='margin-left:10px;color:#ff2f02;' href='"+link+"'>link</a></h3></div></div>";
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
               var thisarticle={};
+              thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
               article_modal_data_store.unshift(thisarticle);
               break
@@ -1097,6 +1097,11 @@ head
       }
       //
       function redactarticlemodal (i) {
+        var link = articles[xx].link;
+        var checktitle = article_modal_data_store[i].link.substring(0, 4);
+        if(checktitle!='http'){
+         var link = 'window.locatioin="http://'+link+'"';
+         $('.article_view').attr('onlick',link);
         if(articles[i].goodbook){
           $('.article_good').css('display','none');
           var insert = 'unmarkarticlegood('+i+')';
