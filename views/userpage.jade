@@ -1134,6 +1134,9 @@ head
       function redactmoviemodal (i) {
         if(movies[i].goodmovie){
           $('.movie_good').css('display','none');
+          var insert = 'unmarkmoviegood('+i+')';
+          $('.movie_unmark_good').attr('onclick',insert);
+          $('.movie_unmark_good').css('display','block');
         }
         else {
           var insert = 'markmoviegood('+i+')';
