@@ -1132,6 +1132,13 @@ head
       }
       //
       function redactmoviemodal (i) {
+        if(movies[i].goodmovie){
+          $('.movie_good').css('display','none');
+        }
+        else {
+          var insert = 'markmoviegood('+i+')';
+          $('.movie_good').attr('onclick',insert);
+        }
         if(!movies[i].newmovie){
          $('.movie_seen').css('display','none');
         }
@@ -1139,13 +1146,6 @@ head
           var insert = 'markseen('+i+')';
           $('.movie_seen').attr('onclick',insert);
           $('.movie_good').css('display','none');
-        }
-        if(movies[i].goodmovie){
-          $('.movie_good').css('display','none');
-        }
-        else {
-          var insert = 'markmoviegood('+i+')';
-          $('.movie_good').attr('onclick',insert);
         }
         insert = 'removemovie('+i+')';
         $('.movie_remove').attr('onclick',insert);
