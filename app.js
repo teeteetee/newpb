@@ -687,7 +687,42 @@ app.post('/unmarkbookgood/:bid',function (req,res){
   });
 });
 
-app.post('/markmoviegood/:bid',function (req,res){
+app.post('/unmarkarticlegood/:aid',function (req,res){
+  var ms={};
+  ms.trouble=0;
+  users.findOne({_id:req.session._id},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+      ms.trouble=1;
+       res.send(ms);
+    }
+    else {
+     if(doc!=null){
+      console.log('found user');
+       var temp_arr;
+       temp_arr = doc.articlestore;
+       var temp_id;
+       for(var i=0;i<temp_arr.length;i++){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.aid)){
+          console.log('modifying');
+           temp_arr[i].goodarticle = 0;
+           users.update({_id:req.session._id},{$set:{articlestore:temp_arr}});
+           res.send(ms);
+       }
+      }
+    }
+      else {
+        console.log('trouble finding the user');
+        ms.trouble=1;
+       res.send(ms);
+      }
+    }
+  });
+});
+
+app.post('/markmoviegood/:mid',function (req,res){
   var ms={};
   ms.trouble=0;
   users.findOne({_id:req.session._id},function(err,doc){
@@ -705,10 +740,45 @@ app.post('/markmoviegood/:bid',function (req,res){
        var temp_id;
        for(var i=0;i<temp_arr.length;i++){
           temp_id = JSON.stringify(temp_arr[i]._id);
-         if(temp_id === JSON.stringify(req.params.bid)){
+         if(temp_id === JSON.stringify(req.params.mid)){
           console.log('modifying');
            temp_arr[i].goodmovie = 1;
            users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
+           res.send(ms);
+       }
+      }
+    }
+      else {
+        console.log('trouble finding the user');
+        ms.trouble=1;
+       res.send(ms);
+      }
+    }
+  });
+});
+
+app.post('/markarticlegood/:aid',function (req,res){
+  var ms={};
+  ms.trouble=0;
+  users.findOne({_id:req.session._id},function(err,doc){
+    if(err)
+    {
+     console.log('trouble finding the user');
+      ms.trouble=1;
+       res.send(ms);
+    }
+    else {
+     if(doc!=null){
+      console.log('found user');
+       var temp_arr;
+       temp_arr = doc.articlestore;
+       var temp_id;
+       for(var i=0;i<temp_arr.length;i++){
+          temp_id = JSON.stringify(temp_arr[i]._id);
+         if(temp_id === JSON.stringify(req.params.aid)){
+          console.log('modifying');
+           temp_arr[i].goodarticle = 1;
+           users.update({_id:req.session._id},{$set:{articlestore:temp_arr}});
            res.send(ms);
        }
       }

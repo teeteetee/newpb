@@ -1325,7 +1325,6 @@ head
                 $('#bookmodal').modal('hide');
                 var insert = "<span class='label label-primary pull-right good"+books[bookid]._id+"'>GOOD</span>";
                 var vname = '.btitle'+books[bookid]._id;
-                var vname2 = '.sm_hd'+books[bookid]._id;
                 $(vname).append(insert);
                 $(vname).css('margin-left','25px');
                 books[bookid].goodbook=1;
@@ -1360,6 +1359,22 @@ head
                 var vname = '.good'+movies[movieid]._id;
                 $(vname).remove();
                 movies[movieid].goodmovie=0;
+                $('#wait').css('display','none');
+              });
+      }
+      //-----------------------------------//
+      function unmarkarticlegood(articleid) {
+        $('#wait').css('display','block');
+        $.ajax({
+              method: "POST",
+              url: "/unmarkarticlegood/"+articles[articleid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#articlemodal').modal('hide');
+                var vname = '.good'+articles[articleid]._id;
+                $(vname).remove();
+                articles[articleid].goodarticle=0;
                 $('#wait').css('display','none');
               });
       }
@@ -1439,13 +1454,27 @@ head
                 $('#moviemodal').modal('hide');
                 var insert = "<span class='label label-primary pull-right good"+movies[movieid]._id+"'>GOOD</span>";
                 var vname = '.mtitle'+movies[movieid]._id;
-                var vname2 = '.sm_hd'+movies[movieid]._id;
                 $(vname).prepend(insert);
                 $(vname).css('margin-left','25px');
                 movies[movieid].goodmovie=1;
               });
       }
       //-----------------------------------//
+      function markarticlegood(articleid) {
+        $.ajax({
+              method: "POST",
+              url: "/markarticlegood/"+articles[articleid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#articlemodal').modal('hide');
+                var insert = "<span class='label label-primary pull-right good"+articles[articleid]._id+"'>GOOD</span>";
+                var vname = '.atitle'+articles[articleid]._id;
+                $(vname).prepend(insert);
+                $(vname).css('margin-left','25px');
+                articles[articleid].goodarticle=1;
+              });
+      }
       //-----------------------------------//
       function removemovie(movieid) {
         $.ajax({
