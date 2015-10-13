@@ -185,6 +185,17 @@ head
     }
   body
     //background-color:#FF9C47;:#e87e22 round button color
+    .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            .row
+              .col-xs-12
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                  span(aria-hidden="true") ×
+                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Error
+          .modal-body
+            h3( id ='error_text' style='font-weight:200;color:#fc454e;') 
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -198,10 +209,10 @@ head
             .row
               .col-xs-12
                 h4 Nickname:
-                #nickgroup.form-group.has-feedback
-                  input(type="text" class="form-control" id='nickinput' style='border-color:#eee;')
-                  span(id='errorsign' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  span(id='successsign'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                //#nickgroup.form-group.has-feedback
+                //  input(type="text" class="form-control" id='nickinput' style='border-color:#eee;')
+                //  span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                //  span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
             .row(style='margin-bottom:20px;')
               .col-xs-12
                 h4 Gender:
@@ -235,7 +246,11 @@ head
                 span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
               input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
-              input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
+              #nickgroup.form-group.has-feedback
+                input(type="text" class="form-control" id='nickinput' style='border-color:#eee;')
+                span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+              //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.form-control(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
             a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -271,16 +286,16 @@ head
                             if(msg.present)
                               { 
                                 console.log('msg present');
-                                $('#successsign').css('display','none');
+                                $('#nick_success').css('display','none');
                                 $('#nickgroup').removeClass('has-success').addClass('has-error');
-                                $('#errorsign').css('display','block');
+                                $('#nick_error').css('display','block');
                                  lastentry = $('#nickinput').val();
                                 }
                                           else {
                                             console.log('no msg');
-                                            $('#errorsign').css('display','none');
+                                            $('#nick_error').css('display','none');
                                             $('#nickgroup').removeClass('has-error').addClass('has-success');
-                                            $('#successsign').css('display','block');
+                                            $('#nick_success').css('display','block');
                                             lastentry = $('#nickinput').val();
                                           }
                               });
@@ -393,10 +408,14 @@ head
         switch (parsed.mtext)
         {
         case('fail'):
-        $('.message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+        //$('.message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+        $('#error_text').text('Provided email is already used by one of the users');
+        $('#error_Modal').modal('Network Error');
         break;
         case('email exists'):
-        $('.message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
+        //$('.message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
+        $('#error_text').text('Provided email is already used by one of the users');
+        $('#error_Modal').modal('show');
         break;
         
         }
