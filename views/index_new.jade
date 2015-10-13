@@ -157,6 +157,13 @@ head
       .inputwrap {
         margin-bottom:20px;
       }
+      .simplebox {
+        outline: none;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+      }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -204,9 +211,9 @@ head
             .form-group
               .message
             .inputwrap
-              input(type="email" class=" change_phc" id="mail-lg" name='mail' placeholder="Email") 
-              input(type="password" class=" change_phc" id="p-lg" name='p' placeholder="Password") 
-              input(type="password" class=" change_phc" id="pc-lg" name='pc' placeholder="Confirm password") 
+              input(type="email" class=" change_phc simplebox" id="mail-lg" name='mail' placeholder="Email") 
+              input(type="password" class=" change_phc simplebox" id="p-lg" name='p' placeholder="Password") 
+              input(type="password" class=" change_phc simplebox" id="pc-lg" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.form-control(type='button') Sign up
       .row(style='text-align:center;')
         .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
