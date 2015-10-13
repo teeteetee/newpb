@@ -209,7 +209,22 @@ app.post('/getuser/:id',function (req,res){
 });
 
 app.get('/signin', function (req,res){
-  res.render('signin');
+  var color;
+   switch(Math.floor(Math.random() * 4) + 1){
+     case(1):
+     color='#ec3737';
+     break
+     case(2):
+     color='#37b6ec';
+     break
+     case(3):
+     color='#37ec9c';
+     break
+     case(4):
+     color='#ec8637';
+     break
+   }
+   res.render('signin',{'color':color});
 });
 
 app.get('/logout',function (req,res){
