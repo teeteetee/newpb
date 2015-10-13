@@ -1481,7 +1481,7 @@ app.get('/people/:kind/:item',function (req,res){
             books.findOne({_id:req.params.item}, function (err2,book){
               if(err2){
                 console.log('err while book query');}
-              else if(done){
+              else if(book){
                  res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors,'me':req.session._id});
               }
               else {
@@ -1502,7 +1502,7 @@ app.get('/people/:kind/:item',function (req,res){
             movies.findOne({_id:req.params.item}, function (err2,movie){
               if(err2){
                 console.log('err while book query');}
-              else if(done){
+              else if(movie){
                  res.render('findpeople',{'doc':JSON.stringify(done),'title':movie.title,'author':movie.year,'me':req.session._id});
               }
               else {
