@@ -57,7 +57,23 @@ app.get('/',function(req,res) {
             console.log(done);
             if(err){
               //err page ?
-              res.render('index_new');
+              var time = Math.floor(Math.random() * 4) + 1;
+                var color;
+                switch(time){
+                  case(1):
+                  color='#ec3737';
+                  break
+                  case(2):
+                  color='#37b6ec';
+                  break
+                  case(3):
+                  color='#37ec9c';
+                  break
+                  case(4):
+                  color='#ec8637';
+                  break
+                }
+                res.render('index_new',{'color':color});
             }
             else {
               if(done){
@@ -74,13 +90,46 @@ app.get('/',function(req,res) {
                    }
               }
               else {
-                res.render('index_new');
+                var time = Math.floor(Math.random() * 4) + 1;
+                var color;
+                switch(time){
+                  case(1):
+                  color='#ec3737';
+                  break
+                  case(2):
+                  color='#37b6ec';
+                  break
+                  case(3):
+                  color='#37ec9c';
+                  break
+                  case(4):
+                  color='#ec8637';
+                  break
+                }
+                res.render('index_new',{'color':color});
               }
             }
           });
         }
    else {
-  res.render('index_new');}
+  var time = Math.floor(Math.random() * 4) + 1;
+                var color;
+                switch(time){
+                  case(1):
+                  color='#ec3737';
+                  break
+                  case(2):
+                  color='#37b6ec';
+                  break
+                  case(3):
+                  color='#37ec9c';
+                  break
+                  case(4):
+                  color='#ec8637';
+                  break
+                }
+                res.render('index_new',{'color':color});
+   }
 });
 
 //DISCONTINUED BECAUSE WE STORE BOOKS IN THE USER OBJECT WICH IS PASSED AROUND
@@ -1001,7 +1050,7 @@ app.get('/chat/:recid',function (req,res){
    discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
      if(err){
               //err page ?
-              res.render('index_new');
+              res.redirect('/');
               console.log('QUERY ERR');
             }
             else {
@@ -1015,7 +1064,7 @@ app.get('/chat/:recid',function (req,res){
                discussions.findOne({rcv:vsender,snd:vdest},function (err,done2){
                  if(err){
                           //err page ?
-                          res.render('index_new');
+                          res.redirect('/');
                           console.log('QUERY ERR');
                         }
                         else {
