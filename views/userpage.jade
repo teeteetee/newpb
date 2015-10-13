@@ -1015,6 +1015,7 @@ head
         for(var xx=articles.length-1;xx>=0;xx--){
             if ($(".noarticles")[0])
             { $('.articles').empty();}
+            //var checktitle = article_modal_data_store[i].link.substring(0, 4);
             switch(true){
               case(articles[xx].goodarticle&&!articles[xx].newarticle):
               console.log('1st case');
@@ -1026,7 +1027,7 @@ head
               break
               case(articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('2st case');
-              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
+              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,10)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,10)+"</h5></div></div>";
               var thisarticle={};
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
@@ -1034,7 +1035,7 @@ head
               break
               case(!articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('3st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,10)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,10)+"</h5></div></div>";
               var thisarticle={};
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
