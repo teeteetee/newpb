@@ -530,6 +530,9 @@ head
             li.showmovies(role="presentation") 
               a(href="#") Movies
                 span(class='badge movienum' style='margin-left:10px;') 0
+            li.showarticles(role="presentation") 
+              a(href="#") Articles
+                span(class='badge articlenum' style='margin-left:10px;') 0
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -543,10 +546,12 @@ head
               .row 
                 .col-xs-12
                   .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                    .btn.btn-default.active.showbooks(type='button') Books
+                    .btn.btn-default.active.showbooks(type='button') B
                       span(class='badge booknum' style='margin-left:10px;') 0
-                    .btn.btn-default.showmovies(type='button') Movies
+                    .btn.btn-default.showmovies(type='button') M
                       span(class='badge movienum' style='margin-left:10px;') 0
+                    .btn.btn-default.showarticles(type='button') A
+                      span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.mrow
@@ -559,6 +564,11 @@ head
                   .nobooks.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.arow
+                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items
               .row.brow
                 #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
                   .nobooks.row(style='text-align:center;')  
@@ -568,7 +578,12 @@ head
                 #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
                   .nomovies.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.arow
+                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -598,6 +613,7 @@ head
       }
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
+      $('.articlenum').text(user.readarticles);
       //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
@@ -606,19 +622,34 @@ head
       $('.showbooks').click(function(){
         if($('.brow').css('display')==='none'){
           console.log('show brow');
+          $('.showarticles').removeClass('active');
           $('.showmovies').removeClass('active');
           $('.showbooks').addClass('active');
           $('.brow').css('display','block')
           $('.mrow').css('display','none');
+          $('.arow').css('display','none');
         }
         });
       $('.showmovies').click(function(){
         if($('.mrow').css('display')==='none'){
           console.log('show mrow');
+          $('.showarticles').removeClass('active');
           $('.showbooks').removeClass('active');
           $('.showmovies').addClass('active');
           $('.mrow').css('display','block')
           $('.brow').css('display','none');
+          $('.arow').css('display','none');
+        }
+        });
+      $('.showarticles').click(function(){
+        if($('.arow').css('display')==='none'){
+          console.log('show arow');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').removeClass('active');
+          $('.showarticles').addClass('active');
+          $('.brow').css('display','none')
+          $('.mrow').css('display','none');
+          $('.arow').css('display','block');
         }
         });
        //------------------//
@@ -626,6 +657,7 @@ head
        var count_m;
        var books=user.bookstore;
        var movies=user.moviestore;
+       var articles = user.articlestore;
        //------------------//
        //GETTIMESTAMP  gets timestamp upon which new items will be marked, so it runs first starting the cascade
       var general_tmstmp;
@@ -656,6 +688,13 @@ head
            getmovies(movies,count_m);
           }
            });
+         if(!articles || !articles.length) {
+          console.log('no articles');
+          }
+          else {
+           var count_a = articles.length-1;
+           populatearticles(articles);
+          }
       }
       gettimestamp();
       //function populate () {
@@ -731,6 +770,7 @@ head
       }
       var modal_data_store=[];
       var movie_modal_data_store=[];
+      var article_modal_data_store=[];
       function getbooks(books,i) {
         console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
@@ -755,6 +795,7 @@ head
             var new_indicator_part_1 =' ';
             var new_indicator_part_2 =' ';
             var new_indicator_part_3 ="style='margin-left:37px;'";
+            var prepend = 0;
             console.log(parseInt(books[i].tmstmp)+' \n'+general_tmstmp);
             //console.log('unfollow: '+unfollow);
             //if(parseInt(books[i].tmstmp)>general_tmstmp){
@@ -768,9 +809,10 @@ head
             }
             if(parseInt(books[i].tmstmp)>general_tmstmp && unfollow){
               console.log('LABELING NEW');
-              new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
+              new_indicator_part_1 = "<div class='dot visible-xs'><span style='margin-left:10px;font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
               new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
               new_indicator_part_3 = " ";
+              prepend=1;
             }
             var insert;
             switch(true){
@@ -803,7 +845,8 @@ head
               modal_data_store.unshift(thisbook);
               break
             }         
-           $('.books').append(insert);
+           if(!prepend){$('.books').append(insert);}
+           else {$('.books').prepend(insert);}
            });
          count_b--;
          console.log('before iteration, count_b: '+count_b);
@@ -831,11 +874,16 @@ head
             var new_indicator_part_1 =' ';
             var new_indicator_part_2 =' ';
             var new_indicator_part_3 ="style='margin-left:25px;'";
+            var prepend=0;
+            if(movies[i].newmovie){
+              new_indicator_part_3 = "style='margin-left:25px;' ";
+            }
             if(parseInt(movies[i].tmstmp)>general_tmstmp && unfollow){
               console.log('LABELING NEW');
               new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
               new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
               new_indicator_part_3 = " ";
+              prepend=1;
             }
             var insert;   
             switch(true){
@@ -864,7 +912,8 @@ head
               movie_modal_data_store.unshift(thismovie);
               break
             }         
-           $('.movies').append(insert);
+           if(!prepend){$('.movies').append(insert);}
+           else{$('.movies').prepend(insert);}
            });
          count_m--;
          console.log('before iteration, count_m: '+count_m);
@@ -874,6 +923,57 @@ head
           return 0;
         }
       }
+      //---------------------------------//
+      function populatearticles(articles) {
+        
+        for(var xx=articles.length-1;xx>=0;xx--){
+            if ($(".noarticles")[0])
+            { $('.articles').empty();}
+            var new_indicator_part_1 =' ';
+            var new_indicator_part_2 =' ';
+            var new_indicator_part_3 ="style='margin-left:25px;'";
+            var prepend = 0;
+            if(articles[i].newarticle){
+              new_indicator_part_3 = "style='margin-left:25px;' ";
+            }
+            if(parseInt(articles[i].tmstmp)>general_tmstmp && unfollow){
+              console.log('LABELING NEW');
+              new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
+              new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
+              new_indicator_part_3 = " ";
+              prepend=1;
+            }
+            switch(true){
+              case(articles[xx].goodarticle&&!articles[xx].newarticle):
+              console.log('1st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"<span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3></a></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('2st case');
+              insert = "<div class='row book new article"+articles[xx]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(!articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('3st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"</h3></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+            }         
+           if(!prepend){$('.articles').append(insert);}
+           else{$('.articles').prepend(insert);}
+         }// for
+      }
+      //----------------------------//
       $('.follow').click(function(){
         if(unfollow) {
           unfollowfnc();
