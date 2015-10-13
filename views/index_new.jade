@@ -183,6 +183,9 @@ head
       top:4px;
       right:4px;
     }
+    .btn:focus,.btn:active {
+       outline: none !important;
+    }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -260,6 +263,10 @@ head
     script(src='js/bootstrap.min.js')     
     script.
       $('#mail').keyup(function(event) {
+        if(!$('#mail').val()){
+             $('#mail_error').css('display','none');
+             $('#mail_success').css('display','none');
+           }
         if($('#mail').val().length>5) {
           if(validateEmail($('#mail').val())){
             $('#mail_error').css('display','none');
