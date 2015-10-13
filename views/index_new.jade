@@ -103,56 +103,6 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      .thin {
-      height:85%;
-      }
-      .btncorr {
-      font-family:boldproxima;
-      text-transform:uppercase;
-      }
-      .img-circle {
-      -webkit-filter: brightness(0.9) contrast(1.2) saturate(1.2);
-      -moz-filter: brightness(0.9) contrast(1.2) saturate(1.2);
-      filter:brightness(0.9) contrast(1.2) saturate(1.2);
-      }
-      #heyopen {
-      -webkit-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
-      -moz-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
-      box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
-      }
-      a:hover, a:focus, a:active {
-        text-decoration:none !important;
-        color:white;
-      }
-      p{
-        text-indent:20px;
-        font-size:18px;
-      }
-      .cpadding {
-       padding-left:30px;
-       padding-right:30px;
-      }
-      .txtleft {
-        text-align:left;
-      }
-      ol li {
-      margin-bottom: 10px;
-      font-size:18px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      #add {
-        display:none;
-      }
-      .btn:focus,.btn:active {
-         outline: none !important;
-      }
-      .btn-default:focus,.btn-default:active {
-         background-color:white;
-         border-color:#ccc;
-      }
-      label {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
       .loader {
       margin: 60px auto;
       margin-top:20%;
@@ -195,100 +145,7 @@ head
           transform: rotate(360deg);
         }
       }
-      #autocomp {
-      display:none;
-      background-color: white;
-      border-radius: 3px;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-top:3px;
-      padding-bottom:3px;
-      border: 1px solid #ddd;
-      position: absolute;
-      max-width: 510;
-      width: 100%;
-      box-shadow: 1px 7px 30px #A09F9F;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .sritem:hover {
-       background-color:#23A8E2;
-       color:white;
-      }
-      .sritem {
-        padding-top:3px;
-        padding-bottom:3px;
-      }
-      .btn.focus, .btn:focus, .btn:hover {
-          text-decoration: none;
-      }
-      .btn-iosdark {
-        background-color:white;
-        border:1px solid #333;
-        color:#333;
-      }
-      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosdark.active {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosprimary {
-        background-color:white;
-        border:1px solid #4197E2;
-        color:#4197E2;
-      }
-      .btn-iosprimary:focus, .btn-iosprimary:active, .btn-iosprimary:hover {
-        background-color:#4197E2;
-        color:white;
-      }
-      .btn-iosprimary.iosactive {
-        background-color:#4197E2;
-        color:white;
-      }
-      .form-control {
-       border-color: rgba(255, 255, 255, 0.65);
-       background-color:transparent;
-      }
-      .navbar-inverse .navbar-nav>li>a {
-         font-weight:200;
-      }
-      #roundbutton {
-       height:100px;
-       width:100;
-       border-radius:50%;
-       background-color:rgba(255, 255, 255, 0.5);
-        color:white;
-       font-weight:200;
-       letter-spacing:1px;
-       text-transform: uppercase;
-      }
-      #roundbutton:hover, #roundbutton:active, #roundbutton:focus {
-        //border:1px solid rgba(255, 255, 255, 0.7);
-        background-color:rgba(255, 255, 255, 0.7);
-        color:white;
-      }
-      .form-control:focus {
-       border-color: white;
-       outline: 0px none;
-       box-shadow: none;
-       }
-       .btn {
-        text-transform:uppercase;
-        letter-spacing:2px;
-       }
-       .btn-primary:focus, btn.primary:active, .btn-primary:hover {
-        border-color:#2988DA;
-        background-color:#2988DA;
-       }
-       .btn-primary{
-         background-color:#2E98F3;
-         border-color:#2E98F3;
-       }
-       a:hover {
-        color:white;
-       }
+      
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -321,25 +178,7 @@ head
             .row.visible-lg.visible-md.visible-sm
               .col-xs-12
                 button(type="button" class="btn btn-primary runreg" data-dismiss="modal") Done
-     // 
-      nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
-        .container-fluid
-          // Brand and toggle get grouped for better mobile display
-          .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-              span.sr-only Toggle navigation         
-              span.icon-bar         
-              span.icon-bar         
-              span.icon-bar       
-            a.navbar-brand(style='padding-top:5px;', href='/')
-              img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
-          // Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              li
-                a(href='/signin')  Sign in            
-              li
-                a(href='/about')  About  
+     
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -347,8 +186,10 @@ head
     .container
       #mainheading.row
         .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;') Intellect  personified
-      #signup.row(style='text-align:center;display:none;')
+          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;') PEOPLE & BOOKS
+          h3 Information Consumer Society.
+          h3 List items, find people.
+      #signup.row(style='text-align:center;')
         .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4(id='paddgroup-lg')
           form
             .form-group
@@ -359,12 +200,6 @@ head
               input(type="password" class="form-control change_phc" id="p-lg" name='p' placeholder="Password")
             .form-group 
               input(type="password" class="form-control change_phc" id="pc-lg" name='pc' placeholder="Confirm password") 
-            //
-              .form-group 
-                .col-md-6.col-md-offset-3 
-                  .btn-group(role="group" aria-label="...")
-                    button(type="button" id='male' class="btn btn-ioslooklike iosactive") Male
-                    button(type="button" id='female' class="btn btn-ioslooklike") Female
       .row(style='text-align:center;')
         .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
           .form-group#signupblock.visible-xs
