@@ -275,6 +275,10 @@ head
         });
       var lastentry;
       $('#nickinput').keyup(function(event) {
+                      if(!$('#nickinput').val()){
+                        $('#nick_error').css('display','none');
+                        $('#nick_success').css('display','none');
+                      }
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
                         str = $('#nickinput').val().replace(/\s+/g, '');
                         $.ajax({
