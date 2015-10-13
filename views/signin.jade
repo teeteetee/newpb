@@ -46,29 +46,14 @@ head
        margin-top:30px;
         }
       #mainheading {
-        padding-top:140px;
+        padding-top:10vh;
         text-align:center;
       }
       #signin {
         padding-top:60px;
         text-align:center;
-      }
-      .login {
-        margin-top:60px;
       }
       @media (max-width: 767px) {
-      #mainheading {
-        padding-top:60px;
-      }
-      .signuplink {
-       margin-top:20px;
-        }
-      #signin {
-        padding-top:30px;
-      }
-      .login {
-        margin-top:60px;
-      }
       }
       @media (max-width: 992px) {
       }
@@ -137,8 +122,8 @@ head
             .inputwrap
               input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
               input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
-            button.btn.btn-lg.btn-primary.form-control.login(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.30);border:none;') Log in
-            a(href='/signin' class='signuplink' style='color:white;text-decoration:underline;display:block;') Sign up
+            button.btn.btn-lg.btn-primary.form-control.login(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.30);border:none;margin-top:10px;') Log in
+            a(href='/' class='signuplink' style='color:white;text-decoration:underline;display:block;') Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
