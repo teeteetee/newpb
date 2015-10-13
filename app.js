@@ -57,9 +57,8 @@ app.get('/',function(req,res) {
             console.log(done);
             if(err){
               //err page ?
-              var time = Math.floor(Math.random() * 4) + 1;
                 var color;
-                switch(time){
+                switch(Math.floor(Math.random() * 4) + 1){
                   case(1):
                   color='#ec3737';
                   break
@@ -90,9 +89,8 @@ app.get('/',function(req,res) {
                    }
               }
               else {
-                var time = Math.floor(Math.random() * 4) + 1;
                 var color;
-                switch(time){
+                switch(Math.floor(Math.random() * 4) + 1){
                   case(1):
                   color='#ec3737';
                   break
@@ -112,9 +110,8 @@ app.get('/',function(req,res) {
           });
         }
    else {
-  var time = Math.floor(Math.random() * 4) + 1;
                 var color;
-                switch(time){
+                switch(Math.floor(Math.random() * 4) + 1){
                   case(1):
                   color='#ec3737';
                   break
