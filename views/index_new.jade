@@ -220,9 +220,12 @@ head
             .form-group
               .message
             .inputwrap
-              input(type="email" class=" change_phc simplebox" id="mail-lg" name='mail' placeholder="Email") 
-              input(type="password" class=" change_phc simplebox" id="p-lg" name='p' placeholder="Password") 
-              input(type="password" class=" change_phc simplebox" id="pc-lg" name='pc' placeholder="Confirm password") 
+              #mailgroup.form-group.has-feedback
+                input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
+                span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+              input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+              input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.form-control(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
             a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -231,6 +234,20 @@ head
     script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')     
     script.
+      $('#mail').keyup(function(event) {
+        if($('#mail').val().length>5) {
+          if(validateEmail($('#mail').val())){
+            $('#mail_error').css('display','none');
+            $('#mailgroup').removeClass('has-error').addClass('has-success');
+            $('#mail_success').css('display','block');
+           }
+           else {
+            $('#mail_success').css('display','none');
+            $('#mailgroup').removeClass('has-success').addClass('has-error');
+            $('#mail_error').css('display','block');
+           }
+          }
+        });
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
