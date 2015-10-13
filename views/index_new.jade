@@ -148,10 +148,12 @@ head
       .inputwrap:first-child{
       border-top-left-radius:4px;
       border-top-right-radius:4px;
+      border-bottom: 1px solid #ddd;
       }
       .inputwrap:last-child{
       border-bottom-left-radius:4px;
       border-bottom-right-radius:4px;
+      border:none;
       }
       .inputwrap input{
         width:100%;
@@ -211,6 +213,7 @@ head
               input(type="email" class=" change_phc" id="mail-lg" name='mail' placeholder="Email") 
               input(type="password" class=" change_phc" id="p-lg" name='p' placeholder="Password") 
               input(type="password" class=" change_phc" id="pc-lg" name='pc' placeholder="Confirm password") 
+            button.btn.btn-lg.btn-primary(type='button') Sign up
       .row(style='text-align:center;')
         .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
           .form-group#signupblock.visible-xs
