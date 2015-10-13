@@ -1500,6 +1500,7 @@ app.get('/people/:kind/:item',function (req,res){
           else {
             console.log(done);
             movies.findOne({_id:req.params.item}, function (err2,movie){
+              console.log('movie: '+movie);
               if(err2){
                 console.log('err while book query');}
               else if(movie){
