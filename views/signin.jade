@@ -18,6 +18,10 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       body{
+        height:100%;
+        background-color:#ec8637;
+      }
+      body2{
       height:100%;
       background: #2eb9c9; /* Old browsers */
       background: -moz-linear-gradient(top, #B7BEBF 0%, #789096 35%, #405a65 100%); /* FF3.6+ */
@@ -80,71 +84,61 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      .glyphicon {
-      margin-right:5px;
-      }
-      .btncorr {
-      font-family:boldproxima;
-      text-transform:uppercase;
-      }
       #heyopen {
       -webkit-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       -moz-box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       box-shadow: inset 0px 7px 17px -9px rgba(0,0,0,0.75);
       }
-      .btn {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      .inputwrap input{
+     -webkit-appearance: none;
+      border-radius: 0;
+      width:100%;
+      padding: 11px 10px 11px 13px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      border:none;
+      border-bottom:1px solid #ddd;
       }
-      a:hover, a:focus, a:active {
-      text-decoration:none !important;
-      color:inherit !important;
+      .inputwrap input:first-child {
+      -webkit-appearance: none;
+      border-radius: 0;
+      border-top-left-radius:4px;
+      border-top-right-radius:4px;
+      border-bottom:none;
+      border-bottom: 1px solid #ddd;
       }
-      .navbar-inverse .navbar-nav>li>a {
-        font-weight:200;
+      .inputwrap input:last-child {
+       -webkit-appearance: none;
+      border-radius: 0;
+      border-bottom-left-radius:4px;
+      border-bottom-right-radius:4px;
+      border:none;
       }
-      .btn-warning {
-        border:none;
-        background-color:rgba(255, 255, 255, 0.3);
-        color:white;
-        font-weight:200;
-       letter-spacing:1px;
-       text-transform: uppercase;
+      .inputwrap {
+        margin-bottom:20px;
       }
-      .btn-warning:focus, .btn-warning:active, .btn-warning:hover {
-        background-color:rgba(255, 255, 255, 0.46);
-        border-color:white;
-        color:white;
-      }
-      .form-control:focus {
-       border-color: white;
-       outline: 0px none;
-       box-shadow: none;
-       }
-      .form-control {
-       border-color: rgba(255, 255, 255, 0.46);
-       background-color:transparent;
+      .simplebox {
+        outline: none;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
       }
   body 
     .container
       #mainheading.row
         .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;') Welcome back!
+          h1(style='text-transform:uppercase;letter-spacing:4px;color:white;font-family:bold-proxima;') People & Books
       .row#signin
         .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4   
           form
             .form-group
               .message
-            .form-group
-              input(type="email" class="change_phc form-control" id="mail" name='mail' placeholder="Email")
-            .form-group 
-              input(type="password" class="change_phc form-control" id="p" name='p' placeholder="Password")
-            .form-group.visible-lg.visible-md.visible-sm(style='text-align:center;') 
-              button(type="button" class="login btn btn-warning") Sign in
-              a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign up
-            .form-group.visible-xs(style='text-align:center;') 
-              button(type="button" class="login btn btn-lg btn-warning") Sign in
-              a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.7);text-decoration:underline;display:block;') Sign up
-         
+            .inputwrap
+              input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
+              input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+            button.btn.btn-lg.btn-primary.form-control.login(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.30);border:none;') Log in
+            a(href='/signin' class='signuplink' style='color:white;text-decoration:underline;display:block;') Sign up
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
