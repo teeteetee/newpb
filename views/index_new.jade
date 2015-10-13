@@ -206,7 +206,7 @@ head
               .col-xs-12
                 button(type="button" class="btn btn-primary runreg" data-dismiss="modal") Done
      
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader       
@@ -223,17 +223,14 @@ head
               input(type="email" class=" change_phc simplebox" id="mail-lg" name='mail' placeholder="Email") 
               input(type="password" class=" change_phc simplebox" id="p-lg" name='p' placeholder="Password") 
               input(type="password" class=" change_phc simplebox" id="pc-lg" name='pc' placeholder="Confirm password") 
-            button.btn.btn-lg.btn-primary.form-control(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);') Sign up
-            a(href='/signin' class='signinlink' style='color:white;text-decoration:underline;display:block;') Sign in
+            button.btn.btn-lg.btn-primary.form-control(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
+            a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')     
     script.
-      $(document).ready(function(){
-           $('#wait').remove();
-          });
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
