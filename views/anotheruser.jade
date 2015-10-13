@@ -664,6 +664,9 @@ head
        var books=user.bookstore;
        var movies=user.moviestore;
        var articles = user.articlestore;
+       var modal_data_store=[];
+       var movie_modal_data_store=[];
+       var article_modal_data_store=[];
        //------------------//
        //GETTIMESTAMP  gets timestamp upon which new items will be marked, so it runs first starting the cascade
       var general_tmstmp;
@@ -774,9 +777,6 @@ head
            console.log('added movie');
           });
       }
-      var modal_data_store=[];
-      var movie_modal_data_store=[];
-      var article_modal_data_store=[];
       function getbooks(books,i) {
         console.log('i:'+i);
         var url = '/getbook/'+books[i]._id;
