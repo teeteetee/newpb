@@ -66,7 +66,7 @@ app.get('/',function(req,res) {
                   color='#37b6ec';
                   break
                   case(3):
-                  color='#37ec9c';
+                  color='#1FD081';
                   break
                   case(4):
                   color='#ec8637';
@@ -98,7 +98,7 @@ app.get('/',function(req,res) {
                   color='#37b6ec';
                   break
                   case(3):
-                  color='#37ec9c';
+                  color='#1FD081';
                   break
                   case(4):
                   color='#ec8637';
@@ -119,7 +119,7 @@ app.get('/',function(req,res) {
                   color='#37b6ec';
                   break
                   case(3):
-                  color='#37ec9c';
+                  color='#1FD081';
                   break
                   case(4):
                   color='#ec8637';
@@ -218,7 +218,7 @@ app.get('/signin', function (req,res){
      color='#37b6ec';
      break
      case(3):
-     color='#37ec9c';
+     color='#1FD081';
      break
      case(4):
      color='#ec8637';
