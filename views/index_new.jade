@@ -215,6 +215,12 @@ head
     h4 {
       margin-bottom:20px;
     }
+    #pwderr {
+      background-color:rgba(0, 0, 0, 0.43);
+      border-radius:4px;
+      color:white;
+      display:none;
+    }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -281,11 +287,15 @@ head
                 input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
                 span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-              input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+              #pgroup.form-group.has-feedback
+                input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+                span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
               #nickgroup.form-group.has-feedback
                 span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                 input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="Nick")
+              #pwderr
               //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.form-control#runreg(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
             a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign in
@@ -412,18 +422,52 @@ head
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
         function checkPwd(str) {
-        if (str.length < 6) {
-            return("too_short");
-        } else if (str.length > 50) {
-            return("too_long");
-        } else if (str.search(/\d/) == -1) {
-            return("no_num");
-        } else if (str.search(/[a-zA-Z]/) == -1) {
-            return("no_letter");
-        } else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
-            return("bad_char");
+        if($('#p_success').css('display','block')){
+          $('#p_success').css('display','none');
         }
-        return("ok");
+        if (str.length < 6) {
+            $('#pwderr').empty();
+            $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
+            if(!$('#pwderr').css('display','none')){
+              $('#pwderr').slideToggle();
+            }
+           // return("too_short");
+        } else if (str.length > 50) {
+            $('#pwderr').empty();
+            $('#pwderr').append('<p>Password too long</p>');
+            if(!$('#pwderr').css('display','none')){
+              $('#pwderr').slideToggle();
+            }
+            //return("too_long");
+        } else if (str.search(/\d/) == -1) {
+            $('#pwderr').empty();
+            $('#pwderr').append('<p>Password requires at leas one number</p>');
+            if(!$('#pwderr').css('display','none')){
+              $('#pwderr').slideToggle();
+            }
+            //return("no_num");
+        } else if (str.search(/[a-zA-Z]/) == -1) {
+            $('#pwderr').empty();
+            $('#pwderr').append('<p>Password requires at leas five letters</p>');
+            if(!$('#pwderr').css('display','none')){
+              $('#pwderr').slideToggle();
+            }
+            //return("no_letter");
+        } //else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+          //  $('#pwderr').empty();
+          //  $('#pwderr').append('<p>Password requires at leas five letters</p>');
+          //  if(!$('#pwderr').css('display','block')){
+          //    $('#pwderr').slideToggle();
+          //  }
+          //  return("bad_char");
+          //}
+        //return("ok");
+        if(!$('#pwderr').css('display','block')){
+              $('#pwderr').slideToggle();
+            }
+        $('#p_success').css('display','none');
+        $('#pgroup').removeClass('has-success').addClass('has-error');
+        $('#p_error').css('display','block');
         }
         //--------------------
         // RUNREGISTER FUNCTION
