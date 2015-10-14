@@ -377,7 +377,7 @@ head
         });
        $('.runreg').click(function(){
           console.log('runreg '+$('#terms_checkbox').is(':checked'));
-           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').is(':checked') === 'block' && $('#nickgroup').hasClass('has-success')) {
+           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').is(':checked')  && $('#nickgroup').hasClass('has-success')) {
             runregister();
           }
         });
@@ -389,7 +389,7 @@ head
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').is(':checked') === 'block' && $('#nickgroup').hasClass('has-success') && vn) {
+          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').is(':checked') && $('#nickgroup').hasClass('has-success') && vn) {
             console.log('keypress second scenario');
             runregister();
           }
@@ -411,7 +411,7 @@ head
         $('.message').empty();
         console.log(vp.length);
         var male=1;
-        if(!$('#male').hasClass('iosactive')){
+        if(!$('#male').hasClass('active')){
           male=0;
         }
         if(vp.length === 0 ) {
