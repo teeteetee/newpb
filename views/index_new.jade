@@ -220,6 +220,8 @@ head
       border-radius:4px;
       color:white;
       display:none;
+      padding:20px 16px;
+      margin-top:20px;
     }
   body
     //background-color:#FF9C47;:#e87e22 round button color
@@ -423,33 +425,34 @@ head
         return re.test(email);} 
         function checkPwd(str) {
         if($('#p_success').css('display','block')){
+          $('#pgroup').removeClass('has-success');
           $('#p_success').css('display','none');
         }
         if (str.length < 6) {
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
-            if(!$('#pwderr').css('display','none')){
+            if($('#pwderr').css('display','none')){
               $('#pwderr').slideToggle();
             }
            // return("too_short");
         } else if (str.length > 50) {
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password too long</p>');
-            if(!$('#pwderr').css('display','none')){
+            if($('#pwderr').css('display','none')){
               $('#pwderr').slideToggle();
             }
             //return("too_long");
         } else if (str.search(/\d/) == -1) {
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas one number</p>');
-            if(!$('#pwderr').css('display','none')){
+            if($('#pwderr').css('display','none')){
               $('#pwderr').slideToggle();
             }
             //return("no_num");
         } else if (str.search(/[a-zA-Z]/) == -1) {
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas five letters</p>');
-            if(!$('#pwderr').css('display','none')){
+            if($('#pwderr').css('display','none')){
               $('#pwderr').slideToggle();
             }
             //return("no_letter");
@@ -462,12 +465,11 @@ head
           //  return("bad_char");
           //}
         //return("ok");
-        if(!$('#pwderr').css('display','block')){
+        if($('#pwderr').css('display','block')){
               $('#pwderr').slideToggle();
             }
-        $('#p_success').css('display','none');
-        $('#pgroup').removeClass('has-success').addClass('has-error');
-        $('#p_error').css('display','block');
+        $('#p_success').css('display','block');
+        $('#pgroup').addClass('has-success');
         }
         //--------------------
         // RUNREGISTER FUNCTION
