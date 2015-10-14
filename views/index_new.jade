@@ -192,6 +192,30 @@ head
     #termsrow {
       display:none;
     }
+    .modal-header {
+      border:none;
+    }
+    .modal-body{
+      padding-top:0px;
+    }
+    .btn-iosdark {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+    }
+    .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+      background-color:#333;
+      color:white;
+    }
+    .btn-iosdark.active {
+      background-color:#333;
+      color:white;
+    }
+    .btn-simple {
+      border:none;
+      background-color:white;
+      color:color:#2E98F3;
+    }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -209,11 +233,8 @@ head
       .modal-dialog(role="document")
         .modal-content
           .modal-header
-            .row
-              .col-xs-12
-                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                  span(aria-hidden="true") ×
-                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Little things
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
           .modal-body
             .row(style='margin-bottom:20px;')
               .col-xs-12
@@ -228,7 +249,7 @@ head
                   label
                     input(type="checkbox") 
                     | I agree with the 
-                    a( id ='terms' style='display:inline;color:#2E98F3') terms
+                    a( id ='terms' style='display:inline;color:#2E98F3;') terms
             .row#termsrow(style='border-top:1px solid #eee; padding-top:10px;padding-bottom:10px;padding-left:30px;color:#aaa;padding-top:30px;') 
               .col-xs-12
                 p People&Books as a service provider, and you conform to the following two conditions:
@@ -239,10 +260,10 @@ head
           .modal-footer(style='text-align:center;')
             .row
               .col-xs-12.visible-xs
-                button(type="button" class="btn btn-lg btn-primary runreg" data-dismiss="modal") Done
+                button(type="button" class="btn btn-lg btn-simple runreg" data-dismiss="modal") Done
             .row.visible-lg.visible-md.visible-sm
               .col-xs-12
-                button(type="button" class="btn btn-primary runreg" data-dismiss="modal") Done
+                button(type="button" class="btn btn-simple runreg" data-dismiss="modal") Done
      
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
@@ -278,7 +299,7 @@ head
     script.
       $('#terms').click(function(){
         console.log('cc');
-        $('termsrow').slideToggle();
+        $('#termsrow').slideToggle();
         });
       $('#mail').keyup(function(event) {
         if(!$('#mail').val()){
@@ -363,7 +384,7 @@ head
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.which == 13&& validateEmail(vm) && vp === vpc && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
+          if(e.which == 13&& validateEmail(vm) && vp && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
             console.log('keypress second scenario');
             runregister();
           }
