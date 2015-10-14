@@ -186,6 +186,9 @@ head
     .btn:focus,.btn:active {
        outline: none !important;
     }
+    .checkbox label {
+    padding-left: 35px;
+    }
   body
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -220,14 +223,14 @@ head
                 h4 Terms:
                 .checkbox
                   label
-                    input(type="checkbox" style='margin-left:15px;') 
+                    input(type="checkbox") 
                     | I agree with the 
                     a( id ='terms' style='display:inline;color:#2E98F3') terms
-            .row#termsrow(style='border-top:1px solid #eee; padding-top:10px;padding-bottom:10px;padding-left:30px;') 
+            .row#termsrow(style='border-top:1px solid #eee; padding-top:10px;padding-bottom:10px;padding-left:30px;color:#aaa;display:none;padding-top:30px;') 
               .col-xs-12
                 p People&Books as a service provider, and you conform to the following two conditions:
                 h3 First
-                p Service provided as is and as avaliable.
+                p Service &#40service - functionality of peopleandbooks.com web page &#41 provided as is and as avaliable.
                 h3 Second
                 p By submitting any of your data to us after you have been registered &#40; issued a record in our database allowing you to log in &#41; you state the absence of any conditions regarding use of submitted data and confirm our full rights over such data which becomes service provider's intellectual property.
           .modal-footer(style='text-align:center;')
