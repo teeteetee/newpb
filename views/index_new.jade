@@ -427,6 +427,7 @@ head
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
         function checkPwd(str) {
+        if($('#p').val())
         if($('#p_success').css('display','block')){
           $('#pgroup').removeClass('has-success');
           $('#p_success').css('display','none');
@@ -468,11 +469,13 @@ head
           //  return("bad_char");
           //}
         //return("ok");
+        else if {
         if($('#pwderr').css('display','block')){
               $('#pwderr').slideToggle();
             }
         $('#p_success').css('display','block');
         $('#pgroup').addClass('has-success');
+        }
         }
         //--------------------
         // RUNREGISTER FUNCTION
