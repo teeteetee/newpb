@@ -255,7 +255,7 @@ head
                 h4 Terms:
                 .checkbox
                   label
-                    input(type="checkbox") 
+                    input(id='terms_checkbox' type="checkbox") 
                     | I agree with the 
                     a( id ='terms' style='display:inline;color:#2E98F3;') terms
             .row#termsrow(style='border-top:1px solid #eee; padding-top:10px;padding-bottom:10px;padding-left:30px;padding-right:30px;color:#aaa;padding-top:30px;') 
@@ -272,7 +272,6 @@ head
             .row.visible-lg.visible-md.visible-sm
               .col-xs-12
                 button(type="button" class="btn btn-blue runreg" data-dismiss="modal") Done
-     
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -392,7 +391,7 @@ head
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.which == 13&& validateEmail(vm) && vp && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
+          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success')) {
             console.log('keypress second scenario');
             runregister();
           }
@@ -406,7 +405,6 @@ head
         // RUNREGISTER FUNCTION
         //---------------------
         function runregister() {
-        var vnick = $('#nickinput').val();
          var errcount =0;
          var vp = $('#p').val();
          var vn = $('#nick').val();
@@ -423,13 +421,6 @@ head
         $('#error_text').text('Provided email is already used by one of the users');
         $('#error_Modal').modal('Privide a password');
         $('#p').empty();
-        errcount++;
-        }
-        if(vp != vpc && errcount===0) {
-        //$('.message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
-        alert("Passwords don't match");
-        $('#p').empty();
-        $('#pc').empty();
         errcount++;
         }
         console.log(vmail);
@@ -477,6 +468,6 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vnick);
+        request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vn);
           }
         
