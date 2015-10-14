@@ -63,7 +63,7 @@ head
     }
     #mainheading {
       text-align:center;
-      margin-top:15vw;
+      margin-top:10vw;
     }
     #signup {
       padding-top:60px;
@@ -326,6 +326,24 @@ head
            }
           }
         });
+      $('#p').keyup(function(event) {
+        if(!$('#mail').val()){
+             $('#mail_error').css('display','none');
+             $('#mail_success').css('display','none');
+           }
+        if($('#mail').val().length>6) {
+          if(checkPwd($('#p').val())){
+            $('#mail_error').css('display','none');
+            $('#mailgroup').removeClass('has-error').addClass('has-success');
+            $('#mail_success').css('display','block');
+           }
+           else {
+            $('#mail_success').css('display','none');
+            $('#mailgroup').removeClass('has-success').addClass('has-error');
+            $('#mail_error').css('display','block');
+           }
+          }
+        });
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if(!$('#nickinput').val()){
@@ -360,25 +378,28 @@ head
                        lastentry = $('#nickinput').val()
                       });
       $('#male').click(function(){
-        if($('#male').hasClass('iosactive')){
+        if($('#male').hasClass('active')){
         }
         else{
-          $('#male').addClass('iosactive');
-          $('#female').removeClass('iosactive');
+          $('#male').addClass('active');
+          $('#female').removeClass('active');
         }
         });
       $('#female').click(function(){
-        if($('#female').hasClass('iosactive')){
+        if($('#female').hasClass('sactive')){
         }
         else{
-          $('#female').addClass('iosactive');
-          $('#male').removeClass('iosactive');
+          $('#female').addClass('sactive');
+          $('#male').removeClass('sactive');
         }
         });
        $('.runreg').click(function(){
           console.log('runreg '+$('#terms_checkbox').is(':checked'));
            if(validateEmail($('#mail').val()) && $('#p').val() && $('#terms_checkbox').is(':checked')  && $('#nickgroup').hasClass('has-success')) {
             runregister();
+          }
+          else if(validateEmail($('#mail').val()) && $('#p').val() && $('#nickgroup').hasClass('has-success') && $('#myModal').css('display') != 'block'){
+            $('myModal').modal('show');
           }
         });
         $(document).keypress(function(e) { 
@@ -399,6 +420,20 @@ head
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
+        function checkPwd(str) {
+        if (str.length < 6) {
+            return("too_short");
+        } else if (str.length > 50) {
+            return("too_long");
+        } else if (str.search(/\d/) == -1) {
+            return("no_num");
+        } else if (str.search(/[a-zA-Z]/) == -1) {
+            return("no_letter");
+        } else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+            return("bad_char");
+        }
+        return("ok");
+        }
         //--------------------
         // RUNREGISTER FUNCTION
         //---------------------
