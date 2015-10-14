@@ -375,12 +375,8 @@ head
           $('#male').removeClass('iosactive');
         }
         });
-      
-          if( validateEmail($('#mail').val()) && $('#nick').val() && $('#p').val()) {
-              $('#myModal').modal('show');
-          }
-          
        $('.runreg').click(function(){
+          console.log('runreg '+$('#terms_checkbox').checked);
            if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success')) {
             runregister();
           }
