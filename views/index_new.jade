@@ -209,14 +209,6 @@ head
                   span(aria-hidden="true") ×
                 h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Little things
           .modal-body
-            .row
-              .col-xs-12
-                h4 Nickname:
-                //#nickgroup.form-group.has-feedback
-                //  input(type="text" class="form-control" id='nickinput' style='border-color:#eee;')
-                //  span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                //  span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-            .row(style='margin-bottom:20px;')
               .col-xs-12
                 h4 Gender:
                 .btn-group(role="group" aria-label="...")
@@ -254,7 +246,7 @@ head
                 span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                 input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="Nick")
               //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
-            button.btn.btn-lg.btn-primary.form-control(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
+            button.btn.btn-lg.btn-primary.form-control#runreg(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
             a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign in
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
@@ -329,28 +321,25 @@ head
           $('#male').removeClass('iosactive');
         }
         });
-      $('.signup').click(function(){
-          if( validateEmail($('#mail-lg').val()) && $('#p-lg').val() === $('#pc-lg').val() && $('#signup').css('display') === 'block') {
+      
+          if( validateEmail($('#mail').val()) && $('#nick').val() && $('#p').val()) {
               $('#myModal').modal('show');
           }
-          else {
-            $('#signup').slideToggle();
-          }
-        });
+          
        $('.runreg').click(function(){
-           runregister(2);
+           runregister();
         });
         $(document).keypress(function(e) { 
-          var vm = $('#mail-lg').val();
-          var vp = $('#p-lg').val();
-          var vpc = $('#pc-lg').val();
-          if(e.which ==13 && validateEmail(vm) && vp === vpc) {
+          var vm = $('#mail').val();
+          var vp = $('#p').val();
+          var vn = $('#nick').val();
+          if(e.which ==13 && validateEmail(vm) && vp && $('#nickgroup').hasClass('has-success')) {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
           if(e.which == 13&& validateEmail(vm) && vp === vpc && $('#myModal').css('display') === 'block' && $('#nickgroup').hasClass('has-success')) {
             console.log('keypress second scenario');
-            runregister(2);
+            runregister();
           }
       });
          //-------REGISTER--------
@@ -361,29 +350,24 @@ head
         //--------------------
         // RUNREGISTER FUNCTION
         //---------------------
-        function runregister(arg) {
+        function runregister() {
         var vnick = $('#nickinput').val();
          var errcount =0;
-         if(arg===1){
-          var vp = $('#p-sm').val();
-         var vpc = $('#pc-sm').val();
-         var vmail = $('#mail-sm').val();}
-          else
-        {var vp = $('#p-lg').val();
-         var vpc = $('#pc-lg').val();
-         var vmail = $('#mail-lg').val();}
+         var vp = $('#p').val();
+         var vn = $('#nick').val();
+         var vmail = $('#mail').val();
         $('.message').empty();
         console.log(vp.length);
         var male=1;
         if(!$('#male').hasClass('iosactive')){
           male=0;
         }
-        if(vpc.length === 0 && vp.length === 0) {
+        if(vp.length === 0 ) {
         console.log('pass length 0');
         //$('.message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        alert('Provide a password, and verify it');
+        $('#error_text').text('Provided email is already used by one of the users');
+        $('#error_Modal').modal('Privide a password');
         $('#p').empty();
-        $('#pc').empty();
         errcount++;
         }
         if(vp != vpc && errcount===0) {
@@ -394,11 +378,11 @@ head
         errcount++;
         }
         console.log(vmail);
-        var mailx = validateEmail(vmail);
-        if(mailx != true)
+        if(!validateEmail(vmail))
         {
         //$('.message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        alert('Incorrect email');
+        $('#error_text').text('Emailis not valid');
+        $('#error_Modal').modal('show');
         errcount++;
         }
         if(errcount!=0) {
