@@ -381,17 +381,19 @@ head
           }
           
        $('.runreg').click(function(){
-           runregister();
+           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success')) {
+            runregister();
+          }
         });
         $(document).keypress(function(e) { 
           var vm = $('#mail').val();
           var vp = $('#p').val();
-          var vn = $('#nick').val();
+          var vn = $('#nickinput').val();
           if(e.which ==13 && validateEmail(vm) && vp && $('#nickgroup').hasClass('has-success')) {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success')) {
+          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success') && vn) {
             console.log('keypress second scenario');
             runregister();
           }
@@ -407,7 +409,7 @@ head
         function runregister() {
          var errcount =0;
          var vp = $('#p').val();
-         var vn = $('#nick').val();
+         var vn = $('#nickinput').val();
          var vmail = $('#mail').val();
         $('.message').empty();
         console.log(vp.length);
