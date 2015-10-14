@@ -268,10 +268,10 @@ head
           .modal-footer(style='text-align:center;')
             .row
               .col-xs-12.visible-xs
-                button(type="button" class="btn btn-lg btn-simple runreg" data-dismiss="modal") Done
+                button(type="button" class="btn btn-lg btn-simple runreg") Done
             .row.visible-lg.visible-md.visible-sm
               .col-xs-12
-                button(type="button" class="btn btn-blue runreg" data-dismiss="modal") Done
+                button(type="button" class="btn btn-blue runreg") Done
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -376,8 +376,8 @@ head
         }
         });
        $('.runreg').click(function(){
-          console.log('runreg '+$('#terms_checkbox').checked);
-           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success')) {
+          console.log('runreg '+$('#terms_checkbox').is(':checked'));
+           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').is(':checked') === 'block' && $('#nickgroup').hasClass('has-success')) {
             runregister();
           }
         });
@@ -389,7 +389,7 @@ head
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
-          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').checked === 'block' && $('#nickgroup').hasClass('has-success') && vn) {
+          if(e.which == 13&& validateEmail(vm) && vp && $('#terms_checkbox').is(':checked') === 'block' && $('#nickgroup').hasClass('has-success') && vn) {
             console.log('keypress second scenario');
             runregister();
           }
@@ -403,6 +403,7 @@ head
         // RUNREGISTER FUNCTION
         //---------------------
         function runregister() {
+          $('#wait').css('display','block');
          var errcount =0;
          var vp = $('#p').val();
          var vn = $('#nickinput').val();
