@@ -209,11 +209,27 @@ head
                   span(aria-hidden="true") ×
                 h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Little things
           .modal-body
+            .row(style='margin-bottom:20px;')
               .col-xs-12
                 h4 Gender:
                 .btn-group(role="group" aria-label="...")
                   button(type="button" id='male' class="btn btn-iosdark active") Male
                   button(type="button" id='female' class="btn btn-iosdark") Female
+            .row 
+              .col-xs-12
+                h4 Terms:
+                .checkbox
+                  label
+                    input(type="checkbox") I agree with the 
+                    a( id ='terms' style='display:inline;color:#2E98F3') terms
+            .row#termsrow(style='border-top:1px solid #eee; border-bottom:1px solid #eee; padding-top:10px;padding-bottom:10px;') 
+              .col-xs-12
+                h3 First
+                p Somethings and this and that and so such rules
+                h3 Second
+                p Yet another rule for example stating as is status
+                h3 Third
+                p Which makes it totaly clear
           .modal-footer(style='text-align:center;')
             .row
               .col-xs-12.visible-xs
@@ -254,6 +270,9 @@ head
     script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')     
     script.
+      $('#terms').click(function(){
+        $('termsrow').slideToggle();
+        });
       $('#mail').keyup(function(event) {
         if(!$('#mail').val()){
              $('#mail_error').css('display','none');
