@@ -377,7 +377,7 @@ head
         });
        $('.runreg').click(function(){
           console.log('runreg '+$('#terms_checkbox').is(':checked'));
-           if(validateEmail(validateEmail($('#mail').val())) && vp && $('#terms_checkbox').is(':checked')  && $('#nickgroup').hasClass('has-success')) {
+           if(validateEmail($('#mail').val()) && vp && $('#terms_checkbox').is(':checked')  && $('#nickgroup').hasClass('has-success')) {
             runregister();
           }
         });
