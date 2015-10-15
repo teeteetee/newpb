@@ -390,7 +390,7 @@ head
             runregister();
           }
           else if(validateEmail($('#mail').val()) && $('#p').val() && $('#nickgroup').hasClass('has-success') && $('#myModal').css('display') === 'none'){
-            $('myModal').modal('show');
+            $('#myModal').modal('show');
           }
         });
         $(document).keypress(function(e) { 
