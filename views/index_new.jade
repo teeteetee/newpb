@@ -443,7 +443,7 @@ head
             $('#pwderr').empty();
             console.log(1);
             $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
-            if($('#pwderr').css('display','none')){
+            if(!$('#pwderr').css('display','block')){
               console.log(2);
               $('#pwderr').slideToggle();
             }
