@@ -745,6 +745,8 @@ head
             already=1;
           }
         }
+        console.log('title: '+modal_data_store[i].title);
+        console.log('author: '+modal_data_store[i].author);
         $('#modaltitle').text(modal_data_store[i].title);
         $('#modalauthor').text(modal_data_store[i].author);
         var insert = 'addbook('+i+')';
