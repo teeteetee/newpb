@@ -620,7 +620,7 @@ head
       $('.usernick').text(user.nick);
       //var tmp_string = "window.location='/chat/"+user._id+"';";
       //$('.chatwith').attr('onclick',tmp_string);
-      var contacts = #{contacts};
+      //var contacts = #{contacts};
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
         $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
