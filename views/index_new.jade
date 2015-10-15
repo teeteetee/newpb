@@ -425,6 +425,10 @@ head
             $('#pwderr').empty();
             console.log(1);
             $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
+            if($('#pgroup').hasClass('has-success')){
+              $('#pgroup').removeClass('has-success');
+              $('#p_success').css('display','none');
+            }
             if($('#pwderr').css('display') === 'none'){
               console.log(2);
               $('#pwderr').slideToggle();
@@ -433,7 +437,11 @@ head
         } else if (str.length > 50) {
           console.log(3);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password too long</p>');
+            $('#pwderr').append('<p>Password is too long</p>');
+            if($('#pgroup').hasClass('has-success')){
+              $('#pgroup').removeClass('has-success');
+              $('#p_success').css('display','none');
+            }
             if($('#pwderr').css('display') === 'none'){
               console.log(4);
               $('#pwderr').slideToggle();
@@ -442,7 +450,11 @@ head
         } else if (str.search(/\d/) == -1) {
           console.log(5);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password requires at leas one number</p>');
+            $('#pwderr').append('<p>Password should contain at least one number</p>');
+            if($('#pgroup').hasClass('has-success')){
+              $('#pgroup').removeClass('has-success');
+              $('#p_success').css('display','none');
+            }
             if($('#pwderr').css('display') === 'none'){
               console.log(6);
               $('#pwderr').slideToggle();
@@ -451,7 +463,11 @@ head
         } else if (str.search(/[a-zA-Z]/) == -1) {
           console.log(7);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password requires at leas five letters</p>');
+            $('#pwderr').append('<p>Password should contain at leas five letters</p>');
+            if($('#pgroup').hasClass('has-success')){
+              $('#pgroup').removeClass('has-success');
+              $('#p_success').css('display','none');
+            }
             if($('#pwderr').css('display') === 'none'){
               console.log(8);
               $('#pwderr').slideToggle();
