@@ -452,7 +452,7 @@ head
           console.log(3);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password too long</p>');
-            if($('#pwderr').css('display','none')){
+            if(!$('#pwderr').css('display','block')){
               console.log(4);
               $('#pwderr').slideToggle();
             }
@@ -461,7 +461,7 @@ head
           console.log(5);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas one number</p>');
-            if($('#pwderr').css('display','none')){
+            if(!$('#pwderr').css('display','block')){
               console.log(6);
               $('#pwderr').slideToggle();
             }
@@ -470,7 +470,7 @@ head
           console.log(7);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas five letters</p>');
-            if($('#pwderr').css('display','none')){
+            if(!$('#pwderr').css('display','block')){
               console.log(8);
               $('#pwderr').slideToggle();
             }
