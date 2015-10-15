@@ -469,14 +469,26 @@ head
       #moviemodal  .btn {
         font-weight:100;
       }
+      .modal-header {
+        border:none;
+      }
   body(style='background-color:#fbfbfb;')
+    .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body
+            h4(id='modaltitle' style='text-align:center;')
+            h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-primary  form-control' id='addbook' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body
             h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
@@ -487,7 +499,6 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body
             h4(id='modalmovietitle' style='text-align:center;')
             h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
@@ -607,8 +618,10 @@ head
       var avatar = #{avatar};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
-      var tmp_string = "window.location='/chat/"+user._id+"';";
-      $('.chatwith').attr('onclick',tmp_string);
+      //var tmp_string = "window.location='/chat/"+user._id+"';";
+      //$('.chatwith').attr('onclick',tmp_string);
+      var contacts = #{contacts};
+      if 
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
         $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");

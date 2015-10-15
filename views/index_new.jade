@@ -232,11 +232,8 @@ head
       .modal-dialog(role="document")
         .modal-content
           .modal-header
-            .row
-              .col-xs-12
-                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                  span(aria-hidden="true") ×
-                h4(class="modal-title" id="myModalLabel" style='color:#ddd;') Error
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
           .modal-body
             h3( id ='error_text' style='font-weight:200;color:#fc454e;') 
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")

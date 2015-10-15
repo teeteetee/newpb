@@ -513,6 +513,9 @@ head
       a.form-control {
         height:inherit;
       }
+      .modal-sm .modal-header {
+        border:none;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -520,7 +523,6 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body.visible-md.visible-lg
             h4.articlemodaltitle(style='text-align:center;margin-bottom:30px;')
             a(class='btn btn-primary  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View 
@@ -541,7 +543,6 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body.visible-md.visible-lg
             h4.bookmodaltitle(style='text-align:center;')
             h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
@@ -564,7 +565,6 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class='modal-title' style='color:#ddd;') Modify
           .modal-body.visible-md.visible-lg
             h4.moviemodaltitle(style='text-align:center;')
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
