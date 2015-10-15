@@ -291,15 +291,15 @@ head
               #mailgroup.form-group.has-feedback
                 input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
                 span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
               #pgroup.form-group.has-feedback
                 span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+                input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="Password") 
                 span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
               #nickgroup.form-group.has-feedback
                 span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="Nick")
+                input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="Nick" maxlength="20")
               #pwderr
               //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.form-control.runreg(type='button' style='height:inherit;background-color:rgba(255, 255, 255, 0.5);border:none;') Sign up
@@ -428,7 +428,7 @@ head
             $('#pwderr').empty();
             console.log(1);
             $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
-            if(!$('#pwderr').css('display','block')){
+            if($('#pwderr').css('display') === 'none'){
               console.log(2);
               $('#pwderr').slideToggle();
             }
@@ -437,7 +437,7 @@ head
           console.log(3);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password too long</p>');
-            if(!$('#pwderr').css('display','block')){
+            if($('#pwderr').css('display') === 'none'){
               console.log(4);
               $('#pwderr').slideToggle();
             }
@@ -446,7 +446,7 @@ head
           console.log(5);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas one number</p>');
-            if(!$('#pwderr').css('display','block')){
+            if($('#pwderr').css('display') === 'none'){
               console.log(6);
               $('#pwderr').slideToggle();
             }
@@ -455,7 +455,7 @@ head
           console.log(7);
             $('#pwderr').empty();
             $('#pwderr').append('<p>Password requires at leas five letters</p>');
-            if(!$('#pwderr').css('display','block')){
+            if($('#pwderr').css('display') === 'none'){
               console.log(8);
               $('#pwderr').slideToggle();
             }
@@ -463,7 +463,7 @@ head
         } //else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
           //  $('#pwderr').empty();
           //  $('#pwderr').append('<p>Password requires at leas five letters</p>');
-          //  if(!$('#pwderr').css('display','block')){
+          //  if($('#pwderr').css('display') === 'none'){
           //    $('#pwderr').slideToggle();
           //  }
           //  return("bad_char");
@@ -471,7 +471,7 @@ head
         //return("ok");
         else {
           console.log(9);
-        if(!$('#pwderr').css('display','none')){
+        if($('#pwderr').css('display') ==='block'){
           console.log(10);
               $('#pwderr').slideToggle();
             }
