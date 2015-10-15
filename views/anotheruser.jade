@@ -801,9 +801,13 @@ head
             else {
               console.log('HASNT GOT LENGTH');
             }
-            var authors_insert ;
+            var authors_insert = ' ';
             for(var xi=0;xi<msg.authors.length;xi++){
-              authors_insert = msg.authors[xi];
+              if(xi>0)
+              {authors_insert = authors_insert+' '+msg.authors[xi];}
+              else {
+                authors_insert = msg.authors[xi];
+              }
             }
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
