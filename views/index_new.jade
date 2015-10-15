@@ -333,22 +333,7 @@ head
           }
         });
       $('#p').keyup(function(event) {
-        if(!$('#mail').val()){
-             $('#mail_error').css('display','none');
-             $('#mail_success').css('display','none');
-           }
-        if($('#mail').val().length>6) {
-          if(checkPwd($('#p').val())){
-            $('#mail_error').css('display','none');
-            $('#mailgroup').removeClass('has-error').addClass('has-success');
-            $('#mail_success').css('display','block');
-           }
-           else {
-            $('#mail_success').css('display','none');
-            $('#mailgroup').removeClass('has-success').addClass('has-error');
-            $('#mail_error').css('display','block');
-           }
-          }
+        checkPwd($('#p').val());
         });
       var lastentry;
       $('#nickinput').keyup(function(event) {
