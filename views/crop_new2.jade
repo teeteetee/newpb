@@ -252,7 +252,7 @@ head
            minHeight: 100,
            maxWidth: 1000,
            maxHeight: 700,
-           
+
            // Plugins options
            plugins: {
              crop: {
@@ -265,7 +265,7 @@ head
              save: {
                 callback: function() {
                     this.darkroom.selfDestroy(); // Cleanup
-                    var newImage = dkrm.canvas.toDataURL();
+                    var newImage = Darkroom.canvas.toDataURL();
                     fileStorageLocation = newImage;
                 }
             } // disable plugin
