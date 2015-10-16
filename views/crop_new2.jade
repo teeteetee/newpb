@@ -218,13 +218,18 @@ head
       script(src="https://cdn.rawgit.com/fengyuanchen/cropper/v1.0.0/dist/cropper.min.js")  
       script(src='/js/bootstrap.min.js')
       script.
+        var x1,x2,y1,y2;
         $(window).load(function(){
           console.log('remove');
-          $('#wait').remove();
+          $('#wait').css('display','none');
            $('#targetbucket > img').cropper({
              aspectRatio: 1,
              crop: function(e) {
                // Output the result data for cropping image.
+               x1=e.x;
+               y1=e.y;
+               x2=e.width;
+               y2=e.height;
                console.log(e.x);
                console.log(e.y);
                console.log(e.width);
@@ -234,6 +239,22 @@ head
                console.log(e.scaleY);
              }
            });
+          });
+        $('#crop').click(fucntion(){
+          $('#wait').css('display','block');
+          var img = $('#target').attr('src');
+          $.ajax({
+           method: 'POST',
+           url: '/userp/crop',
+           data: {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2, 'img': img}
+         }).done(function (data) {
+             ///var response = JSON.parse(jqXHR.responseText);
+             //var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
+             //var redurl = '/userpics/'+data.rdurl;
+             //var insert = "<img class='img-circle' src='"+redurl+"'></img>";
+             //$('#cropresult').append(insert);
+             window.location='http://vntrlst.com/';
+             });
           });
 
 
