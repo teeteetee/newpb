@@ -1785,6 +1785,7 @@ app.post('/userp/crop',function (req,res){
   {var imgname = req.body.img.substring(10);
     var fullimgname = __dirname +"/public/userpics/"+ imgname;
     // TO DO check if info is present
+    console.log(fullimage);
     lwip.open(fullimgname, function(err, image) {
     if (err) throw err;
     var _cropOpt = {
