@@ -224,6 +224,13 @@ head
           $('#wait').css('display','none');
            $('#targetbucket > img').cropper({
              aspectRatio: 1,
+             guides:false,
+             center:true,
+             scalable:false,
+             zoomable:false,
+             mouseWheelZoom:false,
+             touchDragZoom:false,
+             strict:true,
              crop: function(e) {
                // Output the result data for cropping image.
                x1=e.x;
