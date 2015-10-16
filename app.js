@@ -1798,10 +1798,12 @@ app.post('/userp/crop',function (req,res){
       if (err) throw err;
       //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
         //path.extname('index.html')
-        console.log('cropped image width: '+crpdImg.width);
-        if(crpdImg.width > 300)
+        lwip.open(crpdImg, function(err, pre_final_image) {
+          if (err) throw err;
+        console.log('cropped image width: '+pre_final_crpdImg.width);
+        if(pre_final_crpdImg.width > 300)
         {console.log('we are going to resize');
-          crpdImg.resize(300,300,function(err,final_image){ 
+          pre_final_crpdImg.resize(300,300,function(err,final_image){ 
           if(err) throw err;
           var vpicext = path.extname(imgname);
         var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
@@ -1825,7 +1827,7 @@ app.post('/userp/crop',function (req,res){
                               //-----------------------
                               lwip.open(newpath, function(err, image_trsz) {
                                  if (err) throw err;
-                                  
+                        
                                   image_trsz.resize(69,function(err,image_small){
                                       image_small.writeFile(newpath_small, function(err) {
                                          if (err) throw err;
@@ -1902,7 +1904,7 @@ app.post('/userp/crop',function (req,res){
                           }
                         });
            //0000000000000000000000000000000
-        });
+         });
       });
       }
      }); 
@@ -1918,7 +1920,7 @@ app.post('/userp/crop',function (req,res){
     // remove existing userpic, write cropped imge, remove original image
        fs.unlink(newpath, function(){
             if(err) throw err;
-            crpdImg.writeFile(newpath, function(err) {
+            pre_final_crpdImg.writeFile(newpath, function(err) {
         if (err) throw err;
         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
           if(err) throw err;
@@ -1967,7 +1969,7 @@ app.post('/userp/crop',function (req,res){
       else {
         console.log('no userpic');
         //write cropped image, remove original
-        crpdImg.writeFile(newpath, function(err) {
+        pre_final_crpdImg.writeFile(newpath, function(err) {
         if (err) throw err;
         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
           if(err) throw err;
@@ -2015,7 +2017,7 @@ app.post('/userp/crop',function (req,res){
      }); 
       
         }
-        
+        });
     });
    
   });}
