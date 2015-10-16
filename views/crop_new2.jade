@@ -246,7 +246,7 @@ head
           console.log('remove');
           $('#wait').remove();
 
-           new Darkroom('#target', {
+           var dkrm = new Darkroom('#target', {
            // Canvas initialization size
            minWidth: 100,
            minHeight: 100,
@@ -265,7 +265,7 @@ head
              save: {
                 callback: function() {
                     this.darkroom.selfDestroy(); // Cleanup
-                    var newImage = Darkroom.canvas.toDataURL();
+                    var newImage = dkrm.canvas.toDataURL();
                     fileStorageLocation = newImage;
                 }
             } // disable plugin
