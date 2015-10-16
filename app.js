@@ -1798,7 +1798,7 @@ app.post('/userp/crop',function (req,res){
        image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
          if (err) throw err;
          console.log('loading crpdImg');
-         lwip.open(crpdImg, function(err, pre_final_image) {
+         lwip.open(crpdImg,path.extname(imgname) , function(err, pre_final_image) {
            if (err) throw err;
            console.log('cropped image width: '+pre_final_crpdImg.width);
            if(pre_final_crpdImg.width > 300)
