@@ -411,12 +411,14 @@ head
         color:white;
       }
       .btn-primary:focus, btn.primary:active, .btn-primary:hover {
-        border-color:#E46302;
-        background-color:#E46302;
+       background-color: white;
+       border-color: white;
+       color: #FF6F02;
       }
       .btn-primary{
-        background-color:#ff6f02;
-        border-color:#ff6f02;
+        background-color: white;
+        border-color: white;
+        color: #FF6F02;
       }
       .medialeft > img {
         width:64px !important;
@@ -507,8 +509,12 @@ head
       a.form-control {
         height:inherit;
       }
-      .modal-sm .modal-header {
+      .modal-header {
         border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
