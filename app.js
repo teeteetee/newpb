@@ -1777,6 +1777,7 @@ app.post('/usrp',function (req,res) {
 
 
 app.post('/userp/crop',function (req,res){
+  console.log('INTO CROP');
   // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
   // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
@@ -1801,7 +1802,7 @@ app.post('/userp/crop',function (req,res){
      right:parseInt(req.body.x2),
      bottom:parseInt(req.body.y2)
     }; // extract the face from the pic
-   
+   console.log('CROPPING');
     image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
       if (err) throw err;
       //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
