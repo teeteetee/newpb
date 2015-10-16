@@ -1822,7 +1822,7 @@ app.post('/userp/crop',function (req,res){
                     var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
                      path.exists(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(exists) { 
                     if (exists) 
-                      { //remove existing userpic_small, write resized
+                      { console.log('small exists');//remove existing userpic_small, write resized
                         fs.unlink(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(){
                               if(err) throw err;
                               //-----------------------
@@ -1861,6 +1861,7 @@ app.post('/userp/crop',function (req,res){
              });
        } 
       else {
+        console.log('no userpic');
         //write cropped image, remove original
         crpdImg.writeFile(newpath, function(err) {
         if (err) throw err;
@@ -1870,7 +1871,7 @@ app.post('/userp/crop',function (req,res){
                         var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
                          path.exists(newpath_small, function(exists) { 
                         if (exists) 
-                          { //remove existing userpic_small, write resized
+                          { console.log('small exists2');//remove existing userpic_small, write resized
                             fs.unlink(newpath_small, function(){
                                   if(err) throw err;
                                   //-----------------------
