@@ -8,16 +8,16 @@ head
   title P&B     
   link(rel='icon', href='', sizes='16x16', type='image/png')
   // Bootstrap
-  link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')  
-  link(rel="stylesheet" href="/stylesheets/darkroom.css"  type="text/css")  
+  link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet') 
+  link(href="https://cdn.rawgit.com/fengyuanchen/cropper/v1.0.0/dist/cropper.min.css" rel="stylesheet")
+  script(src="https://cdn.rawgit.com/fengyuanchen/cropper/v1.0.0/dist/cropper.min.js")   
   meta(liber de amicitia est)
   // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
   // WARNING: Respond.js doesn't work if you view the page via file://
   //if lt IE 9
   script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-  script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js') 
-  script(src='/js/fabric.js')  
-  script(src='/js/darkroom.js')     
+  script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')      
+
   style.
     #spin {
     margin-top:15%
@@ -208,78 +208,32 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container#main(style='padding-top:100px;height:100%;background-color:white;')          
-      .row.optlist(style='display:none;')
-        input(id='ar_lock',type='checkbox')
-        input(id='size_lock',type='checkbox')
       .row
         .col-xs-12(id='targetbucket')
           img#target(src='#{imgsrc}',class='img-responsive center-block' alt='[Jcrop Example]')
       .row
         .col-xs-12(style='text-align:center;padding-top:30px;')
-          button(id='release' style='margin-right:10px;display:none' class='btn btn-primary') Убрать выделение
           button(id='crop' class='btn btn-primary') Save
-          .inline-labels(style='display:none;')
-            label
-              | X1 
-              input#x1(type='text', size='4', name='x1')    
-            label
-              | Y1 
-              input#y1(type='text', size='4', name='y1')    
-            label
-              | X2 
-              input#x2(type='text', size='4', name='x2')    
-            label
-              | Y2 
-              input#y2(type='text', size='4', name='y2')    
-            label
-              | W 
-              input#w(type='text', size='4', name='w')    
-            label
-              | H 
-              input#h(type='text', size='4', name='h')
-      .row
-        .col-xs-12#cropresult
+
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
         $(window).load(function(){
           console.log('remove');
           $('#wait').remove();
-
-           var dkrm = new Darkroom('#target', {
-           // Canvas initialization size
-           minWidth: 100,
-           minHeight: 100,
-           maxWidth: 1000,
-           maxHeight: 700,
-
-           // Plugins options
-           plugins: {
-             crop: {
-               minHeight: 300,
-               minWidth: 300,
-               maxWidth: 700,
-               maxHeight: 700,
-               ratio: 1
-             },
-             save: {
-                callback: function() {
-                    this.darkroom.selfDestroy(); // Cleanup
-                    var newImage = dkrm.canvas.toDataURL();
-                    fileStorageLocation = newImage;
-                }
-            } // disable plugin
-           },
-         
-           // Post initialization method
-           initialize: function() {
-             // Active crop selection
-             this.plugins['crop'].requireFocus();
-         
-             // Add custom listener
-             //this.addEventListener('core:transformation', function() { /* ... */ });
-           }
-         });
+           $('#targetbucket > img').cropper({
+             aspectRatio: 16 / 9,
+             crop: function(e) {
+               // Output the result data for cropping image.
+               console.log(e.x);
+               console.log(e.y);
+               console.log(e.width);
+               console.log(e.height);
+               console.log(e.rotate);
+               console.log(e.scaleX);
+               console.log(e.scaleY);
+             }
+           });
           });
 
 
