@@ -1799,7 +1799,7 @@ app.post('/userp/crop',function (req,res){
          if (err) throw err;
          console.log('typeof crpdImg: '+typeof crpdImg);
          console.log('loading crpdImg with extension: '+path.extname(imgname).split('.').join(""));
-         lwip.open(crpdImg,path.extname(imgname)..split('.').join("") , function(err, pre_final_image) {
+         lwip.open(crpdImg,path.extname(imgname).split('.').join("") , function(err, pre_final_image) {
            if (err) throw err;
            console.log('cropped image width: '+pre_final_crpdImg.width);
            if(pre_final_crpdImg.width > 300)
