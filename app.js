@@ -1797,6 +1797,7 @@ app.post('/userp/crop',function (req,res){
        console.log('CROPPING');
        image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
          if (err) throw err;
+         console.log('typeof crpdImg: '+typeof crpdImg);
          console.log('loading crpdImg with extension: '+path.extname(imgname));
          lwip.open(crpdImg,path.extname(imgname) , function(err, pre_final_image) {
            if (err) throw err;
