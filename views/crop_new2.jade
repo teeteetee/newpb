@@ -167,9 +167,6 @@ head
         transform: rotate(360deg);
       }
     }
-    .jcrop-holder {
-      margin:auto;
-    }
     .btn-primary:focus, btn.primary:active, .btn-primary:hover {
         border-color:#2988DA;
         background-color:#2988DA;
@@ -181,6 +178,9 @@ head
     .cropper-crop-box {
       max-width:600;
       max-height:600;
+    }
+    #target {
+      height:100%;
     }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
@@ -213,7 +213,7 @@ head
     .container#main(style='padding-top:100px;height:100%;background-color:white;padding-bottom:50px;')          
       .row
         .col-xs-12(id='targetbucket')
-          img#target(src='#{imgsrc}',class='img-responsive center-block' alt='[Jcrop Example]')
+          img#target(src='#{imgsrc}',class='center-block' alt='[Jcrop Example]')
       .row
         .col-xs-12(style='text-align:center;padding-top:30px;')
           button(id='crop' class='btn btn-primary') Save
