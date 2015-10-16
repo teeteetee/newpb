@@ -1788,15 +1788,6 @@ app.post('/userp/crop',function (req,res){
     lwip.open(fullimgname, function(err, image) {
     if (err) throw err;
     var _cropOpt = {
-     // left: req.body.x2,
-     // top: req.body.x1,
-     // right: req.body.y2,
-     // bottom: req.body.y1
-     //------------------
-     //left:parseInt(req.body.x2),
-     //top:parseInt(req.body.y2),
-     //right:parseInt(req.body.x1),
-     //bottom:parseInt(req.body.y1)
      left:parseInt(req.body.x1),
      top:parseInt(req.body.y1),
      right:parseInt(req.body.x2),
@@ -2029,6 +2020,7 @@ app.post('/userp/crop',function (req,res){
    
   });}
   else {
+    console.log('CROP FAIL REDIRECT');
     res.redirect('/');
   }
 
