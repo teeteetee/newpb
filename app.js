@@ -1819,10 +1819,10 @@ app.post('/userp/crop',function (req,res){
           if(err) throw err;
            //00000000000000000000000000000
                     var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
-                     path.exists(newpath_small, function(exists) { 
+                     path.exists(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(exists) { 
                     if (exists) 
                       { //remove existing userpic_small, write resized
-                        fs.unlink(newpath_small, function(){
+                        fs.unlink(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(){
                               if(err) throw err;
                               //-----------------------
                               lwip.open(newpath, function(err, image_trsz) {
