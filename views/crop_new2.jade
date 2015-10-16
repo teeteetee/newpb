@@ -226,10 +226,10 @@ head
              aspectRatio: 1,
              crop: function(e) {
                // Output the result data for cropping image.
-               y2=e.x;
-               x1=e.y;
-               y1=e.width;
-               x2=e.height;
+               x1=e.x;
+               y2=e.y;
+               x2=e.width+e.x;
+               y2=e.height+e.y;
                console.log(e.x);
                console.log(e.y);
                console.log(e.width);
