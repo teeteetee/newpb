@@ -245,13 +245,14 @@ head
         $(window).load(function(){
           console.log('remove');
           $('#wait').remove();
+
            new Darkroom('#target', {
            // Canvas initialization size
            minWidth: 100,
            minHeight: 100,
            maxWidth: 1000,
            maxHeight: 700,
-         
+           
            // Plugins options
            plugins: {
              crop: {
@@ -261,7 +262,13 @@ head
                maxHeight: 700,
                ratio: 1
              },
-             save: true // disable plugin
+             save: {
+                callback: function() {
+                    this.darkroom.selfDestroy(); // Cleanup
+                    var newImage = dkrm.canvas.toDataURL();
+                    fileStorageLocation = newImage;
+                }
+            } // disable plugin
            },
          
            // Post initialization method
@@ -274,5 +281,7 @@ head
            }
          });
           });
+
+
         
       
