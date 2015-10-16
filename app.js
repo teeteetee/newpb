@@ -1794,17 +1794,13 @@ app.post('/userp/crop',function (req,res){
        right:parseInt(req.body.x2),
        bottom:parseInt(req.body.y2)
        }; 
+
        console.log('CROPPING');
-       image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, crpdImg) {
+       image.crop(_cropOpt.left, _cropOpt.top, _cropOpt.right, _cropOpt.bottom, function(err, image) {
          if (err) throw err;
-         console.log(JSON.stringify(crpdImg));
-         console.log('loading crpdImg with extension: '+path.extname(imgname).split('.').join(""));
-         lwip.open(crpdImg,path.extname(imgname).split('.').join("") , function(err, pre_final_image) {
-           if (err) throw err;
-           console.log('cropped image width: '+pre_final_crpdImg.width);
-           if(pre_final_crpdImg.width > 300)
+           if(parseInt(req.body.x2)-parseInt(req.body.x1)>300)
              {console.log('we are going to resize');
-              pre_final_crpdImg.resize(300,300,function(err,final_image){ 
+              image.resize(300,300,function(err,image){ 
                 if(err) throw err;
                 var vpicext = path.extname(imgname);
                 var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
@@ -1814,7 +1810,7 @@ app.post('/userp/crop',function (req,res){
                   // remove existing userpic, write cropped imge, remove original image
                   fs.unlink(newpath, function(){
                     if(err) throw err;
-                    final_image.writeFile(newpath, function(err) {
+                    image.writeFile(newpath, function(err) {
                       if (err) throw err;
                         fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
                           if(err) throw err;
@@ -1857,7 +1853,7 @@ app.post('/userp/crop',function (req,res){
                 else {
                   console.log('no userpic');
                   //write cropped image, remove original
-                  final_image.writeFile(newpath, function(err) {
+                  image.writeFile(newpath, function(err) {
                     if (err) throw err;
                     fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
                       if(err) throw err;
@@ -1896,8 +1892,8 @@ app.post('/userp/crop',function (req,res){
                     });
                   });
                 }
-              });  
-            });
+              }); //PATH IF EXISTS  
+            });//IMAGE RESIZE
           }//if cropped image was wider than 300
         else {
           var vpicext = path.extname(imgname);
@@ -1908,7 +1904,7 @@ app.post('/userp/crop',function (req,res){
             // remove existing userpic, write cropped imge, remove original image
             fs.unlink(newpath, function(){
               if(err) throw err;
-              pre_final_crpdImg.writeFile(newpath, function(err) {
+              image.writeFile(newpath, function(err) {
                 if (err) throw err;
                 fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
                   if(err) throw err;
@@ -1951,7 +1947,7 @@ app.post('/userp/crop',function (req,res){
           else {
             console.log('no userpic');
             //write cropped image, remove original
-            pre_final_crpdImg.writeFile(newpath, function(err) {
+            image.writeFile(newpath, function(err) {
               if (err) throw err;
               fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
                 if(err) throw err;
@@ -1990,11 +1986,10 @@ app.post('/userp/crop',function (req,res){
               });
             });
           }
-        }); 
-      }
-    });
-  });
-});
+        });// PATH IF EXISTS 
+      }//ELSE FROM IF IMAGE>300
+    });//IMAGE CROP
+  });//IMAGE OPEN
 }
   else {
     console.log('CROP FAIL REDIRECT');
