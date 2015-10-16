@@ -175,13 +175,9 @@ head
         background-color:#2E98F3;
         border-color:#2E98F3;
       }
-    .cropper-crop-box {
-      max-width:600;
-      max-height:600;
-    }
-    #target {
-      height:100%;
-    }
+      #target {
+        height:100%;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -213,7 +209,7 @@ head
     .container#main(style='padding-top:100px;height:100%;background-color:white;padding-bottom:50px;')          
       .row
         .col-xs-12(id='targetbucket')
-          img#target(src='#{imgsrc}',class='center-block' alt='[Jcrop Example]')
+          img#target(src='#{imgsrc}',class=' center-block' alt='[Jcrop Example]')
       .row
         .col-xs-12(style='text-align:center;padding-top:30px;')
           button(id='crop' class='btn btn-primary') Save
@@ -236,10 +232,8 @@ head
              mouseWheelZoom:false,
              touchDragZoom:false,
              strict:true,
-             minCropBoxWidth:300,
-             minCropBoxHeight:300,
-             maxCropBoxWidth:700,
-             maxCropBoxHeight:700,
+             minCropBoxWidth:100,
+             minCropBoxHeight:100,
              crop: function(e) {
                // Output the result data for cropping image.
                x1=e.x;

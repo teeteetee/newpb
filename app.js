@@ -1745,18 +1745,18 @@ app.post('/usrp',function (req,res) {
   if(req.session.mail){
     if (req.files) 
     { 
-      function upload(filepath,imageid){
+      function upload(filepath,imgname){
                    console.log('into upload');
                    var oldPath = filepath;
                    console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-                   var newPath = __dirname +"/public/userpics/"+ imageid;
+                   var newPath = __dirname +"/public/userpics/"+ imgname;
                    console.log('UPLOAD 2 step, newPath:' + newPath );
                     fs.readFile(oldPath , function(err, data) {
                       fs.writeFile(newPath, data, function(err) {
                           fs.unlink(oldPath, function(){
                               if(err) throw err;
-                              //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                              var dest = '/userpics/'+imageid;
+                              //res.send('<img src="/userpics/'+imgname+'" style="height:200px;width:200px;"></img>');
+                              var dest = '/userpics/'+imgname;
                               res.render('crop_new2',{'imgsrc':dest});  
                                 });
                     }); 
@@ -1806,7 +1806,119 @@ app.post('/userp/crop',function (req,res){
       if (err) throw err;
       //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
         //path.extname('index.html')
-        var vpicext = path.extname(imgname);
+        console.log('cropped image width: '+crpdImg.width);
+        if(crpdImg.width > 300)
+        {console.log('we are going to resize');
+          crpdImg.resize(300,300,function(err,final_image){ 
+          if(err) throw err;
+          var vpicext = path.extname(imgname);
+        var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
+      path.exists(__dirname +"/public/userpics/id"+req.session._id+req.session.picext, function(exists) { 
+  if (exists) {
+      console.log('userpic exists') 
+    // remove existing userpic, write cropped imge, remove original image
+       fs.unlink(newpath, function(){
+            if(err) throw err;
+            final_image.writeFile(newpath, function(err) {
+        if (err) throw err;
+        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
+          if(err) throw err;
+           //00000000000000000000000000000
+                    var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
+                     path.exists(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(exists) { 
+                    if (exists) 
+                      { console.log('small exists');//remove existing userpic_small, write resized
+                        fs.unlink(__dirname +"/public/userpics/id"+req.session._id+"_small"+req.session.picext, function(){
+                              if(err) throw err;
+                              //-----------------------
+                              lwip.open(newpath, function(err, image_trsz) {
+                                 if (err) throw err;
+                                  
+                                  image_trsz.resize(69,function(err,image_small){
+                                      image_small.writeFile(newpath_small, function(err) {
+                                         if (err) throw err;
+                                          users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                          res.send('ok');
+                                       });
+                                  });
+                                });
+                              //-----------------
+                            });
+                      }
+                      else{
+                         //write resized
+                        lwip.open(newpath, function(err, image_trsz) {
+                                 if (err) throw err;
+                                  
+                                  image_trsz.resize(69,function(err,image_small){
+                                      image_small.writeFile(newpath_small, function(err) {
+                                         if (err) throw err;
+                                            users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                            res.send('ok');
+                                       });
+                                  });
+                                });
+                      }
+                    });
+           //00000000000000000000000000000
+        });
+      });  
+             });
+       } 
+      else {
+        console.log('no userpic');
+        //write cropped image, remove original
+        final_image.writeFile(newpath, function(err) {
+        if (err) throw err;
+        fs.unlink(__dirname +"/public/userpics/"+imgname, function(){
+          if(err) throw err;
+           //0000000000000000000000000000000
+                        var newpath_small = __dirname +"/public/userpics/id"+req.session._id+"_small"+vpicext;
+                         path.exists(newpath_small, function(exists) { 
+                        if (exists) 
+                          { console.log('small exists2');//remove existing userpic_small, write resized
+                            fs.unlink(newpath_small, function(){
+                                  if(err) throw err;
+                                  //-----------------------
+                                  lwip.open(newpath, function(err, image_trsz) {
+                                     if (err) throw err;
+                                      
+                                      image_trsz.resize(69,function(err,image_small){
+                                          image_small.writeFile(newpath_small, function(err) {
+                                             if (err) throw err;
+                                              users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                              res.send('ok');
+                                           });
+                                      });
+                                    });
+                                  //-----------------
+                                });
+                          }
+                          else{
+                             //write resized
+                            lwip.open(newpath, function(err, image_trsz) {
+                                     if (err) throw err;
+                                      
+                                      image_trsz.resize(69,function(err,image_small){
+                                          image_small.writeFile(newpath_small, function(err) {
+                                             if (err) throw err;
+                                                users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                                                res.send('ok');
+                                           });
+                                      });
+                                    });
+                          }
+                        });
+           //0000000000000000000000000000000
+        });
+      });
+      }
+     }); 
+      
+
+        });}//if cropped image was wider than 300
+        else {
+          var vpicext = path.extname(imgname);
         var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
       path.exists(__dirname +"/public/userpics/id"+req.session._id+req.session.picext, function(exists) { 
   if (exists) {
@@ -1910,6 +2022,8 @@ app.post('/userp/crop',function (req,res){
       }
      }); 
       
+        }
+        
     });
    
   });}
