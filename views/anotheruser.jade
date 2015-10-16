@@ -453,6 +453,9 @@ head
         font-size:18px;
       }
       .bs-example-modal-sm .btn {
+        font-weight:100;
+      }
+      .modal-body.visible-xs .btn {
         font-weight:200;
       }
       .dot {
@@ -501,6 +504,16 @@ head
             h4(id='modalmovietitle' style='text-align:center;')
             h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary  form-control' id='addmovie' style='margin-top:5px;margin-bottom:5px;') Add to my list
+    .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body
+            h4(id='modalarticletitle' style='text-align:center;')
+            h4(id='modallink' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-primary  form-control' id='addarticle' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -761,6 +774,13 @@ head
         $('#addmovie').attr('onclick',insert);
         $('#moviemodal').modal('show');
       }
+      function redactarticlemodal (i) {
+        $('#modalarticletitle').text(article_modal_data_store[i].title);
+        $('#modallink').text(article_modal_data_store[i].year);
+        var insert = 'addarticle('+i+')';
+        $('#addarticle').attr('onclick',insert);
+        $('#articlemodal').modal('show');
+      }
       function addbook(i) {
         var url = '/additem/book_out';
         $.ajax({
@@ -787,6 +807,19 @@ head
           m_checkagainst.push(movies[i]._id);
            $('#moviemodal').modal('hide');
            console.log('added movie');
+          });
+      }
+      function addarticle(i) {
+        var url = '/additem/article_out';
+        $.ajax({
+         method: "POST",
+         url: url,
+         data: 'article_id='+articles[i]._id
+       })
+         .done(function( msg ) {
+          m_checkagainst.push(articles[i]._id);
+           $('#articlemodal').modal('hide');
+           console.log('added article');
           });
       }
       function getbooks(books,i) {
