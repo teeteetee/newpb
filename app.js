@@ -1745,18 +1745,18 @@ app.post('/usrp',function (req,res) {
   if(req.session.mail){
     if (req.files) 
     { 
-      function upload(filepath,imgname){
+      function upload(filepath,imageid){
                    console.log('into upload');
                    var oldPath = filepath;
                    console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-                   var newPath = __dirname +"/public/userpics/"+ imgname;
+                   var newPath = __dirname +"/public/userpics/"+ imageid;
                    console.log('UPLOAD 2 step, newPath:' + newPath );
                     fs.readFile(oldPath , function(err, data) {
                       fs.writeFile(newPath, data, function(err) {
                           fs.unlink(oldPath, function(){
                               if(err) throw err;
-                              //res.send('<img src="/userpics/'+imgname+'" style="height:200px;width:200px;"></img>');
-                              var dest = '/userpics/'+imgname;
+                              //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
+                              var dest = '/userpics/'+imageid;
                               res.render('crop_new2',{'imgsrc':dest});  
                                 });
                     }); 
@@ -1799,6 +1799,7 @@ app.post('/userp/crop',function (req,res){
       if (err) throw err;
       //crpdImg.writeFile(__dirname +"/public/userpics/crop_"+ imgname, function(err) {
         //path.extname('index.html')
+<<<<<<< HEAD
         lwip.open(crpdImg, function(err, pre_final_image) {
           if (err) throw err;
         console.log('cropped image width: '+pre_final_crpdImg.width);
@@ -1914,6 +1915,9 @@ app.post('/userp/crop',function (req,res){
         });}//if cropped image was wider than 300
         else {
           var vpicext = path.extname(imgname);
+=======
+        var vpicext = path.extname(imgname);
+>>>>>>> parent of 78c8c7a... --
         var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
       path.exists(__dirname +"/public/userpics/id"+req.session._id+req.session.picext, function(exists) { 
   if (exists) {
@@ -2017,8 +2021,11 @@ app.post('/userp/crop',function (req,res){
       }
      }); 
       
+<<<<<<< HEAD
         }
         });
+=======
+>>>>>>> parent of 78c8c7a... --
     });
    
   });}
