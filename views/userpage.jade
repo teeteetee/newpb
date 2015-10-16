@@ -1066,6 +1066,7 @@ head
       var authorcount=0;
       $('#addauthor').click(addauthor);
       function addauthor() {
+        console.log('addauthor running');
         authorcount++;
         if($('#removeauthor').hasClass('disabled')){
           $('#removeauthor').removeClass('disabled');
