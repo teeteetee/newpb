@@ -171,6 +171,14 @@ head
     .jcrop-holder {
       margin:auto;
     }
+    .btn-primary:focus, btn.primary:active, .btn-primary:hover {
+        border-color:#2988DA;
+        background-color:#2988DA;
+      }
+      .btn-primary{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
   body(style='background-color:#fbfbfb;')
     nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
       .container
@@ -209,7 +217,7 @@ head
       .row
         .col-xs-12(style='text-align:center;padding-top:30px;')
           button(id='release' style='margin-right:10px;display:none' class='btn btn-primary') Убрать выделение
-          button(id='crop' class='btn btn-primary') Обрезать
+          button(id='crop' class='btn btn-primary') Save
           .inline-labels(style='display:none;')
             label
               | X1 
@@ -265,6 +273,29 @@ head
              //this.addEventListener('core:transformation', function() { /* ... */ });
            }
          });
+           (function() {
+           'use strict';
+           
+           Darkroom.plugins['save'] = Darkroom.Plugin.extend({
+           
+             defaults: {
+               callback: function() {
+                 this.darkroom.selfDestroy();
+               }
+             },
+           
+             initialize: function InitializeDarkroomSavePlugin() {
+               var buttonGroup = this.darkroom.toolbar.createButtonGroup();
+           
+               this.destroyButton = buttonGroup.createButton({
+                 image: 'save'
+               });
+           
+               this.destroyButton.addEventListener('click', this.options.callback.bind(this));
+             },
+           });
+           
+           })();
           });
         
       
