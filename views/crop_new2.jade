@@ -272,10 +272,6 @@ head
              // Add custom listener
              //this.addEventListener('core:transformation', function() { /* ... */ });
            }
-         });
-           (function() {
-           'use strict';
-           
            Darkroom.plugins['save'] = Darkroom.Plugin.extend({
            
              defaults: {
@@ -293,9 +289,8 @@ head
            
                this.destroyButton.addEventListener('click', this.options.callback.bind(this));
              },
-           });
-           
-           })();
+           });  
+         });
           });
         
       
