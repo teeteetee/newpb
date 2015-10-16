@@ -191,9 +191,9 @@ head
           h3(style='font-weight:200;') #{title}
           h5(style='font-weight:400;color:#ddd;') #{author}
       .row.hidden-xs(style='text-align:center;padding-top:50px;padding-bottom:50px;')
-        .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4.hidden-xs(style='border:10px solid #eee;')
+        .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4.hidden-xs(style='border:10px solid #eee;padding-bottom:10px;')
           h3(style='font-weight:200;') #{title}
-          h5(style='font-weight:400;color:#ddd;min-height: 5px;') #{author}
+          h5(style='font-weight:400;color:#ddd;') #{author}
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#users
           #noitems.row(style='text-align:center;')  
@@ -252,7 +252,7 @@ head
                       {
                        avinsert ="<img style='height:50px;' id='img_cid"+msg._id+"' class='media-object img-circle' src='/userpics/id"+msg._id+"_small"+msg.picext+"' alt='avatar'>";
                       }
-                     var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'>"+avinsert+"</div><div class='media-body' ><h4 class='media-heading' style='color:#333 !important;'>"+msg.nick+"</h4>"+msg.readbooks+" / "+msg.seenmovies+"</div></div></a></div></div>";
+                     var insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><div class='media'><a href='/u/"+msg.nick+"'><div class='media-left'>"+avinsert+"</div><div class='media-body' ><h4 class='media-heading' style='color:#333 !important;'>"+msg.nick+"</h4>"+msg.readbooks+" / "+msg.seenmovies+" / "+msg.readarticles+"</div></div></a></div></div>";
                       //insert = "<div class='row book' id='cid"+msg._id+"'><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left'><img style='height:50px;' id='img_cid"+parsed.mtext.discid+"' class='media-object img-circle' src='' alt='avatar'></div><div class='media-body' style='color:#bfbfbf;'><h4 style='color:#a7a7a7;' class='media-heading'>User №"+vuid+"</h4>"+lastmsg+"</div></div></a></div></div>";
                       $('#users').append(insert);
                       //getavatar(msg.uid,msg._id);
