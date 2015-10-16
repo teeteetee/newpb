@@ -1808,8 +1808,9 @@ app.post('/userp/crop',function (req,res){
         //path.extname('index.html')
         var vpicext = path.extname(imgname);
         var newpath = __dirname +"/public/userpics/id"+req.session._id+vpicext;
-      path.exists(newpath, function(exists) { 
-  if (exists) { 
+      path.exists(__dirname +"/public/userpics/id"+req.session._id+req.session.picext, function(exists) { 
+  if (exists) {
+      concole.log('userpic exists') 
     // remove existing userpic, write cropped imge, remove original image
        fs.unlink(newpath, function(){
             if(err) throw err;
