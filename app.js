@@ -1781,7 +1781,7 @@ app.post('/userp/crop',function (req,res){
   // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
   // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
-  if(req.session.mail&&req.session._id&&parseInt(req.body.x1)&&parseInt(req.body.x2)&&parseInt(req.body.y1)&&parseInt(req.body.y2)&&req.body.img)
+  if(req.session.mail&&req.session._id&&req.body.x1&&req.body.x2&&req.body.y1&&req.body.y2&&req.body.img)
   {var imgname = req.body.img.substring(10);
     var fullimgname = __dirname +"/public/userpics/"+ imgname;
     // TO DO check if info is present
