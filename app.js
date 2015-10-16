@@ -2363,7 +2363,7 @@ app.post('/additem/:id',function (req,res){
          if(!req.body.author0_name)
           {callback(0);}
         else
-         {authors_num++;
+         {
                   for(var i =0;i<authors_num;i++){
                     eval("authors.findOne({name:req.body.author"+i+"_name},function(err,author){if(err) {console.log('err while author query');callback(0);}else {if(author!=null){console.log('author exists');books.update({_id:book_id},{$push:{authors:author.name}});console.log('inserted author to book '+book_id);}else{console.log('there was no author, created one');authors.insert({name:req.body.author"+i+"_name},function(err,newauthor){if(err) {console.log('err while adding author');callback(0);}else {  console.log('going to push our author id in the book');books.update({_id:book_id},{$push:{authors:newauthor.name}});console.log('inserted '+newauthor.name+' to book '+book_id);}});}}});");
                   }
