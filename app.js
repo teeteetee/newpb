@@ -2373,7 +2373,7 @@ app.post('/additem/:id',function (req,res){
                     
                      
                      //////////////////////////////////////////////////////
-                    console.log('1: '+authors);
+                    console.log('1: '+authors[i]);
                     authors.findOne({name:authors_arr[i]},function(err,author){
                       
                       if(err) {console.log('err while author query');
@@ -2384,11 +2384,11 @@ app.post('/additem/:id',function (req,res){
                            books.update({_id:book_id},{$push:{authors:author.name}});
                            
                         }else{
-                          console.log('2: '+authors);
+                          console.log('2: '+authors[i]);
                           authors.insert({name:authors_arr[i]},function(err,newauthor){
                             
                             if(err) {
-                              console.log('err while author штыуке');
+                              console.log('err while author insert');
                               callback(0);
                             }else {  
                               books.update({_id:book_id},{$push:{authors:newauthor.name}});
