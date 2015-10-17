@@ -2367,11 +2367,10 @@ app.post('/additem/:id',function (req,res){
                   for(var i =0;i<=authors_num;i++){
                     var authorname;
                      eval("authorname = req.body.author"+i+"_name");
-                     console.log('iter :'+i+' ,author name: '+authorname);
-                     eval("req.body.author"+i+"_name");
+                     console.log('iter :'+i+' ,author name: '+eval("req.body.author"+i+"_name"));
                      //////////////////////////////////////////////////////
                     authors.findOne({name:eval("req.body.author"+i+"_name")},function(err,author){
-                      console.log('authorname after first query: '+authorname);
+                      console.log('authorname after first query: '+eval("req.body.author"+i+"_name"));
                       if(err) {console.log('err while author query');
                           callback(0);
                       }else {
@@ -2380,10 +2379,10 @@ app.post('/additem/:id',function (req,res){
                            books.update({_id:book_id},{$push:{authors:author.name}});
                            console.log('inserted author to book '+book_id);
                         }else{
-                          console.log('authorname after else: '+authorname);
+                          console.log('authorname after else: '+eval("req.body.author"+i+"_name"));
                           console.log('there was no author, created one');
                           authors.insert({name:eval("req.body.author"+i+"_name")},function(err,newauthor){
-                            console.log('authorname after write to authors: '+authorname);
+                            console.log('authorname after write to authors: '+eval("req.body.author"+i+"_name"));
                             if(err) {
                               console.log('err while adding author');
                               callback(0);
