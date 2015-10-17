@@ -2367,6 +2367,7 @@ app.post('/additem/:id',function (req,res){
                   for(var i =0;i<=authors_num;i++){
                     var authorname;
                      eval("authorname = req.body.author"+i+"_name");
+                     console.log('iter :'+i+' ,author name: '+authorname);
                     authors.findOne({name:authorname},function(err,author){
                       if(err) {console.log('err while author query');
                           callback(0);
