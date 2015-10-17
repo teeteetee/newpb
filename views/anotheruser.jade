@@ -841,13 +841,9 @@ head
               console.log('HASNT GOT LENGTH');
             }
             var authors_insert = ' ';
-            for(var xi=0;xi<msg.authors.length;xi++){
-              if(xi>0)
-              {authors_insert = authors_insert+' '+msg.authors[xi];}
-              else {
-                authors_insert = msg.authors[xi];
-              }
-            }
+            msg.authors.forEach(function(element){
+            authors_insert+='  '+element;
+             });
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
             var new_indicator_part_1 =' ';
