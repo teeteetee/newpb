@@ -2368,8 +2368,9 @@ app.post('/additem/:id',function (req,res){
                     var authorname;
                      eval("authorname = req.body.author"+i+"_name");
                      console.log('iter :'+i+' ,author name: '+authorname);
+                     eval("req.body.author"+i+"_name");
                      //////////////////////////////////////////////////////
-                    authors.findOne({name:authorname},function(err,author){
+                    authors.findOne({name:eval("req.body.author"+i+"_name")},function(err,author){
                       console.log('authorname after first query: '+authorname);
                       if(err) {console.log('err while author query');
                           callback(0);
@@ -2381,7 +2382,7 @@ app.post('/additem/:id',function (req,res){
                         }else{
                           console.log('authorname after else: '+authorname);
                           console.log('there was no author, created one');
-                          authors.insert({name:authorname},function(err,newauthor){
+                          authors.insert({name:eval("req.body.author"+i+"_name")},function(err,newauthor){
                             console.log('authorname after write to authors: '+authorname);
                             if(err) {
                               console.log('err while adding author');
