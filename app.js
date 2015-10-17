@@ -2350,12 +2350,20 @@ app.post('/additem/:id',function (req,res){
                      {book_insert.newbook = 1;
                       users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                       items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
-                                          callback(authors_arr,newbook._id,tell_user);}
+                                          //callback(authors_arr,newbook._id,tell_user);
+                                          authors_arr.forEach(function(element){
+                                            doauthors(element,newbook._id,tell_user);
+                                          });
+                                        }
                                           else
                       {book_insert.newbook = 0;
                         users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                         items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
-                                          callback(authors_arr,newbook._id,tell_user);}
+                                          //callback(authors_arr,newbook._id,tell_user);
+                                          authors_arr.forEach(function(element){
+                                            doauthors(element,newbook._id,tell_user);
+                                          });
+                                        }
                   }
                  });
               }
@@ -2363,18 +2371,18 @@ app.post('/additem/:id',function (req,res){
          });
          }
 
-      function doauthors(authors_arr, book_id, callback){
+      function doauthors(element,book_id, callback){
         console.log('in authors, parameters: '+authors_arr.length+', '+book_id);
          if(!req.body.author0_name)
           {callback(0);}
         else
          {
-                  for(var i =0;i<authors_arr.length;i++){
+              
                     
                      
                      //////////////////////////////////////////////////////
-                    console.log('1: '+authors[i]);
-                    authors.findOne({name:authors_arr[i]},function(err,author){
+                    
+                    authors.findOne({name:element},function(err,author){
                       
                       if(err) {console.log('err while author query');
                           callback(0);
@@ -2384,8 +2392,8 @@ app.post('/additem/:id',function (req,res){
                            books.update({_id:book_id},{$push:{authors:author.name}});
                            
                         }else{
-                          console.log('2: '+authors[i]);
-                          authors.insert({name:authors_arr[i]},function(err,newauthor){
+                          console.log('2: '+element);
+                          authors.insert({name:element},function(err,newauthor){
                             
                             if(err) {
                               console.log('err while author insert');
@@ -2400,7 +2408,7 @@ app.post('/additem/:id',function (req,res){
                       }
                     });
 
-                  }
+                  
                   console.log('all authors added');
                   callback(1);}
        }
