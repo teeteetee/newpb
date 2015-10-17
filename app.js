@@ -2284,6 +2284,11 @@ app.post('/additem/:id',function (req,res){
     res.send(ms);
     break;
     case('book'):
+      var authors_arr = [];
+      for(var i=0;i<=parseInt(req.body.authornum);i++){
+        eval("authors_arr.push(req.body.author"+i+"_name);");
+      }
+      console.log(authors_arr);
     
       newbook(req.body.title, doauthors)
       function newbook(vtitle, callback){
@@ -2345,12 +2350,12 @@ app.post('/additem/:id',function (req,res){
                      {book_insert.newbook = 1;
                       users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                       items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
-                                          callback(parseInt(req.body.authornum),newbook._id,tell_user);}
+                                          callback(authors_arr,newbook._id,tell_user);}
                                           else
                       {book_insert.newbook = 0;
                         users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
                         items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
-                                          callback(parseInt(req.body.authornum),newbook._id,tell_user);}
+                                          callback(authors_arr,newbook._id,tell_user);}
                   }
                  });
               }
@@ -2358,19 +2363,19 @@ app.post('/additem/:id',function (req,res){
          });
          }
 
-      function doauthors(authors_num, book_id, callback){
-        console.log('in authors, parameters: '+authors_num+', '+book_id);
+      function doauthors(authors_arr.length, book_id, callback){
+        console.log('in authors, parameters: '+authors_arr.length+', '+book_id);
          if(!req.body.author0_name)
           {callback(0);}
         else
          {
-                  for(var i =0;i<=authors_num;i++){
+                  for(var i =0;i<authors_arr.length;i++){
                     var authorname;
                      eval("authorname = req.body.author"+i+"_name");
-                     console.log('iter :'+i+' ,author name: '+eval("req.body.author"+i+"_name"));
+                     console.log('iter :'+i+' ,author name: '+authors_arr[i]);
                      //////////////////////////////////////////////////////
-                    authors.findOne({name:eval("req.body.author"+i+"_name")},function(err,author){
-                      console.log('authorname after first query: '+eval("req.body.author"+i+"_name"));
+                    authors.findOne({name:authors_arr[i]},function(err,author){
+                      console.log('authorname after first query: '+authors_arr[i]);
                       if(err) {console.log('err while author query');
                           callback(0);
                       }else {
@@ -2379,10 +2384,10 @@ app.post('/additem/:id',function (req,res){
                            books.update({_id:book_id},{$push:{authors:author.name}});
                            console.log('inserted author to book '+book_id);
                         }else{
-                          console.log('authorname after else: '+eval("req.body.author"+i+"_name"));
+                          console.log('authorname after else: '+authors_arr[i]);
                           console.log('there was no author, created one');
-                          authors.insert({name:eval("req.body.author"+i+"_name")},function(err,newauthor){
-                            console.log('authorname after write to authors: '+eval("req.body.author"+i+"_name"));
+                          authors.insert({name:authors_arr[i]},function(err,newauthor){
+                            console.log('authorname after write to authors: '+authors_arr[i]);
                             if(err) {
                               console.log('err while adding author');
                               callback(0);
