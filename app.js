@@ -2410,7 +2410,7 @@ app.post('/additem/:id',function (req,res){
 
                   
                   console.log('all authors added');
-                  callback(1);}
+                  callback(0);}
        }
 
        function tell_user (trouble){

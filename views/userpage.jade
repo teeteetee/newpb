@@ -926,13 +926,11 @@ head
             else {
               console.log('HASNT GOT LENGTH');
             }
-            var authors_insert = ' ';
-            for(var xi=0;xi<msg.authors.length;xi++){
-              authors_insert = msg.authors[xi];
-              if(!authors_insert){
-                authors_insert = ' ';
-              }
-            }
+            var authors_insert;
+            msg.authors.forEach(function(element){
+             authors_insert+='  '+element;
+             console.log(authors_insert);
+              });
             console.log('newbook :'+books[i].newbook);
             console.log('goodbook :'+books[i].goodbook);
             var insert;
@@ -1548,7 +1546,6 @@ head
            }
            if(authorcount>0) {
             for(var i =0;i<=authorcount;i++){
-              alert(eval("$('#author"+i+"_name').val();"));
               eval("data.author"+i+"_name = $('#author"+i+"_name').val();");
             }
            }
