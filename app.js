@@ -2368,7 +2368,9 @@ app.post('/additem/:id',function (req,res){
                     var authorname;
                      eval("authorname = req.body.author"+i+"_name");
                      console.log('iter :'+i+' ,author name: '+authorname);
+                     //////////////////////////////////////////////////////
                     authors.findOne({name:authorname},function(err,author){
+                      console.log('authorname after first query: '+authorname);
                       if(err) {console.log('err while author query');
                           callback(0);
                       }else {
@@ -2377,13 +2379,16 @@ app.post('/additem/:id',function (req,res){
                            books.update({_id:book_id},{$push:{authors:author.name}});
                            console.log('inserted author to book '+book_id);
                         }else{
+                          console.log('authorname after else: '+authorname);
                           console.log('there was no author, created one');
                           authors.insert({name:authorname},function(err,newauthor){
+                            console.log('authorname after write to authors: '+authorname);
                             if(err) {
                               console.log('err while adding author');
                               callback(0);
                             }else {  console.log('going to push our author id in the book');
                               books.update({_id:book_id},{$push:{authors:newauthor.name}});
+                              //////////////////////////////////////////////////////
                               console.log('inserted '+newauthor.name+' to book '+book_id);
                             }
                           });
