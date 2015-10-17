@@ -2363,7 +2363,7 @@ app.post('/additem/:id',function (req,res){
          });
          }
 
-      function doauthors(authors_arr.length, book_id, callback){
+      function doauthors(authors_arr, book_id, callback){
         console.log('in authors, parameters: '+authors_arr.length+', '+book_id);
          if(!req.body.author0_name)
           {callback(0);}
