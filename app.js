@@ -2370,31 +2370,30 @@ app.post('/additem/:id',function (req,res){
         else
          {
                   for(var i =0;i<authors_arr.length;i++){
-                    var authorname;
-                     eval("authorname = req.body.author"+i+"_name");
-                     console.log('iter :'+i+' ,author name: '+authors_arr[i]);
+                    
+                     
                      //////////////////////////////////////////////////////
+                    console.log('1: '+authors);
                     authors.findOne({name:authors_arr[i]},function(err,author){
-                      console.log('authorname after first query: '+authors_arr[i]);
+                      
                       if(err) {console.log('err while author query');
                           callback(0);
                       }else {
                         if(author!=null)
-                          {console.log('author exists');
+                          {
                            books.update({_id:book_id},{$push:{authors:author.name}});
-                           console.log('inserted author to book '+book_id);
+                           
                         }else{
-                          console.log('authorname after else: '+authors_arr[i]);
-                          console.log('there was no author, created one');
+                          console.log('2: '+authors);
                           authors.insert({name:authors_arr[i]},function(err,newauthor){
-                            console.log('authorname after write to authors: '+authors_arr[i]);
+                            
                             if(err) {
-                              console.log('err while adding author');
+                              console.log('err while author штыуке');
                               callback(0);
-                            }else {  console.log('going to push our author id in the book');
+                            }else {  
                               books.update({_id:book_id},{$push:{authors:newauthor.name}});
                               //////////////////////////////////////////////////////
-                              console.log('inserted '+newauthor.name+' to book '+book_id);
+                              
                             }
                           });
                         }
