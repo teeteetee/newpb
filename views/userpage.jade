@@ -752,23 +752,39 @@ head
               h2(style='margin-top:30px;' class='usernick')  ...
           .row(style='margin-bottom:20px;margin-top:30px;')
             .col-xs-12
-              button.btn.btn-iosdark.openadd(type='button') Add item
-          .row
-            .col-xs-12
-              .btn-group
+              button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
+              .btn-group.btn-group-sm(style='margin-right:20px;')
                 button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
                 button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
                 button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
                 button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
-          .row
-            .col-xs-12
-              .btn-group
+              .btn-group(style='margin-right:20px;')
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
                 button.btn.btn-iosdark.showmovies(type='button')  Movies
                   span(class='badge movienum' style='margin-left:10px;') 0
                 button.btn.btn-iosdark.showarticles(type='button') Articles
                   span(class='badge articlenum' style='margin-left:10px;') 0
+          //        
+            .row(style='margin-bottom:20px;margin-top:30px;')
+              .col-xs-12
+                button.btn.btn-iosdark.openadd(type='button') Add item
+            .row()
+              .col-xs-12
+                .btn-group.btn-group-sm
+                  button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                  button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                  button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                  button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+            .row
+              .col-xs-12
+                .btn-group
+                  button.btn.btn-iosdark.showbooks.active(type='button')  Books
+                    span(class='badge booknum' style='margin-left:10px;') 0
+                  button.btn.btn-iosdark.showmovies(type='button')  Movies
+                    span(class='badge movienum' style='margin-left:10px;') 0
+                  button.btn.btn-iosdark.showarticles(type='button') Articles
+                    span(class='badge articlenum' style='margin-left:10px;') 0
           //
             h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
             button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
@@ -848,11 +864,11 @@ head
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
-        $('#avatarbig').prepend("<img id='userimg' class='img-circle ' style='margin:auto;margin-top:30px;' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle ' style='margin:auto;margin-top:60px;' src='/userpics/id"+user._id+user.picext+"'></img>");
         $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
+        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:auto;margin:60px;'></div>");
         $('#avatarsmall').prepend("<h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3><div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
       }
       //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
