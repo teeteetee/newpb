@@ -1712,7 +1712,7 @@ app.get('/u/:nick', function (req,res){
                     done=[];
                   }
                   console.log('item done: '+done);
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'unfollow':unfollow});
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'articlestorecheck':done.articlestore,'unfollow':unfollow});
                 });
 
                }
