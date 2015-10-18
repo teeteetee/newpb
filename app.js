@@ -2227,8 +2227,10 @@ app.post('/additem/:id',function (req,res){
       }
     }
     if(!already)
-    {users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:Date.now(),_id:book_id,newbook:1,goodbook:0}},$set:{last_item:Date.now()},$inc:{totalbooks:1,newbooks:1}});
+    { var crrtm = Date.now();
+      users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,newbook:1,goodbook:0}},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
         items.update({user:req.session._id},{$push:{bookstore:book_id.toString()}});
+       req.session.bookstore.push({tmstmp:crrtm,_id:book_id,newbook:1,goodbook:0});
       }
         var ms ={};
         ms.trouble=0;
@@ -2263,8 +2265,10 @@ app.post('/additem/:id',function (req,res){
     }
     if(!already)
     {
-    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:Date.now(),_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:Date.now()},$inc:{totalmovies:1,newmovies:1}});
+    var crrtm = Date.now();
+    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:crrtm,_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:crrtm},$inc:{totalmovies:1,newmovies:1}});
     items.update({user:req.session._id},{$push:{moviestore:movie_id.toString()}});
+    req.session.moviestore.push({tmstmp:crrtm,_id:movie_id,newmovie:1,goodmovie:0});
     }
     var ms ={};
     ms.trouble=0;

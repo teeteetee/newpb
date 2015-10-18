@@ -754,12 +754,10 @@ head
       // }
       function redactbookmodal (i) {
         $('#addbook').prop('disabled',false).text('Add to my list');
-        var already=0;
         for(var x=b_checkagainst.length-1;x>=0;x--){
           if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
             $('#addbook').text('Already on the list');
             $('#addbook').prop('disabled',true);
-            already=1;
           }
         }
         console.log('title: '+modal_data_store[i].title);
@@ -771,6 +769,13 @@ head
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
+        $('#addmovie').prop('disabled',false).text('Add to my list');
+        for(var x=m_checkagainst.length-1;x>=0;x--){
+          if(m_checkagainst[x]===modal_data_store[i]._id.toString()) {
+            $('#addmovie').text('Already on the list');
+            $('#addmovie').prop('disabled',true);
+          }
+        }
         $('#modalmovietitle').text(movie_modal_data_store[i].title);
         $('#modalyear').text(movie_modal_data_store[i].year);
         var insert = 'addmovie('+i+')';
