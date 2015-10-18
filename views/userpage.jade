@@ -750,6 +750,22 @@ head
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
               h2(style='margin-top:30px;' class='usernick')  ...
+          .row(style='bacground-color:#333;')
+            .col-xs-12
+              button.btn.btn-sm.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
+                span(class='glyphicon glyphicon-plus')  
+                | Add item
+              .btn-group
+                button(class="social_share btn-default vk" data-type="vk") V
+                button(class="social_share btn-default fb" data-type="fb") F
+                button(class="social_share btn-default tw" data-type="tw") t
+                button(class="social_share btn-default gg" data-type="gg") G
+              button.btn.showbooks.active Books
+                span(class='badge booknum' style='margin-left:10px;') 0
+              button.btn.showmovies Movies
+                span(class='badge movienum' style='margin-left:10px;') 0
+              button.btn.showarticles(role="presentation") Articles
+                span(class='badge articlenum' style='margin-left:10px;') 0
           //
             h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
             button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
@@ -765,43 +781,6 @@ head
               li.showarticles(role="presentation") 
                 a(href="#") Articles
                   span(class='badge articlenum' style='margin-left:10px;') 0
-          .row
-            .col-xs-3
-              button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
-                span(class='glyphicon glyphicon-plus')  
-                | Add item
-              h1(style='font-size:20px;display:inline;') 
-                button(class="social_share vk" data-type="vk") V
-                button(class="social_share fb" data-type="fb") F
-                button(class="social_share tw" data-type="tw") t
-                button(class="social_share gg" data-type="gg") G
-              ul(class="nav nav-pills" style='margin-top:20px;')
-                li.showbooks.active(role="presentation") 
-                  a(href="#") Books
-                    span(class='badge booknum' style='margin-left:10px;') 0
-                li.showmovies(role="presentation") 
-                  a(href="#") Movies
-                    span(class='badge movienum' style='margin-left:10px;') 0
-                li.showarticles(role="presentation") 
-                  a(href="#") Articles
-                    span(class='badge articlenum' style='margin-left:10px;') 0
-            .col-xs-9
-              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.mrow
-                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                  .nobooks.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items
-              .row.arow
-                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
-                  .noarticles.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -820,23 +799,22 @@ head
                     .btn.btn-default.showarticles(type='button') L
                       span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              //
-                .row.mrow
-                  .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                    .nomovies.row(style='text-align:center;')  
-                       .col-xs-12
-                         h2(style='color:#ccc;margin-bottom:20px;') No items 
-                .row.brow
-                  .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                    .nobooks.row(style='text-align:center;')  
-                       .col-xs-12
-                         h2(style='color:#ccc;margin-bottom:20px;') No items
-                .row.arow
-                  .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
-                    .noarticles.row(style='text-align:center;')  
-                       .col-xs-12
-                         h2(style='color:#ccc;margin-bottom:20px;') No items  
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1              
+              .row.mrow
+                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items
+              .row.arow
+                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
               .row.brow
                 #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
                   .nobooks.row(style='text-align:center;')  
