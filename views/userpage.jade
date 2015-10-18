@@ -748,18 +748,11 @@ head
       .row.visible-lg.visible-md.visible-sm
         #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:60px;padding-bottom:60px;')         
           h2(style='margin-top:30px;' class='usernick')  ...
-          //h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
-          button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
-            span(class='glyphicon glyphicon-plus')  
-            | Add item
-          .btn-group
-            .btn.btn-default.active.showbooks(type='button') Books
-              span(class='badge booknum' style='margin-left:10px;') 0
-            .btn.btn-lg.btn-default.showmovies(type='button') Movies
-              span(class='badge movienum' style='margin-left:10px;') 0
-            .btn.btn-lg.btn-default.showarticles(type='button') Links
-              span(class='badge articlenum' style='margin-left:10px;') 0
           //
+            h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
+            button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
+              span(class='glyphicon glyphicon-plus')  
+              | Add item
             ul(class="nav nav-pills" style='margin-top:20px;')
               li.showbooks.active(role="presentation") 
                 a(href="#") Books
@@ -770,13 +763,28 @@ head
               li.showarticles(role="presentation") 
                 a(href="#") Articles
                   span(class='badge articlenum' style='margin-left:10px;') 0
+      .row#additem(style='text-align:center;')
+        .col-xs-12
+          h3(style='color:white;')
+            span(class='glyphicon glyphicon-plus')  
+            | Add item
+      .row
+        .col-xs-4.showbooks.active
+          h3 Books
+            span(class='badge booknum' style='margin-left:10px;') 0
+        .col-xs-4.showmovies
+          h3 Movies
+            span(class='badge movienum' style='margin-left:10px;') 0
+        .col-xs-4.showarticles 
+          h3 Articles
+            span(class='badge articlenum' style='margin-left:10px;') 0
       .row 
         .col-xs-12(style='text-align:center;')
           h1(style='font-size:20px;display:inline;') 
             span(style='font-size:70px;') &#123;
             button(class="social_share vk" data-type="vk") V
             button(class="social_share fb" data-type="fb") F
-            button(class="social_share tw" data-type="tw") T
+            button(class="social_share tw" data-type="tw") t
             button(class="social_share gg" data-type="gg") G
             span(style='font-size:70px;') &#125;
       .row
