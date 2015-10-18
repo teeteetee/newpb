@@ -531,11 +531,8 @@ head
       .social_share{
         border:none;
         border-radius:50%;
-        width: 60px;
-        height: 60px;
         margin:10px;
-        color:white;
-        background-color:#333;
+        background-color:transparent;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -756,10 +753,10 @@ head
         .col-xs-12(style='text-align:center;')
           h1(style='font-size:20px;display:inline;') 
             span(style='font-size:70px;') &#123;
-            button(class="social_share" data-type="vk" style='background-color:#3E88B5;') V
-            button(class="social_share" data-type="fb" style='background-color:#2C5DA9;') F
-            button(class="social_share" data-type="tw" style='background-color:#0BC6F3;') T
-            button(class="social_share" data-type="gg" style='background-color:#E84242;') G
+            button(class="social_share" data-type="vk" style='color:#3E88B5;') V
+            button(class="social_share" data-type="fb" style='color:#2C5DA9;') F
+            button(class="social_share" data-type="tw" style='color:#0BC6F3;') T
+            button(class="social_share" data-type="gg" style='color:#E84242;') G
             span(style='font-size:70px;') &#125;
       .row
         #booklist.thun.col-md-12
