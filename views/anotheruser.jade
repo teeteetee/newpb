@@ -771,7 +771,7 @@ head
        function redactmoviemodal (i) {
         $('#addmovie').prop('disabled',false).text('Add to my list');
         for(var x=m_checkagainst.length-1;x>=0;x--){
-          if(m_checkagainst[x]===modal_data_store[i]._id.toString()) {
+          if(m_checkagainst[x]===movie_modal_data_store[i]._id.toString()) {
             $('#addmovie').text('Already on the list');
             $('#addmovie').prop('disabled',true);
           }
