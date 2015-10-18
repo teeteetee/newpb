@@ -453,7 +453,7 @@ head
         color:#c7c6c6;
       }
       .btn-iosdark .badge {
-        background-color:#333;
+        background-color:#ddd;
       }
       .btn-iosdark.active .badge {
         background-color:white;
@@ -745,21 +745,23 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container#main(style='padding-top:50px;min-height:100vh;background-color:white;')
-      .row.visible-lg.visible-md.visible-sm
+      .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
               h2(style='margin-top:30px;' class='usernick')  ...
           .row(style='margin-bottom:20px;margin-top:30px;')
             .col-xs-12
-              button.btn.btn-iosdark.openadd(type='button')  
-                span(class='glyphicon glyphicon-plus')  
-                | Add item
+              button.btn.btn-iosdark.openadd(type='button') Add item
+          .row
+            .col-xs-12
               .btn-group
-                button(class="social_share btn-iosdark vk" data-type="vk" type='button') V
-                button(class="social_share btn-iosdark fb" data-type="fb" type='button') F
-                button(class="social_share btn-iosdark tw" data-type="tw" type='button') t
-                button(class="social_share btn-iosdark gg" data-type="gg" type='button') G
+                button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+          .row
+            .col-xs-12
               .btn-group
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
