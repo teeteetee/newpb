@@ -955,6 +955,11 @@ app.get('/clearbooks',function (req,res){
     }
 });
 
+app.get('/cleararticles',function(req,res){
+  users.update({_id:req.session._id},{$set:{articlestore:[],totalarticles:0,newarticles:0,readarticles:0}});
+  res.redirect('/');
+});
+
 app.get('/setbooks',function (req,res){
   users.update({_id:req.session._id},{$set:{bookstore:[]}});
   res.redirect('/');
