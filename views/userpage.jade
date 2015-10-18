@@ -530,9 +530,22 @@ head
       }
       .social_share{
         border:none;
-        border-radius:50%;
-        margin:10px;
-        background-color:transparent;
+        border-radius:0px;
+        background-color:#333;
+        color:white;
+        padding:10px;
+      }
+      .vk:hover{
+        background-color:#3e88b5;
+      }
+      .fb:hover{
+        background-color:#2c5da9;
+      }
+      .tw:hover{
+        background-color:#dbc6f3;
+      }
+      .gg:hover{
+        background-color:#e84242;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -753,10 +766,10 @@ head
         .col-xs-12(style='text-align:center;')
           h1(style='font-size:20px;display:inline;') 
             span(style='font-size:70px;') &#123;
-            button(class="social_share" data-type="vk" style='color:#3E88B5;') V
-            button(class="social_share" data-type="fb" style='color:#2C5DA9;') F
-            button(class="social_share" data-type="tw" style='color:#0BC6F3;') T
-            button(class="social_share" data-type="gg" style='color:#E84242;') G
+            button(class="social_share vk" data-type="vk") V
+            button(class="social_share fb" data-type="fb") F
+            button(class="social_share tw" data-type="tw") T
+            button(class="social_share gg" data-type="gg") G
             span(style='font-size:70px;') &#125;
       .row
         #booklist.thun.col-md-12
