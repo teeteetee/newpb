@@ -1715,7 +1715,7 @@ app.get('/u/:nick', function (req,res){
                   var mc = done.moviestore ? done.moviestore : 0;
                   var bc = done.bookstore ? done.bookstore : 0;
                   var ac = done.articlestore ? done.articlestore : 0;
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'articlestorecheck':done.articlestore,'unfollow':unfollow});
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
                 });
 
                }
