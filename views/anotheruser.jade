@@ -833,7 +833,7 @@ head
         $.ajax({
          method: "POST",
          url: url,
-         data: 'article_id='+articles[i]._id
+         data: 'article_id='+articles[i]._id+'&title='+articles[i].title+'&link='+articles[i].link
        })
          .done(function( msg ) {
           a_checkagainst.push(articles[i]._id);

@@ -2250,7 +2250,7 @@ app.post('/additem/:id',function (req,res){
       }
     }
     if(!already)
-    {users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:book_id,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+    {users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:article_id,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
       }
         var ms ={};
         ms.trouble=0;
