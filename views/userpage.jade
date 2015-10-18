@@ -68,16 +68,6 @@ head
         margin-right:6px;
       }
       @media (max-width: 992px) {
-      #emptyavatar2 {
-        margin:10px;
-        height:130px;
-        width:130px;
-      }
-      #userimg2 {
-      height:130px;
-      width:130px;
-      margin:10px;
-      }
       #booklist {
       border-bottom-left-radius:10px;
       }
@@ -542,6 +532,7 @@ head
               span(aria-hidden="true") ×
           .modal-body.visible-md.visible-lg
             h4.articlemodaltitle(style='text-align:center;margin-bottom:30px;')
+            h4.modallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
             a(class='btn btn-primary  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View 
             button(class='btn btn-primary  form-control article_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary  form-control article_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
@@ -549,6 +540,7 @@ head
             button(class='btn btn-primary form-control article_remove' style='margin-top:5px;margin-bottom:5px;') Remove
           .modal-body.visible-sm.visible-xs
             h4.articlemodaltitle(style='text-align:center;margin-bottom:30px;')
+            h4.modallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
             a(class='btn btn-primary btn-lg  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View
             button(class='btn btn-primary btn-lg  form-control article_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
             button(class='btn btn-primary btn-lg  form-control article_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
@@ -1157,6 +1149,7 @@ head
         insert = 'removearticle('+i+')';
         $('.article_remove').attr('onclick',insert);
         $('.articlemodaltitle').text(article_modal_data_store[i].title);
+        $('.articlemodallink').text(article_modal_data_store[i].title);
         $('#articlemodal').modal('show');
       }
       //
