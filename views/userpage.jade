@@ -11,12 +11,17 @@ head
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')  
     link(href='/bootstrap/css/simple-sidebar.css', rel='stylesheet')    
     meta(liber de amicitia est)
+    meta(property="og:url"           content="https://vntrlst.com")
+    meta(property="og:type"          content="website")
+    meta(property="og:title"         content="People and Books")
+    meta(property="og:description"   content="List items, find people.")
+    meta(property="og:image"         content="http://vntrlst.com/images/pb_inf_logo.png")
     // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
-      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-        
-      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    script(src='/js/share.js')
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       #userimg {
       width:100%;
@@ -739,10 +744,15 @@ head
               a(href="#") Articles
                 span(class='badge articlenum' style='margin-left:10px;') 0
       .row 
-        .col-xs-12
-          script(src='http://w.uptolike.com/widgets/v1/uptolike.js')
+        .col-xs-12 
           h1(style='font-size:150px;display:inline;') &#123;
-            div(data-background-alpha="0.0" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-size="12" data-top-button="false" data-share-counter-type="disable" data-share-style="11" data-mode="share" data-like-text-enable="false" data-mobile-view="false" data-icon-color="#ffffff" data-orientation="horizontal" data-text-color="#000000" data-share-shape="rectangle" data-sn-ids="fb.vk.tw.gp." data-share-size="30" data-background-color="#ffffff" data-preview-mobile="false" data-mobile-sn-ids="fb.vk.tw.wh.ok.gp." data-pid="1426113" data-counter-background-alpha="1.0" data-following-enable="false" data-exclude-show-more="true" data-selection-enable="true" class="uptolike-buttons")
+            p Поделиться:
+              button(class="social_share" data-type="vk") ВКонтакте
+              button(class="social_share" data-type="fb") Facebook
+              button(class="social_share" data-type="tw") Twitter
+              button(class="social_share" data-type="lj") LiveJournal
+              button(class="social_share" data-type="ok") Одноклассники
+              button(class="social_share" data-type="mr") Mail.Ru
             | &#125;
       .row
         #booklist.thun.col-md-12
@@ -798,6 +808,9 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $(document).on('click', '.social_share', function(){
+          Share.go(this);
+      });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
