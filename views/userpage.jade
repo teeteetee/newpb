@@ -452,6 +452,13 @@ head
       .nav-pills>li.active>a .badge {
         color:#c7c6c6;
       }
+      .btn-iosdark .badge {
+        background-color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
       h3 {
         font-weight:200;
       }
@@ -780,17 +787,15 @@ head
           .row.visible-xs
             #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
               //h4.numbers                 
-              button.btn.btn-lg.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')
-                span(class='glyphicon glyphicon-plus')  
-                | Add item
+              button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
               .row 
                 .col-xs-12
                   .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                    .btn.btn-default.active.showbooks(type='button') B
+                    .btn.btn-iosdark.active.showbooks(type='button') B
                       span(class='badge booknum' style='margin-left:10px;') 0
-                    .btn.btn-default.showmovies(type='button') M
+                    .btn.btn-iosdark.showmovies(type='button') M
                       span(class='badge movienum' style='margin-left:10px;') 0
-                    .btn.btn-default.showarticles(type='button') L
+                    .btn.btn-iosdark.showarticles(type='button') L
                       span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1              
