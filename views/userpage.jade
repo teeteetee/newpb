@@ -542,7 +542,7 @@ head
         background-color:#2c5da9;
       }
       .tw:hover{
-        background-color:#dbc6f3;
+        background-color:#0bc6f3;
       }
       .gg:hover{
         background-color:#e84242;
@@ -752,16 +752,24 @@ head
           button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
             span(class='glyphicon glyphicon-plus')  
             | Add item
-          ul(class="nav nav-pills" style='margin-top:20px;')
-            li.showbooks.active(role="presentation") 
-              a(href="#") Books
-                span(class='badge booknum' style='margin-left:10px;') 0
-            li.showmovies(role="presentation") 
-              a(href="#") Movies
-                span(class='badge movienum' style='margin-left:10px;') 0
-            li.showarticles(role="presentation") 
-              a(href="#") Articles
-                span(class='badge articlenum' style='margin-left:10px;') 0
+          .btn-group
+            .btn.btn-default.active.showbooks(type='button') Books
+              span(class='badge booknum' style='margin-left:10px;') 0
+            .btn.btn-lg.btn-default.showmovies(type='button') Movies
+              span(class='badge movienum' style='margin-left:10px;') 0
+            .btn.btn-lg.btn-default.showarticles(type='button') Links
+              span(class='badge articlenum' style='margin-left:10px;') 0
+          //
+            ul(class="nav nav-pills" style='margin-top:20px;')
+              li.showbooks.active(role="presentation") 
+                a(href="#") Books
+                  span(class='badge booknum' style='margin-left:10px;') 0
+              li.showmovies(role="presentation") 
+                a(href="#") Movies
+                  span(class='badge movienum' style='margin-left:10px;') 0
+              li.showarticles(role="presentation") 
+                a(href="#") Articles
+                  span(class='badge articlenum' style='margin-left:10px;') 0
       .row 
         .col-xs-12(style='text-align:center;')
           h1(style='font-size:20px;display:inline;') 
@@ -786,7 +794,7 @@ head
                       span(class='badge booknum' style='margin-left:10px;') 0
                     .btn.btn-default.showmovies(type='button') M
                       span(class='badge movienum' style='margin-left:10px;') 0
-                    .btn.btn-default.showarticles(type='button') A
+                    .btn.btn-default.showarticles(type='button') L
                       span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
