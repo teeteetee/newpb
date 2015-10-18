@@ -528,13 +528,6 @@ head
       .movies, .books, .articles {
         padding-bottom:30px;
       }
-      .social_share{
-        border:none;
-        border-radius:0px;
-        background-color:#333;
-        color:white;
-        padding:10px;
-      }
       .vk:hover{
         background-color:#3e88b5;
       }
@@ -750,22 +743,23 @@ head
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
               h2(style='margin-top:30px;' class='usernick')  ...
-          .row
+          .row(style='margin-bottom:20px;margin-top:30px;')
             .col-xs-12
-              button.btn.btn-sm.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
+              button.btn.btn-iosdark.openadd(type='button')  
                 span(class='glyphicon glyphicon-plus')  
                 | Add item
               .btn-group
-                button(class="social_share btn-sm btn-iosdark vk" data-type="vk") V
-                button(class="social_share btn-sm btn-iosdark fb" data-type="fb") F
-                button(class="social_share btn-sm btn-iosdark tw" data-type="tw") t
-                button(class="social_share btn-sm btn-iosdark gg" data-type="gg") G
-              button.btn.btn-iosdark.btn-sm.showbooks.active Books
-                span(class='badge booknum' style='margin-left:10px;') 0
-              button.btn.btn-iosdark.btn-sm.showmovies Movies
-                span(class='badge movienum' style='margin-left:10px;') 0
-              button.btn.btn-iosdark.btn-sm.showarticles(role="presentation") Articles
-                span(class='badge articlenum' style='margin-left:10px;') 0
+                button(class="social_share btn-iosdark vk" data-type="vk" type='button') V
+                button(class="social_share btn-iosdark fb" data-type="fb" type='button') F
+                button(class="social_share btn-iosdark tw" data-type="tw" type='button') t
+                button(class="social_share btn-iosdark gg" data-type="gg" type='button') G
+              .btn-group
+                button.btn.btn-iosdark.showbooks.active(type='button')  Books
+                  span(class='badge booknum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showmovies(type='button')  Movies
+                  span(class='badge movienum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showarticles(type='button') Articles
+                  span(class='badge articlenum' style='margin-left:10px;') 0
           //
             h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')           
             button.btn.btn-iosprimary.openadd(type='button' style='margin-bottom:20px;margin-top:30px;')  
