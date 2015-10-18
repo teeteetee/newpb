@@ -623,6 +623,9 @@ head
       var b_checkagainst = !{JSON.stringify(bookstorecheck)};
       var m_checkagainst = !{JSON.stringify(moviestorecheck)};
       var a_checkagainst = !{JSON.stringify(articlestorecheck)};
+      if(!b_checkagainst){b_checkagainst=[];} 
+      if(!m_checkagainst){m_checkagainst=[];} 
+      if(!a_checkagainst){a_checkagainst=[];} 
       console.log('typeof bookstore:'+typeof b_checkagainst);
       var user = !{JSON.stringify(doc)};
       var unfollow =#{unfollow};
