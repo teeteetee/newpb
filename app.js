@@ -1712,6 +1712,9 @@ app.get('/u/:nick', function (req,res){
                     done=[];
                   }
                   console.log('item done: '+done);
+                  var mc = done.moviestore.length ? done.moviestore : 0;
+                  var bc = done.bookstore.length ? done.bookstore : 0;
+                  var ac = done.articlestore.length ? done.articlestore : 0;
                 res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':done.bookstore,'moviestorecheck':done.moviestore,'articlestorecheck':done.articlestore,'unfollow':unfollow});
                 });
 
