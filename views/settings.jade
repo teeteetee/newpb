@@ -164,6 +164,9 @@ head
         background-color:#333;
         color:white;
       }
+      .btn:focus,.btn:active {
+         outline: none !important;
+      }
       p{
         text-indent:20px;
         font-size:18px;
@@ -401,9 +404,13 @@ head
       $('.setsub').click(setsubmit);
       function setsubmit() {
       var pub=0;
+      var umail,uphone,uweb;
       if($('#bpb').hasClass('active')) {
         pub =1;
       }
+      umail = $('#mail').val() ? $('#mail').val() : 0;
+      uphone = $('#phone').val() ? $('#phone').val() : 0;
+      uweb = $('#web').val() ? $('#web').val() : 0;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -424,7 +431,7 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("pub="+pub);
+      request.send("pub="+pub+"&m="+umail+"&p="+uphone+"&w="+uweb);
       }
       $(document).on('change', '.btn-file :file', function() {
           //var input = $(this),
