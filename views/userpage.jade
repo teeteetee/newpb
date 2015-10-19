@@ -1124,11 +1124,14 @@ head
         }
         });
       function modal_input_sizing () {
+        console.log('modal_input_sizing running');
         if($('#avatarsmall').css('display')==='block') {
+          console.log('case 1');
           $('.form-group').addClass('.form-group-lg');
           $('.add_mod > .btn-group').addClass('.btn-group-lg');
         }
         else {
+          console.log('case 2');
           $('.form-group').removeClass('.form-group-lg');
           $('.add_mod > .btn-group').removeClass('.btn-group-lg');
         }
