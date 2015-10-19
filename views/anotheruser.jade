@@ -411,6 +411,14 @@ head
       .nav-pills>li.active>a .badge {
         color:#c7c6c6;
       }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
       h3 {
         font-weight:200;
       }
@@ -599,13 +607,15 @@ head
               .btn-group.btn-group-lg(style='margin-bottom:20px;margin-top:30px;')             
                 button.btn.btn-iosdark.follow(type='button') Follow
                 button.btn.btn-iosdark.chatwith(type='button') Chat
-              .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
-                .btn.btn-iosdark.active.showbooks(type='button') B
-                  span(class='badge booknum' style='margin-left:10px;') 0
-                .btn.btn-iosdark.showmovies(type='button') M
-                  span(class='badge movienum' style='margin-left:10px;') 0
-                .btn.btn-iosdark.showarticles(type='button') L
-                  span(class='badge articlenum' style='margin-left:10px;') 0
+              .row 
+                .col-xs-12
+                  .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
+                    .btn.btn-iosdark.active.showbooks(type='button') B
+                      span(class='badge booknum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showmovies(type='button') M
+                      span(class='badge movienum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showarticles(type='button') L
+                      span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.mrow
