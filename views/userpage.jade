@@ -614,7 +614,7 @@ head
             button(class='btn btn-iosdark btn-lg  form-control movie_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
             button(class='btn btn-iosdark btn-lg form-control movie_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
             button(class='btn btn-iosdark btn-lg form-control movie_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
-    .modal.fade(id="addmovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+    .modal.fade.add_mod(id="addmovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
@@ -638,7 +638,7 @@ head
                 button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitmovie') Submit
-    .modal.fade(id="addarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+    .modal.fade.add_mod(id="addarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
@@ -660,7 +660,7 @@ head
                 button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitarticle') Submit
-    .modal.fade(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
@@ -1123,7 +1123,19 @@ head
         $('#addarticle').modal('show');
         }
         });
+      function modal_input_sizing () {
+        if($('#avatarsmall').css('display')==='block') {
+          $('.form-group').addClass('.form-group-lg');
+          $('.add_mod > .btn-group').addClass('.btn-group-lg');
+        }
+        else {
+          $('.form-group').removeClass('.form-group-lg');
+          $('.add_mod > .btn-group').removeClass('.btn-group-lg');
+        }
+        return 0
+      }
       function redactbookmodal (i) {
+        modal_input_sizing ();
         if(books[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
@@ -1155,6 +1167,7 @@ head
       }
       //
       function redactarticlemodal (i) {
+        modal_input_sizing ();
         var link = article_modal_data_store[i].link;
         var checktitle = article_modal_data_store[i].link.substring(0, 4);
         if(checktitle!='http'){
@@ -1189,6 +1202,7 @@ head
       }
       //
       function redactmoviemodal (i) {
+        modal_input_sizing ();
         if(movies[i].goodmovie){
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
