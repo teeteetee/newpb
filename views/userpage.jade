@@ -574,13 +574,19 @@ head
       color: #333;
       font-size: 30;
       }
-      .sidebar-nav{
-        font-weight:100;
-        color:white;
-      }
-      .sidebar-nav . sidebar-brand {
-        font-weight:200;
-      }
+      .sidebar-nav li a {
+       display: block;
+       text-decoration: none;
+       color: #eee;
+       text-transform: uppercase;
+       font-weight: 200;
+       letter-spacing: 2px;
+       font-size: 15;
+      }  
+      .sidebar-nav > .sidebar-brand a {
+       font-weight: 600;
+       font-size: 17;
+      } 
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
