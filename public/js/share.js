@@ -44,6 +44,15 @@ Share = {
         }
     },
 
+    // Google+
+    gg: function (_options) {
+        var options = $.extend({
+                url: location.href          
+            }, _options);
+        console.log('https://plus.google.com/share?url='+ encodeURIComponent(options.url));
+        return 'https://plus.google.com/share?url='
+            + encodeURIComponent(options.url);
+    },
     // ВКонтакте
     vk: function(_options) {
         var options = $.extend({
@@ -59,18 +68,6 @@ Share = {
             + '&description=' + encodeURIComponent(options.text)
             + '&image='       + encodeURIComponent(options.image)
             + '&noparse=true';
-    },
-
-    // Одноклассники
-    ok: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                text:   '',
-            }, _options);
-
-        return 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1'
-            + '&st.comments=' + encodeURIComponent(options.text)
-            + '&st._surl='    + encodeURIComponent(options.url);
     },
 
     // Facebook
@@ -89,20 +86,6 @@ Share = {
             + '&p[images][0]=' + encodeURIComponent(options.image);
     },
 
-    // Живой Журнал
-    lj: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                text:   '',
-            }, _options);
-
-        return 'http://livejournal.com/update.bml?'
-            + 'subject='        + encodeURIComponent(options.title)
-            + '&event='         + encodeURIComponent(options.text + '<br/><a href="' + options.url + '">' + options.title + '</a>')
-            + '&transform=1';
-    },
-
     // Твиттер
     tw: function(_options) {
         var options = $.extend({
@@ -115,22 +98,6 @@ Share = {
             + 'text='      + encodeURIComponent(options.title)
             + '&url='      + encodeURIComponent(options.url)
             + '&counturl=' + encodeURIComponent(options.count_url);
-    },
-
-    // Mail.Ru
-    mr: function(_options) {
-        var options = $.extend({
-                url:    location.href,
-                title:  document.title,
-                image:  '',
-                text:   '',
-            }, _options);
-
-        return 'http://connect.mail.ru/share?'
-            + 'url='          + encodeURIComponent(options.url)
-            + '&title='       + encodeURIComponent(options.title)
-            + '&description=' + encodeURIComponent(options.text)
-            + '&imageurl='    + encodeURIComponent(options.image);
     },
 
     // Открыть окно шаринга
