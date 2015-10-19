@@ -396,6 +396,19 @@ head
         background-color:#333;
         color:white;
       }
+      .btn-ioslight {
+        background-color:transparent;
+        border:1px solid white;
+        color:white;
+      }
+      .btn-ioslight:focus, .btn-ioslight:active, .btn-ioslight:hover {
+        background-color:white;
+        color:#333;
+      }
+      .btn-ioslight.active {
+        background-color:white;
+        color:#333;
+      }
       .btn-iosprimary {
         background-color:white;
         border:1px solid #ff6f02;
@@ -551,6 +564,12 @@ head
       }
       .gg:hover{
         background-color:#e84242;
+      }
+      #menu-toggle {
+        position:absolute;
+        top:20px;
+        left:20px;
+        color:#333;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -725,22 +744,24 @@ head
       #sidebar-wrapper
         ul.sidebar-nav
           li.sidebar-brand
-            a(href="#") Start Bootstrap    
+            a(href="/") People & Books    
           li
-            a(href="#") Dashboard
+            a.active(href="#") My Lists
           li
-            a(href="#") Shortcuts
+            a(href="#") People
           li
-            a(href="#") Overview
-          li
-            a(href="#") Events
-          li
-            a(href="#") About
-          li
-            a(href="#") Services
-          li
+            a(href="#") Settings
+          li.visible-xs(style='text-align:center;border-top:1px solid #eee;border-bottom:1px solid #eee;') 
+            a(href='') Share: 
+            .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
+              button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
+              button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
+              button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
+              button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G  
             a(href="#") Contact</a>           
       #page-content-wrapper
+        button(type='button' ,id='menu-toggle')
+          span.glyphicon.glyphicon-menu-hamburger 
         .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
           .row(id='spin') 
             .col-xs-12(style='text-align:center;')
@@ -818,6 +839,10 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
       $(document).on('click', '.social_share', function(){
           Share.go(this);
       });
