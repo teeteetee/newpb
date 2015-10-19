@@ -272,7 +272,7 @@ head
       #add {
         display:none;
       }
-      .btn:focus,.btn:active {
+      button:focus,button:active {
          outline: none !important;
       }
       .btn-default:focus,.btn-default:active {
@@ -566,10 +566,13 @@ head
         background-color:#e84242;
       }
       #menu-toggle {
-        position:absolute;
-        top:20px;
-        left:20px;
-        color:#333;
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #333;
+      font-size: 30;
       }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
