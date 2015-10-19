@@ -71,6 +71,29 @@ head
         color:#ff6f02;
         margin-right:6px;
       }
+      .autocomp {
+      display:none;
+      background-color: white;
+      border-radius: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-top:3px;
+      padding-bottom:3px;
+      border: 1px solid #ddd;
+      position: absolute;
+      max-width: 510;
+      width: 100%;
+      box-shadow: 1px 7px 30px #A09F9F;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .sritem:hover {
+       background-color:#23A8E2;
+       color:white;
+      }
+      .sritem {
+        padding-top:3px;
+        padding-bottom:3px;
+      }
       @media (max-width: 992px) {
       #booklist {
       border-bottom-left-radius:10px;
@@ -83,6 +106,10 @@ head
       }
       }
       @media (max-width: 767px) {
+      .autocomp {
+      font-size:20px;
+      width:90%;
+      }
       .navbar-inverse .navbar-nav>.active>a {
         background-color: rgba(221, 221, 221, 0.68);
         color:#333;
@@ -295,29 +322,6 @@ head
           -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
         }
-      }
-      .autocomp {
-      display:none;
-      background-color: white;
-      border-radius: 3px;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-top:3px;
-      padding-bottom:3px;
-      border: 1px solid #ddd;
-      position: absolute;
-      max-width: 510;
-      width: 100%;
-      box-shadow: 1px 7px 30px #A09F9F;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .sritem:hover {
-       background-color:#23A8E2;
-       color:white;
-      }
-      .sritem {
-        padding-top:3px;
-        padding-bottom:3px;
       }
       #testinsert {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
