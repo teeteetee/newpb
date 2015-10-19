@@ -484,6 +484,18 @@ head
       .movies, .books, .articles {
         padding-bottom:30px;
       }
+      .vk:hover{
+        background-color:#3e88b5;
+      }
+      .fb:hover{
+        background-color:#2c5da9;
+      }
+      .tw:hover{
+        background-color:#0bc6f3;
+      }
+      .gg:hover{
+        background-color:#e84242;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -545,49 +557,55 @@ head
            li
              a(href='/people') People           
            li
-             a(href='/settings')  Settings                      
+             a(href='/settings')  Settings
+           li.visible-xs(style='text-align:center;border-top:1px solid #eee;border-bottom:1px solid #eee;') 
+              a(href='') Share: 
+              .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
+                    button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                    button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                    button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                    button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G                       
          ul.nav.navbar-nav.navbar-right
            li
              a(href='/logout') Logout
     .container#main(style='padding-top:50px;height:100%;background-color:white;')
       .row.visible-lg.visible-md.visible-sm
-        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:60px;padding-bottom:60px;')         
-          h2(style='margin-top:30px;' class='usernick')  ...
-          //h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;display:none;')          
-          .btn-group(style='margin-bottom:20px;margin-top:30px;')
-                button.btn.btn-iosprimary.follow(type='button') 
-                  span.glyphicon.glyphicon-user 
-                  | Follow
-                button.btn.btn-iosprimary.chatwith Contacts
-          ul(class="nav nav-pills" style='margin-top:20px;')
-            li.showbooks.active(role="presentation") 
-              a(href="#") Books
-                span(class='badge booknum' style='margin-left:10px;') 0
-            li.showmovies(role="presentation") 
-              a(href="#") Movies
-                span(class='badge movienum' style='margin-left:10px;') 0
-            li.showarticles(role="presentation") 
-              a(href="#") Articles
-                span(class='badge articlenum' style='margin-left:10px;') 0
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          .row
+            #avatarbig.col-xs-12(style='text-align:center;')         
+              h2(style='margin-top:30px;' class='usernick')  ...
+          .row(style='margin-bottom:20px;margin-top:60px;')
+            .col-xs-12
+              .btn-group(style='margin-right:20px;')
+                button.btn.btn-iosdark.follow(type='button') Follow
+                button.btn.btn-iosdark.chatwith(type='button') Chat
+              .btn-group(style='margin-right:20px;')
+                button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+              .btn-group(style='margin-right:20px;')
+                button.btn.btn-iosdark.showbooks.active(type='button')  Books
+                  span(class='badge booknum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showmovies(type='button')  Movies
+                  span(class='badge movienum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showarticles(type='button') Links
+                  span(class='badge articlenum' style='margin-left:10px;') 0
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')    
-              //h4.numbers                 
-              .btn-group(style='margin-bottom:20px;margin-top:30px;')
-                button.btn.btn-iosprimary.follow(type='button') 
-                  span.glyphicon.glyphicon-user 
-                  | Follow
-                button.btn.btn-iosprimary.chatwith Contacts
-              .row 
-                .col-xs-12
-                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                    .btn.btn-default.active.showbooks(type='button') B
-                      span(class='badge booknum' style='margin-left:10px;') 0
-                    .btn.btn-default.showmovies(type='button') M
-                      span(class='badge movienum' style='margin-left:10px;') 0
-                    .btn.btn-default.showarticles(type='button') A
-                      span(class='badge articlenum' style='margin-left:10px;') 0
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
+              //h4.numbers  
+              .btn-group.btn-group-lg(style='margin-bottom:20px;margin-top:30px;')             
+                button.btn.btn-iosdark.follow(type='button') Follow
+                button.btn.btn-iosdark.chatwith(type='button') Chat
+              .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
+                .btn.btn-iosdark.active.showbooks(type='button') B
+                  span(class='badge booknum' style='margin-left:10px;') 0
+                .btn.btn-iosdark.showmovies(type='button') M
+                  span(class='badge movienum' style='margin-left:10px;') 0
+                .btn.btn-iosdark.showarticles(type='button') L
+                  span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
               .row.mrow
