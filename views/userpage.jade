@@ -943,12 +943,12 @@ head
         if($('#avatarsmall').css('display')==='block') {
           console.log('case 1');
           $('.form-group').addClass('form-group-lg');
-          $('.add_mod > .btn-group').addClass('btn-group-lg');
+          $('.add_mod .btn-group').addClass('btn-group-lg');
         }
         else {
           console.log('case 2');
           $('.form-group').removeClass('form-group-lg');
-          $('.add_mod > .btn-group').removeClass('btn-group-lg');
+          $('.add_mod  .btn-group').removeClass('btn-group-lg');
         }
         return 0
       }
@@ -1138,7 +1138,7 @@ head
         }
         });
       function redactbookmodal (i) {
-        modal_input_sizing ();
+         modal_input_sizing();
         if(books[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
@@ -1170,7 +1170,7 @@ head
       }
       //
       function redactarticlemodal (i) {
-        modal_input_sizing ();
+        modal_input_sizing();
         var link = article_modal_data_store[i].link;
         var checktitle = article_modal_data_store[i].link.substring(0, 4);
         if(checktitle!='http'){
@@ -1205,7 +1205,7 @@ head
       }
       //
       function redactmoviemodal (i) {
-        modal_input_sizing ();
+        modal_input_sizing();
         if(movies[i].goodmovie){
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
