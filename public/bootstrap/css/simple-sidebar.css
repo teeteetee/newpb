@@ -19,7 +19,7 @@
 }
 
 #sidebar-wrapper {
-    z-index: 1040;
+    z-index: 1000;
     position: fixed;
     left: 250px;
     width: 0;
@@ -40,7 +40,7 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 0px;
+    padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -60,8 +60,8 @@
 }
 
 .sidebar-nav li {
-    text-indent: 25px;
-    font-weight:100;
+    text-indent: 20px;
+    line-height: 40px;
 }
 
 .sidebar-nav li a {
@@ -85,7 +85,6 @@
     height: 65px;
     font-size: 18px;
     line-height: 60px;
-    text-transform:uppercase;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -98,7 +97,9 @@
 }
 
 @media(min-width:768px) {
-    
+    #wrapper {
+        padding-left: 250px;
+    }
 
     #wrapper.toggled {
         padding-left: 0;
