@@ -1128,6 +1128,7 @@ head
               }
         });
       $('.openadd').click(function(){
+        modal_input_sizing();
         if($('.brow').css('display')==='block')
           {$('#addbook').modal('show');}
         else if($('.mrow').css('display')==='block'){
@@ -1138,10 +1139,6 @@ head
         }
         });
       function redactbookmodal (i) {
-         consol.log('foo');
-         modal_input_sizing();
-         aflskdfjslf();
-         consol.log('foo');
         if(books[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
@@ -1173,7 +1170,6 @@ head
       }
       //
       function redactarticlemodal (i) {
-        modal_input_sizing();
         var link = article_modal_data_store[i].link;
         var checktitle = article_modal_data_store[i].link.substring(0, 4);
         if(checktitle!='http'){
@@ -1208,7 +1204,6 @@ head
       }
       //
       function redactmoviemodal (i) {
-        modal_input_sizing();
         if(movies[i].goodmovie){
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
