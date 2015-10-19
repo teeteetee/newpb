@@ -574,6 +574,10 @@ head
       color: #333;
       font-size: 30;
       }
+      .sidebar-nav{
+        font-weight:100;
+        color:white;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -751,17 +755,18 @@ head
           li
             a.active(href="#") My Lists
           li
-            a(href="#") People
+            a(href="/people") People
+          li 
+            a(href='/messages') Messages
           li
-            a(href="#") Settings
-          li.visible-xs(style='text-align:center;border-top:1px solid #eee;border-bottom:1px solid #eee;') 
+            a(href="/settings") Settings
+          li.visible-xs(style='text-align:center;') 
             a(href='') Share: 
             .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
               button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
               button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
               button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
-              button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G  
-            a(href="#") Contact</a>           
+              button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G           
       #page-content-wrapper
         button(type='button' ,id='menu-toggle')
           span.glyphicon.glyphicon-menu-hamburger 

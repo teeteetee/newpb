@@ -15,7 +15,7 @@ var http = require('http');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),discussions = db.get('discussions'),messages = db.get('messages'),items = db.get('items'),books = db.get('books'),movies = db.get('movies'),authors = db.get('authors'),follow = db.get('follow');
+  , users = db.get('users'),insidemsg = db.get('insidemsg'),user_messages = db.get('user_messages'),messages = db.get('messages'),items = db.get('items'),books = db.get('books'),movies = db.get('movies'),authors = db.get('authors'),follow = db.get('follow');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -366,34 +366,6 @@ app.get('/chat',function (req,res){
   else {
     res.send('restricted. authorised only');
   }
-});
-
-app.get('/temp_disc',function (req,res){
-  res.render('discussion',{'rcvrid':2,'user':1});
-});
-
-app.get('/discussion/:id',function (req,res){
-  //TO DO if req.session
-  discussions.findOne({_id:req.params.id},function (err,doc){
-    if(err) {
-    ms.trouble=1;
-    ms.mtext='db';
-    res.send(ms);
-    }
-    else {
-      if(doc){
-         var vlast = doc.msgstore.length - 10;
-         ms.trouble = 0;
-         ms.mtext = array_slice( doc.msgstore,vlast,doc.msgstore.length);
-         res.send(ms);
-      }
-      else {
-        ms.trouble=1;
-        ms.mtext='no discussion';
-        res.send(ms);
-      }
-    }
-  });
 });
 
 app.post('/settings',function (req,res){
@@ -998,10 +970,8 @@ app.get('/ad:id',function (req,res){
   });
 });
 
-app.get('/dropdisc',function (req,res){
-  users.update({},{$unset:{discussions:1}},{upsert:false,
-                          multi:true});
-  discussions.remove({});
+app.get('/dropum',function (req,res){
+  user_messages.remove();
   res.redirect('/');
 });
 
