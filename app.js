@@ -391,7 +391,7 @@ app.post('/msg',function (req,res){
   msg.textbody = req.body.txtbody;
   msg.tmstmp = Date.now();
    user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
-  }
+  
  }
  else {
   res.send(0);
