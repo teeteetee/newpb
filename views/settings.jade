@@ -422,25 +422,6 @@ head
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
             button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
-      #contacts.row.setrow
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
-          h4(style='margin-bottom:30px;') Your contacts avaliable to other users
-          .form-group
-            label(for="mail") Email
-            input(type="email" style='max-width:350px;' class="form-control" id="mail")
-          .form-group
-            label(for="phone") Phone
-            input(type="tel" style='max-width:350px;' class="form-control" id="phone")
-          .form-group
-            label(for="web") Web 
-            input(type="text" style='max-width:350px;' class="form-control" id="web")
-      //
-        .row.setrow
-          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
-            h4 Allow users to send you messages straight away, or request to authorise chat first ? 
-            .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-              button(type="button" class="btn btncorr btn-iosdark") Request
-              button(type="button" class="btn btncorr btn-iosdark active") No request
       .row.setrow.visible-lg.visible-md.visible-sm
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-top:1px solid #eee;')
           button(class='btn btn-primary setsub') Save
@@ -503,9 +484,6 @@ head
       if($('#bpb').hasClass('active')) {
         pub =1;
       }
-      umail = $('#mail').val() ? $('#mail').val() : 0;
-      uphone = $('#phone').val() ? $('#phone').val() : 0;
-      uweb = $('#web').val() ? $('#web').val() : 0;
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -526,7 +504,7 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("pub="+pub+"&m="+umail+"&p="+uphone+"&w="+uweb);
+      request.send("pub="+pub);
       }
       $(document).on('change', '.btn-file :file', function() {
           //var input = $(this),
