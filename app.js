@@ -351,8 +351,9 @@ app.get('/chat',function (req,res){
             }
             else {
               if(done){
-                  if(req.session.lst_msg&&done.msgstore)
+                  if(done.msgstore)
                   {
+                  console.log('yes');
                   res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore});
                   }
                   else {
