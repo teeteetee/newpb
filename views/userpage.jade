@@ -26,6 +26,7 @@ head
       body {
         width: 100%;
         height: 100%;
+        font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
       
       .slideout-menu {
@@ -847,22 +848,22 @@ head
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
     #menu
-      a(href="https://github.com/mango/slideout" target="_blank")
+      a(href="/" target="_blank")
         header(class="menu-header")
           span(class="menu-header-title usernick") 
-      ul.sidebar-nav
-        li.sidebar-brand
-          a(href="/") People & Books    
-        li
-          a.active(href="#") My Lists
-        li
-          a(href="/people") People
-        li 
-          a(href='/messages') Messages
-        li
-          a(href="/settings") Settings
-        li.visible-xs(style='text-align:center;') 
-          a(href='') Share: 
+      section.menu-section
+        h3(class="menu-section-title") Docs
+        ul.menu-sectioin-list    
+          li
+            a.active(href="#") My Lists
+          li
+            a(href="/people") People
+          li 
+            a(href='/messages') Messages
+          li
+            a(href="/settings") Settings
+      section.menu-section.visible-xs(style='text-align:center;') 
+        h3(class="menu-section-title") Share 
           .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
             button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
             button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
@@ -961,7 +962,7 @@ head
       });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      var background = "url('/userpics/id"+user._id+"_small"+user.picext"') no-repeat 15px 15px;";
+      var background = "url('/userpics/id"+user._id+"_small"+user.picext+"') no-repeat 15px 15px;";
       $('.menu-header').css('background',background)
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
