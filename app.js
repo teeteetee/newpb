@@ -79,14 +79,14 @@ app.get('/',function(req,res) {
                   if(done.userpic)
                   {  
                       req.session=done;
-                      var background="background: url('/userpics/id"+done._id+"_small"+done.picext+"') no-repeat 15px 15px;";
-                      res.render('userpage',{'user':done._id,'background':background,'avatar':1,'done':JSON.stringify(done)});
+                      //var background="background: url('/userpics/id"+done._id+"_small"+done.picext+"') no-repeat 15px 15px;";
+                      res.render('userpage',{'user':done._id,'avatar':1,'done':JSON.stringify(done)});
                      
                   }
                    else {
                     req.session = done;
-                    var background="background: url('/images/pb_inf_logo.png') no-repeat 15px 15px;";
-                    res.render('userpage',{'user':done._id,'background':background,'avatar':0,'done':JSON.stringify(done)});
+                    //var background="background: url('/images/pb_inf_logo.png') no-repeat 15px 15px;";
+                    res.render('userpage',{'user':done._id,'avatar':0,'done':JSON.stringify(done)});
                     
                    }
               }
