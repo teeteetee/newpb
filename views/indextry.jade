@@ -42,14 +42,13 @@ html(lang="en")
         display: block;
       }
   body
-
     nav#menu
       h2 Menu
     main#panel
       header
         button(class="toggle-button") ☰
         h2 Panel
-    script(src="dist/slideout.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.9/slideout.min.js")
     script.
       var slideout = new Slideout({
         'panel': document.getElementById('panel'),
