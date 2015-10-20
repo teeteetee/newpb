@@ -282,6 +282,15 @@ head
         background-color:white;
         color:#333;
       }
+      .modal-header {
+      border:none;
+      }
+      .btn-modal{
+      background-color: white;
+      border-color: white;
+      color: #028AFF;
+      font-size:20px;
+      }
   body
     nav#menu.menu
       section.menu-section
@@ -304,9 +313,9 @@ head
               span(aria-hidden="true") ×
           .modal-body  
             h3#sender
-            h6#time
+            h6#time(style='color:#ddd;')
             p#textbody         
-          .modal-footer(style='text-align:center;')
+          .modal-footer(style='text-align:center;margin-top:20px;')
             button(class='btn btn-modal'  id='submitmsg') Respond
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
@@ -418,7 +427,7 @@ head
               url: "/stlstmsg",
               data: 'tmstmp='+tmstmp
             }).done(function( msg ) {
-                eval("$('#indicator"+uid+"').remove()");
+                eval("$('#indicator"+tmstmp+"').remove()");
                });
               }
       
