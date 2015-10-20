@@ -17,6 +17,86 @@ head
         
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      body {
+      width: 100%;
+      height: 100%;
+      font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      .slideout-menu {
+        background-color: #1D1F20;
+        background-image: linear-gradient(145deg, #1D1F20, #404348);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        width: 256px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        display: none;
+      }
+      .slideout-panel {
+        position:relative;
+        z-index: 1;
+      }
+      .slideout-open,
+      .slideout-open body,
+      .slideout-open .slideout-panel {
+        overflow: hidden;
+      }
+      .slideout-open .slideout-menu {
+        display: block;
+      }
+      .menu a {
+        color: #fff;
+      }
+      .menu a:hover {
+        text-decoration: underline;
+      }
+      .menu-header {
+        border-bottom: 1px solid #2a2d2f;
+        padding: 20px 0 20px 60px;
+        background-size: 32px;
+      }
+      .menu-header-title {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: 0;
+        font-size:18;
+      }
+      .menu-section {
+        margin: 25px 0;
+      }
+      .menu-section-title {
+        text-transform: uppercase;
+        color: #85888d;
+        font-weight: 200;
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 0 20px;
+        margin:0;
+      }
+      .menu-section-list {
+        padding:0;
+        margin: 10px 0;
+        list-style:none;
+      }
+      .menu-section-list a {
+        font-family:boldproxima;
+        text-transform: uppercase;
+        color: #85888d;
+        font-weight: 200 !important;
+        font-size: 20px !important;
+        letter-spacing: 1px;
+        display: block;
+        padding: 20px 20px;
+      }
+      .menu-section-list a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color:#fff !important;
+        text-decoration: none;
+      }
       .emptybook {
       padding-left:23px;
       }
@@ -50,6 +130,8 @@ head
       height:130px;
       }
       .book {
+      max-width:1000px;
+      margin:auto;
       border-bottom:1px solid #eee;
       padding-left:15px;
       padding-right:15px;
@@ -174,35 +256,36 @@ head
       .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
-  body(style='background-color:#fbfbfb;')
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
-      .container
-        // Brand and toggle get grouped for better mobile display
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-            span.sr-only Toggle navigation         
-            span.icon-bar         
-            span.icon-bar         
-            span.icon-bar       
-          a.navbar-brand(style='padding-top:5px;', href='/')
-            img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
-        // Collect the nav links, forms, and other content for toggling
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li
-              a(href='/')  My lists 
-            li.active
-              a( id='chat' href='/chat') Messages             
-            li
-              a(href='/people') People           
-            li
-              a(href='/settings')  Settings             
-            li
-              a(href='/about')  About         
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/logout') Logout
-    .container(style='padding-top:50px;height:100%;background-color:white;')
+      #menu-toggle {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #333;
+      font-size: 30;
+      }
+  body
+    nav#menu.menu
+      section.menu-section
+        ul.menu-section-list    
+          li
+            a(href="/" target="_blank") My lists
+          li
+            a(href="/people" target="_blank") People
+          li 
+            a(href='/messages' target="_blank") Messages
+          li
+            a(href="/settings" target="_blank") Settings
+      section.menu-section.visible-xs(style='text-align:center;')
+        .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
+          button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
+          button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
+          button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
+          button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G   
+    .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
+      button(type='button' ,id='menu-toggle')
+        span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
@@ -223,13 +306,29 @@ head
       //TO DO userpics seem to be cut from the sides, look into that
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
-      var discussions = !{JSON.stringify(discussions)};
+      var messages = !{JSON.stringify(messages)};
       var counter=0;
       if(!discussions[0])
       {}
       else
-      {getdisc(discussions[counter]._id,counter);}
-      function getavatar(uid,discid,iter) {
+      {
+      messages.forEach(function(element){
+        if($('#noitems').is(':visible')) {
+          $('#noitems').remove();
+        }
+        var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>bla bla bla</div></div></div></div>";
+        if(parseInt(#{lst_tmstmp})>parseInt(element.tmstmp) ){ 
+          
+        insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>bla bla bla</div></div></div></div>";
+        }
+        $('#discussions').prepend(insert);
+        getavatar(element.sndr,element.tmstmp);
+        
+        
+        });
+      }
+      //
+      function getavatar(uid,tmstmp) {
       console.log('getting avatar for: '+uid);
       avatarrequest = new XMLHttpRequest();
       avatarrequest.onreadystatechange = function () {
@@ -244,23 +343,23 @@ head
       // TO DO do somewthing here
       //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
       var insert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-       eval("$('#cid"+discid+"').append(insert);");
-       eval("$('#head"+discid+"').text('Error');");
-       eval("$('#head"+discid+"').css('color','#eee');");
+       eval("$('#cid"+tmstmp+"').append(insert);");
+       eval("$('#head"+tmstmp+"').text('Error');");
+       eval("$('#head"+tmstmp+"').css('color','#eee');");
       }
       else {
       if(parsed.mtext==='emptypic'){
         console.log('EMPTY AVATAR');
       var insert = "<div style='height:50px;border:3px dotted #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-       eval("$('#cid"+discid+"').append(insert);");
-       eval("$('#head"+discid+"').text('"+parsed.nick+"');");
+       eval("$('#cid"+tmstmp+"').append(insert);");
+       eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
       }
       else 
       {
         console.log('HAS AVATAR');
       var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
-      eval("$('#cid"+discid+"').append(insert);");
-      eval("$('#head"+discid+"').text('"+parsed.nick+"');");
+      eval("$('#cid"+tmstmp+"').append(insert);");
+      eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
       }
       }
       }

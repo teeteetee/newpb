@@ -76,6 +76,12 @@ app.get('/',function(req,res) {
             }
             else {
               if(done){
+                  user_messages.findOne({user:done._id},function (err, done2){ 
+                  if(!done2)
+                   {
+                    user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
+                   }
+                  });
                   if(done.userpic)
                   {  
                       req.session=done;
@@ -171,9 +177,6 @@ app.post('/getbook/:id',function (req,res){
 });
 });
 
-app.get('/indextry',function (req,res){
-  res.render('indextry');
-});
 
 app.post('/getmovie/:id',function (req,res){
   //TO DO auth
@@ -276,6 +279,7 @@ app.post('/newuser',function(req,res){
           else {
           follow.insert({user:done._id.toString()});
           items.insert({user:done._id.toString(),bookstore:[],moviestore:[]});// used when searching by item id, not in user to keep things light and fast
+          user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
           req.session.mail=vmail;
           req.session._id=done._id;
           ms.trouble =0;
@@ -343,7 +347,7 @@ app.post('/check',function(req,res){
 
 app.get('/chat',function (req,res){
   if(req.session.mail){
-    users.findOne({mail:req.session.mail},{fields:{discussions:1,tmstmpstore:1}},function(err,done){
+    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -353,13 +357,13 @@ app.get('/chat',function (req,res){
             }
             else {
               if(done){
-                  if(done.discussions)
+                  if(req.session.lst_msg&&done.msgstore)
                   {
-                  res.render('chat',{'user':done._id,'discussions':done.discussions,'done':JSON.stringify(done)});
+                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore});
                   }
                   else {
                    //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
-                   res.render('chat',{'user':done._id,'discussions':0,'done':JSON.stringify(done)});
+                   res.render('chat',{'user':req.session._id,'lst_tmstmp':0,'messages':0});
                   }
               }
               else {
@@ -370,8 +374,28 @@ app.get('/chat',function (req,res){
           });
   }
   else {
-    res.send('restricted. authorised only');
+    res.render('404');
   }
+});
+
+app.post('/stlstmsg',function (req,res){
+  users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
+  req.session.lst_msg = req.body.tmstmp;
+  res.send('ok');
+});
+
+app.post('/msg',function (req,res){
+ if(req.session._id) {
+  var msg ={};
+  msg.sndr = req.session._id;
+  msg.textbody = req.body.txtbody;
+  msg.tmstmp = Date.now();
+   user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
+  }
+ }
+ else {
+  res.send(0);
+ }
 });
 
 app.post('/settings',function (req,res){

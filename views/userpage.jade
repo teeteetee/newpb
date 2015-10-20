@@ -465,6 +465,7 @@ head
       background-color: white;
       border-color: white;
       color: #FF6F02;
+      font-size:20px;
     }
     .btn-primary:focus, .btn-primary:active, .btn-primary:hover {
       background-color: #FF6F02;
@@ -578,6 +579,9 @@ head
     .btn {
       text-transform:uppercase;
       letter-spacing:2px;
+    }
+    .form-group-lg label {
+      font-size:15;
     }
   body(style='background-color:#ddd;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -978,11 +982,13 @@ head
           console.log('case 1');
           $('.form-group').addClass('form-group-lg');
           $('.add_mod .btn-group').addClass('btn-group-lg');
+          $('#nonfiction').text('Nonfict.');
         }
         else {
           console.log('case 2');
           $('.form-group').removeClass('form-group-lg');
           $('.add_mod  .btn-group').removeClass('btn-group-lg');
+          $('#nonfiction').text('Nonfiction');
         }
         return 0
       }

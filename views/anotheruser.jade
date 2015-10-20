@@ -504,6 +504,12 @@ head
       .gg:hover{
         background-color:#e84242;
       }
+      .btn-modal{
+      background-color: white;
+      border-color: white;
+      color: #FF6F02;
+      font-size:20px;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -542,6 +548,16 @@ head
             h4(id='modalarticletitle' style='text-align:center;')
             h4(id='modallink' style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-primary  form-control' id='addarticle' style='margin-top:5px;margin-bottom:5px;') Add to my list
+    .modal.fade(id="sendmsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body
+            textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')            
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn-modal'  id='submitmsg') Send
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -672,6 +688,9 @@ head
       var avatar = #{avatar};
       user= JSON.parse(user);
       $('.usernick').text(user.nick);
+      $('.chatwith').click(function(){
+        $('#sendmsg').modal('show');
+        });
       //var tmp_string = "window.location='/chat/"+user._id+"';";
       //$('.chatwith').attr('onclick',tmp_string);
       //var contacts = #{contacts};
@@ -1129,5 +1148,38 @@ head
                   $('.follow').removeClass('disabled');
                  }
                  });}
+      $('#submitmsg').click(sendmsg());
+      function sendmsg() {
+      console.log('msg sendin'); 
+      //var rcvr = #{rcvrid}; 
+      var sndr = '#{user}';
+      var txtbody = $('#gettext-lg').val();
+      if(!txtbody) {
+        return 0
+      }
+      console.log(txtbody);
+      sndrequest = new XMLHttpRequest();
+      sndrequest.onreadystatechange = function () {
+      $('#gettext').val('');
+      $('#sendmsg').modal('hide');
+      var DONE = this.DONE || 4;
+      if(sndrequest.readyState==4 && sndrequest.status==200){
+      //if (this.readyState === DONE){
+      var parsed = JSON.parse(sndrequest.responseText);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      alert('trouble');
+      }
+      else {
+      }
+      }
+      };
+      sndrequest.open('POST', '/disc/#{discid}', true);
+      sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      sndrequest.send('rcvr=#{user}&txtbody='+txtbody);
+      }
      
       
