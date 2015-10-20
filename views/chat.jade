@@ -334,7 +334,7 @@ head
           $('#noitems').remove();
         }
         var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>bla bla bla</div></div></div></div>";
-        if(parseInt(#{lst_tmstmp})>parseInt(element.tmstmp) ){ 
+        if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
           
         insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>bla bla bla</div></div></div></div>";
         }
