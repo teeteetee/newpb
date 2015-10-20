@@ -478,6 +478,8 @@ head
       height:64px !important;
     }
     #bigscreens > .book {
+      max-width:1000px;
+      margin:auto;
     }
     #bigscreens > .book > .bookpadding {
      padding-top:10px;
@@ -767,7 +769,7 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
-    .container#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
+    .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
