@@ -338,6 +338,7 @@ head
       var counter=0;
       var nickstore = {};// used when preparing a modal to display a message
       var msgstore ={};
+      var avatarcheck={};
       if(!messages)
       {}
       else
@@ -371,46 +372,63 @@ head
       //
       function getavatar(uid,tmstmp) {
       console.log('getting avatar for: '+uid);
-      avatarrequest = new XMLHttpRequest();
-      avatarrequest.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var parsed = JSON.parse(avatarrequest.responseText);
-      counter++;
-      if(counter<discussions.length)
-      {getdisc(discussions[counter]._id,counter)}
-      if(parsed.trouble === 1)
-      {
-      // TO DO do somewthing here
-      //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
-      var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-       eval("$('#cid"+tmstmp+"').append(insert);");
-       eval("$('#head"+tmstmp+"').text('Error');");
-       eval("$('#head"+tmstmp+"').css('color','#eee');");
-      }
+      if(!avatarcheck[uid])
+      {avatarrequest = new XMLHttpRequest();
+            avatarrequest.onreadystatechange = function () {
+            var DONE = this.DONE || 4;
+            if (this.readyState === DONE){
+            var parsed = JSON.parse(avatarrequest.responseText);
+            counter++;
+            if(counter<discussions.length)
+            {getdisc(discussions[counter]._id,counter)}
+            if(parsed.trouble === 1)
+            {
+            // TO DO do somewthing here
+            //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
+            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+             eval("$('#cid"+tmstmp+"').append(insert);");
+             eval("$('#head"+tmstmp+"').text('Error');");
+             eval("$('#head"+tmstmp+"').css('color','#eee');");
+            }
+            else {
+            nickstore[uid] = parsed.nick;
+            if(parsed.mtext==='emptypic'){
+              avatarcheck[uid] = 'emptypic';
+              console.log('EMPTY AVATAR');
+            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+             eval("$('#cid"+tmstmp+"').append(insert);");
+             eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
+            }
+            else 
+            { avatarcheck[uid] = picext;
+              console.log('HAS AVATAR');
+            var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
+            eval("$('#cid"+tmstmp+"').append(insert);");
+            eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
+            }
+            }
+            }
+            };
+            avatarrequest.open('POST', '/getavatar/'+uid.toString(), true);
+            avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+            avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //Most libraries like jQuery/Prototype/Dojo do this
+            avatarrequest.send();}
       else {
-      nickstore[uid] = parsed.nick;
-      if(parsed.mtext==='emptypic'){
-        console.log('EMPTY AVATAR');
-      var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-       eval("$('#cid"+tmstmp+"').append(insert);");
-       eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
+            if(avatarcheck[uid]==='emptypic'){
+              console.log('EMPTY AVATAR');
+            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+             eval("$('#cid"+tmstmp+"').append(insert);");
+             eval("$('#head"+tmstmp+"').text('"+nickstore[uid]+"');");
+            }
+            else 
+            { 
+              console.log('HAS AVATAR');
+            var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+avatarcheck[uid]+"' class='media-object img-circle' src='' alt='avatar'>";
+            eval("$('#cid"+tmstmp+"').append(insert);");
+            eval("$('#head"+tmstmp+"').text('"+nickstore[uid]+"');");
+            }
       }
-      else 
-      {
-        console.log('HAS AVATAR');
-      var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
-      eval("$('#cid"+tmstmp+"').append(insert);");
-      eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
-      }
-      }
-      }
-      };
-      avatarrequest.open('POST', '/getavatar/'+uid.toString(), true);
-      avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      avatarrequest.send();
       }
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
