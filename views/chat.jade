@@ -371,7 +371,7 @@ head
       });
       //
       function getavatar(uid,tmstmp) {
-      console.log('getting avatar for: '+uid);
+      console.log('avatar check: '+avatarcheck[uid]);
       if(!avatarcheck[uid])
       {avatarrequest = new XMLHttpRequest();
             avatarrequest.onreadystatechange = function () {
