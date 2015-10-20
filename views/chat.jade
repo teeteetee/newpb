@@ -394,7 +394,7 @@ head
             nickstore[uid] = parsed.nick;
             if(parsed.mtext==='emptypic'){
               avatarcheck[uid] = 'emptypic';
-              console.log('EMPTY AVATAR: '+avatarcheck);
+              console.log('EMPTY AVATAR: '+JSON.stringify(avatarcheck));
             var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
              eval("$('#cid"+tmstmp+"').append(insert);");
              eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
