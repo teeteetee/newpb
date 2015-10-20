@@ -1148,7 +1148,7 @@ head
                   $('.follow').removeClass('disabled');
                  }
                  });}
-      $('#submitmsg').click(sendmsg());
+      $('#submitmsg').click(function(){sendmsg()});
       function sendmsg() {
       console.log('msg sendin'); 
       //var rcvr = #{rcvrid}; 
@@ -1160,10 +1160,10 @@ head
       console.log(txtbody);
       sndrequest = new XMLHttpRequest();
       sndrequest.onreadystatechange = function () {
-      $('#gettext').val('');
-      $('#sendmsg').modal('hide');
       var DONE = this.DONE || 4;
       if(sndrequest.readyState==4 && sndrequest.status==200){
+      $('#gettext').val('');
+      $('#sendmsg').modal('hide');
       //if (this.readyState === DONE){
       var parsed = JSON.parse(sndrequest.responseText);
       if(parsed.trouble === 1)
