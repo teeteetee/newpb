@@ -1175,7 +1175,7 @@ head
       }
       }
       };
-      sndrequest.open('POST', '/disc/#{discid}', true);
+      sndrequest.open('POST', '/msg', true);
       sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
