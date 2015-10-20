@@ -171,6 +171,10 @@ app.post('/getbook/:id',function (req,res){
 });
 });
 
+app.get('/indextry',function (req,res){
+  res.render('indextry');
+});
+
 app.post('/getmovie/:id',function (req,res){
   //TO DO auth
   movies.findOne({_id:req.params.id},function(err,doc){
