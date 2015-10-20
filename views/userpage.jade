@@ -313,8 +313,9 @@ head
        background-color:white;
        border-color:#ccc;
     }
-    label {
+    .modal label {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13;
     }
     .loader {
     margin: 60px auto;
@@ -583,7 +584,7 @@ head
     .form-group-lg label {
       font-size:15;
     }
-  body(style='background-color:#ddd;')
+  body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -765,7 +766,7 @@ head
           li
             a(href="/people" target="_blank") People
           li 
-            a(href='/messages' target="_blank") Messages
+            a(href='/chat' target="_blank") Messages
           li
             a(href="/settings" target="_blank") Settings
       section.menu-section.visible-xs(style='text-align:center;')
