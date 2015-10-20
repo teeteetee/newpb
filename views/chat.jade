@@ -378,10 +378,9 @@ head
             var DONE = this.DONE || 4;
             if (this.readyState === DONE){
             var parsed = JSON.parse(avatarrequest.responseText);
+            console.log(parsed);
             if(parsed.trouble === 1)
             {
-            // TO DO do somewthing here
-            //var insert ="<div class='col-xs-3'><div class='emptyavatar' style='width:50px;height:50px;margin:10px;border:7px dotted #bbb;bakcground-color:white;border-radius:50%;'></div></div>";
             var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
              eval("$('#cid"+tmstmp+"').append(insert);");
              eval("$('#head"+tmstmp+"').text('Error');");
