@@ -9,7 +9,7 @@ head
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')   
-    link(href="/bootstrap/css/simple-sidebar.css" rel="stylesheet")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.9/slideout.min.js")
     meta(liber de amicitia est)
     meta(property="og:url"           content="https://vntrlst.com")
     meta(property="og:type"          content="website")
@@ -23,6 +23,38 @@ head
     script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .slideout-menu {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        width: 256px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        display: none;
+      }
+      
+      .slideout-panel {
+        position:relative;
+        z-index: 1;
+      }
+      
+      .slideout-open,
+      .slideout-open body,
+      .slideout-open .slideout-panel {
+        overflow: hidden;
+      }
+      
+      .slideout-open .slideout-menu {
+        display: block;
+      }
       #userimg {
       width:100%;
       max-width:200px;
@@ -588,6 +620,10 @@ head
        font-weight: 600;
        font-size: 17;
       } 
+      .modal.fade:not(.in).left .modal-dialog {
+          -webkit-transform: translate3d(-25%, 0, 0);
+          transform: translate3d(-25%, 0, 0);
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -757,109 +793,112 @@ head
                     button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
-    #wrapper
-      #sidebar-wrapper
-        ul.sidebar-nav
-          li.sidebar-brand
-            a(href="/") People & Books    
-          li
-            a.active(href="#") My Lists
-          li
-            a(href="/people") People
-          li 
-            a(href='/messages') Messages
-          li
-            a(href="/settings") Settings
-          li.visible-xs(style='text-align:center;') 
-            a(href='') Share: 
-            .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
-              button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
-              button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
-              button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
-              button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G           
-      #page-content-wrapper
-        button(type='button' ,id='menu-toggle')
-          span.glyphicon.glyphicon-menu-hamburger 
-        .container-fluid(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-          .row(id='spin') 
-            .col-xs-12(style='text-align:center;')
-              .loader
-        .container-fluid#main(style='padding-top:50px;min-height:100vh;background-color:white;')
-          .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row
-                #avatarbig.col-xs-12(style='text-align:center;')         
-                  h2(style='margin-top:30px;' class='usernick')  ...
-              .row(style='margin-bottom:20px;margin-top:60px;')
-                .col-xs-12
-                  button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
-                  .btn-group(style='margin-right:20px;')
-                    button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
-                    button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
-                    button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
-                    button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
-                  .btn-group(style='margin-right:20px;')
-                    button.btn.btn-iosdark.showbooks.active(type='button')  Books
-                      span(class='badge booknum' style='margin-left:10px;') 0
-                    button.btn.btn-iosdark.showmovies(type='button')  Movies
-                      span(class='badge movienum' style='margin-left:10px;') 0
-                    button.btn.btn-iosdark.showarticles(type='button') Links
-                      span(class='badge articlenum' style='margin-left:10px;') 0
+    #menu
+      ul.sidebar-nav
+        li.sidebar-brand
+          a(href="/") People & Books    
+        li
+          a.active(href="#") My Lists
+        li
+          a(href="/people") People
+        li 
+          a(href='/messages') Messages
+        li
+          a(href="/settings") Settings
+        li.visible-xs(style='text-align:center;') 
+          a(href='') Share: 
+          .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
+            button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
+            button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
+            button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
+            button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G           
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader
+    .container#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
+      button(type='button' ,id='menu-toggle')
+        span.glyphicon.glyphicon-menu-hamburger
+      .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           .row
-            #booklist.thun.col-md-12
-              .row.visible-xs
-                #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
-                  //h4.numbers                 
-                  button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
-                  .row 
-                    .col-xs-12
-                      .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
-                        .btn.btn-iosdark.active.showbooks(type='button') B
-                          span(class='badge booknum' style='margin-left:10px;') 0
-                        .btn.btn-iosdark.showmovies(type='button') M
-                          span(class='badge movienum' style='margin-left:10px;') 0
-                        .btn.btn-iosdark.showarticles(type='button') L
-                          span(class='badge articlenum' style='margin-left:10px;') 0
-              #list.row
-                .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1              
-                  .row.mrow
-                    .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                      .nomovies.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items 
-                  .row.brow
-                    .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                      .nobooks.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items
-                  .row.arow
-                    .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
-                      .noarticles.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items  
-                  .row.brow
-                    #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
-                      .nobooks.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items 
-                  .row.mrow
-                    #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
-                      .nomovies.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items  
-                  .row.arow
-                    #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
-                      .noarticles.row(style='text-align:center;')  
-                         .col-xs-12
-                           h2(style='color:#ccc;margin-bottom:20px;') No items  
+            #avatarbig.col-xs-12(style='text-align:center;')         
+              h2(style='margin-top:30px;' class='usernick')  ...
+          .row(style='margin-bottom:20px;margin-top:60px;')
+            .col-xs-12
+              button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
+              .btn-group(style='margin-right:20px;')
+                button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+              .btn-group(style='margin-right:20px;')
+                button.btn.btn-iosdark.showbooks.active(type='button')  Books
+                  span(class='badge booknum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showmovies(type='button')  Movies
+                  span(class='badge movienum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showarticles(type='button') Links
+                  span(class='badge articlenum' style='margin-left:10px;') 0
+      .row
+        #booklist.thun.col-md-12
+          .row.visible-xs
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
+              //h4.numbers                 
+              button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
+              .row 
+                .col-xs-12
+                  .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
+                    .btn.btn-iosdark.active.showbooks(type='button') B
+                      span(class='badge booknum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showmovies(type='button') M
+                      span(class='badge movienum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showarticles(type='button') L
+                      span(class='badge articlenum' style='margin-left:10px;') 0
+          #list.row
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1              
+              .row.mrow
+                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items
+              .row.arow
+                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.mrow
+                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+              .row.arow
+                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script.
-      $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+      var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 70
+      });
+      document.querySelector('#menu-toggle').addEventListener('click', function() {
+        slideout.toggle();
       });
       $(document).on('click', '.social_share', function(){
           Share.go(this);
