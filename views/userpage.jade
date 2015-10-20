@@ -963,7 +963,7 @@ head
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       var background = "url('/userpics/id"+user._id+"_small"+user.picext+"') no-repeat 15px 15px;";
-      $('.menu-header').css('background',background)
+      $('.menu-header').css('background',background);
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);

@@ -79,12 +79,14 @@ app.get('/',function(req,res) {
                   if(done.userpic)
                   {  
                       req.session=done;
-                      res.render('userpage',{'user':done._id,'avatar':1,'done':JSON.stringify(done)});
+                      var background="url('/userpics/id"+done._id+"_small"+done.picext+"') no-repeat 15px 15px;";
+                      res.render('userpage',{'user':done._id,'background':background,'avatar':1,'done':JSON.stringify(done)});
                      
                   }
                    else {
                     req.session = done;
-                    res.render('userpage',{'user':done._id,'avatar':0,'done':JSON.stringify(done)});
+                    var background="url('/images/pb_inf_logo.png') no-repeat 15px 15px;";
+                    res.render('userpage',{'user':done._id,'background':background,'avatar':0,'done':JSON.stringify(done)});
                     
                    }
               }
@@ -1027,63 +1029,7 @@ app.get('/seeuser',function (req,res){
 
 //******************** HELPERS END ********************//
 
-app.get('/chat/:recid',function (req,res){
-   if(!req.session._id){
-    res.redirect('/');
-   }
-   else{
-   var vsender = req.session._id;
-   var vdest =  req.params.recid;
-   discussions.findOne({snd:vsender,rcv:vdest},function (err,done){
-     if(err){
-              //err page ?
-              res.redirect('/');
-              console.log('QUERY ERR');
-            }
-            else {
-              console.log(2);
-              if(done){
-                console.log(3);
-                console.log('discussion '+done._id);
-                res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done._id});
-              }
-              else{
-               discussions.findOne({rcv:vsender,snd:vdest},function (err,done2){
-                 if(err){
-                          //err page ?
-                          res.redirect('/');
-                          console.log('QUERY ERR');
-                        }
-                        else {
-                          console.log(2);
-                          if(done2){
-                            console.log(3);
-                            console.log('discussion '+done2._id);
-                            res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':done2._id});
-                          }
-                else {
-                  discussions.insert({snd:vsender,rcv:vdest,msgcnt:0},function(err,newdisc){
-                  var tmp_val={};
-                  //--------- ADDING TMSTMPSTORE --------//
-                  var vlsttmstmp = Date.now();
-                  tmp_val[newdisc._id] = vlsttmstmp;
-                  var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp},'$push':{'discussions':newdisc}};
-                  console.log()
-                    //---------END ADDING TMSTMPSTORE --------//
-                  //users.update({_id:vsender},{$push:{discussions:newdisc},sht_tmp});
-                  users.update({_id:vsender},sht_tmp);
-                  users.update({_id:vdest},sht_tmp);
-                  console.log('SUPPOSEDLY SET TMSTMPSTORE');
-                  res.render('discussion',{'user':vsender,'rcvrid':vdest,'discid':newdisc._id});
-                  });
-                }//else
-              }
-             });
-              }
-            }
-   });
-}
-});
+
 
 app.post('/getavatar/:id',function (req,res){
   var vuid = req.params.id
@@ -1177,310 +1123,9 @@ app.post('/getdisc/:id', function (req,res){
 
 });
 
-app.get('/testloopx', function (req,res){
-  tmp_l=14;
-    for (var i = tmp_l; i>-1; i--) {
-              // console.log('i: '+i);
-              // console.log('long poll in 7');
-              //if(1) {
-              //      console.log('long poll in 8');
-              //      
-              //      if(i=tmp_l) {
-              //        console.log('long poll in 9');
-              //       
-              //     }
-              //    }
-              if(i===tmp_l) {
-                      console.log('long poll in 9');
-                     
-                   }
-              console.log(i);
-            }
-            console.log('done');
-});
 
-//-----------------LONGPOLLING------------------//
-app.post('/ntfc',function(req,res){
-  var dynamic_tmstmp;
-  var ms={};
-  var db_cont_check = setInterval(function(){check_udb()},7000);
-   var tick = setInterval(function(){sort_response()},1500);
-   function check_udb() {
-    if(!req.ip){
-         clearInterval(db_cont_check);
-         clearInterval(tick);
-      }
-    console.log('longpol routine'+req.ip);
-    users.findOne({_id:req.session._id},function (err,doc){
-       if(err) {
-       console.log('err while disc query');
-       }
-       else {
-         if(doc.g_tmstmp&&doc.g_tmstmp>parseInt(req.body.tmstmp)){
-           dynamic_tmstmp=doc.g_tmstmp;
-           console.log('timestamp set');
-           clearInterval(db_cont_check);
-         }
-           else{
-            console.log('LOOP ROUTINE');
-           }
-       }
-     });}
-    function sort_response() {
-      if(!req.ip){
-         clearInterval(db_cont_check);
-         clearInterval(tick);
-      }
-      if(dynamic_tmstmp){
-          ms.tmstmp = dynamic_tmstmp;
-          ms.trouble=0;
-          console.log('sending new stuff to the user: '+dynamic_tmstmp);
-         res.send(ms);
-          clearInterval(tick);}
-    }
-});
-
-app.post('/gtm/:discid',function(req,res){
-    var vtmstmp = parseInt(req.body.tmstmp);
-    console.log('tmstmp: '+vtmstmp);
-    var g_vdiscid = req.params.discid;
-    var dynamic_msgstore;
-    var vlsttmstmp;
-    var ms={};
-    ms.msgstore =[];
-
-    var terminate=0;
-    req.on('close', function() {
-       terminate ++;
-       console.log('TERMINATE: '+terminate);
-     }); 
-   
-   var db_cont_check = setInterval(function(){check_db()},2500);
-
-   var tick = setInterval(function(){sort_response()},1500);
-
-   function check_db () {
-    if(!req.ip){
-        clearInterval(db_cont_check);
-                  clearInterval(tick);
-      }
-    discussions.findOne({_id:g_vdiscid},function(err,done){
-      if(err) {
-        console.warn('db err disc query');
-      }
-      else {
-        if(done&&done.msgstore) {
-           dynamic_msgstore = done.msgstore;
-        }
-        else {
-          console.warn('empty');
-        }
-      }
-    });
-  }
-    function sort_response () {
-      if(!req.ip){
-        clearInterval(db_cont_check);
-                  clearInterval(tick);
-      }
-      console.log('Sort response running');
-      if(dynamic_msgstore && dynamic_msgstore[dynamic_msgstore.length-1].tmstmp>vtmstmp)
-           {
-            
-            console.log(req.ip+'timestamp in the beggining: '+vtmstmp);
-            console.log(req.ip+'Last message of the lot has greater timestamp than stored');
-            var tmp_l = dynamic_msgstore.length-1;
-            for (var i = tmp_l; i>=0; i--) {
-                 console.log(req.ip+'Iterating through messages: '+i);
-                 if(dynamic_msgstore[i].tmstmp < vtmstmp){
-                    console.log(req.ip+'Break, because message has smaller timestamp');
-                     break;
-                     }
-                 if(dynamic_msgstore[i].rcvr === req.session._id && dynamic_msgstore[i].tmstmp > vtmstmp) {
-                     console.log(req.ip+'Unshifting message to ms object');
-                     ms.msgstore.unshift(dynamic_msgstore[i]);
-                     if(i===tmp_l) {
-                       vlsttmstmp=dynamic_msgstore[i].tmstmp;
-                       console.log(req.ip+'Setting supposedly largest vlsttmstmp');
-                     }
-                    }
-             }
-             if(ms.msgstore.length&&vlsttmstmp)   
-            {console.log(req.ip+'ms object has length and vlsttmstmp is present');
-              var tmp_val={};
-              vtmstmp = vlsttmstmp;
-              console.log(req.ip+'timestamp in the end: '+vtmstmp);
-              tmp_val[g_vdiscid] = vlsttmstmp;
-              //console.log(g_vdiscid);
-              //console.log(vlsttmstmp);
-              //console.log(JSON.stringify(tmp_val));
-               var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-               //sht_tmp['$set']['tmstmpstore'][g_vdiscid] = vlsttmstmp;
-               //console.log('sht_tmp: '+JSON.stringify(sht_tmp));
-               users.update({_id:req.session._id},sht_tmp);
-                  ms.trouble=0;
-                  console.log(req.ip+'sending to client: '+JSON.stringify(ms));
-                  res.send(ms);
-                  terminate++;
-                  clearInterval(db_cont_check);
-                  clearInterval(tick);
-                }
-        }
-          else {
-            
-            return 0
-          }
-        }
-     
-   });
 //-----------------LONGPOLLING END------------------//
 
-
-app.post('/getdiscinfo/:id', function (req,res){
-  //API used when populating page with the list of conversations
-  console.log('getting disc info');
-  //TO DO if req.session present, otherwise go away
-  var vdiscid = req.params.id;
-  console.log(typeof vdiscid+' '+vdiscid);
-  var ms ={};
-  ms.trouble = 0;
-  discussions.findOne({_id:vdiscid},function (err,doc){
-    if(err) {
-    ms.trouble=1;
-    res.send(ms);
-    }
-    else {
-      if(doc){
-        //---------------------------//
-        if(doc.msgstore)
-           { //This block resets timestamps, which is probably not a good thing, since it just serves info to show discussions
-            //console.log('changing timestamp'); 
-            //var tmp_length = doc.msgstore.length-1;
-            // var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
-            // vdisid=vdiscid.toString();
-            // var tmp_val={};
-            //  vtmstmp = vlsttmstmp;
-            //  tmp_val[vdiscid] = vlsttmstmp;
-            //var sht_tmp ={};
-            //var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-            //console.log(sht_tmp);
-            // users.update({_id:req.session._id},sht_tmp);
-        //--------------------------//
-        ms.mtext = doc;
-        res.send(ms);
-      }
-      else {
-        ms.trouble=0;
-        ms.mtext=doc;
-        res.send(ms);
-      }
-    }
-    else {
-      ms.trouble=1;
-        ms.mtext='no discussion';
-        res.send(ms);
-    }
-  }
-  });
-
-});
-
-app.post('/disc/:id',function (req,res){
-  // Incoming message 
-  //TO DO if req.session present, otherwise go away
-  var vdiscid = req.params.id;
-  var vsndr = req.body.sndr;
-  var vrcvr = req.body.rcvr;
-  var vtxtbody = req.body.txtbody;
-  var ms = {};
-  ms.trouble =0;
-  var vtmstmp = Date.now();
-  console.log('MSG: snd '+vsndr+',rcv'+vrcvr+',txt '+vtxtbody+', timestamp: '+vtmstmp);
-  discussions.update({_id:vdiscid},{$push:{msgstore:{txt:vtxtbody,rcvr:vrcvr,sndr:vsndr,_id:vdiscid,tmstmp:vtmstmp}},$inc:{msgcnt:1}});
-  users.update({_id:vrcvr},{$set:{g_tmstmp:vtmstmp}});// planned to be used to get message notification throughout the webpage
-  res.send(ms);
-  });
-
-app.post('/disccheck/:id/:uid',function (req,res){
-  // Client checking for messages 
-  //TO DO if req.session present, otherwise go away
-  var rcvr = req.params.uid;
-  var vdiscid = req.params.id;
-  var vtmstmp = parseInt(req.body.tmstmp);
-  var ms ={};
-  ms.trouble=1;
-  ms.msgstore=[];
-  var vlsttmstmp;
-  discussions.findOne({discid:vdiscid},function (err,done){
-    if (err) {
-     res.send(ms);
-    }
-    else {
-      if(done.msgstore) {
-        for (var i = done.msgstore.length-1; i > -1; --i) {
-          if(done.msgstore[i].rcvr === rcvr && done.msgstore[i].tmstmp > vtmstmp) {
-            ms.msgstore.push(done.msgstore[i]);
-            if(i=done.msgstore.length-1) {
-             vlsttmstmp=done.msgstore[i].tmstmp;
-           }
-          }
-          else if(done.msgstore[i].tmstmp <= vtmstmp){
-            break;
-          }
-        }
-        if(vlsttmstmp&&vlsttmstmp!=null){
-            console.log('setting lsttmstmp: '+vlsttmstmp);
-            console.log('discid: '+vdiscid);
-            vdisid=vdiscid.toString();
-            //eval("db.collection('users').update({uid:rcvr},{$set:{tmpstmpstore."+vdiscid+":vlsttmstmp}});");
-            var tmp_val={};
-              vtmstmp = vlsttmstmp;
-              tmp_val[vdiscid] = vlsttmstmp;
-            var sht_tmp ={};
-            var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-            console.log(sht_tmp);
-             users.update({_id:rcvr},sht_tmp);
-              }
-        ms.trouble=0;
-        console.log(ms);
-        res.send(ms);
-      }
-      else {
-       res.send(ms);
-      }
-    }
-  });
-});
-  
-app.post('/checkdisc/:id/:last', function (req,res){
-  var vdiscid = req.params.id;
-  var vlast = req.params.last;
-  ms.trouble=1;
-  ms.mtext='db';
-  res.send(ms);
-
-  //array_slice( $directors, 1, 2 )
-
-  discussions.findOne({discid:vdiscid},function (err,doc){
-    if(err) {
-    res.send(ms);
-    }
-    else {
-      if(doc){
-        ms.trouble=0;
-        ms.mtext=array_slice( doc.msgstore,vlast,doc.msgstore.length);
-        console.log(ms.mtext);
-       res.send(ms);
-      }
-      else {
-        ms.trouble=1;
-        ms.mtext='no discussion';
-        res.send(ms);
-      }
-    }
-  });
-
-});
 
 app.get('/showitems',function (req,res){
   items.find({},function (err,done){
@@ -1554,6 +1199,10 @@ app.get('/people/:kind/:item',function (req,res){
   else {
     res.redirect('/');
   }
+});
+
+app.post('/getmsg',function (req,res){
+
 });
 
 app.get('/supfollow',function (req,res){
