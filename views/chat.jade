@@ -359,10 +359,8 @@ head
         insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+element.textbody+"</div></div></div></div>";
         }
         $('#discussions').prepend(insert);
+        getavatar(element.sndr,element.tmstmp);
         });
-       var counter = 0;
-       while(counter<messages.length){
-        getavatar(counter);}
       }
       var slideout = new Slideout({
         'panel': document.getElementById('panel'),
@@ -374,7 +372,7 @@ head
         slideout.toggle();
       });
       //
-      function getavatar(counter) {
+      function getavatar(uid,tmstmp) {
         var uid = messages[counter].sndr;
         var tmstmp = messages[counter].tmstmp;
         counter++;
