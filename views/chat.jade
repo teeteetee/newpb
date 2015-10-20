@@ -419,7 +419,8 @@ head
        $('#time').text(time);
        $('#textbody').text(msgstore[uid])
        $('#show_msg').modal('show');
-       mark_msg_read(tmstmp);
+       if(eval("$('#indicator"+element.tmstmp+"').height"))
+       {mark_msg_read(tmstmp);}
       }
       function mark_msg_read (tmstmp) {
       $.ajax({
