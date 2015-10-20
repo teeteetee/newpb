@@ -353,10 +353,11 @@ head
         }
         msgstore[element.sndr] = element.textbody;
         var uid_n_qts = '"'+element.sndr+'"';
-        var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>"+element.textbody+"</div></div></div></div>";
+        var textbody = element.textbody.length>30?element.textbody.substring(0,30)+'...':element.textbody;
+        var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>"+textbody+"</div></div></div></div>";
         if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
           
-        insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+element.textbody+"</div></div></div></div>";
+        insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+textbody+"</div></div></div></div>";
         }
         $('#discussions').prepend(insert);
         getavatar(element.sndr,element.tmstmp);
