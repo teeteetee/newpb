@@ -362,7 +362,7 @@ head
         });
        var counter = 0;
        while(counter<messages.length){
-        getavatar(element.sndr,element.tmstmp,counter);}
+        getavatar(counter);}
       }
       var slideout = new Slideout({
         'panel': document.getElementById('panel'),
@@ -374,7 +374,9 @@ head
         slideout.toggle();
       });
       //
-      function getavatar(uid,tmstmp,counter) {
+      function getavatar(counter) {
+        var uid = messages[counter].sndr;
+        var tmstmp = messages[counter].tmstmp;
         counter++;
       console.log('avatar check: '+avatarcheck[uid]);
       if(!avatarcheck[uid])
