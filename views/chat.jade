@@ -265,6 +265,9 @@ head
       color: #333;
       font-size: 30;
       }
+      button:focus,button:active {
+       outline: none !important;
+      }
   body
     nav#menu.menu
       section.menu-section
@@ -330,6 +333,9 @@ head
         'menu': document.getElementById('menu'),
         'padding': 256,
         'tolerance': 70
+      });
+      document.querySelector('#menu-toggle').addEventListener('click', function() {
+        slideout.toggle();
       });
       //
       function getavatar(uid,tmstmp) {
