@@ -29,6 +29,8 @@ head
       }
       
       .slideout-menu {
+        background-color: #1D1F20;
+        background-image: linear-gradient(145deg, #1D1F20, #404348);
         position: fixed;
         left: 0;
         top: 0;
@@ -51,10 +53,61 @@ head
       .slideout-open .slideout-panel {
         overflow: hidden;
       }
-      
       .slideout-open .slideout-menu {
         display: block;
       }
+      /****************************/
+      .menu a {
+        color: #fff;
+      }
+      
+      .menu a:hover {
+        text-decoration: underline;
+      }
+      
+      .menu-header {
+        border-bottom: 1px solid #2a2d2f;
+        padding: 20px 0 20px 60px;
+        background-size: 32px;
+      }
+      
+      .menu-header-title {
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        margin: 0;
+      }
+      
+      .menu-section {
+        margin: 25px 0;
+      }
+      
+      .menu-section-title {
+        text-transform: uppercase;
+        color: #85888d;
+        font-weight: 200;
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 0 20px;
+        margin:0;
+      }
+      
+      .menu-section-list {
+        padding:0;
+        margin: 10px 0;
+        list-style:none;
+      }
+      
+      .menu-section-list a {
+        display: block;
+        padding: 10px 20px;
+      }
+      
+      .menu-section-list a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+      }
+      
+      /****************************/
       #userimg {
       width:100%;
       max-width:200px;
@@ -794,6 +847,9 @@ head
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
     #menu
+      a(href="https://github.com/mango/slideout" target="_blank")
+        header(class="menu-header")
+          span(class="menu-header-title usernick") 
       ul.sidebar-nav
         li.sidebar-brand
           a(href="/") People & Books    
@@ -905,6 +961,8 @@ head
       });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
+      var background = "url('/userpics/id"+user._id+"_small"+user.picext"') no-repeat 15px 15px;";
+      $('.menu-header').css('background',background)
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
