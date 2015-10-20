@@ -295,13 +295,19 @@ head
           li
             a(href="/settings" target="_blank") Settings
           li
-            a(href="/logout") Logout
-      section.menu-section.visible-xs(style='text-align:center;')
-        .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
-          button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
-          button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
-          button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
-          button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G   
+            a(href="/logout") Logout  
+    .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body  
+            h3#sender
+            h6#time
+            p#textbody         
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn-modal'  id='submitmsg') Respond
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
@@ -314,10 +320,6 @@ head
           #noitems.row(style='text-align:center;')  
             .col-xs-12
               h2(style='color:#ccc;margin-bottom:20px;') No items 
-          //
-            .panel.panel-default
-              .panel-body#discussions
-    // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
@@ -325,6 +327,8 @@ head
       //TO DO userpics seem to be cut from the sides, look into that
       var messages = !{JSON.stringify(messages)};
       var counter=0;
+      var nickstore = {};// used when preparing a modal to display a message
+      var msgstore ={};
       if(!messages)
       {}
       else
@@ -333,10 +337,12 @@ head
         if($('#noitems').is(':visible')) {
           $('#noitems').remove();
         }
-        var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>bla bla bla</div></div></div></div>";
+        msgstore[element.sndr] = element.textbody;
+        var uid_n_qts = '"'+element.sndr+'"';
+        var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+elementtmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>"+element.textbody+"</div></div></div></div>";
         if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
           
-        insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>bla bla bla</div></div></div></div>";
+        insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+elementtmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+element.textbody+"</div></div></div></div>";
         }
         $('#discussions').prepend(insert);
         getavatar(element.sndr,element.tmstmp);
@@ -374,6 +380,7 @@ head
        eval("$('#head"+tmstmp+"').css('color','#eee');");
       }
       else {
+      nickstore[uid] = parsed.nick;
       if(parsed.mtext==='emptypic'){
         console.log('EMPTY AVATAR');
       var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
@@ -396,91 +403,22 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       avatarrequest.send();
       }
-      //------------------//
-      function getdisc(discid,iter) {
-      console.log('getting discifno: '+discid);
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if(request.readyState==4 && request.status==200){
-      //if (this.readyState === DONE){
-      console.log('iter: '+iter+',discid: '+discid+', parsed: '+request.responseText);
-      var parsed = JSON.parse(request.responseText);
-      if(parsed.trouble === 1)
-      {
-      // TO DO do somewthing here
-      return 0;
+      function show_message (uid,tmstmp) {
+      var tmstmp = parseInt(tmstmp);
+      var time = new Date(tmstmp);
+       $('#sender').text(nickstore[uid]);
+       $('#time').text(time);
+       $('#textbody').text(msgstore[uid])
+       $('#show_msg').modal('show');
+       mark_msg_read(tmstmp);
       }
-      else {
-        var move_discussion_up=0;
-        if($('#noitems').length)
-        {$('#discussions').empty();}
-        if('#{user}' !=parsed.mtext.rcv)
-          {
-          var vuid = parsed.mtext.rcv;
-          }
-        else {
-          var vuid = parsed.mtext.snd;
-           }
-        var lastmsg = '...';
-          if(parsed.mtext.msgstore)
-          { 
-          var lastmsg_num = parsed.mtext.msgstore.length-1;
-          lastmsg = parsed.mtext.msgstore[lastmsg_num].txt;
-         // var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[lastmsg_num].tmstmp);
-           var lsttmstmp_msg = 0;
-          for(var yy=lastmsg_num;yy>=0;yy--)
-           {
-            if(parseInt(parsed.mtext.msgstore[yy].tmstmp) > parseInt(user.tmstmpstore[discid])){
-              if(parsed.mtext.msgstore[yy].rcvr === '#{user}'){
-                var lsttmstmp_msg = parseInt(parsed.mtext.msgstore[yy].tmstmp);
-                console.log('we have a message');
-                break
+      function mark_msg_read (tmstmp) {
+      $.ajax({
+              method: "POST",
+              url: "/stlstmsg",
+              data: 'tmstmp='+tmstmp
+            }).done(function( msg ) {
+                eval("$('#indicator"+uid+"').remove()");
+               }
               }
-            }
-            else {
-              var lasttmstmp_msg = user.tmstmpstore[discid];
-                  console.log('no new messages')
-            }
-           }
-          console.log('last message according to lsttmstmp: '+lastmsg);
-          if(lastmsg.length>25) {
-            lastmsg=lastmsg.slice(0,25)+'...';
-          }
-        // TO DO do a slice() on string if it >~30 characters so not to flood the discussion row
-        }
-        var insert = "<div class='row discussion'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' class='media-heading' style='color:#333;'></h4>"+lastmsg+"</div></div></a></div></div>";
-        if(user.tmstmpstore ){ 
-          console.log('BREAKPOINT 1');
-          console.log('lsttmstmp_msg: '+lsttmstmp_msg);
-          console.log('user last timestamp for disc: '+discid+' is: '+user.tmstmpstore[discid]);
-          if (lsttmstmp_msg && lsttmstmp_msg > user.tmstmpstore[discid] ){
-          console.log('from timestamp store: '+user.tmstmpstore[discid]);
-        insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' style='color:#333;' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
-        move_discussion_up=1;
-        }
-        }
-        //else{
-        //  move_discussion_up=1;
-        //  insert = "<div class='row discussion' ><div class='col-xs-12'><span style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:-3;'>&#8226;</span><div class='media' style='margin-top:0px;'><a href='/chat/"+vuid+"'><div class='media-left' id='cid"+parsed.mtext._id+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+parsed.mtext._id+"' style='color:#333;' class='media-heading'></h4>"+lastmsg+"</div></div></a></div></div>";
-        //}
-        if(move_discussion_up){
-          $('#discussions').prepend(insert);
-        }  
-        else{     
-        $('#discussions').append(insert);
-        }
-        if(parsed.mtext.rcv==='#{user}')
-         {getavatar(parsed.mtext.snd,discid,iter);}
-       else{
-        getavatar(parsed.mtext.rcv,discid,iter);
-       }
-      }
-      }
-      };
-      request.open('POST', '/getdiscinfo/'+discid, true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      request.send();
-      }
+      
