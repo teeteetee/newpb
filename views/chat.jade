@@ -401,7 +401,7 @@ head
              eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
             }
             else 
-            { avatarcheck[uid] = picext;
+            { avatarcheck[uid] = parsed.picext;
               console.log('HAS AVATAR');
             var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
             eval("$('#cid"+tmstmp+"').append(insert);");
