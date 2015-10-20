@@ -89,8 +89,10 @@ head
       list-style:none;
     }
     .menu-section-list a {
-      font-size: 18 !important;
-      font-weight: 100 !important;
+      text-transform: uppercase;
+      color: #85888d;
+      font-weight: 200 !important;
+      font-size: 13px !important;
       letter-spacing: 1px;
       display: block;
       padding: 10px 20px;
@@ -531,7 +533,7 @@ head
       font-weight:200;
     }
     .label-primary {
-      background-color:#ddd;
+      background-color:#333;
     }
     a.form-control {
       height:inherit;
@@ -570,7 +572,7 @@ head
     color: #333;
     font-size: 30;
     }
-  body(style='background-color:#fbfbfb;')
+  body(style='background-color:#ddd;')
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -744,7 +746,7 @@ head
         header(class="menu-header")
           span(class="menu-header-title") People & Books 
       section.menu-section
-        h3(class="menu-section-title") Menu
+        //h3(class="menu-section-title") Menu
         ul.menu-section-list    
           li
             a(href="/" target="_blank") My lists
