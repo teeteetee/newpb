@@ -78,7 +78,7 @@ head
       text-transform: uppercase;
       color: #85888d;
       font-weight: 200;
-      font-size: 1px;
+      font-size: 13px;
       letter-spacing: 1px;
       padding: 0 20px;
       margin:0;
@@ -89,13 +89,11 @@ head
       list-style:none;
     }
     .menu-section-list a {
-       text-transform: uppercase;
-      color: #85888d;
-      font-weight: 200;
-      font-size: 15px;
+      font-size: 18 !important;
+      font-weight: 100 !important;
       letter-spacing: 1px;
-      margin-top:10px;
-      margin-bottom:10px;
+      display: block;
+      padding: 10px 20px;
     }
     .menu-section-list a:hover {
       background-color: rgba(255, 255, 255, 0.1);
@@ -746,6 +744,7 @@ head
         header(class="menu-header")
           span(class="menu-header-title") People & Books 
       section.menu-section
+        h3(class="menu-section-title") Menu
         ul.menu-section-list    
           li
             a(href="/" target="_blank") My lists
