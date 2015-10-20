@@ -391,7 +391,7 @@ app.post('/msg',function (req,res){
   msg.textbody = req.body.txtbody;
   msg.tmstmp = Date.now();
    user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
-  
+  res.send('ok');
  }
  else {
   res.send(0);
@@ -1005,6 +1005,12 @@ app.get('/dropum',function (req,res){
   res.redirect('/');
 });
 
+app.get('/showum',function (req,res){
+  user_messages.find({},function(err,done){
+    res.send(done);
+  });
+});
+
 app.get('/dropusers',function (req,res){
   users.remove({});
   items.remove({});
@@ -1043,6 +1049,7 @@ app.get('/seedisc',function (req,res){
     }
   });
 });
+
 
 app.get('/seeuser',function (req,res){
   users.find({},function (err,done){

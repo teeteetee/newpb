@@ -726,31 +726,7 @@ head
                 button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
               .btn-group(style='margin-bottom:100px;display:block;')
                 button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
-                button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction 
-              //  
-                .well
-                  .form-group
-                    label(for="author") Author name
-                    input(type="text" class="form-control" id="author0_name" placeholder="Leo")
-                  .form-group
-                    label(for="author") Author surname
-                    input(type="text" class="form-control" id="author0_surname" placeholder="Tolstoy")
-                  .form-group
-                    //button(class=' btn btn-default'  type='button' id='openextra' style='margin-top:10px;')  Additional authors
-                    label(for='authors') Additional authors
-                    .btn-group#authors(style='padding-bottom:15px;display:block;')
-                      button(class='btn btn-default' id='addauthor' type='button') Add
-                      button(class=' btn btn-default disabled' id='removeauthor'  type='button' )  Remove
-            //
-              .row.cpadding(style='text-align:center;')
-                .col-sm-6
-                  .btn-group(style='margin-bottom:15px;')
-                    button(class='btn btn-ioswarning iosactive' id='newbook' type='button') New
-                    button(class=' btn btn-ioswarning' id='oldbook'  type='button' )  I've read it
-                .col-sm-6
-                  .btn-group(style='margin-bottom:15px;')
-                    button(class='btn btn-iosprimary iosactive' id='nonfiction' type='button') Nonfiction
-                    button(class=' btn btn-iosprimary' id='fiction' type='button' ) Fiction                
+                button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
     nav#menu.menu
@@ -879,7 +855,7 @@ head
         $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:auto;margin:60px;'></div>");
+        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle' style='margin:auto;margin:60px;'></div>");
         $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
