@@ -579,9 +579,6 @@ head
       text-transform:uppercase;
       letter-spacing:2px;
     }
-    .form-group-lg label {
-      font-size:15;
-    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -727,13 +724,8 @@ head
                 button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
-    nav#menu.menu
-      //
-        a(href="/" target="_blank")
-          header(class="menu-header")
-            span(class="menu-header-title") People & Books 
+    nav#menu.menu 
       section.menu-section
-        //h3(class="menu-section-title") Menu
         ul.menu-section-list    
           li
             a(href="/" target="_blank") My lists
