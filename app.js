@@ -999,7 +999,7 @@ app.get('/ad:id',function (req,res){
 });
 
 app.get('/dropum',function (req,res){
-  user_messages.remove();
+  user_messages.remove({});
   res.redirect('/');
 });
 
@@ -1013,6 +1013,7 @@ app.get('/dropusers',function (req,res){
   users.remove({});
   items.remove({});
   follow.remove({});
+  user_messages.remove({});
   res.redirect('/');
 });
 

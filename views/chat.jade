@@ -352,8 +352,8 @@ head
           $('#noitems').remove();
         }
         var avatar_insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-        if(msgstore[element.sndr].userpic) {
-         avatar_insert = "<img style='height:50px;' src='/userpics/id"+msgstore[element.sndr].sndr+"_small"+msgstore[element.sndr].picext+"' class='media-object img-circle' src='' alt='avatar'>";
+        if(element.userpic) {
+         avatar_insert = "<img style='height:50px;' src='/userpics/id"+element.sndr+"_small"+element.userpic+"' class='media-object img-circle' src='' alt='avatar'>";
         }
         msgstore[element.sndr] = element.textbody;
         var uid_n_qts = '"'+element.sndr+'"';
