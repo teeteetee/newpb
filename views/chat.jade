@@ -382,7 +382,7 @@ head
       var time = new Date(tmstmp);
        var link = '/u/'+uid;
        $('#author_page').attr('href',link);
-       $('#sender').text(nickstore[uid]);
+       $('#sender').text("<span class='glyphicon glyophicon-link' style='color:#ddd;margin-right:10px;'></span>"+nickstore[uid]);
        $('#time').text(time);
        $('#textbody').text(msgstore[uid])
        $('#show_msg').modal('show');
