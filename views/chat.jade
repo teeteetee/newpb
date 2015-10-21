@@ -386,10 +386,10 @@ head
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);
-       var link = '/u/'+uid;
+       var link = '/u/'+nickstore[uid];
        $('#author_page').attr('href',link);
        $('#sender').empty();
-       $('#sender').append("<span class='glyphicon glyophicon-link' style='color:#ddd;margin-right:10px;'></span>"+nickstore[uid]);
+       $('#sender').append(nickstore[uid] + "<span class='glyphicon glyophicon-link' style='color:#ddd;margin-left:10px;'></span>");
        $('#time').text(time);
        $('#textbody').text(msgstore[uid])
        $('#show_msg').modal('show');
