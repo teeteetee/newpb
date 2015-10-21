@@ -351,13 +351,17 @@ head
         if($('#noitems').is(':visible')) {
           $('#noitems').remove();
         }
+        var avatar_insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
+        if(msgstore[element.sndr].userpic) {
+         avatar_insert = "<img style='height:50px;' src='/userpics/id"+msgstore[element.sndr].sndr+"_small"+msgstore[element.sndr].picext+"' class='media-object img-circle' src='' alt='avatar'>";
+        }
         msgstore[element.sndr] = element.textbody;
         var uid_n_qts = '"'+element.sndr+'"';
         var textbody = element.textbody.length>30?element.textbody.substring(0,30)+'...':element.textbody;
-        var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>"+textbody+"</div></div></div></div>";
+        var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'></h4>"+textbody+"</div></div></div></div>";
         if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
           
-        insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'></div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+textbody+"</div></div></div></div>";
+        insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'></h4>"+textbody+"</div></div></div></div>";
         }
         $('#discussions').prepend(insert);
         getavatar(element.sndr,element.tmstmp);
@@ -373,65 +377,6 @@ head
         slideout.toggle();
       });
       //
-      function getavatar(uid,tmstmp) {
-        var uid = messages[counter].sndr;
-        var tmstmp = messages[counter].tmstmp;
-        counter++;
-      console.log('avatar check: '+avatarcheck[uid]);
-      if(!avatarcheck[uid])
-      {avatarrequest = new XMLHttpRequest();
-            avatarrequest.onreadystatechange = function () {
-            var DONE = this.DONE || 4;
-            if (this.readyState === DONE){
-            var parsed = JSON.parse(avatarrequest.responseText);
-            console.log(parsed);
-            if(parsed.trouble === 1)
-            {
-            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-             eval("$('#cid"+tmstmp+"').append(insert);");
-             eval("$('#head"+tmstmp+"').text('Error');");
-             eval("$('#head"+tmstmp+"').css('color','#eee');");
-            }
-            else {
-            nickstore[uid] = parsed.nick;
-            if(parsed.mtext==='emptypic'){
-              avatarcheck[uid] = 'emptypic';
-              console.log('EMPTY AVATAR: '+JSON.stringify(avatarcheck));
-            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-             eval("$('#cid"+tmstmp+"').append(insert);");
-             eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
-            }
-            else 
-            { avatarcheck[uid] = parsed.picext;
-              console.log('HAS AVATAR');
-            var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+parsed.picext+"' class='media-object img-circle' src='' alt='avatar'>";
-            eval("$('#cid"+tmstmp+"').append(insert);");
-            eval("$('#head"+tmstmp+"').text('"+parsed.nick+"');");
-            }
-            }
-            }
-            };
-            avatarrequest.open('POST', '/getavatar/'+uid.toString(), true);
-            avatarrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-            avatarrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            //Most libraries like jQuery/Prototype/Dojo do this
-            avatarrequest.send();}
-      else {
-            if(avatarcheck[uid]==='emptypic'){
-              console.log('EMPTY AVATAR case 2');
-            var insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
-             eval("$('#cid"+tmstmp+"').append(insert);");
-             eval("$('#head"+tmstmp+"').text('"+nickstore[uid]+"');");
-            }
-            else 
-            { 
-              console.log('HAS AVATAR case 2');
-            var insert = "<img style='height:50px;' src='/userpics/id"+uid+"_small"+avatarcheck[uid]+"' class='media-object img-circle' src='' alt='avatar'>";
-            eval("$('#cid"+tmstmp+"').append(insert);");
-            eval("$('#head"+tmstmp+"').text('"+nickstore[uid]+"');");
-            }
-      }
-      }
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);

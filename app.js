@@ -385,6 +385,9 @@ app.post('/msg',function (req,res){
   msg.sndr = req.session._id;
   msg.textbody = req.body.txtbody;
   msg.tmstmp = Date.now();
+  msg.userpic = 0;
+  if(req.session.userpic)
+  {msg.userpic = req.session.picext;}
    user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
   res.send('ok');
  }
