@@ -98,6 +98,11 @@ head
         color:#fff !important;
         text-decoration: none;
       }
+      .menu-section-list .active a {
+      background-color: rgba(255, 255, 255, 0.1);
+      color:#fff !important;
+      text-decoration: none;
+      }
       .emptybook {
       padding-left:23px;
       }
@@ -290,6 +295,9 @@ head
       color: #028AFF;
       font-size:20px;
       }
+      .btn-modal:active.btn-modal:focus{
+      color: #028AFF;
+      }
       .modal-body {
         padding-right:20px;
         padding-left:20px;
@@ -300,6 +308,9 @@ head
       a:active, a:focus, a:hover {
         color:#333 !important;
       }
+      #respond {
+        display:none;
+      }
   body
     nav#menu.menu
       section.menu-section
@@ -308,7 +319,7 @@ head
             a(href="/" ) My lists
           li
             a(href="/people" ) People
-          li 
+          li.active 
             a(href='/messages' ) Messages
           li
             a(href="/settings" ) Settings
@@ -325,13 +336,13 @@ head
               h3#sender
             h6#time(style='color:#ddd;margin-bottom:20px;')
             p#textbody  
-            .panel.panel-default
+            #respond.panel.panel-default
               .panel-body
                 label Message:
                 textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')   
                 button.btn.btn-modal#submitmsg(type='button') Send
           .modal-footer(style='text-align:center;margin-top:20px;')
-            button(class='btn btn-modal'  id='submitmsg') Respond
+            button(class='btn btn-modal' id='openrespond') Respond
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
@@ -388,6 +399,9 @@ head
         slideout.toggle();
       });
       //
+      $('#openrespond').click(function(){
+        $('#respond').slideToggle();
+        });
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);
