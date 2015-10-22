@@ -418,7 +418,7 @@ head
        $('#sender').empty();
        $('#sender').append(nickstore[uid] + "<span class='glyphicon glyophicon-link' style='color:#ddd;margin-left:10px;'></span>");
        $('#time').text(time);
-       $('#textbody').text(msgstore[uid])
+       $('#textbody').append(msgstore[uid])
        $('#show_msg').modal('show');
        var onclick = "sendmsg('"+uid+"')";
        $('#submitmsg').attr('onclick',onclick);
