@@ -387,6 +387,7 @@ app.post('/msg',function (req,res){
   var msg ={};
   msg.sndr = req.session._id;
   msg.textbody = req.body.txtbody.replace("\n","<br />");
+  console.log(msg.textbody);
   msg.tmstmp = Date.now();
   msg.userpic = 0;
   msg.nick = req.session.nick;
