@@ -336,11 +336,10 @@ head
               h3#sender
             h6#time(style='color:#ddd;margin-bottom:20px;')
             p#textbody  
-            #respond.panel.panel-default
-              .panel-body
-                label Message:
-                textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')   
-                button.btn.btn-modal#submitmsg(type='button') Send
+            #respond.row(style='background-color:#fbfbfb;')
+              label Respond:
+              textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')   
+              button.btn.btn-modal#submitmsg(type='button') Send
           .modal-footer(style='text-align:center;margin-top:20px;')
             button(class='btn btn-modal' id='openrespond') Respond
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
