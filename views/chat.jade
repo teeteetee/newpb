@@ -324,7 +324,12 @@ head
             a(id='author_page')
               h3#sender
             h6#time(style='color:#ddd;margin-bottom:20px;')
-            p#textbody         
+            p#textbody  
+            .panel.panel-default
+              .panel-body
+                label Message:
+                textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')   
+                button.btn.btn-modal#submitmsg(type='button') Send
           .modal-footer(style='text-align:center;margin-top:20px;')
             button(class='btn btn-modal'  id='submitmsg') Respond
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
@@ -404,4 +409,37 @@ head
                 eval("$('#indicator"+tmstmp+"').remove()");
                });
               }
+      $('#submitmsg').click(function(){sendmsg()});
+      function sendmsg() {
+      console.log('msg sendin'); 
+      //var rcvr = #{rcvrid}; 
+      var sndr = '#{user}';
+      var txtbody = $('#gettext').val();
+      if(!txtbody) {
+        return 0
+      }
+      console.log(txtbody);
+      sndrequest = new XMLHttpRequest();
+      sndrequest.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if(sndrequest.readyState==4 && sndrequest.status==200){
+      $('#gettext').val('');
+      $('#show_msg').modal('hide');
+      //if (this.readyState === DONE){
+      var parsed = JSON.parse(sndrequest.responseText);
+      if(parsed.trouble === 1)
+      {
+      // TO DO do somewthing here
+      alert('trouble');
+      }
+      else {
+      }
+      }
+      };
+      sndrequest.open('POST', '/msg', true);
+      sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      sndrequest.send('rcvr=#{user}&txtbody='+txtbody);
+      }
       
