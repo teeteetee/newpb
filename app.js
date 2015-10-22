@@ -383,7 +383,7 @@ app.post('/msg',function (req,res){
  if(req.session._id) {
   var msg ={};
   msg.sndr = req.session._id;
-  msg.textbody = req.body.txtbody;
+  msg.textbody = req.body.txtbody.replace("\n","<br />");
   msg.tmstmp = Date.now();
   msg.userpic = 0;
   msg.nick = req.session.nick;
