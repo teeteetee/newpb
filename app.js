@@ -378,10 +378,12 @@ app.post('/stlstmsg',function (req,res){
   users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
   req.session.lst_msg = req.body.tmstmp;
   res.send('ok');
+  user_messages.find
 });
 
 app.post('/msg',function (req,res){
  if(req.session._id) {
+  console.log(req.body.txtbody);
   var msg ={};
   msg.sndr = req.session._id;
   msg.textbody = req.body.txtbody.replace("\n","<br />");
