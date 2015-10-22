@@ -140,6 +140,8 @@ head
       display:none;
       padding:20px 16px;
       margin-top:20px;
+      p {
+        margin-bottom:0px;
       }
   body 
     .container
@@ -198,16 +200,19 @@ head
       console.log('TROUBLE === 1');
       switch (parsed.mtext){
       case('db'):
+      $('#pwderr').empty();
       $('#pwderr').append("<p>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</p>");
       $('#pwderr').slideToggle();
       allowauth = 1;
       break;
       case('wrong pas'):
+      $('#pwderr').empty();
       $('#pwderr').append("<p>Wrong password</p>");
       $('#pwderr').slideToggle();
       allowauth = 1;
       break;
       case('wronguser'):
+      $('#pwderr').empty();
       $('#pwderr').append("<p>Wrong email</p>");
       $('#pwderr').slideToggle();
       allowauth =1;
