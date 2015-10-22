@@ -354,6 +354,7 @@ app.get('/messages',function (req,res){
                   if(done.msgstore)
                   {
                   console.log('yes');
+                  done.msgstore = done.msgstore.length > 50 ? done.msgstore.slice(done.msgstore.length-51,done.msgstore.length) : done.msgstore;
                   res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore});
                   }
                   else {
