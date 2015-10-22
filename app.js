@@ -378,24 +378,8 @@ app.post('/stlstmsg',function (req,res){
   //users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
   //req.session.lst_msg = req.body.tmstmp;
   //res.send('ok');
-  user_messages.findOne({user:req.session._id},function (err,done){
-    if(err){
-
-    }
-    else {
-      done.msgstore.every(function(element,index){
-        if(parseInt(element.tmstmp) === parseInt(req.body.tmstmp)) {
-          element.read=1;
-          update({"msgstore.tmstmp" : req.body.tmstmp}, {"$set" : {"msgstore.$.read" : 1}})
-          return false
-        }
-        else {
-          return true
-        }
-      });
-      res.send('ok');
-    }
-  });
+  user_messages.update({"msgstore.tmstmp" : req.body.tmstmp}, {"$set" : {"msgstore.$.read" : 1}});
+  res.send('ok');
 });
 
 app.post('/msg',function (req,res){
