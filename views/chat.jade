@@ -411,6 +411,8 @@ head
        $('#time').text(time);
        $('#textbody').text(msgstore[uid])
        $('#show_msg').modal('show');
+       var onclick = "sendmsg('"+uid+"')";
+       $('#submitmsg').attr('onclick',onclick);
        eval("if($('#indicator"+tmstmp+"').is(':visible')){console.log('yo');mark_msg_read(tmstmp);}");
       }
       function mark_msg_read (tmstmp) {
@@ -422,8 +424,7 @@ head
                 eval("$('#indicator"+tmstmp+"').remove()");
                });
               }
-      $('#submitmsg').click(function(){sendmsg()});
-      function sendmsg() {
+      function sendmsg(rcvr) {
       console.log('msg sendin'); 
       //var rcvr = #{rcvrid}; 
       var sndr = '#{user}';
@@ -453,6 +454,6 @@ head
       sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      sndrequest.send('rcvr=#{user}&txtbody='+txtbody);
+      sndrequest.send('rcvr='+rcvr+'&txtbody='+txtbody);
       }
       
