@@ -154,6 +154,7 @@ head
             .inputwrap
               input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
               input(type="password" class=" change_phc simplebox" id="p" name='p' placeholder="Password") 
+            .inputwrap
               #pwderr
             button.btn.btn-lg.btn-primary.form-control.login(type='button' style='min-height:40px;background-color:rgba(255, 255, 255, 0.5);border:none;') Log in
             a(href='/' class='signuplink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Sign up
@@ -198,14 +199,17 @@ head
       switch (parsed.mtext){
       case('db'):
       $('#pwderr').append("<p>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</p>");
+      $('#pwderr').slideToggle();
       allowauth = 1;
       break;
       case('wrong pas'):
       $('#pwderr').append("<p>Wrong password</p>");
+      $('#pwderr').slideToggle();
       allowauth = 1;
       break;
       case('wronguser'):
       $('#pwderr').append("<p>Wrong email</p>");
+      $('#pwderr').slideToggle();
       allowauth =1;
       break;
       }}
