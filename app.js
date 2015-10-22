@@ -375,10 +375,27 @@ app.get('/messages',function (req,res){
 });
 
 app.post('/stlstmsg',function (req,res){
-  users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
-  req.session.lst_msg = req.body.tmstmp;
-  res.send('ok');
-  user_messages.find
+  //users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
+  //req.session.lst_msg = req.body.tmstmp;
+  //res.send('ok');
+  user_messages.findOne({user:req.session._id},function (err,done){
+    if(err){
+
+    }
+    else {
+      done.msgstore.every(function(element,index){
+        if(parseInt(element.tmstmp) === parseInt(req.body.tmstmp)) {
+          element.read=1;
+          update({"msgstore.tmstmp" : req.body.tmstmp}, {"$set" : {"msgstore.$.read" : 1}})
+          return false
+        }
+        else {
+          return true
+        }
+      });
+      res.send('ok');
+    }
+  });
 });
 
 app.post('/msg',function (req,res){
@@ -389,6 +406,7 @@ app.post('/msg',function (req,res){
   msg.textbody = req.body.txtbody.replace("\n","<br />");
   console.log(msg.textbody);
   msg.tmstmp = Date.now();
+  msg.read = 0;
   msg.userpic = 0;
   msg.nick = req.session.nick;
   if(req.session.userpic)
