@@ -79,10 +79,18 @@ head
       border:none;
       border-bottom:1px solid #ddd;
     }
+    .form-control-feedback {
+      top:4px;
+      right:4px;
+    }
     @media (max-width: 992px) {
         .inputwrap input{
-      font-size: 20px;
-      line-height: 2;
+      font-size: 20px !important;
+      line-height: 2 !important;
+    }
+    .form-control-feedback {
+      top:6px;
+      right:6px;
     }
     }
     @media (max-width: 767px) {
@@ -187,10 +195,6 @@ head
     }
     .has-success .form-control-feedback {
     color: #61C782;
-    }
-    .form-control-feedback {
-      top:4px;
-      right:4px;
     }
     .btn:focus,.btn:active {
        outline: none !important;
