@@ -378,7 +378,7 @@ app.post('/stlstmsg',function (req,res){
   //users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
   //req.session.lst_msg = req.body.tmstmp;
   //res.send('ok');
-  user_messages.update({"msgstore.tmstmp" : req.body.tmstmp}, {$set : {"msgstore.$.read" : 1}});
+  user_messages.update({"msgstore.tmstmp" : parseInt(eq.body.tmstmp)}, {$set : {"msgstore.$.read" : 1}});
   res.send('ok');
 });
 
