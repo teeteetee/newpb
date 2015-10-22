@@ -391,7 +391,7 @@ head
         textbody=textbody.replace('<br />',' ');
         var insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'>"+element.nick+"</h4>"+textbody+"</div></div></div></div>";
         //if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
-          if(element.read ===0)
+          if(element.read ===0){
           
         insert = "<div class='row discussion' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><span id='indicator"+element.tmstmp+"' style='color:#37AFD6;font-size: 40px;position: absolute;left: 15px;top:16px;'>&#8226;</span><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h4 id='head"+element.tmstmp+"' style='color:#333;' class='media-heading'>"+element.nick+"</h4>"+textbody+"</div></div></div></div>";
         }
