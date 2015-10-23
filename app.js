@@ -49,7 +49,7 @@ app.use(sessions({
 
 
 app.get('/',function(req,res) {
-   if (req.session.mail)
+   if (req.session.mail&&is_email(req.session.mail))
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
           users.findOne({mail:req.session.mail},{fields:{regdate:0,male:0,pub:0,phr:0}},function(err,done){
@@ -152,6 +152,59 @@ app.get('/',function(req,res) {
 //  });
 //});
 
+//DATA VALIDATION
+
+function is_tmstmp(input){
+  var re = /^\d{10}$/;
+  console.log(re.test(input)+' tesing TIMESTAMP');
+  return re.test(input);
+}
+function is_uid(input){
+  var re = /^[a-zA-Z0-9]+{12}$/;
+  console.log(re.test(input)+' tesing UID');
+  return re.test(input);
+}
+function is_single(input){
+  var re = /^\d{1}$/;
+  console.log(re.test(input)+' tesing SINGLE');
+  return re.test(input);
+}
+function is_multiple(input){
+  var re = /^\d+$/;
+  console.log(re.test(input)+' tesing MULTIPLE');
+  return re.test(input);
+}
+function is_author(input){
+  var re = /^[a-zA-Z\-. ’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
+  console.log(re.test(input)+' tesing AUTHOR');
+  return re.test(input);
+}
+function is_title(input){
+  var re = /^[a-zA-Z0-9\-_ ?!¡#&:¿’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
+  console.log(re.test(input)+' tesing TITLE');
+  return re.test(input);
+}
+function is_nick(input){
+  var re = /^[a-zA-Z0-9\-_ ’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
+  console.log(re.test(input)+' tesing NICK');
+  return re.test(input);
+}
+function rm_st_sc(input){
+  return input.replace(/<script>|<\/script>|<style>|<\/style>|style=/g,' ');
+}
+function is_link(input){
+  var re = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
+  return re.test(input);
+}
+function is_email(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+    } 
+
+// will be used on writes mostly
+
+//END OF DATA VALIDATION
+
 app.post('/getbook/:id',function (req,res){
   //TO DO auth
   books.findOne({_id:req.params.id},function(err,doc){
@@ -241,7 +294,7 @@ app.post('/newuser',function(req,res){
     ms.mtext='email incorrect';
     var vmail = req.body.mail; 
     var vnick = req.body.nick;
-    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30) {
+    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30 || !is_nick(req.body.nick) || !is_single(req.body.gn) ) {
       ms.mtext('fail');
       res.send(ms);
       return;
@@ -250,12 +303,9 @@ app.post('/newuser',function(req,res){
     var ms = {};
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
-    function validateEmail(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-    } 
+    //checkmail function was here before being moved out of scope
 
-    if (validateEmail(vmail) === true) {
+    if (is_email(vmail) === true) {
     users.find({mail:vmail,nick:vnick},{fields:{mail:1}},function(err,doc){
       if (err)
       {
@@ -408,7 +458,7 @@ app.post('/settings',function (req,res){
   ms.trouble=1;
   var vpub = parseInt(req.body.pub);// public
   //var vmrq = parseInt(req.body.mrq);// messaging request
-  if(req.session.mail){
+  if(req.session.mail || !is_single(req.body.pub)){
     //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
     users.update({mail:req.session.mail},{$set:{pub:vpub}});
     ms.trouble=0;
@@ -478,7 +528,7 @@ app.get('/settings',function (req,res){
 });
 
 app.post('/markread/:bid',function (req,res){
-  if(req.session._id){
+  if(req.session._id || is_uid(req.params.bid)){
     var ms={};
     ms.trouble=0;
     users.findOne({_id:req.session._id},function(err,doc){
@@ -516,7 +566,7 @@ app.post('/markread/:bid',function (req,res){
 });
 
 app.post('/markseen/:mid',function (req,res){
-  if(req.session._id){
+  if(req.session._id || is_uid(req.params.mid)){
     var ms={};
     ms.trouble=0;
     users.findOne({_id:req.session._id},function(err,doc){
@@ -554,7 +604,7 @@ app.post('/markseen/:mid',function (req,res){
 });
 
 app.post('/markarticleread/:aid',function (req,res){
-  if(req.session._id){
+  if(req.session._id || is_uid(req.params.aid)){
     var ms={};
     ms.trouble=0;
     users.findOne({_id:req.session._id},function(err,doc){
@@ -1257,7 +1307,7 @@ app.get('/delfollow',function (req,res){
 });
 
 app.post('/follow/:id',function (req,res){
-  if(req.session._id){
+  if(req.session._id || is_uid(req.params.id)){
     var tmp_id = req.params.id;
     console.log(typeof tmp_id);
     var tmstmp = Date.now();
@@ -1297,6 +1347,7 @@ app.post('/getfollow',function (req,res){
 });
 
 app.post('/unfollow/:id',function (req,res){
+  //TODO query mechanics used in making messages read might fly here 
   if(req.session._id){
     var tmp_id = req.params.id;
     var tmp_unset={}
@@ -1449,7 +1500,7 @@ app.post('/userp/crop',function (req,res){
   // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
   // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
-  if(req.session.mail&&req.session._id&&req.body.x1&&req.body.x2&&req.body.y1&&req.body.y2&&req.body.img)
+  if(req.session&&req.session.mail&&is_email(req.session.mail)&&req.session._id&&is_uid(req.session._id)&&req.body.x1&&is_multiple(req.body.x1)&&req.body.x2&&is_multiple(req.body.x2)&&req.body.y1&&is_multiple(req.body.y1)&&req.body.y2&&is_multiple(req.body.y2)&&req.body.img)
     {var imgname = req.body.img.substring(10);
      var fullimgname = __dirname +"/public/userpics/"+ imgname;
      // TO DO check if info is present
@@ -1881,7 +1932,7 @@ app.post('/admin/insidemsg',function(req,res){
 
 
 app.post('/additem/:id',function (req,res){
-  //TODO req session check with every post
+  if(req.session && req.session._id ){
   var cond = req.params.id; 
   switch(cond){
     case('book_out'):
@@ -1943,6 +1994,7 @@ app.post('/additem/:id',function (req,res){
     res.send(ms);
     break;
     case('article'):
+    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link)){
     var newarticle = parseInt(req.body.newarticle);
     if(newarticle)
     {
@@ -1954,8 +2006,16 @@ app.post('/additem/:id',function (req,res){
     var ms ={};
     ms.trouble=0;
     res.send(ms);
+    }
+    else {
+      var ms ={};
+    console.log('data check fail while adding an article');
+    ms.trouble=1;
+    res.send(ms);
+    }
     break;
     case('book'):
+      if(req.body.authornum&&is_single(req.body.authornum)&&req.body.title&& is_title(req.body.title) && req.body.newbook&& is_single(req.body.newbook)) {
       var authors_arr = [];
       for(var i=0;i<=parseInt(req.body.authornum);i++){
         eval("authors_arr.push(req.body.author"+i+"_name);");
@@ -2098,9 +2158,15 @@ app.post('/additem/:id',function (req,res){
         res.send(ms);
         }
        }
-      
+      }
+      else {
+        var ms ={};
+        ms.trouble=1;
+        res.send(ms);
+      }
     break;
     case('movie'):
+    if(req.body.title&&is_title(req.body.title))&&req.body.year&&is_multiple(req.body.year)&&req.body.newmovie&&is_single(req.body.newmovie)){
     var movie_insert={};
     var ms={};
     movies.findOne({title:req.body.title},function(err,movie){
@@ -2173,13 +2239,24 @@ app.post('/additem/:id',function (req,res){
               }
            }
          })
+   }
+   else {
+    var ms={};
+    ms.trouble=1;
+    res.send(ms);
+   }
     break;
   }
+}
+else {
+  res.render('404');
+}
 });
 
 app.post('/nickcheck',function (req,res){
   var query = req.body.txt;
   var msg = {};
+  if(is_nick(req.body.txt)){
   users.find({nick: query},function(err,docs){
       if(err){
         console.log('err');
@@ -2197,6 +2274,11 @@ app.post('/nickcheck',function (req,res){
         }
       }
      });
+   }
+   else {
+    msg.present =1;
+    res.send(msg);
+   }
 });
 
 app.post('/livesearch/:id',function (req,res){
@@ -2206,19 +2288,24 @@ app.post('/livesearch/:id',function (req,res){
   switch(cond){
     case('btitle'):
      //query = '.*\\'+query+'.*';
-     books.find({title: { $regex: query, $options: 'i'}},function(err,docs){
-      if(err){
-        console.log('err');
-      }
-      else {
-        console.log(docs);
-        if(docs.length!=0)
-        {res.send(docs);}
-        else {
-          res.send(0);
-        }
-      }
-     });
+     if(is_title(query))
+     {books.find({title: { $regex: query, $options: 'i'}},function(err,docs){
+           if(err){
+             console.log('err');
+           }
+           else {
+             console.log(docs);
+             if(docs.length!=0)
+             {res.send(docs);}
+             else {
+               res.send(0);
+             }
+           }
+          });
+    }
+    else {
+      res.send(0);
+    }
     break;
     case('author'):
      authors.find({author: { $regex: query, $options: 'i'}},function(err,docs){
@@ -2232,6 +2319,7 @@ app.post('/livesearch/:id',function (req,res){
      });
     break;
     case('mtitle'):
+     if(is_title(query)){
      movies.find({title: { $regex: query, $options: 'i'}},function(err,docs){
       if(err){
         console.log('err');
@@ -2245,6 +2333,10 @@ app.post('/livesearch/:id',function (req,res){
         }
       }
      });
+    }
+    else {
+      res.send(0);
+    }
     break;
     case('director'):
      directors.find({director: { $regex: query, $options: 'i'}},function(err,docs){
