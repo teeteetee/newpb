@@ -155,12 +155,12 @@ app.get('/',function(req,res) {
 //DATA VALIDATION
 
 function is_tmstmp(input){
-  var re = /^\d{10}$/;
+  var re = /^\d{10}+$/;
   console.log(re.test(input)+' tesing TIMESTAMP');
   return re.test(input);
 }
 function is_uid(input){
-  var re = /^[a-zA-Z0-9]+{12}$/;
+  var re = /^[a-zA-Z0-9]{12}+$/;
   console.log(re.test(input)+' tesing UID');
   return re.test(input);
 }
