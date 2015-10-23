@@ -2166,7 +2166,7 @@ app.post('/additem/:id',function (req,res){
       }
     break;
     case('movie'):
-    if(req.body.title&&is_title(req.body.title))&&req.body.year&&is_multiple(req.body.year)&&req.body.newmovie&&is_single(req.body.newmovie)){
+    if(req.body.title&&is_title(req.body.title)&&req.body.year&&is_multiple(req.body.year)&&req.body.newmovie&&is_single(req.body.newmovie)){
     var movie_insert={};
     var ms={};
     movies.findOne({title:req.body.title},function(err,movie){
@@ -2360,6 +2360,9 @@ app.post('/livesearch/:id',function (req,res){
         res.send(docs);
       }
      });
+    break;
+    default:
+    res.send(0);
     break;
   }
 });
