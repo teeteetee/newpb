@@ -48,6 +48,11 @@ app.use(sessions({
 
 
 
+app.get('/testdata',function (req,res){
+  var data = {'btitle':'blah-blah'};
+  res.send(data);
+});
+
 app.get('/',function(req,res) {
    if (req.session.mail&&is_email(req.session.mail))
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
