@@ -42,10 +42,38 @@ app.use(sessions({
   cookie: {
     path:'/',
   httpOnly: true,
-  domain:'vntrlst.com'
+  domain:'peopleandbooks.com'
   }
 }));
 
+
+app.get('*', function(req,res,next) {   var d = new Date();
+  if(req.headers.host === 'api.peopleandbooks.com' )  //if it's a sub-domain
+   {console.log(d+' got an api request from '+req.ip);
+    req.url = '/api' + req.url; 
+    console.log(req.url); //append some text yourself
+  next();}
+  else{
+   //console.log('-------------- REQUEST --------------')
+   //console.log('User-Agent: ' + req.headers['user-agent']);
+   //console.log('URL: '+req.url);
+   //console.log(req.ip);
+    next();}
+   });
+
+app.get('/api/books/:nick',function (req,res){
+  users.findOne({nick:req.params.nick},{fields:{bookstore:1}},function (err,doc){
+    if(err){
+      var ms={};
+      ms.trouble=1;
+      res.send(ms);
+    }
+    else {
+      console.log('sending books to '+req.params.nick);
+      res.send(doc.bookstore);
+    }
+  });
+});
 
 
 app.get('/testdata',function (req,res){
@@ -156,6 +184,8 @@ app.get('/',function(req,res) {
 //    }
 //  });
 //});
+
+
 
 //DATA VALIDATION
 
@@ -290,7 +320,7 @@ app.get('/signin', function (req,res){
 
 app.get('/logout',function (req,res){
   req.session.reset();
-  res.redirect('http://vntrlst.com/');
+  res.redirect('http://peopleandbooks.com/');
 });
 
 app.post('/newuser',function(req,res){
@@ -1786,7 +1816,7 @@ app.post('/admax',function(req,res){
   var vlog = req.body.vlog;
   if(pas === vpas && log === vlog) {
     req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
-    res.redirect('http://vntrlst.com/admax');
+    res.redirect('http://peopleandbooks.com/admax');
   }
   else {
     res.render('adminauth');
@@ -1825,20 +1855,20 @@ app.post('/drop/users',function(req,res){
      {users.remove({});
      console.log('USERS DB DROPPED FROM '+ req.ip);
      req.session.reset();
-     res.redirect('http://vntrlst.com/admax');}
+     res.redirect('http://peopleandbooks.com/admax');}
     else {
-      res.redirect('http://vntrlst.com');
+      res.redirect('http://peopleandbooks.com');
     }
   }
   else {
-    res.redirect('http://vntrlst.com');
+    res.redirect('http://peopleandbooks.com');
   }
 });
 
 app.post('/admin/1/:uid',function(req,res){
   var pas = req.body.uu;
   if (pas != 'withoutthesecurity') {
-    res.redirect('http://vntrlst.com');
+    res.redirect('http://peopleandbooks.com');
   }
   else 
   {var vuid = parseInt(req.params.uid);
@@ -1868,7 +1898,7 @@ app.post('/admin/insidemsg/remove',function(req,res){
   var vmid = parseInt(req.body.mid);
   var pas = req.body.pas;
   if (pas != 'withoutthesecurity' || !vmid) {
-    res.redirect('http://vntrlst.com');
+    res.redirect('http://peopleandbooks.com');
   }
   else 
   { var ms={};
