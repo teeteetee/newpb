@@ -49,7 +49,7 @@ app.use(sessions({
 
 
 app.get('/testdata',function (req,res){
-  var data = {'btitle':'blah-blah'};
+  var data = [{'btitle':'Moscow'},{'btitle':'Berlin'},{'btitle':'Los Angeles'},{'btitle':'Rio'},{'btitle':'Beijin'}];
   res.send(data);
 });
 
