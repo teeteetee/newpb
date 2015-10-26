@@ -2064,7 +2064,7 @@ app.post('/additem/:id',function (req,res){
     res.send(ms);
     break;
     case('article'):
-    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link)){
+    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) && is_single(parseInt(req.body.newarticle))){
     var newarticle = parseInt(req.body.newarticle);
     if(newarticle)
     {
