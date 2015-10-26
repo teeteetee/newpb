@@ -82,6 +82,7 @@ app.get('/testdata',function (req,res){
 });
 
 app.get('/',function(req,res) {
+  console.log(is_email(req.session.mail));
    if (req.session.mail&&is_email(req.session.mail))
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
@@ -401,7 +402,7 @@ app.post('/check',function(req,res){
           {
           
           req.session.mail = confirmed.mail;
-          req.session.uid = confirmed.uid;
+          req.session._id = confirmed._id;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
@@ -1875,12 +1876,12 @@ app.post('/admin/1/:uid',function(req,res){
     var ms={};
     ms.trouble=1;
     ms.mtext = 'db';
-    users.remove({uid:vuid},function(err,done){
+    users.remove({_id:vuid},function(err,done){
       if(err){
         res.send(ms);
       }
       else {
-        friends.remove({uid:vuid},function(err,done){
+        friends.remove({_id:vuid},function(err,done){
       if(err){
         res.send(ms);
       }
