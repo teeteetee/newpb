@@ -189,7 +189,7 @@ app.get('/',function(req,res) {
 
 
 //DATA VALIDATION
-
+// half of this shit doesnt work and fucks the thing up, needs to be tested
 function is_tmstmp(input){
   var re = /^\d{10}+$/;
   console.log(re.test(input)+' tesing TIMESTAMP');
@@ -2324,7 +2324,8 @@ app.post('/livesearch/:id',function (req,res){
   switch(cond){
     case('btitle'):
      //query = '.*\\'+query+'.*';
-     if(is_title(query))
+     //if(is_title(query))
+     if(0<1)
      {books.find({title: { $regex: query, $options: 'i'}},function(err,docs){
            if(err){
              console.log('err');
