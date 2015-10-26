@@ -973,27 +973,27 @@ head
             switch(true){
               case(element.goodbook&&!element.newbook):
               console.log('1st case');
-              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'>"+msg.title.capitalizeFirstLetter()+"<span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'>"+element.title.capitalizeFirstLetter()+"<span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
-              thisbook.title = msg.title.capitalizeFirstLetter();
+              thisbook.title = element.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
               break
               case(element.newbook&&!element.goodbook):
               console.log('2st case');
-              insert = "<div class='row book new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
-              thisbook.title = msg.title.capitalizeFirstLetter();
+              thisbook.title = element.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
               console.log(modal_data_store);
               break
               case(!element.newbook&&!element.goodbook):
               console.log('3st case');
-              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
               thisbook.author = authors_insert;
-              thisbook.title = msg.title.capitalizeFirstLetter();
+              thisbook.title = element.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
               break
             }         
@@ -1012,27 +1012,27 @@ head
             switch(true){
               case(element.goodmovie&&!element.newmovie):
               console.log('1st case');
-              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
               var thismovie={};
-              thismovie.year = msg.year;
-              thismovie.title = msg.title.capitalizeFirstLetter();
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               break
               case(element.newmovie&&!element.goodmovie):
               console.log('2st case');
-              insert = "<div class='row book new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
               var thismovie={};
-              thismovie.year = msg.year;
-              thismovie.title = msg.title.capitalizeFirstLetter();
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               console.log(modal_data_store);
               break
               case(!element.newmovie&&!element.goodmovie):
               console.log('3st case');
-              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
               var thismovie={};
-              thismovie.year = msg.year;
-              thismovie.title = msg.title.capitalizeFirstLetter();
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               break
             }         
