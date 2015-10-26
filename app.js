@@ -2052,7 +2052,7 @@ app.post('/additem/:id',function (req,res){
     break;
     case('book'):
       //if(req.body.authornum&&is_single(req.body.authornum)&&req.body.title&& is_title(req.body.title) && req.body.newbook&& is_single(req.body.newbook)) {
-      if(req.body.authornum&&req.body.title&&req.body.newbook)
+      if(req.body.authornum&&req.body.title&&req.body.newbook){
       var authors_arr = [];
       for(var i=0;i<=parseInt(req.body.authornum);i++){
         eval("authors_arr.push(req.body.author"+i+"_name);");
