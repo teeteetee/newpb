@@ -63,14 +63,20 @@ app.get('*', function(req,res,next) {   var d = new Date();
 
 app.get('/api/books/:nick',function (req,res){
   users.findOne({nick:req.params.nick},{fields:{bookstore:1}},function (err,doc){
+    var ms={};
     if(err){
-      var ms={};
       ms.trouble=1;
       res.send(ms);
     }
-    else {
+    else if(doc){
+      ms.trouble=0;
       console.log('sending books to '+req.params.nick);
-      res.send(doc.bookstore);
+      ms.bookstore = doc.bookstore;
+      res.send(ms);
+    }
+    else {
+      ms.trouble=1;
+      res.send(ms);
     }
   });
 });
