@@ -423,7 +423,7 @@ head
           var vm = $('#mail').val();
           var vp = $('#p').val();
           var vn = $('#nickinput').val();
-          if(e.which ==13 && validateEmail(vm) && vp && $('#nickgroup').hasClass('has-success')) {
+          if(e.which ==13 && validateEmail(vm) && $('#p').val() && $('#nickgroup').hasClass('has-success') && $('#pgroup').hasClass('has-success') && $('#myModal').css('display') === 'none') {
               console.log('keypress first scenario');
               $('#myModal').modal('show');
           }
