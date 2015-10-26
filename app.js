@@ -61,8 +61,8 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
 
-app.get('/api/books/:nick',function (req,res){
-  users.findOne({nick:req.params.nick},{fields:{bookstore:1}},function (err,doc){
+app.get('/api/udata/:nick',function (req,res){
+  users.findOne({nick:req.params.nick},{fields:{bookstore:1,moviestore:1,articlestore:1}},function (err,doc){
     var ms={};
     if(err){
       ms.trouble=1;
@@ -72,6 +72,8 @@ app.get('/api/books/:nick',function (req,res){
       ms.trouble=0;
       console.log('sending books to '+req.params.nick);
       ms.bookstore = doc.bookstore;
+      ms.moviestore = doc.moviestore;
+      ms.articlestore = doc.articlestore;
       res.send(ms);
     }
     else {
