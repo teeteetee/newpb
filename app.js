@@ -82,7 +82,7 @@ app.get('/testdata',function (req,res){
 });
 
 app.get('/',function(req,res) {
-  console.log(is_email(req.session.mail));
+  console.log(req.session.mail+' : '+is_email(req.session.mail));
    if (req.session.mail)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
         { console.log(req.session);
