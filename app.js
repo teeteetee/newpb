@@ -336,7 +336,7 @@ app.post('/newuser',function(req,res){
     ms.mtext='email incorrect';
     var vmail = req.body.mail; 
     var vnick = req.body.nick;
-    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30 || !is_nick(req.body.nick) || !is_single(req.body.gn) ) {
+    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30 || !is_nick(req.body.nick) || !is_single(parseInt(req.body.gn)) ) {
       ms.mtext('fail');
       res.send(ms);
       return;
@@ -500,7 +500,7 @@ app.post('/settings',function (req,res){
   ms.trouble=1;
   var vpub = parseInt(req.body.pub);// public
   //var vmrq = parseInt(req.body.mrq);// messaging request
-  if(req.session.mail || !is_single(req.body.pub)){
+  if(req.session.mail || !is_single(parseInt(req.body.pub))){
     //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
     users.update({mail:req.session.mail},{$set:{pub:vpub}});
     ms.trouble=0;
@@ -2057,8 +2057,8 @@ app.post('/additem/:id',function (req,res){
     }
     break;
     case('book'):
-      //if(req.body.authornum&&is_single(req.body.authornum)&&req.body.title&& is_title(req.body.title) && req.body.newbook&& is_single(req.body.newbook)) {
-      if(req.body.authornum&&req.body.title&&req.body.newbook){
+      if(req.body.authornum&&is_single(parseInt(req.body.authornum))&&req.body.title&& is_title(req.body.title) && req.body.newbook&& is_single(parseInt(req.body.newbook))) {
+      //if(req.body.authornum&&req.body.title&&req.body.newbook){
       var authors_arr = [];
       for(var i=0;i<=parseInt(req.body.authornum);i++){
         eval("authors_arr.push(req.body.author"+i+"_name);");

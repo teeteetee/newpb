@@ -415,7 +415,7 @@ head
            if(validateEmail($('#mail').val()) && $('#p').val() && $('#terms_checkbox').is(':checked')  && $('#nickgroup').hasClass('has-success')) {
             runregister();
           }
-          else if(validateEmail($('#mail').val()) && $('#p').val() && $('#nickgroup').hasClass('has-success') && $('#myModal').css('display') === 'none'){
+          else if(validateEmail($('#mail').val()) && $('#p').val() && $('#nickgroup').hasClass('has-success') && $('#pgroup').hasClass('has-success') && $('#myModal').css('display') === 'none'){
             $('#myModal').modal('show');
           }
         });
