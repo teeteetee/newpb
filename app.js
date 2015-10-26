@@ -1988,11 +1988,26 @@ app.post('/additem/:id',function (req,res){
       }
     }
     if(!already)
-    { var crrtm = Date.now();
-      users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,newbook:1,goodbook:0}},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
+    { books.findOne({_id:book_id},function (err,book){
+       if(err)
+       {
+        var ms ={};
+        ms.trouble=1;
+        res.send(ms);
+       }
+       else if(book){
+        var crrtm = Date.now();
+        users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0}},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
         items.update({user:req.session._id},{$push:{bookstore:book_id.toString()}});
-       req.session.bookstore.push({tmstmp:crrtm,_id:book_id,newbook:1,goodbook:0});
-      }
+        req.session.bookstore.push({tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0});
+       }
+       else {
+        var ms ={};
+        ms.trouble=1;
+        res.send(ms);
+       }
+      });
+    }
         var ms ={};
         ms.trouble=0;
         res.send(ms);
@@ -2026,10 +2041,23 @@ app.post('/additem/:id',function (req,res){
     }
     if(!already)
     {
+      movies.findOne({_id:movie_id},function (err,movie){
+       if(err)
+       {
+
+       }
+       else if(movie){
     var crrtm = Date.now();
-    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:crrtm,_id:movie_id,newmovie:1,goodmovie:0}},$set:{last_item:crrtm},$inc:{totalmovies:1,newmovies:1}});
+    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:crrtm,_id:movie_id,title:movie.title,year:movie.year,newmovie:1,goodmovie:0}},$set:{last_item:crrtm},$inc:{totalmovies:1,newmovies:1}});
     items.update({user:req.session._id},{$push:{moviestore:movie_id.toString()}});
-    req.session.moviestore.push({tmstmp:crrtm,_id:movie_id,newmovie:1,goodmovie:0});
+    req.session.moviestore.push({tmstmp:crrtm,_id:movie_id,title:movie.title,year:movie.year,newmovie:1,goodmovie:0});
+    }
+       else {
+        var ms ={};
+        ms.trouble=1;
+        res.send(ms);
+       }
+      });
     }
     var ms ={};
     ms.trouble=0;
@@ -2087,6 +2115,8 @@ app.post('/additem/:id',function (req,res){
                    book_insert.tmstmp = Date.now();
                 book_insert._id = book._id;
                 book_insert.goodbook = 0;
+                book_insert.title = book.title;
+                book_insert.authors = book.authors;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
                 users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
@@ -2121,6 +2151,8 @@ app.post('/additem/:id',function (req,res){
                       var book_insert={};
                       book_insert._id = newbook._id;
                       book_insert.goodbook = 0;
+                      book_insert.title = vtitle;
+                      book_insert.authors = authors_arr;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
                       users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
@@ -2230,6 +2262,8 @@ app.post('/additem/:id',function (req,res){
                 movie_insert.tmstmp = Date.now();
                 movie_insert._id = movie._id;
                 movie_insert.goodmovie = 0;
+                movie_insert.title = movie.title;
+                movie_insert.year = movie.year;
                 if(parseInt(req.body.newmovie))
               { movie_insert.newmovie = 1;
                 users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
@@ -2265,6 +2299,8 @@ app.post('/additem/:id',function (req,res){
                      movie_insert.tmstmp = Date.now();
                       movie_insert._id = newmovie._id;
                       movie_insert.goodmovie = 0;
+                      movie_insert.title = req.body.title;
+                      movie_insert.year = req.body.year;
                      if(parseInt(req.body.newmovie))
                      {movie_insert.newmovie = 1;
                       users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
