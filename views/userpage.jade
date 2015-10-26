@@ -968,6 +968,10 @@ head
             else {
               console.log('HASNT GOT LENGTH');
             }
+            var authors_insert=' ';
+            msg.authors.forEach(function(element){
+             authors_insert+='  '+element;
+              });
         books.forEach(function(element,index){
            var insert;
             switch(true){
