@@ -341,7 +341,7 @@ app.post('/newuser',function(req,res){
     //checkmail function was here before being moved out of scope
 
     if (is_email(vmail) === true) {
-    users.find({mail:vmail,nick:vnick},{fields:{mail:1}},function(err,doc){
+    users.find({mail:vmail},{fields:{mail:1}},function(err,doc){
       if (err)
       {
         //DO SMTH
