@@ -1551,7 +1551,6 @@ app.post('/userp/crop',function (req,res){
       var fullimgname = __dirname +"/public/userpics/"+ imgname;
       var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
       var output_path_small = __dirname +"/public/userpics/"+req.session._id+"_small.png";
-      var ms={};
       ms.trouble=0;
       console.log('############# 1 #############');
        path.exists(output_path, function(exists) { 
@@ -1591,6 +1590,7 @@ function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,c
 }
 
 function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
+  var ms={};
   gm(fullimgname).size(function (err, size) {
     console.log('############# 4 #############');
                  if (err)
