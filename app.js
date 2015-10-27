@@ -1603,8 +1603,7 @@ function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_
                  }
                  else {
                   console.log('############# 5 #############');
-                   //.autoOrient()
-                   gm(fullimgname).crop(x2, y2, x1, y1).resizeExact(300, 300).write(output_path, function (err) {
+                   gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).write(output_path, function (err) {
                      if (err)
                       { console.log(err);
                         var ms={};
