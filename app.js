@@ -1575,13 +1575,13 @@ app.post('/userp/crop',function (req,res){
 
 function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,callback) {
   console.log('############# 4 #############');
-  fs.unlink(output_path, function(){
+  fs.unlink(output_path, function(err){
     if(err) throw err;
     console.log('############# 5 #############');
-        fs.unlink(fullimgname, function(){
+        fs.unlink(fullimgname, function(err){
           if(err) throw err;
           console.log('############# 6 #############');
-                fs.unlink(output_path_small, function(){
+                fs.unlink(output_path_small, function(err){
                   if(err) throw err;
                   console.log('############# 7 #############');
                   callback(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
