@@ -215,7 +215,7 @@ function is_single(input){
   return re.test(input);
 }
 function is_multiple(input){
-  var re = /^\d$/;
+  var re = /^\d+$/;
   console.log(re.test(input)+' tesing MULTIPLE');
   return re.test(input);
 }
@@ -1567,6 +1567,7 @@ app.post('/userp/crop',function (req,res){
        });//PATH EXISTS USERPIC
     }
   else {
+    //TODO REMOVE UPLOADED PIC
     console.log('CROP FAIL, REDIRECT');
     res.redirect('/');
   }
