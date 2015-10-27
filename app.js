@@ -1544,10 +1544,8 @@ app.post('/usrp',function (req,res) {
 
 app.post('/userp/crop',function (req,res){
   console.log('INTO CROP');
-  // Although duplicate check was implemented, if the new image has another extension it will fail, nothing major as soon as we will accept only two formats
-  // resize is done with this ttps://github.com/EyalAr/lwip#resize, shit quality, needs to be tweaked or replaced
   console.log(req.body);
-  if(req.session&&req.session.mail&&is_email(req.session.mail)&&req.session._id&&is_uid(req.session._id)&&req.body.x1&&is_multiple(req.body.x1)&&req.body.x2&&is_multiple(req.body.x2)&&req.body.y1&&is_multiple(req.body.y1)&&req.body.y2&&is_multiple(req.body.y2)&&req.body.img)
+  if(req.session && req.session.mail && is_email(req.session.mail) && req.session._id && is_uid(req.session._id) && req.body.x1 && is_multiple(req.body.x1) && req.body.x2 && is_multiple(req.body.x2) && req.body.y1 && is_multiple(req.body.y1) && req.body.y2 && is_multiple(req.body.y2) && req.body.img)
     { var imgname = req.body.img.substring(10);
       var fullimgname = __dirname +"/public/userpics/"+ imgname;
       var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
