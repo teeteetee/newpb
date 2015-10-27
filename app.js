@@ -1573,7 +1573,7 @@ app.post('/userp/crop',function (req,res){
   }
   });
 
-function rm_images(mail,x1,y1,x2,y2,output_path,fullimgname,putput_path_small,callback) {
+function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,putput_path_small,callback) {
   console.log('############# 4 #############');
   fs.unlink(output_path, function(){
     if(err) throw err;
@@ -1584,13 +1584,13 @@ function rm_images(mail,x1,y1,x2,y2,output_path,fullimgname,putput_path_small,ca
                 fs.unlink(output_path_small, function(){
                   if(err) throw err;
                   console.log('############# 7 #############');
-                  callback(x1,y1,x2,y2,fullimgname,output_path,output_path_small);
+                  callback(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
                 });
               });
            });
 }
 
-function make_userpic(mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
+function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
   gm(fullimgname).size(function (err, size) {
     console.log('############# 4 #############');
                  if (err)
@@ -1621,7 +1621,7 @@ function make_userpic(mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small
                           }
                         else {
                           console.log('MK_USERPIC DONE;');
-                          users.update({mail:req.session.mail},{$set:{userpic:1,picext:vpicext}});
+                          users.update({mail:_mail},{$set:{userpic:1,picext:vpicext}});
                           ms.trouble=0;
                           res.send(ms);
                         }
