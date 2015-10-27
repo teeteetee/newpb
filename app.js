@@ -1558,11 +1558,11 @@ app.post('/userp/crop',function (req,res){
         console.log('############# 2 #############');
           if (exists) {
             console.log('############# 3 #############');
-            rm_images(parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,putput_path_small,make_userpic);
+            rm_images(req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,putput_path_small,make_userpic);
             }
             else{
               console.log('############# 3 #############');
-               make_userpic(parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
+               make_userpic(req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
             }
        });//PATH EXISTS USERPIC
     }
@@ -1573,7 +1573,7 @@ app.post('/userp/crop',function (req,res){
   }
   });
 
-function rm_images(x1,y1,x2,y2,output_path,fullimgname,putput_path_small,callback) {
+function rm_images(mail,x1,y1,x2,y2,output_path,fullimgname,putput_path_small,callback) {
   console.log('############# 4 #############');
   fs.unlink(output_path, function(){
     if(err) throw err;
@@ -1590,7 +1590,7 @@ function rm_images(x1,y1,x2,y2,output_path,fullimgname,putput_path_small,callbac
            });
 }
 
-function make_userpic(x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
+function make_userpic(mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
   gm(fullimgname).size(function (err, size) {
     console.log('############# 4 #############');
                  if (err)
