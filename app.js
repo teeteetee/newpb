@@ -205,12 +205,12 @@ function is_tmstmp(input){
   return re.test(input);
 }
 function is_uid(input){
-  var re = /^[a-zA-Z0-9]{12}+$/;
+  var re = /^[a-zA-Z0-9]{24}+$/;
   console.log(re.test(input)+' tesing UID');
   return re.test(input);
 }
 function is_single(input){
-  var re = /^\d{1}$/;
+  var re = /^\d{1}+$/;
   console.log(re.test(input)+' tesing SINGLE');
   return re.test(input);
 }
