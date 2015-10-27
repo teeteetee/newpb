@@ -4,15 +4,14 @@ var x1, y1, x2, y2, crop = 'userpics/';
 var jcrop_api;
 
 jQuery(function($){             
-
+    //maxSize: [ 700, 700 ]
 	$('#target').Jcrop({
 	    boxWidth: 450,
 	     boxHeight: 400,	
 		onChange:   showCoords,
 		onSelect:   showCoords,
 		 aspectRatio: 1 ,
-		 minSize: [ 300, 300 ],
-	     maxSize: [ 700, 700 ]
+		 minSize: [ 300, 300 ]
 	},function(){		
 		jcrop_api = this;		
 	});
@@ -81,7 +80,7 @@ jQuery(function($){
            //var redurl = '/userpics/'+data.rdurl;
            //var insert = "<img class='img-circle' src='"+redurl+"'></img>";
            //$('#cropresult').append(insert);
-           window.location='http://vntrlst.com/';
+           window.location='http://peopleandbooks.com/';
            });
            
     });   
