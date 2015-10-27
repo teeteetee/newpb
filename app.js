@@ -1555,7 +1555,7 @@ app.post('/userp/crop',function (req,res){
        path.exists(output_path, function(exists) { 
         console.log('############# 2 #############');
           if (exists) {
-            console.log('############# 3 #############');
+            console.log('############# 3 EXISTS #############');
             rm_images(res,req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,output_path_small,make_userpic);
             }
             else{
@@ -1576,16 +1576,16 @@ function rm_images(res,_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_sma
   fs.unlink(output_path, function(err){
     if(err) throw err;
     console.log('############# 5 #############');
-        fs.unlink(fullimgname, function(err){
-          if(err) throw err;
-          console.log('############# 6 #############');
+        //fs.unlink(fullimgname, function(err){
+        //  if(err) throw err;
+        //  console.log('############# 6 #############');
                 fs.unlink(output_path_small, function(err){
                   if(err) throw err;
-                  console.log('############# 7 #############');
+                  console.log('############# 6 #############');
                   callback(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
                 });
               });
-           });
+           //});
 }
 
 function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
@@ -1620,11 +1620,15 @@ function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_
                              res.send(ms);
                           }
                         else {
-                          console.log('MK_USERPIC DONE;');
-                          users.update({mail:_mail},{$set:{userpic:1}});
-                          var ms={};
-                          ms.trouble=0;
-                          res.send(ms);
+                          fs.unlink(fullimgname, function(err){
+                            if(err) throw err;
+                            console.log('############# 6 #############');
+                            console.log('MK_USERPIC DONE;');
+                            users.update({mail:_mail},{$set:{userpic:1}});
+                            var ms={};
+                            ms.trouble=0;
+                            res.send(ms);
+                          });
                         }
                        });//CREATE _small 
                     }
