@@ -1553,7 +1553,7 @@ app.post('/userp/crop',function (req,res){
       var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
       var output_path_small = __dirname +"/public/userpics/"+req.session._id+"_small.png";
       var ms={};
-      var ms.trouble=0;
+      ms.trouble=0;
        path.exists(output_path, function(exists) { 
           if (exists) {
             rm_images(parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,putput_path_small,make_userpic);
