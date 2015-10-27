@@ -1590,7 +1590,6 @@ function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,c
 }
 
 function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
-  var ms={};
   gm(fullimgname).size(function (err, size) {
     console.log('############# 4 #############');
                  if (err)
@@ -1599,6 +1598,7 @@ function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_smal
                    }
                  else if(size.width<300 || size.height<300) {
                   console.log('USERPIC ERR: TO SMALL');
+                  var ms={};
                   ms.trouble = 1;
                   res.send(ms);
                  }
@@ -1608,6 +1608,7 @@ function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_smal
                    gm(fullimgname).crop(x1, y1, x2, y2).resizeExact(300, 300).write(output_path, function (err) {
                      if (err)
                       { console.log(err);
+                        var ms={};
                         ms.trouble = 1;
                         res.send(ms);
                       }
@@ -1616,12 +1617,14 @@ function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_smal
                        gm(output_path).resizeExact(69, 69).write(output_path_small, function (err) {
                          if (err)
                           { console.log(err);
+                            var ms={};
                             ms.trouble = 1;
                              res.send(ms);
                           }
                         else {
                           console.log('MK_USERPIC DONE;');
                           users.update({mail:_mail},{$set:{userpic:1,picext:vpicext}});
+                          var ms={};
                           ms.trouble=0;
                           res.send(ms);
                         }
