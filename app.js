@@ -1605,7 +1605,7 @@ function make_userpic(x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
                  else {
                   console.log('############# 5 #############');
                    //.autoOrient()
-                   gm(fullimgname).crop(parseInt(req.body.x1), parseInt(req.body.y1), parseInt(req.body.x2), parseInt(req.body.y2)).resizeExact(300, 300).write(output_path, function (err) {
+                   gm(fullimgname).crop(x1, y1, x2, y2).resizeExact(300, 300).write(output_path, function (err) {
                      if (err)
                       { console.log(err);
                         ms.trouble = 1;
