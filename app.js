@@ -1556,11 +1556,11 @@ app.post('/userp/crop',function (req,res){
         console.log('############# 2 #############');
           if (exists) {
             console.log('############# 3 #############');
-            rm_images(req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,output_path_small,make_userpic);
+            rm_images(res,req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,output_path_small,make_userpic);
             }
             else{
               console.log('############# 3 #############');
-               make_userpic(req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
+               make_userpic(res,req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
             }
        });//PATH EXISTS USERPIC
     }
