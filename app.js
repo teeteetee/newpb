@@ -1551,7 +1551,6 @@ app.post('/userp/crop',function (req,res){
       var fullimgname = __dirname +"/public/userpics/"+ imgname;
       var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
       var output_path_small = __dirname +"/public/userpics/"+req.session._id+"_small.png";
-      ms.trouble=0;
       console.log('############# 1 #############');
        path.exists(output_path, function(exists) { 
         console.log('############# 2 #############');
