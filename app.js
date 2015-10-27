@@ -1571,7 +1571,7 @@ app.post('/userp/crop',function (req,res){
   }
   });
 
-function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,callback) {
+function rm_images(res,_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,callback) {
   console.log('############# 4 #############');
   fs.unlink(output_path, function(err){
     if(err) throw err;
@@ -1582,13 +1582,13 @@ function rm_images(_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,c
                 fs.unlink(output_path_small, function(err){
                   if(err) throw err;
                   console.log('############# 7 #############');
-                  callback(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
+                  callback(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
                 });
               });
            });
 }
 
-function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
+function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
   gm(fullimgname).size(function (err, size) {
     console.log('############# 4 #############');
                  if (err)
@@ -1604,7 +1604,7 @@ function make_userpic(_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_smal
                  else {
                   console.log('############# 5 #############');
                    //.autoOrient()
-                   gm(fullimgname).crop(x1, y1, x2, y2).resizeExact(300, 300).write(output_path, function (err) {
+                   gm(fullimgname).crop(x2, y2, x1, y1).resizeExact(300, 300).write(output_path, function (err) {
                      if (err)
                       { console.log(err);
                         var ms={};
