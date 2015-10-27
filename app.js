@@ -216,7 +216,7 @@ function is_single(input){
 }
 function is_multiple(input){
   var re = /^\d+$/;
-  console.log(re.test(input)+' tesing MULTIPLE');
+  console.log(input+' = '+re.test(input)+' tesing MULTIPLE');
   return re.test(input);
 }
 function is_author(input){
