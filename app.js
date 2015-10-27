@@ -200,22 +200,22 @@ app.get('/',function(req,res) {
 //DATA VALIDATION
 // half of this shit doesnt work and fucks the thing up, needs to be tested
 function is_tmstmp(input){
-  var re = /^\d{10}+$/;
+  var re = /^\d{10}$/;
   console.log(re.test(input)+' tesing TIMESTAMP');
   return re.test(input);
 }
 function is_uid(input){
-  var re = /^[a-zA-Z0-9]{24}+$/;
+  var re = /^[a-zA-Z0-9]{24}$/;
   console.log(re.test(input)+' tesing UID');
   return re.test(input);
 }
 function is_single(input){
-  var re = /^\d{1}+$/;
+  var re = /^\d{1}$/;
   console.log(re.test(input)+' tesing SINGLE');
   return re.test(input);
 }
 function is_multiple(input){
-  var re = /^\d+$/;
+  var re = /^\d$/;
   console.log(re.test(input)+' tesing MULTIPLE');
   return re.test(input);
 }
@@ -230,6 +230,7 @@ function is_title(input){
   return re.test(input);
 }
 function is_nick(input){
+  //TODO length limit
   var re = /^[a-zA-Z0-9\u0400-\u04FF\-_ ’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
   console.log(re.test(input)+' tesing NICK');
   return re.test(input);
