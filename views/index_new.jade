@@ -364,10 +364,16 @@ head
       var lastentry;
       $('#nickinput').keyup(function(event) {
                       if(!$('#nickinput').val()){
-                        $('#nick_error').css('display','none');
+                        $('#nick_error').css('display','block');
+                        $('#nickgroup').removeClass('has-success').addClass('has-error');
                         $('#nick_success').css('display','none');
                       }
-                      if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
+                      else if($('#nickinput').val().length <5) {
+                        $('#nick_error').css('display','block');
+                        $('#nickgroup').removeClass('has-success').addClass('has-error');
+                        $('#nick_success').css('display','none');
+                      }
+                      else($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
                         str = $('#nickinput').val().replace(/\s+/g, '');
                         $.ajax({
                           method: "POST",
