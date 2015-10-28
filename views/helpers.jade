@@ -43,45 +43,48 @@ head
           h1 Helpers
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/seeuser"' id='showusers' type='button') Show users
+          button(class='btn btn-lg btn-default' onclick='window.location="/cs"'  type='button') Show current session
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/seedisc"' id='showdisc' type='button') Show discussion
+          button(class='btn btn-lg btn-default' onclick='window.location="/seeuser"'  type='button') Show users DB
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/seebooks"' id='showbooks' type='button') Show books
+          button(class='btn btn-lg btn-default' onclick='window.location="/seebooks"'  type='button') Show books DB
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/seeauthors"' id='showauthors' type='button') Show authors
+          button(class='btn btn-lg btn-default' onclick='window.location="/seemovies"'  type='button') Show movies DB
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/cs"' id='showsession' type='button') Show session
+          button(class='btn btn-lg btn-default' onclick='window.location="/seeauthors"'  type='button') Show authors DB
       .row 
         .col-xs-12
-          .form-group
-            label User id
-            input(type='text' id='userid' class='form-control')
-            button(class='btn btn-lg btn-default' id='showuser' type='button') Show user 
+          button(class='btn btn-lg btn-default' onclick='window.location="/showitems"'  type='button') Show items DB
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-warning' onclick='window.location="/dropdisc"' id='dropdisc' type='button') Drop discussions
+          button(class='btn btn-lg btn-default' onclick='window.location="/showum"'  type='button') Show user_messages DB
+      .row 
+        .col-xs-3
+          button(class='btn btn-lg btn-danger' onclick='window.location="/dropusers"'  type='button') Drop users 
+        .col-xs-9
+          p This drops 4 databases at once - users, follow, item, user_messages. BUT it leaves userpics - they were always removed manualy with the directory.
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-danger' onclick='window.location="/dropusers"' id='dropusers' type='button') Drop users 
+          button(class='btn btn-lg btn-danger' onclick='window.location="/dropfollow"'  type='button') Drop follow 
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/dropbooks"' id='dropusers' type='button') Drop books 
+          button(class='btn btn-lg btn-danger' onclick='window.location="/dropmovies"'  type='button') Drop movies 
       .row 
         .col-xs-12
-          button(class='btn btn-lg btn-default' onclick='window.location="/dropauthors"' id='dropusers' type='button') Drop authors 
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropbooks"'  type='button') Drop books 
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropauthors"'  type='button') Drop authors 
+      .row 
+        .col-xs-12
+          button(class='btn btn-lg btn-default' onclick='window.location="/dropum"'  type='button') Drop user_messages
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
-    script.
-      $('#showuser').click(function(){
-        var uid = $('#userid').val();
-        eval('window.location="/usr'+uid+'"');
-        });
      
       

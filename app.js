@@ -1005,17 +1005,6 @@ app.get('/lstitm',function (req,res){
   res.redirect('/seeuser');
 })
 
-app.get('/sus',function(req,res){
-  users.update({_id:req.session._id},{$set:{userstore:[]}});
-  res.redirect('/seeuser');
-});
-
-app.get('/sdi',function(req,res) {
-  users.update({},{$unset:{discussions:[],tmstmpstore:{}}});
-  discussions.remove({});
-  res.redirect('/seeuser');
-});
-
 app.get('/seebooks',function (req,res){
   books.find({},function (err,done){
     if(err){
@@ -1142,19 +1131,6 @@ app.get('/dropfollow',function (req,res){
   res.redirect('/');
 });
 
-
-app.get('/seedisc',function (req,res){
-  discussions.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-});
-
-
 app.get('/seeuser',function (req,res){
   users.find({},function (err,done){
     if(err){
@@ -1272,20 +1248,6 @@ app.get('/showitems',function (req,res){
   });
 });
 
-app.get('/testtest',function (req,res){
-  items.insert({option_one:'people',option_two:'books',bookstore:['a','b','c','d','e']});
-  res.send('ok');
-});
-
-app.get('/checktest',function (req,res) {
-  users.find({bookstore:'a'},function(err,done){
-    if(err){} 
-      else{
-        res.send(done);
-      }
-  });
-});
-
 
 
 app.get('/people/:kind/:item',function (req,res){
@@ -1340,19 +1302,6 @@ app.get('/people/:kind/:item',function (req,res){
   }
 });
 
-app.post('/getmsg',function (req,res){
-
-});
-
-app.get('/supfollow',function (req,res){
-  follow.insert({user:req.session._id});
-  res.redirect('/');
-});
-
-app.get('/delfollow',function (req,res){
-  follow.remove({user:req.session._id});
-  res.redirect('/');
-});
 
 app.post('/follow/:id',function (req,res){
   if(req.session._id || is_uid(req.params.id)){
