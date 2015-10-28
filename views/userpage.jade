@@ -787,15 +787,17 @@ head
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
               h2(style='margin-top:30px;' class='usernick')  ...
-              ul.socialbtns(style='display:inline;margin-right:20px;padding-left:0px;margin-top:30px;margin-bottom:30px;')
-                li
-                  a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-                li
-                  a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-                li
-                  a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-                li
-                  a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+            .row
+              .col-xs-12(style='margin-top:30px;margin-bottom:30px;')
+                ul.socialbtns(style='display:inline;margin-right:20px;padding-left:0px;')
+                  li
+                    a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+                  li
+                    a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+                  li
+                    a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+                  li
+                    a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
           .row(style='margin-bottom:20px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
