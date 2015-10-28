@@ -1527,7 +1527,7 @@ app.post('/usrp',function (req,res) {
                                   console.log(err);
                                 }
                                 else if(size.width>1024||size.height>1024){
-                                  console.log('image is too large, going to resize');
+                                  console.log('image is too large, going to resize ( '+size.width+'x'+size.height+' )');
                                   if(size.width>size.height){
                                     gm(newPath).resize(1024).write(newPath,function (err){
                                       if(err) {console.log(err);}
