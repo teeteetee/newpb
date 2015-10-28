@@ -577,6 +577,29 @@ head
       text-transform:uppercase;
       letter-spacing:2px;
     }
+    .socialbtns li {
+          list-style: none outside none;
+          display: inline-block;
+      }
+      
+      .socialbtns .fa {
+        width: 40px;
+          height: 40px;
+        color: #ddd;
+        background-color: #FFF;
+        border: 1px solid #ddd;
+        padding-top: 12px;
+        border-radius: 22px;
+        -moz-border-radius: 22px;
+        -webkit-border-radius: 22px;
+        -o-border-radius: 22px;
+      }
+      
+      .socialbtns .fa:hover {
+        color: #FFF;
+        background-color: #000;
+        border: 1px solid #000;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -736,11 +759,21 @@ head
           li
             a(href="/logout") Logout
       section.menu-section.visible-xs(style='text-align:center;')
-        .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
-          button(class="social_share btn btn-ioslight vk" data-type="vk" type='button' style='border-top-left-radius:30px;border-bottom-left-radius:30px;') V
-          button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
-          button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
-          button(class="social_share btn btn-ioslight gg" data-type="gg" type='button' style='border-top-right-radius:30px;border-bottom-right-radius:30px;') G           
+        ul.socialbtns
+          li
+            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+          li
+            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+          li
+            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+          li
+            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+        //
+          .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
+            button(class="social_share btn btn-ioslight vk" data-type="vk" type='button' style='border-top-left-radius:30px;border-bottom-left-radius:30px;') V
+            button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
+            button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
+            button(class="social_share btn btn-ioslight gg" data-type="gg" type='button' style='border-top-right-radius:30px;border-bottom-right-radius:30px;') G           
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -756,11 +789,21 @@ head
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
-              .btn-group(style='margin-right:20px;')
-                button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
-                button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
-                button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
-                button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+              ul.socialbtns
+                li
+                  a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+                li
+                  a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+                li
+                  a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+                li
+                  a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+              //
+                .btn-group(style='margin-right:20px;')
+                  button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                  button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                  button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                  button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
               .btn-group(style='margin-right:20px;')
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
