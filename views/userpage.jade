@@ -596,10 +596,23 @@ head
       -webkit-border-radius: 22px;
       -o-border-radius: 22px;
     }
+
     .socialbtns .fa:hover {
       color: #FFF;
       background-color: #000;
       border: 1px solid #000;
+    }
+    .fxd .fa-vk {
+      padding-left:6px;
+    }
+    .fxd .fa-facebook {
+      padding-left:11px;
+    }
+    .fxd .fa-twitter {
+      padding-left:9px;
+    }
+    .fxd .fa-goggle-plus {
+      padding-left:9px;
     }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -746,7 +759,7 @@ head
                 button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
-    div.socialbtns(style='position:fixed;margin-top:50%;right:0px;')
+    div.socialbtns.fxd(style='position:fixed;margin-top:20px;right:0px;z-index:1000;')
       a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
       a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
       a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
