@@ -759,11 +759,6 @@ head
                 button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
-    div.socialbtns.fxd.hidden-xs(style='position:fixed;margin-top:20px;right:20px;z-index:1000;')
-      a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-      a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-      a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-      a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
     nav#menu.menu 
       section.menu-section
         ul.menu-section-list    
@@ -798,13 +793,18 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
+      div.socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
+        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
-              h2(style='margin-top:30px;' class='usernick')  ...
+              h2(style='margin-top:40px;' class='usernick')  ...
             //
               .row
                 .col-xs-12(style='margin-top:30px;margin-bottom:30px;')
