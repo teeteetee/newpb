@@ -592,11 +592,10 @@ head
     }
     .socialbtns .fa {
       width: 35px;
-        height: 35px;
+      height: 35px;
       margin-left:5px;
       margin-right:5px;
       background-color: #FFF;
-      border: 1px solid #ddd;
       padding-top: 11px;
       border-radius: 22px;
       -moz-border-radius: 22px;
@@ -607,9 +606,10 @@ head
       color:#333;
     }
     .socialbtns .fxd .fa {
+      border: 1px solid #ddd;
       color:#ddd;
     }
-    .socialbtns .fa:hover {
+    .socialbtns .fxd .fa:hover {
       color: #FFF;
       background-color: #000;
       border: 1px solid #000;
@@ -785,7 +785,7 @@ head
           li
             a(href="/logout") Logout
       section.menu-section.visible-xs(style='text-align:center;')
-        ul.socialbtns(style='display:inline;margin-right:20px;padding-left:0px;color:#333;')
+        ul.socialbtns(style='display:inline;margin-right:20px;margin-top:50px;padding-left:0px;')
           li
             a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
           li
