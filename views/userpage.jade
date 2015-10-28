@@ -581,26 +581,24 @@ head
     .socialbtns li {
           list-style: none outside none;
           display: inline-block;
-      }
-      
-      .socialbtns .fa {
-        width: 40px;
-          height: 40px;
-        color: #ddd;
-        background-color: #FFF;
-        border: 1px solid #ddd;
-        padding-top: 12px;
-        border-radius: 22px;
-        -moz-border-radius: 22px;
-        -webkit-border-radius: 22px;
-        -o-border-radius: 22px;
-      }
-      
-      .socialbtns .fa:hover {
-        color: #FFF;
-        background-color: #000;
-        border: 1px solid #000;
-      }
+    }
+    .socialbtns .fa {
+      width: 35px;
+        height: 35px;
+      color: #ddd;
+      background-color: #FFF;
+      border: 1px solid #ddd;
+      padding-top: 11px;
+      border-radius: 22px;
+      -moz-border-radius: 22px;
+      -webkit-border-radius: 22px;
+      -o-border-radius: 22px;
+    }
+    .socialbtns .fa:hover {
+      color: #FFF;
+      background-color: #000;
+      border: 1px solid #000;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -790,7 +788,7 @@ head
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
-              ul.socialbtns
+              ul.socialbtns(style='display:inline;margin-right:20px;padding-left:0px;')
                 li
                   a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
                 li
