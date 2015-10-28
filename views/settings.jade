@@ -107,7 +107,7 @@ head
         padding-top:20px;
       }
       @media (max-width: 767px) {
-      .setrow {
+      .pad {
         padding-left:20px;
       }
       li a {
@@ -314,7 +314,7 @@ head
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           h3(style='font-weight:200;color:#ddd;') Settings     
       .row.setrow
-        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1
+        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad
           h4(style='margin-bottom:30px;') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .input-group
@@ -323,17 +323,17 @@ head
                   input(type="file"  id='userpic' name='userpic' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
             span.help-block Jpg images only
-      .row.setrow(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4 Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
             button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
-      .row.setrow.visible-lg.visible-md.visible-sm(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+      .row.setrow.visible-lg.visible-md.visible-sm
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           button(class='btn btn-primary setsub') Save
-      .row.setrow.visible-xs(style='border-top:1px solid #eee;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='text-align:center;')
+      .row.setrow.visible-xs
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;text-align:center;')
           button(class='btn btn-primary setsub') Save
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
