@@ -1522,12 +1522,38 @@ app.post('/usrp',function (req,res) {
                       fs.writeFile(newPath, data, function(err) {
                           fs.unlink(oldPath, function(){
                               if(err) throw err;
-                              //res.send('<img src="/userpics/'+imageid+'" style="height:200px;width:200px;"></img>');
-                              var dest = '/userpics/'+imageid;
-                              res.render('crop_new',{'imgsrc':dest});  
-                                });
-                    }); 
-                 }); 
+                              gm(newPath).size(function (err, size) {
+                                if(err){
+                                  console.log(err);
+                                }
+                                else if(size.width>1024||size.height>1024){
+                                  if(size.width>size.height){
+                                    gm(newPath).resize(1024).write(newPath,function (err){
+                                      if(err) {console.log(err);}
+                                      else{
+                                        var dest = '/userpics/'+imageid;
+                                         res.render('crop_new',{'imgsrc':dest});
+                                      }
+                                    });
+                                  }
+                                  else {
+                                    gm(newPath).resize(null,1024).write(newPath,function (err){
+                                      if(err) {console.log(err);}
+                                      else{
+                                        var dest = '/userpics/'+imageid;
+                                         res.render('crop_new',{'imgsrc':dest});
+                                      }
+                                    });
+                                  }
+                                }
+                                else {
+                                  var dest = '/userpics/'+imageid;
+                                  res.render('crop_new',{'imgsrc':dest});
+                                }
+                              });  //resize
+                          });//unlink temp
+                    }); //write new
+                 }); //read from temp
                  }
       upload(req.files.userpic.path,req.files.userpic.name);
    }
@@ -1603,7 +1629,7 @@ function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_
                  }
                  else {
                   console.log('############# 5 #############');
-                   gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).write(output_path, function (err) {
+                   gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).density(300, 300).write(output_path, function (err) {
                      if (err)
                       { console.log(err);
                         var ms={};
