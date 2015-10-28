@@ -589,6 +589,42 @@ head
       color: #333;
       font-size: 30;
       }
+      .socialbtns .fa {
+      width: 35px;
+      height: 35px;
+      margin-left:5px;
+      margin-right:5px;
+      background-color: #FFF;
+      padding-top: 11px;
+      border-radius: 22px;
+      -moz-border-radius: 22px;
+      -webkit-border-radius: 22px;
+      -o-border-radius: 22px;
+      }
+      #menu .socialbtns .fa {
+        color:#333;
+      }
+      .fxd .fa {
+        border: 1px solid #ddd;
+        color:#ddd;
+      }
+      .fxd .fa:hover {
+        color: white !important;
+        background-color: black;
+        border: 1px solid black;
+      }
+      .fxd .fa-vk {
+        padding-left:6px;
+      }
+      .fxd .fa-facebook {
+        padding-left:11px;
+      }
+      .fxd .fa-twitter {
+        padding-left:9px;
+      }
+      .fxd .fa-google-plus {
+        padding-left:9px;
+      }
   body(style='background-color:#fbfbfb;')
     .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -656,12 +692,21 @@ head
           li
             a(href="/logout") Logout
       section.menu-section.visible-xs(style='text-align:center;')
-        .btn-group.btn-group-lg(style='padding-top:10px;padding-bottom:20px;')
-          button(class="social_share btn btn-ioslight vk" data-type="vk" type='button') V
-          button(class="social_share btn btn-ioslight fb" data-type="fb" type='button') F
-          button(class="social_share btn btn-ioslight tw" data-type="tw" type='button') t
-          button(class="social_share btn btn-ioslight gg" data-type="gg" type='button') G 
+        ul.socialbtns(style='display:inline;margin-right:20px;margin-top:50px;padding-left:0px;')
+          li
+            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+          li
+            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+          li
+            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+          li
+            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg') 
     .container-fluid#panel(style='padding-top:50px;min-height:100vh;background-color:white;')
+      .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
+        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm
