@@ -267,8 +267,8 @@ app.get('/backup',function (req,res){
     //var mimetype = 'application/json';
     //res.setHeader('Content-disposition', 'attachment; filename=' + filename);
     //res.setHeader('Content-type', mimetype);
-    //res.write(json);}
-    res.redirect('/');
+    //res.write(json);
+    res.redirect('/');}
     else {
       res.redirect('/');
     }
