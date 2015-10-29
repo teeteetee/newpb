@@ -755,7 +755,7 @@ head
                   .col-xs-12#srb
               .form-group
                 label(for="title") Author
-                input(type="text" class="form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+                input(type="text" class=" authorinput form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
             .form-group
               label(for='authors') Additional authors
               .btn-group#authors(style='display:block;')
@@ -874,6 +874,16 @@ head
     script(src='js/bootstrap.min.js')     
     script(async src='js/counter.js') 
     script.
+      //restrict - all checks are both client/server implemented /
+      var chars = /[,\/\w.]/i; // all valid characters
+      $('.authorimport').keyup(function(e) {
+        var value = this.value;
+        var char = value[value.length-1];
+        if (!chars.test(char)) {
+          $(this).val(value.substring(0, value.length-1));
+        }
+      });
+      //restrict//
       var slideout = new Slideout({
         'panel': document.getElementById('panel'),
         'menu': document.getElementById('menu'),
@@ -1143,7 +1153,7 @@ head
           $('#removeauthor').removeClass('disabled');
         }
         //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
-        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
+        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input type='text' class=' authorinput form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
         console.log(insert);
         $('#authoradd_here').append(insert);
         eval("$('#author"+authorcount+"').slideToggle();");
