@@ -253,6 +253,30 @@ function is_email(email) {
 
 //END OF DATA VALIDATION
 
+app.get('/backup',function (req,res){
+  if(req.session._id){    
+  users.findOne({_id:req.session._id},function (err,doc){ 
+    if(err){
+      console.log('ERR WHILE BACKUP REQUEST');
+      console.log(err);
+    }
+    else if(doc.bookstore)
+  { var json = JSON.stringify(doc.bookstore+doc.moviestore+doc.articlestore); // so let's encode it
+    var filename = 'result.json'; // or whatever
+    var mimetype = 'application/json';
+    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    res.setHeader('Content-type', mimetype);
+    res.write(json);}
+    else {
+      res.redirect('/');
+    }
+  });
+  }
+  else {
+    res.redirect('/');
+  }
+});
+
 app.post('/getbook/:id',function (req,res){
   //TO DO auth
   books.findOne({_id:req.params.id},function(err,doc){
