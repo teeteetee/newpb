@@ -733,6 +733,40 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
+      $('.showbooks').click(function(){
+        if($('.brow').css('display')==='none'){
+          console.log('show brow');
+          $('.showarticles').removeClass('active');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').addClass('active');
+          $('.brow').css('display','block')
+          $('.mrow').css('display','none');
+          $('.arow').css('display','none');
+        }
+        });
+      $('.showmovies').click(function(){
+        if($('.mrow').css('display')==='none'){
+          console.log('show mrow');
+          $('.showarticles').removeClass('active');
+          $('.showbooks').removeClass('active');
+          $('.showmovies').addClass('active');
+          $('.mrow').css('display','block')
+          $('.brow').css('display','none');
+          $('.arow').css('display','none');
+        }
+        });
+      $('.showarticles').click(function(){
+        if($('.arow').css('display')==='none'){
+          console.log('show arow');
+          $('.showmovies').removeClass('active');
+          $('.showbooks').removeClass('active');
+          $('.showarticles').addClass('active');
+          $('.brow').css('display','none')
+          $('.mrow').css('display','none');
+          $('.arow').css('display','block');
+        }
+        });
+       //------------------//
       var books=user.bookstore;
        var movies=user.moviestore;
        var articles = user.articlestore;
