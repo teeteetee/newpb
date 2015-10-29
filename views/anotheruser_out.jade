@@ -377,64 +377,84 @@ head
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
-          .loader
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(style='border:0px;margin-bottom:0px;')
-     .container
-       // Brand and toggle get grouped for better mobile display
-       .navbar-header
-         button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-           span.sr-only Toggle navigation         
-           span.icon-bar         
-           span.icon-bar         
-           span.icon-bar       
-         a.navbar-brand(style='padding-top:5px;', href='/')
-           img(src='/images/pb_inf_logo.png', style='border:1px solid #444;border-radius:50%;', height='40', width='40')
-       // Collect the nav links, forms, and other content for toggling
-       #bs-example-navbar-collapse-1.collapse.navbar-collapse
-         ul.nav.navbar-nav
-           li
-             a(href='/')  Sign up
-           li
-             a(href='/signin') Sign in            
-           li
-             a(href='/about') About         
-    .container#main(style='padding-top:50px;height:100%;background-color:white;')
+          .loader      
+    .container(style='padding-top:50px;min-height:100vh;background-color:white;')
+      .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
+        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+      button(type='button' ,id='menu-toggle')
+        span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm
-        #avatarbig.col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='padding-top:30px;padding-bottom:20px;')         
-          h2(style='margin-top:30px;' class='usernick')  ????
-          h3.numbers(style='margin-top:10px;margin-bottom:20px;color:#ddd;')           
-          button.btn.btn-iosprimary.signup(type='button' style='margin-bottom:20px;') Register to chat and follow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+          .row
+            #avatarbig.col-xs-12(style='text-align:center;')         
+              h2(style='margin-top:30px;' class='usernick')  ...
+          .row(style='margin-bottom:20px;margin-top:60px;text-align:center;')
+            .col-xs-12
+              .btn-group(style='margin-right:15px;')
+                button.btn.btn-iosdark.signup(type='button') Follow
+                button.btn.btn-iosdark.signup(type='button') Chat
+              .btn-group(style='margin-right:15px;')
+                button(class="social_share btn btn-iosdark vk" data-type="vk" type='button') V
+                button(class="social_share btn btn-iosdark fb" data-type="fb" type='button') F
+                button(class="social_share btn btn-iosdark tw" data-type="tw" type='button') t
+                button(class="social_share btn btn-iosdark gg" data-type="gg" type='button') G
+              .btn-group
+                button.btn.btn-iosdark.showbooks.active(type='button')  Books
+                  span(class='badge booknum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showmovies(type='button')  Movies
+                  span(class='badge movienum' style='margin-left:10px;') 0
+                button.btn.btn-iosdark.showarticles(type='button') Links
+                  span(class='badge articlenum' style='margin-left:10px;') 0
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')          
-              h3.usernick(style='margin-top:10px;') ????                      
-              h4.numbers                 
-              button.btn.btn-iosprimary.signup(type='button' style='margin-bottom:20px;') Register to chat and follow
+            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
+              //h4.numbers  
+              .btn-group.btn-group-lg(style='margin-bottom:20px;margin-top:30px;')             
+                button.btn.btn-iosdark.signup(type='button') Follow
+                button.btn.btn-iosdark.signup(type='button') Chat
+              .row 
+                .col-xs-12
+                  .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
+                    .btn.btn-iosdark.active.showbooks(type='button') B
+                      span(class='badge booknum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showmovies(type='button') M
+                      span(class='badge movienum' style='margin-left:10px;') 0
+                    .btn.btn-iosdark.showarticles(type='button') L
+                      span(class='badge articlenum' style='margin-left:10px;') 0
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.visible-md.visible-lg(style='margin-bottom:10px;')
-                .col-xs-12
-                  ul.nav.nav-pills
-                    li.active(role='presentation')
-                      a(href='#') Books                 
-                    li(role='presentation')
-                      a(href='#') Movies            
-              .row.visible-sm.visible-xs(style='padding-bottom:10px;text-align:center;')
-                .col-xs-12
-                  .btn-group
-                    button.btn.btn-ioslooklike.iosactive Books                 
-                    button.btn.btn-ioslooklike Movies           
-              //.panel.panel-default.visible-lg.visible-md.visible-sm
-              //  .panel-body.books#bigscreens
-              .row.visible-lg.visible-md.visible-sm
-                .col-xs-12.books#bigscreens
-                   .noitems.row(style='text-align:center;')  
+              .row.mrow
+                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
+                  .nobooks.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.visible-xs(style='border-top:1px solid #eee;')
-                #smallscreens.col-xs-12.books         
-                  .noitems.row(style='text-align:center;')  
+              .row.arow
+                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
+                  .noarticles.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
+                  .nobooks.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.mrow
+                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
+                  .nomovies.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .row.arow
+                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
+                  .noarticles.row(style='text-align:center;')  
                      .col-xs-12
                        h2(style='color:#ccc;margin-bottom:20px;') No items 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
@@ -449,100 +469,170 @@ head
       var tmp_string = "window.location='/chat/"+user._id+"';";
       $('#chatwith').attr('onclick',tmp_string);
       if(avatar) {
-        $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='margin:30px;margin-left:0px;' src='/userpics/id"+user._id+user.picext+"'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/id"+user._id+user.picext+"'></img>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;margin-top:60px;' src='/userpics/"+user._id+".png'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style='margin:30px;margin-left:0px;'></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto;margin-top:30px;margin-bottom:20px;' class='img-circle'></div>");
+        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle' style='margin:auto !important;margin-top:60px;'></div>");
+        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto !important;margin-top:30px;margin-bottom:20px;' class='img-circle'></div><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
       }
-      $('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
+      $('.booknum').text(user.readbooks);
+      $('.movienum').text(user.seenmovies);
+      $('.articlenum').text(user.readarticles);
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      var books=[];
-      var count;
-      var booktmstmp;
-      function gettimestamp() {
-        $.ajax({
-         method: "POST",
-         url: "/gettimestamp/#{user}",
-         data: 0
-       })
-         .done(function( msg ) {
-           console.log(msgtmstmp);
-           booktmstmp = msg.tmstmp;
-           });
-      }
-      function populate () {
-      $.ajax({
-         method: "POST",
-         url: "/getbooks/#{user}",
-         data: 0
-       })
-         .done(function( msg ) {
-           console.log('msg is: '+msg);
-           books = msg;
-           console.log(JSON.stringify(books));
-           count = books.length -1;
-           if(!books) {
-            //alert('server maintenence \n try again later');
-            $('#myModal').modal('show');
-           }
-           else {
-            getbooks(books,count);
-           }
-           });
+      var books=user.bookstore;
+       var movies=user.moviestore;
+       var articles = user.articlestore;
+      if(!books || !books.length) {
+       console.log('no books');
        }
+       else {
+        var count_b = books.length-1;
+        //getbooks(books,count_b);
+        populatebooks(books);
+       }
+       var movies=user.moviestore;
+      if(!movies || !movies.length) {
+       console.log('no movies');
+       }
+       else {
+        var count_m = movies.length-1;
+        //getmovies(movies,count_m);
+        populatemovies(movies);
+       }
+       var articles=user.articlestore;
+      if(!articles || !articles.length) {
+       console.log('no articles');
+       }
+       else {
+        var count_a = articles.length-1;
+        populatearticles(articles);
+       }
+       function populatebooks(books) {
+        if ($(".nobooks")[0])
+            { console.log('HAS LENGTH');
+              $('.books').empty();}
+            else {
+              console.log('HASNT GOT LENGTH');
+            }
+        books.forEach(function(element,index){
+          var authors_insert=' ';
+            element.authors.forEach(function(element2){
+             authors_insert+='  '+element2;
+              });
+           var insert;
+            switch(true){
+              case(element.goodbook&&!element.newbook):
+              console.log('1st case');
+              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'>"+element.title.capitalizeFirstLetter()+"<span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              var thisbook={};
+              thisbook.author = authors_insert;
+              thisbook.title = element.title.capitalizeFirstLetter();
+              modal_data_store.unshift(thisbook);
+              break
+              case(element.newbook&&!element.goodbook):
+              console.log('2st case');
+              insert = "<div class='row book new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              var thisbook={};
+              thisbook.author = authors_insert;
+              thisbook.title = element.title.capitalizeFirstLetter();
+              modal_data_store.unshift(thisbook);
+              console.log(modal_data_store);
+              break
+              case(!element.newbook&&!element.goodbook):
+              console.log('3st case');
+              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              var thisbook={};
+              thisbook.author = authors_insert;
+              thisbook.title = element.title.capitalizeFirstLetter();
+              modal_data_store.unshift(thisbook);
+              break
+            }         
+           $('.books').append(insert);
+          });
+      }
+      function populatemovies(movies) {
+        if ($(".nomovies")[0])
+            { console.log('HAS LENGTH');
+              $('.movies').empty();}
+            else {
+              console.log('HASNT GOT LENGTH');
+            }
+        movies.forEach(function(element,index){
+          var insert;   
+            switch(true){
+              case(element.goodmovie&&!element.newmovie):
+              console.log('1st case');
+              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+              var thismovie={};
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
+              movie_modal_data_store.unshift(thismovie);
+              break
+              case(element.newmovie&&!element.goodmovie):
+              console.log('2st case');
+              insert = "<div class='row book new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+              var thismovie={};
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
+              movie_modal_data_store.unshift(thismovie);
+              console.log(modal_data_store);
+              break
+              case(!element.newmovie&&!element.goodmovie):
+              console.log('3st case');
+              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+              var thismovie={};
+              thismovie.year = element.year;
+              thismovie.title = element.title.capitalizeFirstLetter();
+              movie_modal_data_store.unshift(thismovie);
+              break
+            }         
+           $('.movies').append(insert);
+          });
+      }
+      //---------------------------------//
+      function populatearticles(articles) {
+        
+        for(var xx=articles.length-1;xx>=0;xx--){
+            if ($(".noarticles")[0])
+            { $('.articles').empty();}
+            //var checktitle = article_modal_data_store[i].link.substring(0, 4);
+            switch(true){
+              case(articles[xx].goodarticle&&!articles[xx].newarticle):
+              console.log('1st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,10)+"</small><span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('2st case');
+              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+              case(!articles[xx].newarticle&&!articles[xx].goodarticle):
+              console.log('3st case');
+              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
+              var thisarticle={};
+              thisarticle.link = articles[xx].link;
+              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
+              article_modal_data_store.unshift(thisarticle);
+              break
+            }         
+           $('.articles').append(insert);
+         }// for
+      }
+      //----------------------------//
       $('.signup').click(function(){
         window.location='/';
         });
       function redactmodal (i) {
         $('#smallmodal').modal('show');
       }
-      function getbooks(books,i) {
-        console.log('i:'+i);
-        var url = '/getbook/'+books[i]._id;
-        $.ajax({
-         method: "POST",
-         url: url,
-         data: 0
-       })
-         .done(function( msg ) {
-            if ($(".noitems")[0])
-            { console.log('HAS LENGTH');
-              $('.books').empty();}
-            else {
-              console.log('HASNT GOT LENGTH');
-            }
-            var authors_insert ;
-            for(var xi=0;xi<msg.authors.length;xi++){
-              authors_insert = msg.authors[xi];
-            }
-            console.log('newbook :'+books[i].newbook);
-            console.log('goodbook :'+books[i].goodbook);
-            var insert;
-            switch(true){
-              case(books[i].goodbook&&!books[i].newbook):
-              console.log('1st case');
-              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal();'><h3 id='title"+msg._id+"' style='color:#aaa;'><span style='color:#37D6BB;'>&#8226;</span> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:17px;'>"+authors_insert+"</h5></div></div>";
-              break
-              case(books[i].newbook&&!books[i].goodbook):
-              console.log('3st case');
-              insert = "<div class='row book'><div class='col-xs-12 bookpadding hovershade' onclick='redactmodal();'><h3 id='title"+msg._id+"' style='margin-left:25px;'> "+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              break
-            }        
-           $('.books').append(insert);
-           });
-         count--;
-         console.log('before iteration, count: '+count);
-         if(count!=-1)
-        {getbooks(books,count);}
-        else {
-          $('#wait').css('display','none');
-          return 0;
-        }
-      }
-      populate();
       

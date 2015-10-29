@@ -1021,15 +1021,8 @@ head
            console.log('added article');
           });
       }
-      function getbooks(books,i) {
-        console.log('i:'+i);
-        var url = '/getbook/'+books[i]._id;
-        $.ajax({
-         method: "POST",
-         url: url,
-         data: 0
-       })
-         .done(function( msg ) {
+      function getbooks(books) {
+        books.forEach(function(element,index){
             if ($(".nobooks")[0])
             { console.log('HAS LENGTH');
               $('.books').empty();}
@@ -1040,24 +1033,17 @@ head
             msg.authors.forEach(function(element){
             authors_insert+='  '+element;
              });
-            console.log('newbook :'+books[i].newbook);
-            console.log('goodbook :'+books[i].goodbook);
+            console.log('newbook :'+element.newbook);
+            console.log('goodbook :'+element.goodbook);
             var new_indicator_part_1 =' ';
             var new_indicator_part_2 =' ';
             var new_indicator_part_3 ="style='margin-left:37px;'";
             var prepend = 0;
-            console.log(parseInt(books[i].tmstmp)+' \n'+general_tmstmp);
-            //console.log('unfollow: '+unfollow);
-            //if(parseInt(books[i].tmstmp)>general_tmstmp){
-            //  console.log('its a new book');
-            //}
-            //else {
-            //   console.log('its an old book');
-            //}
-            if(books[i].newbook){
+            console.log(parseInt(element.tmstmp)+' \n'+general_tmstmp);
+            if(element.newbook){
               new_indicator_part_3 = "style='margin-left:25px;' ";
             }
-            if(parseInt(books[i].tmstmp)>general_tmstmp && unfollow){
+            if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
               console.log('LABELING NEW');
               new_indicator_part_1 = "<div class='dot visible-xs'><span style='margin-left:10px;font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
               new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
@@ -1066,30 +1052,30 @@ head
             }
             var insert;
             switch(true){
-              case(books[i].goodbook&&!books[i].newbook):
+              case(element.goodbook&&!element.newbook):
               console.log('1st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+books[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:37px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:37px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
-              thisbook._id = books[i]._id;
+              thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
               break
-              case(books[i].newbook&&!books[i].goodbook):
+              case(element.newbook&&!element.goodbook):
               console.log('2st case');
-              insert = "<div class='row book new' id='book"+books[i]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book new' id='book"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
-              thisbook._id = books[i]._id;
+              thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
               console.log(modal_data_store);
               break
-              case(!books[i].newbook&&!books[i].goodbook):
+              case(!element.newbook&&!element.goodbook):
               console.log('3st case');
-              insert = "<div class='row book read' id='book"+books[i]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+books[i]._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+              insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+i+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
               var thisbook={};
-              thisbook._id = books[i]._id;
+              thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = msg.title.capitalizeFirstLetter();
               modal_data_store.unshift(thisbook);
@@ -1098,23 +1084,9 @@ head
            if(!prepend){$('.books').append(insert);}
            else {$('.books').prepend(insert);}
            });
-         count_b--;
-         console.log('before iteration, count_b: '+count_b);
-         if(count_b!=-1)
-        {getbooks(books,count_b);}
-        else {
-          return 0;
-        }
-      }
+       }
       function getmovies(movies,i) {
-        console.log('i:'+i);
-        var url = '/getmovie/'+movies[i]._id;
-        $.ajax({
-         method: "POST",
-         url: url,
-         data: 0
-       })
-         .done(function( msg ) {
+       movies.forEach(function(element,index){
             if ($(".nomovies")[0])
             { console.log('HAS LENGTH');
               $('.movies').empty();}
@@ -1125,10 +1097,10 @@ head
             var new_indicator_part_2 =' ';
             var new_indicator_part_3 ="style='margin-left:25px;'";
             var prepend=0;
-            if(movies[i].newmovie){
+            if(element.newmovie){
               new_indicator_part_3 = "style='margin-left:25px;' ";
             }
-            if(parseInt(movies[i].tmstmp)>general_tmstmp && unfollow){
+            if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
               console.log('LABELING NEW');
               new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
               new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
@@ -1137,29 +1109,29 @@ head
             }
             var insert;   
             switch(true){
-              case(movies[i].goodmovie&&!movies[i].newmovie):
+              case(element.goodmovie&&!element.newmovie):
               console.log('1st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"'  "+new_indicator_part_3+">"+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+element._id+"'  "+new_indicator_part_3+">"+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+msg.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
-              thismovie._id = movies[i]._id;
+              thismovie._id = element._id;
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               break
-              case(movies[i].newmovie&&!movies[i].goodmovie):
+              case(element.newmovie&&!element.goodmovie):
               console.log('2st case');
-              insert = "<div class='row book new' id='movie"+movies[i]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book new' id='movie"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+msg.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
-              thismovie._id = movies[i]._id;
+              thismovie._id = element._id;
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
               break
-              case(!movies[i].newmovie&&!movies[i].goodmovie):
+              case(!element.newmovie&&!element.goodmovie):
               console.log('3st case');
-              insert = "<div class='row book read' id='movie"+movies[i]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+movies[i]._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 id='sm_hd"+movies[i]._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
+              insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+i+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+msg.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+msg.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+msg.year+"</h5></div></div>";
               var thismovie={};
-              thismovie._id = movies[i]._id;
+              thismovie._id = element._id;
               thismovie.year = msg.year;
               thismovie.title = msg.title.capitalizeFirstLetter();
               movie_modal_data_store.unshift(thismovie);
@@ -1167,14 +1139,7 @@ head
             }         
            if(!prepend){$('.movies').append(insert);}
            else{$('.movies').prepend(insert);}
-           });
-         count_m--;
-         console.log('before iteration, count_m: '+count_m);
-         if(count_m!=-1)
-        {getmovies(movies,count_m);}
-        else {
-          return 0;
-        }
+        });
       }
       //---------------------------------//
       function populatearticles(articles) {
