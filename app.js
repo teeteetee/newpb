@@ -268,7 +268,7 @@ app.get('/backup',function (req,res){
     res.setHeader('Content-disposition', 'attachment; filename=' + filename);
     res.setHeader('Content-type', mimetype);
     res.write(json);
-    req.end();
+    res.end();
     //res.redirect('/');
     }
     else {
