@@ -875,7 +875,7 @@ head
     script(async src='js/counter.js') 
     script.
       //restrict - all checks are both client/server implemented /
-      var chars = /[,\/\w.]/i; // all valid characters
+      var chars = /[а-яА-ЯA-Za-z0-9.]/i; // all valid characters
       $('.authorimport').keyup(function(e) {
         var value = this.value;
         var char = value[value.length-1];
