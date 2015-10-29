@@ -94,7 +94,7 @@ app.get('/',function(req,res) {
   //console.log(req.session.mail+' : '+is_email(req.session.mail));
    if (req.session.mail)
         //{res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});}
-        { console.log(req.session);
+        { //console.log(req.session);
           users.findOne({mail:req.session.mail},{fields:{regdate:0,male:0,pub:0,phr:0}},function(err,done){
             //console.log('-----found-----');
             //console.log(done);
@@ -262,13 +262,14 @@ app.get('/backup',function (req,res){
     }
     else if(doc.bookstore)
   { var json = JSON.stringify(doc.bookstore)+JSON.stringify(doc.moviestore)+JSON.stringify(doc.articlestore); // so let's encode it
-    console.log(json);
-    //var filename = 'result.json'; // or whatever
-    //var mimetype = 'application/json';
-    //res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    //res.setHeader('Content-type', mimetype);
-    //res.write(json);
-    res.redirect('/');}
+    //console.log(json);
+    var filename = 'result.json'; // or whatever
+    var mimetype = 'application/json';
+    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    res.setHeader('Content-type', mimetype);
+    res.write(json);
+    //res.redirect('/');
+    }
     else {
       res.redirect('/');
     }
