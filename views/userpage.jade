@@ -875,13 +875,21 @@ head
     script(async src='js/counter.js') 
     script.
       //restrict - all checks are both client/server implemented /
-      var chars = /[.\/\w]/i;
-      $('.authorinput').keyup(function(e) {
-        var value = this.value;
-        var char = value[value.length-1];
-        if (!chars.test(char)) {
-            $(this).val(value.substring(0, value.length-1));
-        }
+      //var chars = /[.\/\w]/i;
+      //$('.authorinput').keyup(function(e) {
+      //  var value = this.value;
+      //  var char = value[value.length-1];
+      //  if (!chars.test(char)) {
+      //      $(this).val(value.substring(0, value.length-1));
+      //  }
+      //});
+      $('.authorinput').bind('keypress', function (event) {
+          var regexp = /^[.\/\w]/i;
+          var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+          if (!regex.test(key)) {
+             event.preventDefault();
+             return false;
+          }
       });
       //restrict//
       var slideout = new Slideout({
