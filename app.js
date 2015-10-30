@@ -332,7 +332,8 @@ app.post('/restore',function (req,res){
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
-        if(err) throw err;
+        //if(err) throw err;
+        if(err) console.log(err);
         res.redirect('/');
        });
     });
