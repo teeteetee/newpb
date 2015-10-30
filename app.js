@@ -328,11 +328,11 @@ app.post('/restore',function (req,res){
       var valid = validateJSON(data);
        if (data) {
          data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2],totalbooks:doc[3].totalbooks,totalmovies:doc[3].totalmovies,totalarticles:doc[3].totalarticles,newbooks:doc[3].newbooks,readbooks:doc[3].readbooks,newmovies:doc[3].newmovies,seenmovies:doc[3].seenmovies,newarticles:doc[3].newarticles,readarticles:doc[3].readarticles,last_item:doc[3].last_item}});
+         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totalarticles:data[3].totalarticles,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newarticles:data[3].newarticles,readarticles:data[3].readarticles,last_item:data[3].last_item}});
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
-        if(err) console.log(err);
+        if(err) throw err;
         res.redirect('/');
        });
     });
