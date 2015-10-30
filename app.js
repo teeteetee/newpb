@@ -253,7 +253,7 @@ function is_email(email) {
 
 //END OF DATA VALIDATION
 
-app.get('/backup',function (req,res){
+app.post('/backup',function (req,res){
   if(req.session._id){    
   users.findOne({_id:req.session._id},function (err,doc){ 
     if(err){
