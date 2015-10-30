@@ -265,9 +265,20 @@ app.post('/backup',function (req,res){
     json.push(doc.bookstore);
     json.push(doc.moviestore)
     json.push(doc.articlestore);
-    // so let's encode it
-    //console.log(json);
-    var filename = 'result.json'; // or whatever
+    var d = new Date();
+    var vday = d.getDate().toString();
+    var vmonth = d.getMonth()+1;
+    vmonth = vmonth.toString();
+    var vyear = d.getUTCFullYear().toString();
+    console.log('beginning');
+    if (vday.length===1){
+           vday='0'+vday;
+         }
+    if (vmonth.length===1){
+           vmonth='0'+vmonth;
+         }
+    var date= vday+'/'+vmonth+'/'+vyear;
+    var filename = 'P&B_backup_'+date+'.json'; // or whatever
     var mimetype = 'application/json';
     res.setHeader('Content-disposition', 'attachment; filename=' + filename);
     res.setHeader('Content-type', mimetype);
@@ -279,6 +290,15 @@ app.post('/backup',function (req,res){
       res.redirect('/');
     }
   });
+  }
+  else {
+    res.redirect('/');
+  }
+});
+
+app.post('/restore',function (req,res){
+  if(req.session._id){    
+  
   }
   else {
     res.redirect('/');
