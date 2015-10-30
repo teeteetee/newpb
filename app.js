@@ -262,9 +262,21 @@ app.post('/backup',function (req,res){
     }
     else if(doc.bookstore)
   { var json = [];
+    var statstore = {
+    'totalbooks':doc.totalbooks,
+    'totalmovies':doc.totalmovies,
+    'totalarticles':doc.totalarticles,
+    'newbooks':doc.newbooks,
+    'readbooks':doc.readbooks,
+    'newmovies':doc.newmovies,
+    'seenmovies':doc.seenmovies,
+    'newarticles':doc.newarticles,
+    'readarticles':doc.readarticles,
+    'last_item':doc.last_item};
     json.push(doc.bookstore);
     json.push(doc.moviestore)
     json.push(doc.articlestore);
+    json.push(doc.statstore);
     var d = new Date();
     var vday = d.getDate().toString();
     var vmonth = d.getMonth()+1;
@@ -307,6 +319,8 @@ function validateJSON(body) {
   }
 }
 
+
+
 app.post('/restore',function (req,res){
   if(req.session._id){      
     var oldPath = req.files.usersjson.path;
@@ -314,7 +328,7 @@ app.post('/restore',function (req,res){
       var valid = validateJSON(data);
        if (data) {
          data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2]}});
+         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2],totalbooks:doc[3].totalbooks,totalmovies:doc[3].totalmovies,totalarticles:doc[3].totalarticles,newbooks:doc[3].newbooks,readbooks:doc[3].readbooks,newmovies:doc[3].newmovies,seenmovies:doc[3].seenmovies,newarticles:doc[3].newarticles,readarticles:doc[3].readarticles,last_item:doc[3].last_item}});
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
