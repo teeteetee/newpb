@@ -288,6 +288,9 @@ head
       button:focus,button:active {
        outline: none !important;
       }
+      .help-block {
+        color:#ddd;
+      }
   body
     nav#menu.menu
       section.menu-section
@@ -316,7 +319,7 @@ head
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad
           h4 Backup
-          form(method='post',action='/backup',role='form', enctype='multipart/form-data')
+          form(method='post',action='/backup',role='form')
             button.btn.btn-iosdark(type='submit') Download your lists
             span.help-block While you still can
       .row.setrow
@@ -328,12 +331,12 @@ head
                 span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
                   input(type="file"  id='userpic' name='userpic' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
-            span.help-block Valid, previously supplied by us JSON
+            span.help-block Valid JSON previously supplied by us
 
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(style='margin-bottom:30px;') Userpic upload
-          form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
+          form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform' style='margin-top:20px;')
             .input-group
               span.input-group-btn
                 span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
