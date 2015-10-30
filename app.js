@@ -314,7 +314,7 @@ app.post('/restore',function (req,res){
       var valid = validateJSON(data);
        if (data) {
          data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[0],articlestore:data[0]}});
+         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2]}});
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
