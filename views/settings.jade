@@ -326,9 +326,9 @@ head
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4 Restore
           form(method='post',action='/restore',role='form', enctype='multipart/form-data')
-            .input-group
+            .input-group(style='margin-top:20px;')
               span.input-group-btn
-                span.btn.btn-iosdark.btn-file Browse&hellip; 
+                span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
                   input(type="file"  id='userpic' name='userpic' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
             span.help-block Valid JSON previously supplied by us
@@ -337,9 +337,9 @@ head
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(style='margin-bottom:30px;') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
-            .input-group
+            .input-group(style='margin-top:20px;')
               span.input-group-btn
-                span.btn.btn-iosdark.btn-file Browse&hellip; 
+                span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
                   input(type="file"  id='userpic' name='userpic' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
             span.help-block Please be sensible, no ugly genitals
