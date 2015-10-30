@@ -261,13 +261,17 @@ app.get('/backup',function (req,res){
       console.log(err);
     }
     else if(doc.bookstore)
-  { var json = JSON.stringify(doc.bookstore)+JSON.stringify(doc.moviestore)+JSON.stringify(doc.articlestore); // so let's encode it
+  { var json = [];
+    json.push(doc.bookstore);
+    json.push(doc.moviestore)
+    json.push(doc.articlestore);
+    // so let's encode it
     //console.log(json);
     var filename = 'result.json'; // or whatever
     var mimetype = 'application/json';
     res.setHeader('Content-disposition', 'attachment; filename=' + filename);
     res.setHeader('Content-type', mimetype);
-    res.write(json);
+    res.write(JSON.stringify(json));
     res.end();
     //res.redirect('/');
     }
