@@ -276,7 +276,7 @@ app.post('/backup',function (req,res){
     json.push(doc.bookstore);
     json.push(doc.moviestore)
     json.push(doc.articlestore);
-    json.push(doc.statstore);
+    json.push(statstore);
     var d = new Date();
     var vday = d.getDate().toString();
     var vmonth = d.getMonth()+1;
