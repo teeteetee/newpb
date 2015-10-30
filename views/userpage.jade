@@ -884,7 +884,7 @@ head
       //  }
       //});
       $('.authorinput').bind('keypress', function (event) {
-          var regexp = /[.\/\w]/i;
+          var regex = /^[.\/\w]/i;
           var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
           if (!regex.test(key)) {
              event.preventDefault();
