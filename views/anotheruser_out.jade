@@ -805,9 +805,11 @@ head
             }
         books.forEach(function(element,index){
           var authors_insert=' ';
-            element.authors.forEach(function(element2){
-             authors_insert+='  '+element2;
-              });
+            if(element.authors[0]){
+              element.authors.forEach(function(element2){
+              authors_insert+='  '+element2;
+               });
+            }
            var insert;
             switch(true){
               case(element.goodbook&&!element.newbook):

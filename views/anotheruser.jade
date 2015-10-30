@@ -1027,9 +1027,11 @@ head
               console.log('HASNT GOT LENGTH');
             }
             var authors_insert = ' ';
-            element.authors.forEach(function(element2){
-            authors_insert+='  '+element2;
-             });
+            if(element.authors[0]){
+              element.authors.forEach(function(element2){
+              authors_insert+='  '+element2;
+               });
+            }
             console.log('newbook :'+element.newbook);
             console.log('goodbook :'+element.goodbook);
             var new_indicator_part_1 =' ';
