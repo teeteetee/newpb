@@ -325,7 +325,7 @@ head
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4 Restore
-          form(method='post',action='/restore',role='form', enctype='multipart/form-data')
+          form(method='post',action='/restore',role='form', enctype='multipart/form-data',id='restoreform')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
                 span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
@@ -440,4 +440,9 @@ head
           $('#wait').css('display','block');
           console.log('hey');
           $('#picform').submit();
+      });
+      $(document).on('change', '#restoreform .btn-file :file', function() {
+          $('#wait').css('display','block');
+          console.log('hey');
+          $('#restoreform').submit();
       });
