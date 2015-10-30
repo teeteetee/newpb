@@ -296,10 +296,32 @@ app.post('/backup',function (req,res){
   }
 });
 
-app.post('/restore',function (req,res){
-  if(req.session._id){    
-  
+function validateJSON(body) {
+  try {
+    var data = JSON.parse(body);
+    // if came to here, then valid
+    return data;
+  } catch(e) {
+    // failed to parse
+    return null;
   }
+}
+
+app.post('/restore',function (req,res){
+  if(req.session._id){      
+    var oldPath = req.files.usersjson.path;
+    fs.readFile(oldPath , 'utf8', function(err, data) {
+      var valid = validateJSON(data);
+       if (data) {
+         data = JSON.parse(data);
+         console.log(JSON.stringify(data[0]));
+       }
+      fs.unlink(oldPath, function(){
+        if(err) throw err;
+        res.redirect('/');
+       });
+    });
+   }
   else {
     res.redirect('/');
   }
