@@ -89,10 +89,10 @@ app.get('*', function(req,res,next) {
   'admin',
   '/'
   ];
+  var requrl='';
   if(req.url!='/')
-   var requrl='';
   {var ln = req.url.length-1;
-  console.log(req.url+' length: '+ln);
+  console.log(req.url+' length: '+req.url.length);
   requrl = req.url.substring(1,ln);}
 
   if(req.url!='/'&&requrl.indexOf('/') > -1)
