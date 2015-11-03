@@ -2169,7 +2169,7 @@ app.post('/additem/:id',function (req,res){
     }
     else {
       users.update({_id:req.session._id},{$push:{articlestore:newid},$set:{last_item:newdate},$inc:{totalarticles:1,readarticles:1}});
-      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}}}});
+      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}}});
     }
     var ms ={};
     ms.trouble=0;
