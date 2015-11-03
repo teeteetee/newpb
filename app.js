@@ -577,7 +577,7 @@ app.post('/newuser',function(req,res){
             }
           else {
           follow.insert({user:done._id.toString()});
-          items.insert({user:done._id.toString(),bookstore:[],moviestore:[]});// used when searching by item id, not in user to keep things light and fast
+          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],articles:[]});// used to populate the user, checks are done with user object passed in session
           user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
           req.session.mail=vmail;
           req.session._id=done._id;
@@ -2039,7 +2039,7 @@ app.post('/additem/:id',function (req,res){
     var book_id = req.body.book_id;
     var already = 0;
     for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
-      if(book_id === req.session.bookstore[xx]._id.toString()){
+      if(book_id === req.session.bookstore[xx]){
         console.log('trying to add a book, which is already on the list');
        already =1;
       }
@@ -2054,9 +2054,9 @@ app.post('/additem/:id',function (req,res){
        }
        else if(book){
         var crrtm = Date.now();
-        users.update({_id:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0}},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
-        items.update({user:req.session._id},{$push:{bookstore:book_id.toString()}});
-        req.session.bookstore.push({tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0});
+        users.update({_id:req.session._id},{$push:{bookstore:book_id.toString()},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
+        items.update({user:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0}}});
+        req.session.bookstore.push(book_id.toString());
        }
        else {
         var ms ={};
@@ -2074,13 +2074,14 @@ app.post('/additem/:id',function (req,res){
     var article_id = req.body.article_id;
     var already = 0;
     for(var xx =req.session.articlestore.length-1;xx>=0;xx--){
-      if(article_id === req.session.articlestore[xx]._id.toString()){
+      if(article_id === req.session.articlestore[xx]){
         console.log('trying to add an article, which is already on the list');
        already =1;
       }
     }
     if(!already)
-    {users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:article_id,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+    {users.update({_id:req.session._id},{$push:{articlestore:article_id},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+     items.update({user:req.session_id},{$push:{articlestore:{tmstmp:Date.now(),_id:article_id,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}}});
       }
         var ms ={};
         ms.trouble=0;
@@ -2091,7 +2092,7 @@ app.post('/additem/:id',function (req,res){
     var movie_id = req.body.movie_id;
     var already = 0;
     for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
-      if(movie_id === req.session.moviestore[xx]._id.toString()){
+      if(movie_id === req.session.moviestore[xx]){
         console.log('trying to add a movie, which is already on the list');
        already =1;
       }
@@ -2105,9 +2106,9 @@ app.post('/additem/:id',function (req,res){
        }
        else if(movie){
     var crrtm = Date.now();
-    users.update({_id:req.session._id},{$push:{moviestore:{tmstmp:crrtm,_id:movie_id,title:movie.title,year:movie.year,newmovie:1,goodmovie:0}},$set:{last_item:crrtm},$inc:{totalmovies:1,newmovies:1}});
-    items.update({user:req.session._id},{$push:{moviestore:movie_id.toString()}});
-    req.session.moviestore.push({tmstmp:crrtm,_id:movie_id,title:movie.title,year:movie.year,newmovie:1,goodmovie:0});
+    users.update({_id:req.session._id},{$push:{moviestore:movie_id.toString()},$set:{last_item:crrtm},$inc:{totalmovies:1,newmovies:1}});
+    items.update({user:req.session._id},{$push:{moviestore:{tmstmp:crrtm,_id:movie_id,title:movie.title,year:movie.year,newmovie:1,goodmovie:0}}});
+    req.session.moviestore.push(movie_id.toString());
     }
        else {
         var ms ={};
