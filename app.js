@@ -143,7 +143,7 @@ app.get('*', function(req,res,next) {
                 //var tmp_str = doc._id.toString();
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
-                console.log(7);
+                console.log(7+' '+doc._id);
                 items.findOne({user:JSON.stringify(doc._id)},function (err,done){
                   console.log('done '+JSON.stringify(done));
                   if(!done){
