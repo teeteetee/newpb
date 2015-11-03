@@ -139,8 +139,7 @@ app.get('*', function(req,res,next) {
                  }
                }
                }
-               if(req.session.nick)
-               {//var update_tmstmp = {};
+               //var update_tmstmp = {};
                 //var tmp_str = doc._id.toString();
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
@@ -153,14 +152,14 @@ app.get('*', function(req,res,next) {
                   doc.moviestore = done.moviestore;
                   doc.articlestore = done.articlestore;
                   console.log('item done: '+done);
-                  var mc = done.moviestore ? done.moviestore : 0;
-                  var bc = done.bookstore ? done.bookstore : 0;
-                  var ac = done.articlestore ? done.articlestore : 0;
+                  var mc = req.session.moviestore ? req.session.moviestore : 0;
+                  var bc = req.session.bookstore ? req.session.bookstore : 0;
+                  var ac = req.session.articlestore ? req.session.articlestore : 0;
+                  if(req.session.nick)
+               {
                 res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
-                });
-
-               }
-               else {
+                }
+                else {
                 console.log(8);
                  if(doc.pub)
                  {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
@@ -169,6 +168,7 @@ app.get('*', function(req,res,next) {
                    res.render('private');
                  }
                }
+                }); 
              }//doc pub
              else {
               console.log(10);
