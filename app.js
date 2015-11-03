@@ -91,9 +91,10 @@ app.get('*', function(req,res,next) {
   var ln = req.url.length-1;
   var requrl = req.url.substring(1,ln);
   if(requrl.indexOf('/') > -1)
-  {requrl = requrl.substring(0,requrl.indexOf('/'));}
+  { console.log('second level slash');
+    requrl = requrl.substring(0,requrl.indexOf('/'));}
   if (test.indexOf(requrl) > -1) {
-    console.log(test.indexOf(requrl)+', '+test[test.indexOf(requrl)]);
+    console.log('next');
     next();
   } 
   else {
