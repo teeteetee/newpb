@@ -971,30 +971,25 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  var books=msg.doc.bookstore;
+                   books=msg.doc.bookstore;
                   if(!books || !books.length) {
                    console.log('no books');
                    }
                    else {
-                    var count_b = books.length-1;
-                    //getbooks(books,count_b);
                     populatebooks(books);
                    }
-                   var movies=msg.doc.moviestore;
+                   movies=msg.doc.moviestore;
                   if(!movies || !movies.length) {
                    console.log('no movies');
                    }
                    else {
-                    var count_m = movies.length-1;
-                    //getmovies(movies,count_m);
                     populatemovies(movies);
                    }
-                   var articles=msg.doc.articlestore;
+                   articles=msg.doc.articlestore;
                   if(!articles || !articles.length) {
                    console.log('no articles');
                    }
                    else {
-                    var count_a = articles.length-1;
                     populatearticles(articles);
                    }
                 }
