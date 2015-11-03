@@ -97,7 +97,10 @@ app.get('*', function(req,res,next) {
 
   if(req.url!='/'&&requrl.indexOf('/') > -1)
   { console.log('second level slash in '+requrl);
-    requrl = requrl.substring(0,requrl.indexOf('/'));}
+    requrl = requrl.substring(0,requrl.indexOf('/'));
+   console.log('essential part '+requrl+' index: '+test.indexOf(requrl));
+
+  }
 
   if (req.url==='/'||test.indexOf(requrl) > -1) {
     console.log(req.url+' next');
