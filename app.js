@@ -63,6 +63,7 @@ app.get('*', function(req,res,next) {   var d = new Date();
    });
 
 app.get('*', function(req,res,next) {  
+  console.log('########### '+req.url+'############');
   var test =['signin',
   'logout',
   'messages',
