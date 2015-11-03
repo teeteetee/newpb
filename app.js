@@ -174,7 +174,7 @@ app.get('*', function(req,res,next) {
                   }//if doc exists
                   else {
                     console.log(11);
-                    res.redirect('/');
+                    res.render('404');
                   }
           }
         });
