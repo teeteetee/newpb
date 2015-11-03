@@ -62,6 +62,101 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
 
+app.get('*', function(req,res,next) {  
+  var test =['signin',
+  'logout',
+  'messages',
+  'settings',
+  'helpers',
+  'lstitm',
+  'seebooks',
+  'seefollow',
+  'clearbooks',
+  'cleararticles',
+  'setbooks',
+  'clearmovies',
+  'seeauthors',
+  'cs',
+  'dropum',
+  'showum',
+  'dropusers',
+  'dropbooks',
+  'dropmovies',
+  'dropauthors',
+  'showitems',
+  'admax',
+  'admin',
+  ''
+  ];
+  var ln = req.url.length-1;
+  var requrl = req.url.substring(1,ln);
+  requrl = requrl.substring(0,requrl.indexOf('/'))
+  if (test.indexOf(requrl) > -1) {
+    next();
+} else {
+    if(req.session && req.session.nick===req.params.nick)
+    {
+     res.redirect('/');
+    }
+    else
+    {var vnick = req.params.nick;
+        users.findOne({nick:vnick},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
+          //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
+          if(err) {
+          
+          }
+          else {
+            if(doc){
+              if(doc.pub)
+              {var unfollow=0;
+               if(req.session.userstore ) {
+               for(var i=0;i<req.session.userstore.length;i++){
+                 console.log(req.session.userstore[i]);
+                 if(req.session.userstore[i]===doc._id.toString()) {
+                 unfollow=1;
+                 break
+                 }
+               }
+               }
+               if(req.session.nick)
+               {//var update_tmstmp = {};
+                //var tmp_str = doc._id.toString();
+                //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
+                //follow.update({user:req.session._id},{$set:update_tmstmp});
+                items.findOne({user:req.session._id},function(err,done){
+                  if(!done){
+                    done=[];
+                  }
+                  console.log('item done: '+done);
+                  var mc = done.moviestore ? done.moviestore : 0;
+                  var bc = done.bookstore ? done.bookstore : 0;
+                  var ac = done.articlestore ? done.articlestore : 0;
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
+                });
+
+               }
+               else {
+                 if(doc.pub)
+                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
+                 else {
+                   res.render('private');
+                 }
+               }
+             }//doc pub
+             else {
+               res.render('private');
+             }
+                  }//if doc exists
+                  else {
+                    res.redirect('/');
+                  }
+          }
+        });
+      }
+}
+   });
+
+
 app.get('/api/udata/:nick',function (req,res){
   users.findOne({nick:req.params.nick},{fields:{bookstore:1,moviestore:1,articlestore:1}},function (err,doc){
     var ms={};
@@ -85,10 +180,6 @@ app.get('/api/udata/:nick',function (req,res){
 });
 
 
-app.get('/testdata',function (req,res){
-  var data = [{'btitle':'Moscow'},{'btitle':'Berlin'},{'btitle':'Los Angeles'},{'btitle':'Rio'},{'btitle':'Beijin'}];
-  res.send(data);
-});
 
 app.get('/',function(req,res) {
   //console.log(req.session.mail+' : '+is_email(req.session.mail));
@@ -1283,10 +1374,6 @@ app.post('/getavatar/:id',function (req,res){
   }
 });
 
-app.get('/newindex',function (req,res){
-  res.render('userpage_empty');
-});
-
 app.post('/getdisc/:id', function (req,res){
   // API to populate discussion page
   //TO DO if req.session present, otherwise go away
@@ -2392,9 +2479,7 @@ app.post('/livesearch/:id',function (req,res){
   }
 });
 
-app.get('/sockets',function (req,res){
-  res.render('sockets');
-});
+
 
 ///sockets
 //var server = app.listen(80,'188.166.118.116');
