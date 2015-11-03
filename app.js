@@ -2217,7 +2217,7 @@ app.post('/additem/:id',function (req,res){
                 book_insert.authors = book.authors;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
-                users.update({_id:req.session._id},{$push:{bookstore:bookstore:book._id.toString()},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
+                users.update({_id:req.session._id},{$push:{bookstore:book._id.toString()},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
                 items.update({user:req.session._id},{$push:{bookstore:book_insert}});
                              tell_user(0);}
                   else {
