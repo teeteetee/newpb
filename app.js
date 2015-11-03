@@ -94,7 +94,8 @@ app.get('*', function(req,res,next) {
   if (test.indexOf(requrl) > -1) {
     next();
 } else {
-    if(req.session && req.session.nick===req.params.nick)
+    console.log('gonna serve the user');
+    if(req.session && req.session.nick===requrl)
     {
      res.redirect('/');
     }
