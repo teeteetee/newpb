@@ -118,9 +118,12 @@ app.get('*', function(req,res,next) {
           else {
             console.log(3);
             if(doc){
+              console.log(4);
               if(doc.pub)
               {var unfollow=0;
+                console.log(5);
                if(req.session.userstore ) {
+                console.log(6);
                for(var i=0;i<req.session.userstore.length;i++){
                  console.log(req.session.userstore[i]);
                  if(req.session.userstore[i]===doc._id.toString()) {
@@ -134,6 +137,7 @@ app.get('*', function(req,res,next) {
                 //var tmp_str = doc._id.toString();
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
+                console.log(7);
                 items.findOne({user:req.session._id},function(err,done){
                   if(!done){
                     done=[];
@@ -147,18 +151,22 @@ app.get('*', function(req,res,next) {
 
                }
                else {
+                console.log(8);
                  if(doc.pub)
                  {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
                  else {
+                  console.log(9);
                    res.render('private');
                  }
                }
              }//doc pub
              else {
+              console.log(10);
                res.render('private');
              }
                   }//if doc exists
                   else {
+                    console.log(11);
                     res.redirect('/');
                   }
           }
