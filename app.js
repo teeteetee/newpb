@@ -1495,7 +1495,7 @@ app.get('/people/:kind/:item',function (req,res){
   if(req.session._id){
     switch(req.params.kind){
        case('b'):
-       items.find({bookstore:req.params.item},{fields:{bookstore:0,moviestore:0,_id:0}}, function(err,done){
+       users.find({bookstore:req.params.item},{fields:{_id:1}}, function(err,done){
         if(err){
           console.log('err while items query');
         }
@@ -1516,7 +1516,7 @@ app.get('/people/:kind/:item',function (req,res){
           });
        break;
        case('m'):
-        items.find({moviestore:req.params.item},{fields:{bookstore:0,moviestore:0,_id:0}}, function(err,done){
+        users.find({moviestore:req.params.item},{fields:{_id:1}}, function(err,done){
         if(err){
           console.log('err while items query');
         }
