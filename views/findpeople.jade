@@ -335,7 +335,7 @@ head
       //getfollow();
       function getusers(users,i) {
         console.log('i:'+i);
-        var url = '/getuser/'+users[i].user;
+        var url = '/getuser/'+users[i];
         $.ajax({
          method: "POST",
          url: url,
