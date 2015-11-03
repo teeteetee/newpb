@@ -961,32 +961,41 @@ head
        var modal_data_store=[];
        var movie_modal_data_store=[];
        var article_modal_data_store=[];
-       var books=user.bookstore;
-      if(!books || !books.length) {
-       console.log('no books');
-       }
-       else {
-        var count_b = books.length-1;
-        //getbooks(books,count_b);
-        populatebooks(books);
-       }
-       var movies=user.moviestore;
-      if(!movies || !movies.length) {
-       console.log('no movies');
-       }
-       else {
-        var count_m = movies.length-1;
-        //getmovies(movies,count_m);
-        populatemovies(movies);
-       }
-       var articles=user.articlestore;
-      if(!articles || !articles.length) {
-       console.log('no articles');
-       }
-       else {
-        var count_a = articles.length-1;
-        populatearticles(articles);
-       }
+       $.ajax({
+              method: "POST",
+              url: "/getitems",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  var books=msg.doc.bookstore;
+                  if(!books || !books.length) {
+                   console.log('no books');
+                   }
+                   else {
+                    var count_b = books.length-1;
+                    //getbooks(books,count_b);
+                    populatebooks(books);
+                   }
+                   var movies=msg.doc.moviestore;
+                  if(!movies || !movies.length) {
+                   console.log('no movies');
+                   }
+                   else {
+                    var count_m = movies.length-1;
+                    //getmovies(movies,count_m);
+                    populatemovies(movies);
+                   }
+                   var articles=msg.doc.articlestore;
+                  if(!articles || !articles.length) {
+                   console.log('no articles');
+                   }
+                   else {
+                    var count_a = articles.length-1;
+                    populatearticles(articles);
+                   }
+                }
+              });
       // Discontinued because we supply boooks and movies through user object. 
       // When we will do optimization and user's books and movies might move into separate db
       // this might will be brought back

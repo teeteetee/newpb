@@ -370,6 +370,25 @@ function is_email(email) {
 
 //END OF DATA VALIDATION
 
+app.post('/getitems',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  items.findOne({user:req.session._id},function (err,doc){
+    if(err) {
+      console.log('ERR WHILE ITEMS QUERY');
+      res.send(ms);
+    }
+    else if(doc.user){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
+});
+
 app.post('/backup',function (req,res){
   if(req.session._id){    
   users.findOne({_id:req.session._id},function (err,doc){ 
@@ -377,7 +396,7 @@ app.post('/backup',function (req,res){
       console.log('ERR WHILE BACKUP REQUEST');
       console.log(err);
     }
-    else if(doc.bookstore)
+    else if(doc._id)
   { var json = [];
     var statstore = {
     'totalbooks':doc.totalbooks,
@@ -390,29 +409,41 @@ app.post('/backup',function (req,res){
     'newarticles':doc.newarticles,
     'readarticles':doc.readarticles,
     'last_item':doc.last_item};
-    json.push(doc.bookstore);
-    json.push(doc.moviestore)
-    json.push(doc.articlestore);
-    json.push(statstore);
-    var d = new Date();
-    var vday = d.getDate().toString();
-    var vmonth = d.getMonth()+1;
-    vmonth = vmonth.toString();
-    var vyear = d.getUTCFullYear().toString();
-    console.log('beginning');
-    if (vday.length===1){
-           vday='0'+vday;
+     items.findOne({_id:req.session._id},function (err2,doc2){
+        if(err){
+           console.log('ERR WHILE BACKUP REQUEST');
+           console.log(err2);
          }
-    if (vmonth.length===1){
-           vmonth='0'+vmonth;
-         }
-    var date= vday+'/'+vmonth+'/'+vyear;
-    var filename = 'P&B_backup_'+date+'.json'; // or whatever
-    var mimetype = 'application/json';
-    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    res.setHeader('Content-type', mimetype);
-    res.write(JSON.stringify(json));
-    res.end();
+         else if(doc2.user)
+       {
+         json.push(doc2.bookstore);
+         json.push(doc2.moviestore)
+         json.push(doc2.articlestore);
+         json.push(statstore);
+         var d = new Date();
+         var vday = d.getDate().toString();
+         var vmonth = d.getMonth()+1;
+         vmonth = vmonth.toString();
+         var vyear = d.getUTCFullYear().toString();
+         console.log('beginning');
+         if (vday.length===1){
+                vday='0'+vday;
+              }
+         if (vmonth.length===1){
+                vmonth='0'+vmonth;
+              }
+         var date= vday+'/'+vmonth+'/'+vyear;
+         var filename = 'P&B_backup_'+date+'.json'; // or whatever
+         var mimetype = 'application/json';
+         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+         res.setHeader('Content-type', mimetype);
+         res.write(JSON.stringify(json));
+         res.end();
+       }
+        else {
+      res.redirect('/');
+    }
+     });
     //res.redirect('/');
     }
     else {
@@ -577,7 +608,7 @@ app.post('/newuser',function(req,res){
             }
           else {
           follow.insert({user:done._id.toString()});
-          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],articles:[]});// used to populate the user, checks are done with user object passed in session
+          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],articles:[],pub:1});// used to populate the user, checks are done with user object passed in session
           user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
           req.session.mail=vmail;
           req.session._id=done._id;
@@ -716,6 +747,7 @@ app.post('/settings',function (req,res){
   if(req.session.mail || !is_single(parseInt(req.body.pub))){
     //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
     users.update({mail:req.session.mail},{$set:{pub:vpub}});
+    items.update({user:req.session._id},{$set:{pub:vpub}});
     ms.trouble=0;
     res.send(ms);
   }
@@ -1618,23 +1650,25 @@ app.get('/u/:nick', function (req,res){
                  }
                }
                }
-               if(req.session.nick)
-               {//var update_tmstmp = {};
+               //var update_tmstmp = {};
                 //var tmp_str = doc._id.toString();
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
-                items.findOne({user:req.session._id},function(err,done){
+                items.findOne({user:doc._id},function(err,done){
                   if(!done){
                     done=[];
                   }
+                  doc.bookstore = done.bookstore;
+                  doc.moviestore = done.moviestore;
+                  doc.articlestore = done.articlestore;
                   console.log('item done: '+done);
-                  var mc = done.moviestore ? done.moviestore : 0;
-                  var bc = done.bookstore ? done.bookstore : 0;
-                  var ac = done.articlestore ? done.articlestore : 0;
+                  var mc = req.session.moviestore ? req.session.moviestore : 0;
+                  var bc = req.session.bookstore ? req.session.bookstore : 0;
+                  var ac = req.session.articlestore ? req.session.articlestore : 0;
+                  if(req.session.nick)
+               {
                 res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
-                });
-
-               }
+                }
                else {
                  if(doc.pub)
                  {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
@@ -1642,6 +1676,7 @@ app.get('/u/:nick', function (req,res){
                    res.render('private');
                  }
                }
+                });
              }//doc pub
              else {
                res.render('private');
@@ -2125,12 +2160,16 @@ app.post('/additem/:id',function (req,res){
     console.log(req.body.title);
     if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) && is_single(parseInt(req.body.newarticle))){
     var newarticle = parseInt(req.body.newarticle);
+    var newid = new ObjectID();
+    var newdate = Date.now();
     if(newarticle)
     {
-      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:new ObjectID(),title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
+      users.update({_id:req.session._id},{$push:{articlestore:newid},$set:{last_item:newdate},$inc:{totalarticles:1,newarticles:1}});
+      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}}})
     }
     else {
-      users.update({_id:req.session._id},{$push:{articlestore:{tmstmp:Date.now(),_id:new ObjectID(),title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}},$set:{last_item:Date.now()},$inc:{totalarticles:1,readarticles:1}});
+      users.update({_id:req.session._id},{$push:{articlestore:newid},$set:{last_item:newdate},$inc:{totalarticles:1,readarticles:1}});
+      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}}}});
     }
     var ms ={};
     ms.trouble=0;
@@ -2164,7 +2203,7 @@ app.post('/additem/:id',function (req,res){
                 //checking if we have the book already
                  var already = 0;
                  for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
-                   if(book._id.toString() === req.session.bookstore[xx]._id.toString()){
+                   if(book._id.toString() === req.session.bookstore[xx]){
                      console.log('trying to add a book, which is already on the list');
                     already =1;
                    }
@@ -2178,13 +2217,13 @@ app.post('/additem/:id',function (req,res){
                 book_insert.authors = book.authors;
                 if(parseInt(req.body.newbook))
               { book_insert.newbook = 1;
-                users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
-                items.update({user:req.session._id},{$push:{bookstore:book._id.toString()}});
+                users.update({_id:req.session._id},{$push:{bookstore:bookstore:book._id.toString()},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
+                items.update({user:req.session._id},{$push:{bookstore:book_insert}});
                              tell_user(0);}
                   else {
                     book_insert.newbook =0;
-                    users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
-                    items.update({user:req.session._id},{$push:{bookstore:book._id.toString()}});
+                    users.update({_id:req.session._id},{$push:{bookstore:book._id.toString()},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
+                    items.update({user:req.session._id},{$push:{bookstore:book_insert}});
                              tell_user(0);
                   }
 
@@ -2214,8 +2253,8 @@ app.post('/additem/:id',function (req,res){
                       book_insert.authors = authors_arr;
                      if(parseInt(req.body.newbook))
                      {book_insert.newbook = 1;
-                      users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
-                      items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
+                      users.update({_id:req.session._id},{$push:{bookstore:newbook._id.toString()},$inc:{totalbooks:1,newbooks:1},$set:{last_item:Date.now()}});
+                      items.update({user:req.session._id},{$push:{bookstore:book_insert}});
                                           //callback(authors_arr,newbook._id,tell_user);
                                           authors_arr.forEach(function(element){
                                             doauthors(element,newbook._id,tell_user);
@@ -2223,8 +2262,8 @@ app.post('/additem/:id',function (req,res){
                                         }
                                           else
                       {book_insert.newbook = 0;
-                        users.update({_id:req.session._id},{$push:{bookstore:book_insert},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
-                        items.update({user:req.session._id},{$push:{bookstore:newbook._id.toString()}});
+                        users.update({_id:req.session._id},{$push:{bookstore:newbook._id.toString()},$inc:{totalbooks:1,oldbooks:1},$set:{last_item:Date.now()}});
+                        items.update({user:req.session._id},{$push:{bookstore:book_insert}});
                                           //callback(authors_arr,newbook._id,tell_user);
                                           authors_arr.forEach(function(element){
                                             doauthors(element,newbook._id,tell_user);
@@ -2325,16 +2364,16 @@ app.post('/additem/:id',function (req,res){
                 movie_insert.year = movie.year;
                 if(parseInt(req.body.newmovie))
               { movie_insert.newmovie = 1;
-                users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
-                items.update({user:req.session._id},{$push:{moviestore:movie._id.toString()}});
+                users.update({_id:req.session._id},{$push:{moviestore:movie._id.toString()},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
                              var ms={};
                              ms.trouble = 0;
                              res.send(ms);
                            }
                   else {
                     movie_insert.newmovie =0;
-                    users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
-                    items.update({user:req.session._id},{$push:{moviestore:movie._id.toString()}});
+                    users.update({_id:req.session._id},{$push:{moviestore:movie._id.toString()},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
+                    items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
                              var ms={};
                              ms.trouble = 0;
                              res.send(ms);
@@ -2362,14 +2401,14 @@ app.post('/additem/:id',function (req,res){
                       movie_insert.year = req.body.year;
                      if(parseInt(req.body.newmovie))
                      {movie_insert.newmovie = 1;
-                      users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
-                      items.update({user:req.session._id},{$push:{moviestore:newmovie._id.toString()}});
+                      users.update({_id:req.session._id},{$push:{moviestore:newmovie._id.toString()},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
+                      items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
                                          ms.trouble = 0;
                                          res.send(ms);}
                                           else
                       {movie_insert.newmovie = 0;
-                        users.update({_id:req.session._id},{$push:{moviestore:movie_insert},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
-                        items.update({user:req.session._id},{$push:{moviestore:newmovie._id.toString()}});
+                        users.update({_id:req.session._id},{$push:{moviestore:newmovie._id.toString()},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
+                        items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
                                           ms.trouble =0;
                                            res.send(ms);}
                   }
