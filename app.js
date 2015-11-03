@@ -105,15 +105,18 @@ app.get('*', function(req,res,next) {
     console.log('gonna serve the user');
     if(req.session && req.session.nick===requrl)
     {
+      console.log(1);
      res.redirect('/');
     }
     else
     {  users.findOne({nick:requrl},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
           //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
+          console.log(2);
           if(err) {
           
           }
           else {
+            console.log(3);
             if(doc){
               if(doc.pub)
               {var unfollow=0;
