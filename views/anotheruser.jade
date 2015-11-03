@@ -874,8 +874,6 @@ head
         }
         });
        //------------------//
-       var count_b;
-       var count_m;
        var books=user.bookstore;
        var movies=user.moviestore;
        var articles = user.articlestore;
@@ -901,22 +899,19 @@ head
           console.log('no books');
           }
           else {
-           count_b = books.length-1;
-           getbooks(books,count_b);
+           getbooks(books);
           }
           if(!movies || !movies.length) {
           console.log('no movies');
           }
           else {
-           count_m = movies.length-1;
-           getmovies(movies,count_m);
+           getmovies(movies);
           }
            });
          if(!articles || !articles.length) {
           console.log('no articles');
           }
           else {
-           var count_a = articles.length-1;
            populatearticles(articles);
           }
       }
@@ -1092,7 +1087,7 @@ head
            else {$('.books').prepend(insert);}
            });
        }
-      function getmovies(movies,i) {
+      function getmovies(movies) {
        movies.forEach(function(element,index){
             if ($(".nomovies")[0])
             { console.log('HAS LENGTH');
