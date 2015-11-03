@@ -78,6 +78,7 @@ app.get('*', function(req,res,next) {
   'clearmovies',
   'seeauthors',
   'cs',
+  'people',
   'dropum',
   'showum',
   'dropusers',
