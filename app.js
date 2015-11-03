@@ -99,7 +99,7 @@ app.get('*', function(req,res,next) {
     requrl = requrl.substring(0,requrl.indexOf('/'));}
 
   if (req.url==='/'||test.indexOf(requrl) > -1) {
-    console.log('next');
+    console.log(req.url+' next');
     next();
   } 
   else {
