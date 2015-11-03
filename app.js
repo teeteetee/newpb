@@ -88,6 +88,9 @@ app.get('*', function(req,res,next) {
   'admin',
   ''
   ];
+  if(req.url === '/') {
+    next();
+  }
   var ln = req.url.length-1;
   console.log(req.url+' length: '+ln);
   var requrl = req.url.substring(1,ln);
