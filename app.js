@@ -92,9 +92,10 @@ app.get('*', function(req,res,next) {
   var requrl = req.url.substring(1,ln);
   requrl = requrl.substring(0,requrl.indexOf('/'))
   if (test.indexOf(requrl) > -1) {
-    console.log('routing');
+    console.log(test.indexOf(requrl));
     next();
-} else {
+  } 
+  else {
     console.log('gonna serve the user');
     if(req.session && req.session.nick===requrl)
     {
