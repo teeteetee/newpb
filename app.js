@@ -90,6 +90,7 @@ app.get('*', function(req,res,next) {
   ];
   if(req.url === '/') {
     next();
+    break;
   }
   var ln = req.url.length-1;
   console.log(req.url+' length: '+ln);
