@@ -1665,7 +1665,7 @@ app.get('/u/:nick', function (req,res){
                     done=[];
                   }
                   doc.bookstore = done.bookstore;
-                  console.log(doc.bookstore);
+                  console.log(JSON.stringify(doc.bookstore));
                   doc.moviestore = done.moviestore;
                   doc.articlestore = done.articlestore;
                   console.log('item done: '+done);
