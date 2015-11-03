@@ -89,11 +89,12 @@ app.get('*', function(req,res,next) {
   'admin',
   '/'
   ];
+
   var requrl='';
   if(req.url!='/')
   {var ln = req.url.length-1;
-  console.log(req.url+' length: '+req.url.length);
-  requrl = req.url.substring(1,ln);}
+  console.log(req.url+' length: '+ln);
+  requrl = req.url.substring(1,req.url.length);}
 
   if(req.url!='/'&&requrl.indexOf('/') > -1)
   { console.log('second level slash in '+requrl);
