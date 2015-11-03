@@ -107,7 +107,7 @@ app.get('*', function(req,res,next) {
     next();
   } 
   else {
-    console.log('gonna serve the user');
+    console.log('gonna serve the user '+requrl);
     if(req.session && req.session.nick===requrl)
     {
       console.log(1);
