@@ -149,6 +149,7 @@ app.get('*', function(req,res,next) {
                     done=[];
                   }
                   doc.bookstore = done.bookstore;
+                  console.log(JSON.stringify(doc.bookstore));
                   doc.moviestore = done.moviestore;
                   doc.articlestore = done.articlestore;
                   console.log('item done: '+done);
