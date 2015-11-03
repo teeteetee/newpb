@@ -145,10 +145,13 @@ app.get('*', function(req,res,next) {
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
                 console.log(7);
-                items.findOne({user:req.session._id},function(err,done){
+                items.findOne({user:doc._id},function(err,done){
                   if(!done){
                     done=[];
                   }
+                  doc.bookstore = done.bookstore;
+                  doc.moviestore = done.moviestore;
+                  doc.articlestore = done.articlestore;
                   console.log('item done: '+done);
                   var mc = done.moviestore ? done.moviestore : 0;
                   var bc = done.bookstore ? done.bookstore : 0;
@@ -1628,73 +1631,6 @@ app.post('/gettimestamp/:id',function (req,res){
   else {
     res.send(0);
   }
-});
-
-app.get('/u/:nick', function (req,res){
-  
-   if(req.session && req.session.nick===req.params.nick)
-    {
-     res.redirect('/');
-    }
-    else
-    {var vnick = req.params.nick;
-        users.findOne({nick:vnick},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
-          //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
-          if(err) {
-          
-          }
-          else {
-            if(doc){
-              if(doc.pub)
-              {var unfollow=0;
-               if(req.session.userstore ) {
-               for(var i=0;i<req.session.userstore.length;i++){
-                 console.log(req.session.userstore[i]);
-                 if(req.session.userstore[i]===doc._id.toString()) {
-                 unfollow=1;
-                 break
-                 }
-               }
-               }
-               //var update_tmstmp = {};
-                //var tmp_str = doc._id.toString();
-                //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
-                //follow.update({user:req.session._id},{$set:update_tmstmp});
-                items.findOne({user:doc._id},function(err,done){
-                  if(!done){
-                    done=[];
-                  }
-                  doc.bookstore = done.bookstore;
-                  console.log(JSON.stringify(doc.bookstore));
-                  doc.moviestore = done.moviestore;
-                  doc.articlestore = done.articlestore;
-                  console.log('item done: '+done);
-                  var mc = req.session.moviestore ? req.session.moviestore : 0;
-                  var bc = req.session.bookstore ? req.session.bookstore : 0;
-                  var ac = req.session.articlestore ? req.session.articlestore : 0;
-                  if(req.session.nick)
-               {
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
-                }
-               else {
-                 if(doc.pub)
-                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
-                 else {
-                   res.render('private');
-                 }
-               }
-                });
-             }//doc pub
-             else {
-               res.render('private');
-             }
-                  }//if doc exists
-                  else {
-                    res.redirect('/');
-                  }
-          }
-        });
-      }
 });
 
 
