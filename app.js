@@ -409,6 +409,10 @@ app.post('/backup',function (req,res){
     'newarticles':doc.newarticles,
     'readarticles':doc.readarticles,
     'last_item':doc.last_item};
+    var ids={};
+    ids.bookstore = doc.bookstore;
+    ids.moviestore = doc.moviestore;
+    ids.articlestore = doc.articlestore;
      items.findOne({_id:req.session._id},function (err2,doc2){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
@@ -420,6 +424,7 @@ app.post('/backup',function (req,res){
          json.push(doc2.moviestore)
          json.push(doc2.articlestore);
          json.push(statstore);
+         json.push(ids);
          var d = new Date();
          var vday = d.getDate().toString();
          var vmonth = d.getMonth()+1;
@@ -477,6 +482,7 @@ app.post('/restore',function (req,res){
        if (data) {
          data = JSON.parse(data);
          users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totalarticles:data[3].totalarticles,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newarticles:data[3].newarticles,readarticles:data[3].readarticles,last_item:data[3].last_item}});
+         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,articlestore:data[4].articlestore}});
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
