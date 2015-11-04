@@ -356,7 +356,7 @@ head
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') Conversations
+          h3(style='font-weight:200;color:#ddd;') Messages
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#discussions
           #noitems.row(style='text-align:center;')  
@@ -382,7 +382,7 @@ head
         }
         var avatar_insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
         if(element.userpic) {
-         avatar_insert = "<img style='height:50px;' src='/userpics/id"+element.sndr+"_small"+element.userpic+"' class='media-object img-circle' src='' alt='avatar'>";
+         avatar_insert = "<img style='height:50px;' src='/userpics/"+element.sndr+"_small.png' class='media-object img-circle' src='' alt='avatar'>";
         }
         msgstore[element.sndr] = element.textbody;
         nickstore[element.sndr] = element.nick;
