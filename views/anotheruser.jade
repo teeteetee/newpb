@@ -1218,7 +1218,7 @@ head
                  }
                  else {
                   unfollow=1;
-                  $('.follow').text('Unfollow').css({'color':'#4197E2','background-color':'white'});
+                  $('.follow').text('Unfollow');
                   $('.follow').removeClass('disabled');
                  }
                  });}
@@ -1235,8 +1235,7 @@ head
                  }
                  else {
                   unfollow=0;
-                  $('.follow').empty();
-                  $('.follow').append('Follow');
+                  $('.follow').text('Follow');
                   $('.follow').removeClass('disabled');
                  }
                  });}
