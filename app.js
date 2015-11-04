@@ -71,7 +71,7 @@ app.get('*', function(req,res,next) {
   'helpers',
   'lstitm',
   'seebooks',
-  'seeusers',
+  'seeuser',
   'seefollow',
   'clearbooks',
   'cleararticles',
