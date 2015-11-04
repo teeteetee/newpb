@@ -138,7 +138,7 @@ app.get('*', function(req,res,next) {
                 //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
                 console.log(7+' '+doc._id);
-                items.findOne({user:JSON.stringify(doc._id)},function (err,done){
+                items.findOne({user:doc._id.toString()},function (err,done){
                   console.log('done '+JSON.stringify(done));
                   if(!done){
                     done=[];
