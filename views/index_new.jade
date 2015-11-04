@@ -360,7 +360,18 @@ head
           }
         });
       $('#p').keyup(function(event) {
+        if(!$('#p').val()) {
+          console.log('yeouh');
+          $('#pgroup').removeClass('has-success');
+            $('#p_success').css('display','none');
+            $('#pgroup').removeClass('has-error');
+              $('#p_error').css('display','none');
+              $('#pwderr').slideToggle();
+            }
+        }
+          else{
         checkPwd($('#p').val());
+        }
         });
       var lastentry;
       $('#nickinput').keyup(function(event) {
@@ -457,12 +468,6 @@ head
         //  $('#pgroup').removeClass('has-success');
         //  $('#p_success').css('display','none');
         //}
-        if (str==='') {
-          $('#pgroup').removeClass('has-success');
-            $('#p_success').css('display','none');
-            $('#pgroup').removeClass('has-error');
-              $('#p_error').css('display','none');
-        }
         if (str.length < 6) {
             $('#pwderr').empty();
             console.log(1);
