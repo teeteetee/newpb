@@ -464,13 +464,13 @@ head
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
-              $('#pgroup').addClass('has-error');
-              $('#p_error').css('display','block');
             }
             if($('#pwderr').css('display') === 'none'){
               console.log(2);
               $('#pwderr').slideToggle();
             }
+            $('#pgroup').addClass('has-error');
+              $('#p_error').css('display','block');
            // return("too_short");
         } else if (str.length > 50) {
           console.log(3);
@@ -479,13 +479,13 @@ head
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
-              $('#pgroup').addClass('has-error');
-              $('#p_error').css('display','block');
             }
             if($('#pwderr').css('display') === 'none'){
               console.log(4);
               $('#pwderr').slideToggle();
             }
+            $('#pgroup').addClass('has-error');
+              $('#p_error').css('display','block');
             //return("too_long");
         } else if (str.search(/\d/) == -1) {
           console.log(5);
@@ -494,13 +494,13 @@ head
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
-              $('#pgroup').addClass('has-error');
-              $('#p_error').css('display','block');
             }
             if($('#pwderr').css('display') === 'none'){
               console.log(6);
               $('#pwderr').slideToggle();
             }
+            $('#pgroup').addClass('has-error');
+              $('#p_error').css('display','block');
             //return("no_num");
         } else if (str.search(/[a-zA-Z]/) == -1) {
           console.log(7);
@@ -509,13 +509,13 @@ head
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
-              $('#pgroup').addClass('has-error');
-              $('#p_error').css('display','block');
             }
             if($('#pwderr').css('display') === 'none'){
               console.log(8);
               $('#pwderr').slideToggle();
             }
+            $('#pgroup').addClass('has-error');
+              $('#p_error').css('display','block');
             //return("no_letter");
         } //else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
           //  $('#pwderr').empty();
@@ -532,6 +532,8 @@ head
           console.log(10);
               $('#pwderr').slideToggle();
             }
+        $('#pgroup').removeClass('has-error');
+        $('#p_error').css('display','none');
         $('#p_success').css('display','block');
         $('#pgroup').addClass('has-success');
         }
