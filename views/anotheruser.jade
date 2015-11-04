@@ -1060,7 +1060,7 @@ head
               thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               break
               case(element.newbook&&!element.goodbook):
               console.log('2st case');
@@ -1069,7 +1069,7 @@ head
               thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               console.log(modal_data_store);
               break
               case(!element.newbook&&!element.goodbook):
@@ -1079,7 +1079,7 @@ head
               thisbook._id = element._id;
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               break
             }         
            if(!prepend){$('.books').append(insert);}
@@ -1117,7 +1117,7 @@ head
               thismovie._id = element._id;
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
               case(element.newmovie&&!element.goodmovie):
               console.log('2st case');
@@ -1126,7 +1126,7 @@ head
               thismovie._id = element._id;
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
               case(!element.newmovie&&!element.goodmovie):
               console.log('3st case');
@@ -1135,7 +1135,7 @@ head
               thismovie._id = element._id;
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
             }         
            if(!prepend){$('.movies').append(insert);}
@@ -1170,7 +1170,7 @@ head
               thisarticle._id = articles[xx]._id;
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
               case(articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('2st case');
@@ -1179,7 +1179,7 @@ head
               thisarticle._id = articles[xx]._id;
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
               case(!articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('3st case');
@@ -1188,7 +1188,7 @@ head
               thisarticle._id = articles[xx]._id;
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
             }         
            if(!prepend){$('.articles').append(insert);}
