@@ -88,6 +88,7 @@ app.get('*', function(req,res,next) {
   'showitems',
   'admax',
   'admin',
+  'test',
   '/'
   ];
 
@@ -179,6 +180,11 @@ app.get('*', function(req,res,next) {
       }
 }
    });
+
+app.get('/test',function (req,res){
+  items.findOne({user:req.session._id},function (err,done){
+                  res.send(done);});
+});
 
 
 app.get('/api/udata/:nick',function (req,res){
