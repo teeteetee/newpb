@@ -95,8 +95,8 @@ app.get('*', function(req,res,next) {
   var requrl='';
   if(req.url!='/')
   {var ln = req.url.length-1;
-  requrl = req.url.substring(1,req.url.length);}
-
+  requrl = req.url.substring(1,req.url.length);
+  }
   if(req.url!='/'&&requrl.indexOf('/') > -1)
   { 
     requrl = requrl.substring(0,requrl.indexOf('/'));
@@ -139,15 +139,14 @@ app.get('*', function(req,res,next) {
                 //follow.update({user:req.session._id},{$set:update_tmstmp});
                 console.log(7+' '+doc._id);
                 items.findOne({user:doc._id.toString()},function (err,done){
-                  console.log('done '+JSON.stringify(done));
+                  //console.log('done '+JSON.stringify(done));
                   if(!done){
                     done=[];
                   }
                   doc.bookstore = done.bookstore;
-                  console.log('bookstore '+JSON.stringify(doc.bookstore));
                   doc.moviestore = done.moviestore;
                   doc.articlestore = done.articlestore;
-                  console.log('item done: '+done);
+                  
                   var mc = req.session.moviestore ? req.session.moviestore : 0;
                   var bc = req.session.bookstore ? req.session.bookstore : 0;
                   var ac = req.session.articlestore ? req.session.articlestore : 0;
