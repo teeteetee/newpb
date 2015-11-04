@@ -94,45 +94,38 @@ app.get('*', function(req,res,next) {
   var requrl='';
   if(req.url!='/')
   {var ln = req.url.length-1;
-  console.log(req.url+' length: '+ln);
   requrl = req.url.substring(1,req.url.length);}
 
   if(req.url!='/'&&requrl.indexOf('/') > -1)
-  { console.log('second level slash in '+requrl);
+  { 
     requrl = requrl.substring(0,requrl.indexOf('/'));
-   console.log('essential part '+requrl+' index: '+test.indexOf(requrl));
-
   }
 
   if (req.url==='/'||test.indexOf(requrl) > -1) {
-    console.log(req.url+' next');
     next();
   } 
   else {
-    console.log('gonna serve the user '+requrl);
     if(req.session && req.session.nick===requrl)
     {
-      console.log(1);
      res.redirect('/');
     }
     else
     {  users.findOne({nick:requrl},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
           //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
-          console.log(2);
           if(err) {
           
           }
           else {
-            console.log(3);
+            
             if(doc){
-              console.log(4);
+              
               if(doc.pub)
               {var unfollow=0;
-                console.log(5);
+                
                if(req.session.userstore ) {
-                console.log(6);
+                
                for(var i=0;i<req.session.userstore.length;i++){
-                 console.log(req.session.userstore[i]);
+                 
                  if(req.session.userstore[i]===doc._id.toString()) {
                  unfollow=1;
                  break
@@ -162,23 +155,23 @@ app.get('*', function(req,res,next) {
                 res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
                 }
                 else {
-                console.log(8);
+                
                  if(doc.pub)
                  {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
                  else {
-                  console.log(9);
+                  
                    res.render('private');
                  }
                }
                 }); 
              }//doc pub
              else {
-              console.log(10);
+              
                res.render('private');
              }
                   }//if doc exists
                   else {
-                    console.log(11);
+                    
                     res.render('404');
                   }
           }
