@@ -943,11 +943,9 @@ head
       // }
       function redactbookmodal (i) {
         $('#addbook').prop('disabled',false).text('Add to my list');
-        for(var x=b_checkagainst.length-1;x>=0;x--){
-          if(b_checkagainst[x]===modal_data_store[i]._id.toString()) {
-            $('#addbook').text('Already on the list');
-            $('#addbook').prop('disabled',true);
-          }
+        if(b_checkagainst.indexOf(modal_data_store[i]._id.toString())>-1) {
+          $('#addbook').text('Already on the list');
+          $('#addbook').prop('disabled',true);
         }
         console.log('title: '+modal_data_store[i].title);
         console.log('author: '+modal_data_store[i].author);
@@ -959,11 +957,9 @@ head
       }
        function redactmoviemodal (i) {
         $('#addmovie').prop('disabled',false).text('Add to my list');
-        for(var x=m_checkagainst.length-1;x>=0;x--){
-          if(m_checkagainst[x]===movie_modal_data_store[i]._id.toString()) {
-            $('#addmovie').text('Already on the list');
+        if(m_checkagainst.indexOf(movie_modal_data_store[i]._id.toString())>-1){
+          $('#addmovie').text('Already on the list');
             $('#addmovie').prop('disabled',true);
-          }
         }
         $('#modalmovietitle').text(movie_modal_data_store[i].title);
         $('#modalyear').text(movie_modal_data_store[i].year);
@@ -973,11 +969,9 @@ head
       }
       function redactarticlemodal (i) {
         $('#addarticle').prop('disabled',false).text('Add to my list');
-        for(var x=a_checkagainst.length-1;x>=0;x--){
-          if(a_checkagainst[x]===article_modal_data_store[i]._id.toString()) {
-            $('#addarticle').text('Already on the list');
+        if(a_checkagainst.indexOf(article_modal_data_store[i]._id.toString())>-1){
+          $('#addarticle').text('Already on the list');
             $('#addarticle').prop('disabled',true);
-          }
         }
         $('#modalarticletitle').text(article_modal_data_store[i].title);
         $('#modallink').text(article_modal_data_store[i].link);
