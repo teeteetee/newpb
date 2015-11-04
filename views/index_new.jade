@@ -457,6 +457,12 @@ head
         //  $('#pgroup').removeClass('has-success');
         //  $('#p_success').css('display','none');
         //}
+        if (str.length === 0) {
+          $('#pgroup').removeClass('has-success');
+            $('#p_success').css('display','none');
+            $('#pgroup').removeClass('has-error');
+              $('#p_error').css('display','none');
+        }
         if (str.length < 6) {
             $('#pwderr').empty();
             console.log(1);
