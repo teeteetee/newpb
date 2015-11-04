@@ -543,7 +543,7 @@ app.post('/getmovie/:id',function (req,res){
 app.post('/getuser/:id',function (req,res){
   //TO DO auth
   //used in 'people'
-  users.findOne({_id:req.params.id},{fields:{regdate:0,male:0,pub:0,phr:0,userstore:0,bookstore:0,moviestore:0,newbooks:0,newmovies:0,totalbooks:0,totalmovies:0}},function(err,doc){
+  users.findOne({_id:req.params.id},{fields:{regdate:0,pub:0,phr:0,userstore:0,bookstore:0,moviestore:0,newbooks:0,newmovies:0,totalbooks:0,totalmovies:0}},function(err,doc){
     if(err) {
     console.log('err while users query');
      res.send(0);
@@ -828,7 +828,7 @@ app.post('/markread/:bid',function (req,res){
   if(req.session._id || is_uid(req.params.bid)){
     var ms={};
     ms.trouble=0;
-    users.findOne({_id:req.session._id},function(err,doc){
+    items.findOne({user:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
@@ -844,7 +844,8 @@ app.post('/markread/:bid',function (req,res){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.bid)){
              temp_arr[i].newbook = 0;
-             users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{readbooks:1,newbooks:-1}});
+             items.update({user:req.session._id},{$set:{bookstore:temp_arr}});
+             users.update({_id:req.session._id},{$inc:{readbooks:1,newbooks:-1}});
              res.send(ms);
            }
          }
@@ -866,7 +867,7 @@ app.post('/markseen/:mid',function (req,res){
   if(req.session._id || is_uid(req.params.mid)){
     var ms={};
     ms.trouble=0;
-    users.findOne({_id:req.session._id},function(err,doc){
+    items.findOne({user:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
@@ -882,7 +883,8 @@ app.post('/markseen/:mid',function (req,res){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.mid)){
              temp_arr[i].newmovie = 0;
-             users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{seenmovies:1,newmovies:-1}});
+             items.update({user:req.session._id},{$set:{moviestore:temp_arr}});
+             users.update({_id:req.session._id},{$inc:{seenmovies:1,newmovies:-1}})
              res.send(ms);
            }
          }
@@ -904,7 +906,7 @@ app.post('/markarticleread/:aid',function (req,res){
   if(req.session._id || is_uid(req.params.aid)){
     var ms={};
     ms.trouble=0;
-    users.findOne({_id:req.session._id},function(err,doc){
+    items.findOne({users:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
@@ -920,7 +922,8 @@ app.post('/markarticleread/:aid',function (req,res){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.aid)){
              temp_arr[i].newarticle = 0;
-             users.update({_id:req.session._id},{$set:{articlestore:temp_arr},$inc:{readarticles:1,newarticles:-1}});
+             items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
+             users.update({_id:req.session._id},{$inc:{readarticles:1,newarticles:-1}});
              res.send(ms);
            }
          }
@@ -943,7 +946,7 @@ app.post('/removebook/:bid',function (req,res) {
   if(req.session._id){
     var ms={};
     ms.trouble=0;
-    users.findOne({_id:req.session._id},function(err,doc){
+    items.findOne({user:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
@@ -966,13 +969,13 @@ app.post('/removebook/:bid',function (req,res) {
          }//forloop
          console.log('newbook: '+rem_item.newbook);
          if(rem_item[0].newbook){
-         users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
-         items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
+         users.update({_id:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
+         items.update({user:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,newbooks:-1}});
          res.send(ms);
          }
          else {
-          users.update({_id:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,readbooks:-1}});
-          items.update({user:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
+          users.update({_id:req.session._id},{$pull:{bookstore:rem_item[0]._id.toString()}});
+          items.update({user:req.session._id},{$set:{bookstore:temp_arr},$inc:{totalbooks:-1,readbooks:-1}});
          res.send(ms);
          }
        }
@@ -990,7 +993,7 @@ app.post('/removemovie/:mid',function (req,res) {
   if(req.session._id){
     var ms={};
     ms.trouble=0;
-    users.findOne({_id:req.session._id},function(err,doc){
+    items.findOne({user:req.session._id},function(err,doc){
       if(err)
       {
        console.log('trouble finding the user');
@@ -1013,13 +1016,13 @@ app.post('/removemovie/:mid',function (req,res) {
          }//forloop
          console.log('newmovie: '+rem_item.newmovie);
          if(rem_item[0].newmovie){
-         users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,newmovies:-1}});
-         items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
+         users.update({_id:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
+         items.update({user:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,newmovies:-1}});
          res.send(ms);
          }
          else {
-          users.update({_id:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,seenmovies:-1}});
-          items.update({user:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
+          users.update({_id:req.session._id},{$pull:{moviestore:rem_item[0]._id.toString()}});
+          items.update({user:req.session._id},{$set:{moviestore:temp_arr},$inc:{totalmovies:-1,seenmovies:-1}});
          res.send(ms);
          }
        }
@@ -1035,7 +1038,7 @@ app.post('/removemovie/:mid',function (req,res) {
 app.post('/markbookgood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1053,7 +1056,7 @@ app.post('/markbookgood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodbook = 1;
-           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
+           items.update({user:req.session._id},{$set:{bookstore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1070,7 +1073,7 @@ app.post('/markbookgood/:bid',function (req,res){
 app.post('/unmarkbookgood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1088,7 +1091,7 @@ app.post('/unmarkbookgood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodbook = 0;
-           users.update({_id:req.session._id},{$set:{bookstore:temp_arr}});
+           items.update({user:req.session._id},{$set:{bookstore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1105,7 +1108,7 @@ app.post('/unmarkbookgood/:bid',function (req,res){
 app.post('/unmarkarticlegood/:aid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1123,7 +1126,7 @@ app.post('/unmarkarticlegood/:aid',function (req,res){
          if(temp_id === JSON.stringify(req.params.aid)){
           console.log('modifying');
            temp_arr[i].goodarticle = 0;
-           users.update({_id:req.session._id},{$set:{articlestore:temp_arr}});
+           items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1140,7 +1143,7 @@ app.post('/unmarkarticlegood/:aid',function (req,res){
 app.post('/markmoviegood/:mid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1158,7 +1161,7 @@ app.post('/markmoviegood/:mid',function (req,res){
          if(temp_id === JSON.stringify(req.params.mid)){
           console.log('modifying');
            temp_arr[i].goodmovie = 1;
-           users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
+           items.update({user:req.session._id},{$set:{moviestore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1175,7 +1178,7 @@ app.post('/markmoviegood/:mid',function (req,res){
 app.post('/markarticlegood/:aid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1193,7 +1196,7 @@ app.post('/markarticlegood/:aid',function (req,res){
          if(temp_id === JSON.stringify(req.params.aid)){
           console.log('modifying');
            temp_arr[i].goodarticle = 1;
-           users.update({_id:req.session._id},{$set:{articlestore:temp_arr}});
+           items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1210,7 +1213,7 @@ app.post('/markarticlegood/:aid',function (req,res){
 app.post('/unmarkmoviegood/:bid',function (req,res){
   var ms={};
   ms.trouble=0;
-  users.findOne({_id:req.session._id},function(err,doc){
+  items.findOne({user:req.session._id},function(err,doc){
     if(err)
     {
      console.log('trouble finding the user');
@@ -1228,7 +1231,7 @@ app.post('/unmarkmoviegood/:bid',function (req,res){
          if(temp_id === JSON.stringify(req.params.bid)){
           console.log('modifying');
            temp_arr[i].goodmovie = 0;
-           users.update({_id:req.session._id},{$set:{moviestore:temp_arr}});
+           items.update({user:req.session._id},{$set:{moviestore:temp_arr}});
            res.send(ms);
        }
       }
