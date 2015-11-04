@@ -2298,7 +2298,7 @@ app.post('/additem/:id',function (req,res){
                 var already = 0;
                 if(req.session.moviestore.length)
                  {for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
-                                    if(movie._id.toString() === req.session.moviestore[xx]._id.toString()){
+                                    if(movie._id.toString() === req.session.moviestore[xx]){
                                       console.log('trying to add a book, which is already on the list');
                                      already =1;
                                     }
