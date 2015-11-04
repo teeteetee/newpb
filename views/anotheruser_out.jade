@@ -621,7 +621,7 @@ head
       .fxd .fa-google-plus {
         padding-left:9px;
       }
-  body(style='background-color:#fbfbfb;')
+  body
     .modal.fade.bs-example-modal-sm(id='smallmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -630,7 +630,7 @@ head
               span(aria-hidden="true") ×
             h4(class='modal-title' style='color:#ddd;') Sign up
           .modal-body
-            h4(id='modaltitle' style='text-align:center;') Create a profile to add this book to
+            h4(id='modaltitle' style='text-align:center;') Create a profile to add this book
             button(class='btn btn-success  form-control signup' style='margin-top:5px;margin-bottom:5px;') Create
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
@@ -712,8 +712,14 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js')   
-    script(async src='js/counter.js')   
+    script(async src='/js/counter.js')   
     script.
+      document.querySelector('#menu-toggle').addEventListener('click', function() {
+        slideout.toggle();
+      });
+      $(document).on('click', '.social_share', function(){
+          Share.go(this);
+      });
       var user = !{JSON.stringify(doc)};
       var avatar = #{avatar};
       user= JSON.parse(user);
@@ -721,8 +727,8 @@ head
       var tmp_string = "window.location='/chat/"+user._id+"';";
       $('#chatwith').attr('onclick',tmp_string);
       if(avatar) {
-        $('#avatarbig').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;margin-top:60px;' src='/userpics/"+user._id+".png'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;margin-top:30px;margin-bottom:20px;height:200px;width:200px;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle' style='margin:auto !important;margin-top:60px;'></div>");

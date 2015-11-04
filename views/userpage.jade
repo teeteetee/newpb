@@ -873,7 +873,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
-    script(async src='js/counter.js') 
+    script(async src='/js/counter.js') 
     script.
       //restrict - all checks are both client/server implemented /
       $('.authorinput').bind('keypress', function (event) {
@@ -907,7 +907,7 @@ head
       var avatar = #{avatar};
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle ' style='margin:auto !important;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto!important;height:200px;width:200px;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto!important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle' style='margin:auto !important;'></div>");
