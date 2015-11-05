@@ -687,7 +687,7 @@ app.post('/check',function(req,res){
 
 app.get('/messages',function (req,res){
   if(req.session.mail){
-    user_messages.findOne({user:req.session._id},{fields:{msgstore:1,userpic:1}},function(err,done){
+    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
@@ -738,7 +738,7 @@ app.post('/msg',function (req,res){
   console.log(msg.textbody);
   msg.tmstmp = Date.now();
   msg.read = 0;
-  msg.userpic = 0;
+  msg.userpic = req.session.userpic;
   msg.nick = req.session.nick;
   if(req.session.userpic)
   {msg.userpic = req.session.picext;}
