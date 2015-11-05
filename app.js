@@ -746,6 +746,7 @@ app.post('/ntfc_p',function (req,res){
                      if(doc!=null) {
                       console.log(1);
                       console.log(done[req.session.userstore[count]].tmstmp);
+                      console.log(doc.last_item);
                       if(done[req.session.userstore[count]].tmstmp<doc.last_item) {
                         ms.newp=1;
                         res.send(ms);
