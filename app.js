@@ -729,33 +729,38 @@ app.post('/ntfc_p',function (req,res){
         res.send(ms);
      }
      else {
-       var count=req.session.userstore.length-1;
-       function chkp (count,callback) {
-        users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
-            if(err) {
-            }
-            else {
-              if(doc!=null) {
-               if(done[req.session.userstore[count]._id].tmstmp<doc.last_item) {
-                 ms.newp=1;
-                 res.send(ms);
-               }
-               else {
-                count--;
-                callback(count,callback);
-               }
+      if(req.session.userstore.length)
+       {var count=req.session.userstore.length-1;
+              function chkp (count,callback) {
+               users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
+                   if(err) {
+                   }
+                   else {
+                     if(doc!=null) {
+                      if(done[req.session.userstore[count]._id].tmstmp<doc.last_item) {
+                        ms.newp=1;
+                        res.send(ms);
+                      }
+                      else {
+                       count--;
+                       callback(count,callback);
+                      }
+                     }
+                     else if(!count){
+                       res.send(ms);
+                     }
+                     else {
+                       count--;
+                       callback(count,callback);
+                     }
+                 }
+               });
               }
-              else if(!count){
-                res.send(ms);
-              }
-              else {
-                count--;
-                callback(count,callback);
-              }
-          }
-        });
-       }
-       });
+              chkp(count,chkp);}
+        else {
+          res.send(ms);
+
+        }
      }
     });
 });
