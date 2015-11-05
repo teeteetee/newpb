@@ -440,6 +440,8 @@ head
        $('#time').text(time);
        $('#textbody').text(msgstore[uid]);
        $('#openrespond').text('Respond');
+       $('#gettext').val('');
+       $('#respond').css('display','none');
        $('#show_msg').modal('show');
        var onclick = "sendmsg('"+uid+"')";
       // $('#submitmsg').attr('onclick',onclick);
