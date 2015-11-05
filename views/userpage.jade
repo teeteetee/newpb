@@ -1190,6 +1190,15 @@ head
         $('#addarticle').modal('show');
         }
         });
+       $.ajax({
+              method: "POST",
+              url: "/ntfc_m",
+              data: 0
+            }).done(function( msg ) {
+                if(msg.newmsg){
+                 alert('newmsg');
+                }
+               });
       function redactbookmodal (i) {
         if(books[i].goodbook){
           $('.book_good').css('display','none');

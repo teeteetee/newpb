@@ -721,8 +721,34 @@ app.get('/messages',function (req,res){
   }
 });
 
-app.post('/newmsg',function (req,res){
-  
+app.post('/ntfc_m',function (req,res){
+  var ms.newmsg = 0;
+  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
+            if(err){
+              console.log('QUERY ERR');
+              res.send(ms);
+            }
+            else {
+              if(done){
+                  if(done.msgstore)
+                  {
+                   if(!done.msgstore[done.msgstore.length-1].read)
+                   {ms.newmsg=1;
+                    res.send(ms);}
+                 else
+                 {res.send(ms);}
+                  }
+                  else {
+                   res.send(ms); 
+                  }
+              }
+              else {
+                res.send(ms);
+              }
+            }
+          });
 });
 
 app.post('/moremsg',function (req,res){
