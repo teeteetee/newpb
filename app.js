@@ -721,6 +721,10 @@ app.get('/messages',function (req,res){
   }
 });
 
+app.post('/newmsg',function (req,res){
+  
+});
+
 app.post('/moremsg',function (req,res){
   var iter = req.body.iter;
   var ms ={};
@@ -736,8 +740,8 @@ app.post('/moremsg',function (req,res){
               if(done){
                   if(done.msgstore)
                   {
-                  var end = 51-25*iter=>done.msgstore.length?0:done.msgstore.length-51-25*iter;
-                  var more =51-25*iter=>done.msgstore.length?0:1;
+                  var end = 51-25*iter>=done.msgstore.length?0:done.msgstore.length-51-25*iter;
+                  var more =51-25*iter>=done.msgstore.length?0:1;
                   done.msgstore = done.msgstore.slice(end,done.msgstore.length-26-25*iter);
                   ms.trouble = 0;
                   ma.more = more;
