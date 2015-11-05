@@ -733,7 +733,8 @@ app.post('/msg',function (req,res){
   console.log(req.body.txtbody);
   var msg ={};
   msg.sndr = req.session._id;
-  msg.textbody = req.body.txtbody.replace("\n","<br />");
+  //msg.textbody = req.body.txtbody.replace("\n","<br />");
+  msg.textbody = req.body.txtbody.replace(/\n/g, '<br />');
   console.log(msg.textbody);
   msg.tmstmp = Date.now();
   msg.read = 0;
