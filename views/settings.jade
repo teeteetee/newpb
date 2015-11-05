@@ -310,9 +310,9 @@ head
           li
             a(href="/" ) My lists
           li
-            a(href="/people" ) People
+            a(href="/people" id='pbutton') People
           li 
-            a(href='/messages' ) Messages
+            a(href='/messages' id='mbutton') Messages
           li.active
             a(href="/settings" ) Settings
           li
@@ -416,6 +416,15 @@ head
         }
         });
       $('.setsub').click(setsubmit);
+      $.ajax({
+              method: "POST",
+              url: "/ntfc_m",
+              data: 0
+            }).done(function( msg ) {
+                if(msg.newmsg){
+                 $('#mbutton').append('<span id="indicator1446718168234" style="vertical-align: text-top;color:#37AFD6;font-size: 40px;margin-left:10px;">•</span>');
+                }
+               });
       function setsubmit() {
       var pub=0;
       var umail,uphone,uweb;
