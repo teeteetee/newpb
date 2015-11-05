@@ -733,6 +733,7 @@ app.post('/ntfc_p',function (req,res){
        {var count=req.session.userstore.length-1;
               function chkp (count,callback) {
                 if(count<0) {
+                  res.send(ms);
                   return 0;
                 }
                 console.log('count: '+count);
@@ -744,6 +745,7 @@ app.post('/ntfc_p',function (req,res){
                    else {
                      if(doc!=null) {
                       console.log(1);
+                      console.log(req.session.userstore[count]].tmstmp);
                       if(done[req.session.userstore[count]].tmstmp<doc.last_item) {
                         ms.newp=1;
                         res.send(ms);
