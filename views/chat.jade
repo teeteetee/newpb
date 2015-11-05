@@ -479,7 +479,7 @@ head
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);
-       var link = '/u/'+nickstore[uid];
+       var link = '/'+nickstore[uid];
        $('#author_page').attr('href',link);
        $('#sender').empty();
        $('#sender').append(nickstore[uid] + "<span class='glyphicon glyophicon-link' style='color:#ddd;margin-left:10px;'></span>");
