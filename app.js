@@ -698,8 +698,8 @@ app.get('/messages',function (req,res){
                   if(done.msgstore)
                   {
                   console.log('yes');
-                  done.msgstore = done.msgstore.length > 50 ? done.msgstore.slice(done.msgstore.length-51,done.msgstore.length) : done.msgstore;
-                  var more = done.msgstore.length > 50 ? 1:0;
+                  done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
+                  var more = done.msgstore.length > 10 ? 1:0;
                   res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more});
                   }
                   else {
@@ -814,11 +814,11 @@ app.post('/moremsg',function (req,res){
               if(done){
                   if(done.msgstore)
                   {
-                  var end = 51-25*iter>=done.msgstore.length?0:done.msgstore.length-51-25*iter;
+                  var end = 11+10*iter>=done.msgstore.length?0:done.msgstore.length-(11+10*iter);
                   console.log('end: '+end);
-                  var more =51-25*iter>=done.msgstore.length?0:1;
+                  var more =11+10*iter>=done.msgstore.length?0:1;
                   console.log('more: '+more);
-                  done.msgstore = done.msgstore.slice(end,done.msgstore.length-26-25*iter);
+                  done.msgstore = done.msgstore.slice(end,done.msgstore.length-(1+10*iter));
                   ms.trouble = 0;
                   ms.more = more;
                   ms.msgstore = done.msgstore;
