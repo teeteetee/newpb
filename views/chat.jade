@@ -440,7 +440,8 @@ head
        $('#sender').empty();
        $('#sender').append(nickstore[uid] + "<span class='glyphicon glyophicon-link' style='color:#ddd;margin-left:10px;'></span>");
        $('#time').text(time);
-       $('#textbody').text(msgstore[uid]);
+       $('#textbody').empty();
+       $('#textbody').append(msgstore[uid]);
        $('#openrespond').text('Respond');
        $('#gettext').val('');
        $('#respond').css('display','none');
