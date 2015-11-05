@@ -733,7 +733,7 @@ app.post('/ntfc_m',function (req,res){
             }
             else {
               if(done){
-                  if(done.msgstore)
+                  if(done.msgstore.length)
                   {
                    if(!done.msgstore[done.msgstore.length-1].read)
                    {ms.newmsg=1;
