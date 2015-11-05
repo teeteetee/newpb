@@ -738,7 +738,7 @@ app.post('/ntfc_p',function (req,res){
                 }
                 console.log('count: '+count);
                 console.log('user: '+req.session.userstore[count]);
-               users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
+               users.findOne({_id:req.session.userstore[count]},{fields:{last_item:1}},function (err,doc){
                    if(err) {
                     res.send(ms);
                    }
