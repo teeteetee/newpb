@@ -331,6 +331,16 @@ head
       #respond label {
         font-size:16px;
       }
+      .btn-iosdark {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
   body
     nav#menu.menu
       section.menu-section(style='text-align:center;')
@@ -381,7 +391,7 @@ head
       .container
         .row
           .col-xs-12
-            button.btn.btn-default(type='button' id='loadmore') Load more
+            a.btn.btn-iosdark( id='loadmore') Load more
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
