@@ -801,7 +801,7 @@ app.post('/msg',function (req,res){
   var msg ={};
   msg.sndr = req.session._id;
   //msg.textbody = req.body.txtbody.replace("\n","<br />");
-  msg.textbody = req.body.textbody.length>2700?req.body.txtbody.replace(/\n/g, '<br />').slice(0,2700):req.body.txtbody.replace(/\n/g, '<br />');
+  msg.textbody = req.body.txtbody.length>2700?req.body.txtbody.replace(/\n/g, '<br />').slice(0,2700):req.body.txtbody.replace(/\n/g, '<br />');
   console.log(msg.textbody);
   msg.tmstmp = Date.now();
   msg.read = 0;
