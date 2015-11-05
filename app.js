@@ -732,24 +732,29 @@ app.post('/ntfc_p',function (req,res){
       if(req.session.userstore.length)
        {var count=req.session.userstore.length-1;
               function chkp (count,callback) {
+                console.log('count: 'count);
                users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
                    if(err) {
                    }
                    else {
                      if(doc!=null) {
+                      console.log(1);
                       if(done[req.session.userstore[count]].tmstmp<doc.last_item) {
                         ms.newp=1;
                         res.send(ms);
                       }
                       else {
+                        console.log(2);
                        count--;
                        callback(count,callback);
                       }
                      }
                      else if(!count){
+                      console.log(3);
                        res.send(ms);
                      }
                      else {
+                      console.log(4);
                        count--;
                        callback(count,callback);
                      }
@@ -758,6 +763,7 @@ app.post('/ntfc_p',function (req,res){
               }
               chkp(count,chkp);}
         else {
+          console.log(5);
           res.send(ms);
 
         }
