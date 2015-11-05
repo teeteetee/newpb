@@ -391,6 +391,7 @@ head
         if($('#noitems').is(':visible')) {
           $('#noitems').remove();
         }
+        console.log(element.userpic);
         var avatar_insert = "<div style='height:50px;background-color: #ddd;width:50px;border-radius:50%;' class='media-object' alt='avatar'></div>";
         if(element.userpic) {
          avatar_insert = "<img style='height:50px;' src='/userpics/"+element.sndr+"_small.png' class='media-object img-circle' src='' alt='avatar'>";
