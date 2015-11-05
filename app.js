@@ -740,8 +740,6 @@ app.post('/msg',function (req,res){
   msg.read = 0;
   msg.userpic = req.session.userpic;
   msg.nick = req.session.nick;
-  if(req.session.userpic)
-  {msg.userpic = req.session.picext;}
    user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
   res.send('ok');
  }
