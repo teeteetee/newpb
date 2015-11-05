@@ -687,7 +687,7 @@ app.post('/check',function(req,res){
 
 app.get('/messages',function (req,res){
   if(req.session.mail){
-    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+    user_messages.findOne({user:req.session._id},{fields:{msgstore:1,userpic:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
