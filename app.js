@@ -734,33 +734,30 @@ app.post('/ntfc_p',function (req,res){
                   res.send(ms);
                   return 0;
                 }
-                console.log('count: '+count);
-                console.log('user: '+req.session.userstore[count]);
+                //console.log('count: '+count);
+                //console.log('user: '+req.session.userstore[count]);
                users.findOne({_id:req.session.userstore[count]},{fields:{last_item:1}},function (err,doc){
                    if(err) {
                     res.send(ms);
                    }
                    else {
                      if(doc!=null) {
-                      console.log(1);
-                      console.log(done[req.session.userstore[count]].tmstmp);
-                      console.log(doc.last_item);
+                      //console.log(1);
+                      //console.log(done[req.session.userstore[count]].tmstmp);
+                      //console.log(doc.last_item);
                       if(done[req.session.userstore[count]].tmstmp<doc.last_item) {
                         ms.newp=1;
                         res.send(ms);
                       }
                       else {
-                        console.log(2);
                        count--;
                        callback(count,callback);
                       }
                      }
                      else if(!count){
-                      console.log(3);
                        res.send(ms);
                      }
                      else {
-                      console.log(4);
                        count--;
                        callback(count,callback);
                      }
@@ -769,9 +766,7 @@ app.post('/ntfc_p',function (req,res){
               }
               chkp(count,chkp);}
         else {
-          console.log(5);
           res.send(ms);
-
         }
      }
     });
@@ -781,8 +776,6 @@ app.post('/ntfc_m',function (req,res){
   var ms ={};
   ms.newmsg = 0;
   user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            console.log('-----found-----');
-            console.log(done);
             if(err){
               console.log('QUERY ERR');
               res.send(ms);
