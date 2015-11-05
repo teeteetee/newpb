@@ -722,7 +722,8 @@ app.get('/messages',function (req,res){
 });
 
 app.post('/ntfc_m',function (req,res){
-  var ms.newmsg = 0;
+  var ms ={};
+  ms.newmsg = 0;
   user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
