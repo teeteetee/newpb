@@ -732,7 +732,7 @@ app.post('/ntfc_p',function (req,res){
       if(req.session.userstore.length)
        {var count=req.session.userstore.length-1;
               function chkp (count,callback) {
-                console.log('count: 'count);
+                console.log('count: '+count);
                users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
                    if(err) {
                    }
