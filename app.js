@@ -697,10 +697,8 @@ app.get('/messages',function (req,res){
               if(done){
                   if(done.msgstore)
                   {
-                  console.log('yes');
-                  done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
                   var more = done.msgstore.length > 10 ? 1:0;
-                  console.log('msgstore.length: '+done.msgstore.length);
+                  done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
                   res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more});
                   }
                   else {
