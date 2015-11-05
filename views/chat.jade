@@ -356,7 +356,7 @@ head
             #respond.row
               label Respond:
               textarea(id='gettext' class='form-control txtfield' style='margin-bottom:15px;')   
-              button.btn.btn-modal#submitmsg(type='button' style='border: 1px solid #208aff;') Send
+              //button.btn.btn-modal#submitmsg(type='button' style='border: 1px solid #208aff;') Send
           .modal-footer(style='text-align:center;margin-top:20px;')
             button(class='btn btn-modal' id='openrespond') Respond
     .container-fluid#panel
@@ -418,7 +418,17 @@ head
       });
       //
       $('#openrespond').click(function(){
-        $('#respond').slideToggle();
+        if($('#respond').css('display')==='block' && $('#gettext').val())
+        {
+          sendmsg($('#gettext').attr('rcvr'));
+        }
+        else if($('#respond').css('display')==='none') {
+         $('#openrespond').text('Send');
+         $('#gettext').val('');
+         $('#respond').slideToggle();
+        }
+        else {
+        }
         });
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
@@ -431,7 +441,8 @@ head
        $('#textbody').append(msgstore[uid])
        $('#show_msg').modal('show');
        var onclick = "sendmsg('"+uid+"')";
-       $('#submitmsg').attr('onclick',onclick);
+      // $('#submitmsg').attr('onclick',onclick);
+       $('#gettext').attr('rcvr',uid);
        eval("if($('#indicator"+tmstmp+"').is(':visible')){console.log('yo');mark_msg_read(tmstmp);}");
       }
       function mark_msg_read (tmstmp) {
@@ -458,6 +469,7 @@ head
       if(sndrequest.readyState==4 && sndrequest.status==200){
       $('#gettext').val('');
       $('#show_msg').modal('hide');
+      $('#openrespond').text('Respond');
       //if (this.readyState === DONE){
       var parsed = JSON.parse(sndrequest.responseText);
       if(parsed.trouble === 1)
