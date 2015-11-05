@@ -688,8 +688,6 @@ app.post('/check',function(req,res){
 app.get('/messages',function (req,res){
   if(req.session.mail){
     user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            console.log('-----found-----');
-            console.log(done);
             if(err){
               //err page ?
               res.redirect('/');
@@ -815,8 +813,6 @@ app.post('/moremsg',function (req,res){
   var ms ={};
   ms.trouble=1;
   user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            console.log('-----found-----');
-            console.log(done);
             if(err){
               console.log('QUERY ERR');
               res.send(ms);
@@ -826,7 +822,9 @@ app.post('/moremsg',function (req,res){
                   if(done.msgstore)
                   {
                   var end = 51-25*iter>=done.msgstore.length?0:done.msgstore.length-51-25*iter;
+                  console.log('end: '+end);
                   var more =51-25*iter>=done.msgstore.length?0:1;
+                  console.log('more: '+more);
                   done.msgstore = done.msgstore.slice(end,done.msgstore.length-26-25*iter);
                   ms.trouble = 0;
                   ms.more = more;
