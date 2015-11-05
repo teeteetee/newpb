@@ -829,7 +829,7 @@ app.post('/moremsg',function (req,res){
                   var more =51-25*iter>=done.msgstore.length?0:1;
                   done.msgstore = done.msgstore.slice(end,done.msgstore.length-26-25*iter);
                   ms.trouble = 0;
-                  ma.more = more;
+                  ms.more = more;
                   ms.msgstore = done.msgstore;
                   res.send(ms);
                   }
