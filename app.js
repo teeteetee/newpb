@@ -721,6 +721,45 @@ app.get('/messages',function (req,res){
   }
 });
 
+app.post('/ntfc_p',function (req,res){
+  var ms ={};
+  ms.newp = 0;
+   follow.findOne({user:req.session._id},function(err,done){
+     if(err){
+        res.send(ms);
+     }
+     else {
+       var count=req.session.userstore.length-1;
+       function chkp (count,callback) {
+        users.findOne({_id:req.session.userstore[count]},{fields:{last_ite:1}},function (err,doc){
+            if(err) {
+            }
+            else {
+              if(doc!=null) {
+               if(done[req.session.userstore[count]._id].tmstmp<doc.last_item) {
+                 ms.newp=1;
+                 res.send(ms);
+               }
+               else {
+                count--;
+                callback(count,callback);
+               }
+              }
+              else if(!count){
+                res.send(ms);
+              }
+              else {
+                count--;
+                callback(count,callback);
+              }
+          }
+        });
+       }
+       });
+     }
+    });
+});
+
 app.post('/ntfc_m',function (req,res){
   var ms ={};
   ms.newmsg = 0;
@@ -1334,6 +1373,17 @@ app.get('/seebooks',function (req,res){
   });
 });
 
+app.get('/seefollow',function (req,res){
+  follow.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+});
+
 app.get('/seemovies',function (req,res){
   movies.find({},function (err,done){
     if(err){
@@ -1345,16 +1395,6 @@ app.get('/seemovies',function (req,res){
   });
 });
 
-app.get('/seefollow',function (req,res){
- follow.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-});
 
 app.get('/clearbooks',function (req,res){
   if(req.session._id)
