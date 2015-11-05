@@ -710,12 +710,12 @@ head
             form()
               .form-group
                 label(for="mtitle") Titile
-                input(type="text" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
                 .row.autocomp#autocompmovies
                   .col-xs-12#srm
               .form-group
                 label(for="year") Year
-                input(type="text" class="form-control" id="year" autocomplete='off'  placeholder="1999")
+                input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
@@ -734,10 +734,10 @@ head
             form
               .form-group
                 label(for="pagetitle") Titile
-                input(type="text" class="form-control" id="article_title" autocomplete='off' placeholder="Neuroscience")
+                input(type="text" class="form-control" maxlength="50" id="article_title" autocomplete='off' placeholder="Neuroscience")
               .form-group
                 label(for="pagelink") Link
-                input(type="text" class="form-control" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
+                input(type="text" class="form-control" maxlength="150" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
@@ -756,12 +756,12 @@ head
             form(id='authoradd_here')
               .form-group
                 label(for="btitle") Titile
-                input(type="text" class="form-control" id="btitle" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
                 .row.autocomp#autocompbooks
                   .col-xs-12#srb
               .form-group
                 label(for="title") Author
-                input(type="text" class=" authorinput form-control" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+                input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
             .form-group
               label(for='authors') Additional authors
               .btn-group#authors(style='display:block;')
@@ -1165,7 +1165,7 @@ head
           $('#removeauthor').removeClass('disabled');
         }
         //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
-        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input type='text' class=' authorinput form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
+        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input maxlength='30' type='text' class=' authorinput form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
         console.log(insert);
         $('#authoradd_here').append(insert);
         eval("$('#author"+authorcount+"').slideToggle();");

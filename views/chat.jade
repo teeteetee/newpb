@@ -357,7 +357,7 @@ head
             p#textbody  
             #respond.row
               label Response:
-              textarea(id='gettext' class='form-control txtfield')   
+              textarea(id='gettext' maxlength="2700" class='form-control txtfield')   
               //button.btn.btn-modal#submitmsg(type='button' style='border: 1px solid #208aff;') Send
           .modal-footer(style='text-align:center;margin-top:20px;')
             button(class='btn btn-modal' id='openrespond') Respond
@@ -373,6 +373,11 @@ head
           #noitems.row(style='text-align:center;')  
             .col-xs-12
               h2(style='color:#ccc;margin-bottom:20px;') No items 
+    footer(id='footer' style='display:none;')
+      .container
+        .row
+          .col-xs-12
+            button.btn.btn-default(type='button' id='loadmore') Load more
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')  
@@ -383,11 +388,18 @@ head
       var nickstore = {};// used when preparing a modal to display a message
       var msgstore ={};
       var avatarcheck={};
+      var more = #{more};
+      if(more){
+        $('#footer').slideToggle();
+      }
       if(!messages)
       {}
       else
       {
-      messages.forEach(function(element){
+      populatemsg(messages);
+      }
+      function populatemsg(messages) {
+        messages.forEach(function(element){
         if($('#noitems').is(':visible')) {
           $('#noitems').remove();
         }
@@ -432,6 +444,25 @@ head
         }
         else {
         }
+        });
+      var iter = 1
+      $('#loadmore').click(function(){
+        $.ajax({
+              method: "POST",
+              url: "/moremsg",
+              data: 'iter='+iter
+            }).done(function( msg ) {
+                if(msg.troube){
+                  console.log('err loading messages');
+                }
+                  else {
+                    iter++;
+                   populatemsg(msg.msgstore);
+                   if(!msg.more){
+                    $('#footer').slideToggle();
+                   }
+                  }
+               });
         });
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);

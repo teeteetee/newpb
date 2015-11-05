@@ -701,7 +701,8 @@ app.get('/messages',function (req,res){
                   {
                   console.log('yes');
                   done.msgstore = done.msgstore.length > 50 ? done.msgstore.slice(done.msgstore.length-51,done.msgstore.length) : done.msgstore;
-                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore});
+                  var more = done.msgstore.length > 50 ? 1:0;
+                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more});
                   }
                   else {
                    //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
@@ -720,6 +721,41 @@ app.get('/messages',function (req,res){
   }
 });
 
+app.post('/moremsg',function (req,res){
+  var iter = req.body.iter;
+  var ms ={};
+  ms.trouble=1;
+  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+            console.log('-----found-----');
+            console.log(done);
+            if(err){
+              console.log('QUERY ERR');
+              res.send(ms);
+            }
+            else {
+              if(done){
+                  if(done.msgstore)
+                  {
+                  var end = 51-25*iter=>done.msgstore.length?0:done.msgstore.length-51-25*iter;
+                  var more =51-25*iter=>done.msgstore.length?0:1;
+                  done.msgstore = done.msgstore.slice(end,done.msgstore.length-26-25*iter);
+                  ms.trouble = 0;
+                  ma.more = more;
+                  ms.msgstore = done.msgstore;
+                  res.send(ms);
+                  }
+                  else {
+                   res.send(ms);
+                  }
+              }
+              else {
+                console.log('DOCUMENT ERR');
+                res.send(ms);
+              }
+            }
+          });
+});
+
 app.post('/stlstmsg',function (req,res){
   //users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
   //req.session.lst_msg = req.body.tmstmp;
@@ -734,7 +770,7 @@ app.post('/msg',function (req,res){
   var msg ={};
   msg.sndr = req.session._id;
   //msg.textbody = req.body.txtbody.replace("\n","<br />");
-  msg.textbody = req.body.txtbody.replace(/\n/g, '<br />');
+  msg.textbody = msg.textbody.length>2700?req.body.txtbody.replace(/\n/g, '<br />').slice(0,2700):req.body.txtbody.replace(/\n/g, '<br />');
   console.log(msg.textbody);
   msg.tmstmp = Date.now();
   msg.read = 0;
