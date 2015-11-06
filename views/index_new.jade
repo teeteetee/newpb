@@ -362,11 +362,6 @@ head
         var digit_letter = 'Password should contain letters and numbers';
         var email_inuse = 'Provided email is already used by one of the users';
         var email_incorrect = 'Email is not valid';
-        $('#p').attr('placeholder','password');
-        $('#nickinput').attr('placeholder','nick');
-        $('#modo').text("Tell me what you read, and I'll tell you who you are.");
-        $('.runreg').text('Регистрация');
-        $('.signinlink').text('Войти');
       $('#ru').click(function(){
         less_six = 'Пароль должен содержать не менее 6 знаков (буквы и цифры)';
         too_long = 'Пароль слишком длинный';
@@ -377,8 +372,8 @@ head
         $('#p').attr('placeholder','пароль');
         $('#nickinput').attr('placeholder','ник');
         $('#modo').text('Скажи мне, что ты читаешь, и я скажу, кто ты.');
-        $('.runreg').text('Sign up');
-        $('.signinlink').text('Sign in');
+        $('.runreg').text('Регистрация');
+        $('.signinlink').text('Войти');
         });
       $('#eng').click(function(){
         less_six = 'Password should be at least 6 chracters long';
@@ -390,6 +385,8 @@ head
         $('#p').attr('placeholder','password');
         $('#nickinput').attr('placeholder','nick');
         $('#modo').text("Tell me what you read, and I'll tell you who you are.");
+        $('.runreg').text('Sign up');
+        $('.signinlink').text('Sign in');
         });
       $('#terms').click(function(){
         console.log('cc');
