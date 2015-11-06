@@ -321,7 +321,7 @@ head
       #mainheading.row
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;font-family:boldproxima;') PEOPLE & BOOKS
-          h4(style='color:rgba(255, 255, 255, 0.47);') Tell me what you read, and I'll tell you who you are.
+          h4(style='color:rgba(255, 255, 255, 0.47);' id='modo') Tell me what you read, and I'll tell you who you are.
           h3
             span(class='label' style='font-weight:200;font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha
       #signup.row(style='text-align:center;')
@@ -331,17 +331,17 @@ head
               .message
             .inputwrap
               #mailgroup.form-group.has-feedback
-                input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="Email") 
+                input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="email") 
                 span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
               #pgroup.form-group.has-feedback
                 span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="Password") 
+                input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="password") 
                 span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
               #nickgroup.form-group.has-feedback
                 span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                 span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="Nick" maxlength="20")
+                input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="nick" maxlength="20")
               #pwderr
               //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
             button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(255, 255, 255, 0.5);border:none;width:100%;') Sign up
@@ -353,11 +353,36 @@ head
     script(src='js/bootstrap.min.js') 
     script(async src='js/counter.js')    
     script.
+      var less_six = 'Password should be at least 6 chracters long';
+        var too_long = 'Password is too long';
+        var no_digit = 'Password should contain at least one number';
+        var digit_letter = 'Password should contain letters and numbers';
+        var email_inuse = 'Provided email is already used by one of the users';
+        var email_incorrect = 'Email is not valid';
+        $('#p').attr('placeholder','password');
+        $('#nickinput').attr('placeholder','nick');
+        $('#modo').text("Tell me what you read, and I'll tell you who you are.");
       $('#ru').click(function(){
-        $('#mail')
-        $('#p')
-        $('#nickinput')
-
+        less_six = 'Пароль должен содержать не менее 6 знаков (буквы и цифры)';
+        too_long = 'Пароль слишком длинный';
+        no_digit = 'пароль должен содержать хотя бы одну цифру';
+        digit_letter = 'Пароль должен содержать цифры и буквы';
+        email_inuse = 'Этот email уже используется';
+        email_incorrect = 'Недействительный email';
+        $('#p').attr('placeholder','пароль');
+        $('#nickinput').attr('placeholder','ник');
+        $('#modo').text('Скажи мне, что ты читаешь, и я скажу, кто ты.');
+        });
+      $('#eng').click(function(){
+        less_six = 'Password should be at least 6 chracters long';
+        too_long = 'Password is too long';
+        no_digit = 'Password should contain at least one number';
+        digit_letter = 'Password should contain letters and numbers';
+        email_inuse = 'Provided email is already used by one of the users';
+        email_incorrect = 'Email is not valid';
+        $('#p').attr('placeholder','password');
+        $('#nickinput').attr('placeholder','nick');
+        $('#modo').text("Tell me what you read, and I'll tell you who you are.");
         });
       $('#terms').click(function(){
         console.log('cc');
@@ -492,7 +517,7 @@ head
         if (str.length < 6) {
             $('#pwderr').empty();
             console.log(1);
-            $('#pwderr').append('<p>Password should be at least 6 chracters long</p>');
+            $('#pwderr').append('<p>'+less_six+'</p>');
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
@@ -507,7 +532,7 @@ head
         } else if (str.length > 50) {
           console.log(3);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password is too long</p>');
+            $('#pwderr').append('<p>'+too_short+'</p>');
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
@@ -522,7 +547,7 @@ head
         } else if (str.search(/\d/) == -1) {
           console.log(5);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password should contain at least one number</p>');
+            $('#pwderr').append('<p>'+no_digit+'</p>');
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
@@ -537,7 +562,7 @@ head
         } else if (str.search(/[a-zA-Z]/) == -1) {
           console.log(7);
             $('#pwderr').empty();
-            $('#pwderr').append('<p>Password should contain at leas five letters</p>');
+            $('#pwderr').append('<p>'+digit_letter+'</p>');
             if($('#pgroup').hasClass('has-success')){
               $('#pgroup').removeClass('has-success');
               $('#p_success').css('display','none');
@@ -588,8 +613,8 @@ head
         if(vp.length === 0 ) {
         console.log('pass length 0');
         //$('.message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        $('#error_text').text('Provided email is already used by one of the users');
-        $('#error_Modal').modal('Privide a password');
+        $('#error_text').text(less_six);
+        $('#error_Modal').modal('show');
         $('#p').empty();
         errcount++;
         }
@@ -597,7 +622,7 @@ head
         if(!validateEmail(vmail))
         {
         //$('.message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        $('#error_text').text('Emailis not valid');
+        $('#error_text').text(email_incorrect);
         $('#error_Modal').modal('show');
         errcount++;
         }
@@ -620,12 +645,12 @@ head
         {
         case('fail'):
         //$('.message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        $('#error_text').text('Provided email is already used by one of the users');
-        $('#error_Modal').modal('Network Error');
+        $('#error_text').text('Network Error');
+        $('#error_Modal').modal('show');
         break;
         case('email exists'):
         //$('.message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
-        $('#error_text').text('Provided email is already used by one of the users');
+        $('#error_text').text(email_inuse);
         $('#error_Modal').modal('show');
         break;
         
