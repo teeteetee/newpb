@@ -321,6 +321,7 @@ head
       #mainheading.row
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;font-family:boldproxima;') PEOPLE & BOOKS
+          h4(style='color:rgba(0,0,0,0.3);') Tell me what you read, and I'll tell you who you are.
           h3
             span(class='label' style='font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha
       #signup.row(style='text-align:center;')
@@ -352,6 +353,12 @@ head
     script(src='js/bootstrap.min.js') 
     script(async src='js/counter.js')    
     script.
+      $('#ru').click(function(){
+        $('#mail')
+        $('#p')
+        $('#nickinput')
+
+        });
       $('#terms').click(function(){
         console.log('cc');
         $('#termsrow').slideToggle();
