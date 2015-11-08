@@ -823,7 +823,7 @@ head
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;') Add item
-              .btn-group.long(style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
+              .btn-group(style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
                 button.btn.btn-iosdark.showmovies(type='button')  Movies
@@ -838,7 +838,7 @@ head
               button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
               .row 
                 .col-xs-12
-                  .btn-group.btn-group-lg.short(style='margin-top:20px;margin-bottom:20px;')
+                  .btn-group.btn-group-sm(style='margin-top:20px;margin-bottom:20px;')
                     .btn.btn-iosdark.active.showbooks(type='button') B
                       span(class='badge booknum' style='margin-left:10px;') 0
                     .btn.btn-iosdark.showmovies(type='button') M
@@ -913,13 +913,11 @@ head
         $('#pbutton').text('Чужие списки');
         $('#settings').text('Настройки');
         $('#logout').text('Выход');
-        $('.long .showbooks').text('Книги');
-        $('.long .showmovies').text('Фильмы');
-        $('.long .showarticles').text('Ссылки');
-        $('.short .showbooks').text('К');
-        $('.short .showmovies').text('Ф');
-        $('.short .showarticles').text('С');
+        $('.showbooks').text('Книги');
+        $('.showmovies').text('Фильмы');
+        $('.showarticles').text('Ссылки');
         $('.noitems').text('Список пуст');
+        $('.openadd').text('Добавить');
       }
       else {
         $('#lists').text('My lists')
@@ -927,13 +925,11 @@ head
         $('#pbutton').text('People');
         $('#settings').text('Settings');
         $('#logout').text('Logout');
-        $('.long .showbooks').text('Books');
-        $('.long .showmovies').text('Movies');
-        $('.long .showarticles').text('Links');
-        $('.short .showbooks').text('B');
-        $('.short .showmovies').text('M');
-        $('.short .showarticles').text('L');
+        $('.showbooks').text('Books');
+        $('.showmovies').text('Movies');
+        $('.showarticles').text('Links');
         $('.noitems').text('No items');
+        $('.openadd').text('Add item');
       }
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
