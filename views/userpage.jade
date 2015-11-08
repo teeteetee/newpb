@@ -546,6 +546,18 @@ head
     .modal-body.visible-xs .btn {
       font-weight:200;
     }
+    .modal-body .btn {
+      height:50px;
+      border-radius:0xp;
+      border-bottom:#ddd;
+    }
+    .modal-body .btn:last-child {
+      border:none;
+    }
+    .modal-body {
+      padding:0px;
+      padding-top:15px;
+    }
     .dot {
      position: absolute;
      margin-top: 8px;
@@ -666,11 +678,11 @@ head
           .modal-body.visible-md.visible-lg
             h4.bookmodaltitle(style='text-align:center;')
             h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark  form-control book_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
-            button(class='btn btn-iosdark  form-control book_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
-            button(class='btn btn-iosdark  form-control book_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
-            button(class='btn btn-iosdark form-control book_people' style='margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-iosdark form-control book_remove' style='margin-top:5px;margin-bottom:5px;') Remove
+            button(class='btn btn-iosdark  form-control book_read' style='margin-top:5px;') Mark as read
+            button(class='btn btn-iosdark  form-control book_good') Mark as good
+            button(class='btn btn-iosdark  form-control book_unmark_good') Unmark as good
+            button(class='btn btn-iosdark form-control book_people') Find people
+            button(class='btn btn-iosdark form-control book_remove') Remove
           .modal-body.visible-sm.visible-xs
             h4.bookmodaltitle(style='text-align:center;')
             h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
