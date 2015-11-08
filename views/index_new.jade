@@ -364,6 +364,7 @@ head
         var email_incorrect = 'Email is not valid';
         var lang = 'en';
         var nick_short = 'Nickname should contain at least 5 characters';
+        var nick_taken = 'This nick is alredy in use';
       $('#ru').click(function(){
         less_six = 'Пароль должен содержать не менее 6 знаков (буквы и цифры)';
         too_long = 'Пароль слишком длинный';
@@ -373,6 +374,7 @@ head
         email_incorrect = 'Недействительный email';
         lang = 'ru';
         nick_short = 'Ник должен содержать минимум 5 символов';
+        nick_taken = 'Этот ник уже используется';
         $('#p').attr('placeholder','пароль');
         $('#nickinput').attr('placeholder','ник');
         $('#modo').text('Скажи мне, что ты читаешь, и я скажу, кто ты.');
@@ -388,6 +390,7 @@ head
         email_incorrect = 'Email is not valid';
         lang = 'en';
         nick_short = 'Nickname should contain at least 5 characters';
+        nick_taken = 'This nick is alredy in use';
         $('#p').attr('placeholder','password');
         $('#nickinput').attr('placeholder','nick');
         $('#modo').text("Tell me what you read, and I'll tell you who you are.");
@@ -461,9 +464,17 @@ head
                                 $('#nickgroup').removeClass('has-success').addClass('has-error');
                                 $('#nick_error').css('display','block');
                                  lastentry = $('#nickinput').val();
+                                $('#pwderr').empty();
+                                $('#pwderr').append('<p>'+nick_taken+'</p>');
+                                if($('#pwderr').css('display') === 'none'){
+                                   $('#pwderr').slideToggle();
+                                 }
                                 }
                                           else {
                                             console.log('no msg');
+                                            if($('#pwderr').css('display') === 'block'){
+                                              $('#pwderr').slideToggle();
+                                            }
                                             $('#nick_error').css('display','none');
                                             $('#nickgroup').removeClass('has-error').addClass('has-success');
                                             $('#nick_success').css('display','block');
