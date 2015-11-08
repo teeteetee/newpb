@@ -604,7 +604,7 @@ head
     }
     #menu .socialbtns .fa {
       color:white;
-      background-color:rgba(80,11,148,1);
+      background-color:rgba(80,110,148,1);
     }
     .fxd .fa {
       border: 1px solid #ddd;
@@ -795,7 +795,7 @@ head
           li
             a(href="/logout" id='logout') Logout
       section.menu-section.visible-xs(style='text-align:center;')
-        ul.socialbtns(style='display:inline;margin-right:20px;margin-top:50px;padding-left:0px;')
+        ul.socialbtns(style='display:inline;margin-top:50px;padding-left:0px;')
           li
             a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
           li
@@ -1221,7 +1221,7 @@ head
               data: 0
             }).done(function( msg ) {
                 if(msg.newmsg){
-                 $('#mbutton').append('<span style="vertical-align: text-top;color:#37AFD6;font-size: 40px;margin-left:10px;">•</span>');
+                 $('#mbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
                 }
                });
         $.ajax({
@@ -1230,7 +1230,7 @@ head
               data: 0
             }).done(function( msg ) {
                 if(msg.newp){
-                 $('#pbutton').append('<span style="vertical-align: text-top;color:#37AFD6;font-size: 40px;margin-left:10px;">•</span>');
+                 $('#pbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
                 }
                });
       function redactbookmodal (i) {
