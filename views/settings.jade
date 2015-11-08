@@ -361,6 +361,12 @@ head
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
             button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
+      .row.setrow
+        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
+          h4 Language
+          .btn-group(style='display:inline-block;'  role="group" aria-label="...")
+            button(type="button" id='eng' class="btn btncorr btn-iosdark") Eng
+            button(type="button" id='ru' class="btn btncorr btn-iosdark") Ru
       .row.setrow.visible-lg.visible-md.visible-sm
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           button(class='btn btn-primary setsub') Save
@@ -385,10 +391,15 @@ head
       user= JSON.parse(user);
       if(user.pub) {
         $('#bpb').addClass('active');
-        $('#contacts').css('display','block');
       }
       else {
         $('#bpr').addClass('active');
+      }
+      if(user.lang === 'ru') {
+        $('#ru').addClass('active');
+      }
+      else {
+        $('#eng').addClass('active');
       }
       $('#picupload').click(function(){
         if( document.getElementById("userpic").files.length == 0 ){
@@ -404,7 +415,7 @@ head
         else {
           $('#bpr').removeClass('active');
           $('#bpb').addClass('active');
-          $('#contacts').slideToggle();
+          
         }
         });
       $('#bpr').click(function(){
@@ -413,7 +424,23 @@ head
         else {
           $('#bpb').removeClass('active');
           $('#bpr').addClass('active');
-          $('#contacts').slideToggle();
+          
+        }
+        });
+      $('#ru').click(function(){
+        if($('#ru').hasClass('active')){
+        }
+        else {
+          $('#eng').removeClass('active');
+          $('#ru').addClass('active');
+        }
+        });
+      $('#eng').click(function(){
+        if($('#eng').hasClass('active')){
+        }
+        else {
+          $('#ru').removeClass('active');
+          $('#eng').addClass('active');
         }
         });
       $('.setsub').click(setsubmit);
@@ -437,9 +464,13 @@ head
                });
       function setsubmit() {
       var pub=0;
+      var lang = 'eng';
       var umail,uphone,uweb;
       if($('#bpb').hasClass('active')) {
         pub =1;
+      }
+      if($('#ru').hasClass('active')) {
+        lang = 'ru';
       }
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -461,7 +492,7 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("pub="+pub);
+      request.send("pub="+pub+"&lang="+lang);
       }
       $(document).on('change', '#picform .btn-file :file', function() {
           //var input = $(this),

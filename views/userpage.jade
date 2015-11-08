@@ -784,15 +784,15 @@ head
       section.menu-section
         ul.menu-section-list    
           li.active
-            a(href="/" ) My lists
+            a(href="/" id='lists') My lists
           li
             a(href="/people" id='pbutton') People
           li 
             a(href='/messages' id='mbutton') Messages
           li
-            a(href="/settings" ) Settings
+            a(href="/settings" id='settings') Settings
           li
-            a(href="/logout") Logout
+            a(href="/logout" id='logout') Logout
       section.menu-section.visible-xs(style='text-align:center;')
         ul.socialbtns(style='display:inline;margin-right:20px;margin-top:50px;padding-left:0px;')
           li
@@ -823,7 +823,7 @@ head
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;') Add item
-              .btn-group(style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
+              .btn-group.long(style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
                 button.btn.btn-iosdark.showmovies(type='button')  Movies
@@ -838,7 +838,7 @@ head
               button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
               .row 
                 .col-xs-12
-                  .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
+                  .btn-group.btn-group-lg.short(style='margin-top:20px;margin-bottom:20px;')
                     .btn.btn-iosdark.active.showbooks(type='button') B
                       span(class='badge booknum' style='margin-left:10px;') 0
                     .btn.btn-iosdark.showmovies(type='button') M
@@ -851,32 +851,32 @@ head
                 .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
                   .nomovies.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
               .row.brow
                 .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
                   .nobooks.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items
               .row.arow
                 .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
                   .noarticles.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
               .row.brow
                 #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
                   .nobooks.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
               .row.mrow
                 #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
                   .nomovies.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
               .row.arow
                 #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
                   .noarticles.row(style='text-align:center;')  
                      .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -907,6 +907,34 @@ head
       });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
+      if(user.lang==='ru'){
+        $('#lists').text('Мои списки')
+        $('#mbutton').text('Сообщения');
+        $('#pbutton').text('Чужие списки');
+        $('#settings').text('Настройки');
+        $('#logout').text('Выход');
+        $('.long .showbooks').text('Книги');
+        $('.long .showmovies').text('Фильмы');
+        $('.long .showarticles').text('Ссылки');
+        $('.short .showbooks').text('К');
+        $('.short .showmovies').text('Ф');
+        $('.short .showarticles').text('С');
+        $('.noitems').text('Список пуст');
+      }
+      else {
+        $('#lists').text('My lists')
+        $('#mbutton').text('Messages');
+        $('#pbutton').text('People');
+        $('#settings').text('Settings');
+        $('#logout').text('Logout');
+        $('.long .showbooks').text('Books');
+        $('.long .showmovies').text('Movies');
+        $('.long .showarticles').text('Links');
+        $('.short .showbooks').text('B');
+        $('.short .showmovies').text('M');
+        $('.short .showarticles').text('L');
+        $('.noitems').text('No items');
+      }
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);

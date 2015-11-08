@@ -870,7 +870,7 @@ app.post('/settings',function (req,res){
   //var vmrq = parseInt(req.body.mrq);// messaging request
   if(req.session.mail || !is_single(parseInt(req.body.pub))){
     //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
-    users.update({mail:req.session.mail},{$set:{pub:vpub}});
+    users.update({mail:req.session.mail},{$set:{pub:vpub,lang:req.body.lang}});
     items.update({user:req.session._id},{$set:{pub:vpub}});
     ms.trouble=0;
     res.send(ms);

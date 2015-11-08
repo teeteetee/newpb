@@ -464,17 +464,11 @@ head
                                 $('#nickgroup').removeClass('has-success').addClass('has-error');
                                 $('#nick_error').css('display','block');
                                  lastentry = $('#nickinput').val();
-                                $('#pwderr').empty();
-                                $('#pwderr').append('<p>'+nick_taken+'</p>');
-                                if($('#pwderr').css('display') === 'none'){
-                                   $('#pwderr').slideToggle();
-                                 }
+                                
                                 }
                                           else {
                                             console.log('no msg');
-                                            if($('#pwderr').css('display') === 'block'){
-                                              $('#pwderr').slideToggle();
-                                            }
+                                          
                                             $('#nick_error').css('display','none');
                                             $('#nickgroup').removeClass('has-error').addClass('has-success');
                                             $('#nick_success').css('display','block');
