@@ -362,6 +362,8 @@ head
         var digit_letter = 'Password should contain letters and numbers';
         var email_inuse = 'Provided email is already used by one of the users';
         var email_incorrect = 'Email is not valid';
+        var lang = 'en';
+        var nick_short = 'Nickname should contain at least 5 characters';
       $('#ru').click(function(){
         less_six = 'Пароль должен содержать не менее 6 знаков (буквы и цифры)';
         too_long = 'Пароль слишком длинный';
@@ -369,6 +371,8 @@ head
         digit_letter = 'Пароль должен содержать цифры и буквы';
         email_inuse = 'Этот email уже используется';
         email_incorrect = 'Недействительный email';
+        lang = 'ru';
+        nick_short = 'Ник должен содержать минимум 5 символов';
         $('#p').attr('placeholder','пароль');
         $('#nickinput').attr('placeholder','ник');
         $('#modo').text('Скажи мне, что ты читаешь, и я скажу, кто ты.');
@@ -382,6 +386,8 @@ head
         digit_letter = 'Password should contain letters and numbers';
         email_inuse = 'Provided email is already used by one of the users';
         email_incorrect = 'Email is not valid';
+        lang = 'en';
+        nick_short = 'Nickname should contain at least 5 characters';
         $('#p').attr('placeholder','password');
         $('#nickinput').attr('placeholder','nick');
         $('#modo').text("Tell me what you read, and I'll tell you who you are.");
@@ -434,6 +440,11 @@ head
                         $('#nick_error').css('display','block');
                         $('#nickgroup').removeClass('has-success').addClass('has-error');
                         $('#nick_success').css('display','none');
+                        $('#pwderr').empty();
+                        $('#pwderr').append('<p>'+nick_short+'</p>');
+                        if($('#pwderr').css('display') === 'none'){
+                          $('#pwderr').slideToggle();
+                        }
                        }
                       else if($('#nickinput').val() != lastentry && $('#nickinput').val().length >4) {       
                         str = $('#nickinput').val().replace(/\s+/g, '');
@@ -667,6 +678,6 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vn);
+        request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vn+"&lang="+lang);
           }
         

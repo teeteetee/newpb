@@ -610,7 +610,7 @@ app.post('/newuser',function(req,res){
       else {
         if(doc.length === 0)
         { 
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalarticles:0,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,newarticles:0,readarticles:0,userpic:0,last_item:0,lst_msg:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[],articlestore:[]},function (err,done){
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,lang:req.body.lang,totalarticles:0,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,newarticles:0,readarticles:0,userpic:0,last_item:0,lst_msg:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[],articlestore:[]},function (err,done){
             if(err)
             {
               ms.mtext='db';
