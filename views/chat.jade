@@ -271,6 +271,7 @@ head
         font-weight:200;
       }
       #menu-toggle {
+      transition: color 0.5s ease;
       background-color: transparent;
       border: none;
       position: absolute;
@@ -496,6 +497,7 @@ head
             }).done(function( msg ) {
                 if(msg.newmsg){
                  $('#mbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
+                 $('#menu-toggle').css('color','#37AFD6');
                 }
                });
       $.ajax({
@@ -505,6 +507,7 @@ head
             }).done(function( msg ) {
                 if(msg.newp){
                  $('#pbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
+                 $('#menu-toggle').css('color','#37AFD6');
                 }
                });
       function show_message (uid,tmstmp) {
