@@ -11,9 +11,12 @@
 
 div.cs-skin-border {
 	background-color: #555;
-	font-size: 2em;
-	font-weight: 700;
-	width: 100%;
+	text-transform: uppercase;
+    font-family: proxima;
+    letter-spacing: 2px;
+    font-size: 2em;
+    /* font-weight: 700; */
+    color: #37AFD6;
 }
 div.cs-skin-border:last-child {
 	background-color: #333;
