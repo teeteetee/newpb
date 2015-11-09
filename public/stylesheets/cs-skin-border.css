@@ -10,10 +10,13 @@
 }*/
 
 div.cs-skin-border {
-	background: transparent;
+	background-color: #555;
 	font-size: 2em;
 	font-weight: 700;
-	max-width: 600px;
+	width: 100%;
+}
+div.cs-skin-border:last-child {
+	background-color: #333;
 }
 
 @media screen and (max-width: 30em) {
