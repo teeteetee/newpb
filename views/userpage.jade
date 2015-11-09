@@ -694,7 +694,7 @@ head
 
     }
     #addbook a, input {
-      height:60px;
+      min-height:60px;
     }
     #addbook .btn{
     border:none;
@@ -805,10 +805,10 @@ head
             .input-w(style='background-color:#eee;')
               label(for="#your-input2" style='top:90px;') Author
               input(type="text" id="your-input2")
-            a( id='addauthor'  style='width:100%;color:#37AFD6;background-color:#777;') 
+            a( id='addauthor'  style='width:100%;color:#37AFD6;background-color:#777;display:block;') 
               | Additional author
               span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus pull-right')
-            a(class=' disabled' id='removeauthor'   style='width:100%;color:#37AFD6;display:none;' ) 
+            a(class=' disabled' id='removeauthor'   style='width:100%;color:#37AFD6;display:none;display:block;' ) 
               | Remove 
               span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus pull-right')
             //
@@ -858,7 +858,7 @@ head
                 .btn-group(style='margin-bottom:100px;display:block;')
                   button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
                   button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
-          .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;')
+          .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;padding:none;')
             a(class='btn'  id='submitbook' style='width:100%;color:#37AFD6;') Submit
     nav#menu.menu 
       section.menu-section(style='text-align:center;')
