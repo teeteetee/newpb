@@ -10,7 +10,7 @@
 }*/
 
 div.cs-skin-border {
-	background-color: #333;
+	background-color: #555;
 	text-transform: uppercase;
     font-family: proxima;
     letter-spacing: 2px;
@@ -19,7 +19,7 @@ div.cs-skin-border {
     color: #37AFD6;
 }
 div.cs-skin-border:last-child {
-	background-color: #222;
+	background-color: #333;
 }
 
 @media screen and (max-width: 30em) {
@@ -31,13 +31,6 @@ div.cs-skin-border:last-child {
 	border-color: inherit;
 	-webkit-transition: background 0.2s, border-color 0.2s;
 	transition: background 0.2s, border-color 0.2s;
-}
-
-#newold span {
-	background-color:#555;
-}
-#genre span {
-	background-color:#333;
 }
 .cs-skin-border > span::after,
 .cs-skin-border .cs-selected span::after {
