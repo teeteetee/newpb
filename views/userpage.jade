@@ -684,9 +684,6 @@ head
     #addbook .btn{
     border:none;
     }
-    #addbook a.active {
-      border:1px solid white;
-    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -797,12 +794,21 @@ head
               a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;' ) 
                 | Remove 
                 span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
-            .btn-group.btn-group-justified#new_old(style='background-color:#555;')
-              a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;') New
-              a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;')  I've read it
-            .btn-group.btn-group-justified(style='background-color:#333;')
-              a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;') Nonfiction
-              a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;') Fiction 
+            select(class="cs-select cs-skin-border")
+              //option(value="" disabled selected) Preferred contact method
+              option(value="email" selected) New
+              option(value="twitter") I've read it
+            select(class="cs-select cs-skin-border")
+              //option(value="" disabled selected) Preferred contact method
+              option(value="email" selected) Nonfiction
+              option(value="twitter") Fiction
+            //
+              .btn-group.btn-group-justified#new_old(style='background-color:#555;')
+                a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;') New
+                a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;')  I've read it
+              .btn-group.btn-group-justified(style='background-color:#333;')
+                a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;') Nonfiction
+                a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
@@ -935,6 +941,11 @@ head
     script(src='js/bootstrap.min.js')     
     script(async src='/js/counter.js') 
     script.
+      function() {
+                [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
+                  new SelectFx(el);
+                } );
+              })();
       //restrict - all checks are both client/server implemented /
       $('.authorinput').bind('keypress', function (event) {
           var regex = /^[.\/\w]/i;
