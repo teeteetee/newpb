@@ -774,21 +774,21 @@ head
             .input-w(style='background-color:#eee;')
               label(for="#your-input") Title
               input(type="text" style='height:50px;' id="your-input")
-            .input-w(style='background-color:#777;')
+            .input-w(style='background-color:#eee;')
               label(for="#your-input2") Author
               input(type="text" style='height:50px;' id="your-input2")
             .form-group
-              .btn-group.btn-group-justified#authors(style='display:block;background-color:#555;')
-                button(class='btn ' id='addauthor' type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#b5f1b2;') 
+              .btn-group.btn-group-justified#authors(style='display:block;background-color:#777;')
+                button(class='btn ' id='addauthor' type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;') 
                   | Additional author
                   span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-                button(class=' btn  disabled' id='removeauthor'  type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#f1b2b2;' ) 
+                button(class=' btn  disabled' id='removeauthor'  type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;' ) 
                   | Remove 
                   span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
-              .btn-group#new_old(style='border-bottom:1px solid #eee;display:block;background-color:#333;')
+              .btn-group#new_old(style='border-bottom:1px solid #eee;display:block;background-color:#555;')
                 button(class='btn  active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') New
                 button(class=' btn ' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;border:none;')  I've read it
-              .btn-group(style='margin-bottom:100px;display:block;background-color:#222;')
+              .btn-group(style='margin-bottom:100px;display:block;background-color:#333;')
                 button(class='btn  active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Nonfiction
                 button(class=' btn ' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Fiction 
           //
@@ -815,7 +815,7 @@ head
                 .btn-group(style='margin-bottom:100px;display:block;')
                   button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
                   button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
-          .modal-footer(style='text-align:center;')
+          .modal-footer(style='text-align:center;background-color:#222;')
             button(class='btn btn-modal'  id='submitbook') Submit
     nav#menu.menu 
       section.menu-section(style='text-align:center;')
