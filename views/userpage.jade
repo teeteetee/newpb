@@ -805,13 +805,20 @@ head
             .input-w(style='background-color:#eee;')
               label(for="#your-input2" style='top:90px;') Author
               input(type="text" id="your-input2")
-            .btn-group.btn-group-justified#authors(style='background-color:#777;')
-              a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;') 
-                | Additional author
-                span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-              a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;' ) 
-                | Remove 
-                span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
+            a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;') 
+              | Additional author
+              span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus pull-right')
+            a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;display:none;' ) 
+              | Remove 
+              span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
+            //
+              .btn-group.btn-group-justified#authors(style='background-color:#777;')
+                a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;') 
+                  | Additional author
+                  span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
+                a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;' ) 
+                  | Remove 
+                  span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
             select#new_old(class="cs-select cs-skin-border")
               //option(value="" disabled selected) Preferred contact method
               option(value="email" selected) New
