@@ -676,6 +676,9 @@ head
     .modal-body .btn-group{
 
     }
+    #addbook a, input {
+      height:60px;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -775,23 +778,23 @@ head
           .modal-body(style='padding:0px;padding-top:15px;')
             .input-w(style='background-color:#eee;')
               label(for="#your-input") Title
-              input(type="text" style='height:50px;' id="your-input")
+              input(type="text" id="your-input")
             .input-w(style='background-color:#eee;')
               label(for="#your-input2") Author
-              input(type="text" style='height:50px;' id="your-input2")
+              input(type="text" id="your-input2")
             .btn-group.btn-group-justified#authors(style='background-color:#777;')
-              a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;') 
+              a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;border:none;') 
                 | Additional author
                 span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-              a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;' ) 
+              a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;border:none;' ) 
                 | Remove 
                 span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
             .btn-group.btn-group-justified#new_old(style='background-color:#555;')
-              a(class='btn  active' id='newbook'  style='border-radius:0px;height:50px;width:50%;border:none;') New
-              a(class=' btn ' id='oldbook'   style='border-radius:0px;height:50px;width:50%;border:none;')  I've read it
+              a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;border:none;') New
+              a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;border:none;')  I've read it
             .btn-group.btn-group-justified(style='background-color:#333;')
-              a(class='btn  active' id='nonfiction'  style='border-radius:0px;height:50px;width:50%;border:none;') Nonfiction
-              a(class=' btn ' id='fiction'  style='border-radius:0px;height:50px;width:50%;border:none;') Fiction 
+              a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;border:none;') Nonfiction
+              a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;border:none;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
@@ -816,7 +819,7 @@ head
                 .btn-group(style='margin-bottom:100px;display:block;')
                   button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
                   button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
-          .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:4px;border-bottom-right-radius:4px;')
+          .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-top:none;')
             button(class='btn btn-modal'  id='submitbook') Submit
     nav#menu.menu 
       section.menu-section(style='text-align:center;')
