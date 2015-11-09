@@ -681,6 +681,9 @@ head
     #addbook a, input {
       height:60px;
     }
+    #addbook .btn{
+    border:none;
+    }
     #addbook a.active {
       border:1px solid white;
     }
@@ -788,18 +791,18 @@ head
               label(for="#your-input2" style='top:90px;') Author
               input(type="text" id="your-input2")
             .btn-group.btn-group-justified#authors(style='background-color:#777;')
-              a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;border:none;') 
+              a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;') 
                 | Additional author
                 span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-              a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;border:none;' ) 
+              a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;' ) 
                 | Remove 
                 span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
             .btn-group.btn-group-justified#new_old(style='background-color:#555;')
-              a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;border:none;') New
-              a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;border:none;')  I've read it
+              a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;') New
+              a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;')  I've read it
             .btn-group.btn-group-justified(style='background-color:#333;')
-              a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;border:none;') Nonfiction
-              a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;border:none;') Fiction 
+              a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;') Nonfiction
+              a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
