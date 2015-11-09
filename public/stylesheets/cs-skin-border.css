@@ -21,7 +21,9 @@ div.cs-skin-border {
 div.cs-skin-border:last-child {
 	background-color: #333;
 }
-
+.modal-footer {
+	padding:1em;
+}
 .modal-footer a {
 	text-transform: uppercase;
     font-family: proxima;
