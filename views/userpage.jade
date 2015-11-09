@@ -766,23 +766,23 @@ head
             form(id='authoradd_here')
               .input-w
                 label(for="#your-input") Title
-                input(type="text" id="your-input")
+                input(type="text"style='height:50px;' id="your-input")
               .input-w
-                label(for="#your-input") Author
-                input(type="text" id="your-input")
+                label(for="#your-input2") Author
+                input(type="text"style='height:50px;' id="your-input2")
               .form-group
                 label(for='authors') Additional authors
-                .btn-group#authors(style='display:block;width:100%;')
-                  button(class='btn btn-iosdark' id='addauthor' type='button' style='border-radius:0px;height:50px;') Add
-                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='border-radius:0px;height:50px;' )  Remove
+                .btn-group.btn-group-justified#authors(style='display:block;')
+                  button(class='btn btn-iosdark' id='addauthor' type='button' style='border-radius:0px;height:50px;width:50%;') Add
+                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='border-radius:0px;height:50px;width:50%;' )  Remove
               .form-group
                 label(for='new_old') Statistics
                 .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                  button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;height:50px;') New
-                  button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;height:50px;')  I've read it
+                  button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;') New
+                  button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;')  I've read it
                 .btn-group(style='margin-bottom:100px;display:block;')
-                  button(class='btn btn-iosdark active' id='nonfiction' type='button' style='border-radius:0px;height:50px;') Nonfiction
-                  button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;height:50px;') Fiction 
+                  button(class='btn btn-iosdark active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;') Nonfiction
+                  button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
