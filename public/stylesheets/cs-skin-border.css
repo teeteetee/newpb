@@ -22,8 +22,16 @@ div.cs-skin-border:last-child {
 	background-color: #333;
 }
 
+.modal-footer a {
+	text-transform: uppercase;
+    font-family: proxima;
+    letter-spacing: 2px;
+    font-size: 2em;
+    /* font-weight: 700; */
+    color: #37AFD6;
+}
 @media screen and (max-width: 30em) {
-	div.cs-skin-border { font-size: 1em; }
+	div.cs-skin-border,.modal-footer a { font-size: 1em; }
 }
 
 .cs-skin-border > span {
