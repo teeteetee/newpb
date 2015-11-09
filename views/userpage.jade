@@ -657,14 +657,17 @@ head
     .read .col-xs-12 {
       padding-left:25px;
     }
+    .input-w {
+      padding-left:15px;
+      padding-right:15px;
+    }
     .input-w label {
     display: inline-block;
     vertical-align: middle;    
     }
-    
     .input-w input {
-        display: inline-block;
-        vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
     }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -762,7 +765,7 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title"  style='color:#ddd;') Adding a book
-          .modal-body
+          .modal-body(style='padding:0px;padding-top:15px;')
             form(id='authoradd_here')
               .input-w
                 label(for="#your-input") Title
@@ -772,17 +775,15 @@ head
                 input(type="text" style='height:50px;' id="your-input2")
               .form-group
                 label(for='authors') Additional authors
-                .btn-group.btn-group-justified#authors(style='display:block;')
-                  button(class='btn btn-iosdark' id='addauthor' type='button' style='border-radius:0px;height:50px;width:50%;') Add
-                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='border-radius:0px;height:50px;width:50%;' )  Remove
-              .form-group
-                label(for='new_old') Statistics
-                .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                  button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;') New
-                  button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;')  I've read it
+                .btn-group.btn-group-justified#authors(style='display:block;border-bottom:1px solid #eee;')
+                  button(class='btn btn-iosdark' id='addauthor' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Add
+                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='border-radius:0px;height:50px;width:50%;border:none;' )  Remove
+                .btn-group#new_old(style='border-bottom:1px solid #eee;display:block;')
+                  button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') New
+                  button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;border:none;')  I've read it
                 .btn-group(style='margin-bottom:100px;display:block;')
-                  button(class='btn btn-iosdark active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;') Nonfiction
-                  button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;') Fiction 
+                  button(class='btn btn-iosdark active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Nonfiction
+                  button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
