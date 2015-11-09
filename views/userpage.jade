@@ -657,6 +657,15 @@ head
     .read .col-xs-12 {
       padding-left:25px;
     }
+    .input-w label {
+    display: inline-block;
+    vertical-align: middle;    
+    }
+    
+    .input-w input {
+        display: inline-block;
+        vertical-align: middle;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -664,22 +673,14 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-          .modal-body.visible-md.visible-lg
+          .modal-body
             h4.articlemodaltitle(style='text-align:center;')
             h4.articlemodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            a(class='btn btn-primary  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View 
-            button(class='btn btn-iosdark  form-control article_read' style='margin-top:5px;margin-bottom:5px;') Mark as read
-            button(class='btn btn-iosdark  form-control article_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
-            button(class='btn btn-iosdark  form-control article_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
-            button(class='btn btn-iosdark form-control article_remove' style='margin-top:5px;margin-bottom:5px;') Remove
-          .modal-body.visible-sm.visible-xs
-            h4.articlemodaltitle(style='text-align:center;')
-            h4.articlemodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            a(class='btn btn-iosdark btn-lg  form-control article_view' style='margin-top:5px;margin-bottom:5px;') View
-            button(class='btn btn-iosdark btn-lg  form-control article_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
-            button(class='btn btn-iosdark btn-lg  form-control article_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
-            button(class='btn btn-iosdark btn-lg  form-control article_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
-            button(class='btn btn-iosdark btn-lg form-control article_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
+            a(class='btn btn-primary  form-control article_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control article_read') Mark as read
+            button(class='btn btn-iosdark  form-control article_good') Mark as good
+            button(class='btn btn-iosdark  form-control article_unmark_good') Unmark as good
+            button(class='btn btn-iosdark form-control article_remove') Remove
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -694,15 +695,6 @@ head
             button(class='btn btn-iosdark  form-control book_unmark_good') Unmark as good
             button(class='btn btn-iosdark form-control book_people') Find people
             button(class='btn btn-iosdark form-control book_remove') Remove
-          //
-            .modal-body.visible-sm.visible-xs
-              h4.bookmodaltitle(style='text-align:center;')
-              h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
-              button(class='btn btn-iosdark btn-lg  form-control book_read' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as read
-              button(class='btn btn-iosdark btn-lg  form-control book_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
-              button(class='btn btn-iosdark btn-lg  form-control book_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
-              button(class='btn btn-iosdark btn-lg form-control book_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
-              button(class='btn btn-iosdark btn-lg form-control book_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -712,19 +704,11 @@ head
           .modal-body.visible-md.visible-lg
             h4.moviemodaltitle(style='text-align:center;')
             h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark  form-control movie_seen' style='margin-top:5px;margin-bottom:5px;') Mark as seen
-            button(class='btn btn-iosdark  form-control movie_good' style='margin-top:5px;margin-bottom:5px;') Mark as good
-            button(class='btn btn-iosdark  form-control movie_unmark_good' style='margin-top:5px;margin-bottom:5px;') Unmark as good
-            button(class='btn btn-iosdark form-control movie_people' style='margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-iosdark form-control movie_remove' style='margin-top:5px;margin-bottom:5px;') Remove
-          .modal-body.visible-sm.visible-xs
-            h4.moviemodaltitle(style='text-align:center;')
-            h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark btn-lg  form-control movie_seen' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as seen
-            button(class='btn btn-iosdark btn-lg  form-control movie_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Mark as good
-            button(class='btn btn-iosdark btn-lg  form-control movie_unmark_good' style='height:inherit;margin-top:5px;margin-bottom:5px;') Unmark as good
-            button(class='btn btn-iosdark btn-lg form-control movie_people' style='height:inherit;margin-top:5px;margin-bottom:5px;') Find people
-            button(class='btn btn-iosdark btn-lg form-control movie_remove' style='height:inherit;margin-top:5px;margin-bottom:5px;') Remove 
+            button(class='btn btn-iosdark  form-control movie_seen' style='margin-top:5px;') Mark as seen
+            button(class='btn btn-iosdark  form-control movie_good') Mark as good
+            button(class='btn btn-iosdark  form-control movie_unmark_good') Unmark as good
+            button(class='btn btn-iosdark form-control movie_people') Find people
+            button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addmovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -780,27 +764,49 @@ head
             h4(class="modal-title"  style='color:#ddd;') Adding a book
           .modal-body
             form(id='authoradd_here')
+              .input-w
+                label(for="#your-input") Title
+                input(type="text" id="your-input")
+              .input-w
+                label(for="#your-input") Author
+                input(type="text" id="your-input")
               .form-group
-                label(for="btitle") Titile
-                input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                .row.autocomp#autocompbooks
-                  .col-xs-12#srb
+                label(for='authors') Additional authors
+                .btn-group#authors(style='display:block;width:100%;')
+                  button(class='btn btn-iosdark' id='addauthor' type='button' style='border-radius:0px;') Add
+                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='border-radius:0px;' )  Remove
+              .form-group(style='margin-top:49px;')
+                label(for='new_old') Statistics
+                .btn-group#new_old(style='margin-bottom:50px;display:block;')
+                  button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;') New
+                  button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;')  I've read it
+                .btn-group(style='margin-bottom:100px;display:block;')
+                  button(class='btn btn-iosdark active' id='nonfiction' type='button'style='border-radius:0px;') Nonfiction
+                  button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;') Fiction 
+          //
+            .modal-body
+              form(id='authoradd_here')
+                .form-group
+                  label(for="btitle") Titile
+                  input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                  .row.autocomp#autocompbooks
+                    .col-xs-12#srb
+                .form-group
+                  label(for="title") Author
+                  input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
               .form-group
-                label(for="title") Author
-                input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-            .form-group
-              label(for='authors') Additional authors
-              .btn-group#authors(style='display:block;')
-                button(class='btn btn-iosdark' id='addauthor' type='button') Add
-                button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
-            .form-group(style='margin-top:49px;')
-              label(for='new_old') Statistics
-              .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newbook' type='button') New
-                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
-              .btn-group(style='margin-bottom:100px;display:block;')
-                button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
-                button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
+                label(for='authors') Additional authors
+                .btn-group#authors(style='display:block;')
+                  button(class='btn btn-iosdark' id='addauthor' type='button') Add
+                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
+              .form-group(style='margin-top:49px;')
+                label(for='new_old') Statistics
+                .btn-group#new_old(style='margin-bottom:50px;display:block;')
+                  button(class='btn btn-iosdark active' id='newbook' type='button') New
+                  button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
+                .btn-group(style='margin-bottom:100px;display:block;')
+                  button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
+                  button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;')
             button(class='btn btn-modal'  id='submitbook') Submit
     nav#menu.menu 
