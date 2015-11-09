@@ -771,27 +771,26 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title"  style='color:#ddd;') Adding a book
           .modal-body(style='padding:0px;padding-top:15px;')
-            .input-w
+            .input-w(style='background-color:#eee;')
               label(for="#your-input") Title
               input(type="text" style='height:50px;' id="your-input")
-            .input-w
+            .input-w(style='background-color:#777;')
               label(for="#your-input2") Author
               input(type="text" style='height:50px;' id="your-input2")
             .form-group
-              label(for='authors') Additional authors
-              .btn-group.btn-group-justified#authors(style='display:block;border-bottom:1px solid #eee;')
-                button(class='btn btn-iosdark' id='addauthor' type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#b5f1b2;') 
+              .btn-group.btn-group-justified#authors(style='display:block;background-color:#555;')
+                button(class='btn ' id='addauthor' type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#b5f1b2;') 
                   | Additional author
                   span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-                button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#f1b2b2;' ) 
+                button(class=' btn  disabled' id='removeauthor'  type='button' style='font-size:10px;color:white;border-radius:0px;height:50px;width:50%;border:none;background-color:#f1b2b2;' ) 
                   | Remove 
                   span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
-              .btn-group#new_old(style='border-bottom:1px solid #eee;display:block;')
-                button(class='btn btn-iosdark active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') New
-                button(class=' btn btn-iosdark' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;border:none;')  I've read it
-              .btn-group(style='margin-bottom:100px;display:block;')
-                button(class='btn btn-iosdark active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Nonfiction
-                button(class=' btn btn-iosdark' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Fiction 
+              .btn-group#new_old(style='border-bottom:1px solid #eee;display:block;background-color:#333;')
+                button(class='btn  active' id='newbook' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') New
+                button(class=' btn ' id='oldbook'  type='button' style='border-radius:0px;height:50px;width:50%;border:none;')  I've read it
+              .btn-group(style='margin-bottom:100px;display:block;background-color:#222;')
+                button(class='btn  active' id='nonfiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Nonfiction
+                button(class=' btn ' id='fiction' type='button' style='border-radius:0px;height:50px;width:50%;border:none;') Fiction 
           //
             .modal-body
               form(id='authoradd_here')
