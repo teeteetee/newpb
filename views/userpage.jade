@@ -781,16 +781,16 @@ head
                 input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
                 .row.autocomp#autocompbooks
                   .col-xs-12#srb
-            .form-group
-              label(for="title") Author
-              input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-            .btn-group.pull-left#authors(style='display:block;width:100%;margin-top:20px;')
+              .form-group
+                label(for="title") Author
+                input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+            .btn-group.pull-left#authors(style='width:100%;margin-top:20px;')
              button(class='btn btn-iosdark' id='addauthor' type='button') Add author
              button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
-            .btn-group.pull-left#new_old(style='display:block;width:100%;margin-top:20px;')
+            .btn-group.pull-left#new_old(style='width:100%;margin-top:20px;')
               button(class='btn btn-iosdark active' id='newbook' type='button') New
               button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
-            .btn-group.pull-left(style='width:100%;margin-top:20px;display:block;')
+            .btn-group.pull-left(style='width:100%;margin-top:20px;')
               button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
               button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;padding:none;')
