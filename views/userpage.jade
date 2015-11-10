@@ -901,9 +901,13 @@ head
                   .noarticles.row(style='text-align:center;')  
                      .col-xs-12
                        h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
-    footer.footer(style='height:100px;background-color:#222;')
+    footer.footer(style='min-height:100px;background-color:#222;')
       .container 
-        h2 mailto
+        .row(style='text-align:center;')
+          .col-xs-12
+            a(href='mailto:main@peopleandbooks.com')
+            h5 People and books
+            h5 2015
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
