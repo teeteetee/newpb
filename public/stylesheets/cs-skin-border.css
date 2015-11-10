@@ -11,17 +11,18 @@
 
 div.cs-skin-border {
 	background-color: #555;
-	text-transform: uppercase;
+	/*text-transform: uppercase;
     font-family: proxima;
     letter-spacing: 2px;
     font-size: 2em;
-    /* font-weight: 700; */
+    font-weight: 700; */
     color: white;
 }
 div.cs-skin-border:last-child {
 	background-color: #333;
 }
-.modal-content a {
+
+/*.modal-content a {
 	padding:1em;
 }
 .modal-content a {
@@ -29,9 +30,10 @@ div.cs-skin-border:last-child {
     font-family: proxima;
     letter-spacing: 2px;
     font-size: 2em;
-    /* font-weight: 700; */
+     font-weight: 700; 
     color: #37AFD6;
-}
+}*/
+
 @media screen and (max-width: 30em) {
 	div.cs-skin-border,.modal-content a { font-size: 1em; }
 }
