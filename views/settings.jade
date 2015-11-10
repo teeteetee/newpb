@@ -339,8 +339,10 @@ head
           form(method='post',action='/backup',role='form')
             button.btn.btn-iosdark#backup_b(type='submit') Download backup file
             span.help-block#backup_h While you still can
+      .row
+        .col-xs-12(style='border-top:1px solid #eee;')
       .row.setrow
-        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad
           h4(id='restore') Restore
           form(method='post',action='/restore',role='form', enctype='multipart/form-data',id='restoreform')
             .input-group(style='margin-top:30px;')
@@ -349,8 +351,10 @@ head
                   input(type="file"  name='usersjson' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
             span.help-block#restore_h Valid JSON previously supplied by us
+      .row
+        .col-xs-12(style='border-top:1px solid #eee;')
       .row.setrow
-        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
+        .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad
           h4(id='userpic') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .input-group(style='margin-top:30px;')
