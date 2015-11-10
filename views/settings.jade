@@ -363,8 +363,8 @@ head
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='likeprivate') Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-            button#likeprivate_b1(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
-            button#likeprivate_b2(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
+            button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
+            button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='language') Language
@@ -413,11 +413,11 @@ head
       $('#userpic_b').text('файл'); 
       $('#userpic_h').text('Jpeg,gif'); 
       $('#likeprivate').text('Скрыть вашу страницу от других пользователей?'); 
-      $('#likeprivate_b1').text('Скрытая'); 
-      $('#likeprivate_b2').text('Публичная'); 
+      $('#bpr').text('Скрытая'); 
+      $('#bpb').text('Публичная'); 
       $('#language').text('Язык'); 
-      $('#language_b1').text('Eng'); 
-      $('#language_b2').text('Ru');
+      $('#eng').text('Eng'); 
+      $('#ru').text('Ru');
       $('.setsub').text('Сохранить');
       }
       if(user.pub) {
