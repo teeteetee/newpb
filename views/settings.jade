@@ -332,16 +332,16 @@ head
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') Settings     
+          h3(style='font-weight:200;color:#ddd;' id='mainheading') Settings     
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad
-          h4 Backup
+          h4(id='backup') Backup
           form(method='post',action='/backup',role='form')
             button.btn.btn-iosdark(type='submit') Download backup file
             span.help-block While you still can
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
-          h4 Restore
+          h4(id='Restore') Restore
           form(method='post',action='/restore',role='form', enctype='multipart/form-data',id='restoreform')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
@@ -351,7 +351,7 @@ head
             span.help-block Valid JSON previously supplied by us
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
-          h4 Userpic upload
+          h4(id='userpic') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
@@ -361,13 +361,13 @@ head
             span.help-block Please be sensible, no ugly genitals
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
-          h4 Would you like your lists private?
+          h4(id='likeprivate') Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
             button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
-          h4 Language
+          h4(id='language') Language
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
             button(type="button" id='eng' class="btn btncorr btn-iosdark") Eng
             button(type="button" id='ru' class="btn btncorr btn-iosdark") Ru
@@ -389,7 +389,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/js/bootstrap.min.js') 
-    script.  
+    script. 
       var slideout = new Slideout({
         'panel': document.getElementById('panel'),
         'menu': document.getElementById('menu'),
@@ -401,6 +401,15 @@ head
       });
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
+      if(lang!==='eng') {
+      $('#mainheading').text('Настройки'); 
+      $('#backup').text('Резервная копия'); 
+      $('#restore').text('Восстановить'); 
+      $('#userpic').text('Аватар'); 
+      $('#likeprivate').text('Скрыть вашу страницу от других пользователей?'); 
+      $('#language').text('Язык'); 
+      $('.setsub').text('Сохранить');
+      }
       if(user.pub) {
         $('#bpb').addClass('active');
       }
