@@ -10,7 +10,6 @@
 }*/
 
 div.cs-skin-border {
-	background-color: #555;
 	/*text-transform: uppercase;
     font-family: proxima;
     letter-spacing: 2px;
@@ -19,7 +18,6 @@ div.cs-skin-border {
     color: white;
 }
 div.cs-skin-border:last-child {
-	background-color: #333;
 }
 
 /*.modal-content a {
