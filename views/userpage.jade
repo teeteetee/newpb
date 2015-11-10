@@ -187,6 +187,9 @@ head
     #addbook .modal-body {
       height:413px;
     }
+    .incm {
+      margin-top:20px;
+    }
     @media (max-width: 992px) {
     #booklist {
     border-bottom-left-radius:10px;
@@ -199,6 +202,9 @@ head
     }
     }
     @media (max-width: 767px) {
+      .incm {
+      margin-top:40px;
+    }
     #addbook .modal-body {
       height:450px;
     }
@@ -790,13 +796,13 @@ head
               .form-group
                 label(for="title") Author
                 input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-            .btn-group.pull-left#authors(style='width:100%;margin-top:20px;')
+            .btn-group.incm.pull-left#authors(style='width:100%;')
              button(class='btn btn-iosdark' id='addauthor' type='button') Add author
              button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
-            .btn-group.pull-left#new_old(style='width:100%;margin-top:20px;')
+            .btn-group.incm.pull-left#new_old(style='width:100%;')
               button(class='btn btn-iosdark active' id='newbook' type='button') New
               button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
-            .btn-group.pull-left(style='width:100%;margin-top:20px;')
+            .btn-group.incm.pull-left(style='width:100%;')
               button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
               button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;background-color:#333;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;')
