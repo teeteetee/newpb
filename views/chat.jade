@@ -373,7 +373,7 @@ head
     .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
-          .modal-header(style='background-color:#222;')
+          .modal-header(style='background-color:#222;border-top-left-radius:6px;border-top-right-radius:6px;')
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(style='color:#ddd;') Message
@@ -386,7 +386,7 @@ head
               label Response:
               textarea(id='gettext' maxlength="2700" class='form-control txtfield')   
               //button.btn.btn-modal#submitmsg(type='button' style='border: 1px solid #208aff;') Send
-          .modal-footer(style='text-align:center;margin-top:20px;background-color:#222;')
+          .modal-footer(style='text-align:center;margin-top:20px;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;')
             a.btn(id='openrespond' style='color:white;background-color:#337AB7;') Respond
     .container-fluid#panel
       button(type='button' ,id='menu-toggle')
