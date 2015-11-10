@@ -481,13 +481,13 @@ head
         });
       var iter = 1
       $('#loadmore').click(function(){
-        $('#loadmore').attr('disabled','true');
+        $('#loadmore').prop('disabled',true);
         $.ajax({
               method: "POST",
               url: "/moremsg",
               data: 'iter='+iter
             }).done(function( msg ) {
-                $('#loadmore').attr('disabled','false');
+                $('#loadmore').prop('disabled',false);
                 if(msg.troube){
                   console.log('err loading messages');
                 }
