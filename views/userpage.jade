@@ -796,67 +796,29 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title"  style='color:#ddd;') Adding a book
-          .modal-body(style='padding:0px;padding-top:15px;')
-            .input-w
-              label(for="#your-input" style='top:25px;') Title
-              input(type="text" id="your-input")
-            .input-w
-              label(for="#your-input2" style='top:75px;') Author
-              input(type="text" id="your-input2")
-            #authoradd_here(style='')
-            a( id='addauthor'  style='width:100%;color:#37AFD6;background-color:#777;display:block;') 
-              | Additional author
-              span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus pull-right')
-            a(class=' disabled' id='removeauthor'   style='width:100%;color:#37AFD6;display:none;' ) 
-              | Remove 
-              span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus pull-right')
-            //
-              .btn-group.btn-group-justified#authors(style='background-color:#777;')
-                a(class='btn ' id='addauthor'  style='font-size:10px;color:white;border-radius:0px;width:50%;') 
-                  | Additional author
-                  span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus')
-                a(class=' btn  disabled' id='removeauthor'   style='font-size:10px;color:white;border-radius:0px;width:50%;' ) 
-                  | Remove 
-                  span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus')
-            select#new_old(class="cs-select cs-skin-border")
-              //option(value="" disabled selected) Preferred contact method
-              option(value="email" selected) New
-              option(value="twitter") I've read it
-            select#genre(class="cs-select cs-skin-border")
-              //option(value="" disabled selected) Preferred contact method
-              option(value="email" selected) Nonfiction
-              option(value="twitter") Fiction
-            //
-              .btn-group.btn-group-justified#new_old(style='background-color:#555;')
-                a(class='btn  active' id='newbook'  style='border-radius:0px;width:50%;') New
-                a(class=' btn ' id='oldbook'   style='border-radius:0px;width:50%;')  I've read it
-              .btn-group.btn-group-justified(style='background-color:#333;')
-                a(class='btn  active' id='nonfiction'  style='border-radius:0px;width:50%;') Nonfiction
-                a(class=' btn ' id='fiction'  style='border-radius:0px;width:50%;') Fiction 
-          //
-            .modal-body
-              form(id='authoradd_here')
-                .form-group
-                  label(for="btitle") Titile
-                  input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                  .row.autocomp#autocompbooks
-                    .col-xs-12#srb
-                .form-group
-                  label(for="title") Author
-                  input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+          .modal-body
+            form(id='authoradd_here')
               .form-group
-                label(for='authors') Additional authors
-                .btn-group#authors(style='display:block;')
-                  button(class='btn btn-iosdark' id='addauthor' type='button') Add
-                  button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
-              .form-group(style='margin-top:49px;')
-                label(for='new_old') Statistics
-                .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                  button(class='btn btn-iosdark active' id='newbook' type='button') New
-                  button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
-                .btn-group(style='margin-bottom:100px;display:block;')
-                  button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
+                label(for="btitle") Titile
+                input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                .row.autocomp#autocompbooks
+                  .col-xs-12#srb
+              .form-group
+                label(for="title") Author
+                input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+            .form-group
+              label(for='authors') Additional authors
+              .btn-group#authors(style='display:block;')
+                button(class='btn btn-iosdark' id='addauthor' type='button') Add
+                button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
+            .form-group(style='margin-top:49px;')
+              label(for='new_old') Statistics
+              .btn-group#new_old(style='margin-bottom:50px;display:block;')
+                button(class='btn btn-iosdark active' id='newbook' type='button') New
+                button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
+              .btn-group(style='margin-bottom:100px;display:block;')
+                button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
+                button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
           .modal-footer(style='text-align:center;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;padding:none;')
             a(class='btn'  id='submitbook' style='color:white;background-color:#17D448;') Submit
     nav#menu.menu 
