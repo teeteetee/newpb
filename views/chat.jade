@@ -376,7 +376,7 @@ head
           .modal-header(style='background-color:#222;border-top-left-radius:6px;border-top-right-radius:6px;')
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4#mainheading(style='color:#ddd;') Message
+            h4#modalh(style='color:#ddd;') Message
           .modal-body 
             a(id='author_page')
               h3#sender
@@ -394,7 +394,7 @@ head
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') Messages
+          h3#mainheading(style='font-weight:200;color:#ddd;') Messages
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#discussions
           #noitems.row(style='text-align:center;')  
@@ -430,6 +430,8 @@ head
       $('#settings').text('Настройки');
       $('#logout').text('Выход');
       $('#mainheading').text('Сообщения');
+      $('#openrespond').text('Ответить');
+      $('#modalh').text('Сообщение');
       }
       if(more){
         $('#morebutton').slideToggle();
@@ -481,7 +483,11 @@ head
           sendmsg($('#gettext').attr('rcvr'));
         }
         else if($('#respond').css('display')==='none') {
-         $('#openrespond').text('Send');
+          var txt = 'Send';
+          if(lang === 'ru'){
+            txt='Отправить';
+          }
+         $('#openrespond').text(txt);
          $('#gettext').val('');
          $('#respond').slideToggle();
         }
