@@ -400,7 +400,7 @@ head
           #noitems.row(style='text-align:center;')  
             .col-xs-12
               h2(style='color:#ccc;margin-bottom:20px;') No items 
-      .row(style='padding:40px;padding-bottom:0px;text-align:center;')
+      .row#morebutton(style='padding:40px;padding-bottom:0px;text-align:center;')
         .col-xs-12
           a.btn.btn-iosdark( id='loadmore' ) Load more
     footer.footer(style='min-height:100px;background-color:#222;padding-top:20px;padding-bottom:20px;')
@@ -423,7 +423,7 @@ head
       var avatarcheck={};
       var more = #{more};
       if(more){
-        $('#footer').slideToggle();
+        $('#morebutton').slideToggle();
       }
       if(!messages)
       {}
@@ -493,7 +493,7 @@ head
                     iter++;
                    populatemsg(msg.msgstore,0);
                    if(!msg.more){
-                    $('#footer').slideToggle();
+                    $('#morebutton').slideToggle();
                    }
                   }
                });
