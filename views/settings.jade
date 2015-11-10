@@ -311,17 +311,17 @@ head
         h3
           span(class='label' style='font-family:times,serif;font-weight:200;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
       section.menu-section
-        ul.menu-section-list    
+        ul.menu-section-list 
           li
-            a(href="/" ) My lists
+            a(href="/" id='lists') My lists
           li
             a(href="/people" id='pbutton') People
           li 
             a(href='/messages' id='mbutton') Messages
           li.active
-            a(href="/settings" ) Settings
+            a(href="/settings" id='settings') Settings
           li
-            a(href="/logout") Logout      
+            a(href="/logout" id='logout') Logout       
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -402,6 +402,11 @@ head
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       if(user.lang==='ru') {
+      $('#lists').text('Мои списки')
+      $('#mbutton').text('Сообщения');
+      $('#pbutton').text('Чужие списки');
+      $('#settings').text('Настройки');
+      $('#logout').text('Выход');
       $('#mainheading').text('Настройки'); 
       $('#backup').text('Резервная копия ваших списков');
       $('#backup_b').text('Скачать файл с резервной копией'); 
