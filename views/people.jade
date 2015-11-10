@@ -283,22 +283,22 @@ head
       section.menu-section
         ul.menu-section-list    
           li
-            a(href="/" ) My lists
+            a(href="/" id='lists') My lists
           li.active
             a(href="/people" id='pbutton') People
           li 
             a(href='/messages' id='mbutton') Messages
           li
-            a(href="/settings" ) Settings
+            a(href="/settings" id='settings') Settings
           li
-            a(href="/logout") Logout 
+            a(href="/logout" id='logout') Logout
     .container-fluid#panel
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm(style='height:50px;')
       .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;') You follow
+          h3#mainheading(style='font-weight:200;color:#ddd;') You follow
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#users
           #noitems.row(style='text-align:center;')  
@@ -326,6 +326,14 @@ head
       var user = !{JSON.stringify(doc)};
       user= JSON.parse(user);
       console.log(user.userstore);
+      if(user.lang==='ru') {
+      $('#lists').text('Мои списки')
+      $('#mbutton').text('Сообщения');
+      $('#pbutton').text('Чужие списки');
+      $('#settings').text('Настройки');
+      $('#logout').text('Выход');
+      $('#mainheading').text('Чужие списки');
+      }
       $('.people_num').append(user.userstore.length);
       $('#numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")

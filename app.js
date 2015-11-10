@@ -687,7 +687,7 @@ app.post('/check',function(req,res){
 
 app.get('/messages',function (req,res){
   if(req.session.mail){
-    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+    user_messages.findOne({user:req.session._id},{fields:{msgstore:1,lang:1}},function(err,done){
             if(err){
               //err page ?
               res.redirect('/');
@@ -699,7 +699,7 @@ app.get('/messages',function (req,res){
                   {
                   var more = done.msgstore.length > 10 ? 1:0;
                   done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
-                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more});
+                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more,'lang':done.lang});
                   }
                   else {
                    //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
@@ -892,7 +892,7 @@ else {
 app.get('/people',function (req,res){
    if(req.session._id)
   {
-        users.findOne({_id:req.session._id},{fields:{userstore:1,readbooks:1,seenmovies:1}},function (err,doc){
+        users.findOne({_id:req.session._id},{fields:{userstore:1,readbooks:1,seenmovies:1,lang:1}},function (err,doc){
           if(err) {
           // TO DO tell user
           }
