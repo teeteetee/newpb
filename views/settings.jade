@@ -337,40 +337,40 @@ head
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad
           h4(id='backup') Backup
           form(method='post',action='/backup',role='form')
-            button.btn.btn-iosdark(type='submit') Download backup file
-            span.help-block While you still can
+            button.btn.btn-iosdark#backup_b(type='submit') Download backup file
+            span.help-block#backup_h While you still can
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='Restore') Restore
           form(method='post',action='/restore',role='form', enctype='multipart/form-data',id='restoreform')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
-                span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
+                span.btn.btn-iosdark.btn-file#restore_b(style='margin-top:0px;') Browse&hellip; 
                   input(type="file"  name='usersjson' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
-            span.help-block Valid JSON previously supplied by us
+            span.help-block#restore_h Valid JSON previously supplied by us
       .row.setrow
         .col-xs-12.col-lg-4.col-lg-offset-1.col-md-6.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='userpic') Userpic upload
           form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
-                span.btn.btn-iosdark.btn-file(style='margin-top:0px;') Browse&hellip; 
+                span.btn.btn-iosdark.btn-file#userpic_b(style='margin-top:0px;') Browse&hellip; 
                   input(type="file"  id='userpic' name='userpic' multiple)
               input(type="text" style='border-left:none;max-width:350px;' class="form-control" readonly)
-            span.help-block Please be sensible, no ugly genitals
+            span.help-block#userpic_h Please be sensible, no ugly genitals
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='likeprivate') Would you like your lists private?
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-            button(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
-            button(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
+            button#likeprivate_b1(type="button" id='bpr' class="btn btncorr btn-iosdark") Private
+            button#likeprivate_b2(type="button" id='bpb' class="btn btncorr btn-iosdark") Public
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           h4(id='language') Language
           .btn-group(style='display:inline-block;'  role="group" aria-label="...")
-            button(type="button" id='eng' class="btn btncorr btn-iosdark") Eng
-            button(type="button" id='ru' class="btn btncorr btn-iosdark") Ru
+            button#language_b1(type="button" id='eng' class="btn btncorr btn-iosdark") Eng
+            button#language_b2(type="button" id='ru' class="btn btncorr btn-iosdark") Ru
       .row.setrow.visible-lg.visible-md.visible-sm
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad(style='border-top:1px solid #eee;')
           button(class='btn btn-primary setsub') Save
@@ -403,11 +403,21 @@ head
       user= JSON.parse(user);
       if(user.lang==='ru') {
       $('#mainheading').text('Настройки'); 
-      $('#backup').text('Резервная копия'); 
+      $('#backup').text('Резервная копия ваших списков');
+      $('#backup_b').text('Скачать файл с резервной копией'); 
+      $('#backup_h').text('Скачайте, пока не поздно'); 
       $('#restore').text('Восстановить'); 
+      $('#restore_b').text('файл'); 
+      $('#restore_h').text('Из файла, который вы до этого скачали'); 
       $('#userpic').text('Аватар'); 
+      $('#userpic_b').text('файл'); 
+      $('#userpic_h').text('Jpeg,gif'); 
       $('#likeprivate').text('Скрыть вашу страницу от других пользователей?'); 
+      $('#likeprivate_b1').text('Скрытая'); 
+      $('#likeprivate_b2').text('Публичная'); 
       $('#language').text('Язык'); 
+      $('#language_b1').text('Eng'); 
+      $('#language_b2').text('Ru');
       $('.setsub').text('Сохранить');
       }
       if(user.pub) {
