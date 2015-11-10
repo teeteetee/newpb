@@ -928,7 +928,7 @@ head
               })();
       //restrict - all checks are both client/server implemented /
       $('.authorinput').bind('keypress', function (event) {
-          var regex = /^[.\/\w]/i;
+          var regex = /^[.\/\wa-zA-ZА-Яа-я]/i;
           var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
           if (!regex.test(key)) {
              event.preventDefault();
@@ -1026,11 +1026,11 @@ head
           $('.arow').css('display','block');
         }
         });
-      setTimeout(function(){
-        if($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val()){
-          alert($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val());
-        }
-        },2000);
+      //setTimeout(function(){
+      //  if($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val()){
+      //    alert($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val());
+      //  }
+      //  },2000);
        var books;
        var movies;
        var articles;
