@@ -429,9 +429,10 @@ head
       {}
       else
       {
-      populatemsg(messages);
+      populatemsg(messages,1);
       }
-      function populatemsg(messages) {
+      function populatemsg(messages,init) {
+        messages.reverse();
         messages.forEach(function(element){
         if($('#noitems').is(':visible')) {
           $('#noitems').remove();
@@ -490,7 +491,7 @@ head
                 }
                   else {
                     iter++;
-                   populatemsg(msg.msgstore);
+                   populatemsg(msg.msgstore,0);
                    if(!msg.more){
                     $('#footer').slideToggle();
                    }
