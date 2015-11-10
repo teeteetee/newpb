@@ -684,6 +684,8 @@ head
     vertical-align: middle;    
     }
     .input-w input {
+      border:2px solid #333;
+      margin:10px;
       background-color:transparent;
     display: inline-block;
     vertical-align: middle;
@@ -799,16 +801,17 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title"  style='color:#ddd;') Adding a book
           .modal-body(style='padding:0px;padding-top:15px;')
-            .input-w(style='background-color:#eee;')
-              label(for="#your-input" style='top:45px;') Title
+            .input-w
+              label(for="#your-input" style='top:25px;') Title
               input(type="text" id="your-input")
-            .input-w(style='background-color:#eee;')
-              label(for="#your-input2" style='top:90px;') Author
+            .input-w
+              label(for="#your-input2" style='top:75px;') Author
               input(type="text" id="your-input2")
+            #authoradd_here(style='')
             a( id='addauthor'  style='width:100%;color:#37AFD6;background-color:#777;display:block;') 
               | Additional author
               span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-plus pull-right')
-            a(class=' disabled' id='removeauthor'   style='width:100%;color:#37AFD6;display:none;display:block;' ) 
+            a(class=' disabled' id='removeauthor'   style='width:100%;color:#37AFD6;display:none;' ) 
               | Remove 
               span(style='color:white;margin-left:10px;' class='glyphicon glyphicon-minus pull-right')
             //
