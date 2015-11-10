@@ -1127,7 +1127,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               break
               case(element.newbook&&!element.goodbook):
               console.log('2st case');
@@ -1135,7 +1135,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               console.log(modal_data_store);
               break
               case(!element.newbook&&!element.goodbook):
@@ -1144,7 +1144,7 @@ head
               var thisbook={};
               thisbook.author = authors_insert;
               thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.unshift(thisbook);
+              modal_data_store.push(thisbook);
               break
             }         
            $('.books').prepend(insert);
