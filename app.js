@@ -704,7 +704,7 @@ app.get('/messages',function (req,res){
                   }
                   else {
                    //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
-                   res.render('chat',{'user':req.session._id,'lst_tmstmp':0,'messages':0,'lang':done.lang});
+                   res.render('chat',{'user':req.session._id,'lst_tmstmp':0,'messages':0,'lang':req.session.lang});
                   }
               }
               else {
