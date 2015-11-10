@@ -914,7 +914,7 @@ app.get('/people',function (req,res){
 
 app.get('/settings',function (req,res){
   if(req.session.mail){
-    users.findOne({mail:req.session.mail},{fields:{pub:1}},function(err,done){
+    users.findOne({mail:req.session.mail},{fields:{pub:1,lang:1}},function(err,done){
             console.log('-----found-----');
             console.log(done);
             if(err){
