@@ -846,8 +846,8 @@ head
               h2(style='margin-top:30px;' class='usernick')  ...
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
-              button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;') Add item
-              .btn-group(style='margin-right:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
+              button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
+              .btn-group(style='margin-right:20px;border-radius:4px;')
                 button.btn.btn-iosdark.showbooks.active(type='button')  Books
                   span(class='badge booknum' style='margin-left:10px;') 0
                 button.btn.btn-iosdark.showmovies(type='button')  Movies
@@ -859,10 +859,10 @@ head
           .row.visible-xs
             #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
               //h4.numbers                 
-              button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;box-shadow: 1px 5px 10px 1px #DADADA;') Add item
+              button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
               .row 
                 .col-xs-12
-                  .btn-group.btn-group-sm(style='margin-top:20px;margin-bottom:20px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
+                  .btn-group.btn-group-sm(style='margin-top:20px;margin-bottom:20px;border-radius:4px;')
                     .btn.btn-iosdark.active.showbooks(type='button') B
                       span(class='badge booknum' style='margin-left:10px;') 0
                     .btn.btn-iosdark.showmovies(type='button') M
@@ -900,7 +900,10 @@ head
                 #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
                   .noarticles.row(style='text-align:center;')  
                      .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
+    footer.footer(style='height:100px;background-color:#222;')
+      .container 
+        h2 mailto
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
