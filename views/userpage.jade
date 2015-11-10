@@ -11,8 +11,6 @@ head
   link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')   
   script(src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.9/slideout.min.js")
   link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
-  link(rel="stylesheet" type="text/css" href="stylesheets/cs-select.css")
-  link(rel="stylesheet" type="text/css" href="stylesheets/cs-skin-border.css")
   meta(liber de amicitia est)
   meta(property="og:url"           content="http://peopleandbooks.com")
   meta(property="og:type"          content="website")
@@ -672,33 +670,8 @@ head
     .read .col-xs-12 {
       padding-left:25px;
     }
-    .input-w label {
-      background-color:white;
-    position:absolute;
-    font-family:arial;
-    text-transform:uppercase;
-    display: inline-block;
-    vertical-align: middle;    
-    }
-    .input-w input {
-      border:2px solid #333;
-      margin:10px;
-      background-color:transparent;
-    display: inline-block;
-    vertical-align: middle;
-    width:100%;
-    }
-    .modal-body .btn-group{
-
-    }
     #addbook input {
       min-height:60px;
-    }
-    #addbook .btn{
-    border:none;
-    }
-    #addbook .modal-content {
-      border:3px solid white;
     }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -926,8 +899,6 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/bootstrap.min.js')     
     script(async src='/js/counter.js') 
-    script(src="js/selectFx.js")
-    script(src="js/classie.js")
     script.
       (function() {
                 [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
