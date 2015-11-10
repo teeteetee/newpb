@@ -673,6 +673,11 @@ head
     #addbook input {
       min-height:60px;
     }
+    #addbook .modal-header {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #222;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -780,12 +785,12 @@ head
                 label(for="title") Author
                 input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
             .form-group
-              label(for='authors') Additional authors
+              //label(for='authors') Additional authors
               .btn-group#authors(style='display:block;')
-                button(class='btn btn-iosdark' id='addauthor' type='button') Add
+                button(class='btn btn-iosdark' id='addauthor' type='button') Add author
                 button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
             .form-group(style='margin-top:49px;')
-              label(for='new_old') Statistics
+              //label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
                 button(class='btn btn-iosdark active' id='newbook' type='button') New
                 button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
