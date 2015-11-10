@@ -1166,7 +1166,7 @@ head
               var thismovie={};
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
               case(element.newmovie&&!element.goodmovie):
               console.log('2st case');
@@ -1174,7 +1174,7 @@ head
               var thismovie={};
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               console.log(modal_data_store);
               break
               case(!element.newmovie&&!element.goodmovie):
@@ -1183,10 +1183,10 @@ head
               var thismovie={};
               thismovie.year = element.year;
               thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.unshift(thismovie);
+              movie_modal_data_store.push(thismovie);
               break
             }         
-           $('.movies').append(insert);
+           $('.movies').prepend(insert);
           });
       }
       //---------------------------------//
@@ -1203,7 +1203,7 @@ head
               var thisarticle={};
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
               case(articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('2st case');
@@ -1211,7 +1211,7 @@ head
               var thisarticle={};
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
               case(!articles[xx].newarticle&&!articles[xx].goodarticle):
               console.log('3st case');
@@ -1219,10 +1219,10 @@ head
               var thisarticle={};
               thisarticle.link = articles[xx].link;
               thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.unshift(thisarticle);
+              article_modal_data_store.push(thisarticle);
               break
             }         
-           $('.articles').append(insert);
+           $('.articles').prepend(insert);
          }// for
       }
       //----------------------------//
