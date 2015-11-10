@@ -699,7 +699,7 @@ app.get('/messages',function (req,res){
                   {
                   var more = done.msgstore.length > 10 ? 1:0;
                   done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
-                  console.log(done.lang);
+                  console.log(done);
                   res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more,'lang':done.lang});
                   }
                   else {
