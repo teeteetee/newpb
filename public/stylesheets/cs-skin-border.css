@@ -16,7 +16,7 @@ div.cs-skin-border {
     letter-spacing: 2px;
     font-size: 2em;
     /* font-weight: 700; */
-    color: #37AFD6;
+    color: white;
 }
 div.cs-skin-border:last-child {
 	background-color: #333;
