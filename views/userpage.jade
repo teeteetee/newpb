@@ -928,7 +928,7 @@ head
               })();
       //restrict - all checks are both client/server implemented /
       $('.authorinput').bind('keypress', function (event) {
-          var regex = /[.a-zA-ZА-Яа-я]/;
+          var regex = /[.a-zA-ZА-Яа-я ]/;
           var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
           if (!regex.test(key)) {
              event.preventDefault();
