@@ -854,18 +854,18 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     nav(class="navbar navbar-default navbar-fixed-top")
+      button(type='button' ,id='menu-toggle')
+        span.glyphicon.glyphicon-menu-hamburger
+      .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
+        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
       .container
         .row(style='text-align:center;')
           .col-xs-12
-            button(type='button' ,id='menu-toggle')
-              span.glyphicon.glyphicon-menu-hamburger
             form 
               input(style='border-radius:30px;max-width:300px;backgrpound-color:white;')
-            .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
-              a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-              a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-              a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-              a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
     .container-fluid#panel
       .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
