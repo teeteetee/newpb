@@ -1065,8 +1065,10 @@ head
                     consolidated.push(element);
                     });
                    }
+                   if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
                    populate(consolidated);
+                 }
                 }
               });
       // Discontinued because we supply boooks and movies through user object. 
