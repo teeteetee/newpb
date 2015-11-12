@@ -648,6 +648,16 @@ head
     font-size: 30;
     z-index:2;
     }
+    #search-toggle {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    color: #b7b7b7;
+    font-size: 30;
+    z-index:2;
+    }
     .btn {
       text-transform:uppercase;
       letter-spacing:2px;
@@ -914,8 +924,10 @@ head
       .row(style='background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
         button(type='button' ,id='menu-toggle')
           span.glyphicon.glyphicon-menu-hamburger
+        button(type='button' ,id='search-toggle',class='visible-xs')
+          span.glyphicon.glyphicon-search
         .col-xs-12
-          .wrap
+          .wrap.hidden-xs
             input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
             span(class="glyphicon glyphicon-search")
       .row.visible-lg.visible-md.visible-sm.second_row
