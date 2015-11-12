@@ -2467,12 +2467,14 @@ app.post('/additem/:id',function (req,res){
                      {movie_insert.newmovie = 1;
                       users.update({_id:req.session._id},{$push:{moviestore:newmovie._id.toString()},$inc:{totalmovies:1,newmovies:1},$set:{last_item:Date.now()}});
                       items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
+                                         var ms={};
                                          ms.trouble = 0;
                                          res.send(ms);}
                                           else
                       {movie_insert.newmovie = 0;
                         users.update({_id:req.session._id},{$push:{moviestore:newmovie._id.toString()},$inc:{totalmovies:1,oldmovies:1},$set:{last_item:Date.now()}});
                         items.update({user:req.session._id},{$push:{moviestore:movie_insert}});
+                                          var ms = {};
                                           ms.trouble =0;
                                            res.send(ms);}
                   }
