@@ -2153,7 +2153,7 @@ app.post('/additem/:id',function (req,res){
        else if(book){
         var crrtm = Date.now();
         users.update({_id:req.session._id},{$push:{bookstore:book_id.toString()},$set:{last_item:crrtm},$inc:{totalbooks:1,newbooks:1}});
-        items.update({user:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,title:book.title,authors:books.authors,newbook:1,goodbook:0}}});
+        items.update({user:req.session._id},{$push:{bookstore:{tmstmp:crrtm,_id:book_id,title:book.title,authors:book.authors,newbook:1,goodbook:0}}});
         req.session.bookstore.push(book_id.toString());
        }
        else {
