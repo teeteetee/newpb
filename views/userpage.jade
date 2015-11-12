@@ -739,7 +739,7 @@ head
           .modal-body
             h4.linkmodaltitle(style='text-align:center;')
             h4.linkmodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            a(class='btn btn-primary  form-control link_view' style='margin-top:5px;') View 
+            a(class='btn btn-iosdark  form-control' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control link_read') Mark as read
             button(class='btn btn-iosdark  form-control link_good') Mark as good
             button(class='btn btn-iosdark  form-control link_unmark_good') Unmark as good
@@ -888,11 +888,6 @@ head
       .row(style='background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
         button(type='button' ,id='menu-toggle')
           span.glyphicon.glyphicon-menu-hamburger
-        .socialbtns.fxd.hidden-xs(style='position:absolute;top:16px;right:20px;z-index:1000;')
-          a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-          a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-          a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-          a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
         .col-xs-12
           .wrap
             input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
@@ -942,6 +937,11 @@ head
       .container 
         .row(style='text-align:center;color:white;')
           .col-xs-12
+            .socialbtns.fxd.hidden-xs(style='margin:auto:margin-top:5px;margin-bottom:5px;')
+              a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+              a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+              a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+              a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
             h5(style='color:#555;font-weight:200;') People and books |
               span 
                 a(href='mailto:main@peopleandbooks.com')  Contact us
