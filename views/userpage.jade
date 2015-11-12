@@ -765,6 +765,19 @@ head
     right: 21px;
     color:#ccc;
     }
+    #headlabel {
+      border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    right: 20;
+    position: absolute;
+    top: -20px;
+    text-transform: uppercase;
+    color: white;
+    background-color: #BEE4E6;
+    padding: 5px 10px;
+    font-family: boldproxima;
+    font-size: 20;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -923,7 +936,7 @@ head
           .loader
     .container-fluid#panel
       .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
-        h2(style='margin-left:50px;') People&Books
+        h2#headlabel People & Books
         button(type='button' ,id='menu-toggle')
           span.glyphicon.glyphicon-menu-hamburger
         button(type='button' ,id='search-toggle',class='visible-xs')
