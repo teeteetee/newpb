@@ -25,7 +25,8 @@ head
   script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
   style.
     #panel {
-    padding-top:110px;
+
+    padding-top:150px;
     min-height:100vh;
     background-color:white;
     }
@@ -856,16 +857,16 @@ head
       .container
         .row(style='text-align:center;')
           .col-xs-12
+            button(type='button' ,id='menu-toggle')
+              span.glyphicon.glyphicon-menu-hamburger
             form 
               input(style='border-radius:30px;max-width:300px;backgrpound-color:white;')
+            .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
+              a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+              a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+              a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+              a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
     .container-fluid#panel
-      .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
-        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
-      button(type='button' ,id='menu-toggle')
-        span.glyphicon.glyphicon-menu-hamburger
       .row.visible-lg.visible-md.visible-sm(style='text-align:center;')
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           .row
