@@ -844,7 +844,7 @@ head
             .btn-group.incm.pull-left(style='width:100%;')
               button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
               button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
-          .modal-footer(style='text-align:center;background-color:#333;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;')
+          .modal-footer(style='text-align:center;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;')
             a(class='btn'  id='submitbook' style='background-color:#337AB7;color:white;') Submit
         .modal-content.al(style='display:none;')
           .modal-header
@@ -863,11 +863,9 @@ head
               .form-group
                 label(for="pagelink") Link
                 input(type="text" class="form-control" maxlength="150" id="link_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
-            .form-group
-              label(for='new_old') Statistics
-              .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newlink' type='button') New
-                button(class=' btn btn-iosdark' id='oldlink'  type='button' )  I've read it             
+            .btn-group#new_old(style='margin-bottom:50px;display:block;')
+              button(class='btn btn-iosdark active' id='newlink' type='button') New
+              button(class=' btn btn-iosdark' id='oldlink'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
             a(class='btn'  id='submitlink' style='background-color:#337AB7;color:white;') Submit
         .modal-content.am(style='display:none;')
@@ -889,11 +887,9 @@ head
               .form-group
                 label(for="year") Year
                 input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
-            .form-group
-              label(for='new_old') Statistics
-              .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newmovie' type='button') New
-                button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
+            .btn-group#new_old(style='margin-bottom:50px;display:block;')
+              button(class='btn btn-iosdark active' id='newmovie' type='button') New
+              button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
             a(class='btn'  id='submitmovie' style='background-color:#337AB7;color:white;') Submit
     nav#menu.menu 
@@ -1650,7 +1646,7 @@ head
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
                 //var insert = "<span class='label label-primary pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
-                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[bookid]._id+"'></span>";
                 var vname = '.btitle'+consolidated[bookid]._id;
                 $(vname).append(insert);
                 //$(vname).css('margin-left','25px');
@@ -1779,7 +1775,7 @@ head
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
                 //var insert = "<span class='label label-primary pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
-                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[movieid]._id+"'></span>";
                 var vname = '.mtitle'+consolidated[movieid]._id;
                 $(vname).prepend(insert);
                 //$(vname).css('margin-left','25px');
@@ -1796,7 +1792,7 @@ head
               .done(function( msg ) {
                 $('#linkmodal').modal('hide');
                 //var insert = "<span class='label label-primary pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
-                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[linkid]._id+"'></span>";
                 var vname = '.atitle'+consolidated[linkid]._id;
                 $(vname).prepend(insert);
                 //$(vname).css('margin-left','25px');
