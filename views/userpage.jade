@@ -822,7 +822,7 @@ head
               button.btn.show_bookadd.btn-iosdark.active(type='button') Book
               button.btn.show_movieadd.btn-iosdark(type='button') Movie
               button.btn.show_linkadd.btn-iosdark(type='button') Link
-            form(id='authoradd_here')
+            #authoradd_here
               .form-group
                 label(for="btitle") Titile
                 input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
@@ -1877,6 +1877,7 @@ head
           }
         });
         $('#submitarticle').click(function(){
+          console.log('ARTICLE');
         if($('#article_title').val() && $('#article_link').val())//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
