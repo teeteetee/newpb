@@ -852,6 +852,12 @@ head
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
+    nav(class="navbar navbar-default navbar-fixed-top")
+      .container
+        .row(style='text-align:center;')
+          .col-xs-12
+            form 
+              input(style='border-radius:30px;max-width:300px;backgrpound-color:white;')
     .container-fluid#panel
       .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
         a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
@@ -1083,6 +1089,7 @@ head
       }
       //----------------------------//
       function populate(consolidated) {
+      var weeknum_g;
        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
@@ -1115,10 +1122,12 @@ head
                  }   
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
-                if(!$(weekname)[0])
-                {$('.items').prepend(week); }     
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g)
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;   
                 $('.items').prepend(insert);
            break;
            case('movie'):
@@ -1138,10 +1147,12 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
-                if(!$(weekname)[0])
-                {$('.items').prepend(week); }       
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g)
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;      
                 $('.items').prepend(insert);
            break;
            case('link'):
@@ -1161,10 +1172,12 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
-                if(!$(weekname)[0])
-                {$('.items').prepend(week); }       
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g)
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;       
                 $('.items').prepend(insert);
            break;
          }
