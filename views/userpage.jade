@@ -1132,10 +1132,13 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g || index === consolidated.length-1)
+                if(weeknum>weeknum_g )
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  $('.items').prepend(week);
+                }
            break;
            case('movie'):
               switch(true){
@@ -1157,10 +1160,13 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g || index === consolidated.length-1)
+                if(weeknum>weeknum_g )
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;      
                 $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  $('.items').prepend(week);
+                }
            break;
            case('link'):
                switch(true){
@@ -1182,10 +1188,13 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g || index === consolidated.length-1 )
+                if(weeknum>weeknum_g )
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;       
                 $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  $('.items').prepend(week);
+                }
            break;
          }
          });
