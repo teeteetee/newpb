@@ -74,7 +74,7 @@ app.get('*', function(req,res,next) {
   'seeuser',
   'seefollow',
   'clearbooks',
-  'cleararticles',
+  'clearlinks',
   'setbooks',
   'clearmovies',
   'seeauthors',
@@ -146,14 +146,14 @@ app.get('*', function(req,res,next) {
                   }
                   doc.bookstore = done.bookstore;
                   doc.moviestore = done.moviestore;
-                  doc.articlestore = done.articlestore;
+                  doc.linkstore = done.linkstore;
                   
                   var mc = req.session.moviestore ? req.session.moviestore : 0;
                   var bc = req.session.bookstore ? req.session.bookstore : 0;
-                  var ac = req.session.articlestore ? req.session.articlestore : 0;
+                  var ac = req.session.linkstore ? req.session.linkstore : 0;
                   if(req.session.nick)
                {
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'articlestorecheck':ac,'unfollow':unfollow});
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'linkstorecheck':ac,'unfollow':unfollow});
                 }
                 else {
                 
@@ -188,7 +188,7 @@ app.get('/test',function (req,res){
 
 
 app.get('/api/udata/:nick',function (req,res){
-  users.findOne({nick:req.params.nick},{fields:{bookstore:1,moviestore:1,articlestore:1}},function (err,doc){
+  users.findOne({nick:req.params.nick},{fields:{bookstore:1,moviestore:1,linkstore:1}},function (err,doc){
     var ms={};
     if(err){
       ms.trouble=1;
@@ -199,7 +199,7 @@ app.get('/api/udata/:nick',function (req,res){
       console.log('sending books to '+req.params.nick);
       ms.bookstore = doc.bookstore;
       ms.moviestore = doc.moviestore;
-      ms.articlestore = doc.articlestore;
+      ms.linkstore = doc.linkstore;
       res.send(ms);
     }
     else {
@@ -405,18 +405,18 @@ app.post('/backup',function (req,res){
     var statstore = {
     'totalbooks':doc.totalbooks,
     'totalmovies':doc.totalmovies,
-    'totalarticles':doc.totalarticles,
+    'totallinks':doc.totallinks,
     'newbooks':doc.newbooks,
     'readbooks':doc.readbooks,
     'newmovies':doc.newmovies,
     'seenmovies':doc.seenmovies,
-    'newarticles':doc.newarticles,
-    'readarticles':doc.readarticles,
+    'newlinks':doc.newlinks,
+    'readlinks':doc.readlinks,
     'last_item':doc.last_item};
     var ids={};
     ids.bookstore = doc.bookstore;
     ids.moviestore = doc.moviestore;
-    ids.articlestore = doc.articlestore;
+    ids.linkstore = doc.linkstore;
      items.findOne({_id:req.session._id},function (err2,doc2){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
@@ -426,7 +426,7 @@ app.post('/backup',function (req,res){
        {
          json.push(doc2.bookstore);
          json.push(doc2.moviestore)
-         json.push(doc2.articlestore);
+         json.push(doc2.linkstore);
          json.push(statstore);
          json.push(ids);
          var d = new Date();
@@ -485,8 +485,8 @@ app.post('/restore',function (req,res){
       var valid = validateJSON(data);
        if (data) {
          data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],articlestore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totalarticles:data[3].totalarticles,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newarticles:data[3].newarticles,readarticles:data[3].readarticles,last_item:data[3].last_item}});
-         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,articlestore:data[4].articlestore}});
+         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],linkstore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totallinks:data[3].totallinks,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newlinks:data[3].newlinks,readlinks:data[3].readlinks,last_item:data[3].last_item}});
+         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,linkstore:data[4].linkstore}});
          //console.log(JSON.stringify(data[0]));
        }
       fs.unlink(oldPath, function(){
@@ -610,7 +610,7 @@ app.post('/newuser',function(req,res){
       else {
         if(doc.length === 0)
         { 
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,lang:req.body.lang,totalarticles:0,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,newarticles:0,readarticles:0,userpic:0,last_item:0,lst_msg:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[],articlestore:[]},function (err,done){
+          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,lang:req.body.lang,totallinks:0,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,newlinks:0,readlinks:0,userpic:0,last_item:0,lst_msg:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[],linkstore:[]},function (err,done){
             if(err)
             {
               ms.mtext='db';
@@ -618,7 +618,7 @@ app.post('/newuser',function(req,res){
             }
           else {
           follow.insert({user:done._id.toString()});
-          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],articles:[],pub:1});// used to populate the user, checks are done with user object passed in session
+          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],links:[],pub:1});// used to populate the user, checks are done with user object passed in session
           user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
           req.session.mail=vmail;
           req.session._id=done._id;
@@ -1017,7 +1017,7 @@ app.post('/markseen/:mid',function (req,res){
   }
 });
 
-app.post('/markarticleread/:aid',function (req,res){
+app.post('/marklinkread/:aid',function (req,res){
   if(req.session._id || is_uid(req.params.aid)){
     var ms={};
     ms.trouble=0;
@@ -1031,14 +1031,14 @@ app.post('/markarticleread/:aid',function (req,res){
       else {
         if(doc!=null){
          var temp_arr;
-         temp_arr = doc.articlestore;
+         temp_arr = doc.linkstore;
          var temp_id;
          for(var i=0;i<temp_arr.length;i++){
             temp_id = JSON.stringify(temp_arr[i]._id);
            if(temp_id === JSON.stringify(req.params.aid)){
-             temp_arr[i].newarticle = 0;
-             items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
-             users.update({_id:req.session._id},{$inc:{readarticles:1,newarticles:-1}});
+             temp_arr[i].newlink = 0;
+             items.update({user:req.session._id},{$set:{linkstore:temp_arr}});
+             users.update({_id:req.session._id},{$inc:{readlinks:1,newlinks:-1}});
              res.send(ms);
            }
          }
@@ -1220,7 +1220,7 @@ app.post('/unmarkbookgood/:bid',function (req,res){
   });
 });
 
-app.post('/unmarkarticlegood/:aid',function (req,res){
+app.post('/unmarklinkgood/:aid',function (req,res){
   var ms={};
   ms.trouble=0;
   items.findOne({user:req.session._id},function(err,doc){
@@ -1234,14 +1234,14 @@ app.post('/unmarkarticlegood/:aid',function (req,res){
      if(doc!=null){
       console.log('found user');
        var temp_arr;
-       temp_arr = doc.articlestore;
+       temp_arr = doc.linkstore;
        var temp_id;
        for(var i=0;i<temp_arr.length;i++){
           temp_id = JSON.stringify(temp_arr[i]._id);
          if(temp_id === JSON.stringify(req.params.aid)){
           console.log('modifying');
-           temp_arr[i].goodarticle = 0;
-           items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
+           temp_arr[i].goodlink = 0;
+           items.update({user:req.session._id},{$set:{linkstore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1290,7 +1290,7 @@ app.post('/markmoviegood/:mid',function (req,res){
   });
 });
 
-app.post('/markarticlegood/:aid',function (req,res){
+app.post('/marklinkgood/:aid',function (req,res){
   var ms={};
   ms.trouble=0;
   items.findOne({user:req.session._id},function(err,doc){
@@ -1304,14 +1304,14 @@ app.post('/markarticlegood/:aid',function (req,res){
      if(doc!=null){
       console.log('found user');
        var temp_arr;
-       temp_arr = doc.articlestore;
+       temp_arr = doc.linkstore;
        var temp_id;
        for(var i=0;i<temp_arr.length;i++){
           temp_id = JSON.stringify(temp_arr[i]._id);
          if(temp_id === JSON.stringify(req.params.aid)){
           console.log('modifying');
-           temp_arr[i].goodarticle = 1;
-           items.update({user:req.session._id},{$set:{articlestore:temp_arr}});
+           temp_arr[i].goodlink = 1;
+           items.update({user:req.session._id},{$set:{linkstore:temp_arr}});
            res.send(ms);
        }
       }
@@ -1417,8 +1417,8 @@ app.get('/clearbooks',function (req,res){
     }
 });
 
-app.get('/cleararticles',function(req,res){
-  users.update({_id:req.session._id},{$set:{articlestore:[],totalarticles:0,newarticles:0,readarticles:0}});
+app.get('/clearlinks',function(req,res){
+  users.update({_id:req.session._id},{$set:{linkstore:[],totallinks:0,newlinks:0,readlinks:0}});
   res.redirect('/');
 });
 
@@ -2167,19 +2167,19 @@ app.post('/additem/:id',function (req,res){
         ms.trouble=0;
         res.send(ms);
     break;
-    case('article_out'):
-    console.log('article_out');
-    var article_id = req.body.article_id;
+    case('link_out'):
+    console.log('link_out');
+    var link_id = req.body.link_id;
     var already = 0;
-    for(var xx =req.session.articlestore.length-1;xx>=0;xx--){
-      if(article_id === req.session.articlestore[xx]){
-        console.log('trying to add an article, which is already on the list');
+    for(var xx =req.session.linkstore.length-1;xx>=0;xx--){
+      if(link_id === req.session.linkstore[xx]){
+        console.log('trying to add an link, which is already on the list');
        already =1;
       }
     }
     if(!already)
-    {users.update({_id:req.session._id},{$push:{articlestore:article_id},$set:{last_item:Date.now()},$inc:{totalarticles:1,newarticles:1}});
-     items.update({user:req.session_id},{$push:{articlestore:{tmstmp:Date.now(),_id:article_id,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}}});
+    {users.update({_id:req.session._id},{$push:{linkstore:link_id},$set:{last_item:Date.now()},$inc:{totallinks:1,newlinks:1}});
+     items.update({user:req.session_id},{$push:{linkstore:{tmstmp:Date.now(),_id:link_id,title:req.body.title,link:req.body.link,newlink:1,goodlink:0}}});
       }
         var ms ={};
         ms.trouble=0;
@@ -2219,20 +2219,20 @@ app.post('/additem/:id',function (req,res){
     ms.trouble=0;
     res.send(ms);
     break;
-    case('article'):
+    case('link'):
     console.log(req.body.title);
-    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) && is_single(parseInt(req.body.newarticle))){
-    var newarticle = parseInt(req.body.newarticle);
+    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) && is_single(parseInt(req.body.newlink))){
+    var newlink = parseInt(req.body.newlink);
     var newid = new ObjectID();
     var newdate = Date.now();
-    if(newarticle)
+    if(newlink)
     {
-      users.update({_id:req.session._id},{$push:{articlestore:newid},$set:{last_item:newdate},$inc:{totalarticles:1,newarticles:1}});
-      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:1,goodarticle:0}}})
+      users.update({_id:req.session._id},{$push:{linkstore:newid},$set:{last_item:newdate},$inc:{totallinks:1,newlinks:1}});
+      items.update({user:req.session._id},{$push:{linkstore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newlink:1,goodlink:0}}})
     }
     else {
-      users.update({_id:req.session._id},{$push:{articlestore:newid},$set:{last_item:newdate},$inc:{totalarticles:1,readarticles:1}});
-      items.update({user:req.session._id},{$push:{articlestore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newarticle:0,goodarticle:0}}});
+      users.update({_id:req.session._id},{$push:{linkstore:newid},$set:{last_item:newdate},$inc:{totallinks:1,readlinks:1}});
+      items.update({user:req.session._id},{$push:{linkstore:{tmstmp:newdate,_id:newid,title:req.body.title,link:req.body.link,newlink:0,goodlink:0}}});
     }
     var ms ={};
     ms.trouble=0;
@@ -2240,7 +2240,7 @@ app.post('/additem/:id',function (req,res){
     }
     else {
       var ms ={};
-    console.log('data check fail while adding an article');
+    console.log('data check fail while adding an link');
     ms.trouble=1;
     res.send(ms);
     }

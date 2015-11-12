@@ -722,20 +722,20 @@ head
       border-bottom:1px solid #eee;
     }
   body
-    .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
           .modal-body
-            h4.articlemodaltitle(style='text-align:center;')
-            h4.articlemodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            a(class='btn btn-primary  form-control article_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control article_read') Mark as read
-            button(class='btn btn-iosdark  form-control article_good') Mark as good
-            button(class='btn btn-iosdark  form-control article_unmark_good') Unmark as good
-            button(class='btn btn-iosdark form-control article_remove') Remove
+            h4.linkmodaltitle(style='text-align:center;')
+            h4.linkmodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
+            a(class='btn btn-primary  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control link_read') Mark as read
+            button(class='btn btn-iosdark  form-control link_good') Mark as good
+            button(class='btn btn-iosdark  form-control link_unmark_good') Unmark as good
+            button(class='btn btn-iosdark form-control link_remove') Remove
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -800,7 +800,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Adding an article
+            h4(class="modal-title" style='color:#ddd;') Adding an link
           .modal-body
             .btn-group(style='margin-top:20px;margin-bottom:20px;')
               button.btn.show_bookadd.btn-iosdark(type='button') Book
@@ -809,17 +809,17 @@ head
             form
               .form-group
                 label(for="pagetitle") Titile
-                input(type="text" class="form-control" maxlength="50" id="article_title" autocomplete='off' placeholder="Neuroscience")
+                input(type="text" class="form-control" maxlength="50" id="link_title" autocomplete='off' placeholder="Neuroscience")
               .form-group
                 label(for="pagelink") Link
-                input(type="text" class="form-control" maxlength="150" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
+                input(type="text" class="form-control" maxlength="150" id="link_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
             .form-group
               label(for='new_old') Statistics
               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newarticle' type='button') New
-                button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
+                button(class='btn btn-iosdark active' id='newlink' type='button') New
+                button(class=' btn btn-iosdark' id='oldlink'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
-            a(class='btn'  id='submitarticle' style='background-color:#337AB7;color:white;') Submit
+            a(class='btn'  id='submitlink' style='background-color:#337AB7;color:white;') Submit
         .modal-content.am(style='display:none;')
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
@@ -899,7 +899,7 @@ head
                 | books
                 span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
                 | movies
-                span(class='articlenum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
                 | links
       .row
         #booklist.thun.col-md-12
@@ -914,7 +914,7 @@ head
                     | books
                     span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
                     | movies
-                    span(class='articlenum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                    span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
                     | links
       .row
           #list.row
@@ -975,7 +975,7 @@ head
         $('#logout').text('Выход');
         $('.showbooks').text('Книги');
         $('.showmovies').text('Фильмы');
-        $('.showarticles').text('Ссылки');
+        $('.showlinks').text('Ссылки');
         $('.noitems_text').text('Список пуст');
         $('.openadd').text('Добавить');
       }
@@ -987,14 +987,14 @@ head
         $('#logout').text('Logout');
         $('.showbooks').text('Books');
         $('.showmovies').text('Movies');
-        $('.showarticles').text('Links');
+        $('.showlinks').text('Links');
         $('.noitems_text').text('No items');
         $('.openadd').text('Add item');
       }
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
-      $('.articlenum').text(user.readarticles);
+      $('.linknum').text(user.readlinks);
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
@@ -1052,9 +1052,9 @@ head
                     consolidated.push(element);
                     });
                    }
-                   links=msg.doc.articlestore;
+                   links=msg.doc.linkstore;
                   if(!links || !links.length) {
-                   console.log('no articles');
+                   console.log('no links');
                    }
                    else {
                     links.forEach(function (element,index){
@@ -1188,15 +1188,15 @@ head
            break;
            case('link'):
                switch(true){
-                   case(element.goodarticle&&!element.newarticle):
+                   case(element.goodlink&&!element.newlink):
                    console.log('1st case');
                    insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:10px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,10)+"</small><span class='good"+element._id+" glyphicon glyphicon-star pull-right'></span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
-                   case(element.newarticle&&!element.goodarticle):
+                   case(element.newlink&&!element.goodlink):
                    console.log('2st case');
                    insert = "<div class='row item new link"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:10px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
-                   case(!element.newarticle&&!element.goodarticle):
+                   case(!element.newlink&&!element.goodlink):
                    console.log('3st case');
                    insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:10px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
@@ -1248,7 +1248,7 @@ head
             $('#addmovie').modal('show');
            }
         else {
-        $('#addarticle').modal('show');
+        $('#addlink').modal('show');
         }
         });
        $.ajax({
@@ -1345,38 +1345,38 @@ head
         }
         });
       //
-      function redactarticlemodal (i) {
+      function redactlinkmodal (i) {
         var link = consolidated[i].link;
         var checktitle = consolidated[i].link.substring(0, 4);
         if(checktitle!='http'){
          var link = "http://"+link;}
-         $('.article_view').attr('href',link);
-        if(consolidated[i].goodarticle){
-          $('.article_good').css('display','none');
-          var insert = 'unmarkarticlegood('+i+')';
-          $('.article_unmark_good').attr('onclick',insert);
-          $('.article_unmark_good').css('display','block');
+         $('.link_view').attr('href',link);
+        if(consolidated[i].goodlink){
+          $('.link_good').css('display','none');
+          var insert = 'unmarklinkgood('+i+')';
+          $('.link_unmark_good').attr('onclick',insert);
+          $('.link_unmark_good').css('display','block');
         }
         else {
-          $('.article_unmark_good').css('display','none');
-          var insert = 'markarticlegood('+i+')';
-          $('.article_good').attr('onclick',insert);
-          $('.article_good').css('display','block');
+          $('.link_unmark_good').css('display','none');
+          var insert = 'marklinkgood('+i+')';
+          $('.link_good').attr('onclick',insert);
+          $('.link_good').css('display','block');
         }
-        if(!consolidated[i].newarticle){
-         $('.article_read').css('display','none');
+        if(!consolidated[i].newlink){
+         $('.link_read').css('display','none');
         }
         else {
-          var insert = 'markarticleread('+i+')';
-          $('.article_read').attr('onclick',insert);
-          $('.article_read').css('display','block');
-          $('.article_good').css('display','none');
+          var insert = 'marklinkread('+i+')';
+          $('.link_read').attr('onclick',insert);
+          $('.link_read').css('display','block');
+          $('.link_good').css('display','none');
         }
-        insert = 'removearticle('+i+')';
-        $('.article_remove').attr('onclick',insert);
-        $('.articlemodaltitle').text(consolidated[i].link);
-        $('.articlemodallink').text(consolidated[i].title.capitalizeFirstLetter());
-        $('#articlemodal').modal('show');
+        insert = 'removelink('+i+')';
+        $('.link_remove').attr('onclick',insert);
+        $('.linkmodaltitle').text(consolidated[i].link);
+        $('.linkmodallink').text(consolidated[i].title.capitalizeFirstLetter());
+        $('#linkmodal').modal('show');
       }
       //
       function redactmoviemodal (i) {
@@ -1453,20 +1453,20 @@ head
           $('#oldmovie').removeClass('active');
         }
         });
-      $('#oldarticle').click(function(){
-        if($('#oldarticle').hasClass('active')){
+      $('#oldlink').click(function(){
+        if($('#oldlink').hasClass('active')){
         }
         else{
-          $('#oldarticle').addClass('active');
-          $('#newarticle').removeClass('active');
+          $('#oldlink').addClass('active');
+          $('#newlink').removeClass('active');
         }
         });
-      $('#newarticle').click(function(){
-        if($('#newarticle').hasClass('active')){
+      $('#newlink').click(function(){
+        if($('#newlink').hasClass('active')){
         }
         else{
-          $('#newarticle').addClass('active');
-          $('#oldarticle').removeClass('active');
+          $('#newlink').addClass('active');
+          $('#oldlink').removeClass('active');
         }
         });
       $('#fiction').click(function(){
@@ -1627,18 +1627,18 @@ head
               });
       }
       //-----------------------------------//
-      function unmarkarticlegood(articleid) {
+      function unmarklinkgood(linkid) {
         $('#wait').css('display','block');
         $.ajax({
               method: "POST",
-              url: "/unmarkarticlegood/"+consolidated[articleid]._id,
+              url: "/unmarklinkgood/"+consolidated[linkid]._id,
               data: 0
             })
               .done(function( msg ) {
-                $('#articlemodal').modal('hide');
-                var vname = '.good'+consolidated[articleid]._id;
+                $('#linkmodal').modal('hide');
+                var vname = '.good'+consolidated[linkid]._id;
                 $(vname).remove();
-                consolidated[articleid].goodarticle=0;
+                consolidated[linkid].goodlink=0;
                 $('#wait').css('display','none');
               });
       }
@@ -1667,23 +1667,23 @@ head
               });
       }
       //-----------------------------------//
-      function markarticleread(articleid) {
+      function marklinkread(linkid) {
         $.ajax({
               method: "POST",
-              url: "/markarticleread/"+consolidated[articleid]._id,
+              url: "/marklinkread/"+consolidated[linkid]._id,
               data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
-                $('#articlemodal').modal('hide');
-                consolidated[articleid].newarticle=0;
-                var vname = '.article'+consolidated[articleid]._id;
-                var vname2 = '.atitle'+consolidated[articleid]._id;
+                $('#linkmodal').modal('hide');
+                consolidated[linkid].newlink=0;
+                var vname = '.link'+consolidated[linkid]._id;
+                var vname2 = '.atitle'+consolidated[linkid]._id;
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
-                user.readarticles++;
-                $('.articlenum').text(user.readarticles);
+                user.readlinks++;
+                $('.linknum').text(user.readlinks);
               });
       }
       //-----------------------------------//
@@ -1723,19 +1723,19 @@ head
               });
       }
       //-----------------------------------//
-      function markarticlegood(articleid) {
+      function marklinkgood(linkid) {
         $.ajax({
               method: "POST",
-              url: "/markarticlegood/"+consolidated[articleid]._id,
+              url: "/marklinkgood/"+consolidated[linkid]._id,
               data: 0
             })
               .done(function( msg ) {
-                $('#articlemodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+consolidated[articleid]._id+"'>GOOD</span>";
-                var vname = '.atitle'+consolidated[articleid]._id;
+                $('#linkmodal').modal('hide');
+                var insert = "<span class='label label-primary pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
+                var vname = '.atitle'+consolidated[linkid]._id;
                 $(vname).prepend(insert);
                 $(vname).css('margin-left','25px');
-                consolidated[articleid].goodarticle=1;
+                consolidated[linkid].goodlink=1;
               });
       }
       //-----------------------------------//
@@ -1831,29 +1831,29 @@ head
               });
           }
         });
-        $('#submitarticle').click(function(){
-          console.log('ARTICLE');
-        if($('#article_title').val() && $('#article_link').val())//what if I dont know year yet?
+        $('#submitlink').click(function(){
+          console.log('link');
+        if($('#link_title').val() && $('#link_link').val())//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.title = $('#article_title').val();
-           data.newarticle = 1;
-           if($('#oldarticle').hasClass('active')){
-           data.newarticle = 0;
+           data.title = $('#link_title').val();
+           data.newlink = 1;
+           if($('#oldlink').hasClass('active')){
+           data.newlink = 0;
            }
-           data.link = $('#article_link').val();
+           data.link = $('#link_link').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/additem/article",
+              url: "/additem/link",
               data: data
             })
               .done(function( msg ) {
-                $('#article_title').val('');
-                $('#article_link').val('');
+                $('#link_title').val('');
+                $('#link_link').val('');
                 $('#addbook').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
