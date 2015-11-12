@@ -764,52 +764,6 @@ head
             button(class='btn btn-iosdark  form-control movie_unmark_good') Unmark as good
             button(class='btn btn-iosdark form-control movie_people') Find people
             button(class='btn btn-iosdark form-control movie_remove') Remove
-    .modal.fade.add_mod(id="addmovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Adding a movie
-          .modal-body.
-            form()
-              .form-group
-                label(for="mtitle") Titile
-                input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
-                .row.autocomp#autocompmovies
-                  .col-xs-12#srm
-              .form-group
-                label(for="year") Year
-                input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
-            .form-group
-              label(for='new_old') Statistics
-              .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newmovie' type='button') New
-                button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn-modal'  id='submitmovie') Submit
-    .modal.fade.add_mod(id="addarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Adding an article
-          .modal-body
-            form
-              .form-group
-                label(for="pagetitle") Titile
-                input(type="text" class="form-control" maxlength="50" id="article_title" autocomplete='off' placeholder="Neuroscience")
-              .form-group
-                label(for="pagelink") Link
-                input(type="text" class="form-control" maxlength="150" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
-            .form-group
-              label(for='new_old') Statistics
-              .btn-group#new_old(style='margin-bottom:50px;display:block;')
-                button(class='btn btn-iosdark active' id='newarticle' type='button') New
-                button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn-modal'  id='submitarticle') Submit
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content.ab
