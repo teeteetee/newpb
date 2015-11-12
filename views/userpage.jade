@@ -1132,7 +1132,7 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g)
+                if(weeknum>weeknum_g || index === consolidated.length-1)
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
@@ -1157,7 +1157,7 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g)
+                if(weeknum>weeknum_g || index === consolidated.length-1)
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;      
                 $('.items').prepend(insert);
@@ -1182,7 +1182,7 @@ head
                 var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
-                if(weeknum>weeknum_g)
+                if(weeknum>weeknum_g || index === consolidated.length-1 )
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;       
                 $('.items').prepend(insert);
