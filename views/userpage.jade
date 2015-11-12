@@ -133,10 +133,10 @@ head
     .emptybook {
     padding-left:23px;
     }
-    .book h4 {
+    .item h4 {
     color:black;
     }
-    .book .col-xs-12 {
+    .item .col-xs-12 {
     border-bottom: 1px solid #eee;
     }
     .new{
@@ -224,7 +224,7 @@ head
     .new{
       border-color:#ccc;
     }
-    #bigscreens .book {
+    #bigscreens .item {
     border-bottom:1px solid #eee;
     text-align:center;
     padding-left:15px;
@@ -533,11 +533,11 @@ head
       width:64px !important;
       height:64px !important;
     }
-    #bigscreens > .book {
+    #bigscreens > .item {
       max-width:1000px;
       margin:auto;
     }
-    #bigscreens > .book > .bookpadding {
+    #bigscreens > .item > .bookpadding {
      padding-top:10px;
     padding-bottom:10px;
     }
@@ -618,7 +618,7 @@ head
     .lead {
       margin-bottom:30px;
     }
-    .movies, .books, .articles {
+    .items {
       padding-bottom:30px;
     }
     #menu-toggle {
@@ -853,13 +853,13 @@ head
           .row(style='margin-bottom:20px;margin-top:60px;')
             .col-xs-12
               button.btn.btn-iosdark.openadd(type='button' style='margin-right:20px;') Add item
-              .btn-group(style='margin-right:20px;border-radius:4px;')
-                button.btn.btn-iosdark.showbooks.active(type='button')  Books
-                  span(class='badge booknum' style='margin-left:10px;') 0
-                button.btn.btn-iosdark.showmovies(type='button')  Movies
-                  span(class='badge movienum' style='margin-left:10px;') 0
-                button.btn.btn-iosdark.showarticles(type='button') Links
-                  span(class='badge articlenum' style='margin-left:10px;') 0
+              h4(style='margin-right:20px;')
+                | Books
+                span(class='booknum' style='margin-left:10px; font-weight:200;color:#37afd6;') 0
+                | Movies
+                span(class='movienum' style='margin-left:10px; font-weight:200;color:#37afd6;') 0
+                | Links
+                span(class='articlenum' style='margin-left:10px; font-weight:200;color:#37afd6;') 0
       .row
         #booklist.thun.col-md-12
           .row.visible-xs
@@ -868,45 +868,25 @@ head
               button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
               .row 
                 .col-xs-12
-                  .btn-group.btn-group-sm(style='margin-top:20px;margin-bottom:20px;border-radius:4px;')
-                    .btn.btn-iosdark.active.showbooks(type='button') B
-                      span(class='badge booknum' style='margin-left:10px;') 0
-                    .btn.btn-iosdark.showmovies(type='button') M
-                      span(class='badge movienum' style='margin-left:10px;') 0
-                    .btn.btn-iosdark.showarticles(type='button' ) L
-                      span(class='badge articlenum' style='margin-left:10px;') 0
+                  h6(style='margin-top:20px;margin-bottom:20px;')
+                    | Books
+                      span(class=' booknum' style='margin-left:10px;font-weight:200;color:#37afd6;') 0
+                    | Movies
+                      span(class=' movienum' style='margin-left:10px;font-weight:200;color:#37afd6;') 0
+                    | Links
+                      span(class=' articlenum' style='margin-left:10px;font-weight:200;color:#37afd6;') 0
           #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1              
-              .row.mrow
-                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
               .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                  .nobooks.row(style='text-align:center;')  
+                .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                  .noitems.row(style='text-align:center;')  
                      .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items
-              .row.arow
-                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
-                  .noarticles.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
+                       h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items  
               .row.brow
-                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
-                  .nobooks.row(style='text-align:center;')  
+                #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                  .noitems.row(style='text-align:center;')  
                      .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.mrow
-                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.arow
-                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
-                  .noarticles.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems(style='color:#ccc;margin-bottom:20px;') No items 
+                       h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items 
     footer.footer(style='min-height:100px;background-color:#222;padding-top:20px;padding-bottom:20px;margin-top:100px;')
       .container 
         .row(style='text-align:center;color:white;')
@@ -921,11 +901,6 @@ head
     script(src='js/bootstrap.min.js')     
     script(async src='/js/counter.js') 
     script.
-      (function() {
-                [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
-                  new SelectFx(el);
-                } );
-              })();
       //restrict - all checks are both client/server implemented /
       $('.authorinput').bind('keypress', function (event) {
           var regex = /[.a-zA-ZА-Яа-я ]/;
@@ -959,7 +934,7 @@ head
         $('.showbooks').text('Книги');
         $('.showmovies').text('Фильмы');
         $('.showarticles').text('Ссылки');
-        $('.noitems').text('Список пуст');
+        $('.noitems_text').text('Список пуст');
         $('.openadd').text('Добавить');
       }
       else {
@@ -971,7 +946,7 @@ head
         $('.showbooks').text('Books');
         $('.showmovies').text('Movies');
         $('.showarticles').text('Links');
-        $('.noitems').text('No items');
+        $('.noitems_text').text('No items');
         $('.openadd').text('Add item');
       }
       $('.usernick').text(user.nick);
@@ -993,39 +968,6 @@ head
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      $('.showbooks').click(function(){
-        if($('.brow').css('display')==='none'){
-          console.log('show brow');
-          $('.showarticles').removeClass('active');
-          $('.showmovies').removeClass('active');
-          $('.showbooks').addClass('active');
-          $('.brow').css('display','block')
-          $('.mrow').css('display','none');
-          $('.arow').css('display','none');
-        }
-        });
-      $('.showmovies').click(function(){
-        if($('.mrow').css('display')==='none'){
-          console.log('show mrow');
-          $('.showarticles').removeClass('active');
-          $('.showbooks').removeClass('active');
-          $('.showmovies').addClass('active');
-          $('.mrow').css('display','block')
-          $('.brow').css('display','none');
-          $('.arow').css('display','none');
-        }
-        });
-      $('.showarticles').click(function(){
-        if($('.arow').css('display')==='none'){
-          console.log('show arow');
-          $('.showmovies').removeClass('active');
-          $('.showbooks').removeClass('active');
-          $('.showarticles').addClass('active');
-          $('.brow').css('display','none')
-          $('.mrow').css('display','none');
-          $('.arow').css('display','block');
-        }
-        });
       //setTimeout(function(){
       //  if($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val()){
       //    alert($('#btitle').val() && $('#author0_name').val() && $('#author0_surname').val());
@@ -1034,9 +976,13 @@ head
        var books;
        var movies;
        var articles;
-       var modal_data_store=[];
-       var movie_modal_data_store=[];
-       var article_modal_data_store=[];
+       function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          });
+       }
+       var consolidated=[];
        $.ajax({
               method: "POST",
               url: "/getitems",
@@ -1049,22 +995,33 @@ head
                    console.log('no books');
                    }
                    else {
-                    populatebooks(books);
+                    books.forEach(function (element,index){
+                    element.item_type = 'book';
+                    consolidated.push(element);
+                    });
                    }
                    movies=msg.doc.moviestore;
                   if(!movies || !movies.length) {
                    console.log('no movies');
                    }
                    else {
-                    populatemovies(movies);
+                    movies.forEach(function (element,index){
+                    element.item_type = 'movie';
+                    consolidated.push(element);
+                    });
                    }
                    articles=msg.doc.articlestore;
                   if(!articles || !articles.length) {
                    console.log('no articles');
                    }
                    else {
-                    populatearticles(articles);
+                    links.forEach(function (element,index){
+                    element.item_type = 'link';
+                    consolidated.push(element);
+                    });
                    }
+                   sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
                 }
               });
       // Discontinued because we supply boooks and movies through user object. 
@@ -1105,126 +1062,77 @@ head
         }
         return 0
       }
-      function populatebooks(books) {
-        if ($(".nobooks")[0])
-            { console.log('HAS LENGTH');
-              $('.books').empty();}
-            else {
-              console.log('HASNT GOT LENGTH');
-            }
-        books.forEach(function(element,index){
-          var authors_insert=' ';
-            if(element.authors&&element.authors[0]){
-              element.authors.forEach(function(element2){
-              authors_insert+='  '+element2;
-               });
-            }
-           var insert;
-            switch(true){
-              case(element.goodbook&&!element.newbook):
-              console.log('1st case');
-              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'>"+element.title.capitalizeFirstLetter()+"<span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
-              break
-              case(element.newbook&&!element.goodbook):
-              console.log('2st case');
-              insert = "<div class='row book new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
-              console.log(modal_data_store);
-              break
-              case(!element.newbook&&!element.goodbook):
-              console.log('3st case');
-              insert = "<div class='row book read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
-              break
-            }         
-           $('.books').prepend(insert);
-          });
-      }
-      function populatemovies(movies) {
-        if ($(".nomovies")[0])
-            { console.log('HAS LENGTH');
-              $('.movies').empty();}
-            else {
-              console.log('HASNT GOT LENGTH');
-            }
-        movies.forEach(function(element,index){
-          var insert;   
-            switch(true){
-              case(element.goodmovie&&!element.newmovie):
-              console.log('1st case');
-              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
-              break
-              case(element.newmovie&&!element.goodmovie):
-              console.log('2st case');
-              insert = "<div class='row book new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
-              console.log(modal_data_store);
-              break
-              case(!element.newmovie&&!element.goodmovie):
-              console.log('3st case');
-              insert = "<div class='row book read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
-              break
-            }         
-           $('.movies').prepend(insert);
-          });
-      }
-      //---------------------------------//
-      function populatearticles(articles) {
-        
-        for(var xx=articles.length-1;xx>=0;xx--){
-            if ($(".noarticles")[0])
-            { $('.articles').empty();}
-            //var checktitle = article_modal_data_store[i].link.substring(0, 4);
-            switch(true){
-              case(articles[xx].goodarticle&&!articles[xx].newarticle):
-              console.log('1st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'>"+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,10)+"</small><span class='good"+articles[xx]._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
-              break
-              case(articles[xx].newarticle&&!articles[xx].goodarticle):
-              console.log('2st case');
-              insert = "<div class='row book new article"+articles[xx]._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:15px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
-              break
-              case(!articles[xx].newarticle&&!articles[xx].goodarticle):
-              console.log('3st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' style='margin-left:25px;'> "+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
-              break
-            }         
-           $('.articles').prepend(insert);
-         }// for
-      }
+      //----------------------------//
+      function populate(consolidated) {
+       consolidated.forEach(function (element,index){
+         if ($(".noitems")[0])
+                 { console.log('HAS LENGTH');
+                   $('.items').empty();}
+                 else {
+                   console.log('HASNT GOT LENGTH');
+                 }
+         var insert;
+         switch(element.item_type){
+           case('book'):
+              var authors_insert=' ';
+                 if(element.authors&&element.authors[0]){
+                   element.authors.forEach(function(element2){
+                   authors_insert+='  '+element2;
+                    });
+                 }
+                 switch(true){
+                   case(element.goodbook&&!element.newbook):
+                   console.log('1st case');
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> BOOK </span>"+element.title.capitalizeFirstLetter()+"<span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+                   break
+                   case(element.newbook&&!element.goodbook):
+                   console.log('2st case');
+                   insert = "<div class='row item new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label' style='margin-right:10px;'> BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+                   break
+                   case(!element.newbook&&!element.goodbook):
+                   console.log('3st case');
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
+                   break
+                 }         
+                $('.items').prepend(insert);
+           break;
+           case('movie'):
+              switch(true){
+                   case(element.goodmovie&&!element.newmovie):
+                   console.log('1st case');
+                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+                   break
+                   case(element.newmovie&&!element.goodmovie):
+                   console.log('2st case');
+                   insert = "<div class='row item new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+                   break
+                   case(!element.newmovie&&!element.goodmovie):
+                   console.log('3st case');
+                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
+                   break
+                 }         
+                $('.items').prepend(insert);
+           break;
+           case('link'):
+               switch(true){
+                   case(element.goodarticle&&!element.newarticle):
+                   console.log('1st case');
+                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,10)+"</small><span class='good"+element._id+" label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                   case(element.newarticle&&!element.goodarticle):
+                   console.log('2st case');
+                   insert = "<div class='row item new link"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label' style='margin-right:10px;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                   case(!element.newarticle&&!element.goodarticle):
+                   console.log('3st case');
+                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+element._id+"' style='margin-left:25px;'><span class='label' style='margin-right:10px;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                 }         
+                $('.items').prepend(insert);
+           break;
+         }
+         });
+        }     
       //----------------------------//
       var authorcount=0;
       $('#addauthor').click(addauthor);
@@ -1618,9 +1526,9 @@ head
                     user.readbooks--;
                     $('.booknum').text(user.readbooks);
                   }
-                if(!user.totalbooks){
-                  $('.books').append("<div class='nobooks row' style='text-align:center;'><div class='col-xs-12'><h2 style='color:#ccc;margin-bottom:20px;'> No items</h2></div></div>");
-                }
+                //if(!user.totalbooks){
+                //  $('.books').append("<div class='nobooks row' style='text-align:center;'><div class='col-xs-12'><h2 style='color:#ccc;margin-bottom:20px;'> No items</h2></div></div>");
+                //}
               });
       }
       //-----------------------------------//
@@ -1713,9 +1621,9 @@ head
                   else{
                     user.readmovies--;
                   }
-                if(!user.totalmovies){
-                  $('.moviess').append("<div class='nobooks row' style='text-align:center;'><div class='col-xs-12'><h2 style='color:#ccc;margin-bottom:20px;'> No items</h2></div></div>");
-                }
+                //if(!user.totalmovies){
+                //  $('.moviess').append("<div class='nobooks row' style='text-align:center;'><div class='col-xs-12'><h2 style='color:#ccc;margin-bottom:20px;'> No items</h2></div></div>");
+                //}
               });
       }
       //-----------------------------------//
