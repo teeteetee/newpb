@@ -699,6 +699,12 @@ head
     .label-link {
       background-color:#7dbfe6;
     }
+    .week {
+      background-color:#fbfbfb;
+      color:#ddd;
+      text-align:center;
+      border-bottom:1px solid #eee;
+    }
   body
     .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -1071,6 +1077,10 @@ head
         }
         return 0
       }
+      Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+      }
       //----------------------------//
       function populate(consolidated) {
        consolidated.forEach(function (element,index){
@@ -1102,7 +1112,13 @@ head
                    console.log('3st case');
                    insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:10px;font-weight:200;'> BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
                    break
-                 }         
+                 }   
+                var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek;
+                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var weekname = '.week'+element.tmstmp.getWeek;
+                if(!$(weekname).[0])
+                {$('.items').prepend(week); }     
                 $('.items').prepend(insert);
            break;
            case('movie'):
@@ -1119,7 +1135,13 @@ head
                    console.log('3st case');
                    insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:10px;font-weight:200;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
                    break
-                 }         
+                 }  
+                 var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek;
+                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var weekname = '.week'+element.tmstmp.getWeek;
+                if(!$(weekname).[0])
+                {$('.items').prepend(week); }       
                 $('.items').prepend(insert);
            break;
            case('link'):
@@ -1136,7 +1158,13 @@ head
                    console.log('3st case');
                    insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:10px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='color:#ddd;margin-left:25px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
-                 }         
+                 }  
+                 var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek;
+                var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                var weekname = '.week'+element.tmstmp.getWeek;
+                if(!$(weekname).[0])
+                {$('.items').prepend(week); }       
                 $('.items').prepend(insert);
            break;
          }
