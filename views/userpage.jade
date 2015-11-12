@@ -644,7 +644,7 @@ head
     position: absolute;
     top: 16px;
     left: 20px;
-    color: #333;
+    color: #9с9с9с;
     font-size: 30;
     z-index:2;
     }
@@ -724,6 +724,22 @@ head
       text-align:center;
       border-bottom:1px solid #eee;
     }
+    * enable absolute positioning */
+    .inner-addon { 
+        position: relative; 
+    }
+    /* style icon */
+    .inner-addon .glyphicon {
+      position: absolute;
+      padding: 10px;
+      pointer-events: none;
+    }
+    /* align icon */
+    .left-addon .glyphicon  { left:  0px;}
+    .right-addon .glyphicon { right: 0px;}
+    /* add padding  */
+    .left-addon input  { padding-left:  30px; }
+    .right-addon input { padding-right: 30px; }
   body
     .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -889,7 +905,8 @@ head
           a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
           a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
         .col-xs-12
-          form(style='margin-bottom:0px !important;')
+          .inner-addon.left-addon">
+            i(class="glyphicon glyphicon-search")
             input(style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
       .row.visible-lg.visible-md.visible-sm.second_row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
