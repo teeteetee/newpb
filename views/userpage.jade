@@ -1649,10 +1649,11 @@ head
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
+                //var insert = "<span class='label label-primary pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
                 var vname = '.btitle'+consolidated[bookid]._id;
                 $(vname).append(insert);
-                $(vname).css('margin-left','25px');
+                //$(vname).css('margin-left','25px');
                 consolidated[bookid].goodbook=1;
               });
       }
@@ -1777,10 +1778,11 @@ head
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
+                //var insert = "<span class='label label-primary pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
                 var vname = '.mtitle'+consolidated[movieid]._id;
                 $(vname).prepend(insert);
-                $(vname).css('margin-left','25px');
+                //$(vname).css('margin-left','25px');
                 consolidated[movieid].goodmovie=1;
               });
       }
@@ -1793,10 +1795,11 @@ head
             })
               .done(function( msg ) {
                 $('#linkmodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
+                //var insert = "<span class='label label-primary pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
+                var insert = "<span class='glyphicon glyphicon-star pull-right good"+consolidated[linkid]._id+"'>GOOD</span>";
                 var vname = '.atitle'+consolidated[linkid]._id;
                 $(vname).prepend(insert);
-                $(vname).css('margin-left','25px');
+                //$(vname).css('margin-left','25px');
                 consolidated[linkid].goodlink=1;
               });
       }
