@@ -1328,26 +1328,31 @@ head
       function redactmoviemodal (i) {
         console.log(consolidated[i]);
         if(consolidated[i].goodmovie){
+          console.log(1);
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
           $('.movie_unmark_good').attr('onclick',insert);
           $('.movie_unmark_good').css('display','block');
         }
         else {
+          console.log(2);
           $('.movie_unmark_good').css('display','none');
           var insert = 'markmoviegood('+i+')';
           $('.movie_good').attr('onclick',insert);
           $('.movie_good').css('display','block');
         }
         if(!consolidated[i].newmovie){
+          console.log(3);
          $('.movie_seen').css('display','none');
         }
         else {
+          console.log(4);
           var insert = 'markseen('+i+')';
           $('.movie_seen').attr('onclick',insert);
           $('.movie_seen').css('display','block');
           $('.movie_good').css('display','none');
         }
+        console.log(5);
         insert = 'removemovie('+i+')';
         $('.movie_remove').attr('onclick',insert);
         insert = 'window.location="/people/m/'+consolidated[i]._id+'"';
