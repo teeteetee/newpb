@@ -1114,9 +1114,9 @@ head
                    break
                  }   
                 var weeknum = new Date(parseInt(element.tmstmp));
-                weeknum = weeknum.getWeek;
+                weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
-                var weekname = '.week'+element.tmstmp.getWeek;
+                var weekname = '.week'+weeknum;
                 if(!$(weekname)[0])
                 {$('.items').prepend(week); }     
                 $('.items').prepend(insert);
@@ -1137,9 +1137,9 @@ head
                    break
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
-                weeknum = weeknum.getWeek;
+                weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
-                var weekname = '.week'+element.tmstmp.getWeek;
+                var weekname = '.week'+weeknum;
                 if(!$(weekname)[0])
                 {$('.items').prepend(week); }       
                 $('.items').prepend(insert);
@@ -1160,9 +1160,9 @@ head
                    break
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
-                weeknum = weeknum.getWeek;
+                weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
-                var weekname = '.week'+element.tmstmp.getWeek;
+                var weekname = '.week'+weeknum;
                 if(!$(weekname)[0])
                 {$('.items').prepend(week); }       
                 $('.items').prepend(insert);
