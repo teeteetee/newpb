@@ -865,7 +865,7 @@ head
                 button(class='btn btn-iosdark active' id='newarticle' type='button') New
                 button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it             
           .modal-footer(style='text-align:center;')
-            button(class='btn btn-modal'  id='submitarticle') Submit
+            a(class='btn'  id='submitarticle' style='background-color:#337AB7;color:white;') Submit
         .modal-content.am(style='display:none;')
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
@@ -891,7 +891,7 @@ head
                 button(class='btn btn-iosdark active' id='newmovie' type='button') New
                 button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
           .modal-footer(style='text-align:center;')
-            button(class='btn btn-modal'  id='submitmovie') Submit
+            a(class='btn'  id='submitmovie' style='background-color:#337AB7;color:white;') Submit
     nav#menu.menu 
       section.menu-section(style='text-align:center;')
         h3
@@ -1268,16 +1268,17 @@ head
       var authorcount=0;
       $('#addauthor').click(addauthor);
       function addauthor() {
-        console.log('addauthor running');
-        authorcount++;
-        if($('#removeauthor').hasClass('disabled')){
-          $('#removeauthor').removeClass('disabled');
-        }
-        //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
-        var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input maxlength='30' type='text' class=' authorinput form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
-        console.log(insert);
-        $('#authoradd_here').append(insert);
-        eval("$('#author"+authorcount+"').slideToggle();");
+        if(authorcount<5)
+        {console.log('addauthor running');
+                authorcount++;
+                if($('#removeauthor').hasClass('disabled')){
+                  $('#removeauthor').removeClass('disabled');
+                }
+                //var insert =   "<div class='well' id='author"+authorcount+"' style='display:none;'><div class='form-group'><label for='author"+authorcount+"_name' >Author name</label><input type='text' class='form-control' id='author"+authorcount+"_name' placeholder='Leo'></input></div><div class='form-group'><label for='author"+authorcount+"_surname'>Author surname</label><input type='text' class='form-control' id='author"+authorcount+"_surname' placeholder='Tolstoy'></input></div></div>";
+                var insert =   "<div id='author"+authorcount+"' style='display:none;' class='form-group'><label for='author"+authorcount+"_name' >Author</label><input maxlength='30' type='text' class=' authorinput form-control' id='author"+authorcount+"_name' placeholder='Tolstoy L.'></input></div>";
+                console.log(insert);
+                $('#authoradd_here').append(insert);
+                eval("$('#author"+authorcount+"').slideToggle();");}
       }
       $('#removeauthor').click(function(){
         if(authorcount>0)
@@ -1869,7 +1870,7 @@ head
               .done(function( msg ) {
                 $('#mtitle').val('');
                 $('#year').val('');
-                $('#addmovie').modal('hide');
+                $('#addbook').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
                 window.location='/';
@@ -1899,7 +1900,7 @@ head
               .done(function( msg ) {
                 $('#article_title').val('');
                 $('#article_link').val('');
-                $('#addarticle').modal('hide');
+                $('#addbook').modal('hide');
                 $('#wait').fadeOut(350);
                 console.log(msg);
                 window.location='/';
