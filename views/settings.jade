@@ -307,9 +307,8 @@ head
       }
   body
     nav#menu.menu
-      section.menu-section(style='text-align:center;')
-        h3
-          span(class='label' style='font-family:times,serif;font-weight:200;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
+      section.menu-section(style='text-align:center;margin-bottom: 28px;')
+        h5(style='text-transform:uppercase;letter-spacing:2px;') People & books
       section.menu-section
         ul.menu-section-list 
           li
@@ -327,12 +326,16 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     .container-fluid#panel
-      button(type='button' ,id='menu-toggle')
-        span.glyphicon.glyphicon-menu-hamburger
-      .row.visible-lg.visible-md.visible-sm(style='height:50px;')
-      .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3(style='font-weight:200;color:#ddd;' id='mainheading') Settings     
+      .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
+        button(type='button' ,id='menu-toggle')
+          span.glyphicon.glyphicon-menu-hamburger
+        .col-xs-12.visible-xs
+          h3(style='font-weight:200;color:#ddd;' id='mainheading') Settings
+      //
+        .row.visible-lg.visible-md.visible-sm(style='height:50px;')
+        .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+            h3(style='font-weight:200;color:#ddd;' id='mainheading') Settings     
       .row.setrow
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1.pad
           h4(id='backup') Backup
