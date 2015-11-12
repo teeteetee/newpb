@@ -1306,6 +1306,7 @@ head
       }
       //
       function redactmoviemodal (i) {
+        consolidated(consolidated[i]);
         if(consolidated[i].goodmovie){
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
