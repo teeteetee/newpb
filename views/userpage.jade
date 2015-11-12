@@ -932,7 +932,7 @@ head
         .col-xs-12
           form(style='margin-bottom:0px !important;')
             input(style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
-      .row.visible-lg.visible-md.visible-sm.second_row(style='text-align:center;')
+      .row.visible-lg.visible-md.visible-sm.second_row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
           .row
             #avatarbig.col-xs-12(style='text-align:center;')         
@@ -1043,11 +1043,11 @@ head
       var avatar = #{avatar};
       if(avatar) {
         $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
         $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' style=''></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
