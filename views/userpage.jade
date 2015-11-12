@@ -1109,6 +1109,7 @@ head
                    element.authors.forEach(function(element2){
                    authors_insert+='  '+element2;
                     });
+                   element.authors = authors_insert;
                  }
                  switch(true){
                    case(element.goodbook&&!element.newbook):
@@ -1240,7 +1241,7 @@ head
                 }
                });
       function redactbookmodal (i) {
-        if(books[i].goodbook){
+        if(consolidated[i].goodbook){
           $('.book_good').css('display','none');
           var insert = 'unmarkbookgood('+i+')';
           $('.book_unmark_good').attr('onclick',insert);
@@ -1252,7 +1253,7 @@ head
           $('.book_good').attr('onclick',insert);
           $('.book_good').css('display','block');
         }
-        if(!books[i].newbook){
+        if(!consolidated[i].newbook){
          $('.book_read').css('display','none');
         }
         else {
@@ -1263,20 +1264,20 @@ head
         }
         insert = 'removebook('+i+')';
         $('.book_remove').attr('onclick',insert);
-        insert = 'window.location="/people/b/'+books[i]._id+'"';
+        insert = 'window.location="/people/b/'+consolidated[i]._id+'"';
         $('.book_people').attr('onclick',insert);
-        $('.bookmodaltitle').text(modal_data_store[i].title);
-        $('.bookmodalauthor').text(modal_data_store[i].author);
+        $('.bookmodaltitle').text(consolidated[i].title.capitalizeFirstLetter());
+        $('.bookmodalauthor').text(consolidated[i].authors);
         $('#bookmodal').modal('show');
       }
       //
       function redactarticlemodal (i) {
-        var link = article_modal_data_store[i].link;
-        var checktitle = article_modal_data_store[i].link.substring(0, 4);
+        var link = consolidated[i].link;
+        var checktitle = consolidated[i].link.substring(0, 4);
         if(checktitle!='http'){
          var link = "http://"+link;}
          $('.article_view').attr('href',link);
-        if(articles[i].goodarticle){
+        if(consolidated[i].goodarticle){
           $('.article_good').css('display','none');
           var insert = 'unmarkarticlegood('+i+')';
           $('.article_unmark_good').attr('onclick',insert);
@@ -1288,7 +1289,7 @@ head
           $('.article_good').attr('onclick',insert);
           $('.article_good').css('display','block');
         }
-        if(!articles[i].newarticle){
+        if(!consolidated[i].newarticle){
          $('.article_read').css('display','none');
         }
         else {
@@ -1299,13 +1300,13 @@ head
         }
         insert = 'removearticle('+i+')';
         $('.article_remove').attr('onclick',insert);
-        $('.articlemodaltitle').text(article_modal_data_store[i].link);
-        $('.articlemodallink').text(article_modal_data_store[i].title);
+        $('.articlemodaltitle').text(consolidated[i].link);
+        $('.articlemodallink').text(consolidated[i].title.capitalizeFirstLetter());
         $('#articlemodal').modal('show');
       }
       //
       function redactmoviemodal (i) {
-        if(movies[i].goodmovie){
+        if(consolidated[i].goodmovie){
           $('.movie_good').css('display','none');
           var insert = 'unmarkmoviegood('+i+')';
           $('.movie_unmark_good').attr('onclick',insert);
@@ -1317,7 +1318,7 @@ head
           $('.movie_good').attr('onclick',insert);
           $('.movie_good').css('display','block');
         }
-        if(!movies[i].newmovie){
+        if(!consolidated[i].newmovie){
          $('.movie_seen').css('display','none');
         }
         else {
@@ -1328,10 +1329,10 @@ head
         }
         insert = 'removemovie('+i+')';
         $('.movie_remove').attr('onclick',insert);
-        insert = 'window.location="/people/m/'+movies[i]._id+'"';
+        insert = 'window.location="/people/m/'+consolidated[i]._id+'"';
         $('.movie_people').attr('onclick',insert);
-        $('.moviemodaltitle').text(movie_modal_data_store[i].title);
-        $('.moviemodalyear').text(movie_modal_data_store[i].year);
+        $('.moviemodaltitle').text(consolidated[i].title.capitalizeFirstLetter());
+        $('.moviemodalyear').text(consolidated[i].year);
         $('#moviemodal').modal('show');
       }
       $('#closeadd').click(function(){
@@ -1481,15 +1482,15 @@ head
       function markread(bookid) {
         $.ajax({
               method: "POST",
-              url: "/markread/"+books[bookid]._id,
+              url: "/markread/"+consolidated[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
                 $('#bookmodal').modal('hide');
-                books[bookid].newbook=0;
-                var vname = '.book'+books[bookid]._id;
-                var vname2 = '.btitle'+books[bookid]._id;
+                consolidated[bookid].newbook=0;
+                var vname = '.book'+consolidated[bookid]._id;
+                var vname2 = '.btitle'+consolidated[bookid]._id;
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
@@ -1501,16 +1502,16 @@ head
       function markbookgood(bookid) {
         $.ajax({
               method: "POST",
-              url: "/markbookgood/"+books[bookid]._id,
+              url: "/markbookgood/"+consolidated[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+books[bookid]._id+"'>GOOD</span>";
-                var vname = '.btitle'+books[bookid]._id;
+                var insert = "<span class='label label-primary pull-right good"+consolidated[bookid]._id+"'>GOOD</span>";
+                var vname = '.btitle'+consolidated[bookid]._id;
                 $(vname).append(insert);
                 $(vname).css('margin-left','25px');
-                books[bookid].goodbook=1;
+                consolidated[bookid].goodbook=1;
               });
       }
       //-----------------------------------//
@@ -1518,14 +1519,14 @@ head
         $('#wait').css('display','block');
         $.ajax({
               method: "POST",
-              url: "/unmarkbookgood/"+books[bookid]._id,
+              url: "/unmarkbookgood/"+consolidated[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var vname = '.good'+books[bookid]._id;
+                var vname = '.good'+consolidated[bookid]._id;
                 $(vname).remove();
-                books[bookid].goodbook=0;
+                consolidated[bookid].goodbook=0;
                 $('#wait').css('display','none');
               });
       }
@@ -1534,14 +1535,14 @@ head
         $('#wait').css('display','block');
         $.ajax({
               method: "POST",
-              url: "/unmarkmoviegood/"+movies[movieid]._id,
+              url: "/unmarkmoviegood/"+consolidated[movieid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var vname = '.good'+movies[movieid]._id;
+                var vname = '.good'+consolidated[movieid]._id;
                 $(vname).remove();
-                movies[movieid].goodmovie=0;
+                consolidated[movieid].goodmovie=0;
                 $('#wait').css('display','none');
               });
       }
@@ -1550,14 +1551,14 @@ head
         $('#wait').css('display','block');
         $.ajax({
               method: "POST",
-              url: "/unmarkarticlegood/"+articles[articleid]._id,
+              url: "/unmarkarticlegood/"+consolidated[articleid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#articlemodal').modal('hide');
-                var vname = '.good'+articles[articleid]._id;
+                var vname = '.good'+consolidated[articleid]._id;
                 $(vname).remove();
-                articles[articleid].goodarticle=0;
+                consolidated[articleid].goodarticle=0;
                 $('#wait').css('display','none');
               });
       }
@@ -1565,15 +1566,15 @@ head
       function removebook(bookid) {
         $.ajax({
               method: "POST",
-              url: "/removebook/"+books[bookid]._id,
+              url: "/removebook/"+consolidated[bookid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#bookmodal').modal('hide');
-                var vname = '.book'+books[bookid]._id;
+                var vname = '.book'+consolidated[bookid]._id;
                 $(vname).empty();
                 user.totalbooks--;
-                if(books[bookid].newbook){
+                if(consolidated[bookid].newbook){
                   user.newbook--;
                 }
                   else{
@@ -1589,15 +1590,15 @@ head
       function markarticleread(articleid) {
         $.ajax({
               method: "POST",
-              url: "/markarticleread/"+articles[articleid]._id,
+              url: "/markarticleread/"+consolidated[articleid]._id,
               data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
                 $('#articlemodal').modal('hide');
-                articles[articleid].newarticle=0;
-                var vname = '.article'+articles[articleid]._id;
-                var vname2 = '.atitle'+articles[articleid]._id;
+                consolidated[articleid].newarticle=0;
+                var vname = '.article'+consolidated[articleid]._id;
+                var vname2 = '.atitle'+consolidated[articleid]._id;
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
@@ -1609,15 +1610,15 @@ head
       function markseen(movieid) {
         $.ajax({
               method: "POST",
-              url: "/markseen/"+movies[movieid]._id,
+              url: "/markseen/"+consolidated[movieid]._id,
               data: 0
             })
               .done(function( msg ) {
                 console.log(msg);
                 $('#moviemodal').modal('hide');
-                movies[movieid].newmovie=0;
-                var vname = '.movie'+movies[movieid]._id;
-                var vname2 = '.mtitle'+movies[movieid]._id;
+                consolidated[movieid].newmovie=0;
+                var vname = '.movie'+consolidated[movieid]._id;
+                var vname2 = '.mtitle'+consolidated[movieid]._id;
                 $(vname2).css('margin-left','25px');
                 $(vname).css('border-left','none');
                 $(vname).removeClass('new');
@@ -1629,47 +1630,47 @@ head
       function markmoviegood(movieid) {
         $.ajax({
               method: "POST",
-              url: "/markmoviegood/"+movies[movieid]._id,
+              url: "/markmoviegood/"+consolidated[movieid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+movies[movieid]._id+"'>GOOD</span>";
-                var vname = '.mtitle'+movies[movieid]._id;
+                var insert = "<span class='label label-primary pull-right good"+consolidated[movieid]._id+"'>GOOD</span>";
+                var vname = '.mtitle'+consolidated[movieid]._id;
                 $(vname).prepend(insert);
                 $(vname).css('margin-left','25px');
-                movies[movieid].goodmovie=1;
+                consolidated[movieid].goodmovie=1;
               });
       }
       //-----------------------------------//
       function markarticlegood(articleid) {
         $.ajax({
               method: "POST",
-              url: "/markarticlegood/"+articles[articleid]._id,
+              url: "/markarticlegood/"+consolidated[articleid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#articlemodal').modal('hide');
-                var insert = "<span class='label label-primary pull-right good"+articles[articleid]._id+"'>GOOD</span>";
-                var vname = '.atitle'+articles[articleid]._id;
+                var insert = "<span class='label label-primary pull-right good"+consolidated[articleid]._id+"'>GOOD</span>";
+                var vname = '.atitle'+consolidated[articleid]._id;
                 $(vname).prepend(insert);
                 $(vname).css('margin-left','25px');
-                articles[articleid].goodarticle=1;
+                consolidated[articleid].goodarticle=1;
               });
       }
       //-----------------------------------//
       function removemovie(movieid) {
         $.ajax({
               method: "POST",
-              url: "/removemovie/"+movies[movieid]._id,
+              url: "/removemovie/"+consolidated[movieid]._id,
               data: 0
             })
               .done(function( msg ) {
                 $('#moviemodal').modal('hide');
-                var vname = '.movie'+movies[movieid]._id;
+                var vname = '.movie'+consolidated[movieid]._id;
                 $(vname).empty();
                 user.totalmovies--;
-                if(movies[movieid].newmovie){
+                if(consolidated[movieid].newmovie){
                   user.newmovie--;
                 }
                   else{
