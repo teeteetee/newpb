@@ -1430,8 +1430,8 @@ head
         }
         insert = 'removelink('+i+')';
         $('.link_remove').attr('onclick',insert);
-        $('.linkmodaltitle').text(consolidated[i].link);
-        $('.linkmodallink').text(consolidated[i].title.capitalizeFirstLetter());
+        $('.linkmodaltitle').text(consolidated[i].title.capitalizeFirstLetter()consolidated[i].link);
+        $('.linkmodallink').text(consolidated[i].link);
         $('#linkmodal').modal('show');
       }
       //
