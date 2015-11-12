@@ -1094,7 +1094,8 @@ head
       }
       //----------------------------//
       function populate(consolidated) {
-      var weeknum_g;
+      var last_item_over = consolidated[consolidated.length-1];
+      var weeknum_g=new Date(last_item.tmstmp).getWeek();
        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
