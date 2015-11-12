@@ -817,9 +817,9 @@ head
             h4(class="modal-title"  style='color:#ddd;') Adding a book
           .modal-body
             .btn-group(style='margin-top:20px;margin-bottom:20px;')
-              button.btn-iosdark.active(type='button') Books
-              button.btn-iosdark(type='button') Movies
-              button.btn-iosdark(type='button') Links
+              button.btn.show_bookadd.btn-iosdark.active(type='button') Book
+              button.btn.show_movieadd.btn-iosdark(type='button') Movie
+              button.btn.show_linkadd.btn-iosdark(type='button') Link
             form(id='authoradd_here')
               .form-group
                 label(for="btitle") Titile
@@ -847,9 +847,9 @@ head
             h4(class="modal-title" style='color:#ddd;') Adding an article
           .modal-body
             .btn-group(style='margin-top:20px;margin-bottom:20px;')
-              button.btn-iosdark(type='button') Books
-              button.btn-iosdark(type='button') Movies
-              button.btn-iosdark.active(type='button') Links
+              button.btn.show_bookadd.btn-iosdark(type='button') Book
+              button.btn.show_movieadd.btn-iosdark(type='button') Movie
+              button.btn.show_linkadd.btn-iosdark.active(type='button') Link
             form
               .form-group
                 label(for="pagetitle") Titile
@@ -869,11 +869,11 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" style='color:#ddd;') Adding a movie
-          .modal-body.
+          .modal-body
             .btn-group(style='margin-top:20px;margin-bottom:20px;')
-              button.btn-iosdark(type='button') Books
-              button.btn-iosdark.active(type='button') Movies
-              button.btn-iosdark(type='button') Links
+              button.btn.show_bookadd.btn-iosdark(type='button') Book
+              button.btn.show_movieadd.btn-iosdark.active(type='button') Movie
+              button.btn.show_linkadd.btn-iosdark(type='button') Link
             form
               .form-group
                 label(for="mtitle") Titile
@@ -1346,6 +1346,49 @@ head
         $('.bookmodalauthor').text(consolidated[i].authors);
         $('#bookmodal').modal('show');
       }
+      //
+      $('.show_bookadd').click(function(){
+        switch(true){
+          case($('.ab').css('display')==='block'):
+          break
+          case($('.am').css('display')==='block'):
+          $('.am').css('display','none');
+          $('.ab').css('display','block');
+          break
+          case($('.al').css('display')==='block'):
+          $('.al').css('display','none');
+          $('.ab').css('display','block');
+          break
+        }
+        });
+      $('.show_movieadd').click(function(){
+        switch(){
+          case($('.ab').css('display')==='block'):
+          $('.ab').css('display','none');
+          $('.am').css('display','block');
+          break
+          case($('.am').css('display')==='block'):
+          break
+          case($('.al').css('display')==='block'):
+          $('.al').css('display','none');
+          $('.am').css('display','block');
+          break
+        }
+        });
+      $('.show_linkadd').click(function(){
+        switch(){
+          case($('.ab').css('display')==='block'):
+          $('.ab').css('display','none');
+          $('.al').css('display','block');
+          break
+          case($('.am').css('display')==='block'):
+          $('.am').css('display','none');
+          $('.al').css('display','block');
+          break
+          case($('.al').css('display')==='block'):
+          break
+        }
+        });
       //
       function redactarticlemodal (i) {
         var link = consolidated[i].link;
