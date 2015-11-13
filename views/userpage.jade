@@ -776,251 +776,252 @@ head
       padding-top:15px;
     }
   body
-    .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body
-            h4.linkmodaltitle(style='text-align:center;')
-            h4.linkmodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control link_read') Mark as read
-            button(class='btn btn-iosdark  form-control link_good') Mark as good
-            button(class='btn btn-iosdark  form-control link_unmark_good') Unmark as good
-            button(class='btn btn-iosdark form-control link_remove') Remove
-    .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body
-            h4.bookmodaltitle(style='text-align:center;')
-            h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark  form-control book_read' style='margin-top:5px;') Mark as read
-            button(class='btn btn-iosdark  form-control book_good') Mark as good
-            button(class='btn btn-iosdark  form-control book_unmark_good') Unmark as good
-            button(class='btn btn-iosdark form-control book_people') Find people
-            button(class='btn btn-iosdark form-control book_remove') Remove
-    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body
-            h4.moviemodaltitle(style='text-align:center;')
-            h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark  form-control movie_seen' style='margin-top:5px;') Mark as seen
-            button(class='btn btn-iosdark  form-control movie_good') Mark as good
-            button(class='btn btn-iosdark  form-control movie_unmark_good') Unmark as good
-            button(class='btn btn-iosdark form-control movie_people') Find people
-            button(class='btn btn-iosdark form-control movie_remove') Remove
-    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content.ab
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title"  style='color:#ddd;') Adding a book
-          .modal-body
-            .row(style='text-align:center;')
-              .btn-group(style='margin-top:20px;margin-bottom:20px;')
-                button.btn.show_bookadd.btn-iosdark.active(type='button') Book
-                button.btn.show_movieadd.btn-iosdark(type='button') Movie
-                button.btn.show_linkadd.btn-iosdark(type='button') Link
-            .row#authoradd_here
-              .col-xs-12
-                .form-group
-                  label(for="btitle") Titile
-                  input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
-                  .row.autocomp#autocompbooks
-                    .col-xs-12#srb
-                .form-group
-                  label(for="title") Author
-                  input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
-            .row 
-              .col-xs-12(style='padding-bottom:20px;')
-                .btn-group.incm.pull-left#authors(style='width:100%;')
-                 button(class='btn btn-iosdark' id='addauthor' type='button') Add author
-                 button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
-                .btn-group.incm.pull-left#new_old(style='width:100%;')
-                  button(class='btn btn-iosdark active' id='newbook' type='button') New
-                  button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
-                .btn-group.incm.pull-left(style='width:100%;')
-                  button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
-                  button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
-          .modal-footer(style='text-align:center;')
-            a(class='btn'  id='submitbook' style='background-color:#337ab7;color:white;') Submit
-        .modal-content.al(style='display:none;')
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Adding a link
-          .modal-body
-            .row(style='text-align:center;')
-              .col-xs-12
+    #wrapper(style='overflow-x:hidden;')
+      .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.linkmodaltitle(style='text-align:center;')
+              h4.linkmodallink(style='color:gray;text-align:center;font-size:15px;' class='lead')
+              a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+              button(class='btn btn-iosdark  form-control link_read') Mark as read
+              button(class='btn btn-iosdark  form-control link_good') Mark as good
+              button(class='btn btn-iosdark  form-control link_unmark_good') Unmark as good
+              button(class='btn btn-iosdark form-control link_remove') Remove
+      .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.bookmodaltitle(style='text-align:center;')
+              h4.bookmodalauthor(style='color:gray;text-align:center;font-size:15px;' class='lead')
+              button(class='btn btn-iosdark  form-control book_read' style='margin-top:5px;') Mark as read
+              button(class='btn btn-iosdark  form-control book_good') Mark as good
+              button(class='btn btn-iosdark  form-control book_unmark_good') Unmark as good
+              button(class='btn btn-iosdark form-control book_people') Find people
+              button(class='btn btn-iosdark form-control book_remove') Remove
+      .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.moviemodaltitle(style='text-align:center;')
+              h4.moviemodalyear(style='color:gray;text-align:center;font-size:15px;' class='lead')
+              button(class='btn btn-iosdark  form-control movie_seen' style='margin-top:5px;') Mark as seen
+              button(class='btn btn-iosdark  form-control movie_good') Mark as good
+              button(class='btn btn-iosdark  form-control movie_unmark_good') Unmark as good
+              button(class='btn btn-iosdark form-control movie_people') Find people
+              button(class='btn btn-iosdark form-control movie_remove') Remove
+      .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        .modal-dialog(role="document")
+          .modal-content.ab
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+              h4(class="modal-title"  style='color:#ddd;') Adding a book
+            .modal-body
+              .row(style='text-align:center;')
                 .btn-group(style='margin-top:20px;margin-bottom:20px;')
-                  button.btn.show_bookadd.btn-iosdark(type='button') Book
+                  button.btn.show_bookadd.btn-iosdark.active(type='button') Book
                   button.btn.show_movieadd.btn-iosdark(type='button') Movie
-                  button.btn.show_linkadd.btn-iosdark.active(type='button') Link
-            .row  
-              .col-xs-12
-                form
-                  .form-group
-                    label(for="pagetitle") Titile
-                    input(type="text" class="form-control" maxlength="50" id="link_title" autocomplete='off' placeholder="Neuroscience")
-                  .form-group
-                    label(for="pagelink") Link
-                    input(type="text" class="form-control" maxlength="150" id="link_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark active' id='newlink' type='button') New
-                  button(class=' btn btn-iosdark' id='oldlink'  type='button' )  I've read it             
-          .modal-footer(style='text-align:center;')
-            a(class='btn'  id='submitlink' style='background-color:#337ab7;color:white;') submit 
-        .modal-content.am(style='display:none;')
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Adding a movie
-          .modal-body
-            .row(style='text-align:center;')
-              .col-xs-12
-                .btn-group(style='margin-top:20px;margin-bottom:20px;')
-                  button.btn.show_bookadd.btn-iosdark(type='button') Book
-                  button.btn.show_movieadd.btn-iosdark.active(type='button') Movie
                   button.btn.show_linkadd.btn-iosdark(type='button') Link
-            .row  
-              .col-xs-12
-                form
-                  .form-group
-                    label(for="mtitle") Titile
-                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
-                    .row.autocomp#autocompmovies
-                      .col-xs-12#srm
-                  .form-group
-                    label(for="year") Year
-                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark active' id='newmovie' type='button') New
-                  button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
-          .modal-footer(style='text-align:center;')
-            a(class='btn'  id='submitmovie' style='background-color:#337ab7;color:white;') submit
-    nav#menu.menu 
-      section.menu-section(style='text-align:center;')
-        h3
-          span(class='label' style='font-weight:200;font-family:times,serif;font-weight:200;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
-      section.menu-section
-        ul.menu-section-list    
-          li.active
-            a(href="/" id='lists') My lists
-          li
-            a(href="/people" id='pbutton') People
-          li 
-            a(href='/messages' id='mbutton') Messages
-          li
-            a(href="/settings" id='settings') Settings
-          li
-            a(href="/logout" id='logout') Logout
-      //
-        section.menu-section.visible-xs(style='text-align:center;')
-          ul.socialbtns(style='display:inline;margin-top:50px;padding-left:0px;')
-            li
-              a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-            li
-              a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-            li
-              a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-            li
-              a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')          
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-      .row(id='spin') 
-        .col-xs-12(style='text-align:center;')
-          .loader
-    .container-fluid#panel
-      .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
-        button(type='button' ,id='menu-toggle')
-          span.glyphicon.glyphicon-menu-hamburger
-        //span(class='label pull-right' style='font-size:18px;font-family:times,serif;border:1px solid #333;color:#333;font-style:italic') alpha
-        button(type='button' ,id='search-toggle',class='visible-xs')
-          span.glyphicon.glyphicon-search
-        //
-          .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-xs-12
-            h5.text-center(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;') People & books
-          .col-lg-4.col-md-4
-            .pull-right.wrap.hidden-xs
-              input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
-              span(class="glyphicon glyphicon-search")
-        .hidden-xs.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
-        .col-xs-12.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
-          h5.text-center(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;margin:0px;margin-top: 8px;') People & books
-        .col-sm-4.col-md-4.col-lg-4.hidden-xs(style='text-align:center;')
-          .pull-right.wrap
-              input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
-              span(class="glyphicon glyphicon-search")
-      .row(style='display:none;padding-top:40px;padding-bottom:40px;background-color:rgb(180, 208, 218);',id='searchrow')
-        .col-xs-12
-          input(type='text' class='form-control' style='height:60px;border:none;border-radius:30px;font-size: 24;' placeholder='Search')
-      .row.visible-lg.visible-md.visible-sm.second_row
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          .row
-            #avatarbig.col-xs-12     
-              h2(style='margin-top:30px;' class='usernick')  ...
-              button.btn.btn-iosdark.openadd(type='button' style='font-weight:200;margin-top:20px;') Add item
-              h4(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
-                span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
-                | books
-                span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                | movies
-                span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                | links
-      .row
-        #booklist.thun.col-md-12
-          .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:50px;text-align:center;')                                
-              //h4.numbers                 
-              button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
-              .row 
+              .row#authoradd_here
                 .col-xs-12
-                  h5(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
-                    span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
-                    | books
-                    span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                    | movies
-                    span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                    | links
-      .row
-          #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
-              .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
-                  .noitems.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.brow
-                #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
-                  .noitems.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items 
-    footer.footer(style='min-height:100px;background-color:#222;padding-top:20px;padding-bottom:20px;margin-top:100px;')
-      .container 
-        .row(style='text-align:center;color:white;')
+                  .form-group
+                    label(for="btitle") Titile
+                    input(type="text" class="form-control" id="btitle" maxlength="100" autocomplete='off' data-provide="typeahead" placeholder="War and Peace")
+                    .row.autocomp#autocompbooks
+                      .col-xs-12#srb
+                  .form-group
+                    label(for="title") Author
+                    input(type="text" class=" authorinput form-control" maxlength="30" id="author0_name" autocomplete='off' data-provide="typeahead" placeholder="Tolstoy L.")
+              .row 
+                .col-xs-12(style='padding-bottom:20px;')
+                  .btn-group.incm.pull-left#authors(style='width:100%;')
+                   button(class='btn btn-iosdark' id='addauthor' type='button') Add author
+                   button(class=' btn btn-iosdark disabled' id='removeauthor'  type='button' )  Remove
+                  .btn-group.incm.pull-left#new_old(style='width:100%;')
+                    button(class='btn btn-iosdark active' id='newbook' type='button') New
+                    button(class=' btn btn-iosdark' id='oldbook'  type='button' )  I've read it
+                  .btn-group.incm.pull-left(style='width:100%;')
+                    button(class='btn btn-iosdark active' id='nonfiction' type='button') Nonfiction
+                    button(class=' btn btn-iosdark' id='fiction' type='button' ) Fiction  
+            .modal-footer(style='text-align:center;')
+              a(class='btn'  id='submitbook' style='background-color:#337ab7;color:white;') Submit
+          .modal-content.al(style='display:none;')
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+              h4(class="modal-title" style='color:#ddd;') Adding a link
+            .modal-body
+              .row(style='text-align:center;')
+                .col-xs-12
+                  .btn-group(style='margin-top:20px;margin-bottom:20px;')
+                    button.btn.show_bookadd.btn-iosdark(type='button') Book
+                    button.btn.show_movieadd.btn-iosdark(type='button') Movie
+                    button.btn.show_linkadd.btn-iosdark.active(type='button') Link
+              .row  
+                .col-xs-12
+                  form
+                    .form-group
+                      label(for="pagetitle") Titile
+                      input(type="text" class="form-control" maxlength="50" id="link_title" autocomplete='off' placeholder="Neuroscience")
+                    .form-group
+                      label(for="pagelink") Link
+                      input(type="text" class="form-control" maxlength="150" id="link_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
+              .row  
+                .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                  .btn-group#new_old(style='display:block;')
+                    button(class='btn btn-iosdark active' id='newlink' type='button') New
+                    button(class=' btn btn-iosdark' id='oldlink'  type='button' )  I've read it             
+            .modal-footer(style='text-align:center;')
+              a(class='btn'  id='submitlink' style='background-color:#337ab7;color:white;') submit 
+          .modal-content.am(style='display:none;')
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+              h4(class="modal-title" style='color:#ddd;') Adding a movie
+            .modal-body
+              .row(style='text-align:center;')
+                .col-xs-12
+                  .btn-group(style='margin-top:20px;margin-bottom:20px;')
+                    button.btn.show_bookadd.btn-iosdark(type='button') Book
+                    button.btn.show_movieadd.btn-iosdark.active(type='button') Movie
+                    button.btn.show_linkadd.btn-iosdark(type='button') Link
+              .row  
+                .col-xs-12
+                  form
+                    .form-group
+                      label(for="mtitle") Titile
+                      input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                      .row.autocomp#autocompmovies
+                        .col-xs-12#srm
+                    .form-group
+                      label(for="year") Year
+                      input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
+              .row  
+                .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                  .btn-group#new_old(style='display:block;')
+                    button(class='btn btn-iosdark active' id='newmovie' type='button') New
+                    button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  I've seen it             
+            .modal-footer(style='text-align:center;')
+              a(class='btn'  id='submitmovie' style='background-color:#337ab7;color:white;') submit
+      nav#menu.menu 
+        section.menu-section(style='text-align:center;')
+          h3
+            span(class='label' style='font-weight:200;font-family:times,serif;font-weight:200;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
+        section.menu-section
+          ul.menu-section-list    
+            li.active
+              a(href="/" id='lists') My lists
+            li
+              a(href="/people" id='pbutton') People
+            li 
+              a(href='/messages' id='mbutton') Messages
+            li
+              a(href="/settings" id='settings') Settings
+            li
+              a(href="/logout" id='logout') Logout
+        //
+          section.menu-section.visible-xs(style='text-align:center;')
+            ul.socialbtns(style='display:inline;margin-top:50px;padding-left:0px;')
+              li
+                a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+              li
+                a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+              li
+                a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+              li
+                a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')          
+      .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+        .row(id='spin') 
+          .col-xs-12(style='text-align:center;')
+            .loader
+      .container-fluid#panel
+        .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
+          button(type='button' ,id='menu-toggle')
+            span.glyphicon.glyphicon-menu-hamburger
+          //span(class='label pull-right' style='font-size:18px;font-family:times,serif;border:1px solid #333;color:#333;font-style:italic') alpha
+          button(type='button' ,id='search-toggle',class='visible-xs')
+            span.glyphicon.glyphicon-search
+          //
+            .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-xs-12
+              h5.text-center(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;') People & books
+            .col-lg-4.col-md-4
+              .pull-right.wrap.hidden-xs
+                input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
+                span(class="glyphicon glyphicon-search")
+          .hidden-xs.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+          .col-xs-12.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+            h5.text-center(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;margin:0px;margin-top: 8px;') People & books
+          .col-sm-4.col-md-4.col-lg-4.hidden-xs(style='text-align:center;')
+            .pull-right.wrap
+                input(type='text' style='border-radius:30px;max-width:300px;background-color: white;border: 1px solid #ddd;line-height: 1.7;padding-left: 10px;')
+                span(class="glyphicon glyphicon-search")
+        .row(style='display:none;padding-top:40px;padding-bottom:40px;background-color:rgb(180, 208, 218);',id='searchrow')
           .col-xs-12
-            .socialbtns.fxd(style='margin:auto:margin-top:5px;margin-bottom:5px;')
-              a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-              a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-              a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-              a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
-            h5(style='color:#555;font-weight:200;') People and books |
-              span 
-                a(href='mailto:main@peopleandbooks.com')  Contact us
-            h5(style='color:#555;font-weight:200;') 2015
+            input(type='text' class='form-control' style='height:60px;border:none;border-radius:30px;font-size: 24;' placeholder='Search')
+        .row.visible-lg.visible-md.visible-sm.second_row
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+            .row
+              #avatarbig.col-xs-12     
+                h2(style='margin-top:30px;' class='usernick')  ...
+                button.btn.btn-iosdark.openadd(type='button' style='font-weight:200;margin-top:20px;') Add item
+                h4(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                  span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
+                  | books
+                  span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                  | movies
+                  span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                  | links
+        .row
+          #booklist.thun.col-md-12
+            .row.visible-xs
+              #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:50px;text-align:center;')                                
+                //h4.numbers                 
+                button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
+                .row 
+                  .col-xs-12
+                    h5(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                      span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
+                      | books
+                      span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      | movies
+                      span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      | links
+        .row
+            #list.row
+              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+                .row.brow
+                  .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                    .noitems.row(style='text-align:center;')  
+                       .col-xs-12
+                         h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items  
+                .row.brow
+                  #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                    .noitems.row(style='text-align:center;')  
+                       .col-xs-12
+                         h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items 
+      footer.footer(style='min-height:100px;background-color:#222;padding-top:20px;padding-bottom:20px;margin-top:100px;')
+        .container 
+          .row(style='text-align:center;color:white;')
+            .col-xs-12
+              .socialbtns.fxd(style='margin:auto:margin-top:5px;margin-bottom:5px;')
+                a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+                a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+                a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+                a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+              h5(style='color:#555;font-weight:200;') People and books |
+                span 
+                  a(href='mailto:main@peopleandbooks.com')  Contact us
+              h5(style='color:#555;font-weight:200;') 2015
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
