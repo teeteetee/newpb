@@ -133,7 +133,7 @@ head
     width:193px;
     height:193px;
     border:7px dotted #eee;
-    bakcground-color:white;
+    background-color:white;
     border-radius:50%;
     }
     .emptybook {
@@ -765,6 +765,11 @@ head
     .label-movie {
       background-color:#286090;
     }
+    .label-good {
+      background-color:#FF577C;
+      margin-left:10px;
+      margin-right:10px;
+    }
     .week .col-xs-12{
       background-color:#fbfbfb;
       color:#ddd;
@@ -788,9 +793,6 @@ head
     /*.good {
       background-color:#E0F2FB;
     }*/
-    .good .label {
-     background-color:#c35;
-    }
     .good small {
       color:gray;
     }
@@ -1109,8 +1111,8 @@ head
         $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle pull-left' ></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarbig').prepend("<div id='emptyavatar' class='img-circle pull-left' ></div>");
+        $('#avatarsmall').prepend("<div id='emptyavatar' style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
       //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
@@ -1241,7 +1243,7 @@ head
                  switch(true){
                    case(element.goodbook&&!element.newbook):
                    console.log('1st case');
-                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:20px;font-weight:200;'> BOOK </span>"+element.title.capitalizeFirstLetter()+"</h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:20px;font-weight:200;'> BOOK </span><span class='label good' style='margin-right:20px;font-weight:200;'> GOOD </span>"+element.title.capitalizeFirstLetter()+"</h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
                    break
                    case(element.newbook&&!element.goodbook):
                    console.log('2st case');
@@ -1270,7 +1272,7 @@ head
               switch(true){
                    case(element.goodmovie&&!element.newmovie):
                    console.log('1st case');
-                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:20px;font-weight:200;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
+                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:20px;font-weight:200;'> MOVIE </span><span class='label good' style='margin-right:20px;font-weight:200;'> GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
                    break
                    case(element.newmovie&&!element.goodmovie):
                    console.log('2st case');
@@ -1299,7 +1301,7 @@ head
                switch(true){
                    case(element.goodlink&&!element.newlink):
                    console.log('1st case');
-                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:20px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,10)+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:20px;font-weight:200;'> LINK </span><span class='label good' style='margin-right:20px;font-weight:200;'> GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,10)+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
                    case(element.newlink&&!element.goodlink):
                    console.log('2st case');
