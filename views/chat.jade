@@ -389,12 +389,18 @@ head
           .modal-footer(style='text-align:center;margin-top:20px;background-color:#222;border-bottom-left-radius:6px;border-bottom-right-radius:6px;')
             a.btn(id='openrespond' style='color:white;background-color:#337AB7;') Respond
     .container-fluid#panel
-      button(type='button' ,id='menu-toggle')
-        span.glyphicon.glyphicon-menu-hamburger
-      .row.visible-lg.visible-md.visible-sm(style='height:50px;')
-      .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          h3#mainheading(style='font-weight:200;color:#ddd;') Messages
+      .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
+        button(type='button' ,id='menu-toggle')
+          span.glyphicon.glyphicon-menu-hamburger
+        .hidden-xs.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+        .col-xs-12.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+          h5.text-center.hidden-xs(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;margin:0px;margin-top: 8px;') People & books
+          h3#mainheading.visible-xs(style='font-weight:200;color:#ddd;') Messages
+      //
+        .row.visible-lg.visible-md.visible-sm(style='height:50px;')
+        .row.visible-xs(style='border-bottom:1px solid #eee;text-align:center;padding-bottom:10px;')
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+            h3#mainheading(style='font-weight:200;color:#ddd;') Messages
       .row
         .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1#discussions
           #noitems.row(style='text-align:center;')  
