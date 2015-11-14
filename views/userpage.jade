@@ -1282,7 +1282,7 @@ head
                  switch(true){
                    case(element.goodbook&&!element.newbook):
                    console.log('1st case');
-                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span><span class='label label-good'>GOOD</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span><span class='label label-good hidden-xs' > GOOD </span>"+element.title.capitalizeFirstLetter()+"</h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+authors_insert+"</h5></div></div>";
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span><span class='label label-good'>GOOD</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span><span class='label label-good hidden-xs' > GOOD </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+authors_insert+"</h5></div></div>";
                    break
                    case(element.newbook&&!element.goodbook):
                    console.log('2st case');
