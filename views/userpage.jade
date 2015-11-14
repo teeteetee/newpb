@@ -759,6 +759,9 @@ head
     border-top-right-radius: 6px;
     background-color: #333;
     }
+    .label {
+      font-weight:200;
+    }
     .label-book {
       background-color:#3BBDB7;
     }
@@ -1245,15 +1248,15 @@ head
                  switch(true){
                    case(element.goodbook&&!element.newbook):
                    console.log('1st case');
-                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:20px;font-weight:200;'> BOOK </span><span class='label label-good' style='margin-right:20px;font-weight:200;'> GOOD </span>"+element.title.capitalizeFirstLetter()+"</h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' > BOOK </span><span class='label label-good' > GOOD </span>"+element.title.capitalizeFirstLetter()+"</h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
                    break
                    case(element.newbook&&!element.goodbook):
                    console.log('2st case');
-                   insert = "<div class='row item new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:20px;font-weight:200;'> BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
+                   insert = "<div class='row item new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' > BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
                    break
                    case(!element.newbook&&!element.goodbook):
                    console.log('3st case');
-                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' style='margin-right:20px;font-weight:200;'> BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
+                   insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' style='margin-left:15px;'><span class='label label-book' > BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='margin-left:80px;'>"+authors_insert+"</h5></div></div>";
                    break
                  }   
                 var weeknum = new Date(parseInt(element.tmstmp));
@@ -1274,15 +1277,15 @@ head
               switch(true){
                    case(element.goodmovie&&!element.newmovie):
                    console.log('1st case');
-                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:20px;font-weight:200;'> MOVIE </span><span class='label label-good' style='margin-right:20px;font-weight:200;'> GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
+                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' > MOVIE </span><span class='label label-good' > GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
                    break
                    case(element.newmovie&&!element.goodmovie):
                    console.log('2st case');
-                   insert = "<div class='row item new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:20px;font-weight:200;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
+                   insert = "<div class='row item new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' > MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
                    break
                    case(!element.newmovie&&!element.goodmovie):
                    console.log('3st case');
-                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' style='margin-right:20px;font-weight:200;'> MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
+                   insert = "<div class='row item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='mtitle"+element._id+"' style='margin-left:15px;'><span class='label label-movie' > MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.year+"</h5></div></div>";
                    break
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
@@ -1303,15 +1306,15 @@ head
                switch(true){
                    case(element.goodlink&&!element.newlink):
                    console.log('1st case');
-                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:20px;font-weight:200;'> LINK </span><span class='label label-good' style='margin-right:20px;font-weight:200;'> GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,10)+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' > LINK </span><span class='label label-good' > GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,10)+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
                    case(element.newlink&&!element.goodlink):
                    console.log('2st case');
-                   insert = "<div class='row item new link"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:20px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   insert = "<div class='row item new link"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' > LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
                    case(!element.newlink&&!element.goodlink):
                    console.log('3st case');
-                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' style='margin-right:20px;font-weight:200;'> LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   insert = "<div class='row item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='atitle"+element._id+"' style='margin-left:15px;'><span class='label label-link' > LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;'>"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"' style='margin-left:80px;'>"+element.link.substring(0,30)+"..</h5></div></div>";
                    break
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
