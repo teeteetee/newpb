@@ -250,7 +250,7 @@ head
       }
       }
       @media (max-width: 767px) {
-      .item {
+      .bookpadding {
         padding-bottom:5px;
         padding-top:10px;
       }
@@ -1279,21 +1279,22 @@ head
         }     
       //----------------------------//
       function redactbookmodal (i) {
-        $('#addbook').prop('disabled',false).text('Add to my list');
+        $('#addbook').prop('disabled',false).text('Add to my list').css('background-color','#2d2d2d');
         if(b_checkagainst.indexOf(consolidated[i]._id.toString())>-1) {
-          $('#addbook').text('Already on the list');
+          $('#addbook').css('background-color','#1A6302');
+          $('#addbook').text('Already on your list');
           $('#addbook').prop('disabled',true);
         }
         console.log('title: '+consolidated[i].title);
-        console.log('author: '+consolidated[i].author);
+        console.log('author: '+consolidated[i].authors);
         $('#modaltitle').text(consolidated[i].title);
-        $('#modalauthor').text(consolidated[i].author);
+        $('#modalauthor').text(consolidated[i].authors);
         var insert = 'addbook('+i+')';
         $('#addbook').attr('onclick',insert);
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
-        $('#addmovie').prop('disabled',false).text('Add to my list');
+        $('#addmovie').prop('disabled',false).text('Add to my list').css('background-color','#2d2d2d');
         if(m_checkagainst.indexOf(consolidated[i]._id.toString())>-1){
           $('#addmovie').text('Already on the list');
             $('#addmovie').prop('disabled',true);
@@ -1305,7 +1306,7 @@ head
         $('#moviemodal').modal('show');
       }
       function redactlinkmodal (i) {
-        $('#addlink').prop('disabled',false).text('Add to my list');
+        $('#addlink').prop('disabled',false).text('Add to my list').css('background-color','#2d2d2d');
         if(a_checkagainst.indexOf(consolidated[i]._id.toString())>-1){
           $('#addlink').text('Already on the list');
             $('#addlink').prop('disabled',true);
