@@ -25,15 +25,18 @@ head
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       #panel {
-      padding-top:110px;
       min-height:100vh;
       background-color:white;
       }
+      .second_row{
+        margin-top:50px;
+        margin-bottom:50px;
+      }
       body {
-      width: 100%;
-      height: 100%;
-      font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size:14;
+        width: 100%;
+        height: 100%;
+        font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size:14;
       }
       .slideout-menu {
         background-color: #1D1F20;
@@ -110,6 +113,11 @@ head
         color:#fff !important;
         text-decoration: none;
       }
+      .menu-section-list .active a {
+        background-color: rgba(255, 255, 255, 0.1);
+        color:#fff !important;
+        text-decoration: none;
+      }
       #userimg {
       width:100%;
       max-width:200px;
@@ -119,23 +127,26 @@ head
       display:block;
       }
       #emptyavatar {
+      margin:30px;
+      margin-left:50px;
+      margin-right:50px;
       width:193px;
       height:193px;
       border:7px dotted #eee;
-      bakcground-color:white;
+      background-color:white;
       border-radius:50%;
       }
       .emptybook {
       padding-left:23px;
       }
-      .book h4 {
+      .item h4 {
       color:black;
       }
-      .book .col-xs-12 {
+      .item .col-xs-12 {
       border-bottom: 1px solid #eee;
       }
       .new{
-        border-left:10px solid #333;
+        border-left:10px solid #868686;
       }
       #booklist {
       border-top-right-radius:10px;
@@ -153,19 +164,81 @@ head
         padding-bottom:100px;
       } 
       .dot-sm {
-        color:#2E98F3;
-        margin-right:13px;
+        color:#ff6f02;
+        margin-right:6px;
+      }
+      .autocomp {
+      display:none;
+      background-color: white;
+      border-radius: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-top:3px;
+      padding-bottom:3px;
+      border: 1px solid #ddd;
+      position: absolute;
+      max-width: 510;
+      width: 100%;
+      box-shadow: 1px 7px 30px #A09F9F;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .sritem:hover {
+       background-color:#23A8E2;
+       color:white;
+      }
+      .sritem {
+        padding-top:3px;
+        padding-bottom:3px;
+      }
+      .incm {
+        margin-top:20px;
+      }
+      .week:first-child .col-xs-12 {
+        border-top:1px solid #eee;
+      }
+      .item h3 {
+        margin-top:15px;
+        margin-bottom:15px;
+        margin-left:15px;
+      }
+      .label-link {
+        background-color:#7dbfe6;
+        padding-left:19px;
+        padding-right:16px;
+        margin-right:15px;
+      }
+      .read .col-xs-12 {
+        padding-left:25px;
+      }
+      .item h5 {
+        color:#ddd;
+        margin-top:0px;
+        margin-bottom: 20px;
+      }
+      .item h3 small {
+        color:#ddd;
+        margin-left: 15;
+      }
+      /*.good {
+        background-color:#E0F2FB;
+      }*/
+      .good small {
+        color:gray;
+      }
+      .good h5 {
+        color:gray;
+        font-weight:200;
       }
       @media (max-width: 992px) {
-      #emptyavatar2 {
-        margin:10px;
-        height:130px;
-        width:130px;
+      .label-link {
+        background-color:#7dbfe6;
+        padding-left:10px;
+        padding-right:10px;
       }
-      #userimg2 {
-      height:130px;
-      width:130px;
-      margin:10px;
+      .item h3 {
+        font-size:15;
+        margin-top:15px;
+        margin-bottom: 5px;
       }
       #booklist {
       border-bottom-left-radius:10px;
@@ -178,17 +251,43 @@ head
       }
       }
       @media (max-width: 767px) {
-      #panel {
-      padding-top:80px;
+      .read h3,.read h5 {
+        margin-left:25px;
+      }
+      .new h3,.new h5 {
+        margin-left:15px;
+      }
+      .read .col-xs-12 {
+      padding-left: 0px;
+      }
+      .bookpadding {
+        padding-right:10px;
+        padding-left:0px;
+      }
+      .row.item {
+        margin-left:0px;
+        margin-right:0px;
+      }
+      .week:first-child .col-xs-12 {
+        border-top:none;
+      }
+      .week {
+        font-weight:200;
+        letter-spacing:1px;
+      }
+        .incm {
+        margin-top:40px;
+      }
+      .second_row {
+      margin-top:30px;
+      margin-bottom:30px;
+      }
+      .autocomp {
+      font-size:20px;
+      width:90%;
       }
       .dot-sm {
-        color:white;
-      }
-      li a {
-        font-size:20px;
-        letter-spacing:1px;
-        padding-top:15px !important;
-        padding-bottom:15px !important;
+        color:transparent;
       }
       #mainframe {
       margin-top:0px;
@@ -196,7 +295,7 @@ head
       .new{
         border-color:#ccc;
       }
-      #bigscreens .book {
+      #bigscreens .item {
       border-bottom:1px solid #eee;
       text-align:center;
       padding-left:15px;
@@ -234,6 +333,19 @@ head
       @font-face{
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
       }
       .thin {
       height:85%;
@@ -303,14 +415,15 @@ head
         display:none;
       }
       button:focus,button:active {
-       outline: none !important;
+         outline: none !important;
       }
       .btn-default:focus,.btn-default:active {
          background-color:white;
          border-color:#ccc;
       }
-      label {
+      .modal label {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13;
       }
       .loader {
       margin: 60px auto;
@@ -353,29 +466,6 @@ head
           -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
         }
-      }
-      .autocomp {
-      display:none;
-      background-color: white;
-      border-radius: 3px;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-top:3px;
-      padding-bottom:3px;
-      border: 1px solid #ddd;
-      position: absolute;
-      max-width: 510;
-      width: 100%;
-      box-shadow: 1px 7px 30px #A09F9F;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .sritem:hover {
-       background-color:#23A8E2;
-       color:white;
-      }
-      .sritem {
-        padding-top:3px;
-        padding-bottom:3px;
       }
       #testinsert {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -457,63 +547,72 @@ head
         background-color:white;
         color:#333;
       }
+      .modal-sm .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#2d2d2d;
+      }
+      .modal-sm .btn-iosdark:hover {
+        background-color:#424242;
+      }
+      .btn-ioslight {
+        background-color:transparent;
+        border:1px solid white;
+        color:white;
+      }
+      .btn-ioslight:focus, .btn-ioslight:active, .btn-ioslight:hover {
+        background-color:white;
+        color:#333;
+      }
+      .btn-ioslight.active {
+        background-color:white;
+        color:#333;
+      }
       .btn-iosprimary {
         background-color:white;
-        border:1px solid #4197E2;
-        color:#4197E2;
+        border:1px solid #ff6f02;
+        color:#ff6f02;
       }
       .btn-iosprimary:focus, .btn-iosprimary:active, .btn-iosprimary:hover {
-        background-color:#4197E2;
+        background-color:#ff6f02;
         color:white;
       }
       .btn-iosprimary.iosactive {
-        background-color:#4197E2;
+        background-color:#ff6f02;
         color:white;
       }
-      .btn-primary:focus, btn.primary:active, .btn-primary:hover {
-        border-color:#2988DA;
-        background-color:#2988DA;
+      .btn-modal:focus, .btn-modal:active, .btn-modal:hover {
+       background-color: white;
+       border-color: white;
+       color: #FF6F02;
+      }
+      .btn-modal{
+        background-color: white;
+        border-color: white;
+        color: #FF6F02;
+        font-size:20px;
+      }
+      .btn-primary:focus, .btn-primary:active, .btn-primary:hover {
+        background-color: #FF6F02;
+        border-color: #FF6F02;
       }
       .btn-primary{
-        background-color:#2E98F3;
-        border-color:#2E98F3;
+        background-color: #FF6F02;
+        border-color: #FF6F02;
       }
       .medialeft > img {
         width:64px !important;
         height:64px !important;
       }
-      #bigscreens > .book {
-
+      #bigscreens > .item {
+        max-width:1000px;
+        margin:auto;
       }
-      #bigscreens > .book > .bookpadding {
+      #bigscreens > .item > .bookpadding {
        padding-top:10px;
       padding-bottom:10px;
       }
-      .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-        color:white !important;
-        background-color:#ddd ;
-      }
-       .nav-pills>li>a:focus, .nav-pills>li>a:hover {
-        color:#c7c6c6 !important;
-      }
-      .nav-pills>li>a .badge {
-        font-weight:500;
-        color:white;
-        background-color:#c7c6c6;
-      }
-      .nav-pills>li>a {
-        color:#c7c6c6;
-      }
-      .nav-pills>li.active>a .badge {
-        color:#c7c6c6;
-      }
       h3 {
-        font-weight:200;
-      }
-      a {
-        color:#333;
-      }
-      .navbar-inverse .navbar-nav>li>a {
         font-weight:200;
       }
       .read {
@@ -521,7 +620,7 @@ head
       .btn-default .badge {
         background-color:white;
         color:#c7c6c6;
-        font-weight:400;
+        font-weight:500;
       }
       .btn-default .active .badge {
         background-color:white;
@@ -540,24 +639,15 @@ head
         -webkit-box-shadow:none;
         box-shadow:none;
       }
-      .centered-pills { text-align:center; }
-      .centered-pills ul.nav-pills { display:inline-block; }
-      .centered-pills li { display:inline; }
-      .centered-pills a { float:left; }
-      * html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
-      *+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
-      .btn {
-        text-transform:uppercase;
-        letter-spacing:2px;
+      .bs-example-modal-sm .btn {
       }
-      #smallscreens h3 {
-        font-size:18px;
+      .modal-body.visible-xs .btn {
       }
       .modal-sm .modal-body .btn {
-      height:50px;
-      border-radius:0px;
-      border-bottom:1px solid #4e4e4e;
-      color:white;
+        height:50px;
+        border-radius:0px;
+        border-bottom:1px solid #4e4e4e;
+        color:white;
       }
       h4 {
         word-wrap:break-word;
@@ -568,8 +658,8 @@ head
       }
       .modal-sm .modal-body .btn:last-child {
         border:none;
-        border-bottom-left-radius:4px;
-        border-bottom-right-radius:4px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
       }
       .modal-sm .modal-body {
         padding:0px;
@@ -586,6 +676,9 @@ head
       .label-primary {
         background-color:#333;
       }
+      a.form-control {
+        height:inherit;
+      }
       .modal-header {
         border:none;
       }
@@ -593,52 +686,93 @@ head
         border:none;
         box-shadow:none;
       }
-      .movies, .books, .articles {
+      .lead {
+        margin-bottom:30px;
+      }
+      .items {
         padding-bottom:30px;
-      }
-      .btn-modal{
-      background-color: white;
-      border-color: white;
-      color: #FF6F02;
-      font-size:20px;
-      }
-      .btn-modal:active.btn-modal:focus{
-      color: #028AFF;
       }
       #menu-toggle {
       transition: color 1s ease;
       background-color: transparent;
       border: none;
       position: absolute;
-      top: 20px;
+      top: 16px;
       left: 20px;
-      color: #333;
+      color: #b7b7b7;
       font-size: 30;
+      z-index:2;
+      }
+      #search-toggle {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      color: #b7b7b7;
+      font-size: 30;
+      z-index:2;
+      }
+      .btn {
+        text-transform:uppercase;
+        letter-spacing:2px;
+      }
+      .socialbtns li {
+            list-style: none outside none;
+            display: inline-block;
       }
       .socialbtns .fa {
-      width: 35px;
-      height: 35px;
-      margin-left:5px;
-      margin-right:5px;
-      background-color: #FFF;
-      padding-top: 11px;
-      border-radius: 22px;
-      -moz-border-radius: 22px;
-      -webkit-border-radius: 22px;
-      -o-border-radius: 22px;
+        width: 35px;
+        height: 35px;
+        margin-left:5px;
+        margin-right:5px;
+        background-color: #FFF;
+        padding-top: 11px;
+        border-radius: 22px;
+        -moz-border-radius: 22px;
+        -webkit-border-radius: 22px;
+        -o-border-radius: 22px;
       }
       #menu .socialbtns .fa {
-        color:#333;
+        color:white;
+        background-color:rgba(80,110,148,1);
       }
       .fxd .fa {
         border: 1px solid #ddd;
         color:#ddd;
       }
-      .fxd .fa:hover {
+      nav .fxd .fa:hover {
         color: white !important;
         background-color: black;
         border: 1px solid black;
       }
+      footer .fxd .fa {
+        transition: box-shadow 0.5s ease;
+        border: 1px solid #565656;;
+        color:#494949;
+        background-color:#222;
+      }
+      footer .fxd .fa-google-plus:hover {
+      border-color: #d9534f ;
+      color: #d9534f ;
+      box-shadow: 0px 0px 10px 0px #d9534f ;
+      }
+      footer .fxd .fa-twitter:hover {
+      border-color: #3BBBFB ;
+      color: #3BBBFB ;
+      box-shadow: 0px 0px 10px 0px #3BBBFB ;
+      }
+      footer .fxd .fa-facebook:hover {
+      border-color: #3A5795;
+      color: #3A5795;
+      box-shadow: 0px 0px 10px 0px #3A5795;
+      }
+      footer .fxd .fa-vk:hover {
+          border-color: #6383A8;
+      color: #6383A8;
+      box-shadow: 0px 0px 10px 0px #6383A8;
+      }
+      /*
       .fxd .fa-vk {
         padding-left:6px;
       }
@@ -651,8 +785,50 @@ head
       .fxd .fa-google-plus {
         padding-left:9px;
       }
-      .read .col-xs-12 {
-      padding-left:25px;
+      */
+      input.form-control {
+        border-color:black;
+      }
+      #addbook .modal-header {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background-color: #333;
+      }
+      .label {
+        font-weight:200;
+      }
+      .label-book {
+        background-color:#3BBDB7;
+        margin-right:15px;
+      }
+      .label-movie {
+        background-color:#286090;
+        margin-right:15px;
+      }
+      .good .label-movie,.good .label-link,.good .label-book {
+        margin-right:10px;
+      }
+      .label-good {
+        background-color:#FF577C;
+        margin-right:20px;
+      }
+      .week .col-xs-12{
+        background-color:#fbfbfb;
+        color:#ddd;
+        text-align:center;
+        border-bottom:1px solid #eee;
+      }
+      .wrap span {
+        top: 2px;
+      right: 21px;
+      color:#ccc;
+      }
+      .modal-body a.btn {
+        padding-top:15px;
+      }
+      .week h5 {
+        margin-top:10px;
+        margin-bottom:10px;
       }
       textarea.form-control {
         border-color:#333;
@@ -689,16 +865,16 @@ head
             h4(id='modalmovietitle' style='text-align:center;')
             h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
             button(class='btn btn-iosdark  form-control' id='addmovie' style='margin-top:5px;margin-bottom:5px;') Add to my list
-    .modal.fade.bs-example-modal-sm(id='articlemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
           .modal-body
-            h4(id='modalarticletitle' style='text-align:center;')
+            h4(id='modallinktitle' style='text-align:center;')
             h4(id='modallink' style='color:gray;text-align:center;font-size:15px;' class='lead')
-            button(class='btn btn-iosdark  form-control' id='addarticle' style='margin-top:5px;margin-bottom:5px;') Add to my list
+            button(class='btn btn-iosdark  form-control' id='addlink' style='margin-top:5px;margin-bottom:5px;') Add to my list
     .modal.fade(id="sendmsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -715,105 +891,94 @@ head
         .col-xs-12(style='text-align:center;')
           .loader
     nav#menu.menu 
-      section.menu-section(style='text-align:center;')
-        h3
-          span(class='label' style='font-family:times,serif;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
-      section.menu-section
-        ul.menu-section-list    
-          li
-            a(href="/") My lists
-          li
-            a(href="/people" id='pbutton') People
-          li 
-            a(href='/messages' id='mbutton') Messages
-          li
-            a(href="/settings") Settings
-          li
-            a(href="/logout") Logout
-      section.menu-section.visible-xs(style='text-align:center;')
-        ul.socialbtns(style='display:inline;margin-right:20px;margin-top:50px;padding-left:0px;')
-          li
-            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-          li
-            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-          li
-            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-          li
-            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg') 
-    .container-fluid#panel
-      .socialbtns.fxd.hidden-xs(style='position:absolute;top:20px;right:20px;z-index:1000;')
-        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
-      button(type='button' ,id='menu-toggle')
-        span.glyphicon.glyphicon-menu-hamburger
-      .row.visible-lg.visible-md.visible-sm
-        .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-          .row
-            #avatarbig.col-xs-12(style='text-align:center;')         
-              h2(style='margin-top:30px;' class='usernick')  ...
-          .row(style='margin-bottom:20px;margin-top:60px;text-align:center;')
+        section.menu-section(style='text-align:center;')
+          h3
+            span(class='label' style='font-weight:200;font-family:times,serif;font-weight:200;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.3);font-style:italic') alpha
+        section.menu-section
+          ul.menu-section-list    
+            li.active
+              a(href="/" id='lists') My lists
+            li
+              a(href="/people" id='pbutton') People
+            li 
+              a(href='/messages' id='mbutton') Messages
+            li
+              a(href="/settings" id='settings') Settings
+            li
+              a(href="/logout" id='logout') Logout         
+      .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+        .row(id='spin') 
+          .col-xs-12(style='text-align:center;')
+            .loader
+      .container-fluid#panel
+        .row(style='min-height:68px;background-color:#f8f8f8;text-align:center;border-bottom:1px solid #ddd;padding-top:20px;padding-bottom:20px;')
+          button(type='button' ,id='menu-toggle')
+            span.glyphicon.glyphicon-menu-hamburger
+          .hidden-xs.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+          .col-xs-12.col-sm-4.col-md-4.col-lg-4(style='text-align:center;')
+            h5.text-center(style='font-family:boldproxima;text-transform:uppercase;letter-spacing:2px;color:#aaa;margin:0px;margin-top: 8px;') People & books
+          .col-sm-4.col-md-4.col-lg-4.hidden-xs(style='text-align:center;')
+        .row(style='display:none;padding-top:40px;padding-bottom:40px;background-color:rgb(180, 208, 218);',id='searchrow')
+          .col-xs-12
+            input(type='text' class='form-control' style='height:60px;border:none;border-radius:30px;font-size: 24;' placeholder='Search')
+        .row.visible-lg.visible-md.visible-sm.second_row
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
+            .row
+              #avatarbig.col-xs-12     
+                h2(style='margin-top:30px;' class='usernick')  ...
+                .btn-gruop
+                  button.btn.btn-iosdark.follow(type='button' style='font-weight:200;margin-top:20px;') Follow
+                  button.btn.btn-iosdark.chatwith(type='button' style='font-weight:200;margin-top:20px;') Chat
+                h4(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                  span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
+                  | books
+                  span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                  | movies
+                  span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                  | links
+        .row
+          #booklist.thun.col-md-12
+            .row.visible-xs
+              #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:50px;text-align:center;')                                
+                //h4.numbers                 
+                .btn-gruop
+                  button.btn.btn-iosdark.follow(type='button' style='font-weight:200;margin-top:20px;') Follow
+                  button.btn.btn-iosdark.chatwith(type='button' style='font-weight:200;margin-top:20px;') Chat
+                .row 
+                  .col-xs-12
+                    h5(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                      span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
+                      | books
+                      span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      | movies
+                      span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      | links
+        .row
+            #list.row
+              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+                .row.brow
+                  .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                    .noitems.row(style='text-align:center;')  
+                       .col-xs-12
+                         h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items  
+                .row.brow
+                  #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                    .noitems.row(style='text-align:center;')  
+                       .col-xs-12
+                         h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items 
+      footer.footer(style='min-height:100px;background-color:#222;padding-top:20px;padding-bottom:20px;margin-top:100px;')
+        .container 
+          .row(style='text-align:center;color:white;')
             .col-xs-12
-              .btn-group(style='margin-right:15px;box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
-                button.btn.btn-iosdark.follow(type='button') Follow
-                button.btn.btn-iosdark.chatwith(type='button') Chat
-              .btn-group(style='box-shadow: 1px 5px 10px 1px #DADADA;border-radius:4px;')
-                button.btn.btn-iosdark.showbooks.active(type='button')  Books
-                  span(class='badge booknum' style='margin-left:10px;') 0
-                button.btn.btn-iosdark.showmovies(type='button')  Movies
-                  span(class='badge movienum' style='margin-left:10px;') 0
-                button.btn.btn-iosdark.showarticles(type='button') Links
-                  span(class='badge articlenum' style='margin-left:10px;') 0
-      .row
-        #booklist.thun.col-md-12
-          .row.visible-xs
-            #avatarsmall.col-xs-12(style='min-width:100px;padding-bottom:10px;padding-top:20px;text-align:center;')                                
-              //h4.numbers  
-              .btn-group.btn-group-lg(style='margin-bottom:20px;margin-top:30px;')             
-                button.btn.btn-iosdark.follow(type='button') Follow
-                button.btn.btn-iosdark.chatwith(type='button') Chat
-              .row 
-                .col-xs-12
-                  .btn-group.btn-group-lg(style='margin-top:20px;margin-bottom:20px;')
-                    .btn.btn-iosdark.active.showbooks(type='button') B
-                      span(class='badge booknum' style='margin-left:10px;') 0
-                    .btn.btn-iosdark.showmovies(type='button') M
-                      span(class='badge movienum' style='margin-left:10px;') 0
-                    .btn.btn-iosdark.showarticles(type='button') L
-                      span(class='badge articlenum' style='margin-left:10px;') 0
-          #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1
-              .row.mrow
-                .col-xs-12.visible-lg.visible-md.visible-sm.movies#bigscreens
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.books#bigscreens
-                  .nobooks.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items  
-              .row.arow
-                .col-xs-12.visible-lg.visible-md.visible-sm.articles#bigscreens
-                  .noarticles.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items
-              .row.brow
-                #smallscreens.visible-xs.col-xs-12.books(style='border-top:1px solid #eee;')         
-                  .nobooks.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.mrow
-                #smallscreens.visible-xs.col-xs-12.movies(style='border-top:1px solid #eee;')       
-                  .nomovies.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
-              .row.arow
-                #smallscreens.visible-xs.col-xs-12.articles(style='border-top:1px solid #eee;')       
-                  .noarticles.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2(style='color:#ccc;margin-bottom:20px;') No items 
+              .socialbtns.fxd(style='margin:auto:margin-top:5px;margin-bottom:5px;')
+                a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+                a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+                a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+                a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+              h5(style='color:#555;font-weight:200;') People and books |
+                span 
+                  a(href='mailto:main@peopleandbooks.com')  Contact us
+              h5(style='color:#555;font-weight:200;') 2015
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -832,9 +997,28 @@ head
       $(document).on('click', '.social_share', function(){
           Share.go(this);
       });
+      var lang = '#{lang}';
+      if(user.lang==='ru'){
+        $('#lists').text('Мои списки')
+        $('#mbutton').text('Сообщения');
+        $('#pbutton').text('Чужие списки');
+        $('#settings').text('Настройки');
+        $('#logout').text('Выход');
+        $('.noitems_text').text('Список пуст');
+        $('.openadd').text('Добавить');
+      }
+      else {
+        $('#lists').text('My lists')
+        $('#mbutton').text('Messages');
+        $('#pbutton').text('People');
+        $('#settings').text('Settings');
+        $('#logout').text('Logout');
+        $('.noitems_text').text('No items');
+        $('.openadd').text('Add item');
+      }
       var b_checkagainst = !{JSON.stringify(bookstorecheck)};
       var m_checkagainst = !{JSON.stringify(moviestorecheck)};
-      var a_checkagainst = !{JSON.stringify(articlestorecheck)};
+      var a_checkagainst = !{JSON.stringify(linkstorecheck)};
       if(!b_checkagainst){b_checkagainst=[];} 
       if(!m_checkagainst){m_checkagainst=[];} 
       if(!a_checkagainst){a_checkagainst=[];} 
@@ -855,16 +1039,16 @@ head
       //$('.chatwith').attr('onclick',tmp_string);
       //var contacts = #{contacts};
       if(avatar) {
-        $('#avatarbig').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img>");
-        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarbig').prepend("<img id='userimg' class='img-circle pull-left' style='box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img>");
+        $('#avatarsmall').prepend("<img id='userimg' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;' src='/userpics/"+user._id+".png'></img><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       else {
-        $('#avatarbig').prepend("<div id=emptyavatar class='img-circle' style='margin:auto !important;'></div>");
-        $('#avatarsmall').prepend("<div id=emptyavatar style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:10px;font-weight:500;'>"+user.nick+"</h3>");
+        $('#avatarbig').prepend("<div id='emptyavatar' class='img-circle pull-left' ></div>");
+        $('#avatarsmall').prepend("<div id='emptyavatar' style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
       $('.booknum').text(user.readbooks);
       $('.movienum').text(user.seenmovies);
-      $('.articlenum').text(user.readarticles);
+      $('.linknum').text(user.readlinks);
       $.ajax({
               method: "POST",
               url: "/ntfc_m",
@@ -885,55 +1069,16 @@ head
                   $('#menu-toggle').css('color','#37AFD6');
                 }
                });
-      //$('.numbers').append(user.readbooks+"<span style='color:#ddd;'> / </span>"+user.seenmovies);
-      //$('#bookstitle').empty().append("<span style='color:#b76e00;'>"+user.readbooks+"</span")
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
-      $('.showbooks').click(function(){
-        if($('.brow').css('display')==='none'){
-          console.log('show brow');
-          $('.showarticles').removeClass('active');
-          $('.showmovies').removeClass('active');
-          $('.showbooks').addClass('active');
-          $('.brow').css('display','block')
-          $('.mrow').css('display','none');
-          $('.arow').css('display','none');
-        }
-        });
-      $('.showmovies').click(function(){
-        if($('.mrow').css('display')==='none'){
-          console.log('show mrow');
-          $('.showarticles').removeClass('active');
-          $('.showbooks').removeClass('active');
-          $('.showmovies').addClass('active');
-          $('.mrow').css('display','block')
-          $('.brow').css('display','none');
-          $('.arow').css('display','none');
-        }
-        });
-      $('.showarticles').click(function(){
-        if($('.arow').css('display')==='none'){
-          console.log('show arow');
-          $('.showmovies').removeClass('active');
-          $('.showbooks').removeClass('active');
-          $('.showarticles').addClass('active');
-          $('.brow').css('display','none')
-          $('.mrow').css('display','none');
-          $('.arow').css('display','block');
-        }
-        });
        //------------------//
        var books=user.bookstore;
        var movies=user.moviestore;
-       var articles = user.articlestore;
-       var modal_data_store=[];
-       var movie_modal_data_store=[];
-       var article_modal_data_store=[];
+       var links = user.linkstore;
        //------------------//
        //GETTIMESTAMP  gets timestamp upon which new items will be marked, so it runs first starting the cascade
       var general_tmstmp;
-      function gettimestamp() {
         $.ajax({
          method: "POST",
          url: "/gettimestamp/#{user}",
@@ -945,97 +1090,93 @@ head
            if(!general_tmstmp) {
             general_tmstmp = Date.now();
            }
+          books=msg.doc.bookstore;
           if(!books || !books.length) {
-          console.log('no books');
-          }
-          else {
-            console.log(books);
-           getbooks(books);
-          }
+           console.log('no books');
+           }
+           else {
+            books.forEach(function (element,index){
+            element.item_type = 'book';
+            consolidated.push(element);
+            });
+           }
+           movies=msg.doc.moviestore;
           if(!movies || !movies.length) {
-          console.log('no movies');
-          }
-          else {
-            console.log(movies);
-           getmovies(movies);
-          }
-           });
-         if(!articles || !articles.length) {
-          console.log('no articles');
-          }
-          else {
-           populatearticles(articles);
-          }
+           console.log('no movies');
+           }
+           else {
+            movies.forEach(function (element,index){
+            element.item_type = 'movie';
+            consolidated.push(element);
+            });
+           }
+           links=msg.doc.linkstore;
+          if(!links || !links.length) {
+           console.log('no links');
+           }
+           else {
+            links.forEach(function (element,index){
+            element.item_type = 'link';
+            consolidated.push(element);
+            });
+           }
+           if(consolidated.length){
+           sortByKey(consolidated, 'tmstmp');
+           populate(consolidated);
+         }
+       });
+      Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
       }
-      gettimestamp();
-      //function populate () {
-      //$.ajax({
-      //   method: "POST",
-      //   url: "/getbooks/#{user}",
-      //   data: 0
-      // })
-      //   .done(function( msg ) {
-      //     console.log('msg is: '+msg);
-      //     books = msg;
-      //     console.log(JSON.stringify(books));
-      //     count = books.length -1;
-      //     if(!books) {
-      //      //alert('server maintenence \n try again later');
-      //      $('#myModal').modal('show');
-      //     }
-      //     else {
-      //      getbooks(books,count);
-      //     }
-      //     });
-      // }
       function redactbookmodal (i) {
         $('#addbook').prop('disabled',false).text('Add to my list');
-        if(b_checkagainst.indexOf(modal_data_store[i]._id.toString())>-1) {
+        if(b_checkagainst.indexOf(consolidated[i]._id.toString())>-1) {
           $('#addbook').text('Already on the list');
           $('#addbook').prop('disabled',true);
         }
-        console.log('title: '+modal_data_store[i].title);
-        console.log('author: '+modal_data_store[i].author);
-        $('#modaltitle').text(modal_data_store[i].title);
-        $('#modalauthor').text(modal_data_store[i].author);
+        console.log('title: '+consolidated[i].title);
+        console.log('author: '+consolidated[i].author);
+        $('#modaltitle').text(consolidated[i].title);
+        $('#modalauthor').text(consolidated[i].author);
         var insert = 'addbook('+i+')';
         $('#addbook').attr('onclick',insert);
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
         $('#addmovie').prop('disabled',false).text('Add to my list');
-        if(m_checkagainst.indexOf(movie_modal_data_store[i]._id.toString())>-1){
+        if(m_checkagainst.indexOf(consolidated[i]._id.toString())>-1){
           $('#addmovie').text('Already on the list');
             $('#addmovie').prop('disabled',true);
         }
-        $('#modalmovietitle').text(movie_modal_data_store[i].title);
-        $('#modalyear').text(movie_modal_data_store[i].year);
+        $('#modalmovietitle').text(consolidated[i].title);
+        $('#modalyear').text(consolidated[i].year);
         var insert = 'addmovie('+i+')';
         $('#addmovie').attr('onclick',insert);
         $('#moviemodal').modal('show');
       }
-      function redactarticlemodal (i) {
-        $('#addarticle').prop('disabled',false).text('Add to my list');
-        if(a_checkagainst.indexOf(article_modal_data_store[i]._id.toString())>-1){
-          $('#addarticle').text('Already on the list');
-            $('#addarticle').prop('disabled',true);
+      function redactlinkmodal (i) {
+        $('#addlink').prop('disabled',false).text('Add to my list');
+        if(a_checkagainst.indexOf(consolidated[i]._id.toString())>-1){
+          $('#addlink').text('Already on the list');
+            $('#addlink').prop('disabled',true);
         }
-        $('#modalarticletitle').text(article_modal_data_store[i].title);
-        $('#modallink').text(article_modal_data_store[i].link);
-        var insert = 'addarticle('+i+')';
-        $('#addarticle').attr('onclick',insert);
-        $('#articlemodal').modal('show');
+        $('#modallinktitle').text(consolidated[i].title);
+        $('#modallink').text(consolidated[i].link);
+        var insert = 'addlink('+i+')';
+        $('#addlink').attr('onclick',insert);
+        $('#linkmodal').modal('show');
       }
       function addbook(i) {
         var url = '/additem/book_out';
         $.ajax({
          method: "POST",
          url: url,
-         data: 'book_id='+books[i]._id
+         data: 'book_id='+consolidated[i]._id
        })
          .done(function( msg ) {
            console.log('arr length: '+b_checkagainst.length);
-           b_checkagainst.push(books[i]._id);
+           b_checkagainst.push(consolidated[i]._id);
            console.log('arr length after: '+b_checkagainst.length);
            $('#bookmodal').modal('hide');
            console.log('added book');
@@ -1046,25 +1187,25 @@ head
         $.ajax({
          method: "POST",
          url: url,
-         data: 'movie_id='+movies[i]._id
+         data: 'movie_id='+consolidated[i]._id
        })
          .done(function( msg ) {
-          m_checkagainst.push(movies[i]._id);
+          m_checkagainst.push(consolidated[i]._id);
            $('#moviemodal').modal('hide');
            console.log('added movie');
           });
       }
-      function addarticle(i) {
-        var url = '/additem/article_out';
+      function addlink(i) {
+        var url = '/additem/link_out';
         $.ajax({
          method: "POST",
          url: url,
-         data: 'article_id='+articles[i]._id+'&title='+articles[i].title+'&link='+articles[i].link
+         data: 'link_id='+consolidated[i]._id+'&title='+consolidated[i].title+'&link='+consolidated[i].link
        })
          .done(function( msg ) {
-          a_checkagainst.push(articles[i]._id);
-           $('#articlemodal').modal('hide');
-           console.log('added article');
+          a_checkagainst.push(consolidated[i]._id);
+           $('#linkmodal').modal('hide');
+           console.log('added link');
           });
       }
       function getbooks(books) {
@@ -1103,30 +1244,14 @@ head
               case(element.goodbook&&!element.newbook):
               console.log('1st case');
               insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:37px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook._id = element._id;
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
               break
               case(element.newbook&&!element.goodbook):
               console.log('2st case');
               insert = "<div class='row book new' id='book"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook._id = element._id;
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
-              console.log(modal_data_store);
               break
               case(!element.newbook&&!element.goodbook):
               console.log('3st case');
               insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              var thisbook={};
-              thisbook._id = element._id;
-              thisbook.author = authors_insert;
-              thisbook.title = element.title.capitalizeFirstLetter();
-              modal_data_store.push(thisbook);
               break
             }         
            if(!prepend){$('.books').append(insert);}
@@ -1160,29 +1285,14 @@ head
               case(element.goodmovie&&!element.newmovie):
               console.log('1st case');
               insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"'  "+new_indicator_part_3+">"+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie._id = element._id;
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
               break
               case(element.newmovie&&!element.goodmovie):
               console.log('2st case');
               insert = "<div class='row book new' id='movie"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie._id = element._id;
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
               break
               case(!element.newmovie&&!element.goodmovie):
               console.log('3st case');
               insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              var thismovie={};
-              thismovie._id = element._id;
-              thismovie.year = element.year;
-              thismovie.title = element.title.capitalizeFirstLetter();
-              movie_modal_data_store.push(thismovie);
               break
             }         
            if(!prepend){$('.movies').append(insert);}
@@ -1190,19 +1300,19 @@ head
         });
       }
       //---------------------------------//
-      function populatearticles(articles) {
+      function populatelinks(links) {
         
-        for(var xx=articles.length-1;xx>=0;xx--){
-            if ($(".noarticles")[0])
-            { $('.articles').empty();}
+        for(var xx=links.length-1;xx>=0;xx--){
+            if ($(".nolinks")[0])
+            { $('.links').empty();}
             var new_indicator_part_1 =' ';
             var new_indicator_part_2 =' ';
             var new_indicator_part_3 ="style='margin-left:25px;'";
             var prepend = 0;
-            if(articles[xx].newarticle){
+            if(links[xx].newlink){
               new_indicator_part_3 = "style='margin-left:25px;' ";
             }
-            if(parseInt(articles[xx].tmstmp)>general_tmstmp && unfollow){
+            if(parseInt(links[xx].tmstmp)>general_tmstmp && unfollow){
               console.log('LABELING NEW');
               new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
               new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
@@ -1210,36 +1320,21 @@ head
               prepend=1;
             }
             switch(true){
-              case(articles[xx].goodarticle&&!articles[xx].newarticle):
+              case(links[xx].goodlink&&!links[xx].newlink):
               console.log('1st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small><span class='good label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle._id = articles[xx]._id;
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
+              insert = "<div class='row book read link"+links[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small><span class='good label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
               break
-              case(articles[xx].newarticle&&!articles[xx].goodarticle):
+              case(links[xx].newlink&&!links[xx].goodlink):
               console.log('2st case');
-              insert = "<div class='row book new article"+articles[xx]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle._id = articles[xx]._id;
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
+              insert = "<div class='row book new link"+links[xx]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
               break
-              case(!articles[xx].newarticle&&!articles[xx].goodarticle):
+              case(!links[xx].newlink&&!links[xx].goodlink):
               console.log('3st case');
-              insert = "<div class='row book read article"+articles[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactarticlemodal("+xx+");'><h3 class='atitle"+articles[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+articles[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+articles[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+articles[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+articles[xx].link.substring(0,30)+"..</h5></div></div>";
-              var thisarticle={};
-              thisarticle._id = articles[xx]._id;
-              thisarticle.link = articles[xx].link;
-              thisarticle.title = articles[xx].title.capitalizeFirstLetter();
-              article_modal_data_store.push(thisarticle);
+              insert = "<div class='row book read link"+links[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
               break
             }         
-           if(!prepend){$('.articles').append(insert);}
-           else{$('.articles').prepend(insert);}
+           if(!prepend){$('.links').append(insert);}
+           else{$('.links').prepend(insert);}
          }// for
       }
       //----------------------------//
