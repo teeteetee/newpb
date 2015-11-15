@@ -837,6 +837,12 @@ head
         box-shadow:none;
         border-color:#333;
       }
+      .newitemrow {
+        background-color:#fff9ec;
+      }
+      .newitemrow:hover {
+        background-color:#f7ebdo;
+      }
   body 
     .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -1129,6 +1135,132 @@ head
         var onejan = new Date(this.getFullYear(), 0, 1);
         return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
       }
+      //----------------------------//
+      function populate(consolidated) {
+      var last_item_over = consolidated[consolidated.length-1];
+      var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
+       consolidated.forEach(function (element,index){
+         if ($(".noitems")[0])
+                 { console.log('HAS LENGTH');
+                   $('.items').empty();}
+                 else {
+                   console.log('HASNT GOT LENGTH');
+                 }
+         var insert;
+         switch(element.item_type){
+           case('book'):
+              var authors_insert=' ';
+                 if(element.authors&&element.authors[0]){
+                   element.authors.forEach(function(element2){
+                   authors_insert+='  '+element2;
+                    });
+                   element.authors = authors_insert;
+                 }
+              var new_indicator = "";
+                 if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
+                   console.log('LABELING NEW');
+                   new_indicator = "newitemrow";
+                 }
+                 switch(true){
+                   case(element.goodbook&&!element.newbook):
+                   console.log('1st case');
+                   insert = "<div class='row "+new_indicator+" item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span><span class='label label-good'>GOOD</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span><span class='label label-good hidden-xs' > GOOD </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+authors_insert+"</h5></div></div>";
+                   break
+                   case(element.newbook&&!element.goodbook):
+                   console.log('2st case');
+                   insert = "<div class='row "+new_indicator+" item new book"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs'  >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm'>"+authors_insert+"</h5></div></div>";
+                   break
+                   case(!element.newbook&&!element.goodbook):
+                   console.log('3st case');
+                   insert = "<div class='row "+new_indicator+" item read book"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm'>"+authors_insert+"</h5></div></div>";
+                   break
+                 }   
+                var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek();
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var weekname = '.week'+weeknum;
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g )
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;   
+                $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  $('.items').prepend(week);
+                }
+           break;
+           case('movie'):
+              var new_indicator = '';
+              if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
+              console.log('LABELING NEW');
+              new_indicator= 'newitemrow';
+              }
+              switch(true){
+                   case(element.goodmovie&&!element.newmovie):
+                   console.log('1st case');
+                   insert = "<div class='row "+new_indicator+" item read movie"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='visible-xs'><span class=' label label-movie'>MOVIE</span><span class='label label-good'>GOOD</h3><h3 class='mtitle"+element._id+"' ><span class='label label-movie hidden-xs' > MOVIE </span><span class='label label-good hidden-xs' > GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+element.year+"</small></h3><h5  class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.year+"</h5></div></div>";
+                   break
+                   case(element.newmovie&&!element.goodmovie):
+                   console.log('2st case');
+                   insert = "<div class='row "+new_indicator+" item new movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='visible-xs'><span class='label label-movie'>MOVIE</span></h3><h3 class='mtitle"+element._id+"' ><span class='label label-movie hidden-xs' > MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs'  >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.year+"</h5></div></div>";
+                   break
+                   case(!element.newmovie&&!element.goodmovie):
+                   console.log('3st case');
+                   insert = "<div class='row "+new_indicator+" item read movie"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 class='visible-xs'><span class='label label-movie'>MOVIE</span></h3><h3 class='mtitle"+element._id+"' ><span class='label label-movie hidden-xs' > MOVIE </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+element.year+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.year+"</h5></div></div>";
+                   break
+                 }  
+                 var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek();
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var weekname = '.week'+weeknum;
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g )
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;      
+                $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  $('.items').prepend(week);
+                }
+           break;
+           case('link'):
+               var new_indicator='';
+               if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
+                 console.log('LABELING NEW');
+                 new_indicator = 'newitemrow';
+               }
+               switch(true){
+                   case(element.goodlink&&!element.newlink):
+                   console.log('1st case');
+                   insert = "<div class='row "+new_indicator+" item read link"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='visible-xs'><span class='label label-link>LINK</span><span class='label label-good'>GOOD</span></h3><h3 class='atitle"+element._id+"' ><span class='label label-link hidden-xs' > LINK </span><span class='label label-good hidden-xs' > GOOD </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+element.link.substring(0,10)+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                   case(element.newlink&&!element.goodlink):
+                   console.log('2st case');
+                   insert = "<div class='row "+new_indicator+" item new link"+element._id+"' ><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='visible-xs'><span class='label label-link'>LINK</span></h3><h3 class='atitle"+element._id+"' ><span class='label label-link hidden-xs' > LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                   case(!element.newlink&&!element.goodlink):
+                   console.log('3st case');
+                   insert = "<div class='row "+new_indicator+" item read link"+element._id+"'><div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+index+");'><h3 class='visible-xs'><span class='label label-link'>LINK</span></h3><h3 class='atitle"+element._id+"' ><span class='label label-link hidden-xs' > LINK </span> "+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+element.link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.link.substring(0,30)+"..</h5></div></div>";
+                   break
+                 }  
+                 var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek();
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var weekname = '.week'+weeknum;
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g )
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;       
+                $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  $('.items').prepend(week);
+                }
+           break;
+         }
+         });
+        }     
+      //----------------------------//
       function redactbookmodal (i) {
         $('#addbook').prop('disabled',false).text('Add to my list');
         if(b_checkagainst.indexOf(consolidated[i]._id.toString())>-1) {
@@ -1207,135 +1339,6 @@ head
            $('#linkmodal').modal('hide');
            console.log('added link');
           });
-      }
-      function getbooks(books) {
-        books.forEach(function(element,index){
-            if ($(".nobooks")[0])
-            { console.log('HAS LENGTH');
-              $('.books').empty();}
-            else {
-              console.log('HASNT GOT LENGTH');
-            }
-            var authors_insert = ' ';
-            if(element.authors&&element.authors[0]){
-              element.authors.forEach(function(element2){
-              authors_insert+='  '+element2;
-               });
-            }
-            console.log('newbook :'+element.newbook);
-            console.log('goodbook :'+element.goodbook);
-            var new_indicator_part_1 =' ';
-            var new_indicator_part_2 =' ';
-            var new_indicator_part_3 ="style='margin-left:37px;'";
-            var prepend = 0;
-            console.log(parseInt(element.tmstmp)+' \n'+general_tmstmp);
-            if(element.newbook){
-              new_indicator_part_3 = "style='margin-left:25px;' ";
-            }
-            if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
-              console.log('LABELING NEW');
-              new_indicator_part_1 = "<div class='dot visible-xs'><span style='margin-left:10px;font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
-              new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
-              new_indicator_part_3 = " ";
-              prepend=1;
-            }
-            var insert;
-            switch(true){
-              case(element.goodbook&&!element.newbook):
-              console.log('1st case');
-              insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;'>"+authors_insert+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:37px;'>"+authors_insert+"</h5></div></div>";
-              break
-              case(element.newbook&&!element.goodbook):
-              console.log('2st case');
-              insert = "<div class='row book new' id='book"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              break
-              case(!element.newbook&&!element.goodbook):
-              console.log('3st case');
-              insert = "<div class='row book read' id='book"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 id='btitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:25px;color:#ddd;''>"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+authors_insert+"</h5></div></div>";
-              break
-            }         
-           if(!prepend){$('.books').append(insert);}
-           else {$('.books').prepend(insert);}
-           });
-       }
-      function getmovies(movies) {
-       movies.forEach(function(element,index){
-            if ($(".nomovies")[0])
-            { console.log('HAS LENGTH');
-              $('.movies').empty();}
-            else {
-              console.log('HASNT GOT LENGTH');
-            }
-            var new_indicator_part_1 =' ';
-            var new_indicator_part_2 =' ';
-            var new_indicator_part_3 ="style='margin-left:25px;'";
-            var prepend=0;
-            if(element.newmovie){
-              new_indicator_part_3 = "style='margin-left:25px;' ";
-            }
-            if(parseInt(element.tmstmp)>general_tmstmp && unfollow){
-              console.log('LABELING NEW');
-              new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
-              new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
-              new_indicator_part_3 = " ";
-              prepend=1;
-            }
-            var insert;   
-            switch(true){
-              case(element.goodmovie&&!element.newmovie):
-              console.log('1st case');
-              insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"'  "+new_indicator_part_3+">"+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;'>"+element.year+"</small><span class='label label-primary pull-right'>GOOD</span></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              break
-              case(element.newmovie&&!element.goodmovie):
-              console.log('2st case');
-              insert = "<div class='row book new' id='movie"+element._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;' >"+element.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              break
-              case(!element.newmovie&&!element.goodmovie):
-              console.log('3st case');
-              insert = "<div class='row book read' id='movie"+element._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactmoviemodal("+index+");'><h3 id='mtitle"+element._id+"' "+new_indicator_part_3+"> "+new_indicator_part_2+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+element.year+"</small></h3><h5 id='sm_hd"+element._id+"' class='hidden-lg hidden-md hidden-sm' style='color:#ddd;margin-left:25px;'>"+element.year+"</h5></div></div>";
-              break
-            }         
-           if(!prepend){$('.movies').append(insert);}
-           else{$('.movies').prepend(insert);}
-        });
-      }
-      //---------------------------------//
-      function populatelinks(links) {
-        
-        for(var xx=links.length-1;xx>=0;xx--){
-            if ($(".nolinks")[0])
-            { $('.links').empty();}
-            var new_indicator_part_1 =' ';
-            var new_indicator_part_2 =' ';
-            var new_indicator_part_3 ="style='margin-left:25px;'";
-            var prepend = 0;
-            if(links[xx].newlink){
-              new_indicator_part_3 = "style='margin-left:25px;' ";
-            }
-            if(parseInt(links[xx].tmstmp)>general_tmstmp && unfollow){
-              console.log('LABELING NEW');
-              new_indicator_part_1 = "<div class='dot visible-xs'><span style='font-size:45px;color:#2E98F3;'>&#8226;</span></div>";
-              new_indicator_part_2 = "<span class='dot-sm'>&#8226;</span>";
-              new_indicator_part_3 = " ";
-              prepend=1;
-            }
-            switch(true){
-              case(links[xx].goodlink&&!links[xx].newlink):
-              console.log('1st case');
-              insert = "<div class='row book read link"+links[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small><span class='good label label-primary pull-right'>GOOD</span></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
-              break
-              case(links[xx].newlink&&!links[xx].goodlink):
-              console.log('2st case');
-              insert = "<div class='row book new link"+links[xx]._id+"' >"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
-              break
-              case(!links[xx].newlink&&!links[xx].goodlink):
-              console.log('3st case');
-              insert = "<div class='row book read link"+links[xx]._id+"'>"+new_indicator_part_1+"<div class='col-xs-12 bookpadding hovershade' onclick='redactlinkmodal("+xx+");'><h3 class='atitle"+links[xx]._id+"' "+new_indicator_part_3+">"+new_indicator_part_2+links[xx].title.capitalizeFirstLetter()+"<small class='hidden-xs' style='margin-left:15px;color:#ddd;''>"+links[xx].link.substring(0,30)+"...</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+links[xx]._id+"' style='color:#ddd;margin-left:25px;'>"+links[xx].link.substring(0,30)+"..</h5></div></div>";
-              break
-            }         
-           if(!prepend){$('.links').append(insert);}
-           else{$('.links').prepend(insert);}
-         }// for
       }
       //----------------------------//
       $('.follow').click(function(){
