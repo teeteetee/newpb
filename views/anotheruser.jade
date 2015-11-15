@@ -1095,14 +1095,14 @@ head
           // alert('general timestamp: '+general_tmstmp);
              $.ajax({
                method: "POST",
-               url: "/getitems_a/",
+               url: "/getitems_a",
                data: "qu="+user._id
              })
               .done(function( msg2 ) {
                  if(!general_tmstmp) {
                   general_tmstmp = Date.now();
                  }
-                books=msg.doc.bookstore;
+                books=msg2.doc.bookstore;
                 if(!books || !books.length) {
                  console.log('no books');
                  }
@@ -1112,7 +1112,7 @@ head
                   consolidated.push(element);
                   });
                  }
-                 movies=msg.doc.moviestore;
+                 movies=msg2.doc.moviestore;
                 if(!movies || !movies.length) {
                  console.log('no movies');
                  }
@@ -1122,7 +1122,7 @@ head
                   consolidated.push(element);
                   });
                  }
-                 links=msg.doc.linkstore;
+                 links=msg2.doc.linkstore;
                 if(!links || !links.length) {
                  console.log('no links');
                  }
