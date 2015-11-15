@@ -38,8 +38,8 @@ jQuery(function($){
    // });
 	// Изменение координат
 	function showCoords(c){
-		x1 = c.x+49; $('#x1').val(c.x);		
-		y1 = c.y+49; $('#y1').val(c.y);		
+		x1 = c.x+40; $('#x1').val(c.x);		
+		y1 = c.y+40; $('#y1').val(c.y);		
 		x2 = c.x2; $('#x2').val(c.x2);		
 		y2 = c.y2; $('#y2').val(c.y2);
 		cwg = c.w;
