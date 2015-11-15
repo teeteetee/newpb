@@ -42,6 +42,8 @@ jQuery(function($){
 		y1 = c.y; $('#y1').val(c.y);		
 		x2 = c.x2; $('#x2').val(c.x2);		
 		y2 = c.y2; $('#y2').val(c.y2);
+		x2 = c.w;
+        y2 = c.h;
 		cw = c.w;
         ch = c.h;
 		

@@ -1805,7 +1805,7 @@ app.post('/usrp',function (req,res) {
                                       if(err) {console.log(err);}
                                       else{
                                         var dest = '/userpics/'+imageid;
-                                         res.render('crop_new2',{'imgsrc':dest});
+                                         res.render('crop_new',{'imgsrc':dest});
                                       }
                                     });
                                   }
@@ -1814,14 +1814,14 @@ app.post('/usrp',function (req,res) {
                                       if(err) {console.log(err);}
                                       else{
                                         var dest = '/userpics/'+imageid;
-                                         res.render('crop_new2',{'imgsrc':dest});
+                                         res.render('crop_new',{'imgsrc':dest});
                                       }
                                     });
                                   }
                                 }
                                 else {
                                   var dest = '/userpics/'+imageid;
-                                  res.render('crop_new2',{'imgsrc':dest});
+                                  res.render('crop_new',{'imgsrc':dest});
                                 }
                               });  //resize
                           });//unlink temp
