@@ -1020,11 +1020,11 @@ head
                 button.btn.btn-iosdark.openadd(type='button' style='font-weight:200;margin-top:20px;') Add item
                 h4(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
                   span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
-                  | books
+                  span(class='booknum_text') books
                   span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                  | movies
+                  span(class='movienum_text') movies
                   span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                  | links
+                  span(class='linknum_text') links
         .row
           #booklist.thun.col-md-12
             .row.visible-xs
@@ -1035,11 +1035,11 @@ head
                   .col-xs-12
                     h5(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
                       span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
-                      | books
+                      span(class='booknum_text') books
                       span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                      | movies
+                      span(class='movienum_text') movies
                       span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                      | links
+                      span(class='linknum_text') links
         .row
             #list.row
               .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -1119,8 +1119,17 @@ head
       }
       $('.usernick').text(user.nick);
       $('.booknum').text(user.readbooks);
+      if(parseInt(user.readbooks)===1){
+        $('.booknum_text').text('book');
+      }
       $('.movienum').text(user.seenmovies);
+      if(parseInt(user.seenmovies)===1){
+        $('.movienum_text').text('movie');
+      }
       $('.linknum').text(user.readlinks);
+      if(parseInt(user.readlinks)===1){
+        $('.linknum_text').text('link');
+      }
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
