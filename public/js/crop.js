@@ -76,7 +76,7 @@ jQuery(function($){
 		$.ajax({
          method: 'POST',
          url: '/userp/crop',
-         data: {'x1': cwg, 'x2': chg, 'y1': y1, 'y2': y2, 'img': img, 'crop': crop}
+         data: {'x1': x1, 'x2': cwg, 'y1': y1, 'y2': chg, 'img': img, 'crop': crop}
        }).done(function (data) {
            ///var response = JSON.parse(jqXHR.responseText);
            //var redurl = 'http://vntrlst.com/userpics/'+data.rdurl;
