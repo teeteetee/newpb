@@ -393,6 +393,28 @@ app.post('/getitems',function (req,res){
   });
 });
 
+app.post('/getitems_a',function (req,res){
+  if(req.session._id && req.body.qu)
+  {var ms ={};
+    ms.trouble=1;
+    items.findOne({user:req.body.qu},function (err,doc){
+      if(err) {
+        console.log('ERR WHILE ITEMS QUERY');
+        res.send(ms);
+      }
+      else if(doc.user){
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+    else
+      {res.send(0);}
+});
+
 app.post('/backup',function (req,res){
   if(req.session._id){    
   users.findOne({_id:req.session._id},function (err,doc){ 

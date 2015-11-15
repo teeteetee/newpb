@@ -1079,9 +1079,9 @@ head
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
        //------------------//
-       var books=user.bookstore;
-       var movies=user.moviestore;
-       var links = user.linkstore;
+       var books;
+       var movies;
+       var links;
        //------------------//
        //GETTIMESTAMP  gets timestamp upon which new items will be marked, so it runs first starting the cascade
       var general_tmstmp;
@@ -1093,43 +1093,50 @@ head
          .done(function( msg ) {
            general_tmstmp = parseInt(msg.tmstmp);
           // alert('general timestamp: '+general_tmstmp);
-           if(!general_tmstmp) {
-            general_tmstmp = Date.now();
-           }
-          books=msg.doc.bookstore;
-          if(!books || !books.length) {
-           console.log('no books');
-           }
-           else {
-            books.forEach(function (element,index){
-            element.item_type = 'book';
-            consolidated.push(element);
+             $.ajax({
+               method: "POST",
+               url: "/getitems_a/",
+               data: "qu="+user._id
+             })
+              .done(function( msg2 ) {
+                 if(!general_tmstmp) {
+                  general_tmstmp = Date.now();
+                 }
+                books=msg.doc.bookstore;
+                if(!books || !books.length) {
+                 console.log('no books');
+                 }
+                 else {
+                  books.forEach(function (element,index){
+                  element.item_type = 'book';
+                  consolidated.push(element);
+                  });
+                 }
+                 movies=msg.doc.moviestore;
+                if(!movies || !movies.length) {
+                 console.log('no movies');
+                 }
+                 else {
+                  movies.forEach(function (element,index){
+                  element.item_type = 'movie';
+                  consolidated.push(element);
+                  });
+                 }
+                 links=msg.doc.linkstore;
+                if(!links || !links.length) {
+                 console.log('no links');
+                 }
+                 else {
+                  links.forEach(function (element,index){
+                  element.item_type = 'link';
+                  consolidated.push(element);
+                  });
+                 }
+                 if(consolidated.length){
+                 sortByKey(consolidated, 'tmstmp');
+                 populate(consolidated);
+               }
             });
-           }
-           movies=msg.doc.moviestore;
-          if(!movies || !movies.length) {
-           console.log('no movies');
-           }
-           else {
-            movies.forEach(function (element,index){
-            element.item_type = 'movie';
-            consolidated.push(element);
-            });
-           }
-           links=msg.doc.linkstore;
-          if(!links || !links.length) {
-           console.log('no links');
-           }
-           else {
-            links.forEach(function (element,index){
-            element.item_type = 'link';
-            consolidated.push(element);
-            });
-           }
-           if(consolidated.length){
-           sortByKey(consolidated, 'tmstmp');
-           populate(consolidated);
-         }
        });
       Date.prototype.getWeek = function() {
         var onejan = new Date(this.getFullYear(), 0, 1);
