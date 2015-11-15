@@ -1022,6 +1022,12 @@ head
         $('.noitems_text').text('No items');
         $('.openadd').text('Add item');
       }
+      function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          });
+       }
       var consolidated=[];
       var b_checkagainst = !{JSON.stringify(bookstorecheck)};
       var m_checkagainst = !{JSON.stringify(moviestorecheck)};
