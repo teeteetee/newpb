@@ -153,12 +153,12 @@ app.get('*', function(req,res,next) {
                   var ac = req.session.linkstore ? req.session.linkstore : 0;
                   if(req.session.nick)
                {
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'linkstorecheck':ac,'unfollow':unfollow});
+                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'linkstorecheck':ac,'unfollow':unfollow,'lang':req.session.lang});
                 }
                 else {
                 
                  if(doc.pub)
-                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc)});}
+                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'lang':req.session.lang});}
                  else {
                   
                    res.render('private');
