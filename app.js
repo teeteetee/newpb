@@ -9,8 +9,8 @@ var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var ObjectID = require('mongodb').ObjectID;
 var http = require('http');
-var gm = require('gm').subClass({imageMagick: true});
-//var gm = require('gm');
+//var gm = require('gm').subClass({imageMagick: true}); - crashes , no binaries found
+var gm = require('gm');
 
 
 
