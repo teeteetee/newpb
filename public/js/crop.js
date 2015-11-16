@@ -67,7 +67,7 @@ function release(){
 
 jQuery(function($){
 	$('#crop').click(function(e) {
-		alert('cwg,chg: '+cwg+', '+chg+', x2,y2: '+x2+', '+y2);
+		//alert('cwg,chg: '+cwg+', '+chg+', x2,y2: '+x2+', '+y2);
 		var img = $('#target').attr('src');
 		//$.post('/userp/crop', {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2,'cw' : cw,'ch' : ch, 'img': img, 'crop': crop}, function(file) {
 		//	$('#cropresult').append('<img src="'+crop+file+'" class="mini">');
