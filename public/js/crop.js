@@ -5,9 +5,9 @@ var jcrop_api;
 
 jQuery(function($){             
     //maxSize: [ 700, 700 ]
-	$('#target').Jcrop({
-	    boxWidth: 450,
-	     boxHeight: 400,	
+    //boxWidth: 450,
+	//     boxHeight: 400,
+	$('#target').Jcrop({	
 		onChange:   showCoords,
 		onSelect:   showCoords,
 		 aspectRatio: 1 ,
@@ -38,8 +38,10 @@ jQuery(function($){
    // });
 	// Изменение координат
 	function showCoords(c){
+		//x1 = c.x+40; $('#x1').val(c.x);		
+		//y1 = c.y+30; $('#y1').val(c.y);		
 		x1 = c.x+40; $('#x1').val(c.x);		
-		y1 = c.y+30; $('#y1').val(c.y);		
+		y1 = c.y+30; $('#y1').val(c.y);
 		x2 = c.x2; $('#x2').val(c.x2);		
 		y2 = c.y2; $('#y2').val(c.y2);
 		cwg = c.w;
