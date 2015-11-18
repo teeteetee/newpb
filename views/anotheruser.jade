@@ -1014,6 +1014,7 @@ head
       $(document).on('click', '.social_share', function(){
           Share.go(this);
       });
+      var weektxt;
       var lang = '#{lang}';
       if(lang==='ru'){
         $('#lists').text('Мои списки')
@@ -1230,7 +1231,7 @@ head
                  }   
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1238,7 +1239,7 @@ head
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
@@ -1264,7 +1265,7 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1272,7 +1273,7 @@ head
                 weeknum_g = weeknum;      
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
@@ -1298,7 +1299,7 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1306,7 +1307,7 @@ head
                 weeknum_g = weeknum;       
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
