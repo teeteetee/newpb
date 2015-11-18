@@ -440,7 +440,7 @@ app.post('/backup',function (req,res){
     ids.bookstore = doc.bookstore;
     ids.moviestore = doc.moviestore;
     ids.linkstore = doc.linkstore;
-     items.findOne({_id:req.session._id},function (err2,doc2){
+     items.findOne({user:req.session._id},function (err2,doc2){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
