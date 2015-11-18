@@ -750,7 +750,7 @@ app.post('/ntfc_p',function (req,res){
         res.send(ms);
      }
      else {
-      if(req.session.userstore.length)
+      if(req.session.userstore && req.session.userstore.length)
        {var count=req.session.userstore.length-1;
               function chkp (count,callback) {
                 if(count<0) {
