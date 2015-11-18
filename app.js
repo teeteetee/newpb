@@ -2193,7 +2193,7 @@ app.post('/additem/:id',function (req,res){
     if(req.session.linkstore.indexOf(link_id)>-1) {already=1;}
     if(!already)
     {users.update({_id:req.session._id},{$push:{linkstore:link_id},$set:{last_item:Date.now()},$inc:{totallinks:1,newlinks:1}});
-     items.update({user:req.session_id},{$push:{linkstore:{tmstmp:Date.now(),_id:link_id,title:req.body.title,link:req.body.link,newlink:1,goodlink:0}}});
+     items.update({user:req.session._id},{$push:{linkstore:{tmstmp:Date.now(),_id:link_id,title:req.body.title,link:req.body.link,newlink:1,goodlink:0}}});
       }
         var ms ={};
         ms.trouble=0;
