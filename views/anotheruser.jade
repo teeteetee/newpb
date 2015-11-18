@@ -855,6 +855,7 @@ head
           .modal-body
             h4(id='modaltitle' style='text-align:center;')
             h4(id='modalauthor' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-iosdark form-control book_people') Find people
             button(class='btn btn-iosdark  form-control' id='addbook') Add to my list
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -865,6 +866,7 @@ head
           .modal-body
             h4(id='modalmovietitle' style='text-align:center;')
             h4(id='modalyear' style='color:gray;text-align:center;font-size:15px;' class='lead')
+            button(class='btn btn-iosdark form-control movie_people') Find people
             button(class='btn btn-iosdark  form-control' id='addmovie') Add to my list
     .modal.fade.bs-example-modal-sm(id='linkmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -1292,6 +1294,8 @@ head
         $('#modalauthor').text(consolidated[i].authors);
         var insert = 'addbook('+i+')';
         $('#addbook').attr('onclick',insert);
+        insert = 'window.location="/people/b/'+consolidated[i]._id+'"';
+        $('.book_people').attr('onclick',insert);
         $('#bookmodal').modal('show');
       }
        function redactmoviemodal (i) {
@@ -1304,6 +1308,8 @@ head
         $('#modalyear').text(consolidated[i].year);
         var insert = 'addmovie('+i+')';
         $('#addmovie').attr('onclick',insert);
+        insert = 'window.location="/people/m/'+consolidated[i]._id+'"';
+        $('.movie_people').attr('onclick',insert);
         $('#moviemodal').modal('show');
       }
       function redactlinkmodal (i) {
