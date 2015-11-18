@@ -1033,13 +1033,20 @@ head
                 button.btn.btn-lg.btn-iosdark.openadd(type='button' style='margin-bottom:20px;margin-top:30px;') Add item
                 .row 
                   .col-xs-12
-                    h5(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
-                      span(class='booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
-                      span(class='booknum_text') books
-                      span(class='movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                      span(class='movienum_text') movies
-                      span(class='linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
-                      span(class='linknum_text') links
+                    h5.hidden#stat_eng(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                      span(class=' eng_booknum' style='margin-right:5px; font-weight:700;color:#333;') 0
+                      span(class=' eng_booknum_text') books
+                      span(class=' eng_movienum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      span(class=' eng_movienum_text') movies
+                      span(class=' eng_linknum' style='margin-left:30px;margin-right:5px; font-weight:700;color:#333;') 0
+                      span(class=' eng_linknum_text') links
+                    h5.hidden#stat_ru(style='margin-top:40px;margin-bottom:20px;font-weight:200;color:#505050;')
+                      span(class=' ru_booknum_text') книги:
+                      span(class=' ru_booknum' style='margin-left:5px; font-weight:700;color:#333;') 0
+                      span(class=' ru_movienum_text') фильмы:
+                      span(class=' ru_movienum' style='margin-left:30px;margin-left:5px; font-weight:700;color:#333;') 0
+                      span(class=' ru_linknum_text') ссылки:
+                      span(class=' ru_linknum' style='margin-left:30px;margin-left:5px; font-weight:700;color:#333;') 0
         .row
             #list.row
               .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -1097,6 +1104,7 @@ head
       $(document).on('click', '.social_share', function(){
           Share.go(this);
       });
+      var weektxt;
       var user = !{JSON.stringify(done)};
       user= JSON.parse(user);
       if(user.lang==='ru'){
@@ -1107,6 +1115,11 @@ head
         $('#logout').text('Выход');
         $('.noitems_text').text('Список пуст');
         $('.openadd').text('Добавить');
+        weektxt ='неделя';
+        $('.ru_booknum').text(user.readbooks);
+        $('.ru_movienum').text(user.seenmovies);
+        $('.ru_linknum').text(user.readlinks);
+        $('#stat_ru').css('display','block');
       }
       else {
         $('#lists').text('My lists')
@@ -1116,20 +1129,22 @@ head
         $('#logout').text('Logout');
         $('.noitems_text').text('No items');
         $('.openadd').text('Add item');
+        weektxt ='week';
+        $('.eng_booknum').text(user.readbooks);
+        if(parseInt(user.readbooks)===1){
+          $('.eng_booknum_text').text('book');
+        }
+        $('.eng_movienum').text(user.seenmovies);
+        if(parseInt(user.seenmovies)===1){
+          $('.eng_movienum_text').text('movie');
+        }
+        $('.eng_linknum').text(user.readlinks);
+        if(parseInt(user.readlinks)===1){
+          $('.eng_linknum_text').text('link');
+        }
+        $('#stat_eng').css('display','block');
       }
       $('.usernick').text(user.nick);
-      $('.booknum').text(user.readbooks);
-      if(parseInt(user.readbooks)===1){
-        $('.booknum_text').text('book');
-      }
-      $('.movienum').text(user.seenmovies);
-      if(parseInt(user.seenmovies)===1){
-        $('.movienum_text').text('movie');
-      }
-      $('.linknum').text(user.readlinks);
-      if(parseInt(user.readlinks)===1){
-        $('.linknum_text').text('link');
-      }
       var tmstmp = Date.now();
       var avatar = #{avatar};
       if(avatar) {
@@ -1282,7 +1297,7 @@ head
                  }   
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1290,7 +1305,7 @@ head
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
@@ -1311,7 +1326,7 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1319,7 +1334,7 @@ head
                 weeknum_g = weeknum;      
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
@@ -1340,7 +1355,7 @@ head
                  }  
                  var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>week "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -1348,7 +1363,7 @@ head
                 weeknum_g = weeknum;       
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>week "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
