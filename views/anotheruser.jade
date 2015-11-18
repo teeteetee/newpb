@@ -1016,43 +1016,6 @@ head
       });
       var weektxt;
       var lang = '#{lang}';
-      if(lang==='ru'){
-        $('#lists').text('Мои списки')
-        $('#mbutton').text('Сообщения');
-        $('#pbutton').text('Чужие списки');
-        $('#settings').text('Настройки');
-        $('#logout').text('Выход');
-        $('.noitems_text').text('Список пуст');
-        $('.openadd').text('Добавить');
-        weektxt ='неделя';
-        $('.ru_booknum').text(user.readbooks);
-        $('.ru_movienum').text(user.seenmovies);
-        $('.ru_linknum').text(user.readlinks);
-        $('.stat_ru').removeClass('hidden');
-      }
-      else {
-        $('#lists').text('My lists')
-        $('#mbutton').text('Messages');
-        $('#pbutton').text('People');
-        $('#settings').text('Settings');
-        $('#logout').text('Logout');
-        $('.noitems_text').text('No items');
-        $('.openadd').text('Add item');
-        weektxt ='week';
-        $('.eng_booknum').text(user.readbooks);
-        if(parseInt(user.readbooks)===1){
-          $('.eng_booknum_text').text('book');
-        }
-        $('.eng_movienum').text(user.seenmovies);
-        if(parseInt(user.seenmovies)===1){
-          $('.eng_movienum_text').text('movie');
-        }
-        $('.eng_linknum').text(user.readlinks);
-        if(parseInt(user.readlinks)===1){
-          $('.eng_linknum_text').text('link');
-        }
-        $('.stat_eng').removeClass('hidden');
-      }
       function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
@@ -1090,17 +1053,42 @@ head
         $('#avatarbig').prepend("<div id='emptyavatar' class='img-circle pull-left' ></div>");
         $('#avatarsmall').prepend("<div id='emptyavatar' style='margin:auto !important;' class='img-circle'></div><h3 style='margin-top:20px;font-weight:500;'>"+user.nick+"</h3>");
       }
-      $('.booknum').text(user.readbooks);
-      if(parseInt(user.readbooks)===1){
-        $('.booknum_text').text('book');
+      if(lang==='ru'){
+        $('#lists').text('Мои списки')
+        $('#mbutton').text('Сообщения');
+        $('#pbutton').text('Чужие списки');
+        $('#settings').text('Настройки');
+        $('#logout').text('Выход');
+        $('.noitems_text').text('Список пуст');
+        $('.openadd').text('Добавить');
+        weektxt ='неделя';
+        $('.ru_booknum').text(user.readbooks);
+        $('.ru_movienum').text(user.seenmovies);
+        $('.ru_linknum').text(user.readlinks);
+        $('.stat_ru').removeClass('hidden');
       }
-      $('.movienum').text(user.seenmovies);
-      if(parseInt(user.seenmovies)===1){
-        $('.movienum_text').text('movie');
-      }
-      $('.linknum').text(user.readlinks);
-      if(parseInt(user.readlinks)===1){
-        $('.linknum_text').text('link');
+      else {
+        $('#lists').text('My lists')
+        $('#mbutton').text('Messages');
+        $('#pbutton').text('People');
+        $('#settings').text('Settings');
+        $('#logout').text('Logout');
+        $('.noitems_text').text('No items');
+        $('.openadd').text('Add item');
+        weektxt ='week';
+        $('.eng_booknum').text(user.readbooks);
+        if(parseInt(user.readbooks)===1){
+          $('.eng_booknum_text').text('book');
+        }
+        $('.eng_movienum').text(user.seenmovies);
+        if(parseInt(user.seenmovies)===1){
+          $('.eng_movienum_text').text('movie');
+        }
+        $('.eng_linknum').text(user.readlinks);
+        if(parseInt(user.readlinks)===1){
+          $('.eng_linknum_text').text('link');
+        }
+        $('.stat_eng').removeClass('hidden');
       }
       $.ajax({
               method: "POST",
