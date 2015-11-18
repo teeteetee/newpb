@@ -1126,7 +1126,7 @@ head
         $('.ru_booknum').text(user.readbooks);
         $('.ru_movienum').text(user.seenmovies);
         $('.ru_linknum').text(user.readlinks);
-        $('#stat_ru').css('display','block');
+        $('.stat_ru').css('display','block');
       }
       else {
         $('#lists').text('My lists')
@@ -1149,7 +1149,7 @@ head
         if(parseInt(user.readlinks)===1){
           $('.eng_linknum_text').text('link');
         }
-        $('#stat_eng').css('display','block');
+        $('.stat_eng').css('display','block');
       }
       $('.usernick').text(user.nick);
       var tmstmp = Date.now();
