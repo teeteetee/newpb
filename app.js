@@ -109,7 +109,8 @@ app.get('*', function(req,res,next) {
   else {
     if(req.session && req.session.nick===requrl)
     {
-     res.redirect('/');
+     //res.redirect('/');
+     next();
     }
     else
     {  users.findOne({nick:requrl},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
@@ -1805,7 +1806,7 @@ app.post('/usrp',function (req,res) {
                                       if(err) {console.log(err);}
                                       else{
                                         var dest = '/userpics/'+imageid;
-                                         res.render('crop_new',{'imgsrc':dest});
+                                         res.render('crop_new2',{'imgsrc':dest});
                                       }
                                     });
                                   }
@@ -1814,14 +1815,14 @@ app.post('/usrp',function (req,res) {
                                       if(err) {console.log(err);}
                                       else{
                                         var dest = '/userpics/'+imageid;
-                                         res.render('crop_new',{'imgsrc':dest});
+                                         res.render('crop_new2',{'imgsrc':dest});
                                       }
                                     });
                                   }
                                 }
                                 else {
                                   var dest = '/userpics/'+imageid;
-                                  res.render('crop_new',{'imgsrc':dest});
+                                  res.render('crop_new2',{'imgsrc':dest});
                                 }
                               });  //resize
                           });//unlink temp
