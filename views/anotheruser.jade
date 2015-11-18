@@ -838,6 +838,14 @@ head
       .newitemrow:hover {
         background-color:#f7ebdo;
       }
+      .btn-submit:focus, btn.submit:active, .btn-submit:hover {
+       border-color:#2988DA;
+       background-color:#2988DA;
+      }
+      .btn-submit{
+        background-color:#2E98F3;
+        border-color:#2E98F3;
+      }
   body 
     .modal.fade.bs-example-modal-sm(id='contactmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -888,7 +896,7 @@ head
             label Message:
             textarea(id='gettext' maxlength="2700" class='form-control' style='margin-bottom:15px;')            
           .modal-footer(style='text-align:center;')
-            a.btn.btn-modal(id='submitmsg') Send
+            a.btn.btn-submit(id='submitmsg') Send
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;') 
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
