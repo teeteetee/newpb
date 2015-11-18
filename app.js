@@ -2160,12 +2160,7 @@ app.post('/additem/:id',function (req,res){
     console.log('book_out');
     var book_id = req.body.book_id;
     var already = 0;
-    for(var xx =req.session.bookstore.length-1;xx>=0;xx--){
-      if(book_id === req.session.bookstore[xx]){
-        console.log('trying to add a book, which is already on the list');
-       already =1;
-      }
-    }
+    if(req.session.bookstore.indexOf(book_id)>-1) {already=1;}
     if(!already)
     { books.findOne({_id:book_id},function (err,book){
        if(err)
@@ -2195,12 +2190,7 @@ app.post('/additem/:id',function (req,res){
     console.log('link_out');
     var link_id = req.body.link_id;
     var already = 0;
-    for(var xx =req.session.linkstore.length-1;xx>=0;xx--){
-      if(link_id === req.session.linkstore[xx]){
-        console.log('trying to add an link, which is already on the list');
-       already =1;
-      }
-    }
+    if(req.session.linkstore.indexOf(link_id)>-1) {already=1;}
     if(!already)
     {users.update({_id:req.session._id},{$push:{linkstore:link_id},$set:{last_item:Date.now()},$inc:{totallinks:1,newlinks:1}});
      items.update({user:req.session_id},{$push:{linkstore:{tmstmp:Date.now(),_id:link_id,title:req.body.title,link:req.body.link,newlink:1,goodlink:0}}});
@@ -2213,12 +2203,7 @@ app.post('/additem/:id',function (req,res){
     console.log('movie_out');
     var movie_id = req.body.movie_id;
     var already = 0;
-    for(var xx =req.session.moviestore.length-1;xx>=0;xx--){
-      if(movie_id === req.session.moviestore[xx]){
-        console.log('trying to add a movie, which is already on the list');
-       already =1;
-      }
-    }
+    if(req.session.moviestore.indexOf(movie_id)>-1) {already=1;}
     if(!already)
     {
       movies.findOne({_id:movie_id},function (err,movie){
