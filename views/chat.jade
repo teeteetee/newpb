@@ -390,8 +390,8 @@ head
             .media
               .media-left
                 a(id='author_page')
-                  img.media-object
-                  .media-object(style='height:50px;background-color:#eee;width:50px;border-radius:50%;' alt='avatar')
+                  img.media-object#avatar
+                  #avatar_empty.media-object(style='height:50px;background-color:#eee;width:50px;border-radius:50%;' alt='avatar')
               .media-body
                 h3.media-heading#sender
                 h6#time(style='color:#ddd;margin-bottom:20px;')
@@ -573,11 +573,11 @@ head
        console.log(nickstore[uid].userpic+' - userpic');
        if(nickstore[uid].userpic)
        {console.log('has userpic');
-        $('.media-object img').attr('src','/userpics/'+uid+'_small.png').css('display','block');
-        $('.media-object div').css('display','none');
+        $('#avatar').attr('src','/userpics/'+uid+'_small.png').css('display','block');
+        $('#avatar_empty').css('display','none');
         }else{
-        $('.media-object div').css('display','block');
-        $('.media-object img').css('display','none');
+        $('#avatar_empty').css('display','block');
+        $('#avatar').css('display','none');
        }
        $('#author_page').attr('href',link);
        $('#sender').empty();
