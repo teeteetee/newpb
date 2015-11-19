@@ -323,7 +323,7 @@ head
       }
       #respond {
         padding:15px;
-        padding-top:30px;
+        /*padding-top:30px;*/
         padding-bottom:0px;
         display:none;
       }
@@ -397,8 +397,8 @@ head
                 h6#time(style='color:#ddd;margin-bottom:20px;')
             p#textbody  
             #respond.row
-              label Response:
-              textarea(id='gettext' rows="3" maxlength="2700" class='form-control txtfield')
+              //label Response:
+              textarea(id='gettext' rows="3" maxlength="2700" class='form-control txtfield' placeholder='Your message')
           .modal-footer(style='text-align:center;margin-top:20px;border-bottom-left-radius:6px;border-bottom-right-radius:6px;')
             a.btn(id='openrespond' style='color:white;background-color:#337AB7;') Respond
     .container-fluid#panel
