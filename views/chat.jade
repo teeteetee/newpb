@@ -353,10 +353,10 @@ head
       }
       .media{
         margin-left:0px;
-        margin-top:20px;
+        margin-top:20px !important;
       }
       .media-left{
-        vertial-align:top;
+        vertical-align:top;
       }
       p {
         color:#555;
@@ -570,6 +570,7 @@ head
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);
        var link = '/'+nickstore[uid].nick;
+       console.log(nickstore[uid].userpic+' - userpic');
        if(nickstore[uid].userpic)
        {$('.media-object img').attr('src','/userpics/'+uid+'_small.png').css('display','block');
         $('.media-object div').css('display','none');
