@@ -374,11 +374,16 @@ head
           .modal-header(style='background-color:#222;border-top-left-radius:6px;border-top-right-radius:6px;')
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4#modalh(style='color:#ddd;') Message
+            h4#modalh.modal-title(style='color:#ddd;') Message
           .modal-body 
-            a(id='author_page')
-              h3#sender
-            h6#time(style='color:#ddd;margin-bottom:20px;')
+            .media
+              .media-left
+                a(id='author_page')
+                  img.media-object
+                  .media-object(style='height:50px;background-color:#eee;width:50px;border-radius:50%;' alt='avatar')
+              .media-body
+                h3.media-heading#sender
+                h6#time(style='color:#ddd;margin-bottom:20px;')
             p#textbody  
             #respond.row
               label Response:
@@ -459,7 +464,7 @@ head
          avatar_insert = "<img style='height:50px;' src='/userpics/"+element.sndr+"_small.png' class='media-object img-circle' src='' alt='avatar'>";
         }
         msgstore[element.sndr] = element.textbody;
-        nickstore[element.sndr] = element.nick;
+        nickstore[element.sndr] = {'nick':element.nick,'userpic':element.userpic};
         var uid_n_qts = '"'+element.sndr+'"';
         var textbody = element.textbody.length>30?element.textbody.substring(0,30).replace(/<br \/>/g, '  ')+'...':element.textbody.replace(/<br \/>/g, '  ');
         textbody=textbody.replace('<br />',' ');
@@ -553,10 +558,19 @@ head
       function show_message (uid,tmstmp) {
       var tmstmp = parseInt(tmstmp);
       var time = new Date(tmstmp);
-       var link = '/'+nickstore[uid];
+       var link = '/'+nickstore[uid].nick;
+       if(nickstore[uid].userpic)
+       {$('.media-object img').attr('src','/userpics/'+uid+'_small.png').css('display','block');
+        $('.media-object div').css('display','none');
+        }
+        else
+       {
+        $('.media-object div').css('display','block');
+        $('.media-object img').css('display','none');
+       }
        $('#author_page').attr('href',link);
        $('#sender').empty();
-       $('#sender').append(nickstore[uid] + "<span class='glyphicon glyophicon-link' style='color:#ddd;margin-left:10px;'></span>");
+       $('#sender').append(nickstore[uid].nick);
        $('#time').text(date_out(tmstmp));
        $('#textbody').empty();
        $('#textbody').append(msgstore[uid]);
