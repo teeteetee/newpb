@@ -572,11 +572,10 @@ head
        var link = '/'+nickstore[uid].nick;
        console.log(nickstore[uid].userpic+' - userpic');
        if(nickstore[uid].userpic)
-       {$('.media-object img').attr('src','/userpics/'+uid+'_small.png').css('display','block');
+       {console.log('has userpic');
+        $('.media-object img').attr('src','/userpics/'+uid+'_small.png').css('display','block');
         $('.media-object div').css('display','none');
-        }
-        else
-       {
+        }else{
         $('.media-object div').css('display','block');
         $('.media-object img').css('display','none');
        }
