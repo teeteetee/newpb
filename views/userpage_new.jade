@@ -283,6 +283,12 @@ head
       padding-top:0px;
       border-top:0px;
     }
+    .week .col-xs-12{
+      background-color:#fbfbfb;
+      color:#ddd;
+      text-align:center;
+      border-bottom:1px solid #eee;
+    }
   body
     //.language
     //  a#eng Login
@@ -305,8 +311,12 @@ head
                   span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
                 #pgroup.form-group.has-feedback
                   span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="comment") 
+                  input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="description") 
                   span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                #nickgroup.form-group.has-feedback
+                  span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                  span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="comment" maxlength="20")
               //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
            .modal-footer
              button(class="btn btn-default" data-dismiss="modal") Close
@@ -320,7 +330,19 @@ head
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
           button#addlink(class=' btn btn-primary') + add a link
-      #datablock.row
+      .row
+        #list.row
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+            .row.brow
+              .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                .noitems.row(style='text-align:center;')  
+                   .col-xs-12
+                     h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items  
+            .row.brow
+              #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                .noitems.row(style='text-align:center;')  
+                   .col-xs-12
+                     h2.noitems_text(style='color:#ccc;margin-bottom:20px;') No items 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -331,4 +353,66 @@ head
       $('#addlink').click(function(){
         $('#myModal').modal('show');
         });
+       var consolidated=[];
+       $.ajax({
+              method: "POST",
+              url: "/getitems",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                   items=msg.doc.itemstore;
+                  if(!items || !items.length) {
+                   console.log('no items');
+                   }
+                   else {
+                    items.forEach(function (element,index){
+                    element.item_type = 'article';
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
+                 }
+                }
+              });
+      function populate(consolidated) {
+      var last_item_over = consolidated[consolidated.length-1];
+      var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
+       consolidated.forEach(function (element,index){
+         if ($(".noitems")[0])
+                 { console.log('HAS LENGTH');
+                   $('.items').empty();}
+                 else {
+                   console.log('HASNT GOT LENGTH');
+                 }
+         var insert;
+         switch(element.item_type){
+           case('article'):
+              var authors_insert=' ';
+                 if(element.authors&&element.authors[0]){
+                   element.authors.forEach(function(element2){
+                   authors_insert+='  '+element2;
+                    });
+                   element.authors = authors_insert;
+                 }
+                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span><span class='label label-good'>GOOD</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' > BOOK </span><span class='label label-good hidden-xs' > GOOD </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' >"+authors_insert+"</small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+authors_insert+"</h5></div></div>";  
+                var weeknum = new Date(parseInt(element.tmstmp));
+                weeknum = weeknum.getWeek();
+                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
+                var weekname = '.week'+weeknum;
+                //if(!$(weekname)[0])
+                if(weeknum>weeknum_g )
+                {$('.items').prepend(week); }  
+                weeknum_g = weeknum;   
+                $('.items').prepend(insert);
+                if(index === consolidated.length-1) {
+                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
+                  $('.items').prepend(week);
+                }
+           break;
+         }
+         });
+        }     
         
