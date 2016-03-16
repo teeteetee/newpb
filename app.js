@@ -175,6 +175,7 @@ app.post('/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
   items.find({},function (err,doc){
+    console.log(doc);
     if(err) {
       console.log('ERR WHILE ITEMS QUERY');
       res.send(ms);
