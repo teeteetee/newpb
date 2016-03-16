@@ -384,7 +384,7 @@ head
               var x = parseInt(a[key]); var y = parseInt(b[key]);
               return ((x < y) ? -1 : ((x > y) ? 1 : 0));
           });
-       }
+       };
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
@@ -422,7 +422,7 @@ head
            break;
          }
          });
-        }     
+        };
         //-----------------------------------//
         $('#submitlink').click(function(){
         if($('#title').val() && $('#link').val() )
