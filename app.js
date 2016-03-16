@@ -443,13 +443,15 @@ app.get('/seeitems',function (req,res){
 
 
 app.get('/clearitems',function (req,res){
-  if(req.session._id)
-  {
-    items.remove({});
-    res.redirect('/');}
-    else {
-      res.redirect('/');
-    }
+  //if(req.session._id)
+  //{
+  //  items.remove({});
+  //  res.redirect('/');}
+  //  else {
+  //    res.redirect('/');
+  //  }
+  items.remove({});
+    res.redirect('/');
 });
 
 
