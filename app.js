@@ -179,11 +179,11 @@ app.post('/getitems',function (req,res){
       console.log('ERR WHILE ITEMS QUERY');
       res.send(ms);
     }
-    //else if(doc.user){
-    //  ms.doc = doc;
-    //  ms.trouble=0;
-    //  res.send(ms);
-    //}
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
     else {
       res.send(ms);
     }
