@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),insidemsg = db.get('insidemsg'),user_messages = db.get('user_messages'),messages = db.get('messages'),items = db.get('items'),books = db.get('books'),movies = db.get('movies'),authors = db.get('authors'),follow = db.get('follow');
+  , users = db.get('users'),items = db.get('items');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -188,28 +188,6 @@ app.get('/test',function (req,res){
 });
 
 
-app.get('/api/udata/:nick',function (req,res){
-  users.findOne({nick:req.params.nick},{fields:{bookstore:1,moviestore:1,linkstore:1}},function (err,doc){
-    var ms={};
-    if(err){
-      ms.trouble=1;
-      res.send(ms);
-    }
-    else if(doc){
-      ms.trouble=0;
-      console.log('sending books to '+req.params.nick);
-      ms.bookstore = doc.bookstore;
-      ms.moviestore = doc.moviestore;
-      ms.linkstore = doc.linkstore;
-      res.send(ms);
-    }
-    else {
-      ms.trouble=1;
-      res.send(ms);
-    }
-  });
-});
-
 
 
 app.get('/',function(req,res) {
@@ -221,103 +199,39 @@ app.get('/',function(req,res) {
             //console.log('-----found-----');
             //console.log(done);
             if(err){
-              //err page ?
-                var color;
-                switch(Math.floor(Math.random() * 4) + 1){
-                  case(1):
-                  color='#ec3737';
-                  break
-                  case(2):
-                  color='#37b6ec';
-                  break
-                  case(3):
-                  color='#1FD081';
-                  break
-                  case(4):
-                  color='#ec8637';
-                  break
-                }
-                res.render('index_new',{'color':color});
+                res.render('index_new');
             }
             else {
               if(done){
-                  if(done.userpic)
-                  {  
-                      req.session=done;
-                      //var background="background: url('/userpics/id"+done._id+"_small"+done.picext+"') no-repeat 15px 15px;";
-                      res.render('userpage',{'user':done._id,'avatar':1,'done':JSON.stringify(done)});
-                     
-                  }
-                   else {
-                    req.session = done;
-                    //var background="background: url('/images/pb_inf_logo.png') no-repeat 15px 15px;";
-                    res.render('userpage',{'user':done._id,'avatar':0,'done':JSON.stringify(done)});
-                    
-                   }
+                req.session=done;
+                res.render('userpage');
               }
               else {
-                var color;
-                switch(Math.floor(Math.random() * 4) + 1){
-                  case(1):
-                  color='#ec3737';
-                  break
-                  case(2):
-                  color='#37b6ec';
-                  break
-                  case(3):
-                  color='#1FD081';
-                  break
-                  case(4):
-                  color='#ec8637';
-                  break
-                }
-                res.render('index_new',{'color':color});
+                //var color;
+                //switch(Math.floor(Math.random() * 4) + 1){
+                //  case(1):
+                //  color='#ec3737';
+                //  break
+                //  case(2):
+                //  color='#37b6ec';
+                //  break
+                //  case(3):
+                //  color='#1FD081';
+                //  break
+                //  case(4):
+                //  color='#ec8637';
+                //  break
+                //}
+                //res.render('index_new',{'color':color});
+                res.render('index_new');
               }
             }
           });
         }
-   else {
-                var color;
-                switch(Math.floor(Math.random() * 4) + 1){
-                  case(1):
-                  color='#ec3737';
-                  break
-                  case(2):
-                  color='#37b6ec';
-                  break
-                  case(3):
-                  color='#1FD081';
-                  break
-                  case(4):
-                  color='#ec8637';
-                  break
-                }
-                res.render('index_new',{'color':color});
+   else {         
+       res.render('index_new');
    }
 });
-
-//DISCONTINUED BECAUSE WE STORE BOOKS IN THE USER OBJECT WICH IS PASSED AROUND
-//if it will be the case, that we decide to optimize loading time, than bookstore and moviestore will be
-//separated into separate dbs, and this scenario will be back on track
-//app.post('/getbooks',function (req,res){
-//  //TO DO auth?
-//  users.findOne({_id:req.session._id},function(err,doc){
-//    if(err) {
-//    console.log('err while users query');
-//     res.send(0);
-//    }
-//    else {
-//      if(doc!=null) {
-//        res.send(doc.bookstore);
-//      }
-//      else {
-//        res.send(0);
-//      }
-//    }
-//  });
-//});
-
-
 
 //DATA VALIDATION
 // half of this shit doesnt work and fucks the thing up, needs to be tested
@@ -416,77 +330,7 @@ app.post('/getitems_a',function (req,res){
       {res.send(0);}
 });
 
-app.post('/backup',function (req,res){
-  if(req.session._id){    
-  users.findOne({_id:req.session._id},function (err,doc){ 
-    if(err){
-      console.log('ERR WHILE BACKUP REQUEST');
-      console.log(err);
-    }
-    else if(doc._id)
-  { var json = [];
-    var statstore = {
-    'totalbooks':doc.totalbooks,
-    'totalmovies':doc.totalmovies,
-    'totallinks':doc.totallinks,
-    'newbooks':doc.newbooks,
-    'readbooks':doc.readbooks,
-    'newmovies':doc.newmovies,
-    'seenmovies':doc.seenmovies,
-    'newlinks':doc.newlinks,
-    'readlinks':doc.readlinks,
-    'last_item':doc.last_item};
-    var ids={};
-    ids.bookstore = doc.bookstore;
-    ids.moviestore = doc.moviestore;
-    ids.linkstore = doc.linkstore;
-     items.findOne({user:req.session._id},function (err2,doc2){
-        if(err){
-           console.log('ERR WHILE BACKUP REQUEST');
-           console.log(err2);
-         }
-         else if(doc2.user)
-       {
-         json.push(doc2.bookstore);
-         json.push(doc2.moviestore)
-         json.push(doc2.linkstore);
-         json.push(statstore);
-         json.push(ids);
-         var d = new Date();
-         var vday = d.getDate().toString();
-         var vmonth = d.getMonth()+1;
-         vmonth = vmonth.toString();
-         var vyear = d.getUTCFullYear().toString();
-         console.log('beginning');
-         if (vday.length===1){
-                vday='0'+vday;
-              }
-         if (vmonth.length===1){
-                vmonth='0'+vmonth;
-              }
-         var date= vday+'/'+vmonth+'/'+vyear;
-         var filename = 'P&B_backup_'+date+'.json'; // or whatever
-         var mimetype = 'application/json';
-         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-         res.setHeader('Content-type', mimetype);
-         res.write(JSON.stringify(json));
-         res.end();
-       }
-        else {
-      res.redirect('/');
-    }
-     });
-    //res.redirect('/');
-    }
-    else {
-      res.redirect('/');
-    }
-  });
-  }
-  else {
-    res.redirect('/');
-  }
-});
+
 
 function validateJSON(body) {
   try {
@@ -501,28 +345,6 @@ function validateJSON(body) {
 
 
 
-app.post('/restore',function (req,res){
-  if(req.session._id){      
-    var oldPath = req.files.usersjson.path;
-    fs.readFile(oldPath , 'utf8', function(err, data) {
-      var valid = validateJSON(data);
-       if (data) {
-         data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],linkstore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totallinks:data[3].totallinks,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newlinks:data[3].newlinks,readlinks:data[3].readlinks,last_item:data[3].last_item}});
-         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,linkstore:data[4].linkstore}});
-         //console.log(JSON.stringify(data[0]));
-       }
-      fs.unlink(oldPath, function(){
-        //if(err) throw err;
-        if(err) console.log(err);
-        res.redirect('/');
-       });
-    });
-   }
-  else {
-    res.redirect('/');
-  }
-});
 
 app.post('/getbook/:id',function (req,res){
   //TO DO auth
@@ -708,202 +530,7 @@ app.post('/check',function(req,res){
 
 
 
-app.get('/messages',function (req,res){
-  if(req.session.mail){
-    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            if(err){
-              //err page ?
-              res.redirect('/');
-              console.log('QUERY ERR');
-            }
-            else {
-              if(done){
-                  if(done.msgstore)
-                  {
-                  var more = done.msgstore.length > 10 ? 1:0;
-                  done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
-                  console.log(done);
-                  res.render('chat',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more,'lang':req.session.lang});
-                  }
-                  else {
-                   //res.render('emptychat',{'user':done.uid,'done':JSON.stringify(done)});
-                   res.render('chat',{'user':req.session._id,'lst_tmstmp':0,'messages':0,'lang':req.session.lang});
-                  }
-              }
-              else {
-                res.redirect('/');
-                console.log('DOCUMENT ERR');
-              }
-            }
-          });
-  }
-  else {
-    res.render('404');
-  }
-});
 
-app.post('/ntfc_p',function (req,res){
-  var ms ={};
-  ms.newp = 0;
-   follow.findOne({user:req.session._id},function(err,done){
-     if(err){
-        res.send(ms);
-     }
-     else {
-      if(req.session.userstore && req.session.userstore.length)
-       {var count=req.session.userstore.length-1;
-              function chkp (count,callback) {
-                if(count<0) {
-                  res.send(ms);
-                  return 0;
-                }
-                //console.log('count: '+count);
-                //console.log('user: '+req.session.userstore[count]);
-               users.findOne({_id:req.session.userstore[count]},{fields:{last_item:1}},function (err,doc){
-                   if(err) {
-                    res.send(ms);
-                   }
-                   else {
-                     if(doc!=null) {
-                      //console.log(1);
-                      //console.log(done[req.session.userstore[count]].tmstmp);
-                      //console.log(doc.last_item);
-                      if(done[req.session.userstore[count]].tmstmp<doc.last_item) {
-                        ms.newp=1;
-                        res.send(ms);
-                      }
-                      else {
-                       count--;
-                       callback(count,callback);
-                      }
-                     }
-                     else if(!count){
-                       res.send(ms);
-                     }
-                     else {
-                       count--;
-                       callback(count,callback);
-                     }
-                 }
-               });
-              }
-              chkp(count,chkp);}
-        else {
-          res.send(ms);
-        }
-     }
-    });
-});
-
-app.post('/ntfc_m',function (req,res){
-  var ms ={};
-  ms.newmsg = 0;
-  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            if(err){
-              console.log('QUERY ERR');
-              res.send(ms);
-            }
-            else {
-              if(done){
-                  if(done.msgstore.length)
-                  {
-                   if(!done.msgstore[done.msgstore.length-1].read)
-                   {ms.newmsg=1;
-                    res.send(ms);}
-                 else
-                 {res.send(ms);}
-                  }
-                  else {
-                   res.send(ms); 
-                  }
-              }
-              else {
-                res.send(ms);
-              }
-            }
-          });
-});
-
-app.post('/moremsg',function (req,res){
-  var iter = req.body.iter;
-  var ms ={};
-  ms.trouble=1;
-  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
-            if(err){
-              console.log('QUERY ERR');
-              res.send(ms);
-            }
-            else {
-              if(done){
-                  if(done.msgstore)
-                  {
-                  var end = 11+10*iter>=done.msgstore.length?0:done.msgstore.length-(11+10*iter);
-                  console.log('end: '+end);
-                  var more =11+10*iter>=done.msgstore.length?0:1;
-                  console.log('more: '+more);
-                  done.msgstore = done.msgstore.slice(end,done.msgstore.length-(1+10*iter));
-                  ms.trouble = 0;
-                  ms.more = more;
-                  ms.msgstore = done.msgstore;
-                  res.send(ms);
-                  }
-                  else {
-                   res.send(ms);
-                  }
-              }
-              else {
-                console.log('DOCUMENT ERR');
-                res.send(ms);
-              }
-            }
-          });
-});
-
-app.post('/stlstmsg',function (req,res){
-  //users.update({_id:req.session._id},{$set:{lst_msg:req.body.tmstmp}});
-  //req.session.lst_msg = req.body.tmstmp;
-  //res.send('ok');
-  user_messages.update({"user":req.session._id,"msgstore.tmstmp" : parseInt(req.body.tmstmp)}, {$set : {"msgstore.$.read" : 1}});
-  res.send('ok');
-});
-
-app.post('/msg',function (req,res){
- if(req.session._id) {
-  console.log(req.body.txtbody);
-  var msg ={};
-  msg.sndr = req.session._id;
-  //msg.textbody = req.body.txtbody.replace("\n","<br />");
-  msg.textbody = req.body.txtbody.length>2700?req.body.txtbody.replace(/\n/g, '<br />').slice(0,2700):req.body.txtbody.replace(/\n/g, '<br />');
-  console.log(msg.textbody);
-  msg.tmstmp = Date.now();
-  msg.read = 0;
-  msg.userpic = req.session.userpic;
-  msg.nick = req.session.nick;
-   user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
-  res.send('ok');
- }
- else {
-  res.send(0);
- }
-});
-
-app.post('/settings',function (req,res){
-  var ms={};
-  ms.trouble=1;
-  var vpub = parseInt(req.body.pub);// public
-  //var vmrq = parseInt(req.body.mrq);// messaging request
-  if(req.session.mail || !is_single(parseInt(req.body.pub))){
-    //users.update({mail:req.session.mail},{pub:vpub,mrq:vmrq});
-    users.update({mail:req.session.mail},{$set:{pub:vpub,lang:req.body.lang}});
-    items.update({user:req.session._id},{$set:{pub:vpub}});
-    ms.trouble=0;
-    res.send(ms);
-  }
-  else {
-    ms.trouble=1;
-    res.send(ms);
-  }
-});
 
 app.get('/about',function (req,res){
   if(req.session.mail)
@@ -911,28 +538,6 @@ app.get('/about',function (req,res){
 else {
   res.render('about_out');
 }
-});
-
-app.get('/people',function (req,res){
-   if(req.session._id)
-  {
-        users.findOne({_id:req.session._id},{fields:{userstore:1,readbooks:1,seenmovies:1,lang:1}},function (err,doc){
-          if(err) {
-          // TO DO tell user
-          }
-          else {
-            if(doc){
-                          res.render('people',{'user':doc._id,'doc':JSON.stringify(doc)});  
-                  }
-                  else {
-                    res.redirect('/');
-                  }
-          }
-        });
-      }
-  else {
-    res.render('restricted');
-  }
 });
 
 
@@ -1637,332 +1242,6 @@ app.get('/showitems',function (req,res){
 
 
 
-app.get('/people/:kind/:item',function (req,res){
-  if(req.session._id){
-    switch(req.params.kind){
-       case('b'):
-       users.find({bookstore:req.params.item},{fields:{_id:1}}, function(err,done){
-        if(err){
-          console.log('err while items query');
-        }
-          else {
-            console.log(done);
-            books.findOne({_id:req.params.item}, function (err2,book){
-              if(err2){
-                console.log('err while book query');}
-              else if(book){
-                 res.render('findpeople',{'doc':JSON.stringify(done),'title':book.title,'author':book.authors,'me':req.session._id});
-              }
-              else {
-                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--','me':req.session._id});
-              }
-              });
-            }
-            //res.render('findpeople',{'doc':JSON.stringify(done)});
-          });
-       break;
-       case('m'):
-        users.find({moviestore:req.params.item},{fields:{_id:1}}, function(err,done){
-        if(err){
-          console.log('err while items query');
-        }
-          else {
-            console.log(done);
-            movies.findOne({_id:req.params.item}, function (err2,movie){
-              console.log('movie: '+movie);
-              if(err2){
-                console.log('err while book query');}
-              else if(movie){
-                 res.render('findpeople',{'doc':JSON.stringify(done),'title':movie.title,'author':movie.year,'me':req.session._id});
-              }
-              else {
-                res.render('findpeople',{'doc':JSON.stringify(done),'title':'--','author':'--','me':req.session._id});
-              }
-              });
-            }
-            //res.render('findpeople',{'doc':JSON.stringify(done)});
-          });
-       break;}
-  }
-  else {
-    res.redirect('/');
-  }
-});
-
-
-app.post('/follow/:id',function (req,res){
-  if(req.session._id || is_uid(req.params.id)){
-    var tmp_id = req.params.id;
-    console.log(typeof tmp_id);
-    var tmstmp = Date.now();
-    //var new_user={};
-    var update_tmstmp = {};
-    update_tmstmp[req.params.id]={'tmstmp': tmstmp};
-    follow.update({user:req.session._id},{$set:update_tmstmp});
-    req.session.userstore.push(req.params.id);
-    users.update({_id:req.session._id},{$push:{userstore:req.params.id}});
-   //users.update({_id:req.session._id},{$set:new_user});
-   //req.session.userstore[req.params.id]={'tmstmp':tmstmp};
-    var ms={};
-    ms.trouble=0;
-    res.send(ms);
-  }
-  else {
-    res.send(0);
-  }
-});
-
-app.post('/getfollow',function (req,res){
-  if(req.session._id){
-    var ms={};
-    ms.trouble=1;
-    follow.findOne({user:req.session._id},function(err,done){
-     if(err){
-        res.send(ms);
-     }
-     else {
-       res.send(done);
-     }
-    });
-  }
-    else{
-      res.send(0);
-    }
-});
-
-app.post('/unfollow/:id',function (req,res){
-  //TODO query mechanics used in making messages read might fly here 
-  if(req.session._id){
-    var tmp_id = req.params.id;
-    var tmp_unset={}
-    tmp_unset[tmp_id]=0;
-   follow.update({user:req.session._id},{$unset:tmp_unset});
-   for(var i =0; i< req.session.userstore.length;i++){
-    console.log(req.session.userstore[i]+','+typeof req.session.userstore[i]);
-    console.log('\n'+tmp_id);
-  if ( req.session.userstore[i] === tmp_id) { req.session.userstore.splice(i, 1);break}
-} 
-   users.update({_id:req.session._id},{$set:{userstore:req.session.userstore}});
-   var ms={};
-    ms.trouble=0;
-    res.send(ms);
-  }
-    else {
-    res.send(0);
-  }
-});
-
-app.post('/gettimestamp/:id',function (req,res){
-  //WHY DO WE NEED THAT ? THE OTHER PART OF THIS IS INSIDE "ANOTHERUSER"
-  if(req.session._id){
-    follow.findOne({user:req.session._id},function (err,done){
-      if(err)
-      {
-        console.log('err');
-        res.send(0);
-      }
-      else {
-        var update_tmstmp = {};
-        update_tmstmp[req.params.id]={'tmstmp': Date.now()};
-        follow.update({user:req.session._id},{$set:update_tmstmp});
-        var ms={};
-        ms = done[req.params.id.toString()];
-        res.send(ms);
-      }
-    });
-  }
-  else {
-    res.send(0);
-  }
-});
-
-
-
-
-
-app.post('/usrp',function (req,res) {
-  console.log('upl!');
-  if(req.session.mail){
-    if (req.files) 
-    { 
-      function upload(filepath,imageid){
-                   console.log('into upload');
-                   var oldPath = filepath;
-                   console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-                   var newPath = __dirname +"/public/userpics/"+ imageid;
-                   console.log('UPLOAD 2 step, newPath:' + newPath );
-                    fs.readFile(oldPath , function(err, data) {
-                      fs.writeFile(newPath, data, function(err) {
-                          fs.unlink(oldPath, function(){
-                              if(err) throw err;
-                              gm(newPath).size(function (err, size) {
-                                if(err){
-                                  console.log(err);
-                                }
-                                else if(size.width>1024||size.height>1024){
-                                  console.log('image is too large, going to resize ( '+size.width+'x'+size.height+' )');
-                                  if(size.width>size.height){
-                                    gm(newPath).resize(1024).write(newPath,function (err){
-                                      if(err) {console.log(err);}
-                                      else{
-                                        var dest = '/userpics/'+imageid;
-                                         res.render('crop_new2',{'imgsrc':dest});
-                                      }
-                                    });
-                                  }
-                                  else {
-                                    gm(newPath).resize(null,1024).write(newPath,function (err){
-                                      if(err) {console.log(err);}
-                                      else{
-                                        var dest = '/userpics/'+imageid;
-                                         res.render('crop_new2',{'imgsrc':dest});
-                                      }
-                                    });
-                                  }
-                                }
-                                else {
-                                  var dest = '/userpics/'+imageid;
-                                  res.render('crop_new2',{'imgsrc':dest});
-                                }
-                              });  //resize
-                          });//unlink temp
-                    }); //write new
-                 }); //read from temp
-                 }
-      upload(req.files.userpic.path,req.files.userpic.name);
-   }
-   else {
-    console.log('problem with files');
-    res.redirect('/');
-   }}
-   else {
-    console.log('somebody messing with us?');
-    res.redirect('/');
-   }
-});
-
-
-
-app.post('/userp/crop',function (req,res){
-  console.log('INTO CROP');
-  console.log(req.body);
-  if(req.session && req.session.mail && is_email(req.session.mail) && req.session._id && is_uid(req.session._id) && req.body.x1 && is_multiple(parseInt(req.body.x1)) && req.body.x2 && is_multiple(parseInt(req.body.x2)) && req.body.y1 && is_multiple(parseInt(req.body.y1)) && req.body.y2 && is_multiple(parseInt(req.body.y2)) && req.body.img)
-    { var imgname = req.body.img.substring(10);
-      var fullimgname = __dirname +"/public/userpics/"+ imgname;
-      var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
-      var output_path_small = __dirname +"/public/userpics/"+req.session._id+"_small.png";
-      console.log('############# 1 #############');
-       path.exists(output_path, function(exists) { 
-        console.log('############# 2 #############');
-          if (exists) {
-            console.log('############# 3 EXISTS #############');
-            rm_images(res,req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,output_path_small,make_userpic);
-            }
-            else{
-              console.log('############# 3 #############');
-               make_userpic(res,req.session.mail,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
-            }
-       });//PATH EXISTS USERPIC
-    }
-  else {
-    //TODO REMOVE UPLOADED PIC
-    console.log('CROP FAIL, REDIRECT');
-    res.redirect('/');
-  }
-  });
-
-function rm_images(res,_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,callback) {
-  console.log('############# 4 #############');
-  fs.unlink(output_path, function(err){
-    if(err) throw err;
-    console.log('############# 5 #############');
-        //fs.unlink(fullimgname, function(err){
-        //  if(err) throw err;
-        //  console.log('############# 6 #############');
-                fs.unlink(output_path_small, function(err){
-                  if(err) throw err;
-                  console.log('############# 6 #############');
-                  callback(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
-                });
-              });
-           //});
-}
-
-function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
-  gm(fullimgname).size(function (err, size) {
-    console.log('############# 4 #############');
-                 if (err)
-                   {//console.log(size.width > size.height ? 'wider' : 'taller than you');
-                    console.log(err);
-                   }
-                 else if(size.width<300 || size.height<300) {
-                  console.log('USERPIC ERR: TO SMALL');
-                  var ms={};
-                  ms.trouble = 1;
-                  res.send(ms);
-                 }
-                 else {
-                  console.log('############# 5 #############');
-                  //gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).density(300, 300).write(output_path, function (err) {
-                   gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).density(300, 300).write(output_path, function (err) {
-                     if (err)
-                      { console.log(err);
-                        var ms={};
-                        ms.trouble = 1;
-                        res.send(ms);
-                      }
-                    else {
-                      console.log('############# 6 #############');
-                       gm(output_path).resizeExact(69, 69).write(output_path_small, function (err) {
-                         if (err)
-                          { console.log(err);
-                            var ms={};
-                            ms.trouble = 1;
-                             res.send(ms);
-                          }
-                        else {
-                          fs.unlink(fullimgname, function(err){
-                            if(err) throw err;
-                            console.log('############# 6 #############');
-                            console.log('MK_USERPIC DONE;');
-                            users.update({mail:_mail},{$set:{userpic:1}});
-                            var ms={};
-                            ms.trouble=0;
-                            res.send(ms);
-                          });
-                        }
-                       });//CREATE _small 
-                    }
-                   });//CROP&RESIZE UPLOADED IMAGE
-                 }
-               });
-}
-    
-
-
-function messagescount () {
-  insidemsg.count({},function(err,c){
-    if(err) {
-      return 0;
-    }
-    else {
-      return c;
-    }
-  });
-}
-
-function getmessages () {
-  insidemsg.find({},function(err,doc){
-    if (err)
-    {
-      return 0;
-    }
-    else {
-      return doc;
-    }
-  });
-}
-
 app.get('/admax',function(req,res){
   console.log("CHECKING COOKIES: "+JSON.stringify(req.session));
   
@@ -2009,29 +1288,6 @@ app.post('/admax',function(req,res){
   }
 });
 
-app.get('/admin/userlist',function(req,res){
-  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
-  {
-    users.find({},function(err,doc){
-    if(err)
-    {
-      res.send('DB ERR')
-    }
-    else {
-      if(doc.length>0)
-      {
-         res.render('userlist',{'doc':doc});
-      }
-      else{
-         res.send('NO PLACES - EMPTY DB');
-      }
-    }
-  });
-  }
-  else{
-    res.redirect('http://ya.ru');
-  }
-});
 
 app.post('/drop/users',function(req,res){
   if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
@@ -2049,106 +1305,6 @@ app.post('/drop/users',function(req,res){
   else {
     res.redirect('http://peopleandbooks.com');
   }
-});
-
-app.post('/admin/1/:uid',function(req,res){
-  var pas = req.body.uu;
-  if (pas != 'withoutthesecurity') {
-    res.redirect('http://peopleandbooks.com');
-  }
-  else 
-  {var vuid = parseInt(req.params.uid);
-    var ms={};
-    ms.trouble=1;
-    ms.mtext = 'db';
-    users.remove({_id:vuid},function(err,done){
-      if(err){
-        res.send(ms);
-      }
-      else {
-        friends.remove({_id:vuid},function(err,done){
-      if(err){
-        res.send(ms);
-      }
-      else {
-        ms.trouble=0;
-        res.send(ms);
-      }
-    });
-      }
-    });}
-});
-
-app.post('/admin/insidemsg/remove',function(req,res){
-  console.log('removing a message');
-  var vmid = parseInt(req.body.mid);
-  var pas = req.body.pas;
-  if (pas != 'withoutthesecurity' || !vmid) {
-    res.redirect('http://peopleandbooks.com');
-  }
-  else 
-  { var ms={};
-    ms.trouble=1;
-    ms.mtext = 'db';
-    insidemsg.remove({mid:vmid},function(err,done){
-      if(err){
-        res.send(ms);
-      }
-      else {
-        ms.trouble=0;
-        res.send(ms);
-      }
-    });
-  }
-
-});
-
-
-app.post('/admin/insidemsg',function(req,res){
-  console.log('creating message;');
-  var vheading = req.body.heading;
-  var vtextbody = req.body.textbody;
-  var d = new Date();
-  var vday = d.getDate().toString();
-  var vmonth = d.getMonth()+1;
-  vmonth = vmonth.toString();
-  var vyear = d.getUTCFullYear().toString();
-  console.log('beginning');
-  if (vday.length===1){
-         vday='0'+vday;
-       }
-  if (vmonth.length===1){
-         vmonth='0'+vmonth;
-       }
-  var vregdateint= vyear+vmonth+vday;
-  vregdateint = parseInt(vregdateint);
-  var ms = {};
-  ms.trouble=1;
-  ms.mtext = 'db';
-  console.log('middle');
-  insidemsg.find({},{limit:1,sort:{mid:-1}},function(err,doc){
-    if(err)
-    {
-      //clap your hands
-      res.send(ms);
-    }
-   else {
-    if(doc.length>0){
-      console.log('end');
-         var newid = doc[0].mid;
-         newid++;
-         console.log(newid);
-         insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
-      ms.trouble=0;
-      res.send(ms);
-       }
-       else {
-         insidemsg.insert({mid: 1,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
-         ms.trouble=0;
-      res.send(ms);
-       }
-   }
-  });
 });
 
 
@@ -2505,33 +1661,7 @@ else {
 }
 });
 
-app.post('/nickcheck',function (req,res){
-  var query = req.body.txt;
-  var msg = {};
-  if(is_nick(req.body.txt)){
-  users.find({nick: query},function(err,docs){
-      if(err){
-        console.log('err');
-      }
-      else {
-        console.log(docs);
-        if(docs.length!=0)
-        { console.log('someone');
-          msg.present =1;
-          res.send(msg);}
-        else {
-          console.log('clear');
-          msg.present=0;
-          res.send(msg);
-        }
-      }
-     });
-   }
-   else {
-    msg.present =1;
-    res.send(msg);
-   }
-});
+
 
 app.post('/livesearch/:id',function (req,res){
   var cond = req.params.id;
@@ -2619,30 +1749,6 @@ app.post('/livesearch/:id',function (req,res){
     break;
   }
 });
-
-
-
-///sockets
-//var server = app.listen(80,'188.166.118.116');
-//var io = require('socket.io').listen(server);
-//
-//var clients = [];
-//io.on('connection', function (socket) {
-//  clients.push(socket);
-//  var interval = setInterval(function () {
-//  socket.emit('news', { hello: 'world' });
-//},1000);
-//   socket.on("disconnect", function () {
-//        console.log('disconnect');
-//        clearInterval(interval);
-//    });
-//   socket.on("tweet", function (tweet) {
-//        // we received a tweet from the browser
-//        console.log(clients);
-//        console.log('session id:'+socket.sessionId);
-//        console.log('tweet: '+tweet.text);
-//    });
-//});
 
 
 
