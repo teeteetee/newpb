@@ -360,6 +360,7 @@ head
               data: 0
             })
               .done(function( msg ) {
+                console.log('hey! '+msg);
                 if(!msg.trouble) {
                    items=msg.doc.itemstore;
                   if(!items || !items.length) {
