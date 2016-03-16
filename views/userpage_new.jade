@@ -306,21 +306,21 @@ head
                 .message
               .inputwrap
                 #mailgroup.form-group.has-feedback
-                  input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="link") 
+                  input(type="email" class=" change_phc simplebox" id="link" name='mail' placeholder="link") 
                   span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                   span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
                 #pgroup.form-group.has-feedback
                   span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="description") 
+                  input(type="password" class=" change_phc simplebox" id="title" name='p' maxlength="15" placeholder="description") 
                   span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                 #nickgroup.form-group.has-feedback
                   span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                   span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="comment" maxlength="20")
+                  input(type="text" class="change_phc simplebox" id='comment' name='nick' placeholder="comment" maxlength="20")
               //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
            .modal-footer
              button(class="btn btn-default" data-dismiss="modal") Close
-             button(class="btn btn-primary") Add
+             button#submitlink(class="btn btn-primary") Add
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -415,4 +415,32 @@ head
          }
          });
         }     
+        //-----------------------------------//
+        $('#submitlink').click(function(){
+        if($('#btitle').val() )
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.title = $('#title').val();
+           data.link = $('#link').val();
+           data.comment = $('#comment').val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/additem/link",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#title').val('');
+                $('#link').val('');
+                $('#comment').val('');
+                $('#mymodal').modal('hide');
+                //$('#wait').fadeOut(350);
+                //console.log(msg);
+                window.location='/';
+              });
+          }
+        });
         
