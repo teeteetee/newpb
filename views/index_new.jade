@@ -6,7 +6,7 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1')
   meta(name='yandex-verification' content='6ea94f8807d25ebe')
   // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-  title P&B     
+  title AC notes     
   link(rel='icon', href='', sizes='16x16', type='image/png')
   // Bootstrap
   link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')     
@@ -66,7 +66,7 @@ head
     }
     #mainheading {
       text-align:center;
-      margin-top:10vw;
+      margin-top:20px;
     }
     .inputwrap input{
      -webkit-appearance: none;
@@ -111,7 +111,7 @@ head
      margin-top:20px;
       }
     #mainheading {
-      margin-top: 20vw;
+      margin-top: 10px;
     }
     }
     @font-face {
@@ -279,10 +279,6 @@ head
       box-shadow:none;
     }
   body
-    .language
-      a#eng.active ENG 
-      span |
-      a#ru  RU
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -301,32 +297,27 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title"  style='color:#ddd;') Last step
           .modal-body
-            .row(style='margin-bottom:20px;margin-top:20px;')
-              .col-xs-12
-                .btn-group(role="group" aria-label="..." style='margin-left:15px;')
-                  button(type="button" id='male' class="btn btn-iosdark active") I'm Male
-                  button(type="button" id='female' class="btn btn-iosdark") I'm Female
-            .row 
-              .col-xs-12
-                .checkbox
-                  label
-                    input(id='terms_checkbox' type="checkbox") 
-                    h4(style='display:inline;') I agree with the 
-                    a( id ='terms' style='display:inline;color:#2E98F3;font-size:18px;font-weight:500;') terms
-            .row#termsrow(style='border-top:1px solid #eee; padding-top:10px;padding-bottom:10px;padding-left:30px;padding-right:30px;color:#aaa;padding-top:30px;') 
-              .col-xs-12
-                p People&Books as a service provider, and you conform to the following two conditions:
-                h3 First
-                p Service &#40service - functionality of peopleandbooks.com web page &#41 provided as is and as avaliable.
-                h3 Second
-                p By submitting any of your data to us after you have been registered &#40; issued a record in our database allowing you to log in &#41; you state the absence of any conditions regarding use of submitted data and confirm our full rights over such data which becomes service provider's intellectual property.
-          .modal-footer(style='text-align:center;')
-            .row
-              .col-xs-12.visible-xs
-                button(type="button" class="btn btn-lg btn-simple runreg") Done
-            .row.visible-lg.visible-md.visible-sm
-              .col-xs-12
-                button(type="button" class="btn btn-blue runreg") Done
+            .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4(id='paddgroup-lg')
+              form
+                .form-group
+                  .message
+                .inputwrap
+                  #mailgroup.form-group.has-feedback
+                    input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="email") 
+                    span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
+                  #pgroup.form-group.has-feedback
+                    span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="password") 
+                    span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  #nickgroup.form-group.has-feedback
+                    span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                    input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="nick" maxlength="20")
+                  #pwderr
+                  //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
+                button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Register
+                a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Log in
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -334,32 +325,10 @@ head
     .container
       #mainheading.row
         .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;font-family:boldproxima;') PEOPLE & BOOKS
-          h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') Tell me what you read, and I'll tell you who you are.
+          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;font-family:boldproxima;') Neural Networks Research
+          h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') Keeping track of the information
           h3
-            span(class='label' style='font-weight:200;font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha
-      #signup.row(style='text-align:center;')
-        .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4(id='paddgroup-lg')
-          form
-            .form-group
-              .message
-            .inputwrap
-              #mailgroup.form-group.has-feedback
-                input(type="email" class=" change_phc simplebox" id="mail" name='mail' placeholder="email") 
-                span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
-              #pgroup.form-group.has-feedback
-                span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                input(type="password" class=" change_phc simplebox" id="p" name='p' maxlength="15" placeholder="password") 
-                span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-              #nickgroup.form-group.has-feedback
-                span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                input(type="text" class="change_phc simplebox" id='nickinput' name='nick' placeholder="nick" maxlength="20")
-              #pwderr
-              //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
-            button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Register
-            a(href='/signin' class='signinlink' style='color:rgba(255, 255, 255, 0.76);text-decoration:underline;display:block;') Log in
+            span(class='label' style='font-weight:200;font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha 
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -376,42 +345,6 @@ head
         var lang = 'en';
         var nick_short = 'Nickname should contain at least 5 characters';
         var nick_taken = 'This nick is alredy in use';
-      $('#ru').click(function(){
-        less_six = 'Пароль должен содержать не менее 6 знаков (буквы и цифры)';
-        too_long = 'Пароль слишком длинный';
-        no_digit = 'пароль должен содержать хотя бы одну цифру';
-        digit_letter = 'Пароль должен содержать цифры и буквы';
-        email_inuse = 'Этот email уже используется';
-        email_incorrect = 'Недействительный email';
-        lang = 'ru';
-        nick_short = 'Ник должен содержать минимум 5 символов';
-        nick_taken = 'Этот ник уже используется';
-        $('#p').attr('placeholder','пароль');
-        $('#nickinput').attr('placeholder','ник');
-        $('#modo').text('Скажи мне, что ты читаешь, и я скажу, кто ты.');
-        $('.runreg').text('Регистрация');
-        $('.signinlink').text('Войти');
-        });
-      $('#eng').click(function(){
-        less_six = 'Password should be at least 6 chracters long';
-        too_long = 'Password is too long';
-        no_digit = 'Password should contain at least one number';
-        digit_letter = 'Password should contain letters and numbers';
-        email_inuse = 'Provided email is already used by one of the users';
-        email_incorrect = 'Email is not valid';
-        lang = 'en';
-        nick_short = 'Nickname should contain at least 5 characters';
-        nick_taken = 'This nick is alredy in use';
-        $('#p').attr('placeholder','password');
-        $('#nickinput').attr('placeholder','nick');
-        $('#modo').text("Tell me what you read, and I'll tell you who you are.");
-        $('.runreg').text('Sign up');
-        $('.signinlink').text('Sign in');
-        });
-      $('#terms').click(function(){
-        console.log('cc');
-        $('#termsrow').slideToggle();
-        });
       $('#mail').keyup(function(event) {
         if(!$('#mail').val()){
              $('#mail_error').css('display','none');
