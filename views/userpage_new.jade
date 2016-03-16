@@ -4,7 +4,7 @@ head
   meta(charset='utf-8')     
   meta(http-equiv='X-UA-Compatible', content='IE=edge')     
   meta(name='viewport', content='width=device-width, initial-scale=1')
-  meta(name='yandex-verification' content='6ea94f8807d25ebe')
+  //meta(name='yandex-verification' content='6ea94f8807d25ebe')
   // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
   title AC notes     
   link(rel='icon', href='', sizes='16x16', type='image/png')
@@ -348,7 +348,7 @@ head
     // Include all compiled plugins (below), or include individual files as needed
     script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js') 
-    script(async src='js/counter.js')    
+    //script(async src='js/counter.js')    
     script.
       $('#addlink').click(function(){
         $('#myModal').modal('show');
@@ -417,7 +417,7 @@ head
         }     
         //-----------------------------------//
         $('#submitlink').click(function(){
-        if($('#btitle').val() )
+        if($('#title').val() )
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
