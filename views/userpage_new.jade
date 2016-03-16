@@ -358,8 +358,7 @@ head
               method: "POST",
               url: "/getitems",
               data: 0
-            })
-              .done(function( msg ) {
+            }).done(function( msg ) {
                 console.log('hey! '+msg);
                 if(!msg.trouble) {
                    items=msg.doc;
@@ -384,7 +383,7 @@ head
               var x = parseInt(a[key]); var y = parseInt(b[key]);
               return ((x < y) ? -1 : ((x > y) ? 1 : 0));
           });
-       };
+       }
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
