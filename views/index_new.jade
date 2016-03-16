@@ -326,12 +326,11 @@ head
         .col-xs-12(style='text-align:center;')
           .loader       
     .container
-      #mainheading.row
+      #mainheading.row(style='padding-bottom:10px;border-bottom:1px solid #eee;')
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
           h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') Keeping track of the information
-          h3
-            span(class='label' style='font-weight:200;font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha 
+      #datablock.row
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -348,7 +347,7 @@ head
         var lang = 'en';
         var nick_short = 'Nickname should contain at least 5 characters';
         var nick_taken = 'This nick is alredy in use';
-      $('#ru').click(function(){
+      $('#eng').click(function(){
         $('#myModal').modal('show');
         });
       $('#mail').keyup(function(event) {
