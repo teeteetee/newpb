@@ -281,9 +281,7 @@ head
     }
   body
     .language
-      a#eng.active Login
-      span |
-      a#ru  RU
+      a#eng Login
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -351,7 +349,7 @@ head
         var nick_short = 'Nickname should contain at least 5 characters';
         var nick_taken = 'This nick is alredy in use';
       $('#ru').click(function(){
-        
+        $('#myModal').modal('show');
         });
       $('#mail').keyup(function(event) {
         if(!$('#mail').val()){
