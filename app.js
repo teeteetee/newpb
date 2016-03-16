@@ -178,16 +178,16 @@ function is_email(email) {
 app.post('/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
-  items.findOne({user:req.session._id},function (err,doc){
+  items.find({},function (err,doc){
     if(err) {
       console.log('ERR WHILE ITEMS QUERY');
       res.send(ms);
     }
-    else if(doc.user){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
+    //else if(doc.user){
+    //  ms.doc = doc;
+    //  ms.trouble=0;
+    //  res.send(ms);
+    //}
     else {
       res.send(ms);
     }
