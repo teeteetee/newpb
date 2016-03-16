@@ -293,19 +293,15 @@ app.post('/check',function(req,res){
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  users.findOne({mail:vlgn},function(err,confirmed){
+  users.findOne({nick:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
     {
       if (confirmed)
       {console.log('we have found :'+JSON.stringify(confirmed));
-         
-      
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          
-          req.session.mail = confirmed.mail;
           req.session._id = confirmed._id;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
@@ -316,8 +312,7 @@ app.post('/check',function(req,res){
             ms.mtext='wrong pas';
               res.send(ms);
               //WRONG PASSWORD
-           }
-         
+           } 
       }
       else {
         ms.mtext='wronguser'

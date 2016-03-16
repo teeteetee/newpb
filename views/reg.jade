@@ -5,7 +5,7 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    title Sign in     
+    title Register     
     link(rel='icon', href='', sizes='16x16', type='image/png')
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')     
@@ -213,11 +213,11 @@ head
       }
       }
       };
-      request.open('POST', '/check', true);
+      request.open('POST', '/newuser', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("p="+vphr+"&nick="+vlgn);
+      request.send("reload=0&p="+vphr+"&nick="+vlgn);
       }
       //END OF AUTHSUBMIT FUNCTION
         
