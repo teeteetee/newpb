@@ -30,7 +30,8 @@ head
     }
     body{
       height:100%;
-      background-color:#{color};
+     /* background-color:#{color};*/
+     background-color:white;
     }
     html2 { 
       background: url('/images/libr.jpg') no-repeat center center fixed; 
@@ -279,6 +280,10 @@ head
       box-shadow:none;
     }
   body
+    .language
+      a#eng.active Login
+      span |
+      a#ru  RU
     //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="error_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -325,7 +330,7 @@ head
     .container
       #mainheading.row
         .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:white;font-family:boldproxima;') Neural Networks Research
+          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
           h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') Keeping track of the information
           h3
             span(class='label' style='font-weight:200;font-family:times,serif;border:1px solid rgba(255, 255, 255, 0.47);color:rgba(255, 255, 255, 0.47);font-style:italic') alpha 
@@ -345,6 +350,9 @@ head
         var lang = 'en';
         var nick_short = 'Nickname should contain at least 5 characters';
         var nick_taken = 'This nick is alredy in use';
+      $('#ru').click(function(){
+        
+        });
       $('#mail').keyup(function(event) {
         if(!$('#mail').val()){
              $('#mail_error').css('display','none');
