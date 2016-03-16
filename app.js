@@ -259,61 +259,35 @@ app.get('/logout',function (req,res){
 });
 
 app.post('/newuser',function(req,res){
+    var reload = req.body.reload;
     var ms = {};
     ms.trouble=1;
-    ms.mtext='email incorrect';
-    var vmail = req.body.mail; 
+    ms.mtext='email incorrect'; 
     var vnick = req.body.nick;
-    if(req.body.p.length >30 || req.body.mail.length>30 || req.body.nick.length>30 || !is_nick(req.body.nick) || !is_single(parseInt(req.body.gn)) ) {
-      ms.mtext('fail');
-      res.send(ms);
-      return;
-    }
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
     var ms = {};
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-
-    if (is_email(vmail) === true) {
-    users.find({mail:vmail},{fields:{mail:1}},function(err,doc){
-      if (err)
-      {
-        //DO SMTH
-      }
+      users.insert({nick:vnick,phr:vp,totallinks:0,last_item:0,regdate:Date.now()},function (err,done){
+        if(err)
+        {
+          ms.mtext='db';
+         res.send(ms); 
+        }
       else {
-        if(doc.length === 0)
-        { 
-          users.insert({pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,lang:req.body.lang,totallinks:0,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,newlinks:0,readlinks:0,userpic:0,last_item:0,lst_msg:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[],linkstore:[]},function (err,done){
-            if(err)
-            {
-              ms.mtext='db';
-             res.send(ms); 
-            }
-          else {
-          follow.insert({user:done._id.toString()});
-          items.insert({user:done._id.toString(),bookstore:[],moviestore:[],links:[],pub:1});// used to populate the user, checks are done with user object passed in session
-          user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
-          req.session.mail=vmail;
-          req.session._id=done._id;
-          ms.trouble =0;
-          ms.mtext='success';
-          res.send(ms);
-          }
-          });
-        }
-        else {
-           ms.mtext='email exists'
-           res.send(ms);
-        }
-      }// end of err's else
-    });
-    }   
-    else {
-      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
-      res.send(ms);
-    }
-
+      req.session._id=done._id;
+      if(!reload)
+      {ms.trouble =0;
+      ms.mtext='success';
+      res.send(ms);}
+      else {
+        res.redirect('/')
+      }
+      }
+      });
+        
+    
     });
 
 app.post('/check',function(req,res){
