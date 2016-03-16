@@ -440,7 +440,7 @@ head
                     mm='0'+mm
                 } 
                 var today = dd+'.'+mm+'.'+yyyy;
-                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#d2d2d2;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.title.capitalizeFirstLetter()+"</h5></div></div>";  
+                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#d2d2d2;margin-right:20px;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.title.capitalizeFirstLetter()+"</h5></div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
                 var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
