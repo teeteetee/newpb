@@ -373,17 +373,21 @@ head
                    }
                    if(consolidated.length){
                     console.log(consolidated);
-                   //sortByKey(consolidated, 'tmstmp');
+                   sortByKey(consolidated, 'tmstmp');
                    populate(consolidated);
                  }
                 }
               });
-      //function sortByKey(array, key) {
-      //     return array.sort(function(a, b) {
-      //        var x = parseInt(a[key]); var y = parseInt(b[key]);
-      //        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-      //    });
-      // }
+      Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+      }
+      function sortByKey(array, key) {
+           return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          });
+       }
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
