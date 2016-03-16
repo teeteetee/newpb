@@ -62,125 +62,7 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
 
-app.get('*', function(req,res,next) {  
-  console.log('########### '+req.url+'############');
-  var test =['signin',
-  'logout',
-  'messages',
-  'settings',
-  'helpers',
-  'lstitm',
-  'seebooks',
-  'seeuser',
-  'seefollow',
-  'clearbooks',
-  'clearlinks',
-  'setbooks',
-  'clearmovies',
-  'seeauthors',
-  'cs',
-  'people',
-  'dropum',
-  'showum',
-  'dropusers',
-  'dropbooks',
-  'dropmovies',
-  'dropauthors',
-  'showitems',
-  'admax',
-  'admin',
-  'test',
-  '/'
-  ];
 
-  var requrl='';
-  if(req.url!='/')
-  {var ln = req.url.length-1;
-  requrl = req.url.substring(1,req.url.length);
-  }
-  if(req.url!='/'&&requrl.indexOf('/') > -1)
-  { 
-    requrl = requrl.substring(0,requrl.indexOf('/'));
-  }
-
-  if (req.url==='/'||test.indexOf(requrl) > -1) {
-    next();
-  } 
-  else {
-    if(req.session && req.session.nick===requrl)
-    {
-     //res.redirect('/');
-     next();
-    }
-    else
-    {  users.findOne({nick:requrl},{fields:{regdate:0,male:0,mail:0,phr:0,userstore:0,tmstmpstore:0}},function (err,doc){
-          //pub:1,mail:vmail,nick:vnick,male:parseInt(req.body.gn),phr:vp,totalbooks:0,totalmovies:0,newbooks:0,readbooks:0,newmovies:0,seenmovies:0,userpic:0,last_item:0,regdate:Date.now(),userstore:[],bookstore:[],moviestore:[]}
-          if(err) {
-          
-          }
-          else {
-            
-            if(doc){
-              
-              if(doc.pub)
-              {var unfollow=0;
-                
-               if(req.session.userstore ) {
-                
-               for(var i=0;i<req.session.userstore.length;i++){
-                 
-                 if(req.session.userstore[i]===doc._id.toString()) {
-                 unfollow=1;
-                 break
-                 }
-               }
-               }
-               //var update_tmstmp = {};
-                //var tmp_str = doc._id.toString();
-                //update_tmstmp[tmp_str]={'tmstmp': Date.now()};
-                //follow.update({user:req.session._id},{$set:update_tmstmp});
-                console.log(7+' '+doc._id);
-                items.findOne({user:doc._id.toString()},function (err,done){
-                  //console.log('done '+JSON.stringify(done));
-                  if(!done){
-                    done=[];
-                  }
-                  doc.bookstore = done.bookstore;
-                  doc.moviestore = done.moviestore;
-                  doc.linkstore = done.linkstore;
-                  
-                  var mc = req.session.moviestore ? req.session.moviestore : 0;
-                  var bc = req.session.bookstore ? req.session.bookstore : 0;
-                  var ac = req.session.linkstore ? req.session.linkstore : 0;
-                  if(req.session.nick)
-               {
-                res.render('anotheruser',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'bookstorecheck':bc,'moviestorecheck':mc,'linkstorecheck':ac,'unfollow':unfollow,'lang':req.session.lang});
-                }
-                else {
-                
-                 if(doc.pub)
-                 {res.render('anotheruser_out',{'user':doc._id,'avatar':doc.userpic,'doc':JSON.stringify(doc),'lang':req.session.lang});}
-                 else {
-                  
-                   res.render('private');
-                 }
-               }
-                }); 
-             }//doc pub
-             else {
-              
-               res.render('private');
-             }
-                  }//if doc exists
-                  else {
-                    
-                    res.render('404');
-                  }
-          }
-        });
-      }
-}
-   });
 
 app.get('/test',function (req,res){
   items.findOne({user:req.session._id},function (err,done){
@@ -231,6 +113,10 @@ app.get('/',function(req,res) {
    else {         
        res.render('index_new');
    }
+});
+
+app.get('/userpage',function (req,res){
+  res.render('userpage_new');
 });
 
 //DATA VALIDATION
