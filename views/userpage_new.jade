@@ -405,7 +405,18 @@ head
          var weektxt = 'week';
          switch(element.item_type){
            case('article'):
-                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span class='label label-book'>BOOK</span><span class='label label-good'>GOOD</span></h3><h3 class='btitle"+element._id+"' ><span class='label label-book hidden-xs' >"+ new Date(parseInt(element.tmstmp))+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.title.capitalizeFirstLetter()+"</h5></div></div>";  
+                var today = new Date(parseInt(element.tmstmp));
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+                var today = dd+'.'+mm+'.'+yyyy;
+                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#eee;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#eee;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.title.capitalizeFirstLetter()+"</h5></div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
                 var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
