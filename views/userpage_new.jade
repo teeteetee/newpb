@@ -362,7 +362,7 @@ head
               .done(function( msg ) {
                 console.log('hey! '+msg);
                 if(!msg.trouble) {
-                   items=msg.doc.itemstore;
+                   items=msg.doc;
                   if(!items || !items.length) {
                    console.log('no items');
                    }
