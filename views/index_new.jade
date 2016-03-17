@@ -294,7 +294,7 @@ head
       font-weight:200;
     }
     .hovershade:hover{
-     background-color:#eee;
+     background-color:#f9f9f9;
     }
     .footer {
     height:60px;
@@ -307,6 +307,9 @@ head
     }
     .footer h3 {
     margin:20px;
+    }
+    .item {
+      border-bottom:1px solid #f7f7f7;
     }
   body
     //.language
@@ -444,7 +447,7 @@ head
                 insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
@@ -452,7 +455,7 @@ head
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row item week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
