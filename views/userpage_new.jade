@@ -312,6 +312,15 @@ head
     .footer h3 {
     margin:20px;
     }
+    #addlink {
+    border: 3px solid #BFD7EC;
+    border-radius: 30px;
+    color: #337ab7;
+    background-color: white;
+    }
+    #addlink:hover {
+      background-color:#BFD7EC;
+    }
   body
     //.language
     //  a#eng Login
@@ -343,7 +352,7 @@ head
               //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
            .modal-footer
              button(class="btn btn-default" data-dismiss="modal") Close
-             button#submitlink(class="btn btn-primary") Add
+             button#submitlink(class="btn") Add
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
