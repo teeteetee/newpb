@@ -253,63 +253,67 @@ head
     .bookpadding {
      /* padding-left:40px;*/
     }
+    .intro {
+      overflow-x:hidden;
+    }
   body
-    .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title"  style='color:#ddd;') Adding a link
-          .modal-body
-            form
-              .form-group
-                .message
-              .inputwrap
-                #mailgroup.form-group.has-feedback
-                  input(type="text" class="change_phc simplebox" id="link" name='link' placeholder="link") 
-                  span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback"  aria-hidden="true")
-                #pgroup.form-group.has-feedback
-                  span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  input(type="text" class=" change_phc simplebox" id="title" name='p' placeholder="description") 
-                  span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                #nickgroup.form-group.has-feedback
-                  span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  textarea(type="text" class="change_phc simplebox" id='comment' name='nick' placeholder="comment")
-              //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
-           .modal-footer
-             button(class="btn btn-default" data-dismiss="modal") Close
-             button#submitlink(class="btn btn-primary") Add
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-      .row(id='spin') 
-        .col-xs-12(style='text-align:center;')
-          .loader       
-    .container
-      #mainheading.row(style='padding-bottom:20px;')
-        .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-          button#addlink(class=' btn btn-primary') + add a link
-      .row
-        #list.row
-          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
-            .row.brow
-              .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
-                .noitems.row(style='text-align:center;')  
-                   .col-xs-12
-                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
-            .row.brow
-              #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
-                .noitems.row(style='text-align:center;')  
-                   .col-xs-12
-                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
-    footer.footer
+    .intro
+      .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        .modal-dialog(role="document")
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+              h4(class="modal-title"  style='color:#ddd;') Adding a link
+            .modal-body
+              form
+                .form-group
+                  .message
+                .inputwrap
+                  #mailgroup.form-group.has-feedback
+                    input(type="text" class="change_phc simplebox" id="link" name='link' placeholder="link") 
+                    span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback"  aria-hidden="true")
+                  #pgroup.form-group.has-feedback
+                    span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    input(type="text" class=" change_phc simplebox" id="title" name='p' placeholder="description") 
+                    span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  #nickgroup.form-group.has-feedback
+                    span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                    span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                    textarea(type="text" class="change_phc simplebox" id='comment' name='nick' placeholder="comment")
+                //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
+             .modal-footer
+               button(class="btn btn-default" data-dismiss="modal") Close
+               button#submitlink(class="btn btn-primary") Add
+      .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+        .row(id='spin') 
+          .col-xs-12(style='text-align:center;')
+            .loader       
       .container
+        #mainheading.row(style='padding-bottom:20px;')
+          .col-xs-12
+            h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
+            button#addlink(class=' btn btn-primary') + add a link
         .row
-          .col-xs-12.col-lg-8.col-lg-offset-2
-            h5(style='font-weight:200;color:gray;margin-top:20px;') 2016
-            h6(style='font-weight:200;color:gray;') you are never getting in this house
+          #list.row
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
+      footer.footer
+        .container
+          .row
+            .col-xs-12.col-lg-8.col-lg-offset-2
+              h5(style='font-weight:200;color:gray;margin-top:20px;') 2016
+              h6(style='font-weight:200;color:gray;') you are never getting in this house
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
