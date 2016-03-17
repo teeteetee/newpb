@@ -64,6 +64,7 @@ head
     }
     p {
       font-size:20px;
+      text-indent:10px;
     }
     .btn-lg {
       height:60px;
@@ -269,10 +270,10 @@ head
                 #mailgroup.form-group.has-feedback
                   input(type="text" class="change_phc simplebox" id="link" name='link' placeholder="link") 
                   span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" maxlength="35" aria-hidden="true")
+                  span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback"  aria-hidden="true")
                 #pgroup.form-group.has-feedback
                   span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                  input(type="text" class=" change_phc simplebox" id="title" name='p' maxlength="15" placeholder="description") 
+                  input(type="text" class=" change_phc simplebox" id="title" name='p' placeholder="description") 
                   span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                 #nickgroup.form-group.has-feedback
                   span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
@@ -388,7 +389,7 @@ head
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
                 //insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";  
-                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small class='hidden-xs' ></small></h3><h5 style='font-weight:200;color:#ccc;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";  
+                insert = "<div class='row item read book"+element._id+"'><div class='col-sm-2'><h5 style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </h5></div><div class='col-sm-10 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='btitle"+element._id+"' ><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small class='hidden-xs' ></small></h3><h5 style='font-weight:200;color:#ccc;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
