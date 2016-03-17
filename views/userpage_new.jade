@@ -17,17 +17,6 @@ head
   script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') 
   script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
   style.
-    body2{
-    height:100%;
-    background: #2eb9c9; /* Old browsers */
-    background: -moz-linear-gradient(top, #00afce 0%, #00809e 35%, #004f71 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00afce), color-stop(35%,#00809e), color-stop(100%,#004f71)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #00afce 0%,#00809e 35%,#004f71 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #00afce 0%,#00809e 35%,#004f71 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #00afce 0%,#00809e 35%,#004f71 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #00afce 0%,#00809e 35%,#004f71 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00afce', endColorstr='#004f71',GradientType=0 ); /* IE6-9 */
-    }
     body{
       height:100%;
      /* background-color:#{color};*/
@@ -38,37 +27,12 @@ head
     position: relative;
     min-height: 100%;
     }
-    html2 { 
-      background: url('/images/libr.jpg') no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-    body2{
-      background-color:transparent;
-    }
     .change_phc::-webkit-input-placeholder {color:#ddd;}
     .change_phc::-moz-placeholder          {color:#ddd;}/* Firefox 19+ */
     .change_phc:-moz-placeholder           {color:#ddd;}/* Firefox 18- */
     .change_phc:-ms-input-placeholder      {color:#ddd;}
     .change_phc {
       color:white;
-    }
-    .signinlink{
-      margin-top:30px;
-    }
-    .signinlink:focus, .signinlink:hover, .signinlink:active {
-      color:white;
-    }
-    #signup {
-      margin-top:50px;
-    }
-    #signupround {
-      margin-top:60px;
-    }
-    #signupbutton {
-      margin-top:30px;
     }
     #mainheading {
       text-align:center;
@@ -232,48 +196,8 @@ head
     .modal-body{
       padding-top:0px;
     }
-    .btn-iosdark {
-      background-color:white;
-      border:1px solid #333;
-      color:#333;
-    }
-    .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
-      background-color:#333;
-      color:white;
-    }
-    .btn-iosdark.active {
-      background-color:#333;
-      color:white;
-    }
-    .btn-simple {
-      border:none;
-      background-color:white;
-      color:#2E98F3;
-    }
-    .btn-blue {
-      border-color:#2E98F3;
-      background-color:#2E98F3;
-      color:white;
-    }
     h4 {
       margin-bottom:20px;
-    }
-    #pwderr {
-      background-color:rgba(0, 0, 0, 0.43);
-      border-radius:4px;
-      color:white;
-      display:none;
-      padding:20px 16px;
-      margin-top:20px;
-    }
-    .language {
-      position:absolute;
-      top:20px;
-      right:20px;
-      color:rgba(0,0,0,0.3) !important;
-      }
-    .language a,.language a:focus,.language a:active,.language a:hover {
-      color:rgba(0,0,0,0.3);
     }
     .modal-header {
     border-top-left-radius: 6px;
@@ -327,9 +251,6 @@ head
       border-bottom:1px solid #f7f7f7;
     }
   body
-    //.language
-    //  a#eng Login
-    //background-color:#FF9C47;:#e87e22 round button color
     .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -459,8 +380,12 @@ head
                     mm='0'+mm
                 } 
                 var today = dd+'.'+mm+'.'+yyyy;
+                var comment;
+                if(element.comment) {
+                  comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
+                }
                 //insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#d2d2d2;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+element.title.capitalizeFirstLetter()+"</h5></div></div>";  
-                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' >"+element.comment.capitalizeFirstLetter()+"</small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
+                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
