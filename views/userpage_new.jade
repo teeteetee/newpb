@@ -298,7 +298,7 @@ head
       font-weight:200;
     }
     .hovershade:hover{
-     background-color:#eee;
+     background-color:#f9f9f9;
     }
     .footer {
     height:70px;
@@ -322,7 +322,7 @@ head
       background-color:#BFD7EC;
     }
     .item {
-      border-bottom:1px solid #eee;
+      border-bottom:1px solid #f7f7f7;
     }
   body
     //.language
@@ -355,7 +355,7 @@ head
               //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
            .modal-footer
              button(class="btn btn-default" data-dismiss="modal") Close
-             button#submitlink(class="btn") Add
+             button#submitlink(class="btn btn-primary") Add
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -461,7 +461,7 @@ head
                 insert = "<div class='row item book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
-                var week = "<div class='row item week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
+                var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //if(!$(weekname)[0])
                 if(weeknum>weeknum_g )
