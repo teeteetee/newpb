@@ -313,6 +313,9 @@ head
     .item {
       border-bottom:1px solid #f7f7f7;
     }
+    .intro {
+      overflow-x:hidden;
+    }
   body
     //.language
     //  a#eng Login
@@ -344,33 +347,34 @@ head
     //            #pwderr
     //            //input(type="password" class=" change_phc simplebox" id="pc" name='pc' placeholder="Confirm password") 
     //          button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-      .row(id='spin') 
-        .col-xs-12(style='text-align:center;')
-          .loader       
-    .container
-      #mainheading.row(style='padding-bottom:10px;')
-        .col-xs-12
-          h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-          h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') List of web sources
-      .row
-        #list.row
-          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
-            .row.brow
-              .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
-                .noitems.row(style='text-align:center;')  
-                   .col-xs-12
-                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
-            .row.brow
-              #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
-                .noitems.row(style='text-align:center;')  
-                   .col-xs-12
-                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
-    footer.footer
+    .intro
+      .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+        .row(id='spin') 
+          .col-xs-12(style='text-align:center;')
+            .loader       
       .container
+        #mainheading.row(style='padding-bottom:10px;')
+          .col-xs-12
+            h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
+            h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') List of web sources
         .row
-          .col-xs-12.col-lg-8.col-lg-offset-2
-            h5(style='font-weight:200;color:grey;margin-top:20px;') 2016
+          #list.row
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+              .row.brow
+                .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
+      footer.footer
+        .container
+          .row
+            .col-xs-12.col-lg-8.col-lg-offset-2
+              h5(style='font-weight:200;color:grey;margin-top:20px;') 2016
               
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
