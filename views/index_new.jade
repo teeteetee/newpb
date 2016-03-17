@@ -350,7 +350,7 @@ head
       #mainheading.row(style='padding-bottom:10px;')
         .col-xs-12
           h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-          h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') Keeping track of the information
+          h4(style='color:rgba(0, 0, 0, 0.47);font-weight:200;letter-spacing:1px;' id='modo') List of web sources
       .row
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -444,7 +444,7 @@ head
                 } 
                 var today = dd+'.'+mm+'.'+yyyy;
                 //insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#d2d2d2;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 style='font-weight:200;color:#eee;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
-                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
+                insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 style='margin-left:20px;' class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small class='hidden-xs' >"+element.comment+"</small></h3><h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
