@@ -32,7 +32,7 @@ head
       height:100%;
      /* background-color:#{color};*/
      background-color:white;
-     margin-bottom: 60px;
+     margin-bottom: 90px;
     }
     html {
     position: relative;
@@ -452,7 +452,7 @@ head
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
-                var heading = "<h3 style='margin-left:30px;' class='btitle"+element._id+"' >"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
+                var heading = "<h3  class='btitle"+element._id+"' >"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
                 if(element.link!='0') {
                   heading = "<h3 class='btitle"+element._id+"' ><span class='glyphicon glyphicon-link' style='color:#ddd;margin-right:10px;font-size:18px;'></span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
                 }
