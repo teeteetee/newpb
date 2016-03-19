@@ -613,9 +613,9 @@ app.post('/drop/users',function(req,res){
   }
 });
 
-app.post('/number', function(req,res){
+app.post('/number', function (req,res){
   var ms;
-  items.count({},function(err,done){
+  items.count({},function (err,done){
    if(err) {
     ms.number=0;
     res.send(ms);
@@ -625,7 +625,6 @@ app.post('/number', function(req,res){
     res.send(ms);
     }
   });
-}
 });
 
 
