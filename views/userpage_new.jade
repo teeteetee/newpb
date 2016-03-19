@@ -238,14 +238,24 @@ head
     .footer h3 {
     margin:20px;
     }
-    #addlink {
+    #addlink_old {
     border: 3px solid #BFD7EC;
     border-radius: 30px;
     color: #337ab7;
     background-color: white;
     }
+    #addlink:hover_old {
+      background-color:#BFD7EC;
+    }
+    #addlink {
+    border: 0px;
+    border-radius:0px;
+    color: white;
+    background-color: blue;
+    }
     #addlink:hover {
       background-color:#BFD7EC;
+      color:blue
     }
     .item {
     border-bottom:1px solid #f7f7f7;
@@ -271,15 +281,14 @@ head
     border-bottom:3px solid #BFD7EC;
     }
     #menu {
-    /*background-color:rgba(255, 255, 255, 0.85);*/
+    /*background-color:rgba(255, 255, 255, 0.85);
     padding-top:10px;
-    padding-bottom:30px;'
+    padding-bottom:10px;*/
     }
     #nav {
     -webkit-transition: background-color 0.5s; /* Safari */
     transition: background-color 0.5s;
     /*background-color:#DBEDFF;*/
-    border-bottom:3px solid #BFD7EC;
     }
     #menu a {
       color:#347BB7;
@@ -328,12 +337,12 @@ head
       #nav(style='z-index:1000;')
         .container
           .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='border-bottom:3px solid #BFD7EC;')  
               a NNMN
               a Business
               a Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-              button.pull-right#addlink(class=' btn btn-primary') + add a link
+              button.pull-right#addlink + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
