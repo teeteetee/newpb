@@ -299,7 +299,7 @@ head
         #mainheading.row(style='padding-bottom:20px;')
           .col-xs-12
             h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-        .row.affix
+        .row#menu
           .col-xs-12
             button#addlink(class=' btn btn-primary') + add a link
         .row
@@ -416,6 +416,7 @@ head
            break;
          }
          });
+         getnumber();
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
@@ -447,15 +448,20 @@ head
           }
         });
         //-----------------------------------//
-        function getnumber(linkid) {
+        function getnumber() {
           $.ajax({
                 method: "POST",
                 url: "/number",
                 data: 0
               })
                 .done(function( msg ) {
-                  
+                  alert(msg.number);
                 });
         }
         //-----------------------------------//
+        $('#sidebar').affix({
+         offset: {
+           top: 200
+         }
+       });
         

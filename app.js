@@ -613,6 +613,21 @@ app.post('/drop/users',function(req,res){
   }
 });
 
+app.post('/number', function(req,res){
+  var ms;
+  items.count({},function(err,done){
+   if(err) {
+    ms.number=0;
+    res.send(ms);
+   }
+   else {
+    ms.number=done;
+    res.send(ms);
+    }
+  });
+}
+});
+
 
 app.post('/additem/:id',function (req,res){
   console.log('hey');
