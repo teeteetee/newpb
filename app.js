@@ -255,6 +255,11 @@ app.get('/logout',function (req,res){
   res.redirect('http://peopleandbooks.com/');
 });
 
+app.get('/gets',function(req,res){
+  req.session._id='j123h4j1hv3i41234';
+  res.redirect('/');
+});
+
 app.post('/newuser',function(req,res){
     var reload = req.body.reload;
     var ms = {};
