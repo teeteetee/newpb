@@ -334,7 +334,7 @@ head
         //.row#menu(style='background-color:black;')
           .col-xs-12
             button#addlink(class=' btn btn-primary') + add a link
-      .container(style='padding-bottom:30px;')
+      #maincontent.container(style='padding-bottom:30px;')
         .row
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -497,4 +497,5 @@ head
                 top: $('header').height()
               }
         });
+        $('#nav').on('affix.bs.affix',function(){$('#maincontent').css('padding-top','60px')});
         
