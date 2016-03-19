@@ -279,11 +279,12 @@ head
     -webkit-transition: background-color 0.5s; /* Safari */
     transition: background-color 0.5s;
     /*background-color:#DBEDFF;*/
+    border-bottom:3px solid #BFD7EC;
     }
     #menu a {
       color:#347BB7;
       text-transform:uppercase;
-      margin
+      margin:10px;
     }
   body
     .intro
@@ -326,6 +327,14 @@ head
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
       #nav(style='z-index:1000;')
         .container
+          .row#menu
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
+              a NNMN
+              a Business
+              a Misc
+              //h6.pull-right#numbers(style='font-weight:200;display:inline;')
+              button.pull-right#addlink(class=' btn btn-primary') + add a link
+        //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
             span(class="glyphicon glyphicon-bar")
@@ -340,14 +349,6 @@ head
               li
                 a(href="#") Misc
             ul(class="nav pull-right navbar-nav")
-              button.pull-right#addlink(class=' btn btn-primary') + add a link
-        //
-          .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
-              a NNMN
-              a Business
-              a Misc
-              h6.pull-right#numbers(style='font-weight:200;display:inline;')
               button.pull-right#addlink(class=' btn btn-primary') + add a link
       //
         .navbar.navbar-default.navbar-static
