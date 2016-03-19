@@ -214,7 +214,19 @@ app.post('/getitems_a',function (req,res){
 });
 
 app.get('/ic',function (req,res){
-  res.render('ic');
+  users.findOne({_id:req.session._id},function (err,done){
+            if(err){
+               res.render('ic_out');
+                }
+            else {
+              if(done){
+                res.render('ic');
+              }
+              else {
+                res.render('ic_out');
+              }
+            }
+          });
 });
 
 app.post('/ic',function (err,done){
