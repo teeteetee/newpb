@@ -307,6 +307,11 @@ head
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
       <!-- Begin Navbar -->
       #nav
+        .container
+          .row#menu(style='background-color:black;text-align:center;')
+            .col-xs-12
+              button#addlink(class=' btn btn-primary') + add a link
+      //
         .navbar.navbar-default.navbar-static
           .container
             a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
@@ -334,9 +339,6 @@ head
                   a(href="#")
                     i(class="glyphicon glyphicon-flag")
                     span(class="badge") 2
-        //.row#menu(style='background-color:black;')
-          .col-xs-12
-            button#addlink(class=' btn btn-primary') + add a link
       #maincontent.container(style='padding-bottom:30px;')
         .row
           #list.row
