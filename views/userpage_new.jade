@@ -278,7 +278,7 @@ head
     #nav {
     -webkit-transition: background-color 0.5s; /* Safari */
     transition: background-color 0.5s;
-    background-color:#DBEDFF;
+    /*background-color:#DBEDFF;*/
     }
     #menu a {
       color:#347BB7;
@@ -339,7 +339,8 @@ head
                 a(href="#") Business
               li
                 a(href="#") Misc
-          button.pull-right#addlink(class=' btn btn-primary') + add a link
+            ul(class="nav pull-right navbar-nav")
+              button.pull-right#addlink(class=' btn btn-primary') + add a link
         //
           .row#menu
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
