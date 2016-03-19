@@ -497,5 +497,5 @@ head
                 top: $('header').height()
               }
         });
-        $('#nav').on('affix.bs.affix',function(){$('#maincontent').css('padding-top','60px')});
+        $('#nav').on('affix.bs.affix',function(){$('#maincontent').css('padding-top',$('#nav').height())});
         
