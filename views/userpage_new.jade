@@ -322,6 +322,9 @@ head
                   a(href="#") Link
                 li
                   a(href="#") Link
+            ul(class="nav pull-right navbar-nav")
+              h5#numbers
+            //
               ul(class="nav pull-right navbar-nav")
                 li
                   form(class="navbar-form")
@@ -488,7 +491,7 @@ head
                 data: 0
               })
                 .done(function( msg ) {
-                  alert(msg.number);
+                  $('#numbers').text('items: '+msg.number);
                 });
         }
         //-----------------------------------//
@@ -498,5 +501,5 @@ head
               }
         });
         $('#nav').on('affix.bs.affix',function(){$('#maincontent').css('padding-top',$('#nav').height())});
-        $('#nav').on('affix-top.bs.affix',function(){$('#maincontent').css('padding-top','none')});
+        $('#nav').on('affix-top.bs.affix',function(){$('#maincontent').css('padding-top','0px');});
         
