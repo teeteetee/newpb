@@ -32,7 +32,7 @@ head
     .change_phc:-moz-placeholder           {color:#ddd;}/* Firefox 18- */
     .change_phc:-ms-input-placeholder      {color:#ddd;}
     .change_phc {
-      color:white;
+     /* color:white;*/
     }
     #mainheading {
       text-align:center;
@@ -281,7 +281,7 @@ head
                   #nickgroup.form-group.has-feedback
                     span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                    textarea(type="text" class="change_phc simplebox" id='comment' name='nick' placeholder="comment")
+                    textarea(type="text" style='border:none;border-bottom:1px solid #ddd;width:100%;'class="change_phc simplebox" id='comment' name='nick' placeholder="comment")
                 //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
              .modal-footer
                button(class="btn btn-default" data-dismiss="modal") Close
@@ -412,7 +412,8 @@ head
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
-        if($('#title').val() && $('#link').val() )
+        //if($('#title').val() && $('#link').val() )
+        if($('#title').val())
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');

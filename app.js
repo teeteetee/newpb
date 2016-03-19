@@ -622,14 +622,24 @@ app.post('/additem/:id',function (req,res){
   switch(cond){
     case('link'):
     console.log(req.body.title);
-    if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+    //if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+    if(req.body.title&& is_title(req.body.title)){
     var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
+      items.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      var ms ={};
+      ms.trouble=0;
+      res.send(ms);}
+      else {
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
-      items.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:req.body.comment});
-    var ms ={};
-    ms.trouble=0;
-    res.send(ms);
+      items.insert({tmstmp:newdate,title:req.body.title,link:0,comment:vcomment});
+      var ms ={};
+      ms.trouble=0;
+      res.send(ms);
+      }
     }
     else {
       var ms ={};
