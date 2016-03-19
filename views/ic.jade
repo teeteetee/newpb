@@ -337,10 +337,10 @@ head
               a.disabled(href="#") Business
               a.disabled(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-              button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
+              button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add concept
           .row#addrow(style='text-align:center;padding-top:20px;padding-bottom:20px;')
             .col-xs-12
-              button.btn.btn-primary.addlink + add a link
+              button.btn.btn-primary.addlink + add concept
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
@@ -415,31 +415,7 @@ head
       $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
-       var consolidated=[];
-       $.ajax({
-              method: "POST",
-              url: "/getitems",
-              data: 0
-            }).done(function( msg ) {
-                console.log('hey! '+msg);
-                if(!msg.trouble) {
-                   items=msg.doc;
-                  if(!items || !items.length) {
-                   console.log('no items');
-                   }
-                   else {
-                    items.forEach(function (element,index){
-                    element.item_type = 'article';
-                    consolidated.push(element);
-                    });
-                   }
-                   if(consolidated.length){
-                    console.log(consolidated);
-                   sortByKey(consolidated, 'tmstmp');
-                   populate(consolidated);
-                 }
-                }
-              });
+       
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
@@ -504,7 +480,7 @@ head
            break;
          }
          });
-         getnumber();
+         //getnumber();
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
