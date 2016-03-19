@@ -328,11 +328,17 @@ head
         .container
           .row#menu(style='border-bottom:3px solid #BFD7EC;')
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1  
-              a NNMN
-              a Business
-              a Misc
+              ul.nav.nav-tabs
+                li(role="presentation" class="active")
+                  a(href="#") Home
+                li(role="presentation")
+                  a(href="#") NNMN
+                li(role="presentation")
+                  a(href="#") Business
+                li(role="presentation")
+                  a(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-              button.btn.btn-success.pull-right#addlink + add a link
+              //button.btn.btn-success.pull-right#addlink + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
