@@ -287,6 +287,9 @@ head
       text-transform:uppercase;
       margin:10px;
     }
+    #addstick {
+      display:none;
+    }
   body
     .intro
       .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -335,7 +338,7 @@ head
               a(href="#") Business
               a(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-              button.btn.btn-sm.btn-success.pull-right.addlink + add a link
+              button.btn.btn-sm.btn-success.pull-right#addstick.addlink + add a link
           .row#addrow(style='text-align:center;')
             .col-xs-12
               button.btn.btn-success.addlink + add a link
@@ -553,10 +556,12 @@ head
         $('#nav').on('affix.bs.affix',function(){
           $('#maincontent').css('padding-top',$('#nav').height());
           $('#addrow').css('display','none');
+          $('#addstick').css('display','block');
         });
         $('#nav').on('affix-top.bs.affix',function(){
           $('#maincontent').css('padding-top','0px');
           $('#addrow').css('display','block');
+          $('#addstick').css('display','none');
         });
         //$('#nav').css('background-color','rgba(0, 0, 0, 0.63)');
         
