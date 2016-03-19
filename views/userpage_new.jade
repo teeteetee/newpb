@@ -265,12 +265,19 @@ head
     position: fixed;
     top: 0;
     width: 100%;
+     -webkit-box-shadow: 0px 0px 8px 2px #000000;
+       -moz-box-shadow: 0px 0px 8px 2px #000000;
+            box-shadow: 0px 0px 8px 2px #000000;
     }
     #menu {
     background-color:rgba(255, 255, 255, 0.85);
     text-align:center;
     padding-top:10px;
     padding-bottom:30px;'
+    }
+    #nav {
+    -webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
     }
   body
     .intro
@@ -511,6 +518,13 @@ head
                 top: $('header').height()
               }
         });
-        $('#nav').on('affix.bs.affix',function(){$('#maincontent').css('padding-top',$('#nav').height());$('#menu').css({'padding-bottom':'10px;','border-bottom':'3px solid #BFD7EC;'});});
-        $('#nav').on('affix-top.bs.affix',function(){$('#maincontent').css('padding-top','0px');$('#menu').css({'padding-bottom':'30px;','border':'0px'});});
+        $('#nav').on('affix.bs.affix',function(){
+          $('#maincontent').css('padding-top',$('#nav').height());
+          $('#menu').css('padding-bottom','10px;');
+        });
+        $('#nav').on('affix-top.bs.affix',function(){
+          $('#maincontent').css('padding-top','0px');
+          $('#menu').css('padding-bottom','30px;');
+        });
+        //$('#nav').css('background-color','rgba(0, 0, 0, 0.63)');
         
