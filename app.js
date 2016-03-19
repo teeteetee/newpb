@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),items = db.get('items');
+  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -213,6 +213,25 @@ app.post('/getitems_a',function (req,res){
       {res.send(0);}
 });
 
+app.get('/ic',function (req,res){
+  res.render('ic');
+});
+
+app.post('/ic',function (err,done){
+  var ms ={};
+  concepts.find({},function(err,done){
+    if(err)
+    {
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      ms.data=done;
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+});
 
 
 function validateJSON(body) {
@@ -451,97 +470,6 @@ app.get('/seeuser',function (req,res){
 
 //******************** HELPERS END ********************//
 
-
-
-app.post('/getavatar/:id',function (req,res){
-  var vuid = req.params.id
-  if(vuid)
-  {
-    if(req.session.mail&&req.session._id){
-      var ms={};
-      ms.trouble=1;
-      users.findOne({_id:vuid},function(err,doc){
-           if(err) {
-       ms.mtext='db';
-       res.send(ms);
-       }
-       else {
-         if(doc){
-            console.log('userpic: '+parseInt(doc.userpic));
-            if(parseInt(doc.userpic)!=0)
-            {ms.trouble = 0;
-             ms.nick= doc.nick;
-             ms.mtext = doc.userpic;
-             ms.picext= doc.picext;
-             res.send(ms);}
-             else {
-                ms.trouble = 0;
-                ms.nick= doc.nick;
-                ms.mtext = doc.userpic;
-                ms.picext= doc.picext;
-                ms.mtext = 'emptypic';
-                res.send(ms);
-             }
-         }
-         else {
-           ms.mtext='no user';
-           res.send(ms);
-         }
-       }
-      });
-    }
-    else
-    {
-    res.send(Date.now());
-    }
-  }
-  else {
-    res.send(Date.now());
-  }
-});
-
-app.post('/getdisc/:id', function (req,res){
-  // API to populate discussion page
-  //TO DO if req.session present, otherwise go away
-  var vdiscid = req.params.id;
-  var ms ={};
-  ms.trouble = 0;
-  discussions.findOne({_id:vdiscid},function (err,doc){
-    if(err) {
-    res.send(ms);
-    }
-    else {
-      if(doc){
-        if(doc.msgstore)
-        {//----------- SETTING TIMESTAMP ----------//
-         var tmp_length = doc.msgstore.length-1;
-         var vlsttmstmp = doc.msgstore[tmp_length].tmstmp;
-         var tmp_val={};
-         vtmstmp = vlsttmstmp;
-         tmp_val[vdiscid] = vlsttmstmp;
-         var sht_tmp ={};
-         var sht_tmp={'$set':{'tmstmpstore':tmp_val,'g_tmstmp':vlsttmstmp}};
-         users.update({_id:req.session._id},sht_tmp);
-         //-----------END SETTING TIMESTAMP ----------//
-         var vlast = doc.msgstore.length - 10;
-         ms.msgstore=doc.msgstore.slice(vlast,doc.msgstore.length);
-         res.send(ms);}
-        else {
-          ms.mtext = 'empty'
-          res.send(ms);
-        }
-      }
-      else {
-        ms.trouble=1;
-        ms.mtext='no discussion';
-        res.send(ms);
-      }
-    }
-  });
-
-});
-
-
 //-----------------LONGPOLLING END------------------//
 
 
@@ -638,6 +566,7 @@ app.post('/additem/:id',function (req,res){
   if(req.session && req.session._id ){
     //conditioning is left due to plans of bringing in a section of "terms", to be added the same way
   var cond = req.params.id; 
+  var ms ={};
   switch(cond){
     case('link'):
     console.log(req.body.title);
@@ -649,25 +578,39 @@ app.post('/additem/:id',function (req,res){
     if(req.body.link&& is_link(req.body.link))
       {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
       items.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
-      var ms ={};
       ms.trouble=0;
       res.send(ms);}
       else {
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
       items.insert({tmstmp:newdate,title:req.body.title,link:0,comment:vcomment});
-      var ms ={};
       ms.trouble=0;
       res.send(ms);
       }
     }
     else {
-      var ms ={};
     console.log('data check fail while adding an link');
     ms.trouble=1;
     res.send(ms);
     }
     break;
-    
+    case('ic'):
+     if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+     concepts.insert({title:req.body.title,link:req.body.link},function(err,done){
+       if(err){
+        ms.trouble=1;
+         res.send(ms);
+       }
+       else {
+        ms.trouble=0;
+       res.send(ms);
+       }
+     });
+    }
+    else {
+     ms.trouble=1;
+     res.send(ms);
+    }
+    break;
   }
 }
 else {
@@ -675,6 +618,25 @@ else {
 }
 });
 
+app.post('/addic',function (err,done){
+  var ms ={};
+  if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+  concepts.insert({title:req.body.title,link:req.body.link},function(err,done){
+    if(err){
+     ms.trouble=1;
+      res.send(ms);
+    }
+    else {
+     ms.trouble=0;
+    res.send(ms);
+    }
+  });
+ }
+ else {
+  ms.trouble=1;
+  res.send(ms);
+ }
+});
 
 
 app.post('/livesearch/:id',function (req,res){

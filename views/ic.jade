@@ -328,12 +328,12 @@ head
         .container
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
-              h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
+              h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Important concepts
       #nav(style='z-index:1000;')
         .container
           .row#menu
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1  
-              a(href="/nnmn") IC
+              a(href="/ic") IC
               a.disabled(href="#") Business
               a.disabled(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
@@ -509,7 +509,7 @@ head
         //-----------------------------------//
         $('#submitlink').click(function(){
         //if($('#title').val() && $('#link').val() )
-        if($('#title').val())
+        if($('#title').val() && $('#link').val())
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
@@ -517,17 +517,15 @@ head
            var data={};
            data.title = $('#title').val();
            data.link = $('#link').val();
-           data.comment = $('#comment').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/additem/link",
+              url: "/additem/ic",
               data: data
             })
               .done(function( msg ) {
                 $('#title').val('');
                 $('#link').val('');
-                $('#comment').val('');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
