@@ -614,7 +614,7 @@ app.post('/drop/users',function(req,res){
 });
 
 app.post('/number', function (req,res){
-  var ms;
+  var ms={};
   items.count({},function (err,done){
    if(err) {
     ms.number=0;
