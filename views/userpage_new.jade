@@ -283,6 +283,7 @@ head
     #menu a {
       color:#347BB7;
       text-transform:uppercase;
+      margin
     }
   body
     .intro
@@ -325,8 +326,23 @@ head
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
       #nav(style='z-index:1000;')
         .container
+          a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+            span(class="glyphicon glyphicon-bar")
+            span(class="glyphicon glyphicon-bar")
+            span(class="glyphicon glyphicon-bar")
+          .navbar-collapse.collapse
+            ul(class="nav navbar-nav")
+              li
+                a(href="#") NNMN
+              li.divider
+              li
+                a(href="#") Business
+              li
+                a(href="#") Misc
+          button.pull-right#addlink(class=' btn btn-primary') + add a link
+        //
           .row#menu
-            .col-xs-12
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1   
               a NNMN
               a Business
               a Misc
