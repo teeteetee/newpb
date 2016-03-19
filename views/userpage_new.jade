@@ -261,7 +261,7 @@ head
     .item:last-child {
     border-bottom:none;
     }
-    #menu.affix {
+    #nav.affix {
     position: fixed;
     top: 0;
     width: 100%;
@@ -300,13 +300,42 @@ head
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
             .loader       
-      .container(style='padding-bottom:30px;')
-        #mainheading.row(style='padding-bottom:20px;')
-          .col-xs-12
-            h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-        .row#menu(style='background-color:black;')
+      header
+        .container
+          #mainheading.row(style='padding-bottom:20px;')
+            .col-xs-12
+              h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
+      <!-- Begin Navbar -->
+      #nav
+        .navbar.navbar-default.navbar-static
+          .container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+              span(class="glyphicon glyphicon-bar")
+              span(class="glyphicon glyphicon-bar")
+              span(class="glyphicon glyphicon-bar")
+            .navbar-collapse.collapse
+              ul(class="nav navbar-nav")
+                li.active
+                  a(href="#") Home
+                li.divider
+                li
+                  a(href="#") Link
+                li
+                  a(href="#") Link
+              ul(class="nav pull-right navbar-nav")
+                li
+                  form(class="navbar-form")
+                    input(type="text" class="form-control" placeholder="Search")
+                    button(type="submit" class="btn btn-default")
+                      i(class="glyphicon glyphicon-search")
+                  a(href="#")
+                    i(class="glyphicon glyphicon-flag")
+                    span(class="badge") 2
+        //.row#menu(style='background-color:black;')
           .col-xs-12
             button#addlink(class=' btn btn-primary') + add a link
+      .container(style='padding-bottom:30px;')
         .row
           #list.row
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -464,9 +493,9 @@ head
                 });
         }
         //-----------------------------------//
-        $('#menu').affix({
+        $('#nav').affix({
               offset: {
-                top: $('#mainheading').height()
+                top: $('header').height()
               }
         });
         
