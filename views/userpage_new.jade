@@ -459,5 +459,9 @@ head
                 });
         }
         //-----------------------------------//
-        $('#menu').affix();
+        $('#menu').affix({
+              offset: {
+                top: $('#mainheading').height()
+              }
+        });
         
