@@ -265,12 +265,13 @@ head
     position: fixed;
     top: 0;
     width: 100%;
-     -webkit-box-shadow: 0px 0px 8px 2px #A0A0A0;
+    /* -webkit-box-shadow: 0px 0px 8px 2px #A0A0A0;
        -moz-box-shadow: 0px 0px 8px 2px #A0A0A0;
-            box-shadow: 0px 0px 8px 2px #A0A0A0;
+            box-shadow: 0px 0px 8px 2px #A0A0A0;*/
+    border-bottom:3px solid #BFD7EC;
     }
     #menu {
-    background-color:rgba(255, 255, 255, 0.85);
+    /*background-color:rgba(255, 255, 255, 0.85);*/
     text-align:center;
     padding-top:10px;
     padding-bottom:30px;'
@@ -278,6 +279,11 @@ head
     #nav {
     -webkit-transition: background-color 0.5s; /* Safari */
     transition: background-color 0.5s;
+    background-color:#DBEDFF;
+    }
+    #menu a {
+      color:#347BB7;
+      text-transform:uppercase;
     }
   body
     .intro
@@ -318,11 +324,14 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-              h6#numbers(style='color:#eee;font-weight:200;')
+              //h6#numbers(style='color:#eee;font-weight:200;')
       #nav(style='z-index:1000;')
         .container
           .row#menu
             .col-xs-12
+              a NNMN
+              a Business
+              a Misc
               button#addlink(class=' btn btn-primary') + add a link
       //
         .navbar.navbar-default.navbar-static
