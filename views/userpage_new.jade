@@ -281,8 +281,6 @@ head
     #menu {
     /*background-color:rgba(255, 255, 255, 0.85);*/
     text-align:center;
-    padding-bottom:10px;
-    padding-top:10px;
     }
     #nav {
     -webkit-transition: background-color 0.5s; /* Safari */
@@ -339,14 +337,14 @@ head
       #nav(style='z-index:1000;')
         .container
           .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;')
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;padding-bottom:10px;padding-top:10px;')
               a(href="/ic") IC
               a.disabled(href="#") Business
               a.disabled(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
               button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
-          .row#addrow(style='text-align:center;padding-top:20px;padding-bottom:20px;')
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;')
+          .row#addrow(style='text-align:center;')
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;padding-top:20px;padding-bottom:20px;')
               button.btn.btn-primary.addlink + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
