@@ -85,6 +85,21 @@ head
       margin-top: 10px;
     }
     }
+    @media (min-width: 768px) {
+    .navbar-centered .navbar-nav {
+        float: none;
+        text-align: center;
+    }
+    .navbar-centered .navbar-nav > li {
+        float: none;
+    }
+    .navbar-centered .nav > li {
+        display: inline;
+    }
+    .navbar-centered .nav > li > a {
+        display: inline-block;
+    }
+    } 
     @font-face {
     font-family:roboto-thin;
     src: url('/bootstrap/fonts/Roboto-Thin.ttf');
@@ -302,13 +317,34 @@ head
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neuron Networks Rsearch
               h5(style='color:#ddd;text-transform:uppercase;') Important concepts
-      #nav(style='z-index:1000;')
+      nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;')
         .container
-          .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1  
-              a(href="/") ⟵ back
-              a(href="/b") business
-              a(href="/m") misc
+          .row 
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1 
+              .navbar-header
+                button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+                  span(class="sr-only") Toggle navigation
+                  span(class="icon-bar")
+                  span(class="icon-bar")
+                  span(class="icon-bar")
+                //a(class="navbar-brand" href="#") Brand
+              .collapse.navbar-collapse#bs-example-navbar-collapse-1
+                ul(class="nav navbar-nav")
+                  li
+                    a(href="/") Blog
+                      span#numbers(class='badge')
+                  li(class="active")
+                    a(href="/#") IC
+                      span(class="sr-only") (current)
+                      span#icnumbers(class='badge')
+                  li
+                    a(href="/b") Business
+                      span#bnumbers(class='badge')
+                  li
+                    a(href="/m") Misc
+                      span#mnumbers(class='badge')
+                  li
+                    a(href="/a") About
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
