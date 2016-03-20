@@ -335,7 +335,6 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Reserch
-              h5(style='color:#ddd;text-transform:uppercase;') Important concepts
       nav.navbar.navbar-default#newnav(style='z-index:1000;')
         .container
           .row 
@@ -349,12 +348,12 @@ head
                 //a(class="navbar-brand" href="#") Brand
               .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 ul(class="nav navbar-nav")
-                  li(class="active")
-                    a(href="#") Blog
-                      span(class="sr-only") (current)
-                      span#numbers(class='badge')
                   li
+                    a(href="#") Blog
+                      span#numbers(class='badge')
+                  li(class="active")
                     a(href="/ic") IC
+                      span(class="sr-only") (current)
                       span#icnumbers(class='badge')
                   li
                     a(href="/b") Business
@@ -460,7 +459,7 @@ head
            break;
          }
          });
-         //getnumber();
+         getnumber();
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
