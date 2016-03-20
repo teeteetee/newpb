@@ -245,6 +245,22 @@ app.get('/b',function (req,res){
           });
 });
 
+app.get('/m',function (req,res){
+  users.findOne({_id:req.session._id},function (err,done){
+            if(err){
+               res.render('m_out');
+                }
+            else {
+              if(done){
+                res.render('m');
+              }
+              else {
+                res.render('m_out');
+              }
+            }
+          });
+});
+
 app.post('/ic',function (err,done){
   var ms ={};
   concepts.find({},function(err,done){
