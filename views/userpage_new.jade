@@ -290,7 +290,7 @@ head
     /*background-color:#DBEDFF;*/
     }
     #menu a {
-      color:darksalmon;
+      color:#844D3A;
       text-transform:uppercase;
       margin:10px;
     }
@@ -339,14 +339,14 @@ head
       #nav(style='z-index:1000;')
         .container
           .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1  
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;')
               a(href="/ic") IC
               a.disabled(href="#") Business
               a.disabled(href="#") Misc
               //h6.pull-right#numbers(style='font-weight:200;display:inline;')
               button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
           .row#addrow(style='text-align:center;padding-top:20px;padding-bottom:20px;')
-            .col-xs-12
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;')
               button.btn.btn-primary.addlink + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
@@ -393,19 +393,18 @@ head
                     i(class="glyphicon glyphicon-flag")
                     span(class="badge") 2
       #maincontent.container(style='padding-bottom:30px;')
-        .row
-          #list.row
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
-              .row.brow
-                .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
-                  .noitems.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
-              .row.brow
-                #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
-                  .noitems.row(style='text-align:center;')  
-                     .col-xs-12
-                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
+        #list.row
+          .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
+            .row.brow
+              .col-xs-12.visible-lg.visible-md.visible-sm.items#bigscreens
+                .noitems.row(style='text-align:center;')  
+                   .col-xs-12
+                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
+            .row.brow
+              #smallscreens.visible-xs.col-xs-12.items(style='border-top:1px solid #eee;')         
+                .noitems.row(style='text-align:center;')  
+                   .col-xs-12
+                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
       footer.footer
         .container
           .row
