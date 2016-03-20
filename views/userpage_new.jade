@@ -350,6 +350,7 @@ head
                   li(class="active")
                     a(href="#") Blog
                       span(class="sr-only") (current)
+                      span#numbers(class='badge')
                   li
                     a(href="/ic") IC
                       span#icnumbers(class='badge')
@@ -520,7 +521,12 @@ head
                 data: 0
               })
                 .done(function( msg ) {
-                  $('#numbers').text('items: '+msg.number);
+                  if(msg.number){
+                    $('#numbers').text(msg.number);
+                  }
+                  else {
+                    $('#numbers').text(0);
+                  }
                 });
           $.ajax({
                 method: "POST",
