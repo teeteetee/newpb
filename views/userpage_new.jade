@@ -352,10 +352,13 @@ head
                       span(class="sr-only") (current)
                   li
                     a(href="/ic") IC
+                      span#icnumbers(class='badge')
                   li
                     a(href="/b") Business
+                      span#bnumbers(class='badge')
                   li
                     a(href="/m") Misc
+                      span#mnumbers(class='badge')
                   li
                     a(href="/a") About
                 form(class="navbar-form navbar-right")
@@ -513,11 +516,50 @@ head
         function getnumber() {
           $.ajax({
                 method: "POST",
-                url: "/number",
+                url: "/number/items",
                 data: 0
               })
                 .done(function( msg ) {
                   $('#numbers').text('items: '+msg.number);
+                });
+          $.ajax({
+                method: "POST",
+                url: "/number/b",
+                data: 0
+              })
+                .done(function( msg ) {
+                  if(msg.number){
+                    $('#bnumbers').text(msg.number);
+                  }
+                  else {
+                    $('#bnumbers').text(0);
+                  }
+                });
+          $.ajax({
+                method: "POST",
+                url: "/number/m",
+                data: 0
+              })
+                .done(function( msg ) {
+                  if(msg.number){
+                    $('#mnumbers').text(msg.number);
+                  }
+                  else {
+                    $('#mnumbers').text(0);
+                  }
+                });
+          $.ajax({
+                method: "POST",
+                url: "/number/ic",
+                data: 0
+              })
+                .done(function( msg ) {
+                  if(msg.number){
+                    $('#icnumbers').text(msg.number);
+                  }
+                  else {
+                    $('#icnumbers').text(0);
+                  }
                 });
         }
         //-----------------------------------//

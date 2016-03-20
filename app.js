@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts');
+  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -238,7 +238,7 @@ app.post('/ic',function (err,done){
       res.send(ms);
     }
     else {
-      ms.data=done;
+      ms.articles=done;
       ms.trouble=0;
       res.send(ms);
     }
@@ -558,18 +558,59 @@ app.post('/drop/users',function(req,res){
   }
 });
 
-app.post('/number', function (req,res){
+app.post('/number/:jesus', function (req,res){
+  var vcase = req.params.jesus;
   var ms={};
-  items.count({},function (err,done){
-   if(err) {
-    ms.number=0;
-    res.send(ms);
-   }
-   else {
-    ms.number=done;
-    res.send(ms);
-    }
-  });
+  switch(vcase){
+    case('items'):
+      items.count({},function (err,done){
+     if(err) {
+      ms.number=0;
+      res.send(ms);
+     }
+     else {
+      ms.number=done;
+      res.send(ms);
+      }
+    });
+    break;
+    case('b'):
+      business.count({},function (err,done){
+     if(err) {
+      ms.number=0;
+      res.send(ms);
+     }
+     else {
+      ms.number=done;
+      res.send(ms);
+      }
+    });
+    break;
+    case('m'):
+    misc.count({},function (err,done){
+     if(err) {
+      ms.number=0;
+      res.send(ms);
+     }
+     else {
+      ms.number=done;
+      res.send(ms);
+      }
+    });
+    break;
+    case('ic'):
+    concepts.count({},function (err,done){
+     if(err) {
+      ms.number=0;
+      res.send(ms);
+     }
+     else {
+      ms.number=done;
+      res.send(ms);
+      }
+    });
+    break;
+  }
 });
 
 
