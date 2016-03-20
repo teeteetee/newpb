@@ -335,7 +335,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-      nav.navbar.navbar-default#newnav
+      nav.navbar.navbar-default#newnav(style='z-index:1000;')
         .container
           .navbar-header
             button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
@@ -354,7 +354,9 @@ head
               li
                 a(href="/b") Business
               li
-                a(href="#") Misc
+                a(href="/m") Misc
+              li
+                a(href="/a") About
             form(class="navbar-form navbar-right")
               button(type="button" class="btn btn-primary navbar-right") + add link
       //  
