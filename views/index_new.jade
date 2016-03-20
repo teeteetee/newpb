@@ -524,14 +524,10 @@ head
         });
         $('#nav').on('affix.bs.affix',function(){
           $('#maincontent').css('padding-top',$('#nav').height());
-          $('#addrow').css('display','none');
-          $('#addstick').css('display','block');
           $('#menu').css('text-align','left');
         });
         $('#nav').on('affix-top.bs.affix',function(){
           $('#maincontent').css('padding-top','0px');
-          $('#addrow').css('display','block');
-          $('#addstick').css('display','none');
           $('#menu').css('text-align','center');
         });
         
