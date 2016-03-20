@@ -268,7 +268,7 @@ head
     .item:last-child {
     border-bottom:none;
     }
-    #nav.affix {
+    #navnew.affix {
     position: fixed;
     top: 0;
     width: 100%;
@@ -359,65 +359,6 @@ head
                 a(href="/a") About
             form(class="navbar-form navbar-right")
               button(type="button" class="btn btn-primary navbar-right") + add link
-      //  
-        #nav(style='z-index:1000;')
-          .container
-            .row#menu
-              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-bottom:10px;padding-top:10px;border-top-left-radius: 10px;border-top-right-radius: 10px;')
-                a(href="/ic") IC
-                | &#124;
-                a.disabled(href="#") Business
-                | &#124;
-                a.disabled(href="#") Misc
-                //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-                button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
-            .row#addrow(style='text-align:center;')
-              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-top:20px;padding-bottom:20px;')
-                button.btn.btn-primary.addlink(style='border-radius:30px;') + add a link
-        //
-          a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
-            span(class="glyphicon glyphicon-bar")
-            span(class="glyphicon glyphicon-bar")
-            span(class="glyphicon glyphicon-bar")
-          .navbar-collapse.collapse
-            ul(class="nav navbar-nav")
-              li
-                a(href="#") NNMN
-              li.divider
-              li
-                a(href="#") Business
-              li
-                a(href="#") Misc
-            ul(class="nav pull-right navbar-nav")
-              button.pull-right.addlink(class=' btn btn-primary') + add a link
-      //
-        .navbar.navbar-default.navbar-static
-          .container
-            a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
-              span(class="glyphicon glyphicon-bar")
-              span(class="glyphicon glyphicon-bar")
-              span(class="glyphicon glyphicon-bar")
-            .navbar-collapse.collapse
-              ul(class="nav navbar-nav")
-                li.active
-                  a(href="#") Home
-                li.divider
-                li
-                  a(href="#") Link
-                li
-                  a(href="#") Link
-            ul(class="nav pull-right navbar-nav")
-              h5#numbers
-            //
-              ul(class="nav pull-right navbar-nav")
-                li
-                  form(class="navbar-form")
-                    input(type="text" class="form-control" placeholder="Search")
-                    button(type="submit" class="btn btn-default")
-                      i(class="glyphicon glyphicon-search")
-                  a(href="#")
-                    i(class="glyphicon glyphicon-flag")
-                    span(class="badge") 2
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
