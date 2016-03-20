@@ -336,23 +336,29 @@ head
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
       nav.navbar.navbar-default
-        .container-fluid
+        .container
           .navbar-header
             button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
               span(class="sr-only") Toggle navigation
               span(class="icon-bar")
               span(class="icon-bar")
               span(class="icon-bar")
-            a(class="navbar-brand" href="#") Brand
+            //a(class="navbar-brand" href="#") Brand
           .collapse.navbar-collapse#bs-example-navbar-collapse-1
             ul(class="nav navbar-nav")
               li(class="active")
-                a(href="#") Link 
+                a(href="#") Blog
                   span(class="sr-only") (current)
               li
-                a(href="#") Link
-            form(class="navbar-form navbar-left" role="search")
-              button(type="button" class="btn btn-primary") + add link
+                a(href="/ic") IC
+              li
+                a(href="/b") Business
+              li
+                a(href="#") Misc
+            button(type="button" class="btn btn-primary navbar-right") + add link
+          //  
+            form(class="navbar-form navbar-right")
+              button(type="button" class="btn btn-primary navbar-right") + add link
       //  
         #nav(style='z-index:1000;')
           .container
