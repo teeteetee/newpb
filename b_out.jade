@@ -85,6 +85,21 @@ head
       margin-top: 10px;
     }
     }
+    @media (min-width: 768px) {
+    .navbar-centered .navbar-nav {
+        float: none;
+        text-align: center;
+    }
+    .navbar-centered .navbar-nav > li {
+        float: none;
+    }
+    .navbar-centered .nav > li {
+        display: inline;
+    }
+    .navbar-centered .nav > li > a {
+        display: inline-block;
+    }
+    } 
     @font-face {
     font-family:roboto-thin;
     src: url('/bootstrap/fonts/Roboto-Thin.ttf');
@@ -335,7 +350,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') ANN Reserch
-      nav.navbar.navbar-default#newnav(style='z-index:1000;')
+      nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;')
         .container
           .row 
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1 
@@ -350,17 +365,14 @@ head
                 ul(class="nav navbar-nav")
                   li
                     a(href="/") Blog
-                      span#numbers(class='badge')
-                  li(class="active")
-                    a(href="#") IC
-                      span(class="sr-only") (current)
-                      span#icnumbers(class='badge')
                   li
-                    a(href="/b") Business
-                      span#bnumbers(class='badge')
+                    a(href="/ic") IC
+                      span#icnumbers(class='badge')
+                  li(class="active")
+                    a(href="#") Business
+                      span(class="sr-only") (current)
                   li
                     a(href="/m") Misc
-                      span#mnumbers(class='badge')
                   li
                     a(href="/a") About
                 form(class="navbar-form navbar-right")
@@ -459,7 +471,6 @@ head
            break;
          }
          });
-         getnumber();
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
@@ -489,61 +500,6 @@ head
           }
         });
         //-----------------------------------//
-        function getnumber() {
-          $.ajax({
-                method: "POST",
-                url: "/number/items",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#numbers').text(msg.number);
-                  }
-                  else {
-                    $('#numbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/b",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#bnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#bnumbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/m",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#mnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#mnumbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/ic",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#icnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#icnumbers').text(0);
-                  }
-                });
-        }
-        //-----------------------------------//
         $('#newnav').affix({
               offset: {
                 top: $('header').height()
@@ -555,4 +511,3 @@ head
         $('#newnav').on('affix-top.bs.affix',function(){
           $('#maincontent').css('padding-top','0px');
         });
-        
