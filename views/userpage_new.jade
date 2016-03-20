@@ -335,20 +335,40 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-      #nav(style='z-index:1000;')
-        .container
-          .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-bottom:10px;padding-top:10px;border-top-left-radius: 10px;border-top-right-radius: 10px;')
-              a(href="/ic") IC
-              | &#124;
-              a.disabled(href="#") Business
-              | &#124;
-              a.disabled(href="#") Misc
-              //h6.pull-right#numbers(style='font-weight:200;display:inline;')
-              button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
-          .row#addrow(style='text-align:center;')
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-top:20px;padding-bottom:20px;')
-              button.btn.btn-primary.addlink(style='border-radius:30px;') + add a link
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+              span(class="sr-only")Toggle navigation
+              span(class="icon-bar")
+              span(class="icon-bar")
+              span(class="icon-bar")
+            a(class="navbar-brand" href="#") Brand
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          .collapse.navbar-collapse#bs-example-navbar-collapse-1
+            ul(class="nav navbar-nav")
+              li(class="active")
+                a(href="#") Link 
+                  span(class="sr-only">(current)
+              li
+                a(href="#") Link
+            form(class="navbar-form navbar-left" role="search")
+              button(type="button" class="btn btn-primary") + add link
+      //  
+        #nav(style='z-index:1000;')
+          .container
+            .row#menu
+              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-bottom:10px;padding-top:10px;border-top-left-radius: 10px;border-top-right-radius: 10px;')
+                a(href="/ic") IC
+                | &#124;
+                a.disabled(href="#") Business
+                | &#124;
+                a.disabled(href="#") Misc
+                //h6.pull-right#numbers(style='font-weight:200;display:inline;')
+                button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
+            .row#addrow(style='text-align:center;')
+              .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:#D6F0FF;padding-top:20px;padding-bottom:20px;')
+                button.btn.btn-primary.addlink(style='border-radius:30px;') + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
