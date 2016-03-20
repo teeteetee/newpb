@@ -335,7 +335,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') Neural Networks Research
-      nav.navbar.navbar-default
+      nav.navbar.navbar-default#newnav
         .container
           .navbar-header
             button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
@@ -355,8 +355,6 @@ head
                 a(href="/b") Business
               li
                 a(href="#") Misc
-            button(type="button" class="btn btn-primary navbar-right") + add link
-          //  
             form(class="navbar-form navbar-right")
               button(type="button" class="btn btn-primary navbar-right") + add link
       //  
@@ -579,22 +577,16 @@ head
                 });
         }
         //-----------------------------------//
-        $('#nav').affix({
+        $('#newnav').affix({
               offset: {
                 top: $('header').height()
               }
         });
-        $('#nav').on('affix.bs.affix',function(){
-          $('#maincontent').css('padding-top',$('#nav').height());
-          $('#addrow').css('display','none');
-          $('#addstick').css('display','block');
-          $('#menu').css('text-align','left');
+        $('#newnav').on('affix.bs.affix',function(){
+          $('#maincontent').css('padding-top',$('#newnav').height());
         });
-        $('#nav').on('affix-top.bs.affix',function(){
+        $('#newnav').on('affix-top.bs.affix',function(){
           $('#maincontent').css('padding-top','0px');
-          $('#addrow').css('display','block');
-          $('#addstick').css('display','none');
-          $('#menu').css('text-align','center');
         });
         //$('#nav').css('background-color','rgba(0, 0, 0, 0.63)');
         
