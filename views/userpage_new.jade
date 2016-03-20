@@ -273,11 +273,11 @@ head
     top: 0;
     width: 100%;
     background-color:darksalmon;
-    /*background-color:rgba(255,255,255,0.85);*/
+    /*background-color:rgba(255,255,255,0.85);
      -webkit-box-shadow: 0px 0px 8px 2px #A0A0A0;
        -moz-box-shadow: 0px 0px 8px 2px #A0A0A0;
             box-shadow: 0px 0px 8px 2px #A0A0A0;
-    /*border-bottom:3px solid black;*/
+    border-bottom:3px solid black;*/
     }
     #menu {
     /*background-color:rgba(255, 255, 255, 0.85);*/
@@ -338,7 +338,7 @@ head
       #nav(style='z-index:1000;')
         .container
           .row#menu
-            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;padding-bottom:10px;padding-top:10px;')
+            .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;padding-bottom:10px;padding-top:10px;border-top-left-radius: 10px;border-top-right-radius: 10px;')
               a(href="/ic") IC
               a.disabled(href="#") Business
               a.disabled(href="#") Misc
@@ -346,7 +346,7 @@ head
               button.btn.btn-xs.btn-primary.pull-right#addstick.addlink + add a link
           .row#addrow(style='text-align:center;')
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1(style='background-color:darksalmon;padding-top:20px;padding-bottom:20px;')
-              button.btn.btn-primary.addlink + add a link
+              button.btn.btn-primary.addlink(style='border-radius:30px;') + add a link
         //
           a(class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
             span(class="glyphicon glyphicon-bar")
