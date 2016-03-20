@@ -292,34 +292,6 @@ head
     }
   body
     .intro
-      .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-        .modal-dialog(role="document")
-          .modal-content
-            .modal-header
-              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                span(aria-hidden="true") ×
-              h4(class="modal-title"  style='color:#ddd;') Adding a link
-            .modal-body
-              form
-                .form-group
-                  .message
-                .inputwrap
-                  #mailgroup.form-group.has-feedback
-                    input(type="text" class="change_phc simplebox" id="link" name='link' placeholder="link") 
-                    span(id='mail_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                    span(id='mail_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback"  aria-hidden="true")
-                  #pgroup.form-group.has-feedback
-                    span(id='p_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                    input(type="text" class=" change_phc simplebox" id="title" name='p' placeholder="description") 
-                    span(id='p_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  #nickgroup.form-group.has-feedback
-                    span(id='nick_error' style='display:none;' class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
-                    span(id='nick_success'  style='display:none;' class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                    textarea(type="text" style='border:none;border-bottom:1px solid #ddd;width:100%;' class="change_phc simplebox" id='comment' name='nick' placeholder="comment")
-                //button.btn.btn-lg.btn-primary.runreg(type='button' style='min-height:40px;background-color:rgba(8, 8, 8, 0.5);border:none;width:100%;text-transform:uppercase;letter-spacing:2px;') Login
-             .modal-footer
-               button(class="btn btn-default" data-dismiss="modal") Close
-               button#submitlink(class="btn btn-primary") Add
       .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
@@ -364,10 +336,6 @@ head
     script(src='js/bootstrap.min.js') 
     //script(async src='js/counter.js')    
     script.
-      $('.addlink').click(function(){
-        $('#myModal').modal('show');
-        });
-       
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
