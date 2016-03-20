@@ -261,6 +261,10 @@ app.get('/m',function (req,res){
           });
 });
 
+app.get('/a',function (req,res){
+  res.render('a');
+});
+
 app.post('/ic',function (err,done){
   var ms ={};
   concepts.find({},function(err,done){
