@@ -508,7 +508,9 @@ app.get('/lstitm',function (req,res){
   res.redirect('/seeuser');
 })
 
-app.get('/seeitems',function (req,res){
+app.get('/see:items',function (req,res){
+  switch(req.params.items){
+    case('items'):
   items.find({},function (err,done){
     if(err){
 
@@ -517,6 +519,48 @@ app.get('/seeitems',function (req,res){
       res.send(done);
     }
   });
+  break;
+  case('m'):
+  misc.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+  break;
+  case('b'):
+  business.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+  break;
+  case('ic'):
+  concepts.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+  break;
+  case('user'):
+  users.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+  break;
+}
 });
 
 
@@ -544,17 +588,6 @@ app.get('/dropusers',function (req,res){
   res.redirect('/');
 });
 
-
-app.get('/seeuser',function (req,res){
-  users.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-});
 
 //******************** HELPERS END ********************//
 
