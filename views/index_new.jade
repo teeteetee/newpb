@@ -372,6 +372,13 @@ head
     .nav li>a:hover{
       background-color: #e7e7e7 !important;
     }
+    .navbar-nav>.active>a {
+    color: #D8C5AF;
+    background-color: #8A705D;
+    }
+    .navbar-default {
+      border:none;
+    }
   body
     //.language
     //  a#eng Login
@@ -413,7 +420,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') ANN Research
-      nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;')
+      nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;background-color:#333;')
         .container
           .row 
             .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1 
