@@ -297,6 +297,16 @@ head
     .nav li>a:hover{
       background-color: #e7e7e7 !important;
     }
+    .navbar-default .navbar-nav>.active>a {
+    color: #D8C5AF;
+    background-color: #8A705D;
+    }
+    .navbar-default {
+      border:none;
+    }
+    .navbar {
+      border-radius:0px;
+    }
   body
     .intro
       .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -336,7 +346,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') ANN Research
-      nav.navbar.navbar-default#newnav(style='z-index:1000;')
+      nav.navbar.navbar-default#newnav(style='z-index:1000;background-color:#333;')
         .container
           .row 
             .col-xs-12.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1 
