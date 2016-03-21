@@ -307,6 +307,12 @@ head
       background-color:#fbfbfb;
       color:#ddd;
       text-align:center;
+      border-bottom:1px solid #eee;
+    }
+    .week .col-sm-2{
+      /*background-color:#fbfbfb;*/
+      color:black;
+      text-align:right;
       border-bottom:3px solid black;
     }
     h3 {
@@ -545,7 +551,8 @@ head
                 weeknum_g = weeknum;   
                 $('.items').prepend(insert);
                 if(index === consolidated.length-1) {
-                  var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
+                  //var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
+                  var week = "<div class='row week week"+weeknum_g+"'><div class='col-sm-2'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                   $('.items').prepend(week);
                 }
            break;
