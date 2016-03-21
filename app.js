@@ -705,12 +705,12 @@ app.post('/additem/:id',function (req,res){
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
-      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
+      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,nlinks:1}});
       items.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
       ms.trouble=0;
       res.send(ms);}
       else {
-      users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1}});
+      users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,nlinks:1}});
       items.insert({tmstmp:newdate,title:req.body.title,link:0,comment:vcomment});
       ms.trouble=0;
       res.send(ms);
@@ -738,6 +738,52 @@ app.post('/additem/:id',function (req,res){
     else {
      ms.trouble=1;
      res.send(ms);
+    }
+    break;
+    case('b'):
+    if(req.body.title&& is_title(req.body.title)){
+    var newlink = parseInt(req.body.newlink);
+    var newdate = Date.now();
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
+      business.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);}
+      else {
+      users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
+      business.insert({tmstmp:newdate,title:req.body.title,link:0,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);
+      }
+    }
+    else {
+    console.log('data check fail while adding an link');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
+    case('m'):
+    if(req.body.title&& is_title(req.body.title)){
+    var newlink = parseInt(req.body.newlink);
+    var newdate = Date.now();
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,mlinks:1}});
+      misc.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);}
+      else {
+      users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,mlinks:1}});
+      misc.insert({tmstmp:newdate,title:req.body.title,link:0,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);
+      }
+    }
+    else {
+    console.log('data check fail while adding an link');
+    ms.trouble=1;
+    res.send(ms);
     }
     break;
   }
