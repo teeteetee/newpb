@@ -722,9 +722,36 @@ app.post('/number/:jesus', function (req,res){
   }
 });
 
+app.post('/remitem/:id',function (req,res){
+  if(req.session && req.session._id && req.body._id){
+    var cond = req.params.id; 
+    var ms ={};
+    ms.trouble=0;
+    switch(cond){
+      case('link'):
+      console.log('removing a link');
+      items.remove({_id:req.body._id});
+      res.send(ms);
+      break;
+      case('ic'):
+      console.log('removing a consept');
+      concepts.remove({_id:req.body._id});
+      res.send(ms);
+      break;
+      case('b'):
+      console.log('removing a b_item');
+      business.remove({_id:req.body._id});
+      res.send(ms);
+      break;
+      case('m'):
+      console.log('removing a m_item');
+      misc.remove({_id:req.body._id});
+      res.send(ms);
+      break;
+  }
+});
 
 app.post('/additem/:id',function (req,res){
-  console.log('hey');
   if(req.session && req.session._id ){
     //conditioning is left due to plans of bringing in a section of "terms", to be added the same way
   var cond = req.params.id; 
