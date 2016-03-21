@@ -365,7 +365,7 @@ head
                   li
                     a(href="/a") About
                 form(class="navbar-form navbar-right")
-                  button(type="button" class="btn btn-primary navbar-right") + add link
+                  button#addlink(type="button" class="btn btn-primary navbar-right") + add link
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -392,7 +392,7 @@ head
     script(src='js/bootstrap.min.js') 
     //script(async src='js/counter.js')    
     script.
-      $('.addlink').click(function(){
+      $('#addlink').click(function(){
         $('#myModal').modal('show');
         });
        var consolidated=[];
