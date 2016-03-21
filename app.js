@@ -211,6 +211,26 @@ app.post('/getitems_b',function (req,res){
   });
 });
 
+app.post('/getitems_m',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  misc.find({},function (err,doc){
+    //console.log(doc);
+    if(err) {
+      console.log('ERR WHILE ITEMS_b QUERY');
+      res.send(ms);
+    }
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
+});
+
 app.post('/getitems_a',function (req,res){
   if(req.session._id && req.body.qu)
   {var ms ={};
