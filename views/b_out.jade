@@ -405,7 +405,30 @@ head
       $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
-       
+      $.ajax({
+              method: "POST",
+              url: "/getitems_b",
+              data: 0
+            }).done(function( msg ) {
+                console.log('hey! '+msg);
+                if(!msg.trouble) {
+                   items=msg.doc;
+                  if(!items || !items.length) {
+                   console.log('no items');
+                   }
+                   else {
+                    items.forEach(function (element,index){
+                    element.item_type = 'article';
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                    console.log(consolidated);
+                   sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
+                 }
+                }
+              });
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
