@@ -497,6 +497,7 @@ head
            var data={};
            data.title = $('#title').val();
            data.link = $('#link').val();
+           data.comment = $('#comment').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -506,10 +507,11 @@ head
               .done(function( msg ) {
                 $('#title').val('');
                 $('#link').val('');
+                $('#comment').val('');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
-                window.location='/';
+                window.location='/b';
               });
           }
         });
