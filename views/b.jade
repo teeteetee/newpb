@@ -395,6 +395,7 @@ head
       $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
+       var consolidated=[];
        $.ajax({
               method: "POST",
               url: "/getitems_b",
