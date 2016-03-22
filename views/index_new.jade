@@ -578,7 +578,7 @@ head
            case('article'):
                 var today = date_out(element.tmstmp);
                 var num = parseInt(index+1);
-                if(consolidated[num] && today===date_out(consolidated[num])) {
+                if(consolidated[num] && today===date_out(consolidated[num].tmstmp)) {
                   today = '';
                 }
                 var comment;
