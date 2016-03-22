@@ -580,7 +580,7 @@ head
                   today = '';
                 }
                 var comment;
-                if(element.comment) {
+                if(element.comment&&element.comment!=undefined) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
                 var heading = "<h3  class='btitle"+element._id+"' >"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
