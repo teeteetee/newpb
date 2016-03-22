@@ -306,17 +306,35 @@ head
       background-color:#656565;
     }
     .nav li>a:hover{
-      background-color: #e7e7e7 !important;
+      background-color: #333 !important;
+      color:#A26B2E !important;
+    }
+    .nav li>a {
+    -webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+    text-transform:uppercase;
+    color:#777 !important;
+    letter-spacing:1px;
+
     }
     .navbar-default .navbar-nav>.active>a {
-    color: #D8C5AF;
-    background-color: #8A705D;
+    color: #AE743C !important;
+    background-color: #333;
     }
     .navbar-default {
       border:none;
     }
     .navbar {
       border-radius:0px;
+    }
+    .navbar-brand {
+    font-family: boldproxima;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A26B2E !important;
+    }
+    p{
+    color:#585858;
     }
   body
     .intro
@@ -367,22 +385,20 @@ head
                   span(class="icon-bar")
                   span(class="icon-bar")
                   span(class="icon-bar")
+                a(class="navbar-brand visible-xs" href="#") ANN Research
                 //a(class="navbar-brand" href="#") Brand
               .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 ul(class="nav navbar-nav")
                   li
                     a(href="/") Blog
-                      span#numbers(class='badge')
                   li
                     a(href="/ic") IC
-                      span#icnumbers(class='badge')
                   li(class="active")
                     a(href="#") Business
                       span(class="sr-only") (current)
                       span#bnumbers(class='badge')
                   li
                     a(href="/m") Misc
-                      span#mnumbers(class='badge')
                   li
                     a(href="/a") About
                 form(class="navbar-form navbar-right")
@@ -542,19 +558,6 @@ head
         function getnumber() {
           $.ajax({
                 method: "POST",
-                url: "/number/items",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#numbers').text(msg.number);
-                  }
-                  else {
-                    $('#numbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
                 url: "/number/b",
                 data: 0
               })
@@ -564,32 +567,6 @@ head
                   }
                   else {
                     $('#bnumbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/m",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#mnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#mnumbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/ic",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#icnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#icnumbers').text(0);
                   }
                 });
         }
