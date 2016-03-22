@@ -574,7 +574,12 @@ head
                     mm='0'+mm
                 } 
                 var today = dd+'.'+mm+'.'+yyyy;
-                lastdate = today===lastdate?'':today;
+                if(today===lastdate){
+                  today='';
+                }
+                else {
+                  lastdate = today;
+                }
                 var comment;
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
