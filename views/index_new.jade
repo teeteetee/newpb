@@ -579,8 +579,8 @@ head
                 if(consolidated[index+1] && today===date_out(consolidated[index+1].tmstmp)) {
                   today = '';
                 }
-                var comment;
-                if(element.comment&&element.comment!=undefined) {
+                var comment='';
+                if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
                 var heading = "<h3  class='btitle"+element._id+"' >"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
