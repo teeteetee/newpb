@@ -498,14 +498,6 @@ app.post('/removebook/:bid',function (req,res) {
 
 //******************** HELPERS ********************//
 
-app.get('/helpers',function(req,res){
-  res.render('helpers');
-});
-
-app.get('/lstitm',function (req,res){
-  users.update({},{$set:{last_item:0}});
-  res.redirect('/seeuser');
-})
 
 app.get('/see:items',function (req,res){
   switch(req.params.items){
@@ -564,15 +556,11 @@ app.get('/see:items',function (req,res){
 
 
 app.get('/clearitems',function (req,res){
-  //if(req.session._id)
-  //{
-  //  items.remove({});
-  //  res.redirect('/');}
-  //  else {
-  //    res.redirect('/');
-  //  }
+  concepts.remove({});
+  business.remove({});
+  misc.remove({});
   items.remove({});
-    res.redirect('/');
+  res.redirect('/');
 });
 
 
@@ -580,25 +568,9 @@ app.get('/cs',function (req,res){
   res.send(req.session);
 });
 
-
-app.get('/dropusers',function (req,res){
-  users.remove({});
-  items.remove({});
-  res.redirect('/');
-});
-
-
 //******************** HELPERS END ********************//
 
 //-----------------LONGPOLLING END------------------//
-
-
-app.get('/showitems',function (req,res){
-  items.find({},function (err,done){
-    res.send(done);
-  });
-});
-
 
 
 app.get('/admax',function(req,res){
@@ -856,26 +828,6 @@ app.post('/additem/:id',function (req,res){
 else {
   res.render('404');
 }
-});
-
-app.post('/addic',function (err,done){
-  var ms ={};
-  if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
-  concepts.insert({title:req.body.title,link:req.body.link},function(err,done){
-    if(err){
-     ms.trouble=1;
-      res.send(ms);
-    }
-    else {
-     ms.trouble=0;
-    res.send(ms);
-    }
-  });
- }
- else {
-  ms.trouble=1;
-  res.send(ms);
- }
 });
 
 
