@@ -335,8 +335,7 @@ head
     .item {
     /*border-bottom:1px solid #f7f7f7;*/
     background-color:white;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-top: 10px;
      -webkit-box-shadow: 0px 3px 5px 1px #bbb;
        -moz-box-shadow: 0px 3px 5px 1px #bbb;
     box-shadow: 0px 3px 5px 1px #bbb;
@@ -591,16 +590,19 @@ head
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-sm-2'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 var style='';
+                var style2="style='border-top-left-radius:3px;border-top-right-radius:3px;'";
                 if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp)) {
-                  style = new Date(element.tmstmp).getWeek()>new Dte(consolidated[index+1].tmstmp).getWeek()?"style='border-top-left-radius:3px;border-top-right-radius:3px;'":"style='border-bottom:1px solid #eee;'";
+                  style = new Date(element.tmstmp).getWeek()>new Date(consolidated[index+1].tmstmp).getWeek()?"style='border-top-left-radius:3px;border-top-right-radius:3px;'":"";
+                  style2 = new Date(element.tmstmp).getWeek()>new Date(consolidated[index+1].tmstmp).getWeek()?"": "style='border-bottom:1px solid #eee;'";
                 }
                 if(!consolidated[index+1]) {
                   style="style='border-top-left-radius:3px;border-top-right-radius:3px;'";
                 }
                 if(!consolidated[index-1]) {
                   style ="style='border-bottom-left-radius:3px;border-bottom-right-radius:3px;'";
+                  style2='';
                 }
-                insert = "<div "+style+"class='row item read hovershade book"+element._id+"'><div class='col-sm-2' style='text-align:center;'><h5 style='color:#d2d2d2;font-weight:200;' class=' hidden-xs' >"+today+" </h5></div><div class='col-sm-10 good bookpadding' style='border-bottom:1px solid #eee;' onclick='redactbookmodal("+index+");'>"+heading+"<h5 style='font-weight:300;color:#ccc;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";
+                insert = "<div "+style+"class='row item read hovershade book"+element._id+"'><div class='col-sm-2' style='text-align:center;'><h5 style='color:#d2d2d2;font-weight:200;' class=' hidden-xs' >"+today+" </h5></div><div class='col-sm-10 good bookpadding' "+style2+">"+heading+"<h5 style='font-weight:300;color:#ccc;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";
                 if(weeknum>weeknum_g )
                 {$('.items').prepend(week); }  
                 weeknum_g = weeknum;   
