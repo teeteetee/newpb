@@ -500,8 +500,8 @@ head
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item">'+element.title+' <button class="btn btn-xs btn-danger" onclick="rem('+index+')">remove</button></a>';
-         $('.list-group').append(insert);
+         insert = '<a href="'+element.link+'" class="list-group-item">'+element.title+' <button class="btn btn-xs btn-danger pull-right" onclick="rem('+index+')">remove</button></a>';
+         $('.list-group').prepend(insert);
          });
          getnumber();
         };
@@ -528,7 +528,7 @@ head
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
-                window.location='/';
+                window.location='/ic';
               });
           }
         });

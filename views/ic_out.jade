@@ -403,6 +403,31 @@ head
     script(src='js/bootstrap.min.js') 
     //script(async src='js/counter.js')    
     script.
+      var consolidated=[];
+       $.ajax({
+              method: "POST",
+              url: "/getitems_ic",
+              data: 0
+            }).done(function( msg ) {
+                console.log('hey! '+msg);
+                if(!msg.trouble) {
+                   items=msg.doc;
+                  if(!items || !items.length) {
+                   console.log('no items');
+                   }
+                   else {
+                    items.forEach(function (element,index){
+                    element.item_type = 'article';
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                    //console.log(consolidated);
+                   //sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
+                 }
+                }
+              });
       String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
       }
@@ -428,7 +453,7 @@ head
                  }
          var insert;
          insert = '<a href="'+element.link+'" class="list-group-item">'+element.title+'</a>';
-         $('.list-group').append(insert);
+         $('.list-group').prepend(insert);
          }
          });
         };
