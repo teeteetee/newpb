@@ -465,54 +465,19 @@ head
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
-       consolidated.forEach(function (element,index){
+        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
-                   $('.items').empty();}
+                   $('.items').empty();
+                  $('.items').prepend('<div class="list-group"></div>');
+                 }
                  else {
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         var weektxt = 'week';
-         switch(element.item_type){
-           case('article'):
-                var today = new Date(parseInt(element.tmstmp));
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
-                var yyyy = today.getFullYear();
-                if(dd<10){
-                    dd='0'+dd
-                } 
-                if(mm<10){
-                    mm='0'+mm
-                } 
-                var today = dd+'.'+mm+'.'+yyyy;
-                var comment;
-                if(element.comment) {
-                  comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
-                }
-                var heading = "<h3  class='btitle"+element._id+"' >"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
-                if(element.link!='0') {
-                  heading = "<h3 class='btitle"+element._id+"' ><span class='glyphicon glyphicon-link' style='color:#ddd;margin-right:10px;font-size:18px;'></span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h3>";
-                }
-                //insert = "<div class='row item read book"+element._id+"'><div class='col-xs-12 good bookpadding hovershade' onclick='redactbookmodal("+index+");'><h3 class='visible-xs'><span style='color:#d2d2d2;'>"+today+"</span></h3><h3 class='btitle"+element._id+"' ><span style='color:#d2d2d2;margin-right:20px;' class=' hidden-xs' >"+today+" </span>"+element.title.capitalizeFirstLetter()+"<small class='hidden-xs' ></small></h3><h5 style='font-weight:200;color:#eee;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5></div></div>";  
-                insert = "<div class='row item read hovershade book"+element._id+"'><div class='col-sm-2' style='text-align:right;'><h5 style='color:#d2d2d2;font-weight:200;' class=' hidden-xs' >"+today+" </h5></div><div class='col-sm-10 good bookpadding' onclick='redactbookmodal("+index+");'>"+heading+"<h5 style='font-weight:300;color:#ccc;margin-left:20px;' class='hidden-lg hidden-md hidden-sm sm_hd"+element._id+"'>"+today+"</h5>"+comment+"</div></div>";  
-                var weeknum = new Date(parseInt(element.tmstmp));
-                weeknum = weeknum.getWeek();
-                var week = "<div class='row week week"+weeknum_g+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
-                var weekname = '.week'+weeknum;
-                //if(!$(weekname)[0])
-                if(weeknum>weeknum_g )
-                {$('.items').prepend(week); }  
-                weeknum_g = weeknum;   
-                $('.items').prepend(insert);
-                if(index === consolidated.length-1) {
-                  var week = "<div class='row week week"+weeknum+"'><div class='col-xs-12'><h5>"+weektxt+" "+weeknum+"</h5></div></div>";
-                  $('.items').prepend(week);
-                }
-           break;
+         insert = '<a href="'+element.link+'" class="list-group-item">'+element.title+' <button class="btn btn-xs btn-danger" onclick="rem('+index+')">remove</button></a>';
+         $('.list-group').append(insert);
          }
-         });
          getnumber();
         };
         //-----------------------------------//
@@ -557,6 +522,18 @@ head
                     $('#icnumbers').text(0);
                   }
                 });
+        }
+        function rem(id) {
+          var data={};
+          data._id = consolidated[id]._id;
+         $.ajax({
+              method: "POST",
+              url: "/remitem/ic",
+              data: data
+            })
+              .done(function( msg ) {
+                alert('ready');
+              });
         }
         //-----------------------------------//
         $('#newnav').affix({

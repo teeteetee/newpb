@@ -431,7 +431,6 @@ head
          $('.list-group').append(insert);
          }
          });
-         getnumber();
         };
         //-----------------------------------//
         $('#submitlink').click(function(){
@@ -461,21 +460,6 @@ head
           }
         });
         //-----------------------------------//
-        function getnumber() {
-          $.ajax({
-                method: "POST",
-                url: "/number/ic",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#icnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#icnumbers').text(0);
-                  }
-                });
-        }
         //-----------------------------------//
         $('#nav').affix({
               offset: {
