@@ -565,7 +565,6 @@ head
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
-       var lastdate;
        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
@@ -578,10 +577,10 @@ head
          switch(element.item_type){
            case('article'):
                 var today = date_out(element.tmstmp);
-                if(consolidated[index+1] && today===date_out(consolidated[index+1])) {
+                var num = parseint(index+1);
+                if(consolidated[num] && today===date_out(consolidated[num])) {
                   today = '';
                 }
-                if(consolidated[index+1])
                 var comment;
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
