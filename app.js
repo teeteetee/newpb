@@ -231,27 +231,26 @@ app.post('/getitems_m',function (req,res){
   });
 });
 
-app.post('/getitems_a',function (req,res){
-  if(req.session._id && req.body.qu)
-  {var ms ={};
-    ms.trouble=1;
-    items.findOne({user:req.body.qu},function (err,doc){
-      if(err) {
-        console.log('ERR WHILE ITEMS QUERY');
-        res.send(ms);
-      }
-      else if(doc.user){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-    else
-      {res.send(0);}
+app.post('/getitems_ic',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  concepts.find({},function (err,doc){
+    //console.log(doc);
+    if(err) {
+      console.log('ERR WHILE CONCEPTS QUERY');
+      res.send(ms);
+    }
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
 });
+
 
 app.get('/ic',function (req,res){
   users.findOne({_id:req.session._id},function (err,done){
