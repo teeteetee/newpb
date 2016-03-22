@@ -731,21 +731,25 @@ app.post('/remitem/:id',function (req,res){
       case('link'):
       console.log('removing a link');
       items.remove({_id:req.body._id});
+      users.update({_id:req.session._id},{$inc:{totallinks:-1,nlinks:-1}});
       res.send(ms);
       break;
       case('ic'):
       console.log('removing a consept');
       concepts.remove({_id:req.body._id});
+      //users.update({_id:req.session._id},{$inc:{totallinks:-1,blinks:-1}});
       res.send(ms);
       break;
       case('b'):
       console.log('removing a b_item');
       business.remove({_id:req.body._id});
+      users.update({_id:req.session._id},{$inc:{totallinks:-1,blinks:-1}});
       res.send(ms);
       break;
       case('m'):
       console.log('removing a m_item');
       misc.remove({_id:req.body._id});
+      users.update({_id:req.session._id},{$inc:{totallinks:-1,mlinks:-1}});
       res.send(ms);
       break;
   }
