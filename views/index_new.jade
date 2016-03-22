@@ -592,8 +592,11 @@ head
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-sm-2'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 var style='';
-                if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp || !consolidated[index+1] )) {
+                if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp) {
                   style = new Date(element.tmstmp).getWeek()>new Dte(consolidated[index+1].tmstmp).getWeek()?"style='border-top-left-radius:3px;border-top-right-radius:3px;'":"style='border-bottom:1px solid #eee;'";
+                }
+                if(!consolidated[index+1]) {
+                  style="'style='border-top-left-radius:3px;border-top-right-radius:3px;'";
                 }
                 if(!consolidated[index-1]) {
                   style ="style='border-bottom-left-radius:3px;border-bottom-right-radius:3px;'"
