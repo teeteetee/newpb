@@ -351,7 +351,7 @@ head
     p{
     color:#585858;
     }
-    .navbar-right {
+    .navbar-absolute {
     position: absolute;
     top: 0;
     right: 0;
@@ -392,7 +392,7 @@ head
             .loader       
       header
         .container
-          #mainheading.row(style='padding-bottom:20px;')
+          #mainheading.row.hidden-xs(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') ANN Research
       nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;background-color:#333;')
@@ -421,7 +421,9 @@ head
                     a(href="/m") Misc
                   li
                     a(href="/a") About
-                form(class="navbar-form navbar-right")
+                form(class="navbar-form navbar-right navbar-absolute hidden-sm")
+                  button#addlink(type="button" class="btn btn-primary navbar-right") + add link
+                form(class="navbar-form navbar-right visible-sm")
                   button#addlink(type="button" class="btn btn-primary navbar-right") + add link
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
