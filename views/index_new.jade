@@ -548,6 +548,20 @@ head
               return ((x < y) ? -1 : ((x > y) ? 1 : 0));
           });
        }
+       function date_out(tmstmp) {
+                  var today = new Date(parseInt(element.tmstmp));
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+                var today = dd+'.'+mm+'.'+yyyy;
+                return today;
+                }
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
@@ -563,23 +577,11 @@ head
          var weektxt = 'week';
          switch(element.item_type){
            case('article'):
-                var today = new Date(parseInt(element.tmstmp));
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
-                var yyyy = today.getFullYear();
-                if(dd<10){
-                    dd='0'+dd
-                } 
-                if(mm<10){
-                    mm='0'+mm
-                } 
-                var today = dd+'.'+mm+'.'+yyyy;
-                if(today===lastdate){
-                  today='';
+                var today = date_out(element.tmstmp);
+                if(consolidated[index+1] && today===date_out(consolidated[index+1])) {
+                  today = '';
                 }
-                else {
-                  lastdate = today;
-                }
+                if(consolidated[index+1])
                 var comment;
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
