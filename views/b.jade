@@ -421,10 +421,10 @@ head
                     a(href="/m") Misc
                   li
                     a(href="/a") About
-                form(class="navbar-form navbar-right navbar-absolute hidden-sm")
-                  button#addlink(type="button" class="btn btn-primary navbar-right") + add link
-                form(class="navbar-form navbar-right visible-sm")
-                  button#addlink(type="button" class="btn btn-primary navbar-right") + add link
+                form(class="navbar-form navbar-right navbar-absolute visible-sm")
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add link
+                form(class="navbar-form navbar-right hidden-sm")
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add link
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -451,7 +451,7 @@ head
     script(src='js/bootstrap.min.js') 
     //script(async src='js/counter.js')    
     script.
-      $('#addlink').click(function(){
+      $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
        var consolidated=[];
