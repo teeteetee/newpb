@@ -737,7 +737,7 @@ app.post('/remitem/:id',function (req,res){
       case('ic'):
       console.log('removing a consept');
       concepts.remove({_id:req.body._id});
-      //users.update({_id:req.session._id},{$inc:{totallinks:-1,blinks:-1}});
+      users.update({_id:req.session._id},{$inc:{blinks:-1}});
       res.send(ms);
       break;
       case('b'):
@@ -789,6 +789,7 @@ app.post('/additem/:id',function (req,res){
     break;
     case('ic'):
      if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+      users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
      concepts.insert({title:req.body.title,link:req.body.link},function(err,done){
        if(err){
         ms.trouble=1;
