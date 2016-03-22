@@ -551,6 +551,7 @@ head
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
+       var lastdate;
        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
@@ -573,6 +574,7 @@ head
                     mm='0'+mm
                 } 
                 var today = dd+'.'+mm+'.'+yyyy;
+                lastdate = today===lastdate?'':today;
                 var comment;
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
