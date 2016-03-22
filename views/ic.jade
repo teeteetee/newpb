@@ -86,6 +86,21 @@ head
       margin-top: 10px;
     }
     }
+    @media (min-width: 768px) {
+    .navbar-centered .navbar-nav {
+        float: none;
+        text-align: center;
+    }
+    .navbar-centered .navbar-nav > li {
+        float: none;
+    }
+    .navbar-centered .nav > li {
+        display: inline;
+    }
+    .navbar-centered .nav > li > a {
+        display: inline-block;
+    }
+    } 
     @font-face {
     font-family:roboto-thin;
     src: url('/bootstrap/fonts/Roboto-Thin.ttf');
@@ -295,17 +310,43 @@ head
       background-color:#656565;
     }
     .nav li>a:hover{
-      background-color: #e7e7e7 !important;
+      background-color: #333 !important;
+      color:#A26B2E !important;
+    }
+    .nav li>a {
+    -webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+    text-transform:uppercase;
+    color:#777 !important;
+    letter-spacing:1px;
+
     }
     .navbar-default .navbar-nav>.active>a {
-    color: #D8C5AF;
-    background-color: #8A705D;
+    color: #AE743C !important;
+    background-color: #333;
     }
     .navbar-default {
       border:none;
     }
     .navbar {
       border-radius:0px;
+    }
+    .navbar-brand {
+    font-family: boldproxima;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A26B2E !important;
+    }
+    p{
+    color:#585858;
+    }
+    .navbar-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    }
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: black;
     }
   body
     .intro
@@ -346,7 +387,7 @@ head
           #mainheading.row(style='padding-bottom:20px;')
             .col-xs-12
               h1(style='text-transform:uppercase;letter-spacing:4px;font-weight:100;color:black;font-family:boldproxima;') ANN Research
-      nav.navbar.navbar-default#newnav(style='z-index:1000;background-color:#333;')
+      nav.navbar.navbar-default.navbar-centered#newnav(style='z-index:1000;background-color:#333;')
         .container
           .row 
             .col-xs-12.col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-1 
@@ -374,8 +415,10 @@ head
                       span#mnumbers(class='badge')
                   li
                     a(href="/a") About
-                form(class="navbar-form navbar-right")
-                  button#addlink(type="button" class="btn btn-primary navbar-right") + add concept
+                form(class="navbar-form navbar-right navbar-absolute hidden-xs")
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add concept
+                form(class="navbar-form navbar-right visible-xs")
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add concept
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -402,7 +445,7 @@ head
     script(src='js/bootstrap.min.js') 
     //script(async src='js/counter.js')    
     script.
-      $('#addlink').click(function(){
+      $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
        
@@ -501,45 +544,6 @@ head
         });
         //-----------------------------------//
         function getnumber() {
-          $.ajax({
-                method: "POST",
-                url: "/number/items",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#numbers').text(msg.number);
-                  }
-                  else {
-                    $('#numbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/b",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#bnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#bnumbers').text(0);
-                  }
-                });
-          $.ajax({
-                method: "POST",
-                url: "/number/m",
-                data: 0
-              })
-                .done(function( msg ) {
-                  if(msg.number){
-                    $('#mnumbers').text(msg.number);
-                  }
-                  else {
-                    $('#mnumbers').text(0);
-                  }
-                });
           $.ajax({
                 method: "POST",
                 url: "/number/ic",
