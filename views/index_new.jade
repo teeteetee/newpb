@@ -372,17 +372,35 @@ head
     /*background-color:#DBEDFF;*/
     }
     .nav li>a:hover{
-      background-color: #e7e7e7 !important;
+      background-color: #333 !important;
+      color:#A26B2E !important;
+    }
+    .nav li>a {
+    -webkit-transition: background-color 0.5s; /* Safari */
+    transition: background-color 0.5s;
+    text-transform:uppercase;
+    color:#777 !important;
+    letter-spacing:1px;
+
     }
     .navbar-default .navbar-nav>.active>a {
-    color: #D8C5AF;
-    background-color: #8A705D;
+    color: #AE743C !important;
+    background-color: #333;
     }
     .navbar-default {
       border:none;
     }
     .navbar {
       border-radius:0px;
+    }
+    .navbar-brand {
+    font-family: boldproxima;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #A26B2E !important;
+    }
+    p{
+    color:#585858;
     }
   body
     //.language
@@ -435,6 +453,7 @@ head
                   span(class="icon-bar")
                   span(class="icon-bar")
                   span(class="icon-bar")
+                a(class="navbar-brand visible-xs" href="#") ANN Research
                 //a(class="navbar-brand" href="#") Brand
               .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 ul(class="nav navbar-nav")
