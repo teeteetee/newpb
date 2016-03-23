@@ -602,6 +602,7 @@ head
                 if(new Date(element.tmstmp).getWeek()>new Date(consolidated[index-1].tmstmp).getWeek()){
                  style="style='border-bottom-left-radius:3px;border-bottom-right-radius:3px;";
                  style2='';
+                 console.log('style2 1');
                  // after week separator
                 }
                 }
@@ -609,10 +610,12 @@ head
                   style="style='border-top-left-radius:3px;border-top-right-radius:3px;";
                 }
                 if(!consolidated[index-1]) {
+                  console.log('style2 2');
                   style ="style='border-bottom-left-radius:3px;border-bottom-right-radius:3px;";
                   style2='';
                 }
-                if(consolidated[index-1] && today>date_out(consolidated[index-1].tmstmp)) {
+                if(consolidated[index-1] && new Date(parseInt(element.tmstmp)).getDate()>new Date(parseInt(consolidated[index-1].tmstmp)).getDate()) {
+                  console.log('style2 3');
                   style2='';
                   style+=style.length?"border-bottom:1px solid #eee;'":'';
                 }
