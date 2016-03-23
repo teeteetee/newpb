@@ -617,7 +617,7 @@ head
                 if(consolidated[index-1] && new Date(parseInt(element.tmstmp)).getDate()>new Date(parseInt(consolidated[index-1].tmstmp)).getDate()) {
                   console.log('style2 3');
                   style2='';
-                  style+=style.length?"border-bottom:1px solid #eee;'":'';
+                  style+=style.length?"border-bottom:1px solid #eee;'":"style='border-bottom:1px solid #eee;'";
                 }
                 else {
                   style+=style.length?"'":'';
