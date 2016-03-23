@@ -592,7 +592,7 @@ head
                 var week = "<div class='row week week"+weeknum_g+"'><div class='col-sm-2'><h5>"+weektxt+" "+weeknum_g+"</h5></div></div>";
                 var weekname = '.week'+weeknum;
                 //-------------------------------------//
-                vvar style='';
+                var style='';
                 var style2="style='border-top-left-radius:3px;border-top-right-radius:3px;'";
                 if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp)) {
                 if(new Date(element.tmstmp).getWeek()<new Date(consolidated[index+1].tmstmp).getWeek()){
