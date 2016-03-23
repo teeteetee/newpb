@@ -593,7 +593,7 @@ head
                 var weekname = '.week'+weeknum;
                 //-------------------------------------//
                 var style='';
-                var style2="style='border-top-left-radius:3px;border-top-right-radius:3px;'";
+                var style2="style='border-bottom:1px solid #eee;'";
                 if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp)) {
                 if(consolidated[index+1] && new Date(element.tmstmp).getWeek()<new Date(consolidated[index+1].tmstmp).getWeek()){
                    style="style='border-top-left-radius:3px;border-top-right-radius:3px;";
