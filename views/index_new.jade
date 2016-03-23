@@ -595,7 +595,7 @@ head
                 var style='';
                 var style2="style='border-top-left-radius:3px;border-top-right-radius:3px;'";
                 if(consolidated[index-1] && date_out(element.tmstmp)!=date_out(consolidated[index-1].tmstmp)) {
-                if(new Date(element.tmstmp).getWeek()<new Date(consolidated[index+1].tmstmp).getWeek()){
+                if(consolidated[index+1] && new Date(element.tmstmp).getWeek()<new Date(consolidated[index+1].tmstmp).getWeek()){
                    style="style='border-top-left-radius:3px;border-top-right-radius:3px;";
                    //just before week separator
                 }
