@@ -61,8 +61,9 @@ app.get('*', function(req,res,next) {
  //  //console.log('URL: '+req.url);
  //  //console.log(req.ip);
  //   next();}
-    req.session.tmstmp = Date().now;
-    next();
+  req.session.tmstmp = Date().now;
+  console.log(req.session);
+  next();
   });
 
 
