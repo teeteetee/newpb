@@ -48,19 +48,27 @@ app.use(sessions({
 }));
 
 
-app.get('*', function(req,res,next) {   var d = new Date();
-  if(req.headers.host === 'api.peopleandbooks.com' )  //if it's a sub-domain
-   {console.log(d+' got an api request from '+req.ip);
-    req.url = '/api' + req.url; 
-    console.log(req.url); //append some text yourself
-  next();}
-  else{
-   //console.log('-------------- REQUEST --------------')
-   //console.log('User-Agent: ' + req.headers['user-agent']);
-   //console.log('URL: '+req.url);
-   //console.log(req.ip);
-    next();}
+app.get('*', function(req,res,next) {   
+ //var d = new Date();
+ // if(req.headers.host === 'api.peopleandbooks.com' )  //if it's a sub-domain
+ //  {console.log(d+' got an api request from '+req.ip);
+ //   req.url = '/api' + req.url; 
+ //   console.log(req.url); //append some text yourself
+ // next();}
+ // else{
+ //  //console.log('-------------- REQUEST --------------')
+ //  //console.log('User-Agent: ' + req.headers['user-agent']);
+ //  //console.log('URL: '+req.url);
+ //  //console.log(req.ip);
+ //   next();}
+ if(req.session && req.session._id) {
+  next();
+   }
+  else {
+    req.session.tmstmp = Date.now;
+    next();
    });
+  }
 
 
 
@@ -761,7 +769,7 @@ app.post('/additem/:id',function (req,res){
     case('ic'):
      if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
-     concepts.insert({title:req.body.title,link:req.body.link},function(err,done){
+     concepts.insert({title:req.body.title,link:req.body.link, tmstmp:Date().now},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
