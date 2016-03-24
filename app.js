@@ -61,13 +61,8 @@ app.get('*', function(req,res,next) {
  //  //console.log('URL: '+req.url);
  //  //console.log(req.ip);
  //   next();}
- if(req.session && req.session._id) {
-  next();
-   }
-  else {
     req.session.tmstmp = Date().now;
     next();
-   }
   });
 
 
