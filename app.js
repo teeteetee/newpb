@@ -111,7 +111,8 @@ app.get('/',function(req,res) {
           });
         }
    else {         
-       req.session.tmstmp = Date.now();
+       req.session.user_agent = req.headers['user-agent'];
+       console.log('hey');
        res.render('index_new');
    }
 });
