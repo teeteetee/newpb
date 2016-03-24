@@ -61,7 +61,7 @@ app.get('*', function(req,res,next) {
  //  //console.log('URL: '+req.url);
  //  //console.log(req.ip);
  //   next();}
-  req.session.tmstmp = Date().now;
+  req.session.tmstmp = Date.now();
   console.log(req.session);
   next();
   });
@@ -765,7 +765,7 @@ app.post('/additem/:id',function (req,res){
     case('ic'):
      if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
-     concepts.insert({title:req.body.title,link:req.body.link, tmstmp:Date().now},function(err,done){
+     concepts.insert({title:req.body.title,link:req.body.link, tmstmp:Date.now()},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
