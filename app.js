@@ -111,6 +111,7 @@ app.get('/',function(req,res) {
           });
         }
    else {         
+       req.session.tmstmp = Date.now();
        res.render('index_new');
    }
 });
