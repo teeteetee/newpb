@@ -67,8 +67,8 @@ app.get('*', function(req,res,next) {
   else {
     req.session.tmstmp = Date.now;
     next();
-   });
-  }
+   }
+  });
 
 
 
