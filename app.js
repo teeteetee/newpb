@@ -61,9 +61,10 @@ app.get('*', function(req,res,next) {
  //  //console.log('URL: '+req.url);
  //  //console.log(req.ip);
  //   next();}
-  req.session.tmstmp = Date.now();
-  console.log(req.session);
-  next();
+ //
+  //req.session.tmstmp = Date.now();
+  //console.log(req.session);
+  //next();
   });
 
 
@@ -110,9 +111,7 @@ app.get('/',function(req,res) {
             }
           });
         }
-   else {         
-       req.session.user_agent = req.headers['user-agent'];
-       console.log('hey');
+   else { 
        res.render('index_new');
    }
 });
