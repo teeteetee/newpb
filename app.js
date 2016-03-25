@@ -64,7 +64,13 @@ app.get('*', function(req,res,next) {
  //
   //req.session.tmstmp = Date.now();
   //console.log(req.session);
-  req.session.tmstmp = Date.now();
+  if(req.session.tmstmp)
+    {req.session.last_visit=req.sessiontmstmp;
+     req.session.tmstmp = Date.now();
+    }
+  else {
+    req.session.tmstmp = Date.now();
+  }
   next();
   });
 
@@ -84,8 +90,8 @@ app.get('/',function(req,res) {
         { 
           users.findOne({_id:req.session._id},function (err,done){
             if(err){
-              if(req.session.tmstmp)
-                {tmstmp=req.session.tmstmp}
+              if(req.session.last_visit)
+                {tmstmp=req.session.last_visit}
                res.render('index_new',{'tmstmp':tmstmp});
                 }
             else {
@@ -110,16 +116,16 @@ app.get('/',function(req,res) {
                 //  break
                 //}
                 //res.render('index_new',{'color':color});
-                if(req.session.tmstmp)
-                {tmstmp=req.session.tmstmp}
+                if(req.session.last_visit)
+                {tmstmp=req.session.last_visit}
                 res.render('index_new',{'tmstmp':tmstmp});
               }
             }
           });
         }
    else { 
-       if(req.session.tmstmp)
-      {tmstmp=req.session.tmstmp}
+       if(req.session.last_visit)
+      {tmstmp=req.session.last_visit}
       res.render('index_new',{'tmstmp':tmstmp});
    }
 });
