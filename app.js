@@ -64,7 +64,7 @@ app.get('*', function(req,res,next) {
  //
   //req.session.tmstmp = Date.now();
   //console.log(req.session);
-  //next();
+  next();
   });
 
 
