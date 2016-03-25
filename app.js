@@ -64,6 +64,7 @@ app.get('*', function(req,res,next) {
  //
   //req.session.tmstmp = Date.now();
   //console.log(req.session);
+  req.session.tmstmp = Date.now();
   next();
   });
 
@@ -78,11 +79,14 @@ app.get('/test',function (req,res){
 
 
 app.get('/',function(req,res) {
+    var tmstmp=0;
    if (req.session._id)
         { 
           users.findOne({_id:req.session._id},function (err,done){
             if(err){
-               res.render('index_new');
+              if(req.session.tmstmp)
+                {tmstmp=req.session.tmstmp}
+               res.render('index_new',{'tmstmp':tmstmp});
                 }
             else {
               if(done){
@@ -106,13 +110,17 @@ app.get('/',function(req,res) {
                 //  break
                 //}
                 //res.render('index_new',{'color':color});
-                res.render('index_new');
+                if(req.session.tmstmp)
+                {tmstmp=req.session.tmstmp}
+                res.render('index_new',{'tmstmp':tmstmp});
               }
             }
           });
         }
    else { 
-       res.render('index_new');
+       if(req.session.tmstmp)
+      {tmstmp=req.session.tmstmp}
+      res.render('index_new',{'tmstmp':tmstmp});
    }
 });
 
