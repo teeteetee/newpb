@@ -183,6 +183,12 @@ function is_link(input){
   console.log('TODO fix is_link');
   return true;
 }
+function addhttp(url) {
+   if (!/^(f|ht)tps?:\/\//i.test(url)) {
+      url = "http://" + url;
+   }
+   return url;
+}
 function is_email(email) { 
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -758,12 +764,14 @@ app.post('/additem/:id',function (req,res){
     console.log(req.body.title);
     //if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
     if(req.body.title&& is_title(req.body.title)){
-    var newlink = parseInt(req.body.newlink);
+    //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
-      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,nlinks:1}});
-      items.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      { var vlink = req.body.link;
+        vlink=addhttp(link);
+        users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,nlinks:1}});
+      items.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
       res.send(ms);}
       else {
@@ -781,8 +789,10 @@ app.post('/additem/:id',function (req,res){
     break;
     case('ic'):
      if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+      var vlink = req.body.link;
+        vlink=addhttp(link);
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
-     concepts.insert({title:req.body.title,link:req.body.link, tmstmp:Date.now()},function(err,done){
+     concepts.insert({title:req.body.title,link:vlink, tmstmp:Date.now()},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
@@ -800,12 +810,14 @@ app.post('/additem/:id',function (req,res){
     break;
     case('b'):
     if(req.body.title&& is_title(req.body.title)){
-    var newlink = parseInt(req.body.newlink);
+    //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
-      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
-      business.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      { var vlink = req.body.link;
+        vlink=addhttp(link);
+        users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
+      business.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
       res.send(ms);}
       else {
@@ -823,12 +835,14 @@ app.post('/additem/:id',function (req,res){
     break;
     case('m'):
     if(req.body.title&& is_title(req.body.title)){
-    var newlink = parseInt(req.body.newlink);
+    //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
-      {users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,mlinks:1}});
-      misc.insert({tmstmp:newdate,title:req.body.title,link:req.body.link,comment:vcomment});
+      { var vlink = req.body.link;
+        vlink=addhttp(link);
+        users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,mlinks:1}});
+      misc.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
       res.send(ms);}
       else {

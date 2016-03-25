@@ -383,6 +383,9 @@ head
     a {
       color:#555 !important;
     }
+    .label-default {
+      background-color:#D4AB82;
+    }
   body
     .intro
       .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -477,6 +480,8 @@ head
       $('.addlink').click(function(){
         $('#myModal').modal('show');
         });
+      var tmstmp = #{tmstmp};
+      var last_visit = new Date(parseInt(tmstmp));
       var consolidated=[];
       $.ajax({
               method: "POST",
