@@ -162,10 +162,9 @@ function is_author(input){
   return re.test(input);
 }
 function is_title(input){
-  //var re = /^[a-zA-Z0-9\u0400-\u04FF\-<>_ ?!¡()%#&:¿’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
-  //console.log(re.test(input)+' tesing TITLE');
-  //return re.test(input);
-  return(true);
+  var re = /^[a-zA-Z0-9\u0400-\u04FF\-<>_ ?!¡()%#&:¿’'‘ÆÐƎƏƐƔĲŊŒẞÞǷȜæðǝəɛɣĳŋœĸſßþƿȝĄƁÇĐƊĘĦĮƘŁØƠŞȘŢȚŦŲƯY̨Ƴąɓçđɗęħįƙłøơşșţțŧųưy̨ƴÁÀÂÄǍĂĀÃÅǺĄÆǼǢƁĆĊĈČÇĎḌĐƊÐÉÈĖÊËĚĔĒĘẸƎƏƐĠĜǦĞĢƔáàâäǎăāãåǻąæǽǣɓćċĉčçďḍđɗðéèėêëěĕēęẹǝəɛġĝǧğģɣĤḤĦIÍÌİÎÏǏĬĪĨĮỊĲĴĶƘĹĻŁĽĿʼNŃN̈ŇÑŅŊÓÒÔÖǑŎŌÕŐỌØǾƠŒĥḥħıíìiîïǐĭīĩįịĳĵķƙĸĺļłľŀŉńn̈ňñņŋóòôöǒŏōõőọøǿơœŔŘŖŚŜŠŞȘṢẞŤŢṬŦÞÚÙÛÜǓŬŪŨŰŮŲỤƯẂẀŴẄǷÝỲŶŸȲỸƳŹŻŽẒŕřŗſśŝšşșṣßťţṭŧþúùûüǔŭūũűůųụưẃẁŵẅƿýỳŷÿȳỹƴźżžẓ]+$/;
+  console.log(re.test(input)+' tesing TITLE');
+  return re.test(input);
 }
 function is_nick(input){
   //TODO length limit
@@ -804,7 +803,7 @@ app.post('/additem/:id',function (req,res){
     case('link'):
     console.log(req.body.title);
     //if(req.body.title&& is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
-    if(req.body.title&& is_title(req.body.title)){
+    if(req.body.title){
     //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
@@ -829,7 +828,7 @@ app.post('/additem/:id',function (req,res){
     }
     break;
     case('ic'):
-     if(req.session._id && req.body.title && is_title(req.body.title)&& req.body.link&& is_link(req.body.link) ){
+     if(req.session._id && req.body.title && req.body.link&& is_link(req.body.link) ){
       var vlink = req.body.link;
         vlink=addhttp(link);
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
@@ -850,7 +849,7 @@ app.post('/additem/:id',function (req,res){
     }
     break;
     case('b'):
-    if(req.body.title&& is_title(req.body.title)){
+    if(req.body.title){
     //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
@@ -875,7 +874,7 @@ app.post('/additem/:id',function (req,res){
     }
     break;
     case('m'):
-    if(req.body.title&& is_title(req.body.title)){
+    if(req.body.title){
     //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
