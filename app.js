@@ -66,7 +66,7 @@ app.get('*', function(req,res,next) {
   //console.log(req.session);
   if(req.session.tmstmp)
     {console.log('setting last_visit');
-      req.session.last_visit=req.sessiontmstmp;
+      req.session.last_visit=req.session.tmstmp;
      req.session.tmstmp = Date.now();
     }
   else {
