@@ -563,8 +563,8 @@ head
                 if(element.comment) {
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
-                var label = "<span class='label label-default'>New</span>";
-                if(element.tmstmp<tmstmp) {
+                var label = "<span style='margin-right:10px;' class='label label-default'>New</span>";
+                if(tmstmp&&element.tmstmp<tmstmp) {
                   console.log('no label');
                   label='';
                 }
