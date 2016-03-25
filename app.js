@@ -65,10 +65,12 @@ app.get('*', function(req,res,next) {
   //req.session.tmstmp = Date.now();
   //console.log(req.session);
   if(req.session.tmstmp)
-    {req.session.last_visit=req.sessiontmstmp;
+    {console.log('setting last_visit');
+      req.session.last_visit=req.sessiontmstmp;
      req.session.tmstmp = Date.now();
     }
   else {
+    console.log('NEW CLIENT');
     req.session.tmstmp = Date.now();
   }
   next();
