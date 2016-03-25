@@ -84,13 +84,7 @@ app.get('/test',function (req,res){
 });
 
 
-
-app.get('/c8b6b2cd02f1.html',function (req,res){
-  res.send('e669910c4426');
-});
-
-
-app.get('/х',function(req,res) {
+app.get('/',function(req,res) {
     var tmstmp=0;
    if (req.session._id)
         { 
