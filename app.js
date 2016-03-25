@@ -853,7 +853,7 @@ app.post('/additem/:id',function (req,res){
     //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
-    if(req.body.link&& is_link(req.body.link))
+    if(req.body.link)
       { var vlink = req.body.link;
         vlink=addhttp(link);
         users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
