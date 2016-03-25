@@ -64,16 +64,7 @@ app.get('*', function(req,res,next) {
  //
   //req.session.tmstmp = Date.now();
   //console.log(req.session);
-  if(req.session.tmstmp)
-    {console.log('setting last_visit');
-      req.session.last_visit=req.session.tmstmp;
-     req.session.tmstmp = Date.now();
-    }
-  else {
-    console.log('NEW CLIENT');
-    req.session.tmstmp = Date.now();
-  }
-  next();
+  //next();
   });
 
 
@@ -86,6 +77,15 @@ app.get('/test',function (req,res){
 
 app.get('/',function(req,res) {
     var tmstmp=0;
+    if(req.session.tmstmp)
+    {console.log('setting last_visit');
+      req.session.last_visit=req.session.tmstmp;
+     req.session.tmstmp = Date.now();
+    }
+  else {
+    console.log('NEW CLIENT');
+    req.session.tmstmp = Date.now();
+  }
    if (req.session._id)
         { 
           users.findOne({_id:req.session._id},function (err,done){
@@ -278,48 +278,90 @@ app.post('/getitems_ic',function (req,res){
 
 
 app.get('/ic',function (req,res){
+  var tmstmp=0;
+  if(req.session.tmstmp_ic)
+    {console.log('setting last_visit');
+      req.session.last_visit_ic=req.session.tmstmp_ic;
+     req.session.tmstmp_ic = Date.now();
+    }
+  else {
+    console.log('NEW CLIENT');
+    req.session.tmstmp_ic = Date.now();
+  }
   users.findOne({_id:req.session._id},function (err,done){
             if(err){
-               res.render('ic_out');
+               if(req.session.last_visit_ic)
+                {tmstmp=req.session.last_visit_ic}
+               res.render('ic_out',{'tmstmp':tmstmp});
                 }
             else {
               if(done){
                 res.render('ic');
               }
               else {
-                res.render('ic_out');
+                if(req.session.last_visit_ic)
+                {tmstmp=req.session.last_visit_ic}
+                res.render('ic_out',{'tmstmp':tmstmp});
               }
             }
           });
 });
 
 app.get('/b',function (req,res){
+  var tmstmp=0;
+  if(req.session.tmstmp_b)
+    {console.log('setting last_visit');
+      req.session.last_visit_b=req.session.tmstmp_b;
+     req.session.tmstmp_b = Date.now();
+    }
+  else {
+    console.log('NEW CLIENT');
+    req.session.tmstmp_b = Date.now();
+  }
   users.findOne({_id:req.session._id},function (err,done){
             if(err){
-               res.render('b_out');
+              if(req.session.last_visit_b)
+                {tmstmp=req.session.last_visit_b}
+               res.render('b_out',{'tmstmp':tmstmp});
                 }
             else {
               if(done){
                 res.render('b');
               }
               else {
-                res.render('b_out');
+                if(req.session.last_visit_b)
+                {tmstmp=req.session.last_visit_b}
+                res.render('b_out',{'tmstmp':tmstmp});
               }
             }
           });
 });
 
 app.get('/m',function (req,res){
+  var tmstmp=0;
+  if(req.session.tmstmp_m)
+    {console.log('setting last_visit');
+      req.session.last_visit_m=req.session.tmstmp_m;
+     req.session.tmstmp_m = Date.now();
+    }
+  else {
+    console.log('NEW CLIENT');
+    req.session.tmstmp_m = Date.now();
+  }
   users.findOne({_id:req.session._id},function (err,done){
             if(err){
-               res.render('m_out');
+               if(req.session.last_visit_m)
+                {tmstmp=req.session.last_visit_m}
+               res.render('m_out',{'tmstmp':tmstmp});
                 }
             else {
               if(done){
                 res.render('m');
               }
               else {
-                res.render('m_out');
+                if(req.session.last_visit_m)
+                {tmstmp=req.session.last_visit_m}
+                res.render('m_out',{'tmstmp':tmstmp});
               }
             }
           });
