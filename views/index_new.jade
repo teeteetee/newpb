@@ -484,7 +484,8 @@ head
       //  $('#myModal').modal('show');
       //  });
       var tmstmp = #{tmstmp};
-      console.log('tmstmp: '+tmstmp);
+      var last_visit = new Date(parseInt(tmstmp));
+      console.log('last visit: '+last_visit);
       var consolidated=[];
        $.ajax({
               method: "POST",
