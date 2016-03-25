@@ -484,7 +484,7 @@ head
       //  $('#myModal').modal('show');
       //  });
       var tmstmp = #{tmstmp};
-      console.log(tmstmp);
+      console.log('tmstmp: '+tmstmp);
       var consolidated=[];
        $.ajax({
               method: "POST",
@@ -564,6 +564,7 @@ head
                 }
                 var label = "<span class='label label-default'>New</span>";
                 if(element.tmstmp<tmstmp) {
+                  console.log('no label');
                   label='';
                 }
                 var heading = "<h4  class='btitle"+element._id+"' >"+label+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h4>";
@@ -631,4 +632,3 @@ head
         $('#newnav').on('affix-top.bs.affix',function(){
           $('#maincontent').css('padding-top','0px');
         });
-        console.log(document.cookie);
