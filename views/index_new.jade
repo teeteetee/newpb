@@ -567,7 +567,7 @@ head
                   comment = "<p>"+element.comment.capitalizeFirstLetter()+"</p>";
                 }
                 var label = "<span style='margin-right:10px;' class='label label-default'>New</span>";
-                if(tmstmp&&element.tmstmp<tmstmp) {
+                if(tmstmp&&element.tmstmp<tmstmp || !parseInt(tmstmp)) {
                   console.log('no label');
                   label='';
                 }
