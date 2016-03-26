@@ -544,7 +544,7 @@ head
                 }
                 var heading = "<h4  class='btitle"+element._id+"' ><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='rem("+index+");'>rem</button><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='edt("+index+");'>edt</button>"+element.title.capitalizeFirstLetter()+"<small style='margin-left:20px;' class='hidden-xs' ></small></h4>";
                 if(element.link!='0') {
-                  heading = "<h4 class='btitle"+element._id+"' ><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='rem("+index+");'>remove</button><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='edt("+index+");'>edt</button><span class='glyphicon glyphicon-link' style='color:#ddd;margin-right:10px;font-size:18px;'></span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h4>";
+                  heading = "<h4 class='btitle"+element._id+"' ><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='rem("+index+");'>rem</button><button style='margin-right:10px;' class='btn btn-xs btn-default' onclick='edt("+index+");'>edt</button><span class='glyphicon glyphicon-link' style='color:#ddd;margin-right:10px;font-size:18px;'></span><a href='"+element.link+"'>"+element.title.capitalizeFirstLetter()+"</a><small style='margin-left:20px;' class='hidden-xs' ></small></h4>";
                 }
                 var weeknum = new Date(parseInt(element.tmstmp));
                 weeknum = weeknum.getWeek();
