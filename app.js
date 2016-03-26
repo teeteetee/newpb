@@ -809,7 +809,7 @@ app.post('/additem/:id',function (req,res){
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
       { var vlink = req.body.link;
-        vlink=addhttp(link);
+        vlink=addhttp(vlink);
         users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,nlinks:1}});
       items.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
@@ -828,9 +828,9 @@ app.post('/additem/:id',function (req,res){
     }
     break;
     case('ic'):
-     if(req.session._id && req.body.title && req.body.link&& is_link(req.body.link) ){
+     if(req.session._id && req.body.title && req.body.link ){
       var vlink = req.body.link;
-        vlink=addhttp(link);
+        vlink=addhttp(vlink);
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
      concepts.insert({title:req.body.title,link:vlink, tmstmp:Date.now()},function(err,done){
        if(err){
@@ -855,7 +855,7 @@ app.post('/additem/:id',function (req,res){
     var vcomment = req.body.comment ? req.body.comment : 0;
     if(req.body.link)
       { var vlink = req.body.link;
-        vlink=addhttp(link);
+        vlink=addhttp(vlink);
         users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,blinks:1}});
       business.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
@@ -878,9 +878,9 @@ app.post('/additem/:id',function (req,res){
     //var newlink = parseInt(req.body.newlink);
     var newdate = Date.now();
     var vcomment = req.body.comment ? req.body.comment : 0;
-    if(req.body.link&& is_link(req.body.link))
+    if(req.body.link)
       { var vlink = req.body.link;
-        vlink=addhttp(link);
+        vlink=addhttp(vlink);
         users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{totallinks:1,mlinks:1}});
       misc.insert({tmstmp:newdate,title:req.body.title,link:vlink,comment:vcomment});
       ms.trouble=0;
