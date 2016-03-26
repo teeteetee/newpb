@@ -568,8 +568,8 @@ head
                   style+="border-bottom-left-radius:4px;border-bottom-right-radius:4px;";
                   style2="style='boder-bottom:none;'";
                 }
-                if(consolidated[index-1]) {console.log(new Date(parseInt(consolidated[index-1].tsmtmp)).getDate()+' - ? - '+new Date(parseInt(element.tsmtmp)).getDate());}
-                if(consolidated[index-1] && new Date(parseInt(consolidated[index-1].tsmtmp)).getDate() < new Date(parseInt(element.tsmtmp)).getDate()) {
+                //if(consolidated[index-1]) {console.log(new Date(parseInt(consolidated[index-1].tmstmp)).getDate()+' - ? - '+new Date(parseInt(element.tmstmp)).getDate());}
+                if(consolidated[index-1] && new Date(parseInt(consolidated[index-1].tmstmp)).getDate() < new Date(parseInt(element.tmstmp)).getDate()) {
                   style+="border-bottom:1px solid #eee;";
                   style2="style='boder-bottom:none;'";
                 }
