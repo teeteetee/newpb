@@ -1,5 +1,4 @@
-
-    (function (d, w, c) {
+(function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
                 w.yaCounter33318110 = new Ya.Metrika({
@@ -22,5 +21,5 @@
             d.addEventListener("DOMContentLoaded", f, false);
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
-//<noscript><div><img src="https://mc.yandex.ru/watch/33318110" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-//<!-- /Yandex.Metrika counter -->
+</script>
+
