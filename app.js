@@ -803,15 +803,15 @@ app.post('/edititem/:id',function (req,res){
   switch(cond){
     case('link'):
     if(req.body.title){
-    var vcomment = req.body.comment ? req.body.comment : 0;
+    var vcomment = req.body.comment && req.body.comment!='0' ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
       { var vlink = req.body.link;
         vlink=addhttp(vlink);
-      items.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      items.update({_id:req.body._id},{$set:{title:req.body.title,link:vlink,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);}
       else {
-      items.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      items.update({_id:req.body._id},{$set:{title:req.body.title,link:0,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);
       }
@@ -826,7 +826,7 @@ app.post('/edititem/:id',function (req,res){
     if(req.body.title && req.body.link ){
       var vlink = req.body.link;
         vlink=addhttp(vlink);
-     concepts.update({_id:req.body._id},{title:req.body.title,link:vlink},function(err,done){
+     concepts.update({_id:req.body._id},{$set:{title:req.body.title,link:vlink}},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
@@ -844,15 +844,15 @@ app.post('/edititem/:id',function (req,res){
     break;
     case('m'):
     if(req.body.title){
-    var vcomment = req.body.comment ? req.body.comment : 0;
+    var vcomment = req.body.comment && req.body.comment!='0' ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
       { var vlink = req.body.link;
         vlink=addhttp(vlink);
-      misc.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      misc.update({_id:req.body._id},{$set:{title:req.body.title,link:vlink,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);}
       else {
-      misc.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      misc.update({_id:req.body._id},{$set:{title:req.body.title,link:0,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);
       }
@@ -865,15 +865,15 @@ app.post('/edititem/:id',function (req,res){
     break;
     case('b'):
     if(req.body.title){
-    var vcomment = req.body.comment ? req.body.comment : 0;
+    var vcomment = req.body.comment && req.body.comment!='0'  ? req.body.comment : 0;
     if(req.body.link&& is_link(req.body.link))
       { var vlink = req.body.link;
         vlink=addhttp(vlink);
-      business.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      business.update({_id:req.body._id},{$set:{title:req.body.title,link:vlink,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);}
       else {
-      business.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      business.update({_id:req.body._id},{$set:{title:req.body.title,link:0,comment:vcomment}});
       ms.trouble=0;
       res.send(ms);
       }
