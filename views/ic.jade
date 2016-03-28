@@ -435,11 +435,12 @@ head
                 .noitems.row(style='text-align:center;')  
                    .col-xs-12
                      h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
-            .row.brow
-              #smallscreens.visible-xs.col-xs-12.items      
-                .noitems.row(style='text-align:center;')  
-                   .col-xs-12
-                     h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
+            //
+              .row.brow
+                #smallscreens.visible-xs.col-xs-12.items      
+                  .noitems.row(style='text-align:center;')  
+                     .col-xs-12
+                       h2.noitems_text(style='color:#ccc;margin-top:50px;') No items 
       footer.footer
         .container
           .row
@@ -505,7 +506,7 @@ head
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
                   $('.brow').empty();
-                  $('.brow').append('<div class="col-xs-6"><h5>Digital:</h5><div class="list-group neuro"></div></div><div class="col-xs-6"><h5>Neuro:</h5><div class="list-group digit"></div></div>');
+                  $('.brow').append('<div class="col-xs-6"><h5>1.Neural:</h5><div class="list-group neuro"></div></div><div class="col-xs-6"><h5>2.Digital:</h5><div class="list-group digit"></div></div>');
                  //  $('.items').empty();
                  // $('.items').prepend('<div class="list-group"></div>');
                  }
@@ -537,6 +538,7 @@ head
            var data={};
            data.title = $('#title').val();
            data.link = $('#link').val();
+           data.topic = $('#topic').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -546,6 +548,7 @@ head
               .done(function( msg ) {
                 $('#title').val('');
                 $('#link').val('');
+                $('#topic').val('');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
@@ -584,6 +587,12 @@ head
         function edt(id) {
           $('#link').val(consolidated[id].link);
           $('#title').val(consolidated[id].title);
+          if(consolidated[id].topic) {
+            $('#topic').val(consolidated[id].topic);
+          }
+          else {
+            $('#topic').val();
+          }
           $('#submitlink').addClass('hide');
           $('#submitlink_edt').removeClass('hide');
           $('#submitlink_edt').attr('onclick','sendedit('+id+')');
@@ -609,6 +618,7 @@ head
               .done(function( msg ) {
                 $('#title').val('');
                 $('#link').val('');
+                $('#topic').val('');
                 $('#submitlink').removeClass('hide');
                 $('#submitlink_edt').addClass('hide');
                 $('.modal-title').text('Adding a link');
