@@ -371,6 +371,7 @@ head
     .right-inner-addon {
     position: relative;
     max-width:250px;
+    margin:auto;
     }
     .right-inner-addon input {
     padding-right: 30px;  
@@ -455,11 +456,11 @@ head
                 form(class="navbar-form navbar-right visible-xs")
                   button.addlink(type="button" class="btn btn-primary navbar-right") + add link
       #maincontent.container(style='padding-bottom:30px;')
-         .row 
-           .col-xs-12.text-center
-             .right-inner-addon
-               i(class="glyphicon glyphicon-search")
-               input(type="search"  placeholder="Search")
+        .row 
+          .col-xs-12.text-center
+            .right-inner-addon
+              i(class="glyphicon glyphicon-search")
+              input(type="search" class='form-control'  placeholder="Search")
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
             .row.brow
