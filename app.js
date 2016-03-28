@@ -824,7 +824,7 @@ app.post('/edititem/:id',function (req,res){
     break;
     case('ic'):
     if(req.body.title && req.body.link ){
-      console.log(req.body);
+     // console.log(req.body);
       var vlink = req.body.link;
         vlink=addhttp(vlink);
      concepts.update({_id:req.body._id},{$set:{title:req.body.title,topic:req.body.topic,link:vlink}},function(err,done){

@@ -513,11 +513,11 @@ head
                  else {
                    console.log('HASNT GOT LENGTH');
                  }
-         if(element.topic && parseInt(element.topic) === 2){i=i_n;}else{i=i_d;}
+         if(element.topic && parseInt(element.topic) === 1){i=i_n;}else{i=i_d;}
          var insert;
          insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button><a href="'+element.link+'">'+element.title+'</a></li>';
-         if(element.topic && parseInt(element.topic) === 2)
-         {$('.neuro').prepend(insert);
+         if(element.topic && parseInt(element.topic) === 1)
+         {$('.neural').prepend(insert);
          i_n++;
          }
          else{
