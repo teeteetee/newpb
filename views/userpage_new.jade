@@ -659,11 +659,11 @@ head
           $('#comment').val(consolidated[id].comment);
           $('#submitlink').addClass('hide');
           $('#submitlink_edt').removeClass('hide');
-          $('#submitlink_edt').attr('onclick','sendedit()');
+          $('#submitlink_edt').attr('onclick','sendedit('+id+')');
           $('.modal-title').text('Edit');
           $('#myModal').modal('show');
         }
-        function sendedit() {
+        function sendedit(id) {
           if($('#title').val())
         { 
           $('#add').fadeOut(350);
@@ -673,6 +673,7 @@ head
            data.title = $('#title').val();
            data.link = $('#link').val();
            data.comment = $('#comment').val();
+           data._id = consolidated[id]._id;
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
