@@ -506,7 +506,7 @@ head
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
                   $('.brow').empty();
-                  $('.brow').append('<div class="col-xs-6"><h5>1.Neural:</h5><div class="list-group neuro"></div></div><div class="col-xs-6"><h5>2.Digital:</h5><div class="list-group digit"></div></div>');
+                  $('.brow').append('<div class="col-xs-6"><h5>1.Neural:</h5><ul class="list-group neuro"></ul></div><div class="col-xs-6"><h5>2.Digital:</h5><ul class="list-group digit"></ul></div>');
                  //  $('.items').empty();
                  // $('.items').prepend('<div class="list-group"></div>');
                  }
@@ -515,7 +515,7 @@ head
                  }
          if(element.topic && parseInt(element.topic) === 2){i=i_n;}else{i=i_d;}
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
+         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button><a href="'+element.link+'">'+element.title+'</a></li>';
          if(element.topic && parseInt(element.topic) === 2)
          {$('.neuro').prepend(insert);
          i_n++;
