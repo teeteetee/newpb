@@ -826,7 +826,7 @@ app.post('/edititem/:id',function (req,res){
     if(req.body.title && req.body.link ){
       var vlink = req.body.link;
         vlink=addhttp(vlink);
-     concepts.update({_id:req.body._id},{$set:{title:req.body.title,link:vlink}},function(err,done){
+     concepts.update({_id:req.body._id},{$set:{title:req.body.title,topic:req.body.topic,link:vlink}},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
@@ -931,7 +931,7 @@ app.post('/additem/:id',function (req,res){
       var vlink = req.body.link;
         vlink=addhttp(vlink);
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
-     concepts.insert({title:req.body.title,link:vlink, tmstmp:Date.now()},function(err,done){
+     concepts.insert({title:req.body.title,link:vlink,topic:req.body.topic, tmstmp:Date.now()},function(err,done){
        if(err){
         ms.trouble=1;
          res.send(ms);
