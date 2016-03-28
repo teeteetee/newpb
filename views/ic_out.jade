@@ -392,6 +392,7 @@ head
                 .noitems.row(style='text-align:center;')  
                    .col-xs-12
                      h2.noitems_text(style='color:#ccc;margin-top:50px;') No items  
+          //
             .row.brow
               #smallscreens.visible-xs.col-xs-12.items        
                 .noitems.row(style='text-align:center;')  
@@ -467,7 +468,7 @@ head
                  }
          if(element.topic && parseInt(element.topic) === 1){i=i_n;}else{i=i_d;}
          var insert;
-         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button><a href="'+element.link+'">'+element.title+'</a></li>';
+         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><a href="'+element.link+'">'+element.title+'</a></li>';
          if(element.topic && parseInt(element.topic) === 1)
          {$('.neuro').prepend(insert);
          i_n++;
