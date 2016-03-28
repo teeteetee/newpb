@@ -464,6 +464,12 @@ head
     //script(async src='js/counter.js')    
     script.
       $('.addlink').click(function(){
+        $('#title').val('');
+        $('#link').val('');
+        $('#comment').val('');
+        $('#submitlink').removeClass('hide');
+        $('#submitlink_edt').addClass('hide');
+        $('.modal-title').text('Adding a link');
         $('#myModal').modal('show');
         });
        var consolidated=[];
@@ -648,12 +654,13 @@ head
               });
         }
         function edt(id) {
-          $('#link').text(consolidated[id].link);
-          $('#title').text(consolidated[id].title);
-          $('#comment').text(consolidated[id].comment);
+          $('#link').val(consolidated[id].link);
+          $('#title').val(consolidated[id].title);
+          $('#comment').val(consolidated[id].comment);
           $('#submitlink').addClass('hide');
           $('#submitlink_edt').removeClass('hide');
           $('#submitlink_edt').attr('onlick','sendedit('+id+')');
+          $('.modal-title').text('Edit');
           $('#myModal').modal('show');
         }
         function sendedit(id) {
@@ -678,6 +685,7 @@ head
                 $('#comment').val('');
                 $('#submitlink').removeClass('hide');
                 $('#submitlink_edt').addClass('hide');
+                $('.modal-title').text('Adding a link');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
