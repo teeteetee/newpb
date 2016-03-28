@@ -368,6 +368,18 @@ head
     .btn-default {
       color:#ccc;
     }
+    .right-inner-addon {
+    position: relative;
+    }
+    .right-inner-addon input {
+        padding-right: 30px;    
+    }
+    .right-inner-addon i {
+        position: absolute;
+        right: 0px;
+        padding: 10px 12px;
+        pointer-events: none;
+    }
   body
     .intro
       .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -440,10 +452,9 @@ head
       #maincontent.container(style='padding-bottom:30px;')
          .row 
            .col-xs-12.text-center
-             .wrap
-               input#search(style='border-radius:30px;width:250px;background-color:#ddd;border:1px solid #bbb;')
-               .glyph(style='width:250px;')
-                 span.glyphicon.glyphicon-search(style='color:#aaa;')
+             .right-inner-addon
+               i(class="icon-search")
+               input(type="search" class="form-control"  placeholder="Search")
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
             .row.brow
