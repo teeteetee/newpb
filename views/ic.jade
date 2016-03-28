@@ -352,6 +352,9 @@ head
     .btn-default {
       color:#ccc;
     }
+    .dimm {
+      color:#ddd;
+    }
   body
     .intro
       .modal.fade(id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -502,7 +505,7 @@ head
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item">'+i+'<button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
+         insert = '<a href="'+element.link+'" class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
          $('.list-group').prepend(insert);
          i++;
          });
