@@ -794,6 +794,105 @@ app.post('/remitem/:id',function (req,res){
 }
 });
 
+
+app.post('/edititem/:id',function (req,res){
+  if(req.session && req.session._id ){
+    //conditioning is left due to plans of bringing in a section of "terms", to be added the same way
+  var cond = req.params.id; 
+  var ms ={};
+  switch(cond){
+    case('link'):
+    if(req.body.title){
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      { var vlink = req.body.link;
+        vlink=addhttp(vlink);
+      items.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);}
+      else {
+      items.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);
+      }
+    }
+    else {
+    console.log('data check fail while editing a link');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
+    case('ic'):
+    if(req.body.title && req.body.link ){
+      var vlink = req.body.link;
+        vlink=addhttp(vlink);
+     concepts.update({_id:req.body._id},{title:req.body.title,link:vlink},function(err,done){
+       if(err){
+        ms.trouble=1;
+         res.send(ms);
+       }
+       else {
+        ms.trouble=0;
+       res.send(ms);
+       }
+     });
+    }
+    else {
+     ms.trouble=1;
+     res.send(ms);
+    }
+    break;
+    case('m'):
+    if(req.body.title){
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      { var vlink = req.body.link;
+        vlink=addhttp(vlink);
+      misc.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);}
+      else {
+      misc.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);
+      }
+    }
+    else {
+    console.log('data check fail while editing a link');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
+    case('b'):
+    if(req.body.title){
+    var vcomment = req.body.comment ? req.body.comment : 0;
+    if(req.body.link&& is_link(req.body.link))
+      { var vlink = req.body.link;
+        vlink=addhttp(vlink);
+      business.update({_id:req.body._id},{title:req.body.title,link:vlink,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);}
+      else {
+      business.update({_id:req.body._id},{title:req.body.title,link:0,comment:vcomment});
+      ms.trouble=0;
+      res.send(ms);
+      }
+    }
+    else {
+    console.log('data check fail while editing a link');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
+    }
+}
+else {
+  res.render('404');
+}
+});
+
+
+
 app.post('/additem/:id',function (req,res){
   if(req.session && req.session._id ){
     //conditioning is left due to plans of bringing in a section of "terms", to be added the same way
@@ -822,13 +921,13 @@ app.post('/additem/:id',function (req,res){
       }
     }
     else {
-    console.log('data check fail while adding an link');
+    console.log('data check fail while adding a link');
     ms.trouble=1;
     res.send(ms);
     }
     break;
     case('ic'):
-     if(req.session._id && req.body.title && req.body.link ){
+     if(req.body.title && req.body.link ){
       var vlink = req.body.link;
         vlink=addhttp(vlink);
       users.update({_id:req.session._id},{$set:{last_item:newdate},$inc:{concepts:1}});
