@@ -370,6 +370,10 @@ head
     }
     .right-inner-addon {
     position: relative;
+    max-width:250px;
+    border-radius:30px;
+    border:1px solid #bbb;
+    background-color:#ddd;
     }
     .right-inner-addon input {
         padding-right: 30px;    
@@ -379,6 +383,7 @@ head
         right: 0px;
         padding: 10px 12px;
         pointer-events: none;
+        color:#aaa;
     }
   body
     .intro
@@ -453,8 +458,8 @@ head
          .row 
            .col-xs-12.text-center
              .right-inner-addon
-               i(class="icon-search")
-               input(type="search" class="form-control"  placeholder="Search")
+               i(class="glyphicon glyphicon-search")
+               input(type="search"  placeholder="Search")
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
             .row.brow
