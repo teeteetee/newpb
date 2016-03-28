@@ -382,6 +382,7 @@ head
              .modal-footer
                button(class="btn btn-default" data-dismiss="modal") Close
                button#submitlink(class="btn btn-primary") Add
+               button#submitlink_edt(class="btn btn-primary") Save
       .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
@@ -504,7 +505,7 @@ head
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item"><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="rem('+index+')">remove</button>'+element.title+'</a>';
+         insert = '<a href="'+element.link+'" class="list-group-item"><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
          $('.list-group').prepend(insert);
          });
          getnumber();
@@ -564,7 +565,45 @@ head
                 alert('ready');
               });
         }
-        //-----------------------------------//
+        function edt(id) {
+          $('#link').val(consolidated[id].link);
+          $('#title').val(consolidated[id].title);
+          $('#submitlink').addClass('hide');
+          $('#submitlink_edt').removeClass('hide');
+          $('#submitlink_edt').attr('onclick','sendedit('+id+')');
+          $('.modal-title').text('Edit');
+          $('#myModal').modal('show');
+        }
+        function sendedit(id) {
+          if($('#title').val())
+        { 
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.title = $('#title').val();
+           data.link = $('#link').val();
+           data._id = consolidated[id]._id;
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/edititem/ic",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#title').val('');
+                $('#link').val('');
+                $('#submitlink').removeClass('hide');
+                $('#submitlink_edt').addClass('hide');
+                $('.modal-title').text('Adding a link');
+                $('#mymodal').modal('hide');
+                //$('#wait').fadeOut(350);
+                //console.log(msg);
+                window.location='/';
+              });
+          }
+        }
+        //----------------------------//
         $('#newnav').affix({
               offset: {
                 top: $('header').height()

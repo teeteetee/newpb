@@ -393,6 +393,7 @@ head
              .modal-footer
                button(class="btn btn-default" data-dismiss="modal") Close
                button#submitlink(class="btn btn-primary") Add
+               button#submitlink_edt(class="btn btn-primary") Save
       .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
@@ -641,7 +642,48 @@ head
                 alert('ready');
               });
         }
-        //-----------------------------------//
+        function edt(id) {
+          $('#link').val(consolidated[id].link);
+          $('#title').val(consolidated[id].title);
+          $('#comment').val(consolidated[id].comment);
+          $('#submitlink').addClass('hide');
+          $('#submitlink_edt').removeClass('hide');
+          $('#submitlink_edt').attr('onclick','sendedit('+id+')');
+          $('.modal-title').text('Edit');
+          $('#myModal').modal('show');
+        }
+        function sendedit(id) {
+          if($('#title').val())
+        { 
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.title = $('#title').val();
+           data.link = $('#link').val();
+           data.comment = $('#comment').val();
+           data._id = consolidated[id]._id;
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/edititem/m",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#title').val('');
+                $('#link').val('');
+                $('#comment').val('');
+                $('#submitlink').removeClass('hide');
+                $('#submitlink_edt').addClass('hide');
+                $('.modal-title').text('Adding a link');
+                $('#mymodal').modal('hide');
+                //$('#wait').fadeOut(350);
+                //console.log(msg);
+                window.location='/';
+              });
+          }
+        }
+        //----------------------------//
         $('#newnav').affix({
               offset: {
                 top: $('header').height()
