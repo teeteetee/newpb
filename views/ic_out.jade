@@ -451,20 +451,31 @@ head
           });
        }
       function populate(consolidated) {
-        var i = 1;
-       consolidated.forEach(function (element,index){
+        var i;
+      var i_d = 1;
+      var i_n = 1;
+        consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
-                   $('.items').empty();
-                  $('.items').prepend('<div class="list-group"></div>');
+                  $('.brow').empty();
+                  $('.brow').append('<div class="col-xs-6"><h5>1.Neural:</h5><ul class="list-group neuro"></ul></div><div class="col-xs-6"><h5>2.Digital:</h5><ul class="list-group digit"></ul></div>');
+                 //  $('.items').empty();
+                 // $('.items').prepend('<div class="list-group"></div>');
                  }
                  else {
                    console.log('HASNT GOT LENGTH');
                  }
+         if(element.topic && parseInt(element.topic) === 1){i=i_n;}else{i=i_d;}
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item"><span class="dimm">'+i+'</span><span class="glyphicon glyphicon-link" style="color:#ddd;margin-left:10px;margin-right:10px;font-size:12px;"></span>'+element.title+'</a>';
-         $('.list-group').prepend(insert);
-         i++;
+         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button><a href="'+element.link+'">'+element.title+'</a></li>';
+         if(element.topic && parseInt(element.topic) === 1)
+         {$('.neuro').prepend(insert);
+         i_n++;
+         }
+         else{
+          $('.digit').prepend(insert);
+          i_d++;
+         }
          });
          };
         //-----------------------------------//
