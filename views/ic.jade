@@ -491,6 +491,7 @@ head
       function populate(consolidated) {
       var last_item_over = consolidated[consolidated.length-1];
       var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
+      var i = 1;
         consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
@@ -501,8 +502,9 @@ head
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         insert = '<a href="'+element.link+'" class="list-group-item"><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
+         insert = '<a href="'+element.link+'" class="list-group-item">'+i+'<button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</a>';
          $('.list-group').prepend(insert);
+         i++;
          });
          getnumber();
         };
