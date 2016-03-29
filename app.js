@@ -392,7 +392,7 @@ app.get('/a',function (req,res){
 });
 
 app.get('/q',function (req,res){
-  req.sender('q');
+  req.render('q');
 })
 
 app.post('/ic',function (err,done){
