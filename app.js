@@ -621,6 +621,16 @@ app.get('/see:items',function (req,res){
     }
   });
   break;
+  case('q'):
+  questions.find({},function (err,done){
+    if(err){
+
+    }
+    else {
+      res.send(done);
+    }
+  });
+  break;
   case('user'):
   users.find({},function (err,done){
     if(err){
