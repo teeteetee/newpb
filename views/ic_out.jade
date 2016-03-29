@@ -484,33 +484,7 @@ head
          });
          };
         //-----------------------------------//
-        $('#submitlink').click(function(){
-        //if($('#title').val() && $('#link').val() )
-        if($('#title').val() && $('#link').val())
-        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
-          $('#add').fadeOut(350);
-          $('#wait').css('display','block');
-          //-------------
-           var data={};
-           data.title = $('#title').val();
-           data.link = $('#link').val();
-           console.log(JSON.stringify(data));
-          $.ajax({
-              method: "POST",
-              url: "/additem/ic",
-              data: data
-            })
-              .done(function( msg ) {
-                $('#title').val('');
-                $('#link').val('');
-                $('#mymodal').modal('hide');
-                //$('#wait').fadeOut(350);
-                //console.log(msg);
-                window.location='/';
-              });
-          }
-        });
-        //-----------------------------------//
+        
         //-----------------------------------//
         $('#nav').affix({
               offset: {

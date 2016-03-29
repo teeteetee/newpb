@@ -412,9 +412,9 @@ head
                       span(class="sr-only") (current)
                       span#qnumbers(class='badge')
                 form(class="navbar-form navbar-right navbar-absolute hidden-xs")
-                  button.addlink(type="button" class="btn btn-primary navbar-right") + add concept
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add question
                 form(class="navbar-form navbar-right visible-xs")
-                  button.addlink(type="button" class="btn btn-primary navbar-right") + add concept
+                  button.addlink(type="button" class="btn btn-primary navbar-right") + add question
       #maincontent.container(style='padding-bottom:30px;')
         #list.row
           .col-xs-12.col-lg-10.col-lg-offfset-1.col-md-10.col-md-offset-1               
@@ -507,29 +507,25 @@ head
         //-----------------------------------//
         $('#submitlink').click(function(){
         //if($('#title').val() && $('#link').val() )
-        if($('#title').val() && $('#link').val())
+        if($('#title').val())
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
            data.title = $('#title').val();
-           data.link = $('#link').val();
-           data.topic = $('#topic').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/additem/ic",
+              url: "/additem/q",
               data: data
             })
               .done(function( msg ) {
                 $('#title').val('');
-                $('#link').val('');
-                $('#topic').val('');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
-                window.location='/ic';
+                window.location='/q';
               });
           }
         });
@@ -537,15 +533,15 @@ head
         function getnumber() {
           $.ajax({
                 method: "POST",
-                url: "/number/ic",
+                url: "/number/q",
                 data: 0
               })
                 .done(function( msg ) {
                   if(msg.number){
-                    $('#icnumbers').text(msg.number);
+                    $('#qnumbers').text(msg.number);
                   }
                   else {
-                    $('#icnumbers').text(0);
+                    $('#qnumbers').text(0);
                   }
                 });
         }
@@ -554,7 +550,7 @@ head
           data._id = consolidated[id]._id;
          $.ajax({
               method: "POST",
-              url: "/remitem/ic",
+              url: "/remitem/q",
               data: data
             })
               .done(function( msg ) {
@@ -562,14 +558,7 @@ head
               });
         }
         function edt(id) {
-          $('#link').val(consolidated[id].link);
           $('#title').val(consolidated[id].title);
-          if(consolidated[id].topic) {
-            $('#topic').val(consolidated[id].topic);
-          }
-          else {
-            $('#topic').val();
-          }
           $('#submitlink').addClass('hide');
           $('#submitlink_edt').removeClass('hide');
           $('#submitlink_edt').attr('onclick','sendedit('+id+')');
@@ -584,26 +573,22 @@ head
           //-------------
            var data={};
            data.title = $('#title').val();
-           data.link = $('#link').val();
-           data.topic = $('#topic').val();
            data._id = consolidated[id]._id;
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/edititem/ic",
+              url: "/edititem/q",
               data: data
             })
               .done(function( msg ) {
                 $('#title').val('');
-                $('#link').val('');
-                $('#topic').val('');
                 $('#submitlink').removeClass('hide');
                 $('#submitlink_edt').addClass('hide');
                 $('.modal-title').text('Adding a link');
                 $('#mymodal').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
-                window.location='/ic';
+                window.location='/q';
               });
           }
         }
