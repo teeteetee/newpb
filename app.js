@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business');
+  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -256,6 +256,26 @@ app.post('/getitems_m',function (req,res){
   });
 });
 
+app.post('/getitems_q',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  questions.find({},function (err,doc){
+    //console.log(doc);
+    if(err) {
+      console.log('ERR WHILE ITEMS_q QUERY');
+      res.send(ms);
+    }
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
+});
+
 app.post('/getitems_ic',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -370,6 +390,10 @@ app.get('/m',function (req,res){
 app.get('/a',function (req,res){
   res.render('a');
 });
+
+app.get('/q',function (req,res){
+  req.sender('q');
+})
 
 app.post('/ic',function (err,done){
   var ms ={};
@@ -501,17 +525,6 @@ app.post('/check',function(req,res){
   });
 });
 
-
-
-
-
-app.get('/about',function (req,res){
-  if(req.session.mail)
-  {res.render('about');}
-else {
-  res.render('about_out');
-}
-});
 
 
 
@@ -757,6 +770,18 @@ app.post('/number/:jesus', function (req,res){
       }
     });
     break;
+    case('q'):
+    questions.count({},function (err,done){
+     if(err) {
+      ms.number=0;
+      res.send(ms);
+     }
+     else {
+      ms.number=done;
+      res.send(ms);
+      }
+    });
+    break;
   }
 });
 
@@ -885,6 +910,18 @@ app.post('/edititem/:id',function (req,res){
     res.send(ms);
     }
     break;
+    case('q'):
+    if(req.body.title&&req.body._id){
+      questions.insert({_id:req.body._id},{$set:{title:req.body.title}});
+      ms.trouble=0;
+      res.send(ms); 
+    }
+    else {
+    console.log('data check fail while editing a question');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
     }
 }
 else {
@@ -994,6 +1031,20 @@ app.post('/additem/:id',function (req,res){
     }
     else {
     console.log('data check fail while adding an link');
+    ms.trouble=1;
+    res.send(ms);
+    }
+    break;
+    case('q'):
+    if(req.body.title){
+    var newdate = Date.now();
+    
+      questions.insert({tmstmp:newdate,title:req.body.title});
+      ms.trouble=0;
+      res.send(ms); 
+    }
+    else {
+    console.log('data check fail while adding an question');
     ms.trouble=1;
     res.send(ms);
     }
