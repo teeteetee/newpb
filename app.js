@@ -825,6 +825,11 @@ app.post('/remitem/:id',function (req,res){
       users.update({_id:req.session._id},{$inc:{totallinks:-1,mlinks:-1}});
       res.send(ms);
       break;
+      case('q'):
+      console.log('removing a question');
+      questions.remove({_id:req.body._id});
+      res.send(ms);
+      break;
   }
 }
 });
