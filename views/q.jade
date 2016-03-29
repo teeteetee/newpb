@@ -484,8 +484,22 @@ head
               return ((x < y) ? -1 : ((x > y) ? 1 : 0));
           });
        }
+       function date_out(tmstmp) {
+                  var today = new Date(parseInt(tmstmp));
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+                var today = dd+'.'+mm+'.'+yyyy;
+                return today;
+                }
       function populate(consolidated) {
-      var i;
+       var i=1;
         consolidated.forEach(function (element,index){
          if ($(".noitems")[0])
                  { console.log('HAS LENGTH');
