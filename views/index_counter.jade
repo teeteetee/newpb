@@ -322,6 +322,40 @@ head
         $('#add').click(function(){
           $('#addbook').modal('show');
           });
+        $('#oldmovie').click(function(){
+        if($('#oldmovie').hasClass('active')){
+        }
+        else{
+          $('#oldmovie').addClass('active');
+          $('#newmovie').removeClass('active');
+        }
+        });
+        $('#newmovie').click(function(){
+        if($('#newmovie').hasClass('active')){
+        }
+        else{
+          $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+        }
+        });
+        //
+         $('#hasstar').click(function(){
+        if($('#hasstar').hasClass('active')){
+        }
+        else{
+          $('#hasstar').addClass('active');
+          $('#nostar').removeClass('active');
+        }
+        });
+        $('#nostar').click(function(){
+        if($('#nostar').hasClass('active')){
+        }
+        else{
+          $('#nostar').addClass('active');
+          $('#hasstar').removeClass('active');
+        }
+        });
+        //
         $('#shownav').click(function(){
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
