@@ -74,6 +74,11 @@ app.get('/test',function (req,res){
                   res.send(done);});
 });
 
+app.get('/counter',function (req,res){
+ res.render('index_counter');
+
+});
+
 
 app.get('/',function(req,res) {
     var tmstmp=0;

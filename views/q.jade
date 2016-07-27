@@ -512,7 +512,7 @@ head
                    console.log('HASNT GOT LENGTH');
                  }
          var insert;
-         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title+'</li>';
+         insert = '<li class="list-group-item"><span class="dimm">'+i+'</span><button class="btn btn-xs btn-default" style="margin-left:10px;margin-right:10px;" onclick="rem('+index+')">rem</button><button class="btn btn-xs btn-default" style="margin-right:10px;" onclick="edt('+index+')">edt</button>'+element.title.capitalizeFirstLetter()+'</li>';
          $('.list-group').prepend(insert);
          i++;
          });
