@@ -26,7 +26,11 @@ head
       }
       body {
       min-width:768px;
-      font-family:roboto-thin;
+      //font-family:roboto-thin;
+      font-family:arial;
+        text-transform:uppercase;
+        letter-spacing:2px;
+        font-size:10px;
       }
       .navbar-nav {
        float: right;
@@ -193,6 +197,35 @@ head
       th:first-child {
         padding-left:30px !important;
       }
+      .btn-iosdark {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
+      .modal-sm .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#2d2d2d;
+      }
+      .modal-sm .btn-iosdark:hover {
+        background-color:#424242;
+      }
   body
     script.
       if(screen.width < 414){
@@ -219,7 +252,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='color:#ddd;') Добавляем фильм
+            h4(class="modal-title" ) Добавляем фильм
           .modal-body
             .row  
               .col-xs-12
@@ -243,7 +276,7 @@ head
                   button(class='btn btn-iosdark active' id='hasstar' type='button') Выделить
                   button(class=' btn btn-iosdark' id='nostar'  type='button' )  Не надо            
           .modal-footer(style='text-align:center;')
-            a(class='btn btn-submit'  id='submitmovie' ) Добавить
+            a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
     //.container(style='padding-left:84px;z-index:2;')  
     .container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
