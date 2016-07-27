@@ -392,14 +392,14 @@ head
         //----------------------------//
         function populate(consolidated) {
          consolidated.forEach(function (element,index){
-            if($(".noitemsnew")[0]&&!element.newmovie)
+            if($(".noitemsnew")[0]&&element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
             if($(".noitemsold")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
            var insert;
-                if(element.star&&element.newmovie){
+                if(element.star&&!element.newmovie){
                      console.log('1st case');
                      insert = "<tr><th style='padding-left:15px !important;'><span style='margin-right:15px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
                      }else{
