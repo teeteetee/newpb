@@ -107,6 +107,25 @@ app.get('/counter/deletemovies',function (req,res){
   });
 });
 
+app.post('/counter/getmovies',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  movies.find({},function(err,doc){
+    if(err) {
+      console.log('ERR WHILE MOVIES QUERY');
+      res.send(ms);
+    }
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
+});
+
 app.post('/counter/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
@@ -116,7 +135,7 @@ app.post('/counter/addmovie',function(req,res){
     var vnewmovie = parseInt(req.body.newmovie);
     console.log('breakpoint one');
     var vmovieyear = req.body.year;
-    var vmoviestar = parseInt(req.body.moviestar);
+    var vmoviestar = parseInt(req.body.star);
     console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
     var dd= new Date();
     var vday = dd.getDate().toString();
@@ -140,8 +159,8 @@ app.post('/counter/addmovie',function(req,res){
     if(!vmovieyear){
       vvmovieyear = '--';
     }
-
-  movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate});
+  var vtmstmp = Date.now();
+  movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp});
   if(vnewmovie)
   {stats.update({$inc:{newmovies:1,totalmovies:1}});}
   else {

@@ -289,31 +289,20 @@ head
           h1 274
           h5 посмотрел
           table.table.table-striped
-            tbody
-              tr
-                th Берегись автомобиля
-                th 1963
-              tr
-                th Берегись автомобиля
-                th 1963
-              tr
-                th Берегись автомобиля
-                th 1963
+            tbody#oldmovies
+              tr.noitemsold
+                th Пока пусто
+                th --
 
         .col-sm-6.itemcol
           h1 73
           h5 в планах
           table.table.table-striped
-            tbody
-              tr
-                th Берегись автомобиля
-                th 1963
-              tr
-                th Берегись автомобиля
-                th 1963
-              tr
-                th Берегись автомобиля
-                th 1963
+            tbody#newmovies
+              tr.noitemsnew
+                th Пока пусто
+                th --
+              
 
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -354,6 +343,98 @@ head
           $('#nostar').addClass('active');
           $('#hasstar').removeClass('active');
         }
+        });
+        //---------------------------//
+        var consolidated=[];
+       $.ajax({
+              method: "POST",
+              url: "/getitems",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  
+                   movies=msg.doc.moviestore;
+                  if(!movies || !movies.length) {
+                   console.log('no movies');
+                   }
+                   else {
+                    movies.forEach(function (element,index){
+                    element.item_type = 'movie';
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
+                 }
+                }
+              });
+        //---------------------------//
+        //----------------------------//
+        function populate(consolidated) {
+        var last_item_over = consolidated[consolidated.length-1];
+        var weeknum_g=new Date(last_item_over.tmstmp).getWeek();
+         consolidated.forEach(function (element,index){
+            if($(".noitemsnew")[0]&&element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#newmovies').empty();}
+            if($(".noitemsold")[0]&&!element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#oldmovies').empty();}
+                   
+           var insert;
+                switch(true){
+                     case(element.star):
+                     console.log('1st case');
+                     insert = "<tr><th><span class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
+                     break
+                     case(!element.star):
+                     console.log('2st case');
+                      insert = "<tr><th><span class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
+                     break
+                   }  
+            if(element.newmovie){  
+               $('#newmovies').prepend(insert);
+           }
+           else {
+            $('#oldmovies').prepend(insert);
+           }
+           });
+          }     
+        //----------------------------//
+        $('#submitmovie').click(function(){
+        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.movietitle = $('#mtitle').val();
+           data.newmovie = 1;
+           if($('#oldmovie').hasClass('active')){
+           data.newmovie = 0;
+           }
+           data.star = 1;
+           if($('#nostar').hasClass('active')){
+           data.star = 0;
+           }
+           data.year = $('#year').val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/counter/addmovie",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#mtitle').val('');
+                $('#year').val('');
+                $('#addbook').modal('hide');
+                //$('#wait').fadeOut(350);
+                //console.log(msg);
+                window.location='/';
+              });
+          }
         });
         //
         $('#shownav').click(function(){
