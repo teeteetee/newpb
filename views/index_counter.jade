@@ -399,7 +399,7 @@ head
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
            var insert;
-                if(element.star){
+                if(element.star&&element.newmovie){
                      console.log('1st case');
                      insert = "<tr><th style='padding-left:15px !important;'><span style='margin-right:15px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
                      }else{
