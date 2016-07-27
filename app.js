@@ -126,6 +126,25 @@ app.post('/counter/getmovies',function (req,res){
   });
 });
 
+app.post('/counter/getstat',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  stats.find({},function(err,doc){
+    if(err) {
+      console.log('ERR WHILE STATS QUERY');
+      res.send(ms);
+    }
+    else if(doc!=null){
+      ms.doc = doc;
+      ms.trouble=0;
+      res.send(ms);
+    }
+    else {
+      res.send(ms);
+    }
+  });
+});
+
 app.post('/counter/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};

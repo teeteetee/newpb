@@ -286,7 +286,7 @@ head
     .container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
         .col-sm-6.itemcol(style='border-right:1px solid #ddd;')
-          h1 274
+          h1#oldnum 0
           h5 посмотрел
           table.table.table-striped
             tbody#oldmovies
@@ -295,7 +295,7 @@ head
                 th --
 
         .col-sm-6.itemcol
-          h1 73
+          h1#newnum 0
           h5 в планах
           table.table.table-striped
             tbody#newmovies
@@ -345,10 +345,22 @@ head
         }
         });
         //---------------------------//
-        var consolidated=[];
-       $.ajax({
+        $.ajax({
               method: "POST",
-              url: "/getitems",
+              url: "/counter/getstat",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log(msg);
+                  $('#oldnum').text(msg.oldmovies);
+                  $('#newnum').text(msg.newmovies);
+                }
+                });
+        var consolidated=[];
+        $.ajax({
+              method: "POST",
+              url: "/counter/getmovies",
               data: 0
             })
               .done(function( msg ) {
