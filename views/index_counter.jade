@@ -359,7 +359,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg);
-                  $('#oldnum').text(msg.oldmovies);
+                  $('#oldnum').text(msg.seenmovies);
                   $('#newnum').text(msg.newmovies);
                 }
                 });
@@ -398,7 +398,6 @@ head
             if($(".noitemsold")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
-                   
            var insert;
                 switch(true){
                      case(element.star):
