@@ -359,8 +359,8 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg.doc);
-                  $('#oldnum').text(msg.doc.seenmovies);
-                  $('#newnum').text(msg.doc.newmovies);
+                  $('#oldnum').text(msg.doc[0].seenmovies);
+                  $('#newnum').text(msg.doc[0].newmovies);
                 }
                 });
         var consolidated=[];
