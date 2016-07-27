@@ -83,7 +83,7 @@ app.get('/counter',function (req,res){
 
 app.get('/counter/initdb',function (req,res){
   stats.remove({},function(err,done){
-  stats.insert({newmovies:0,totalmovies:0,seenmovies:0});
+  stats.insert({qeryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
   stats.find({},function(err,done){
     res.send(done);
   });
@@ -104,7 +104,7 @@ app.get('/counter/showstats',function (req,res){
 
 app.get('/counter/deletemovies',function (req,res){
   movies.remove({},function(err,done){
-  stats.update({$set:{newmovies:0,totalmovies:0,seenmovies:0}});
+  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
     res.send('done');
   });
 });
