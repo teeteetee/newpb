@@ -95,6 +95,18 @@ app.get('/counter/showmovies',function (req,res){
   });
 });
 
+app.get('/counter/showstats',function (req,res){
+  stats.find({},function(err,done){
+    res.send(done);
+  });
+});
+
+app.get('/counter/deletemovies',function (req,res){
+  movies.remove({},function(err,done){
+    res.send('done');
+  });
+});
+
 app.post('/counter/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
