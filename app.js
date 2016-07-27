@@ -185,7 +185,7 @@ app.post('/counter/addmovie',function(req,res){
   else {
    stats.update({$inc:{seenmovies:1,totalmovies:1}});
   }
-            
+   res.send('ok');         
              
 });
 
