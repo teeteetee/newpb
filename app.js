@@ -89,6 +89,12 @@ app.get('/counter/initdb',function (req,res){
 
 });
 
+app.get('/counter/showmovies',function (req,res){
+  movies.find({},function(err,done){
+    res.send(done);
+  });
+});
+
 app.post('/counter/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
