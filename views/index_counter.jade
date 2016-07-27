@@ -198,6 +198,7 @@ head
       if(screen.width < 414){
       window.location='http://m.peopleandbooks.com/';
       }
+
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       //h3(style='text-align:center;color:orange;') People & Books
       //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
@@ -212,6 +213,32 @@ head
       //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .bckgrnd
+    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content.am(style='display:none;')
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='color:#ddd;display:none;') 
+          .modal-body
+            .row  
+              .col-xs-12
+                form
+                  .form-group
+                    label(for="mtitle") Titile
+                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                    .row.autocomp#autocompmovies
+                      .col-xs-12#srm
+                  .form-group
+                    label(for="year") Year
+                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group#new_old(style='display:block;')
+                  button(class='btn btn-iosdark active' id='newmovie' type='button') Посмотрел
+                  button(class=' btn btn-iosdark' id='oldmovie'  type='button' )  В планах            
+          .modal-footer(style='text-align:center;')
+            a(class='btn btn-submit'  id='submitmovie' ) Добавить
     //.container(style='padding-left:84px;z-index:2;')  
     .container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
