@@ -82,11 +82,12 @@ app.get('/counter',function (req,res){
 });
 
 app.get('/counter/initdb',function (req,res){
+  stats.remove({},function(err,done){
   stats.insert({newmovies:0,totalmovies:0,seenmovies:0});
   stats.find({},function(err,done){
     res.send(done);
   });
-
+ });
 });
 
 app.get('/counter/showmovies',function (req,res){
