@@ -199,9 +199,6 @@ head
       //th:first-child {
       //  padding-left:30px !important;
       //}
-      .noitemsold, .noitemsnew {
-        padding-left:30px !important;
-      }
       th {
         font-weight:100;
       }
@@ -293,7 +290,7 @@ head
           h5 посмотрел
           table.table.table-striped
             tbody#oldmovies
-              tr.noitemsold
+              tr.noitemsold(style='padding-left:30px !important;')
                 th Пока пусто
                 th --
 
@@ -302,7 +299,7 @@ head
           h5 в планах
           table.table.table-striped
             tbody#newmovies
-              tr.noitemsnew
+              tr.noitemsnew(style='padding-left:30px !important;')
                 th Пока пусто
                 th --
               
