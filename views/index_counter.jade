@@ -358,9 +358,9 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log(msg);
-                  $('#oldnum').text(msg.seenmovies);
-                  $('#newnum').text(msg.newmovies);
+                  console.log(msg.doc);
+                  $('#oldnum').text(msg.doc.seenmovies);
+                  $('#newnum').text(msg.doc.newmovies);
                 }
                 });
         var consolidated=[];
