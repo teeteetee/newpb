@@ -83,7 +83,7 @@ app.get('/counter',function (req,res){
 
 app.get('/counter/initdb',function (req,res){
   stats.remove({},function(err,done){
-  stats.insert({qeryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
+  stats.insert({queryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
   stats.find({},function(err,done){
     res.send(done);
   });
@@ -183,9 +183,9 @@ app.post('/counter/addmovie',function(req,res){
   var vtmstmp = Date.now();
   movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp});
   if(vnewmovie)
-  {stats.update({$inc:{newmovies:1,totalmovies:1}});}
+  {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
   else {
-   stats.update({$inc:{seenmovies:1,totalmovies:1}});
+   stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
   }
    res.send('ok');         
              
