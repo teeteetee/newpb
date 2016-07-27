@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions');
+  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -74,10 +74,66 @@ app.get('/test',function (req,res){
                   res.send(done);});
 });
 
+//-----------------test-----------------//
+
 app.get('/counter',function (req,res){
  res.render('index_counter');
 
 });
+
+app.get('/counter/initdb',function (req,res){
+  stats.insert({newmovies:0,totalmovies:0,seenmovies:0});
+  stats.find({},function(err,done){
+    res.send(done);
+  });
+
+});
+
+app.post('/counter/addmovie',function(req,res){
+ console.log('adding a movie');
+  var ms = {};
+  ms.trouble =1;
+ 
+    var vmovietitle = req.body.movietitle;
+    var vnewmovie = parseInt(req.body.newmovie);
+    console.log('breakpoint one');
+    var vmovieyear = req.body.year;
+    var vmoviestar = parseInt(req.body.moviestar);
+    console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
+    var dd= new Date();
+    var vday = dd.getDate().toString();
+    if (vday.length===1){
+      vday='0'+vday;
+    }
+    var vmonth = dd.getMonth()+1;
+    console.log('breakpoint two');
+    vmonth = vmonth.toString();
+    if (vmonth.length===1){
+      vmonth='0'+vmonth;
+    }
+    var vyear = dd.getUTCFullYear().toString();
+    var fulldate = vyear+vmonth+vday;
+    fulldate = parseInt(fulldate);
+
+    if(!vmovietitle){
+      vmovietitle = '--';
+      //SEND ERROR
+    }
+    if(!vmovieyear){
+      vvmovieyear = '--';
+    }
+
+  movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate});
+  if(vnewmovie)
+  {stats.update({$inc:{newmovies:1,totalmovies:1}});}
+  else {
+   stats.update({$inc:{seenmovies:1,totalmovies:1}});
+  }
+            
+             
+});
+
+//------------------test-------------------//
 
 
 app.get('/',function(req,res) {
