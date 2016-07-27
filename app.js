@@ -103,7 +103,7 @@ app.get('/counter/showstats',function (req,res){
 
 app.get('/counter/deletemovies',function (req,res){
   movies.remove({},function(err,done){
-  stats.update({newmovies:0,totalmovies:0,seenmovies:0});
+  stats.update({$set:{newmovies:0,totalmovies:0,seenmovies:0}});
     res.send('done');
   });
 });
