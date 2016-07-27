@@ -392,7 +392,7 @@ head
         //----------------------------//
         function populate(consolidated) {
          consolidated.forEach(function (element,index){
-            if($(".noitemsnew")[0]&&element.newmovie)
+            if($(".noitemsnew")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
             if($(".noitemsold")[0]&&!element.newmovie)
