@@ -365,7 +365,7 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  
+                  console.log('movies: '+msg.doc);
                    movies=msg.doc.moviestore;
                   if(!movies || !movies.length) {
                    console.log('no movies');
