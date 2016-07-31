@@ -303,11 +303,16 @@ app.post('/restore',function (req,res){
     var oldPath = req.files.usersjson.path;
     fs.readFile(oldPath , 'utf8', function(err, data) {
       var valid = validateJSON(data);
-       if (data) {
+       if (valid) {
          data = JSON.parse(data);
-         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],linkstore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totallinks:data[3].totallinks,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newlinks:data[3].newlinks,readlinks:data[3].readlinks,last_item:data[3].last_item}});
-         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,linkstore:data[4].linkstore}});
-         //console.log(JSON.stringify(data[0]));
+         data.forEach(function(element,index){
+          movies.insert({year:element.year,movietitle:element.movietitle,newmovie:element.newmovie,star:element.moviestar,regdateint:element.regdateint,tmstmp:element.tmstmp});
+          if(element.newmovie)
+          {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
+          else {
+            stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
+          }
+         });
        }
       fs.unlink(oldPath, function(){
         //if(err) throw err;
