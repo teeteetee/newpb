@@ -250,7 +250,7 @@ app.post('/counter/addmovie',function(req,res){
 
 app.post('/backup',function (req,res){
   { var json = [];
-     movies.find({},function (err2,doc2){
+     movies.find({},function (err,doc2){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
