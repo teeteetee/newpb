@@ -300,12 +300,18 @@ function validateJSON(body) {
 
 app.post('/counter/restore',function (req,res){
  // if(req.session._id){      
+  console.log('breakpoint');
     var oldPath = req.files.usersjson.path;
+     console.log('breakpoint 1');
     fs.readFile(oldPath , 'utf8', function(err, data) {
+       console.log('breakpoint 2');
       var valid = validateJSON(data);
+       console.log('breakpoint 3');
        if (valid) {
+         console.log('breakpoint 4');
          data = JSON.parse(data);
          data.forEach(function(element,index){
+           console.log('breakpoint loop');
           movies.insert({year:element.year,movietitle:element.movietitle,newmovie:element.newmovie,star:element.moviestar,regdateint:element.regdateint,tmstmp:element.tmstmp});
           if(element.newmovie)
           {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
@@ -314,10 +320,11 @@ app.post('/counter/restore',function (req,res){
           }
          });
        }
+        console.log('breakpoint 5');
       fs.unlink(oldPath, function(){
         //if(err) throw err;
         if(err) console.log(err);
-        res.redirect('/');
+        res.redirect('/counter');
        });
     });
  //  }
