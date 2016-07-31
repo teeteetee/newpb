@@ -298,7 +298,7 @@ function validateJSON(body) {
 
 
 
-app.post('/restore',function (req,res){
+app.post('/counter/restore',function (req,res){
   if(req.session._id){      
     var oldPath = req.files.usersjson.path;
     fs.readFile(oldPath , 'utf8', function(err, data) {

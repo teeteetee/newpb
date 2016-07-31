@@ -299,8 +299,12 @@ head
         span(style='font-weight:bold;') + 
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
-      a( style='margin-top:20px;' id='backup') Restore
-      .fileUpload.btn.btn-default
+      a( style='margin-top:20px;' id='restore2') Restore
+      a( style='margin-top:20px;' id='restore') Restore
+        form(action='/counter/restore')
+          input(type="file" name="file" id="file" class="inputfile hidden")
+          label(for="file") restore
+      .fileUpload.btn.btn-default.hidden
         span Upload
         input(type="file" class="upload")
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
