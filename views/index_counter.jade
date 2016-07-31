@@ -319,7 +319,7 @@ head
           form#restore_form(action='/counter/restore', method='POST')
             .fileUpload.btn.btn-ioslight(style='margin:auto;')
               span(style='text-transform:uppercase;') Upload restore file
-              input#restore_file(type="file" class="upload")
+              input#restore_file(type="file" class="upload" name='userjson')
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
           .modal-content
