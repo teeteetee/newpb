@@ -529,7 +529,7 @@ head
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
-                  if(!$('#newmovies')[0]){
+                  if(!$('#newmovies').children().length > 0){
                     $('#newmovies').prepend(empty_row);
                   }
                   console.log('case 1');}
@@ -541,7 +541,7 @@ head
                   newmovies--;
                   seenmovies++;
                   $('#oldnum').text(seenmovies);
-                  if(!$('#oldmovies')[0]){
+                  if(!$('#oldmovies').children().length > 0){
                     $('#oldmovies').prepend(empty_row);
                   }
                 }
