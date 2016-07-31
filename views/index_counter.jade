@@ -299,10 +299,10 @@ head
         span(style='font-weight:bold;') + 
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
-      a( style='margin-top:20px;' id='restore') 
-        form(action='/counter/restore')
-          input(type="file" name="file" id="file" class="inputfile")
-          label#restorelabel(for="file", style='font-weight:300 !important;') Restore
+      a( style='margin-top:20px;' id='restore') Restore
+      form.hidden(action='/counter/restore')
+        input(type="file" name="file" id="file" class="inputfile")
+        label#restorelabel(for="file", style='font-weight:300 !important;') Restore
       .fileUpload.btn.btn-default.hidden
         span Upload
         input(type="file" class="upload")
@@ -390,9 +390,9 @@ head
         $('#backup').click(function(){
           $('#backupform').submit();
           });
-        //$('#restore').click(function(){
-        //  $('#restorelabel').click();
-        //  });
+        $('#restore').click(function(){
+          $('#restorelabel').click();
+          });
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
