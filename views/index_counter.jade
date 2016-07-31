@@ -525,11 +525,9 @@ head
                   console.log('breakpoint 3');
                   var element = $(vname).detach();
                   console.log('breakpoint 4');
-                  //
-                  //
                   var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                   if(consolidated[movieid].newmovie)
-                  {if($(".noitemsnew")[0]&&element.newmovie)
+                  {if($(".noitemsnew")[0])
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
                     $('#newmovies').prepend(element);
@@ -542,7 +540,7 @@ head
                   }
                   console.log('case 1');}
                 else
-                  {if($(".noitemsold")[0]&&!element.newmovie)
+                  {if($(".noitemsold")[0])
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
                     $('#oldmovies').prepend(element);
