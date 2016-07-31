@@ -516,7 +516,7 @@ head
                   console.log('breakpoint 2');
                   var vname = '.movie_'+consolidated[movieid]._id;
                   console.log('breakpoint 3');
-                  var element = $(insert).detach();
+                  var element = $(vname).detach();
                   console.log('breakpoint 4');
                   if(consolidated[movieid].newmovie)
                   {$('#newmovies').append(element);
