@@ -188,6 +188,11 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
            res.send(ms);
          }
          else {
+           if(done.newmovie)
+           {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,seenmovies:1}});}
+           else {
+            stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,newmovies:1}});
+           }
            ms.trouble=0;
            ms.present_clmn=set_var;
            console.log('hey');
