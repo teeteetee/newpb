@@ -249,35 +249,13 @@ app.post('/counter/addmovie',function(req,res){
 });
 
 app.post('/backup',function (req,res){
-  if(req.session._id){    
-  users.findOne({_id:req.session._id},function (err,doc){ 
-    if(err){
-      console.log('ERR WHILE BACKUP REQUEST');
-      console.log(err);
-    }
-    else if(doc._id)
   { var json = [];
-    var statstore = {
-    'totalbooks':doc.totalbooks,
-    'totalmovies':doc.totalmovies,
-    'totallinks':doc.totallinks,
-    'newbooks':doc.newbooks,
-    'readbooks':doc.readbooks,
-    'newmovies':doc.newmovies,
-    'seenmovies':doc.seenmovies,
-    'newlinks':doc.newlinks,
-    'readlinks':doc.readlinks,
-    'last_item':doc.last_item};
-    var ids={};
-    ids.bookstore = doc.bookstore;
-    ids.moviestore = doc.moviestore;
-    ids.linkstore = doc.linkstore;
-     items.findOne({user:req.session._id},function (err2,doc2){
+     movies.find({},function (err2,doc2){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
          }
-         else if(doc2.user)
+         else 
        {
          json.push(doc2.bookstore);
          json.push(doc2.moviestore)
@@ -305,19 +283,11 @@ app.post('/backup',function (req,res){
          res.end();
        }
         else {
-      res.redirect('/');
+      res.redirect('/counter/');
     }
      });
     //res.redirect('/');
     }
-    else {
-      res.redirect('/');
-    }
-  });
-  }
-  else {
-    res.redirect('/');
-  }
 });
 
 function validateJSON(body) {
