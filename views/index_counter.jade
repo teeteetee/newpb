@@ -491,19 +491,20 @@ head
                 $('#moviemodal').modal('hide');
                 var vname = '.movie_'+consolidated[movieid]._id;
                 $(vname).empty();
-                var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                var empty_row_new ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                 if(consolidated[movieid].newmovie){
                   newmovies --;
                   $('#newnum').text(newmovies);
                   if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row);
+                    $('#newmovies').prepend(empty_row_new);
                   }
                 }
                   else{
                     seenmovies --;
                   $('#oldnum').text(seenmovies);
                   if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row);
+                    $('#oldmovies').prepend(empty_row_old);
                   }
                   }
               });
@@ -525,18 +526,19 @@ head
                   console.log('breakpoint 3');
                   var element = $(vname).detach();
                   console.log('breakpoint 4');
-                  var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                  if(consolidated[movieid].newmovie)
                   if(consolidated[movieid].newmovie)
                   {if($(".noitemsnew")[0])
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
-                    $('#newmovies').prepend(element);
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
                   $('#oldnum').text(seenmovies);
                   if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row);
+                    $('#oldmovies').prepend(empty_row_old);
                   }
                   console.log('case 1');}
                 else
@@ -549,7 +551,7 @@ head
                   $('#oldnum').text(seenmovies);
                   $('#newnum').text(newmovies);
                   if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row);
+                    $('#newmovies').prepend(empty_row_new);
                   }
                 }
                   console.log('case 2');
