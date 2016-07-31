@@ -445,7 +445,7 @@ head
         $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
         $('.moviemodalyear').text(consolidated[i].year);
         $('#moviemodal').modal('show');
-      }
+        }
         //----------------------------//
         function removemovie(movieid) {
         $.ajax({
@@ -466,7 +466,7 @@ head
                   $('#oldnum').text(seenmovies);
                   }
               });
-      }
+        }
         //----------------------------//
         $('#submitmovie').click(function(){
         if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
