@@ -536,6 +536,7 @@ head
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
+                  $('#oldnum').text(seenmovies);
                   if($('#oldmovies').children().length == 0){
                     $('#oldmovies').prepend(empty_row);
                   }
@@ -548,6 +549,7 @@ head
                   newmovies--;
                   seenmovies++;
                   $('#oldnum').text(seenmovies);
+                  $('#newnum').text(newmovies);
                   if($('#newmovies').children().length == 0){
                     $('#newmovies').prepend(empty_row);
                   }
