@@ -257,11 +257,9 @@ app.post('/backup',function (req,res){
          }
          else 
        {
-         json.push(doc2.bookstore);
-         json.push(doc2.moviestore)
-         json.push(doc2.linkstore);
-         json.push(statstore);
-         json.push(ids);
+         doc2.forEach(function(elem,index){
+          json.push(element);
+         });
          var d = new Date();
          var vday = d.getDate().toString();
          var vmonth = d.getMonth()+1;
@@ -275,7 +273,7 @@ app.post('/backup',function (req,res){
                 vmonth='0'+vmonth;
               }
          var date= vday+'/'+vmonth+'/'+vyear;
-         var filename = 'P&B_backup_'+date+'.json'; // or whatever
+         var filename = 'Movies_backup_'+date+'.json'; // or whatever
          var mimetype = 'application/json';
          res.setHeader('Content-disposition', 'attachment; filename=' + filename);
          res.setHeader('Content-type', mimetype);
