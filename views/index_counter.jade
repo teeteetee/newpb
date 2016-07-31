@@ -300,9 +300,6 @@ head
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
       a( style='margin-top:20px;' id='restore') Restore
-      form.hidden#restore_form(action='/counter/restore')
-        input(type="file" name="file" id="restore_file" class="inputfile")
-        label#restorelabel(for="file", style='font-weight:300 !important;') Restore
       .fileUpload.btn.btn-default.hidden
         span Upload
         input(type="file" class="upload")
@@ -312,8 +309,10 @@ head
     .bckgrnd
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row
-        .col-xs-12(style='text-align:center;')
-          input(type='file')
+        .col-xs-12(style='text-align:center;padding-top:30%')
+          form.hidden#restore_form(action='/counter/restore')
+            input(type="file" name="file" id="restore_file" class="inputfile")
+            label#restorelabel(for="file", style='font-weight:300 !important;') Restore
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
           .modal-content
@@ -391,8 +390,7 @@ head
           $('#backupform').submit();
           });
         $('#restore').click(function(){
-          console.log('restore');
-          $('#restorelabel').click();
+          $('#wait').fadeIn();
           });
         //document.getElementById("restore_file").onchange = function() {
         //    var fileName = $("#restore_file").val();
