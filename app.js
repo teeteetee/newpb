@@ -147,10 +147,11 @@ app.post('/counter/getstat',function (req,res){
   });
 });
 
-app.post('/counter/remmovie',function(req,res){
+app.post('/counter/rm_movie/:newmovie/:movie_id',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vmovie_id = req.body.movie_id;
+  var vmovie_id = req.params.movie_id;
+  var vnewmovie = req.params.newmovie;
   if(vmovie_id) {
     movies.remove({_id:vmovie_id},function(err,done){
       if(!err) {
@@ -158,6 +159,11 @@ app.post('/counter/remmovie',function(req,res){
         res.send(ms);
       }
       else {
+        if(vnewmovie)
+        {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,totalmovies:-1}});}
+        else {
+         stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,totalmovies:-1}});
+        }
         res.send(ms);
       }
     });

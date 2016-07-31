@@ -231,6 +231,10 @@ head
       .modal-sm .btn-iosdark:hover {
         background-color:#424242;
       }
+      .pop:hover{
+        background-color:#c53204;
+        color:white;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -246,18 +250,33 @@ head
       //     span(class='input-group-btn')
       //       button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
       //         span(class='glyphicon glyphicon-search') 
-      a( style='margin-top:20px;' id='add') Добавить
+      a( style='margin-top:20px;' id='add') 
+        span(style='font-weight:bold;') + 
+        | Добавить
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .bckgrnd
+    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.moviemodaltitle(style='text-align:center;')
+              //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+              button(class='btn btn-iosdark  form-control switch') Switch column
+              button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" ) Добавляем фильм
+            h4(class="modal-title" ) 
+              span(style='font-weight:bold;') + 
+              | Добавляем фильм
           .modal-body
             .row  
               .col-xs-12
@@ -351,6 +370,8 @@ head
         }
         });
         //---------------------------//
+        var seenmovies;
+        var newmovies;
         $.ajax({
               method: "POST",
               url: "/counter/getstat",
@@ -359,6 +380,8 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg.doc);
+                  seenmovies = msg.doc[0].seenmovies;
+                  newnmovies = msg.doc[0].newnmovies;
                   $('#oldnum').text(msg.doc[0].seenmovies);
                   $('#newnum').text(msg.doc[0].newmovies);
                 }
@@ -401,10 +424,10 @@ head
            var insert;
                 if(element.star&&!element.newmovie){
                      console.log('1st case');
-                     insert = "<tr><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
                      }else{
                      console.log('2st case');
-                      insert = "<tr><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
                    }  
             if(element.newmovie){  
                $('#newmovies').prepend(insert);
@@ -413,7 +436,37 @@ head
             $('#oldmovies').prepend(insert);
            }
            });
-          }     
+          }   
+        //----------------------------//
+        function redactmoviemodal (i) {
+        // TODO screen blocker must be added to prevent user from interfering 
+        insert = 'removemovie('+i+')';
+        $('.movie_remove').attr('onclick',insert);
+        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
+        $('.moviemodalyear').text(consolidated[i].year);
+        $('#moviemodal').modal('show');
+      }
+        //----------------------------//
+        function removemovie(movieid) {
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_movie/"+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#moviemodal').modal('hide');
+                var vname = '.movie_'+consolidated[movieid]._id;
+                $(vname).empty();
+                if(consolidated[movieid].newmovie){
+                  newnmovies --;
+                  $('#newnum').text(newmovies);
+                }
+                  else{
+                    seenmovies --;
+                  $('#oldnum').text(seenmovies);
+                  }
+              });
+      }
         //----------------------------//
         $('#submitmovie').click(function(){
         if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
