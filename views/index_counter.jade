@@ -300,7 +300,7 @@ head
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
       a( style='margin-top:20px;' id='restore') Restore
-      form.hidden#restore_form(action='/counter/restore')
+      form#restore_form(action='/counter/restore')
         input(type="file" name="file" id="restore_file" class="inputfile")
         label#restorelabel(for="file", style='font-weight:300 !important;') Restore
       .fileUpload.btn.btn-default.hidden
