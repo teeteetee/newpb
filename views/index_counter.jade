@@ -414,8 +414,8 @@ head
                   console.log(msg.doc);
                   seenmovies = msg.doc[0].seenmovies;
                   newnmovies = msg.doc[0].newnmovies;
-                  $('#oldnum').text(msg.doc[0].seenmovies);
-                  $('#newnum').text(msg.doc[0].newmovies);
+                  $('#oldnum').text(seenmovies);
+                  $('#newnum').text(newmovies);
                 }
                 });
         var consolidated=[];
@@ -491,13 +491,20 @@ head
                 $('#moviemodal').modal('hide');
                 var vname = '.movie_'+consolidated[movieid]._id;
                 $(vname).empty();
+                var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                 if(consolidated[movieid].newmovie){
                   newnmovies --;
                   $('#newnum').text(newmovies);
+                  if(!$('#newmovies').children().length == 0){
+                    $('#newmovies').prepend(empty_row);
+                  }
                 }
                   else{
                     seenmovies --;
                   $('#oldnum').text(seenmovies);
+                  if(!$('#oldmovies').children().length == 0){
+                    $('#oldmovies').prepend(empty_row);
+                  }
                   }
               });
         }
@@ -525,7 +532,7 @@ head
                   {if($(".noitemsnew")[0]&&element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
-                    $('#newmovies').append(element);
+                    $('#newmovies').prepend(element);
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
@@ -537,7 +544,7 @@ head
                   {if($(".noitemsold")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
-                    $('#oldmovies').append(element);
+                    $('#oldmovies').prepend(element);
                   newmovies--;
                   seenmovies++;
                   $('#oldnum').text(seenmovies);
