@@ -533,6 +533,7 @@ head
                   {if($(".noitemsnew")[0])
                    { console.log('HAS LENGTH');
                      $('#newmovies').empty();}
+                     $('#newmovies').prepend(element);
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
