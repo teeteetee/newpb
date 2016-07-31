@@ -183,7 +183,6 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
       }
       else {
         var set_var = parseInt(done.newmovie)?0:1;
-        
         movies.update({_id:vmovie_id},{$set:{newmovie:set_var}},function(err,done2){
          if(err) {
            res.send(ms);
@@ -191,6 +190,7 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
          else {
            ms.trouble=0;
            ms.present_clmn=set_var;
+           console.log('hey');
            res.send(ms);
          }
     });
