@@ -511,9 +511,13 @@ head
                 .done(function( msg ) {
                   console.log(msg);
                   $('#moviemodal').modal('hide');
+                  console.log('breakpoint 1');
                   consolidated[movieid].newmovie=parseInt(msg.present_clmn);
+                  console.log('breakpoint 2');
                   var vname = '.movie_'+consolidated[movieid]._id;
+                  console.log('breakpoint 3');
                   var element = $(insert).detach();
+                  console.log('breakpoint 4');
                   if(consolidated[movieid].newmovie)
                   {$('#newmovies').append(element);
                   seenmovies--;
