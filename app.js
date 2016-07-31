@@ -299,7 +299,7 @@ function validateJSON(body) {
 
 
 app.post('/counter/restore',function (req,res){
-  if(req.session._id){      
+ // if(req.session._id){      
     var oldPath = req.files.usersjson.path;
     fs.readFile(oldPath , 'utf8', function(err, data) {
       var valid = validateJSON(data);
@@ -320,10 +320,10 @@ app.post('/counter/restore',function (req,res){
         res.redirect('/');
        });
     });
-   }
-  else {
-    res.redirect('/');
-  }
+ //  }
+ // else {
+ //   res.redirect('/');
+ // }
 });
 
 //------------------test-------------------//
