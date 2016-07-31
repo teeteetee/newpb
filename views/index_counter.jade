@@ -280,6 +280,15 @@ head
           opacity: 0;
           filter: alpha(opacity=0);
       }
+      .btn-ioslight {
+        color:white;
+        background-color:none;
+        border:1px solid white;
+      }
+      .btn-ioslight:hover{
+        color:#333;
+        background-color:white;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -300,9 +309,6 @@ head
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
       a( style='margin-top:20px;' id='restore') Restore
-      .fileUpload.btn.btn-default.hidden
-        span Upload
-        input(type="file" class="upload")
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
@@ -311,8 +317,9 @@ head
       .row
         .col-xs-12(style='text-align:center;padding-top:30%')
           form.hidden#restore_form(action='/counter/restore')
-            input(type="file" name="file" id="restore_file" class="inputfile")
-            label#restorelabel(for="file", style='font-weight:300 !important;') Restore
+            .fileUpload.btn.btn-ioslight
+              span Upload
+              input#restore_file(type="file" class="upload")
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
           .modal-content
@@ -392,12 +399,12 @@ head
         $('#restore').click(function(){
           $('#wait').fadeIn();
           });
-        //document.getElementById("restore_file").onchange = function() {
-        //    var fileName = $("#restore_file").val();
-        //    if(fileName) {
-        //    document.getElementById("restore_form").submit();
-        //  }
-        //};
+        document.getElementById("restore_file").onchange = function() {
+            var fileName = $("#restore_file").val();
+            if(fileName) {
+            document.getElementById("restore_form").submit();
+          }
+        };
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
