@@ -257,7 +257,7 @@ app.post('/backup',function (req,res){
          }
          else 
        {
-         doc2.forEach(function(elem,index){
+         doc2.forEach(function(element,index){
           json.push(element);
          });
          var d = new Date();
