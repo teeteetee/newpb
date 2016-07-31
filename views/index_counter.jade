@@ -515,10 +515,18 @@ head
                   var vname = '.movie_'+consolidated[movieid]._id;
                   var element = $(insert).detach();
                   if(consolidated[movieid].newmovie)
-                  {$('#newmovies').append(element);seenmovies--;newmovies++;$('#newnum').text(newmovies);}
+                  {$('#newmovies').append(element);
+                  seenmovies--;
+                  newmovies++;
+                  $('#newnum').text(newmovies);
+                  console.log('case 1');}
                 else
-                  {$('#oldmovies').append(element);newmovies--;seenmovies++;$('#oldnum').text(seenmovies);}
+                  {$('#oldmovies').append(element);
+                  newmovies--;
+                  seenmovies++;
+                  $('#oldnum').text(seenmovies);}
                   $('.movienum').text(user.seenmovies)
+                  console.log('case 2');
                 });
         }
         //----------------------------//
