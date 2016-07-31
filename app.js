@@ -172,17 +172,17 @@ app.post('/counter/rm_movie/:newmovie/:movie_id',function(req,res){
   }
 });
 
-app.post('/counter/seenmovie',function(req,res){
+app.post('/counter/switch_clmn/:movie_id',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vmovie_id = req.body.movie_id;
+  var vmovie_id = req.params.movie_id;
   if(vmovie_id) {
     movies.findOne({_id:vmovie_id},function(err,done){
       if(err) {
         res.send(ms);
       }
       else {
-        var set_var = parseInt(done.newmovie);
+        var set_var = parseInt(done.newmovie)?0:1;
         
         movies.update({_id:vmovie_id},{$set:{newmovie:set_var}},function(err,done2){
          if(err) {
@@ -190,6 +190,7 @@ app.post('/counter/seenmovie',function(req,res){
          }
          else {
            ms.trouble=0;
+           ms.present_clmn=set_var;
            res.send(ms);
          }
     });
