@@ -413,7 +413,7 @@ head
                 if(!msg.trouble) {
                   console.log(msg.doc);
                   seenmovies = msg.doc[0].seenmovies;
-                  newnmovies = msg.doc[0].newnmovies;
+                  newmovies = msg.doc[0].newmovies;
                   $('#oldnum').text(seenmovies);
                   $('#newnum').text(newmovies);
                 }
@@ -493,7 +493,7 @@ head
                 $(vname).empty();
                 var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                 if(consolidated[movieid].newmovie){
-                  newnmovies --;
+                  newmovies --;
                   $('#newnum').text(newmovies);
                   if(!$('#newmovies').children().length == 0){
                     $('#newmovies').prepend(empty_row);
