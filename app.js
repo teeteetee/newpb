@@ -147,6 +147,52 @@ app.post('/counter/getstat',function (req,res){
   });
 });
 
+app.post('/counter/remmovie',function(req,res){
+  var ms = {};
+  ms.trouble =1;
+  var vmovie_id = req.body.movie_id;
+  if(vmovie_id) {
+    movies.remove({_id:vmovie_id},function(err,done){
+      if(!err) {
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });
+  }
+  else {
+    res.send(ms);
+  }
+});
+
+app.post('/counter/seenmovie',function(req,res){
+  var ms = {};
+  ms.trouble =1;
+  var vmovie_id = req.body.movie_id;
+  if(vmovie_id) {
+    movies.findOne({_id:vmovie_id},function(err,done){
+      if(err) {
+        res.send(ms);
+      }
+      else {
+        var set_var = parseInt(done.newmovie);
+        
+        movies.update({_id:vmovie_id},{$set:{newmovie:set_var}},function(err,done2){
+         if(err) {
+           res.send(ms);
+         }
+         else {
+           ms.trouble=0;
+           res.send(ms);
+         }
+    });
+      }
+    });
+  }
+});
+  
 app.post('/counter/addmovie',function(req,res){
  console.log('adding a movie');
   var ms = {};
@@ -189,6 +235,114 @@ app.post('/counter/addmovie',function(req,res){
   }
    res.send('ok');         
              
+});
+
+app.post('/backup',function (req,res){
+  if(req.session._id){    
+  users.findOne({_id:req.session._id},function (err,doc){ 
+    if(err){
+      console.log('ERR WHILE BACKUP REQUEST');
+      console.log(err);
+    }
+    else if(doc._id)
+  { var json = [];
+    var statstore = {
+    'totalbooks':doc.totalbooks,
+    'totalmovies':doc.totalmovies,
+    'totallinks':doc.totallinks,
+    'newbooks':doc.newbooks,
+    'readbooks':doc.readbooks,
+    'newmovies':doc.newmovies,
+    'seenmovies':doc.seenmovies,
+    'newlinks':doc.newlinks,
+    'readlinks':doc.readlinks,
+    'last_item':doc.last_item};
+    var ids={};
+    ids.bookstore = doc.bookstore;
+    ids.moviestore = doc.moviestore;
+    ids.linkstore = doc.linkstore;
+     items.findOne({user:req.session._id},function (err2,doc2){
+        if(err){
+           console.log('ERR WHILE BACKUP REQUEST');
+           console.log(err2);
+         }
+         else if(doc2.user)
+       {
+         json.push(doc2.bookstore);
+         json.push(doc2.moviestore)
+         json.push(doc2.linkstore);
+         json.push(statstore);
+         json.push(ids);
+         var d = new Date();
+         var vday = d.getDate().toString();
+         var vmonth = d.getMonth()+1;
+         vmonth = vmonth.toString();
+         var vyear = d.getUTCFullYear().toString();
+         console.log('beginning');
+         if (vday.length===1){
+                vday='0'+vday;
+              }
+         if (vmonth.length===1){
+                vmonth='0'+vmonth;
+              }
+         var date= vday+'/'+vmonth+'/'+vyear;
+         var filename = 'P&B_backup_'+date+'.json'; // or whatever
+         var mimetype = 'application/json';
+         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+         res.setHeader('Content-type', mimetype);
+         res.write(JSON.stringify(json));
+         res.end();
+       }
+        else {
+      res.redirect('/');
+    }
+     });
+    //res.redirect('/');
+    }
+    else {
+      res.redirect('/');
+    }
+  });
+  }
+  else {
+    res.redirect('/');
+  }
+});
+
+function validateJSON(body) {
+  try {
+    var data = JSON.parse(body);
+    // if came to here, then valid
+    return data;
+  } catch(e) {
+    // failed to parse
+    return null;
+  }
+}
+
+
+
+app.post('/restore',function (req,res){
+  if(req.session._id){      
+    var oldPath = req.files.usersjson.path;
+    fs.readFile(oldPath , 'utf8', function(err, data) {
+      var valid = validateJSON(data);
+       if (data) {
+         data = JSON.parse(data);
+         users.update({_id:req.session._id},{$set:{bookstore:data[0],moviestore:data[1],linkstore:data[2],totalbooks:data[3].totalbooks,totalmovies:data[3].totalmovies,totallinks:data[3].totallinks,newbooks:data[3].newbooks,readbooks:data[3].readbooks,newmovies:data[3].newmovies,seenmovies:data[3].seenmovies,newlinks:data[3].newlinks,readlinks:data[3].readlinks,last_item:data[3].last_item}});
+         items.update({user:req.session._id},{$set:{bookstore:data[4].bookstore,moviestore:data[4].moviestore,linkstore:data[4].linkstore}});
+         //console.log(JSON.stringify(data[0]));
+       }
+      fs.unlink(oldPath, function(){
+        //if(err) throw err;
+        if(err) console.log(err);
+        res.redirect('/');
+       });
+    });
+   }
+  else {
+    res.redirect('/');
+  }
 });
 
 //------------------test-------------------//
