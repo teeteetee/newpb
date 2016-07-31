@@ -518,18 +518,33 @@ head
                   console.log('breakpoint 3');
                   var element = $(vname).detach();
                   console.log('breakpoint 4');
+                  //
+                  //
+                  var empty_row ='<tr class="oitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                   if(consolidated[movieid].newmovie)
-                  {$('#newmovies').append(element);
+                  {if($(".noitemsnew")[0]&&element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#newmovies').empty();}
+                    $('#newmovies').append(element);
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
+                  if(!$('#newmovies')[0]){
+                    $('#newmovies').prepend(empty_row);
+                  }
                   console.log('case 1');}
                 else
-                  {$('#oldmovies').append(element);
+                  {if($(".noitemsold")[0]&&!element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#oldmovies').empty();}
+                    $('#oldmovies').append(element);
                   newmovies--;
                   seenmovies++;
-                  $('#oldnum').text(seenmovies);}
-                  $('.movienum').text(user.seenmovies)
+                  $('#oldnum').text(seenmovies);
+                  if(!$('#oldmovies')[0]){
+                    $('#oldmovies').prepend(empty_row);
+                  }
+                }
                   console.log('case 2');
                 });
         }
