@@ -529,8 +529,8 @@ head
                   seenmovies--;
                   newmovies++;
                   $('#newnum').text(newmovies);
-                  if(!$('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row);
+                  if(!$('#oldmovies').children().length == 0){
+                    $('#oldmovies').prepend(empty_row);
                   }
                   console.log('case 1');}
                 else
@@ -541,8 +541,8 @@ head
                   newmovies--;
                   seenmovies++;
                   $('#oldnum').text(seenmovies);
-                  if(!$('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row);
+                  if(!$('#newmovies').children().length == 0){
+                    $('#newmovies').prepend(empty_row);
                   }
                 }
                   console.log('case 2');
