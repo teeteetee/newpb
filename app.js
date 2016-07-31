@@ -282,9 +282,6 @@ app.post('/backup',function (req,res){
          res.write(JSON.stringify(json));
          res.end();
        }
-        else {
-      res.redirect('/counter/');
-    }
      });
     //res.redirect('/');
     }
