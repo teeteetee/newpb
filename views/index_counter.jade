@@ -315,8 +315,8 @@ head
     .bckgrnd
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row
-        .col-xs-12(style='text-align:center;padding-top:30%')
-          form#restore_form(action='/counter/restore')
+        .col-xs-12(style='text-align:center;padding-top:20%')
+          form#restore_form(action='/counter/restore', method='POST')
             .fileUpload.btn.btn-ioslight(style='margin:auto;')
               span(style='text-transform:uppercase;') Upload restore file
               input#restore_file(type="file" class="upload")
