@@ -316,8 +316,8 @@ head
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row
         .col-xs-12(style='text-align:center;padding-top:30%')
-          form.hidden#restore_form(action='/counter/restore')
-            .fileUpload.btn.btn-ioslight
+          form#restore_form(action='/counter/restore')
+            .fileUpload.btn.btn-ioslight(style='margin:auto;')
               span(style='text-transform:uppercase;') Upload restore file
               input#restore_file(type="file" class="upload")
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -661,15 +661,15 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container-fluid').css('-webkit-filter','brightness(1)');
-                         $('.bckgrnd').css('-webkit-filter','brightness(0.6)');
+                         //$('.container-fluid').css('-webkit-filter','brightness(1)');
+                         //$('.bckgrnd').css('-webkit-filter','brightness(0.6)');
                         break;
                         case(0):
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container-fluid').css('-webkit-filter','brightness(0.6)');
-                          $('.bckgrnd').css('-webkit-filter','brightness(0.3)');
+                          //$('.container-fluid').css('-webkit-filter','brightness(0.6)');
+                          //$('.bckgrnd').css('-webkit-filter','brightness(0.3)');
                         break;
                       }
         };
