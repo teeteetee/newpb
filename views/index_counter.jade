@@ -299,11 +299,10 @@ head
         span(style='font-weight:bold;') + 
         | Добавить
       a( style='margin-top:20px;' id='backup') Backup
-      a( style='margin-top:20px;' id='restore2') Restore
       a( style='margin-top:20px;' id='restore') Restore
-        form(action='/counter/restore')
-          input(type="file" name="file" id="file" class="inputfile hidden")
-          label(for="file") restore
+        form.hidden(action='/counter/restore')
+          input(type="file" name="file" id="file" class="inputfile")
+          label#restorelabel(for="file") restore
       .fileUpload.btn.btn-default.hidden
         span Upload
         input(type="file" class="upload")
@@ -390,6 +389,9 @@ head
       script.
         $('#backup').click(function(){
           $('#backupform').submit();
+          });
+        $('#restore').click(function(){
+          $('#restorelabel').click();
           });
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
