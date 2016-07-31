@@ -232,7 +232,7 @@ head
         background-color:#424242;
       }
       .pop:hover{
-        background-color:#c53204;
+        background-color:#ff9662 !important;
         color:white;
       }
   body
@@ -333,6 +333,9 @@ head
               return ((x < y) ? -1 : ((x > y) ? 1 : 0));
           });
         }
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+       }
         $('#add').click(function(){
           $('#addbook').modal('show');
           });
