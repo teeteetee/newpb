@@ -301,7 +301,7 @@ function validateJSON(body) {
 app.post('/counter/restore',function (req,res){
  // if(req.session._id){      
   console.log('breakpoint');
-    var oldPath = req.files.usersjson.path;
+    var oldPath = req.files.userjson.path;
      console.log('breakpoint 1');
     fs.readFile(oldPath , 'utf8', function(err, data) {
        console.log('breakpoint 2');
