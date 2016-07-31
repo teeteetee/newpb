@@ -393,12 +393,12 @@ head
         $('#restore').click(function(){
           $('#restorelabel').click();
           });
-        document.getElementById("restore_file").onchange = function() {
-            var fileName = $("#restore_file").val();
-            if(fileName) {
-            document.getElementById("restore_form").submit();
-          }
-        };
+        //document.getElementById("restore_file").onchange = function() {
+        //    var fileName = $("#restore_file").val();
+        //    if(fileName) {
+        //    document.getElementById("restore_form").submit();
+        //  }
+        //};
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
