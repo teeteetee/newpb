@@ -318,7 +318,7 @@ head
         .col-xs-12(style='text-align:center;padding-top:30%')
           form.hidden#restore_form(action='/counter/restore')
             .fileUpload.btn.btn-ioslight
-              span Upload
+              span(style='text-transform:uppercase;') Upload restore file
               input#restore_file(type="file" class="upload")
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
@@ -661,14 +661,14 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness(1)');
+                         $('.container-fluid').css('-webkit-filter','brightness(1)');
                          $('.bckgrnd').css('-webkit-filter','brightness(0.6)');
                         break;
                         case(0):
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness(0.6)');
+                          $('.container-fluid').css('-webkit-filter','brightness(0.6)');
                           $('.bckgrnd').css('-webkit-filter','brightness(0.3)');
                         break;
                       }
