@@ -425,10 +425,10 @@ head
            var insert;
                 if(element.star&&!element.newmovie){
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' ><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
                      }else{
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' ><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
                    }  
             if(element.newmovie){  
                $('#newmovies').prepend(insert);
@@ -439,12 +439,6 @@ head
            });
           }   
         //----------------------------//
-        
-        $('#shownav').click(function(){
-          $('#shownav').fadeOut();
-          $('#nav').fadeIn();
-          });
-        $('#login').click(authsubmit);
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
