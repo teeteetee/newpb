@@ -397,11 +397,11 @@ head
       script.
         var known = #{known};
         if(known) {
-          $('#login,#about').removeClass('hidden');
+          $('#login,#about').addClass('hidden');
           //$('#about').removeClass('hidden');
         }
         else {
-          $('#backup,#restore,#add').removeClass('hidden');
+          $('#backup,#restore,#add').addClass('hidden');
         }
         $('#backup').click(function(){
           $('#backupform').submit();
