@@ -77,8 +77,11 @@ app.get('/test',function (req,res){
 //-----------------test-----------------//
 
 app.get('/counter',function (req,res){
- res.render('index_counter');
-
+  if(req.session)
+ {res.render('index_counter',{'known':1});}
+ else {
+  res.render('index_counter',{'known':0});
+ }
 });
 
 app.get('/counter/initdb',function (req,res){
