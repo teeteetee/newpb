@@ -78,7 +78,8 @@ app.get('/test',function (req,res){
 
 app.get('/counter',function (req,res){
   if(req.session)
- {res.render('index_counter',{'known':1});}
+ {console.log(req.session);
+  res.render('index_counter',{'known':1});}
  else {
   res.render('index_counter',{'known':0});
  }
