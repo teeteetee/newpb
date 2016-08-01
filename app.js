@@ -86,7 +86,7 @@ app.get('/counter',function (req,res){
  res.render('index_counter_out');
 });
 
-app.get('/counter/p3345',function(){
+app.get('/counter/p3345',function (req,res){
   res.render('index_counter');
 });
 
