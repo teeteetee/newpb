@@ -261,7 +261,7 @@ head
         box-shadow:none;
       }
       .pop:hover{
-        background-color:#ff9662 !important;
+        background:linear-gradient(to bottom, #c3c3c3 0%,#f9c16e 100%);
         color:white;
       }
       .fileUpload {
@@ -308,9 +308,10 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    .bckgrnd
+    //.bckgrnd
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row
+        //background: linear-gradient(to bottom, #0d8edd 0%,#ff670f 100%);
         .col-xs-12(style='text-align:center;padding-top:20%')
           h1 Simple movie list
           h5 done like it should be done:
