@@ -369,6 +369,9 @@ head
       #closerestore {
       color: rgba(255, 255, 255, 0.52);
       }
+      .ease {
+        -webkit-transition: filter 0.3s ease;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -450,7 +453,7 @@ head
           .modal-footer(style='text-align:center;')
             a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
     //.container(style='padding-left:84px;z-index:2;')  
-    #colcont.container-fluid(style='padding-left:84px;z-index:2;')
+    #colcont.ease.container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
