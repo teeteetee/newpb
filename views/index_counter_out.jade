@@ -289,6 +289,12 @@ head
         color:#333;
         background-color:white;
       }
+      #oldcol{
+       background-color:#2b86b3;
+      }
+      #newcol{
+       background-color:#d03939;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -327,7 +333,7 @@ head
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
-        .col-sm-6.itemcol(style='border-right:1px solid #ddd;')
+        .col-sm-6.itemcol#oldcol(style='border-right:1px solid #ddd;')
           h1#oldnum 0
           h5 посмотрел
           table.table.table-striped
@@ -336,7 +342,7 @@ head
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
 
-        .col-sm-6.itemcol
+        .col-sm-6.itemcol#newcol
           h1#newnum 0
           h5 в планах
           table.table.table-striped
@@ -364,6 +370,9 @@ head
         }
         String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        function level() {
+          $('#oldcol').height>$('#newcol').height?$('#newcol').height=$('#oldcol').height:$('#oldcol').height=('#newcol').height;
         }
         //---------------------------//
         var seenmovies;
@@ -432,6 +441,7 @@ head
             $('#oldmovies').prepend(insert);
            }
            });
+           level();
           }   
         //----------------------------//
         var counter =0;
