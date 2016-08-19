@@ -243,7 +243,6 @@ head
         letter-spacing:2px;
         font-size:10px;
         text-align:center;
-        color:white;
       }
       //th:first-child {
       //  padding-left:30px !important;
@@ -451,7 +450,7 @@ head
           .modal-footer(style='text-align:center;')
             a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
     //.container(style='padding-left:84px;z-index:2;')  
-    .container-fluid(style='padding-left:84px;z-index:2;')
+    #colcont.container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
@@ -754,6 +753,7 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                          $('#colcont').css('-webkit-filter','blur(0px)');
                          //$('.container-fluid').css('-webkit-filter','brightness(1)');
                          //$('.bckgrnd').css('-webkit-filter','brightness(0.6)');
                         break;
@@ -761,6 +761,7 @@ head
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('#colcont').css('-webkit-filter','blur(5px)');
                           //$('.container-fluid').css('-webkit-filter','brightness(0.6)');
                           //$('.bckgrnd').css('-webkit-filter','brightness(0.3)');
                         break;
