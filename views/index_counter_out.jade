@@ -260,10 +260,6 @@ head
         border:none;
         box-shadow:none;
       }
-      .pop:hover{
-        background-color:#e47e66 !important;;
-        color:white;
-      }
       .fileUpload {
           position: relative;
           overflow: hidden;
@@ -294,6 +290,19 @@ head
       }
       #newcol{
        background-color:#d03939;
+      }
+      /*.pop:hover{
+        background-color:#e47e66 !important;;
+        color:white;
+      }*/
+      #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #2176a0;}
+      #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #b73030;}
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+      border-top: 0px;}
+      .table.table-striped {
+        color:white;
       }
   body
     script.
