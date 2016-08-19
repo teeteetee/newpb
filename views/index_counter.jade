@@ -302,6 +302,8 @@ head
         padding-top:15px;
       }
       .modal-header {
+        font-family:arial;
+        font-size:11px;
       border:none;
       }
       .modal-content{
@@ -356,6 +358,14 @@ head
       .table.table-striped {
         color:white;
       }
+      label {
+        font-weight:100;
+      }
+      .btn-wrning {
+        color: #fff;
+       background-color: #f53a3a;
+       border-color: #712e2e;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -387,6 +397,7 @@ head
             .fileUpload.btn.btn-ioslight(style='margin:auto;')
               span(style='text-transform:uppercase;') Upload restore file
               input#restore_file(type="file" class="upload" name='userjson')
+          h4#closerestore close
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
@@ -469,6 +480,9 @@ head
           });
         $('#restore').click(function(){
           $('#restoreblock').fadeIn();
+          });
+        $('#closerestore').click(function(){
+          $('#restoreblock').fadeOut();
           });
         document.getElementById("restore_file").onchange = function() {
             var fileName = $("#restore_file").val();
