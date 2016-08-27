@@ -85,6 +85,19 @@ app.get('/',function(req,res){
   res.render('index');
 });
 
+app.get('/8871',function(req,res){
+  comments.find({},function (err,doc){
+    //console.log(doc);
+    if(err) {
+      console.log('ERR WHILE ITEMS QUERY');
+      res.send(ms);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
 
 app.get('/o',function(req,res) {
     var tmstmp=0;
@@ -468,32 +481,27 @@ app.get('/gets',function(req,res){
   res.redirect('/');
 });
 
-app.post('/newuser',function(req,res){
-    var reload = req.body.reload;
+app.post('/comment',function(req,res){
     var ms = {};
     ms.trouble=1;
     ms.mtext='email incorrect'; 
-    var vnick = req.body.nick;
-    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var vauth = req.body.au;
+    var vcm = req.body.cm;
     var ms = {};
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-      users.insert({nick:vnick,phr:vp,totallinks:0,last_item:0,regdate:Date.now()},function (err,done){
+      comments.insert({comment:vcm,author:vauth,regdate:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
          res.send(ms); 
         }
       else {
-      req.session._id=done._id;
-      if(!reload)
-      {ms.trouble =0;
+      ms.trouble =0;
       ms.mtext='success';
-      res.send(ms);}
-      else {
-        res.redirect('/')
-      }
+      res.send(ms);
+      
       }
       });
         

@@ -187,8 +187,8 @@ head
           h2(style='font-family:proxima;color:white;') Оставьте пожелание
           h5(style='color:white;margin-bottom:5%;') Потом постараюсь договориться, чтобы повесили на поддомен как монумент
           form
-            input(class='form-control' type='text' style='margin-bottom:5px;' id='mail' name='mail' placeholder='как вы хотите войти в историю')
-            textarea(class='form-control' type='text' id='comment' name='comment')
+            input(class='form-control' type='text' style='margin-bottom:5px;' id='author' name='mail' placeholder='как вы хотите войти в историю')
+            textarea(class='form-control' type='text' id='comment' name='comment' placeholder='текст поздравления')
             button(id='sendcomment' class='btn btn-primary' style='margin-top:20px;' type='button') Поздравить
 
      
@@ -197,18 +197,18 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        //-------REGISTER--------
-          function validateEmail(email) { 
-        console.log('checking email');
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);} 
-        // AUTHSUBMIT FUNCTION
-        var allowauth = 1;
-        function authsubmit() {
+        $('#sendcomment').click(function(){
+          if(vauth&&vcmnt) {
+          sendcmnt();
+        }
+        else {
+          return 1;
+          });
+        }
+        function sendcmnt() {
         allowauth = 0;
-        var vlgn = $('#mail').val();
-        var vphr = $('#p').val();
-        console.log(vlgn +" , "+vphr);
+        var vauth = $('#author').val();
+        var vcmnt = $('#comment').val();
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
@@ -218,34 +218,19 @@ head
         console.log(parsed);
         if(parsed.trouble === 1)
         {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        allowauth = 1;
-        break;
-        case('wrong pas'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-        allowauth = 1;
-        break;
-        case('wronguser'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-        allowauth =1;
-        break;
+        alert('Bad request. Try again later.');
         }}
         else {
-        window.location = 'http://peopleandbooks.com';
+        alert('Спасибо! \n Опубликуем после модерации');
+        setTimeout("window.location = 'http://happybirthdayradiot.com'", 3000)
         }
         }
         };
-        request.open('POST', '/check', true);
+        request.open('POST', '/comment', true);
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        request.send("phr="+vphr+"&lgn="+vlgn);
+        request.send("au="+vauth+"&cm="+vcmnt);
         }
         //END OF AUTHSUBMIT FUNCTION
       
