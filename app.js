@@ -482,7 +482,7 @@ app.get('/gets',function(req,res){
 });
 
 app.post('/comment',function(req,res){
-    console('NEW COMMENT');
+    console.log('NEW COMMENT');
     var ms = {};
     ms.trouble=1;
     ms.mtext='email incorrect'; 
