@@ -24,6 +24,10 @@ head
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
+      @font-face {
+        font-family:proxima;
+        src: url('/bootstrap/fontsProximaNova-Sbold-webfont.woff');
+      }
       body {
       min-width:768px;
       font-weight:100;
@@ -368,9 +372,10 @@ head
       }
       #closerestore {
       color: rgba(255, 255, 255, 0.52);
+      margin-top: 50px;
       }
       .ease {
-        -webkit-transition: filter 0.3s ease;
+        transition: 0.3s -webkit-filter linear;
       }
   body
     script.

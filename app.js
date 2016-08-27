@@ -35,17 +35,17 @@ app.use(cookieParser());
 app.use(express.compress());
 // TO DO get this up when ttesting done app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(sessions({
-  cookieName: 'session',
-  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
-  duration:4320 * 60 *1000,
-  activeduration:1440 * 60 * 1000,
-  cookie: {
-    path:'/',
-  httpOnly: true,
-  domain:'peopleandbooks.com'
-  }
-}));
+//app.use(sessions({
+//  cookieName: 'session',
+//  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
+//  duration:4320 * 60 *1000,
+//  activeduration:1440 * 60 * 1000,
+//  cookie: {
+//    path:'/',
+//  httpOnly: true,
+//  domain:'peopleandbooks.com'
+//  }
+//}));
 
 
 app.get('*', function(req,res,next) {   
@@ -69,230 +69,6 @@ app.get('*', function(req,res,next) {
 
 
 
-app.get('/test',function (req,res){
-  items.findOne({user:req.session._id},function (err,done){
-                  res.send(done);});
-});
-
-//-----------------test-----------------//
-
-app.get('/counter',function (req,res){
- // if(req.session)
- //{console.log(req.session.polo);
- // res.render('index_counter',{'known':1});}
- //else {
- // res.render('index_counter',{'known':0});
- //}
- res.render('index_counter_out');
-});
-
-app.get('/counter/p3345',function (req,res){
-  res.render('index_counter');
-});
-
-app.get('/counter/initdb',function (req,res){
-  stats.remove({},function(err,done){
-  stats.insert({queryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
-  stats.find({},function(err,done){
-    res.redirect('/counter');
-  });
- });
-});
-
-app.get('/counter/showmovies',function (req,res){
-  movies.find({},function(err,done){
-    res.send(done);
-  });
-});
-
-app.get('/counter/showstats',function (req,res){
-  stats.find({},function(err,done){
-    res.send(done);
-  });
-});
-
-app.get('/counter/deletemovies',function (req,res){
-  movies.remove({},function(err,done){
-  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
-    res.redirect('/counter/initdb');
-  });
-});
-
-app.post('/counter/getmovies',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  movies.find({},function(err,doc){
-    if(err) {
-      console.log('ERR WHILE MOVIES QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
-
-app.post('/counter/getstat',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  stats.find({},function(err,doc){
-    if(err) {
-      console.log('ERR WHILE STATS QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
-
-app.post('/counter/rm_movie/:newmovie/:movie_id',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  var vmovie_id = req.params.movie_id;
-  var vnewmovie = req.params.newmovie;
-  if(vmovie_id) {
-    movies.remove({_id:vmovie_id},function(err,done){
-      if(err) {
-        res.send(ms);
-      }
-      else {
-        if(vnewmovie)
-        {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,totalmovies:-1}});}
-        else {
-         stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,totalmovies:-1}});
-        }
-        res.send(ms);
-      }
-    });
-  }
-  else {
-    res.send(ms);
-  }
-});
-
-app.post('/counter/switch_clmn/:movie_id',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  var vmovie_id = req.params.movie_id;
-  if(vmovie_id) {
-    movies.findOne({_id:vmovie_id},function(err,done){
-      if(err) {
-        res.send(ms);
-      }
-      else {
-        var set_var = parseInt(done.newmovie)?0:1;
-        movies.update({_id:vmovie_id},{$set:{newmovie:set_var}},function(err,done2){
-         if(err) {
-           res.send(ms);
-         }
-         else {
-           if(done.newmovie)
-           {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,seenmovies:1}});}
-           else {
-            stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,newmovies:1}});
-           }
-           ms.trouble=0;
-           ms.present_clmn=set_var;
-           console.log('hey');
-           res.send(ms);
-         }
-    });
-      }
-    });
-  }
-});
-  
-app.post('/counter/addmovie',function(req,res){
- console.log('adding a movie');
-  var ms = {};
-  ms.trouble =1;
- 
-    var vmovietitle = req.body.movietitle;
-    var vnewmovie = parseInt(req.body.newmovie);
-    console.log('breakpoint one');
-    var vmovieyear = req.body.year;
-    var vmoviestar = parseInt(req.body.star);
-    console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
-    var dd= new Date();
-    var vday = dd.getDate().toString();
-    if (vday.length===1){
-      vday='0'+vday;
-    }
-    var vmonth = dd.getMonth()+1;
-    console.log('breakpoint two');
-    vmonth = vmonth.toString();
-    if (vmonth.length===1){
-      vmonth='0'+vmonth;
-    }
-    var vyear = dd.getUTCFullYear().toString();
-    var fulldate = vyear+vmonth+vday;
-    fulldate = parseInt(fulldate);
-
-    if(!vmovietitle){
-      vmovietitle = '--';
-      //SEND ERROR
-    }
-    if(!vmovieyear){
-      vvmovieyear = '--';
-    }
-  var vtmstmp = Date.now();
-  movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp});
-  if(vnewmovie)
-  {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
-  else {
-   stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
-  }
-   res.send('ok');         
-             
-});
-
-app.post('/backup',function (req,res){
-  { var json = [];
-     movies.find({},function (err,doc2){
-        if(err){
-           console.log('ERR WHILE BACKUP REQUEST');
-           console.log(err2);
-         }
-         else 
-       {
-         doc2.forEach(function(element,index){
-          json.push(element);
-         });
-         var d = new Date();
-         var vday = d.getDate().toString();
-         var vmonth = d.getMonth()+1;
-         vmonth = vmonth.toString();
-         var vyear = d.getUTCFullYear().toString();
-         console.log('beginning');
-         if (vday.length===1){
-                vday='0'+vday;
-              }
-         if (vmonth.length===1){
-                vmonth='0'+vmonth;
-              }
-         var date= vday+'/'+vmonth+'/'+vyear;
-         var filename = 'Movies_backup_'+date+'.json'; // or whatever
-         var mimetype = 'application/json';
-         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-         res.setHeader('Content-type', mimetype);
-         res.write(JSON.stringify(json));
-         res.end();
-       }
-     });
-    //res.redirect('/');
-    }
-});
 
 function validateJSON(body) {
   try {
@@ -305,47 +81,12 @@ function validateJSON(body) {
   }
 }
 
-
-
-app.post('/counter/restore',function (req,res){
- // if(req.session._id){      
-  console.log('breakpoint 0, req.files: \n'+req.files);
-    var oldPath = req.files.userjson.path;
-     console.log('breakpoint 1');
-    fs.readFile(oldPath , 'utf8', function(err, data) {
-       console.log('breakpoint 2');
-      var valid = validateJSON(data);
-       console.log('breakpoint 3');
-       if (valid) {
-         console.log('breakpoint 4');
-         data = JSON.parse(data);
-         data.forEach(function(element,index){
-           console.log('breakpoint loop');
-          movies.insert({year:element.year,movietitle:element.movietitle,newmovie:element.newmovie,star:element.moviestar,regdateint:element.regdateint,tmstmp:element.tmstmp});
-          if(element.newmovie)
-          {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
-          else {
-            stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
-          }
-         });
-       }
-        console.log('breakpoint 5');
-      fs.unlink(oldPath, function(){
-        //if(err) throw err;
-        if(err) console.log(err);
-        res.redirect('/counter');
-       });
-    });
- //  }
- // else {
- //   res.redirect('/');
- // }
+app.get('/',function(req,res){
+  res.render('index');
 });
 
-//------------------test-------------------//
 
-
-app.get('/',function(req,res) {
+app.get('/o',function(req,res) {
     var tmstmp=0;
     if(req.session.tmstmp)
     {console.log('setting last_visit');
