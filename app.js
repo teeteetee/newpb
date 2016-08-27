@@ -85,6 +85,10 @@ app.get('/',function(req,res){
   res.render('index');
 });
 
+app.get('/tryindex',function(req,res){
+  res.render('tryindex');
+});
+
 app.get('/8871',function(req,res){
   comments.find({},function (err,doc){
     //console.log(doc);
