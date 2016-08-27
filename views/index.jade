@@ -198,7 +198,7 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         $('#sendcomment').click(function(){
-          if(vauth&&vcmnt) {
+          if($('#author').val()&&$('#comment').val()) {
           sendcmnt();
         }
         else {
@@ -206,7 +206,6 @@ head
           }
         });
         function sendcmnt() {
-        allowauth = 0;
         var vauth = $('#author').val();
         var vcmnt = $('#comment').val();
         request = new XMLHttpRequest();
