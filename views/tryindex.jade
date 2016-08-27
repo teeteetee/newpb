@@ -191,6 +191,12 @@ head
             input(class='form-control' type='text' style='margin-bottom:5px;' id='author' name='mail' placeholder='как вы хотите войти в историю')
             textarea(class='form-control' type='text' id='comment' name='comment' placeholder='текст поздравления')
             button(id='sendcomment' class='btn btn-primary' style='margin-top:20px;' type='button') Поздравить
+      script(src="https://mc.yandex.ru/metrika/watch.js" type="text/javascript")
+      script(type="text/javascript")
+       try { var yaCounter39286525 = new Ya.Metrika({ id:39286525, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { }
+      noscript
+        div
+          img(src="https://mc.yandex.ru/watch/39286525" style="position:absolute; left:-9999px;" alt="")
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
@@ -229,6 +235,56 @@ head
         request.send("au="+vauth+"&cm="+vcmnt);
         }
         //END OF AUTHSUBMIT FUNCTION
-        
+        var consolidated =[];
+        $.ajax({
+              method: "POST",
+              url: "/getcomments",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log('movies: '+msg.doc);
+                   var comments=msg.doc;
+                  if(!comments || !comments.length) {
+                   console.log('no movies');
+                   }
+                   else {
+                    comments.forEach(function (element,index){
+                    element.item_type = 'comment';
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'regdate');
+                   populate(consolidated);
+                 }
+                }
+              });
+        function populate(consolidated) {
+         consolidated.forEach(function (element,index){
+            if($(".noitemsnew")[0]&&element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#newmovies').empty();}
+            if($(".noitemsold")[0]&&!element.newmovie)
+                   { console.log('HAS LENGTH');
+                     $('#oldmovies').empty();}
+           var insert;
+                if(element.star&&!element.newmovie){
+                     console.log('1st case');
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
+                     }else{
+                     console.log('2st case');
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
+                   }  
+            if(element.newmovie){  
+               $('#newmovies').prepend(insert);
+           }
+           else {
+            $('#oldmovies').prepend(insert);
+           }
+           });
+          level();
+          } 
+
         
       
