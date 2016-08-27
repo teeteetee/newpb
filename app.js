@@ -16,7 +16,7 @@ var gm = require('gm');
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , users = db.get('comments'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
+  , comments = db.get('comments'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
