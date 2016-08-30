@@ -9,18 +9,15 @@ var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
 var ObjectID = require('mongodb').ObjectID;
 var http = require('http');
-//var gm = require('gm').subClass({imageMagick: true}); - crashes , no binaries found
-var gm = require('gm');
 
 
 
 var mongo = require('mongodb').MongoClient;
 var db = require('monk')('localhost/tav')
-  , comments = db.get('comments'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
+  , concepts = db.get('concepts'),questions = db.get('questions'), stats = db.get('stats');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
-var lwip = require('lwip');
 
 var app = express();
 
