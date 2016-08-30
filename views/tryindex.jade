@@ -31,7 +31,6 @@ head
       body {
       min-width:768px;
       font-weight:100;
-      text-transform:uppercase;
       letter-spacing:2px;
       font-size:10px;
       }
@@ -344,19 +343,20 @@ head
         background-color:white;
       }
       #oldcol{
-       background-color:#2b86b3;
+       background-color:#292929;
       }
       #newcol{
-       background-color:#d03939;
+       background-color:#292929;
+       color:#989898;
       }
       /*.pop:hover{
         background-color:#e47e66 !important;;
         color:white;
       }*/
-      #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
-      background-color: #2176a0;}
-      #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
-      background-color: #b73030;}
+      .table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #313131;}
+      /*#newcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #b73030;}*/
       .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
       border-top: 0px;}
       .table.table-striped {
@@ -378,7 +378,11 @@ head
         transition: 0.3s -webkit-filter linear;
       }
       a {
-        color:white;
+        color:#989898;
+      }
+      h1{
+        text-shadow: 0px 0px 3px #c38b33;
+        color: #f9b74e;
       }
   body
     script.
@@ -466,7 +470,7 @@ head
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
-        .col-sm-6.itemcol#oldcol(style='border-right:1px solid #a03a3a;')
+        .col-sm-6.itemcol#oldcol(style='border-right:1px solid #1d1d1d;')
           h1#oldnum 0
           h5 Concepts
           table.table.table-striped
@@ -558,7 +562,7 @@ head
                        { console.log('HAS LENGTH');
                        $('#concepts').empty();}
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.title+" / topic:"+element.topic+"</a></th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.title+" </a></th></tr>";
                      $('#concepts').prepend(insert);
                      }else{
                      if($(".noquestions")[0])
