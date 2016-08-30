@@ -581,6 +581,27 @@ head
           level();
           } 
         //----------------------------//
+        $('#add').click(function(){
+          $('#addbook').modal('show');
+          });
+        $('#oldmovie').click(function(){
+        if($('#oldmovie').hasClass('active')){
+        }
+        else{
+          $('#oldmovie').addClass('active');
+          $('#newmovie').removeClass('active');
+        }
+        });
+        $('#newmovie').click(function(){
+        if($('#newmovie').hasClass('active')){
+        }
+        else{
+          $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+        }
+        });
+        //
+        //----------------------------//
         function redactmoviemodal (i) {
         // TODO screen blocker must be added to prevent user from interfering 
         insert = 'removemovie('+i+')';
