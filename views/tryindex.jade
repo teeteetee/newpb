@@ -465,7 +465,7 @@ head
       .row(style='text-align:center;')
         .col-sm-6.itemcol#oldcol(style='border-right:1px solid #a03a3a;')
           h1#oldnum 0
-          h5 посмотрел
+          h5 Concepts
           table.table.table-striped
             tbody#concepts
               tr.noconcepts
@@ -474,7 +474,7 @@ head
 
         .col-sm-6.itemcol#newcol
           h1#newnum 0
-          h5 в планах
+          h5 Questions
           table.table.table-striped
             tbody#questions
               tr.noquestions
@@ -483,6 +483,18 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          });
+        }
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        function level() {
+          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
+        }
         function sendcmnt() {
         var vauth = $('#author').val();
         var vcmnt = $('#comment').val();
