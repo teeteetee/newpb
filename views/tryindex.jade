@@ -5,7 +5,6 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    meta(name="yandex-verification" content="a60d92fc70af3d6a")
     |     
     title P&B
     // Bootstrap
@@ -27,14 +26,23 @@ head
       }
       @font-face {
         font-family:proxima;
-        src: url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+        src: url('/bootstrap/fontsProximaNova-Sbold-webfont.woff');
       }
       body {
       min-width:768px;
-      font-family:roboto-thin;
+      font-weight:100;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:10px;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight:100 !important;
       }
       .navbar-nav {
        float: right;
+      }
+      #showLeft:hover {
+       color:white !important;
       }
       .cbp-spmenu {
         background: #1d1d1d;
@@ -55,6 +63,10 @@ head
         color: white;
         font-size: 1.1em;
         font-weight: 300;
+        text-align: center;
+       padding-top: 20px;
+       padding-bottom: 20px;
+       letter-spacing: 5px;
       }
       
       .cbp-spmenu a:hover {
@@ -67,6 +79,7 @@ head
         color: #47a3da;
       }
       .cbp-spmenu-vertical {
+        padding-top:10px;
         width: 240px;
         margin-left:74px;
         border-left:1px solid #333;
@@ -75,9 +88,9 @@ head
         z-index: 1000;
       }
       
-      .cbp-spmenu-vertical a {
+      /*.cbp-spmenu-vertical a {
         padding: 1em;
-      }
+      }*/
       .cbp-spmenu-left {
         left: -240px;
       }
@@ -152,7 +165,6 @@ head
       height:100%;
       background-image:url('/bootstrap/images/books.jpg');
       position:fixed;
-      background-color:#A1D0C0;
       background-position:center;
       background-size: cover;
       background-repeat:no-repeat;
@@ -166,43 +178,311 @@ head
         -webkit-transition: 0.5s -webkit-filter linear;
         -moz-transition: 0.5s -moz-filter linear;
       }
+      .loader {
+      margin: 60px auto;
+      margin-top:20%;
+      font-size: 10px;
+      position: relative;
+      text-indent: -9999em;
+      border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+      border-left: 1.1em solid #ffffff;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load8 1.1s infinite linear;
+      animation: load8 1.1s infinite linear;
+      }
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
       nav ul li a {
         border:0px !important;
         background-color:rgba(255, 255, 255, 0.26) !important;
         color:white !important;
       }
-  body(style='background-color:white;')
-    .container
-      .row(style='text-align:center;padding-top:15%;padding-bottom:20px;height:800px;background-color:#f44;')
+      .itemcol {
+        min-height:100vh;
+        padding-left:0px;
+        padding-right:0px;
+        padding-bottom:30px;
+      }
+      .itemcol h1{
+        margin-top:30%;
+        margin-bottom:0px;
+        color:white;
+        font-size:100px;
+        font-family:high;
+        text-align:center;
+      }
+      .itemcol h5{
+        margin-top:0px;
+        margin-bottom:15%;
+        font-family:arial;
+        text-transform:uppercase;
+        letter-spacing:2px;
+        font-size:10px;
+        text-align:center;
+      }
+      //th:first-child {
+      //  padding-left:30px !important;
+      //}
+      th {
+        font-weight:100;
+      }
+      .btn-iosdark {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
+      .modal-sm .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#2d2d2d;
+      }
+      .modal-sm .btn-iosdark:hover {
+        background-color:#424242;
+      }
+      .modal-sm .modal-body .btn {
+      height:50px;
+      border-radius:0px;
+      border-bottom:1px solid #4e4e4e;
+      color:white;
+      }
+      h4 {
+        word-wrap:break-word;
+      }
+      .modal-sm h4 {
+        padding-right:15px;
+        padding-left:15px;
+      }
+      .modal-sm .modal-body .btn:last-child {
+        border:none;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+      }
+      .modal-sm .modal-body {
+        padding:0px;
+        padding-top:15px;
+      }
+      .modal-header {
+        font-family:arial;
+        font-size:11px;
+      border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
+      }
+      /*.pop:hover{
+        background:linear-gradient(45deg, #0d8edd 0%,#ff670f 100%);;
+        color:white;
+      }*/
+      .fileUpload {
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+      }
+      .fileUpload input.upload {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          cursor: pointer;
+          opacity: 0;
+          filter: alpha(opacity=0);
+      }
+      .btn-ioslight {
+        color:white;
+        background-color:none;
+        border:1px solid white;
+      }
+      .btn-ioslight:hover{
+        color:#333;
+        background-color:white;
+      }
+      #oldcol{
+       background-color:#2b86b3;
+      }
+      #newcol{
+       background-color:#d03939;
+      }
+      /*.pop:hover{
+        background-color:#e47e66 !important;;
+        color:white;
+      }*/
+      #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #2176a0;}
+      #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      background-color: #b73030;}
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+      border-top: 0px;}
+      .table.table-striped {
+        color:white;
+      }
+      label {
+        font-weight:100;
+      }
+      .btn-wrning {
+        color: #fff;
+       background-color: #f53a3a;
+       border-color: #712e2e;
+      }
+      #closerestore {
+      color: rgba(255, 255, 255, 0.52);
+      margin-top: 50px;
+      }
+      .ease {
+        transition: 0.3s -webkit-filter linear;
+      }
+  body
+    script.
+     // if(screen.width < 414){
+     // window.location='http://m.peopleandbooks.com/';
+      //}
+
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      //h3(style='text-align:center;color:orange;') People & Books
+      //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
+      //form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+      //  .input-group
+      //     input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
+      //     span(class='input-group-btn')
+      //       button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
+      //         span(class='glyphicon glyphicon-search') 
+      a( style='padding-top:20px;' id='add') 
+        span(style='font-weight:bold;') + 
+        | Добавить
+      a( style='padding-top:20px;' id='backup') Backup
+      a( style='padding-top:20px;' id='restore') Restore
+    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
+      //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
+    .bckgrnd
+    .container(id='restoreblock' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row
+        .col-xs-12(style='text-align:center;padding-top:20%')
+          form#restore_form(action='/counter/restore', method='POST',enctype="multipart/form-data")
+            .fileUpload.btn.btn-ioslight(style='margin:auto;')
+              span(style='text-transform:uppercase;') Upload restore file
+              input#restore_file(type="file" class="upload" name='userjson')
+          h3#closerestore close
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader 
+    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.moviemodaltitle(style='text-align:center;')
+              //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+              button(class='btn btn-iosdark  form-control switch') Switch column
+              button(class='btn btn-iosdark form-control movie_remove') Remove
+    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" ) 
+              span(style='font-weight:bold;') + 
+              | Добавляем фильм
+          .modal-body
+            .row  
+              .col-xs-12
+                form
+                  .form-group
+                    label(for="mtitle") Titile
+                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                    .row.autocomp#autocompmovies
+                      .col-xs-12#srm
+                  .form-group
+                    label(for="year") Year
+                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group#new_old(style='display:block;')
+                  button(class='btn btn-iosdark active' id='oldmovie' type='button') Посмотрел
+                  button(class=' btn btn-iosdark' id='newmovie'  type='button' )  В планах
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group(style='display:block;')
+                  button(class='btn btn-iosdark' id='hasstar' type='button') Выделить
+                  button(class=' btn btn-iosdark active' id='nostar'  type='button' )  Не надо            
+          .modal-footer(style='text-align:center;')
+            a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
+    //.container(style='padding-left:84px;z-index:2;')  
+    #colcont.ease.container-fluid(style='padding-left:84px;z-index:2;')
+      .row(style='display:none;')
         .col-xs-12
-          h1(style='font-size:50px;font-family:proxima;color:white;') Happy birthday radio-t ! 
-          h3(style='color:white;') Our favourite tech podcast
-          h1(style='font-size:200px;color:white;') 10
-      .row(style='height:800px;background-color:#c73535;')
-        .col-xs-12(style='text-align:center;padding-top:30%;')
-          h2(style='font-family:proxima;margin-bottom:30px;') Любимому подкасту 10 лет
-          h3 Когда-то давным-давно я начал слушать подкаст о котором прочитал в интернете, спустя десят лет он по-прежнему в эфире. Хочу пожелать любимым ведущим uptime пять девяток и продолжать радовать нас по субботам, а мне и остальным радиослушателям – пятидневной рабочей недели. (-:
-          h6(style='margin-top:30px;') ANONYMOUS
-      .row(style='height:500px;padding-top:15%;text-align:center;background-color:#982f2f;')
-        .col-xs-6.col-xs-offset-3
-          h2(style='font-family:proxima;color:white;') Оставьте пожелание
-          h5(style='color:white;margin-bottom:5%;') Потом постараюсь договориться, чтобы повесили на поддомен как монумент
-          form
-            input(class='form-control' type='text' style='margin-bottom:5px;' id='author' name='mail' placeholder='как вы хотите войти в историю')
-            textarea(class='form-control' type='text' id='comment' name='comment' placeholder='текст поздравления')
-            button(id='sendcomment' class='btn btn-primary' style='margin-top:20px;' type='button') Поздравить
+          form(method='post',action='/backup',role='form',id='backupform')
+      .row(style='text-align:center;')
+        .col-sm-6.itemcol#oldcol(style='border-right:1px solid #a03a3a;')
+          h1#oldnum 0
+          h5 посмотрел
+          table.table.table-striped
+            tbody#concepts
+              tr.noconcepts
+                th(style='padding-left:30px !important;') Пока пусто
+                th --
+
+        .col-sm-6.itemcol#newcol
+          h1#newnum 0
+          h5 в планах
+          table.table.table-striped
+            tbody#questions
+              tr.noquestions
+                th(style='padding-left:30px !important;') Пока пусто
+                th --
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter39286525 = new Ya.Metrika({ id:39286525, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
-        $('#sendcomment').click(function(){
-          if($('#author').val()&&$('#comment').val()) {
-          sendcmnt();
-        }
-        else {
-          return 1;
-          }
-        });
         function sendcmnt() {
         var vauth = $('#author').val();
         var vcmnt = $('#comment').val();
@@ -233,50 +513,48 @@ head
         var consolidated =[];
         $.ajax({
               method: "POST",
-              url: "/getcomments",
+              url: "/getdata",
               data: 0
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log('movies: '+msg.doc);
-                   var comments=msg.doc;
-                  if(!comments || !comments.length) {
-                   console.log('no movies');
-                   }
-                   else {
-                    comments.forEach(function (element,index){
-                    element.item_type = 'comment';
+                   var concepts=msg.concepts;
+                   var questions=msg.questions;
+                  
+                    concepts.forEach(function (element,index){
+                    element.item_type = 'concept';
                     consolidated.push(element);
                     });
-                   }
+                    questions.forEach(function (element,index){
+                    element.item_type = 'question';
+                    consolidated.push(element);
+                    });
+                   
                    if(consolidated.length){
-                   sortByKey(consolidated, 'regdate');
+                   sortByKey(consolidated, 'tmstmp');
                    populate(consolidated);
                  }
                 }
               });
         function populate(consolidated) {
          consolidated.forEach(function (element,index){
-            if($(".noitemsnew")[0]&&element.newmovie)
-                   { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
-            if($(".noitemsold")[0]&&!element.newmovie)
-                   { console.log('HAS LENGTH');
-                     $('#oldmovies').empty();}
            var insert;
-                if(element.star&&!element.newmovie){
+                if(element.item_type==='concept'){
+                     if($(".noconcepts")[0]&&element.newmovie)
+                       { console.log('HAS LENGTH');
+                       $('#newmovies').empty();}
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.c_name+"</a></th></tr>";
+                     $('#concepts').prepend(insert);
                      }else{
+                     if($(".noquestions")[0]&&element.newmovie)
+                       { console.log('HAS LENGTH');
+                       $('#newmovies').empty();}
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.q_body+"</th></tr>"; 
+                   $('#questions').prepend(insert);
                    }  
-            if(element.newmovie){  
-               $('#newmovies').prepend(insert);
-           }
-           else {
-            $('#oldmovies').prepend(insert);
-           }
            });
           level();
           } 

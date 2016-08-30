@@ -102,8 +102,20 @@ app.get('/8871',function(req,res){
   });
 });
 
+app.post('/getdata',function (req,res){
+  var msg={};
+  msg.trouble=0;
+  concepts.find({},function (err,done){
+    questions.find({},function (err2,done2){
+      msg.questions = done2;
+      msg.concepts = done;
+      res.send(msg);
+    });
+  });
+});
 
-app.post('/comment',function(req,res){
+
+app.post('/addquestion',function(req,res){
     console.log('NEW COMMENT');
     var ms = {};
     ms.trouble=1;
@@ -114,7 +126,7 @@ app.post('/comment',function(req,res){
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-      comments.insert({comment:vcm,author:vauth,regdate:Date.now()},function (err,done){
+      questions.insert({q_body:vcm,tmstmp:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
@@ -130,6 +142,36 @@ app.post('/comment',function(req,res){
         
     
     });
+
+app.post('/addconcept',function(req,res){
+    console.log('NEW COMMENT');
+    var ms = {};
+    ms.trouble=1;
+    ms.mtext='email incorrect'; 
+    var vauth = req.body.au;
+    var vcm = req.body.cm;
+    var ms = {};
+    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
+    // CHECK MAIL BEFOR WRTING
+    //checkmail function was here before being moved out of scope
+      concepts.insert({c_name:vcm,link:vauth,tmstmp:Date.now()},function (err,done){
+        if(err)
+        {
+          ms.mtext='db';
+         res.send(ms); 
+        }
+      else {
+      ms.trouble =0;
+      ms.mtext='success';
+      res.send(ms);
+      
+      }
+      });
+        
+    
+    });
+
+
 
 
 // production error handler
