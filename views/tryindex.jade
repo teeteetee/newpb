@@ -576,6 +576,51 @@ head
            });
           level();
           } 
-
+        //----------------------------//
+        function redactmoviemodal (i) {
+        // TODO screen blocker must be added to prevent user from interfering 
+        insert = 'removemovie('+i+')';
+        insert2 = 'switch_clmn('+i+')';
+        $('.movie_remove').attr('onclick',insert);
+        $('.switch').attr('onclick',insert2);
+        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
+        $('.moviemodalyear').text(consolidated[i].year);
+        $('#moviemodal').modal('show');
+        }
+        //----------------------------//
+        $('#shownav').click(function(){
+          $('#shownav').fadeOut();
+          $('#nav').fadeIn();
+          });
+        $('#login').click(authsubmit);
+        var counter =0;
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            showLeftPush = document.getElementById( 'showLeftPush' ),
+            showRightPush = document.getElementById( 'showRightPush' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         $('#showLeft').removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                          $('#colcont').css('-webkit-filter','blur(0px)');
+                         //$('.container-fluid').css('-webkit-filter','brightness(1)');
+                         //$('.bckgrnd').css('-webkit-filter','brightness(0.6)');
+                        break;
+                        case(0):
+                          counter=1;
+                          $('#showLeft').addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          $('#colcont').css('-webkit-filter','blur(5px)');
+                          //$('.container-fluid').css('-webkit-filter','brightness(0.6)');
+                          //$('.bckgrnd').css('-webkit-filter','brightness(0.3)');
+                        break;
+                      }
+        };
         
       
