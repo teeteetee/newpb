@@ -555,7 +555,7 @@ head
                        { console.log('HAS LENGTH');
                        $('#concepts').empty();}
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.c_name+"</a></th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.title+" / topic:"+element.topic+"</a></th></tr>";
                      $('#concepts').prepend(insert);
                      }else{
                      if($(".noquestions")[0])

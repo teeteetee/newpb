@@ -152,7 +152,7 @@ app.post('/addconcept',function(req,res){
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-      concepts.insert({c_name:vcm,link:vauth,tmstmp:Date.now()},function (err,done){
+      concepts.insert({title:vcm,link:vauth,topic:v_topic,tmstmp:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
