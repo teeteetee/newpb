@@ -106,6 +106,7 @@ app.post('/getdata',function (req,res){
     questions.find({},function (err2,done2){
       msg.questions = done2;
       msg.concepts = done;
+      console.log('sending:\n'+done+'\n'+done2);
       res.send(msg);
     });
   });
