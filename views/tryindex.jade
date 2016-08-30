@@ -271,6 +271,7 @@ head
       .modal-sm h4 {
         padding-right:15px;
         padding-left:15px;
+        margin-bottom:40px;
       }
       .modal-sm .modal-body .btn:last-child {
         border:none;
@@ -432,7 +433,7 @@ head
             .modal-body
               h4.moviemodaltitle(style='text-align:center;')
               //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-              button(class='btn btn-iosdark  form-control switch') Switch column
+              button(class='btn btn-iosdark  form-control switch') Edit
               button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -453,18 +454,19 @@ head
                     .row.autocomp#autocompmovies
                       .col-xs-12#srm
                   .form-group
-                    label(for="year") Year
+                    label(for="year") Link [concepts only]
                     input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
             .row  
               .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
                 .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark active' id='oldmovie' type='button') Посмотрел
-                  button(class=' btn btn-iosdark' id='newmovie'  type='button' )  В планах
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group(style='display:block;')
-                  button(class='btn btn-iosdark' id='hasstar' type='button') Выделить
-                  button(class=' btn btn-iosdark active' id='nostar'  type='button' )  Не надо            
+                  button(class='btn btn-iosdark active' id='oldmovie' type='button') Concept
+                  button(class=' btn btn-iosdark' id='newmovie'  type='button' )  Question
+            //
+              .row  
+                .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                  .btn-group(style='display:block;')
+                    button(class='btn btn-iosdark' id='hasstar' type='button') Выделить
+                    button(class=' btn btn-iosdark active' id='nostar'  type='button' )  Не надо            
           .modal-footer(style='text-align:center;')
             a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
     //.container(style='padding-left:84px;z-index:2;')  
