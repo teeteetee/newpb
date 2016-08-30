@@ -377,6 +377,9 @@ head
       .ease {
         transition: 0.3s -webkit-filter linear;
       }
+      a {
+        color:white;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -562,7 +565,7 @@ head
                        { console.log('HAS LENGTH');
                        $('#questions').empty();}
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.q_body+"</th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.title+"</th></tr>"; 
                    $('#questions').prepend(insert);
                    }  
            });
