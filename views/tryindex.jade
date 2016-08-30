@@ -59,7 +59,7 @@ head
       
       .cbp-spmenu a {
         display: block;
-        color: white;
+        color: #f9b74e;
         font-size: 1.1em;
         font-weight: 300;
         text-align: center;
@@ -585,8 +585,8 @@ head
         insert2 = 'switch_clmn('+i+')';
         $('.movie_remove').attr('onclick',insert);
         $('.switch').attr('onclick',insert2);
-        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
-        $('.moviemodalyear').text(consolidated[i].year);
+        $('.moviemodaltitle').text(consolidated[i].title.capitalizeFirstLetter());
+        //$('.moviemodalyear').text(consolidated[i].year);
         $('#moviemodal').modal('show');
         }
         //----------------------------//
