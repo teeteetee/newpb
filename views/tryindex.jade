@@ -563,14 +563,14 @@ head
                        { console.log('HAS LENGTH');
                        $('#concepts').empty();}
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><a href='"+element.link+"'>"+element.title+" </a></th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th ><a href='"+element.link+"'>"+element.title+" </a></th></tr>";
                      $('#concepts').prepend(insert);
                      }else{
                      if($(".noquestions")[0])
                        { console.log('HAS LENGTH');
                        $('#questions').empty();}
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.title+"</th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th >"+element.title+"</th></tr>"; 
                    $('#questions').prepend(insert);
                    }  
            });
