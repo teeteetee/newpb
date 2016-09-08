@@ -24,10 +24,6 @@ head
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
-      @font-face {
-        font-family:proxima;
-        src: url('/bootstrap/fontsProximaNova-Sbold-webfont.woff');
-      }
       body {
       min-width:768px;
       font-weight:100;
@@ -745,7 +741,7 @@ head
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
-        var tt;//empty
+        $('#login').click(authsubmit);
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
