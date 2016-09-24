@@ -407,12 +407,14 @@ head
           if(!$('.seen').hasClass('active')){
             $('#newones').hide();
             $('#oldones').show();
+            $('.seen').removeClass('active');
           }
           });
         $('.new').click(function(){
           if(!$('.new').hasClass('active')) {
             $('#newones').show();
             $('#oldones').hide();
+            $('.now').removeClass('active');
           }
           });
         $('#closewait').click(function(){
