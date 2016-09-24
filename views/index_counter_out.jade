@@ -369,9 +369,9 @@ head
           h1(style='color:#0f5c82;')#oldnum 0
           h5(style='color:#0f5c82;') посмотрел
           .btn-group
-            button.btn.btn-default
-            button.btn.btn-default
-            button.btn.btn-default
+            button#seen.btn.btn-default.active seen 
+            button#new.btn.btn-default new
+            button.btn.btn-default login
           table.table.table-striped
             tbody#oldmovies
               tr.noitemsold
@@ -396,12 +396,14 @@ head
         $('#about').click(function(){
           $('#wait').fadeIn();
           });
-        $('#movies').click(function(){
-          if($('#newones').css('display')!='none'){
+        $('#seen').click(function(){
+          if(!$('#seen').hasClass('active')){
             $('#newones').hide();
             $('#oldones').show();
           }
-          else {
+          });
+        $('#new').click(function(){
+          if(!$('#new').hasClass('active')) {
             $('#newones').show();
             $('#oldones').hide();
           }
