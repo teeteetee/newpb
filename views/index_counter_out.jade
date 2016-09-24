@@ -372,8 +372,8 @@ head
           h1(style='color:#0f5c82;')#oldnum 0
           h5(style='color:#0f5c82;') посмотрел
           .btn-group
-            button#seen.btn.btn-default.active seen 
-            button#new.btn.btn-default new
+            button.seen.btn.btn-default.active seen 
+            button.new.btn.btn-default new
             button.btn.btn-default login
           table.table.table-striped
             tbody#oldmovies
@@ -385,6 +385,10 @@ head
         .col-sm-8.col-sm-offset-2.itemcol#newcol
           h1#newnum 0
           h5 в планах
+          .btn-group
+            button.seen.btn.btn-default.active seen 
+            button.new.btn.btn-default new
+            button.btn.btn-default login
           table.table.table-striped
             tbody#newmovies
               tr.noitemsnew
@@ -399,14 +403,14 @@ head
         $('#about').click(function(){
           $('#wait').fadeIn();
           });
-        $('#seen').click(function(){
-          if(!$('#seen').hasClass('active')){
+        $('.seen').click(function(){
+          if(!$('.seen').hasClass('active')){
             $('#newones').hide();
             $('#oldones').show();
           }
           });
-        $('#new').click(function(){
-          if(!$('#new').hasClass('active')) {
+        $('.new').click(function(){
+          if(!$('.new').hasClass('active')) {
             $('#newones').show();
             $('#oldones').hide();
           }
