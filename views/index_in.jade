@@ -353,22 +353,39 @@ head
         display:none;
       }
   body
-    //
-      nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
-        //h3(style='text-align:center;color:orange;') People & Books
-        //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-top:20px;margin-bottom:20px;margin-left:auto;margin-right:auto;width:64px;height:64px;' alt="...")
-        //form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-        //  .input-group
-        //     input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:30px;border-bottom-left-radius:30px;') 
-        //     span(class='input-group-btn')
-        //       button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:30px;border-bottom-right-radius:30px;')
-        //         span(class='glyphicon glyphicon-search') 
-        a( style='padding-top:20px;' id='about') About
-        a( style='padding-top:20px;' id='movies') Movies
-      .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
-        //img(class="media-object img-circle" src="/images/pblogov4.png" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
-        span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    //.bckgrnd
+    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" ) 
+              span(style='font-weight:bold;') + 
+              | Добавляем фильм
+          .modal-body
+            .row  
+              .col-xs-12
+                form
+                  .form-group
+                    label(for="mtitle") Titile
+                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                    .row.autocomp#autocompmovies
+                      .col-xs-12#srm
+                  .form-group
+                    label(for="year") Year
+                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group#new_old(style='display:block;')
+                  button(class='btn btn-iosdark active' id='oldmovie' type='button') Посмотрел
+                  button(class=' btn btn-iosdark' id='newmovie'  type='button' )  В планах
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group(style='display:block;')
+                  button(class='btn btn-iosdark' id='hasstar' type='button') Выделить
+                  button(class=' btn btn-iosdark active' id='nostar'  type='button' )  Не надо            
+          .modal-footer(style='text-align:center;')
+            a(class='btn btn-warning btn-submit'  id='submitmovie' ) Добавить
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
       .row
         //background: linear-gradient(to bottom, #0d8edd 0%,#ff670f 100%);
@@ -393,7 +410,7 @@ head
           .btn-group(style='margin-bottom:10%;')
             button.seen.btn.btn-default.active seen 
             button.new.btn.btn-default to see
-            button.btn.btn-default login
+            button.btn.btn-default.add + add
             .btn-group
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
                 span.caret
@@ -420,7 +437,7 @@ head
           .btn-group(style='margin-bottom:10%;')
             button.seen.btn.btn-default.active seen 
             button.new.btn.btn-default to see
-            button.btn.btn-default login
+            button.btn.btn-default.add + add
             .btn-group
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
                 span.caret
@@ -474,6 +491,43 @@ head
           $('#newones').css('overflow','auto');
           }
           });
+        //----------------------------//
+        $('.add').click(function(){
+          $('#addbook').modal('show');
+          });
+        $('#oldmovie').click(function(){
+        if($('#oldmovie').hasClass('active')){
+        }
+        else{
+          $('#oldmovie').addClass('active');
+          $('#newmovie').removeClass('active');
+        }
+        });
+        $('#newmovie').click(function(){
+        if($('#newmovie').hasClass('active')){
+        }
+        else{
+          $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+        }
+        });
+        //
+         $('#hasstar').click(function(){
+        if($('#hasstar').hasClass('active')){
+        }
+        else{
+          $('#hasstar').addClass('active');
+          $('#nostar').removeClass('active');
+        }
+        });
+        $('#nostar').click(function(){
+        if($('#nostar').hasClass('active')){
+        }
+        else{
+          $('#nostar').addClass('active');
+          $('#hasstar').removeClass('active');
+        }
+        });
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);

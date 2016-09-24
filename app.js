@@ -87,7 +87,7 @@ app.get('/counter',function (req,res){
 });
 
 app.get('/counter/p3345',function (req,res){
-  res.render('index_counter');
+  res.render('index_in');
 });
 
 app.get('/counter/initdb',function (req,res){
