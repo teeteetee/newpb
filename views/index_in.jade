@@ -132,7 +132,7 @@ head
       th {
         font-weight:300;
       }
-      .btn-iosdark {
+      .btn-iosdark,btn-iosdark-add {
       background-color:white;
       border:1px solid #333;
       color:#333;
@@ -299,11 +299,11 @@ head
       ::-moz-placeholder          {color:#21b363;}/* Firefox 19+ */
       :-moz-placeholder           {color:#21b363;}/* Firefox 18- */
       :-ms-input-placeholder      {color:#21b363;}
-      #addbook .btn-iosdark.active {
+      #addbook .btn-iosdark-add.active {
       background-color: #178e4d;
       color: #28d476;
       }
-      #addbook .btn-iosdark {
+      #addbook .btn-iosdark-add {
       background-color: #21b363;
       border: 1px solid #158448;
       color: #0d5830;
@@ -348,13 +348,13 @@ head
             .row  
               .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
                 .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark active' id='oldmovie' type='button') Посмотрел
-                  button(class=' btn btn-iosdark' id='newmovie'  type='button' )  В планах
+                  button(class='btn btn-iosdark-add active' id='oldmovie' type='button') Посмотрел
+                  button(class=' btn btn-iosdark-add' id='newmovie'  type='button' )  В планах
             .row  
               .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
                 .btn-group(style='display:block;')
-                  button(class='btn btn-iosdark' id='hasstar' type='button') Выделить
-                  button(class=' btn btn-iosdark active' id='nostar'  type='button' )  Не надо            
+                  button(class='btn btn-iosdark-add' id='hasstar' type='button') Выделить
+                  button(class=' btn btn-iosdark-add active' id='nostar'  type='button' )  Не надо            
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
