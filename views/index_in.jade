@@ -469,6 +469,13 @@ head
         //----------------------------//
         $('.add').click(function(){
           $('#addbook').modal('show');
+          if($('#oldones').css('display')!='none')
+            { $('#oldmovie').addClass('active');
+              $('#newmovie').removeClass('active');}
+          else {
+             $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+          }
           });
         $('#oldmovie').click(function(){
         if($('#oldmovie').hasClass('active')){
