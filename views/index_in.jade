@@ -290,6 +290,23 @@ head
       }
       .modal-footer{
         padding:0px;
+        border-top:0px;
+      }
+      .form-control:focus{
+       /* border:none;*/
+      }
+      ::-webkit-input-placeholder {color:#21b363;}
+      ::-moz-placeholder          {color:#21b363;}/* Firefox 19+ */
+      :-moz-placeholder           {color:#21b363;}/* Firefox 18- */
+      :-ms-input-placeholder      {color:#21b363;}
+      #addbook .btn-iosdark.active {
+      background-color: #178e4d;
+      color: #28d476;
+      }
+      #addbook .btn-iosdark {
+      background-color: #21b363;
+      border: 1px solid #158448;
+      color: #0d5830;
       }
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -305,7 +322,7 @@ head
               button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
-        .modal-content
+        .modal-content(style='background-color:#21b363;')
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
@@ -562,7 +579,7 @@ head
         function redactmoviemodal (i) {
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
-          $('.modal-dialog').css('margin-top','30%');
+          $('.modal-dialog').css('margin-top','60%');
         }
         else{
           $('.modal-dialog').css('margin-top','15%');
