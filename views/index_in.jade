@@ -295,7 +295,7 @@ head
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
-          .modal-content
+          .modal-content#colourful
             .modal-header
               button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                 span(aria-hidden="true") ×
@@ -562,6 +562,11 @@ head
           }   
         function redactmoviemodal (i) {
         // TODO screen blocker must be added to prevent user from interfering 
+        if($('#oldones').css('display')!='none')
+          {$('#colourful').css('background-color','#fdb611');}
+        else {
+          $('#colourful').css('background-color','#07daff');
+        }
         insert = 'removemovie('+i+')';
         insert2 = 'switch_clmn('+i+')';
         $('.movie_remove').attr('onclick',insert);
