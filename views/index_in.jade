@@ -353,6 +353,17 @@ head
         display:none;
       }
   body
+    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.moviemodaltitle(style='text-align:center;')
+              //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+              button(class='btn btn-iosdark  form-control switch') Switch column
+              button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -609,6 +620,127 @@ head
            });
            level();
           }   
+        function redactmoviemodal (i) {
+        // TODO screen blocker must be added to prevent user from interfering 
+        insert = 'removemovie('+i+')';
+        insert2 = 'switch_clmn('+i+')';
+        $('.movie_remove').attr('onclick',insert);
+        $('.switch').attr('onclick',insert2);
+        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
+        $('.moviemodalyear').text(consolidated[i].year);
+        $('#moviemodal').modal('show');
+        }
+        //----------------------------//
+        function removemovie(movieid) {
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_movie/"+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              data: 0
+            })
+              .done(function( msg ) {
+                $('#moviemodal').modal('hide');
+                var vname = '.movie_'+consolidated[movieid]._id;
+                $(vname).empty();
+                var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                if(consolidated[movieid].newmovie){
+                  newmovies --;
+                  $('#newnum').text(newmovies);
+                  if($('#newmovies').children().length == 0){
+                    $('#newmovies').prepend(empty_row_new);
+                  }
+                }
+                  else{
+                    seenmovies --;
+                  $('#oldnum').text(seenmovies);
+                  if($('#oldmovies').children().length == 0){
+                    $('#oldmovies').prepend(empty_row_old);
+                  }
+                  }
+              });
+        }
+        //-----------------------------------//
+        function switch_clmn(movieid) {
+          $.ajax({
+                method: "POST",
+                url: "/counter/switch_clmn/"+consolidated[movieid]._id,
+                data: 0
+              })
+                .done(function( msg ) {
+                  console.log(msg);
+                  $('#moviemodal').modal('hide');
+                  console.log('breakpoint 1');
+                  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
+                  console.log('breakpoint 2');
+                  var vname = '.movie_'+consolidated[movieid]._id;
+                  console.log('breakpoint 3');
+                  var element = $(vname).detach();
+                  console.log('breakpoint 4');
+                  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                  if(consolidated[movieid].newmovie)
+                  {if($(".noitemsnew")[0])
+                   { console.log('HAS LENGTH');
+                     $('#newmovies').empty();}
+                     $('#newmovies').prepend(element);
+                  seenmovies--;
+                  newmovies++;
+                  $('#newnum').text(newmovies);
+                  $('#oldnum').text(seenmovies);
+                  if($('#oldmovies').children().length == 0){
+                    $('#oldmovies').prepend(empty_row_old);
+                  }
+                  console.log('case 1');}
+                else
+                  {if($(".noitemsold")[0])
+                   { console.log('HAS LENGTH');
+                     $('#oldmovies').empty();}
+                    $('#oldmovies').prepend(element);
+                  newmovies--;
+                  seenmovies++;
+                  $('#oldnum').text(seenmovies);
+                  $('#newnum').text(newmovies);
+                  if($('#newmovies').children().length == 0){
+                    $('#newmovies').prepend(empty_row_new);
+                  }
+                }
+                  console.log('case 2');
+                });
+        }
+        //----------------------------//
+        $('#submitmovie').click(function(){
+        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.movietitle = $('#mtitle').val();
+           data.newmovie = 1;
+           if($('#oldmovie').hasClass('active')){
+           data.newmovie = 0;
+           }
+           data.star = 1;
+           if($('#nostar').hasClass('active')){
+           data.star = 0;
+           }
+           data.year = $('#year').val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/counter/addmovie",
+              data: data
+            })
+              .done(function( msg ) {
+                $('#mtitle').val('');
+                $('#year').val('');
+                $('#addbook').modal('hide');
+                //$('#wait').fadeOut(350);
+                //console.log(msg);
+                window.location='/counter/p3345';
+              });
+          }
+        });
         
         
         
