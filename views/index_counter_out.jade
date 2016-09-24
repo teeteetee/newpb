@@ -291,10 +291,10 @@ head
         color:#333;
         background-color:white;
       }
-      #oldcol{
+      #oldones{
        background-color:#2b86b3;
       }
-      #newcol{
+      #newones{
        background-color:#d03939;
       }
       /*.pop:hover{
@@ -356,7 +356,7 @@ head
               li looks nice only on desktop
           button.btn.btn-ioslight#closewait(style="margin:auto;margin-top:5%;") close
     //.container(style='padding-left:84px;z-index:2;')  
-    .container-fluid(style='padding-left:84px;z-index:2;')
+    #oldones.container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
@@ -369,7 +369,7 @@ head
               tr.noitemsold
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
-    .container-fluid.hide(style='padding-left:84px;z-index:2;')
+    #newones.container-fluid.hide(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
         .col-sm-8.col-sm-offset-2.itemcol#newcol
           h1#newnum 0
