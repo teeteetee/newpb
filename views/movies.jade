@@ -24,10 +24,6 @@ head
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
-      @font-face {
-        font-family:proxima;
-        src: url('/bootstrap/fontsProximaNova-Sbold-webfont.woff');
-      }
       body {
       min-width:768px;
       font-weight:100;
@@ -471,8 +467,7 @@ head
               tr.noitemsold
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
-    .hide.ease.container-fluid(style='padding-left:84px;z-index:2;')
-      row(style='text-align:center;')
+
         .col-sm-6.itemcol#newcol
           h1#newnum 0
           h5 в планах
@@ -746,7 +741,7 @@ head
           $('#shownav').fadeOut();
           $('#nav').fadeIn();
           });
-        var tt;//empty
+        $('#login').click(authsubmit);
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
