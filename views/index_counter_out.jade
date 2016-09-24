@@ -298,24 +298,24 @@ head
        background-color:#d03939;
       }
       #oldones .btn-default {
-        border:1px solid white;
+        border:1px solid #0f5c82;
         background-color:#2b86b3;
-        color:white
+        color:#0f5c82
       }
       #oldones .btn-default.active, .btn-default:focus {
-        border:1px solid white;
+        border:1px solid #0f5c82;
        background-color: #6cb3d6;
-       color:white;
+       color:#0f5c82;
       }
       #newones .btn-default{
-        border:1px solid white;
+        border:1px solid #a72222;
         background-color:#d03939;
-        color:white;
+        color:#a72222;
       }
       #newones .btn-default.active, .btn-default:focus {
-        border:1px solid white;
+        border:1px solid #a72222;
        background-color: #e06767;
-       color:white;
+       color:#a72222;
       }
       /*.pop:hover{
         background-color:#e47e66 !important;;
@@ -396,22 +396,21 @@ head
           h5(style='color:#0f5c82;') посмотрел
           .btn-group(style='margin-bottom:5%;')
             button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default new
+            button.new.btn.btn-default to see
+            button.new.btn.btn-default login
             .btn-group
-              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropup
+              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
                 span.caret
               ul.dropdown-menu(aria-labelledby="dropdownMenu2")
                 li
-                  a(href="#") Action
+                  a.disabled(href="#") Movies
                 li
-                  a(href="#") Another action
-                li
-                  a(href="#") Something else here
-                li
-                  .divider(role="separator")
-                li
-                  a(href="#") Separated link
-              button.btn.btn-default login
+                  a(href="#") Books
+                //
+                  li
+                    .divider(role="separator")
+                  li
+                    a(href="#") Separated link
           table.table.table-striped
             tbody#oldmovies
               tr.noitemsold
@@ -424,7 +423,7 @@ head
           h5 в планах
           .btn-group(style='margin-bottom:5%;')
             button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default new
+            button.new.btn.btn-default to see
             button.btn.btn-default login
           table.table.table-striped
             tbody#newmovies
