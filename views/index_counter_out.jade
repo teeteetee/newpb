@@ -306,10 +306,13 @@ head
       background-color:#2b86b3;
       }
       #oldcol>.table-striped>tbody>tr {
-      border-top:1px solid white;
+      border-top:1px solid #50a0c7;
       }
       #oldcol>.table-striped>tbody>tr:first-child {
       border:none;
+      }
+      #oldcol>.table-striped>tbody>tr:hover {
+       background-color:#2176a0;
       }
       #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
       /*background-color: #b73030;*/
@@ -362,8 +365,8 @@ head
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
         .col-sm-8.col-sm-offset-2.itemcol#oldcol
-          h1#oldnum 0
-          h5 посмотрел
+          h1(style='color:#0f5c82;')#oldnum 0
+          h5(style='color:#0f5c82;') посмотрел
           table.table.table-striped
             tbody#oldmovies
               tr.noitemsold
