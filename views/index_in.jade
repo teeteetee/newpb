@@ -25,7 +25,6 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
-      min-width:768px;
       font-weight:100;
       text-transform:uppercase;
       letter-spacing:2px;
@@ -562,6 +561,12 @@ head
           }   
         function redactmoviemodal (i) {
         // TODO screen blocker must be added to prevent user from interfering 
+        if($('body').width()<$('body').height()) {
+          $('.moadl-dialog').css('margin-top','30%');
+        }
+        else{
+          $('.moadl-dialog').css('margin-top','15%');
+        }
         if($('#oldones').css('display')!='none')
           {$('#colourful').css('background-color','#ff0760');}
         else {
