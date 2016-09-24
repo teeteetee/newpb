@@ -303,6 +303,7 @@ head
       }*/
       #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
       /*background-color: #2176a0;*/
+      background-color:#2b86b3;
       }
       #oldcol>.table-striped>tbody>tr {
       border-top:1px solid white;
@@ -311,7 +312,8 @@ head
       border:none;
       }
       #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
-      /*background-color: #b73030;*/}
+      /*background-color: #b73030;*/
+      background-color: #d03939; }
       #newcol>.table-striped>tbody>tr {
       border-top:1px solid white;}
       #newcol>.table-striped>tbody>tr:first-child {
@@ -359,7 +361,7 @@ head
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
-        .col-sm-12.itemcol#oldcol(style='border-right:1px solid #a03a3a;')
+        .col-sm-8.col-sm-offset-2.itemcol#oldcol(style='border-right:1px solid #a03a3a;')
           h1#oldnum 0
           h5 посмотрел
           table.table.table-striped
@@ -369,7 +371,7 @@ head
                 th --
     .container-fluid.hide(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
-        .col-sm-12.itemcol#newcol
+        .col-sm-8.col-sm-offset-2.itemcol#newcol
           h1#newnum 0
           h5 в планах
           table.table.table-striped
