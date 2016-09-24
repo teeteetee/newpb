@@ -397,7 +397,21 @@ head
           .btn-group(style='margin-bottom:5%;')
             button.seen.btn.btn-default.active seen 
             button.new.btn.btn-default new
-            button.btn.btn-default login
+            .btn-group
+              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dropup
+                span.caret
+              ul.dropdown-menu(aria-labelledby="dropdownMenu2")
+                li
+                  a(href="#") Action
+                li
+                  a(href="#") Another action
+                li
+                  a(href="#") Something else here
+                li
+                  .divider(role="separator")
+                li
+                  a(href="#") Separated link
+              button.btn.btn-default login
           table.table.table-striped
             tbody#oldmovies
               tr.noitemsold
