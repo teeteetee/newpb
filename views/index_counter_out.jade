@@ -326,6 +326,9 @@ head
       .table.table-striped {
         color:white;
       }
+      #newones{
+        display:none;
+      }
   body
     script.
      // if(screen.width < 414){
@@ -377,7 +380,7 @@ head
               tr.noitemsold
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
-    #newones.container-fluid.hide(style='padding-left:84px;z-index:2;')
+    #newones.container-fluid(style='padding-left:84px;z-index:2;')
       .row(style='text-align:center;')
         .col-sm-8.col-sm-offset-2.itemcol#newcol
           h1#newnum 0
