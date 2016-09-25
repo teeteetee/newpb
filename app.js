@@ -805,7 +805,7 @@ app.get('/counter/showusers',function (req,res){
   counter_users.find({},function(err,done){
     counter_books.find({},function(err,done1){
       counter_movies.find({},function(err,done2){
-       res.send(JSON.parse(done)+'\n'+JSON.parse(done1)+'\n'+JSON.parse(done2));
+       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
       });
     });
   });
