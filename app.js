@@ -89,6 +89,7 @@ app.get('/counter',function (req,res){
 app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give') {
     req.session.uid = 1;
+    console.log(req.session.uid);
     res.send('done');
   }
   if(req.params.session==='clean') {
