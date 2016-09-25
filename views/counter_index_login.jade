@@ -373,11 +373,13 @@ head
     #oldones.container-fluid(style='z-index:2;')
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
-          h1 login
+          h1 MBL 
+          h5 MOVIES BOOKS LISTS
           form(method='post',action='/backup',role='form',id='loginform')
+            h3(style='color:white;') login
             input(type='text' class='form-control input-colour' style='margin-bottom:20px;' placeholder='login')
             input(type='text' class='form-control input-colour' placeholder='password')
-            button(type='button' class='btn btn-primary form-control')
+            button(type='button' style='margin-top:20px;' class='btn btn-primary form-control') LOGIN
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
