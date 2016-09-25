@@ -182,11 +182,34 @@ else{
 }
 });
 
-app.post('/counter/getstat',function (req,res){
+app.post('/counter/getstat_m',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_users.find({_id:req.session._id},function(err,doc){
+  {counter_movies.find({_id:req.session._id},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE STATS QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else {
+  res.send(ms);
+}
+});
+
+app.post('/counter/getstat_b',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {counter_books.find({_id:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE STATS QUERY');
         res.send(ms);
