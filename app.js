@@ -322,12 +322,14 @@ app.post('/counter/addmovie',function(req,res){
             }
             console.log('breakpoint four');
           var vtmstmp = Date.now();
-          counter_movies.update({uid:req.session._id},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}});
+          counter_movies.update({uid:req.session._id},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}},function(err,done){
+            console.log(done);
+          });
           console.log('breakpoint five');
           if(vnewmovie)
-          {counter_movies.update({uid:req.session._id},{$inc:{newmovies:1,totalmovies:1}});}
+          {counter_movies.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
           else {
-           counter_movies.update({uid:req.session._id},{$inc:{seenmovies:1,totalmovies:1}});
+           counter_movies.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
            res.send('ok');  }       
