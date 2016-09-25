@@ -328,9 +328,11 @@ head
         border:1px solid #333;
       }
       .sp_input {
-        border-top:1px solid #ccc;
-        height:50px;
-        background-color:white;
+      border-radius: 0px;
+      border: none;
+      border-top: 1px solid #ddd;
+      height:50px;
+      background-color:white;
       }
   body
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -523,9 +525,9 @@ head
           }
         var remodal=0;
         $('#reglink').click(function(){
-          if(!regmodal){$('#regmodal').modal(show);regmodal=1;}
+          if(!regmodal){$('#regmodal').modal('show');regmodal=1;}
           else {
-         $('#regmodal').modal(hide);regmodal=0;
+         $('#regmodal').modal('hide');regmodal=0;
           }
           });
         
