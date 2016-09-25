@@ -837,7 +837,7 @@ app.get('/counter/showme',function (req,res){
 });
 
 app.get('/counter/testdb',function (req,res){
-  counter_books.find({uid:"57e815540825521938000001"},function(err,done){
+  counter_books.findOne({uid:"57e815540825521938000001"},function(err,done){
     res.send(done);
   });
 });
