@@ -533,8 +533,8 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg.doc);
-                  seenmbooks = msg.doc[0].seenmbooks;
-                  newmbooks = msg.doc[0].newmbooks;
+                  seenmbooks = msg.doc[0].oldones;
+                  newmbooks = msg.doc[0].newones;
                   $('#oldnum').text(seenmbooks);
                   $('#newnum').text(newmbooks);
                 }

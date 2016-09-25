@@ -522,8 +522,8 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg.doc);
-                  seenmovies = msg.doc[0].seenmovies;
-                  newmovies = msg.doc[0].newmovies;
+                  seenmovies = msg.doc[0].oldones;
+                  newmovies = msg.doc[0].newones;
                   $('#oldnum').text(seenmovies);
                   $('#newnum').text(newmovies);
                 }
