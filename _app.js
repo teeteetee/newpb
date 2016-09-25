@@ -83,8 +83,7 @@ app.get('/counter',function (req,res){
  //else {
  // res.render('index_counter',{'known':0});
  //}
- res.render('counter_index_login');
- //res.render('index_counter_out');
+ res.render('index_counter_out');
 });
 
 app.get('/counter/p3345',function (req,res){

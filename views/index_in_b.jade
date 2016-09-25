@@ -344,7 +344,7 @@ head
                   .form-group
                     label(for="mtitle") Titile
                     input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
-                    .row.autocomp#autocompmovies
+                    .row.autocomp#autocompmbooks
                       .col-xs-12#srm
                   .form-group
                     label(for="year") Year
@@ -383,24 +383,24 @@ head
           h1(style='color:#0f5c82;')#oldnum 0
           h5(style='color:#0f5c82;') посмотрел
           .btn-group(style='margin-bottom:10%;')
-            button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default to see
+            button.seen.btn.btn-default.active finished 
+            button.new.btn.btn-default to read
             button.btn.btn-default.add + add
             .btn-group
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
                 span.caret
               ul.dropdown-menu(aria-labelledby="dropdownMenu2")
                 li.disabled
-                  a(href="#") Movies
-                li
                   a(href="#") Books
+                li
+                  a(href="/counter/p3345") Movies
                 //
                   li
                     .divider(role="separator")
                   li
                     a(href="#") Separated link
           table.table.table-striped
-            tbody#oldmovies
+            tbody#oldmbooks
               tr.noitemsold
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
@@ -410,19 +410,19 @@ head
           h1(style='color:#e02727;')#newnum 0
           h5(style='color:#e02727;') в планах
           .btn-group(style='margin-bottom:10%;')
-            button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default to see
+            button.seen.btn.btn-default.active finished 
+            button.new.btn.btn-default to read
             button.btn.btn-default.add + add
             .btn-group
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
                 span.caret
               ul.dropdown-menu(aria-labelledby="dropdownMenu2")
                 li.disabled
-                  a(href="#") Movies
-                li
                   a(href="#") Books
+                li
+                  a(href="/counter/p3345") Movies
           table.table.table-striped(style='color:#0c7d57;')
-            tbody#newmovies
+            tbody#newmbooks
               tr.noitemsnew
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
@@ -523,8 +523,8 @@ head
           $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
         }
         //---------------------------//
-        var seenmovies;
-        var newmovies;
+        var seenmbooks;
+        var newmbooks;
         $.ajax({
               method: "POST",
               url: "/counter/getstat",
@@ -533,27 +533,27 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log(msg.doc);
-                  seenmovies = msg.doc[0].seenmovies;
-                  newmovies = msg.doc[0].newmovies;
-                  $('#oldnum').text(seenmovies);
-                  $('#newnum').text(newmovies);
+                  seenmbooks = msg.doc[0].seenmbooks;
+                  newmbooks = msg.doc[0].newmbooks;
+                  $('#oldnum').text(seenmbooks);
+                  $('#newnum').text(newmbooks);
                 }
                 });
         var consolidated=[];
         $.ajax({
               method: "POST",
-              url: "/counter/getmovies",
+              url: "/counter/getmbooks",
               data: 0
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('movies: '+msg.doc);
-                   movies=msg.doc;
-                  if(!movies || !movies.length) {
-                   console.log('no movies');
+                  console.log('mbooks: '+msg.doc);
+                   mbooks=msg.doc;
+                  if(!mbooks || !mbooks.length) {
+                   console.log('no mbooks');
                    }
                    else {
-                    movies.forEach(function (element,index){
+                    mbooks.forEach(function (element,index){
                     element.item_type = 'movie';
                     consolidated.push(element);
                     });
@@ -570,10 +570,10 @@ head
          consolidated.forEach(function (element,index){
             if($(".noitemsnew")[0]&&element.newmovie)
                    { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
+                     $('#newmbooks').empty();}
             if($(".noitemsold")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
-                     $('#oldmovies').empty();}
+                     $('#oldmbooks').empty();}
            var insert;
                 if(element.star&&!element.newmovie){
                      console.log('1st case');
@@ -583,10 +583,10 @@ head
                       insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
                    }  
             if(element.newmovie){  
-               $('#newmovies').prepend(insert);
+               $('#newmbooks').prepend(insert);
            }
            else {
-            $('#oldmovies').prepend(insert);
+            $('#oldmbooks').prepend(insert);
            }
            });
            //level();
@@ -626,17 +626,17 @@ head
                 var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                 var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
                 if(consolidated[movieid].newmovie){
-                  newmovies --;
-                  $('#newnum').text(newmovies);
-                  if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row_new);
+                  newmbooks --;
+                  $('#newnum').text(newmbooks);
+                  if($('#newmbooks').children().length == 0){
+                    $('#newmbooks').prepend(empty_row_new);
                   }
                 }
                   else{
-                    seenmovies --;
-                  $('#oldnum').text(seenmovies);
-                  if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row_old);
+                    seenmbooks --;
+                  $('#oldnum').text(seenmbooks);
+                  if($('#oldmbooks').children().length == 0){
+                    $('#oldmbooks').prepend(empty_row_old);
                   }
                   }
               });
@@ -663,27 +663,27 @@ head
                   if(consolidated[movieid].newmovie)
                   {if($(".noitemsnew")[0])
                    { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
-                     $('#newmovies').prepend(element);
-                  seenmovies--;
-                  newmovies++;
-                  $('#newnum').text(newmovies);
-                  $('#oldnum').text(seenmovies);
-                  if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row_old);
+                     $('#newmbooks').empty();}
+                     $('#newmbooks').prepend(element);
+                  seenmbooks--;
+                  newmbooks++;
+                  $('#newnum').text(newmbooks);
+                  $('#oldnum').text(seenmbooks);
+                  if($('#oldmbooks').children().length == 0){
+                    $('#oldmbooks').prepend(empty_row_old);
                   }
                   console.log('case 1');}
                 else
                   {if($(".noitemsold")[0])
                    { console.log('HAS LENGTH');
-                     $('#oldmovies').empty();}
-                    $('#oldmovies').prepend(element);
-                  newmovies--;
-                  seenmovies++;
-                  $('#oldnum').text(seenmovies);
-                  $('#newnum').text(newmovies);
-                  if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row_new);
+                     $('#oldmbooks').empty();}
+                    $('#oldmbooks').prepend(element);
+                  newmbooks--;
+                  seenmbooks++;
+                  $('#oldnum').text(seenmbooks);
+                  $('#newnum').text(newmbooks);
+                  if($('#newmbooks').children().length == 0){
+                    $('#newmbooks').prepend(empty_row_new);
                   }
                 }
                   console.log('case 2');

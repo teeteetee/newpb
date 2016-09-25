@@ -1,0 +1,379 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+      font-weight:100;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:10px;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight:300;
+      }
+      .navbar-nav {
+       float: right;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      .navbar-form {
+        padding-top: 6 !important;
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .datecl {
+        color:#333;
+      }
+      .yet{
+       color:white;
+      }
+      .alreadyb{
+      color:rgba(0, 0, 0, 0.27);
+      }
+      .alreadym{
+      color:rgba(255, 255, 255, 0.21);
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      .bckgrnd {
+      width:100%;
+      height:100%;
+      background-image:url('/bootstrap/images/books.jpg');
+      position:fixed;
+      background-position:center;
+      background-size: cover;
+      background-repeat:no-repeat;
+      filter: brightness(0.6);
+      -webkit-filter: brightness(0.6);
+      -moz-filter: brightness(0.6);
+      -o-filter: brightness(0.6);
+      transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
+      nav ul li a {
+        border:0px !important;
+        background-color:rgba(255, 255, 255, 0.26) !important;
+        color:white !important;
+      }
+      .itemcol {
+        min-height:100vh;
+        padding-left:0px;
+        padding-right:0px;
+        padding-bottom:30px;
+      }
+      .itemcol h1{
+        margin-top:10%;
+        margin-bottom:0px;
+        color:black;
+        font-size:100px;
+        font-family:high;
+        text-align:center;
+      }
+      .itemcol h5{
+        margin-top:0px;
+        margin-bottom:5%;
+        font-family:arial;
+        text-transform:uppercase;
+        letter-spacing:2px;
+        font-size:10px;
+        text-align:center;
+      }
+      //th:first-child {
+      //  padding-left:30px !important;
+      //}
+      th {
+        font-weight:300;
+      }
+      .btn-iosdark,btn-iosdark-add {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
+      .modal-sm .btn-iosdark, .modal-footer .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#2d2d2d;
+      }
+      .modal-sm .btn-iosdark:hover,.modal-footer .btn-iosdark:hover {
+        background-color:#424242;
+      }
+      .modal-sm .modal-body .btn, .modal-footer .btn {
+      height:50px;
+      border-radius:0px;
+      border-bottom:1px solid #4e4e4e;
+      color:white;
+      }
+      h4 {
+        word-wrap:break-word;
+      }
+      .modal-sm h4 {
+        padding-right:15px;
+        padding-left:15px;
+      }
+      .modal-sm .modal-body .btn:last-child,.modal-footer .btn:last-child {
+        border:none;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+      }
+      .modal-sm .modal-body {
+        padding:0px;
+        padding-top:15px;
+      }
+      .modal-header {
+      border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
+      }
+      .fileUpload {
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+      }
+      .fileUpload input.upload {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          cursor: pointer;
+          opacity: 0;
+          filter: alpha(opacity=0);
+      }
+      .btn-ioslight {
+        color:white;
+        background-color:rgba(0,0,0,0);
+        border:1px solid white;
+      }
+      .btn-ioslight:hover{
+        color:#333;
+        background-color:white;
+      }
+      #oldones{
+       background-color:#ff9b2f;
+      }
+      #newones{
+       background-color:#2b8;
+      }
+      #oldones .btn-default {
+        border:1px solid #0f5c82;
+        background-color:#2b86b3;
+        color:#0f5c82
+      }
+      #oldones .btn-default.active, .btn-default:focus {
+        border:1px solid #0f5c82;
+       background-color: #2176a0;
+       color:#40a0d0;
+      }
+      #newones .btn-default{
+       border: 1px solid #aa0a0a;
+       background-color: #e02727;
+       color: #a90a0a;
+      }
+      #newones .btn-default.active, .btn-default:focus {
+      border: 1px solid #a90a0a;
+      background-color: #ab0b0b;
+      color: #e02727;
+      }
+      /*.pop:hover{
+        background-color:#e47e66 !important;;
+        color:white;
+      }*/
+      #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      /*background-color: #2176a0;*/
+      background-color:#ff9b2f;
+      }
+      #oldcol>.table-striped>tbody>tr {
+      border-top:1px solid #e68924;
+      color:#bd6d15;
+      }
+      #oldcol>.table-striped>tbody>tr:first-child {
+      border:none;
+      }
+      #oldcol>.table-striped>tbody>tr:hover {
+       background-color:#e68924;
+      }
+      #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
+      /*background-color: #b73030;*/
+      background-color: #22bb88; }
+      #newcol>.table-striped>tbody>tr:hover {
+       background-color:#18a073;
+      }
+      #newcol>.table-striped>tbody>tr {
+      border-top:1px solid #1aa777;}
+      #newcol>.table-striped>tbody>tr:first-child {
+      border:none;}
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+      border-top: 0px;}
+      .table.table-striped {
+        color:white;
+      }
+      #newones{
+        display:none;
+      }
+      .modal-dialog {
+      margin-top: 15%;
+      }
+      .modal-sm .modal-body .btn,.modal-footer .btn {
+      color: #b9b9b9;  
+      letter-spacing: 2px;
+      font-weight: 100;
+      }
+      .modal-sm h4 {
+      margin-bottom: 30px;
+      }
+      .modal-footer{
+        padding:0px;
+        border-top:0px;
+      }
+      .form-control#year,.form-control#mtitle{
+        color:#0d5830;
+        font-weight:300 !important;
+      }
+      .form-control:focus{
+       /* border:none;*/
+      }
+      input[type=text]::-webkit-input-placeholder {color:#28d476;}
+      input[type=text]::-moz-placeholder          {color:#28d476;}/* Firefox 19+ */
+      input[type=text]:-moz-placeholder           {color:#28d476;}/* Firefox 18- */
+      input[type=text]:-ms-input-placeholder      {color:#28d476;}/**/
+      #addbook .btn-iosdark-add.active {
+      background-color: #178e4d;
+      color: #28d476;
+      }
+      #addbook .btn-iosdark-add {
+      background-color: #21b363;
+      border: 1px solid #158448;
+      color: #0d5830;
+      }
+      #addbook input{
+      background-color: #1aa057;
+      border: 1px solid #178e4d;
+      }
+  body
+    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content#colourful
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body
+              h4.moviemodaltitle(style='text-align:center;')
+              //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+              button(class='btn btn-iosdark  form-control switch') Switch column
+              button(class='btn btn-iosdark form-control movie_remove') Remove
+    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content(style='background-color:#21b363;')
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" ) 
+              span(style='font-weight:bold;') + 
+              | Добавляем фильм
+          .modal-body
+            .row  
+              .col-xs-12
+                form
+                  .form-group
+                    label(for="mtitle") Titile
+                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
+                    .row.autocomp#autocompmovies
+                      .col-xs-12#srm
+                  .form-group
+                    label(for="year") Year
+                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group#new_old(style='display:block;')
+                  button(class='btn btn-iosdark-add active' id='oldmovie' type='button') Посмотрел
+                  button(class=' btn btn-iosdark-add' id='newmovie'  type='button' )  В планах
+            .row  
+              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
+                .btn-group(style='display:block;')
+                  button(class='btn btn-iosdark-add' id='hasstar' type='button') Выделить
+                  button(class=' btn btn-iosdark-add active' id='nostar'  type='button' )  Не надо            
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
+    #oldones.container-fluid(style='z-index:2;')
+      .row(style='text-align:center')
+        .col-xs-12
+          h1 login
+          form(method='post',action='/backup',role='form',id='backupform')
+            input(type='text' placeholder='login')
+            input(type='text' placeholder='password')
+      
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        
+        
+        
+        
+      
