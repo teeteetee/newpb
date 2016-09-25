@@ -833,7 +833,7 @@ app.post('/check',function(req,res){
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  users.findOne({mail:vlgn},function(err,confirmed){
+  counter_users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
