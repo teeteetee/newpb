@@ -320,9 +320,9 @@ app.post('/counter/addmovie',function(req,res){
             if(!vmovieyear){
               vvmovieyear = '--';
             }
-            console.log('breakpoint four');
+            console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}},function(err,done){
+          counter_movies.update({uid:req.session._id},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}},function(err,done){
             console.log(done);
           });
           console.log('breakpoint five');
