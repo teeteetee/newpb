@@ -185,20 +185,24 @@ else{
 app.post('/counter/getstat',function (req,res){
   var ms ={};
   ms.trouble=1;
-  stats.find({},function(err,doc){
-    if(err) {
-      console.log('ERR WHILE STATS QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
+  if(req.session&&req.session._id)
+  {counter_users.find({_id:req.session._id},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE STATS QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else {
+  res.send(ms);
+}
 });
 
 app.post('/counter/rm_movie/:newmovie/:movie_id',function(req,res){
