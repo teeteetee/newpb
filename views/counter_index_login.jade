@@ -224,7 +224,6 @@ head
       }
       #oldones .btn-default {
         border:1px solid #0f5c82;
-        background-color:#2b86b3;
         color:#0f5c82;
       }
       #oldones .btn-default.active, .btn-default:focus {
@@ -300,10 +299,10 @@ head
       .form-control:focus{
        /* border:none;*/
       }
-      input[type=text]::-webkit-input-placeholder {color:#28d476;}
-      input[type=text]::-moz-placeholder          {color:#28d476;}/* Firefox 19+ */
-      input[type=text]:-moz-placeholder           {color:#28d476;}/* Firefox 18- */
-      input[type=text]:-ms-input-placeholder      {color:#28d476;}/**/
+      input[type=text]::-webkit-input-placeholder {color:#ccc;}
+      input[type=text]::-moz-placeholder          {color:#ccc;}/* Firefox 19+ */
+      input[type=text]:-moz-placeholder           {color:#ccc;}/* Firefox 18- */
+      input[type=text]:-ms-input-placeholder      {color:#ccc;}/**/
       #addbook .btn-iosdark-add.active {
       background-color: #178e4d;
       color: #28d476;
@@ -318,12 +317,11 @@ head
       border: 1px solid #178e4d;
       }
       #loginform{
-        background-color:#333;
         border-radius:10px;
         padding:30px;
       }
       .input-colour{
-        background-color:black;
+        background-color:#eaeaea;
       }
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -373,7 +371,10 @@ head
     #oldones.container-fluid(style='z-index:2;')
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
-          h1 MBL 
+          h1 
+            span M
+            span B
+            span L
           h5 MOVIES BOOKS LISTS
           form(method='post',action='/backup',role='form',id='loginform')
             h3(style='color:white;') login
