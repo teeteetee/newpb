@@ -186,7 +186,7 @@ app.post('/counter/getstat_m',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_movies.find({_id:req.session._id},function(err,doc){
+  {counter_movies.find({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE STATS QUERY');
         res.send(ms);
@@ -209,7 +209,7 @@ app.post('/counter/getstat_b',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_books.find({_id:req.session._id},function(err,doc){
+  {counter_books.find({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE STATS QUERY');
         res.send(ms);
