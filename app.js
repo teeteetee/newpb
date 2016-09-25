@@ -15,8 +15,10 @@ var gm = require('gm');
 
 
 var mongo = require('mongodb').MongoClient;
-var db = require('monk')('localhost/tav')
-  , users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
+//var db = require('monk')('localhost/tav'),users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
+
+var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies');
+
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
   
@@ -167,7 +169,7 @@ app.post('/counter/getbooks',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
-        ms.doc = doc;
+        ms.doc = doc.bookstore;
         ms.trouble=0;
         res.send(ms);
       }
@@ -772,24 +774,43 @@ app.get('/gets',function(req,res){
   res.redirect('/');
 });
 
+app.get('/counter/showusers',function (req,res){
+  counter_users.find({},function(err,done){
+    counter_books.find({},function(err,done1){
+      counter_movies.find({},function(err,done2){
+       res.send(done+\n+done1+\n+done2);
+      });
+    });
+  });
+});
+
 app.post('/newuser',function(req,res){
-    var reload = req.body.reload;
+    //var reload = req.body.reload;
     var ms = {};
     ms.trouble=1;
     ms.mtext='email incorrect'; 
-    var vnick = req.body.nick;
+    var vp = req.body.p;
+    var vpc = req.body.pc;
+    var vmail = req.body.mail;
+    if(validatEmail(vmail)&&vp===pvc)
+    {
+      console.log('\ndata ok\n')
+    }
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
     var ms = {};
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-      users.insert({nick:vnick,phr:vp,totallinks:0,last_item:0,regdate:Date.now()},function (err,done){
+      counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,regdate:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
          res.send(ms); 
         }
       else {
+      counter_stats.update({$inc:{users:1}});
+      counter_books.insert({uid:done._id,total:0,oldones:0,newones:0,bookstore:[]});
+      counter_movies.insert({uid:done._id,total:0,oldones:0,newones:0,moviestore:[]});
       req.session._id=done._id;
       if(!reload)
       {ms.trouble =0;
@@ -811,7 +832,7 @@ app.post('/check',function(req,res){
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  users.findOne({nick:vlgn},function(err,confirmed){
+  users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 

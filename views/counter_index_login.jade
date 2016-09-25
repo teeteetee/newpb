@@ -445,7 +445,7 @@ head
         break;
         }}
         else {
-        window.location = 'http://peopleandbooks.com';
+        window.location = '188.166.118.116';
         }
         }
         };
@@ -513,14 +513,14 @@ head
         
         }
         }
-        else { console.log('HEY');window.location = 'http://peopleandbooks.com';}
+        else { console.log('HEY');window.location = '188.166.118.116';}
         }
         };
         request.open('POST', '/newuser', true);
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+vmail+"&p="+vp);
+        request.send("mail="+vmail+"&p="+vp+"&pc="+vpc);
           }
         var remodal=0;
         $('#reglink').click(function(){
