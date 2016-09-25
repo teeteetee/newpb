@@ -817,13 +817,10 @@ app.post('/newuser',function(req,res){
       counter_books.insert({uid:done._id,total:0,oldones:0,newones:0,bookstore:[]});
       counter_movies.insert({uid:done._id,total:0,oldones:0,newones:0,moviestore:[]});
       req.session._id=done._id;
-      if(!reload)
       {ms.trouble =0;
       ms.mtext='success';
-      res.send(ms);}
-      else {
-        res.redirect('/')
-      }
+      res.send(ms);
+      
       }
       });
         
