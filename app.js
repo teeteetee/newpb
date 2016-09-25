@@ -88,6 +88,12 @@ app.get('/counter',function (req,res){
  //res.render('index_counter_out');
 });
 
+//app.get('/counter/stats/:what',function (req,res){
+//  if(req.params.what==='init'){
+//    counter_stats.
+//  }
+//});
+
 app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give') {
     req.session._id = 1;
@@ -821,9 +827,9 @@ app.get('/counter/showusers',function (req,res){
 });
 
 app.get('/counter/showme',function (req,res){
-  counter_users.find({_id:req.session._id},function(err,done){
-    counter_books.find({uid:req.session._id},function(err,done1){
-      counter_movies.find({uid:req.session._id},function(err,done2){
+  counter_users.find({_id:JSON.stringify(req.session._id)},function(err,done){
+    counter_books.find({uid:JSON.stringify(req.session._id)},function(err,done1){
+      counter_movies.find({uid:JSON.stringify(req.session._id)},function(err,done2){
        res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
       });
     });
@@ -859,7 +865,7 @@ app.post('/newuser',function(req,res){
          res.send(ms); 
         }
       else {
-      counter_stats.update({$inc:{users:1}});
+      //counter_stats.update({$inc:{users:1}});
       counter_books.insert({uid:done._id,total:0,oldones:0,newones:0,bookstore:[]});
       counter_movies.insert({uid:done._id,total:0,oldones:0,newones:0,moviestore:[]});
       req.session._id=done._id;
