@@ -830,7 +830,7 @@ app.get('/counter/showme',function (req,res){
   counter_users.find({_id:req.session._id},function(err,done){
     counter_books.find({uid:req.session._id},function(err,done1){
       counter_movies.find({uid:req.session._id},function(err,done2){
-       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
+       res.send(req.session._id+'\n'+JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
       });
     });
   });
