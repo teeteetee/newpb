@@ -298,10 +298,10 @@ head
       .form-control:focus{
        /* border:none;*/
       }
-      input[type=text]::-webkit-input-placeholder {color:#ccc;}
-      input[type=text]::-moz-placeholder          {color:#ccc;}/* Firefox 19+ */
-      input[type=text]:-moz-placeholder           {color:#ccc;}/* Firefox 18- */
-      input[type=text]:-ms-input-placeholder      {color:#ccc;}/**/
+      input[type=text]::-webkit-input-placeholder {color:#bbb;}
+      input[type=text]::-moz-placeholder          {color:#bbb;}/* Firefox 19+ */
+      input[type=text]:-moz-placeholder           {color:#bbb;}/* Firefox 18- */
+      input[type=text]:-ms-input-placeholder      {color:#bbb;}/**/
       #addbook .btn-iosdark-add.active {
       background-color: #178e4d;
       color: #28d476;
@@ -321,6 +321,11 @@ head
       }
       .input-colour{
         background-color:#eaeaea;
+      }
+      .btn-login{
+        color:white;
+        background-color:#5a6167;
+        border:1px solid #333;
       }
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -369,7 +374,7 @@ head
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     #oldones.container-fluid(style='z-index:2;')
       .row(style='text-align:center;padding-top:15%;')
-        .col-xs-4.col-xs-offset-4
+        .col-sm-4.col-sm-offset-4
           h1 
             span DON
             span DON
@@ -377,8 +382,8 @@ head
           form(method='post',action='/backup',role='form',id='loginform')
             input(type='text' class='form-control input-colour' style='margin-bottom:20px;' placeholder='login')
             input(type='text' class='form-control input-colour' placeholder='password')
-            button(type='button' style='margin-top:20px;' class='btn btn-primary form-control') LOGIN
-            a(style='color:#ccc;') Register
+            button(type='button' style='margin-top:20px;' class='btn btn-login form-control') LOGIN
+            a(style='color:#bbb;margin-top:20px;') Register
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
