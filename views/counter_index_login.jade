@@ -357,7 +357,7 @@ head
               input#reg_mail.sp_input.form-control(type='text' placeholder='mail')
               input#reg_p.sp_input.form-control(type='text' placeholder='password')
               input#reg_pc.sp_input.form-control(type='text' placeholder='confirm password')
-              button(class='btn btn-iosdark form-control movie_remove') Register
+              button#reg_run(class='btn btn-iosdark form-control movie_remove') Register
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content(style='background-color:#21b363;')
@@ -404,6 +404,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script. 
+        $('#reg_run').click(function(){
+          runregister();
+          });
         $('#login').click(authsubmit);
         //-------REGISTER--------
           function validateEmail(email) { 
