@@ -286,47 +286,50 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
 });
   
 app.post('/counter/addmovie',function(req,res){
- console.log('adding a movie');
-  var ms = {};
-  ms.trouble =1;
- 
-    var vmovietitle = req.body.movietitle;
-    var vnewmovie = parseInt(req.body.newmovie);
-    console.log('breakpoint one');
-    var vmovieyear = req.body.year;
-    var vmoviestar = parseInt(req.body.star);
-    console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
-    var dd= new Date();
-    var vday = dd.getDate().toString();
-    if (vday.length===1){
-      vday='0'+vday;
-    }
-    var vmonth = dd.getMonth()+1;
-    console.log('breakpoint two');
-    vmonth = vmonth.toString();
-    if (vmonth.length===1){
-      vmonth='0'+vmonth;
-    }
-    var vyear = dd.getUTCFullYear().toString();
-    var fulldate = vyear+vmonth+vday;
-    fulldate = parseInt(fulldate);
-
-    if(!vmovietitle){
-      vmovietitle = '--';
-      //SEND ERROR
-    }
-    if(!vmovieyear){
-      vvmovieyear = '--';
-    }
-  var vtmstmp = Date.now();
-  movies.insert({year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp});
-  if(vnewmovie)
-  {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
-  else {
-   stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
-  }
-   res.send('ok');         
-             
+  if(req.session&&req.session._id)
+ {console.log('adding a movie');
+          var ms = {};
+          ms.trouble =1;
+         
+            var vmovietitle = req.body.movietitle;
+            var vnewmovie = parseInt(req.body.newmovie);
+            console.log('breakpoint one');
+            var vmovieyear = req.body.year;
+            var vmoviestar = parseInt(req.body.star);
+            console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
+            var dd= new Date();
+            var vday = dd.getDate().toString();
+            if (vday.length===1){
+              vday='0'+vday;
+            }
+            var vmonth = dd.getMonth()+1;
+            console.log('breakpoint two');
+            vmonth = vmonth.toString();
+            if (vmonth.length===1){
+              vmonth='0'+vmonth;
+            }
+            var vyear = dd.getUTCFullYear().toString();
+            var fulldate = vyear+vmonth+vday;
+            fulldate = parseInt(fulldate);
+        
+            if(!vmovietitle){
+              vmovietitle = '--';
+              //SEND ERROR
+            }
+            if(!vmovieyear){
+              vvmovieyear = '--';
+            }
+          var vtmstmp = Date.now();
+          counter_movies.update({uid:req.session._id},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}});
+          if(vnewmovie)
+          {counter_movies.update({uid:req.session._id},{$inc:{newmovies:1,totalmovies:1}});}
+          else {
+           counter_movies.update({uid:req.session._id},{$inc:{seenmovies:1,totalmovies:1}});
+          }
+           res.send('ok');  }       
+      else {
+        res.send('err');
+      }   
 });
 
 app.post('/backup',function (req,res){
