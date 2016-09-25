@@ -375,15 +375,12 @@ head
     #oldones.container-fluid(style='z-index:2;')
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
-          h1 
-            span DON
-            span DON
-            span LISTS
+          h1(style='font-weight:100;color:#aaa;') DON DON LISTS
           form(method='post',action='/backup',role='form',id='loginform')
             input(type='text' class='form-control input-colour' style='margin-bottom:20px;' placeholder='login')
             input(type='text' class='form-control input-colour' placeholder='password')
-            button(type='button' style='margin-top:20px;' class='btn btn-login form-control') LOGIN
-            a(style='color:#bbb;margin-top:20px;') Register
+            button(type='button' style='margin-top:20px;letter-spacing:3px;margin-bottom:20px;' class='btn btn-login form-control') LOGIN
+            a(style='color:#bbb;') Register
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
