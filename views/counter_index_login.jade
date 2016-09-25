@@ -317,6 +317,11 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
+      #loginform{
+        background-color:#333;
+        border-radius:10px;
+        padding:30px;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
@@ -363,11 +368,11 @@ head
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     #oldones.container-fluid(style='z-index:2;')
-      .row(style='text-align:center;padding-top:10%;')
+      .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
           h1 login
-          form(method='post',action='/backup',role='form',id='backupform')
-            input(type='text' class='form-control' placeholder='login')
+          form(method='post',action='/backup',role='form',id='loginform')
+            input(type='text' class='form-control' style='margin-top:20px;' placeholder='login')
             input(type='text' class='form-control' placeholder='password')
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
