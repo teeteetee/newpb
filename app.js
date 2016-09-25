@@ -43,7 +43,7 @@ app.use(sessions({
   cookie: {
     path:'/',
   httpOnly: true,
-  domain:'peopleandbooks.com'
+  domain:'188.166.118.116'
   }
 }));
 
