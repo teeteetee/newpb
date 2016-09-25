@@ -296,7 +296,7 @@ app.post('/counter/addmovie',function(req,res){
             console.log('breakpoint one');
             var vmovieyear = req.body.year;
             var vmoviestar = parseInt(req.body.star);
-            console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie'+vnewmovie);
+            console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie: '+vnewmovie);
             var dd= new Date();
             var vday = dd.getDate().toString();
             if (vday.length===1){
@@ -308,6 +308,7 @@ app.post('/counter/addmovie',function(req,res){
             if (vmonth.length===1){
               vmonth='0'+vmonth;
             }
+            console.log('breakpoint three');
             var vyear = dd.getUTCFullYear().toString();
             var fulldate = vyear+vmonth+vday;
             fulldate = parseInt(fulldate);
@@ -319,13 +320,16 @@ app.post('/counter/addmovie',function(req,res){
             if(!vmovieyear){
               vvmovieyear = '--';
             }
+            console.log('breakpoint four');
           var vtmstmp = Date.now();
           counter_movies.update({uid:req.session._id},{$push:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}});
+          console.log('breakpoint five');
           if(vnewmovie)
           {counter_movies.update({uid:req.session._id},{$inc:{newmovies:1,totalmovies:1}});}
           else {
            counter_movies.update({uid:req.session._id},{$inc:{seenmovies:1,totalmovies:1}});
           }
+          console.log('breakpoint six');
            res.send('ok');  }       
       else {
         res.send('err');
