@@ -86,7 +86,7 @@ app.get('/counter',function (req,res){
  //res.render('index_counter_out');
 });
 
-app.get('/counter/:session',function (req,res){
+app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give') {
     req.session.uid = 1;
     res.send('done');
