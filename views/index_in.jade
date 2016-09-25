@@ -514,20 +514,20 @@ head
         //---------------------------//
         var seenmovies;
         var newmovies;
-        $.ajax({
-              method: "POST",
-              url: "/counter/getstat_m",
-              data: 0
-            })
-              .done(function( msg ) {
-                if(!msg.trouble) {
-                  console.log(msg.doc);
-                  seenmovies = msg.doc[0].oldones;
-                  newmovies = msg.doc[0].newones;
-                  $('#oldnum').text(seenmovies);
-                  $('#newnum').text(newmovies);
-                }
-                });
+        //$.ajax({
+        //      method: "POST",
+        //      url: "/counter/getstat_m",
+        //      data: 0
+        //    })
+        //      .done(function( msg ) {
+        //        if(!msg.trouble) {
+        //          console.log(msg.doc);
+        //          seenmovies = msg.doc[0].oldones;
+        //          newmovies = msg.doc[0].newones;
+        //          $('#oldnum').text(seenmovies);
+        //          $('#newnum').text(newmovies);
+        //        }
+        //        });
         var consolidated=[];
         $.ajax({
               method: "POST",
@@ -542,7 +542,11 @@ head
                    console.log('no movies');
                    }
                    else {
-                    movies.forEach(function (element,index){
+                    seenmovies = msg.doc[0].oldones;
+                    newmovies = msg.doc[0].newones;
+                    $('#oldnum').text(seenmovies);
+                    $('#newnum').text(newmovies);
+                    msg.doc[0].moviestoremovies.forEach(function (element,index){
                     element.item_type = 'movie';
                     consolidated.push(element);
                     });
