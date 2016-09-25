@@ -230,6 +230,7 @@ head
         border:1px solid #0f5c82;
        background-color: #2176a0;
        color:#40a0d0;
+       min-height:100%;
       }
       #newones .btn-default{
        border: 1px solid #aa0a0a;
@@ -362,12 +363,12 @@ head
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     #oldones.container-fluid(style='z-index:2;')
-      .row(style='text-align:center')
+      .row(style='text-align:center;padding-top:30%;')
         .col-xs-12
           h1 login
           form(method='post',action='/backup',role='form',id='backupform')
-            input(type='text' placeholder='login')
-            input(type='text' placeholder='password')
+            input(type='text' class='form-control' placeholder='login')
+            input(type='text' class='form-control' placeholder='password')
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
