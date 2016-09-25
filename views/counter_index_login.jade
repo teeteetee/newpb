@@ -322,6 +322,9 @@ head
         border-radius:10px;
         padding:30px;
       }
+      .input-colour{
+        background-color:black;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
@@ -372,8 +375,9 @@ head
         .col-sm-4.col-sm-offset-4
           h1 login
           form(method='post',action='/backup',role='form',id='loginform')
-            input(type='text' class='form-control' style='margin-top:20px;' placeholder='login')
-            input(type='text' class='form-control' placeholder='password')
+            input(type='text' class='form-control input-colour' style='margin-bottom:20px;' placeholder='login')
+            input(type='text' class='form-control input-colour' placeholder='password')
+            button(type='button' class='btn btn-primary form-control')
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
