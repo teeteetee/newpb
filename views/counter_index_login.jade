@@ -334,6 +334,16 @@ head
       height:50px;
       background-color:white;
       }
+      .sp_input{
+        transition: 0.5s background-color linear;
+        transition: 0.5s background-color linear;
+        -webkit-transition: 0.5s background-color linear;
+        -moz-transition: 0.5s background-color linear;
+      }
+      .sp_input:focus, .sp_input:active {
+        border-top:1px solid #ddd;
+        backgorund-color:blue;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
