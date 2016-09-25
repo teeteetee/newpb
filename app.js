@@ -95,7 +95,7 @@ app.get('/counter/session/:session',function (req,res){
     res.send('done');
   }
   if(req.params.session==='clean') {
-    delete req.session;
+    req.session delete;
     res.redirect('/counter');
   }
 });
