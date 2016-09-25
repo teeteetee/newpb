@@ -135,12 +135,12 @@ app.get('/counter/showstats',function (req,res){
   });
 });
 
-app.get('/counter/deletemovies',function (req,res){
-  movies.remove({},function(err,done){
-  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
-    res.redirect('/counter/initdb');
-  });
-});
+//app.get('/counter/deletemovies',function (req,res){
+//  movies.remove({},function(err,done){
+//  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
+//    res.redirect('/counter/initdb');
+//  });
+//});
 
 app.post('/counter/getmovies',function (req,res){
   var ms ={};
@@ -827,9 +827,9 @@ app.get('/counter/showusers',function (req,res){
 });
 
 app.get('/counter/showme',function (req,res){
-  counter_users.find({_id:JSON.stringify(req.session._id)},function(err,done){
-    counter_books.find({uid:JSON.stringify(req.session._id)},function(err,done1){
-      counter_movies.find({uid:JSON.stringify(req.session._id)},function(err,done2){
+  counter_users.find({_id:req.session._id},function(err,done){
+    counter_books.find({uid:req.session._id},function(err,done1){
+      counter_movies.find({uid:req.session._id},function(err,done2){
        res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
       });
     });
