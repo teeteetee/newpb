@@ -784,6 +784,11 @@ app.get('/counter/showusers',function (req,res){
   });
 });
 
+function validateEmail(email) { 
+        console.log('checking email');
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);} 
+
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
     var ms = {};
@@ -792,7 +797,7 @@ app.post('/newuser',function(req,res){
     var vp = req.body.p;
     var vpc = req.body.pc;
     var vmail = req.body.mail;
-    if(validatEmail(vmail)&&vp===pvc)
+    if(validateEmail(vmail)&&vp===pvc)
     {
       console.log('\ndata ok\n')
     }
