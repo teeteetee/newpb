@@ -797,7 +797,7 @@ app.post('/newuser',function(req,res){
     var vp = req.body.p;
     var vpc = req.body.pc;
     var vmail = req.body.mail;
-    if(validateEmail(vmail)&&vp===pvc)
+    if(validateEmail(vmail)&&vp===vpc)
     {
       console.log('\ndata ok\n')
     }
