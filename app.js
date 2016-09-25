@@ -820,6 +820,16 @@ app.get('/counter/showusers',function (req,res){
   });
 });
 
+app.get('/counter/showme',function (req,res){
+  counter_users.find({_id:req.session._id},function(err,done){
+    counter_books.find({uid:req.session._id},function(err,done1){
+      counter_movies.find({uid:req.session._id},function(err,done2){
+       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
+      });
+    });
+  });
+});
+
 function validateEmail(email) { 
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
