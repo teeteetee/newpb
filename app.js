@@ -77,14 +77,24 @@ app.get('/test',function (req,res){
 //-----------------test-----------------//
 
 app.get('/counter',function (req,res){
- // if(req.session)
- //{console.log(req.session.polo);
- // res.render('index_counter',{'known':1});}
- //else {
- // res.render('index_counter',{'known':0});
- //}
- res.render('counter_index_login');
+  if(req.session&&req.session.uid)
+ {console.log(req.session);
+  res.render('index_in');}
+ else {
+  res.render('counter_index_login');
+ }
  //res.render('index_counter_out');
+});
+
+app.get('/counter/:session',function (req,res){
+  if(req.params.session==='give') {
+    req.session.uid = 1;
+    res.send('done');
+  }
+  if(req.params.session==='clean') {
+    delete req.session;
+    res.redirect('/counter');
+  }
 });
 
 app.get('/counter/p3345',function (req,res){
