@@ -79,7 +79,7 @@ app.get('/test',function (req,res){
 //-----------------test-----------------//
 
 app.get('/counter',function (req,res){
-  if(req.session&&req.session.uid)
+  if(req.session&&req.session._id)
  {console.log(req.session);
   res.render('index_in');}
  else {
@@ -90,12 +90,12 @@ app.get('/counter',function (req,res){
 
 app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give') {
-    req.session.uid = 1;
-    console.log(req.session.uid);
+    req.session._id = 1;
+    console.log(req.session._id);
     res.send('done');
   }
   if(req.params.session==='clean') {
-    delete req.session.uid;
+    delete req.session._id;
     res.redirect('/counter');
   }
 });
@@ -139,8 +139,8 @@ app.get('/counter/deletemovies',function (req,res){
 app.post('/counter/getmovies',function (req,res){
   var ms ={};
   ms.trouble=1;
-  if(req.session&&req.session.uid)
-  {movies.find({uid:req.session.uid},function(err,doc){
+  if(req.session&&req.session._id)
+  {counter_movies.find({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -162,8 +162,8 @@ else{
 app.post('/counter/getbooks',function (req,res){
   var ms ={};
   ms.trouble=1;
-  if(req.session&&req.session.uid)
-  {books.find({uid:req.session.uid},function(err,doc){
+  if(req.session&&req.session._id)
+  {counter_books.find({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
