@@ -836,6 +836,12 @@ app.get('/counter/showme',function (req,res){
   });
 });
 
+app.get('/counter/testdb',function (req,res){
+  counter_movies.find({uid:"57e815540825521938000001"},function(err,done){
+    res.send(done);
+  });
+});
+
 function validateEmail(email) { 
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
