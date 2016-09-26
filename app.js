@@ -837,7 +837,7 @@ app.get('/counter/showme',function (req,res){
 });
 
 app.get('/counter/logout',function (req,res){
-  req.session delete;
+  delete req.session._id;
   res.redirect('/counter');
 });
 
