@@ -170,7 +170,7 @@ app.post('/counter/getbooks',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_books.find({uid:req.session._id},function(err,doc){
+  {counter_books.find({uid:JSON.stringify(req.session._id)},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -265,7 +265,7 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
   ms.trouble =1;
   var vmovie_id = req.params.movie_id;
   if(vmovie_id) {
-    movies.findOne({_id:vmovie_id},function(err,done){
+    counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,done){
       if(err) {
         res.send(ms);
       }
@@ -337,6 +337,59 @@ app.post('/counter/addmovie',function(req,res){
           {counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,total:1}});}
           else {
            counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
+          }
+          console.log('breakpoint six');
+           res.send('ok');  }       
+      else {
+        res.send('err');
+      }   
+});
+
+app.post('/counter/addbook',function(req,res){
+  if(req.session&&req.session._id)
+ {console.log('adding a book');
+          var ms = {};
+          ms.trouble =1;
+         
+            var vbooktitle = req.body.booktitle;
+            var vnewbook = parseInt(req.body.newbook);
+            console.log('breakpoint one');
+            var vbookauth = req.body.auth;
+            var vbookstar = parseInt(req.body.star);
+            console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookyear+' ,star: '+vbookstar+' , newbook: '+vnewbook);
+            var dd= new Date();
+            var vday = dd.getDate().toString();
+            if (vday.length===1){
+              vday='0'+vday;
+            }
+            var vmonth = dd.getMonth()+1;
+            console.log('breakpoint two');
+            vmonth = vmonth.toString();
+            if (vmonth.length===1){
+              vmonth='0'+vmonth;
+            }
+            console.log('breakpoint three');
+            var vyear = dd.getUTCFullYear().toString();
+            var fulldate = vyear+vmonth+vday;
+            fulldate = parseInt(fulldate);
+        
+            if(!vbooktitle){
+              vbooktitle = '--';
+              //SEND ERROR
+            }
+            if(!vbookyear){
+              vvbookyear = '--';
+            }
+            console.log('breakpoint four: '+req.session._id);
+          var vtmstmp = Date.now();
+          counter_books.update({uid:JSON.stringify(req.session._id)},{$push:{bookstore:{author:vbookauth,booktitle:vbooktitle,newbook:vnewbook,star:vbookstar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
+            console.log(done);
+          });
+          console.log('breakpoint five');
+          if(vnewbook)
+          {counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,total:1}});}
+          else {
+           counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
            res.send('ok');  }       
