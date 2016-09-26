@@ -146,7 +146,7 @@ app.post('/counter/getmovies',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_movies.find({uid:req.session._id},function(err,doc){
+  {counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
