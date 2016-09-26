@@ -152,6 +152,7 @@ app.post('/counter/getmovies',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
+        console.log(doc);
         ms.doc = doc;
         ms.trouble=0;
         res.send(ms);
