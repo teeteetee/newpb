@@ -807,7 +807,7 @@ app.get('/signin', function (req,res){
    res.render('signin',{'color':color});
 });
 
-app.get('/logout',function (req,res){
+app.get('/counter/logout',function (req,res){
   req.session.reset();
   res.redirect('http://peopleandbooks.com/');
 });
