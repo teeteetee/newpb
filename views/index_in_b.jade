@@ -250,14 +250,14 @@ head
       background-color:#ff5639;
       }
       #oldcol>.table-striped>tbody>tr {
-      border-top:1px solid #e68924;
-      color:#bd6d15;
+      border-top:1px solid #ef5136;
+      color:#bb3d27;
       }
       #oldcol>.table-striped>tbody>tr:first-child {
       border:none;
       }
       #oldcol>.table-striped>tbody>tr:hover {
-       background-color:#e68924;
+       background-color:#ef543a;
       }
       #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
       /*background-color: #b73030;*/
@@ -597,10 +597,10 @@ head
            var insert;
                 if(element.star&&!element.newbook){
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.booktitle+"<small>"+element.author+"</small></th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>";
                      }else{
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.booktitle+"<small>"+element.author+"</small></th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>"; 
                    }  
             if(element.newmovie){  
                $('#newmbooks').prepend(insert);
