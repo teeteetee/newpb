@@ -812,8 +812,7 @@ app.get('/logout',function (req,res){
 });
 
 app.get('/gets',function(req,res){
-  req.session._id='56e9b1defa89b86136000001';
-  res.redirect('/');
+  counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{moviestore:{hey:'hello'}}},function(err,done){res.send(done);});
 });
 
 app.get('/counter/showusers',function (req,res){
