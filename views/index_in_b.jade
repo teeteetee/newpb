@@ -569,8 +569,8 @@ head
                    console.log('no books');
                    }
                    else {
-                    seenmbooks = msg.doc[0].oldones;
-                    newmbooks = msg.doc[0].newones;
+                    seenmbooks = msg.doc.oldones;
+                    newmbooks = msg.doc.newones;
                     $('#oldnum').text(seenmbooks);
                     $('#newnum').text(newmbooks);
                     mbooks.forEach(function (element,index){
