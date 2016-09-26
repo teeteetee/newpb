@@ -326,17 +326,17 @@ head
       border: 1px solid #178e4d;
       }
   body
-    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-        .modal-dialog.modal-sm
-          .modal-content#colourful
-            .modal-header
-              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                span(aria-hidden="true") ×
-            .modal-body
-              h4.moviemodaltitle(style='text-align:center;')
-              //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-              button(class='btn btn-iosdark  form-control switch') Switch column
-              button(class='btn btn-iosdark form-control movie_remove') Remove
+    .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content#colourful
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body
+            h4.bookmodaltitle(style='text-align:center;')
+            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control switch') Switch column
+            button(class='btn btn-iosdark form-control movie_remove') Remove
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content(style='background-color:#21b363;')
@@ -605,10 +605,10 @@ head
            var insert;
                 if(element.star&&!element.newbook){
                      console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>";
+                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactbookmodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>";
                      }else{
                      console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>"; 
+                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactbookmodal("+index+")'><th style='padding-left:39px !important;'>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>"; 
                    }  
             if(element.newbook){  
                $('#newmbooks').prepend(insert);
@@ -619,7 +619,7 @@ head
            });
            //level();
           }   
-        function redactmoviemodal (i) {
+        function redactbookmodal (i) {
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
           $('.modal-dialog').css('margin-top','60%');
@@ -632,23 +632,23 @@ head
         else {
           $('#colourful').css('background-color','#fdb611');
         }
-        insert = 'removemovie('+i+')';
+        insert = 'removebook('+i+')';
         insert2 = 'switch_clmn('+i+')';
         $('.movie_remove').attr('onclick',insert);
         $('.switch').attr('onclick',insert2);
-        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
-        $('.moviemodalyear').text(consolidated[i].year);
-        $('#moviemodal').modal('show');
+        $('.bookmodaltitle').text(consolidated[i].booktitle.capitalizeFirstLetter());
+        //$('.bookmodalyear').text(consolidated[i].year);
+        $('#bookmodal').modal('show');
         }
         //----------------------------//
-        function removemovie(movieid) {
+        function removebook(movieid) {
         $.ajax({
               method: "POST",
               url: "/counter/rm_movie/"+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
               data: 0
             })
               .done(function( msg ) {
-                $('#moviemodal').modal('hide');
+                $('#bookmodal').modal('hide');
                 var vname = '.movie_'+consolidated[movieid]._id;
                 $(vname).empty();
                 var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
@@ -678,7 +678,7 @@ head
               })
                 .done(function( msg ) {
                   console.log(msg);
-                  $('#moviemodal').modal('hide');
+                  $('#bookmodal').modal('hide');
                   console.log('breakpoint 1');
                   consolidated[movieid].newmovie=parseInt(msg.present_clmn);
                   console.log('breakpoint 2');
