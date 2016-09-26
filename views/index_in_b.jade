@@ -219,7 +219,7 @@ head
        background-color:#ff5639;
       }
       #newones{
-       background-color:#6bb8f1;
+       background-color:#5d84a0;
       }
       #oldones .btn-default {
         border:1px solid #0f5c82;
@@ -232,14 +232,14 @@ head
        color:#40a0d0;
       }
       #newones .btn-default{
-       border: 1px solid #aa0a0a;
-       background-color: #e02727;
-       color: #a90a0a;
+       border: 1px solid #ab740a;
+       background-color: #f9af1f;
+       color: #ab740a;
       }
       #newones .btn-default.active, .btn-default:focus {
-      border: 1px solid #a90a0a;
-      background-color: #ab0b0b;
-      color: #e02727;
+      border: 1px solid #ab740a;
+      background-color: #ab740a;
+      color: #f9af1f;
       }
       /*.pop:hover{
         background-color:#e47e66 !important;;
@@ -256,6 +256,9 @@ head
       #oldcol small{
         color:#bb3d27;
       }
+      #newcol small{
+        color:#bb3d27;
+      }
       #oldcol>.table-striped>tbody>tr:first-child {
       border:none;
       }
@@ -264,12 +267,14 @@ head
       }
       #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
       /*background-color: #b73030;*/
-      background-color: #6bb8f1; }
+      background-color: #5d84a0; }
       #newcol>.table-striped>tbody>tr:hover {
-       background-color:#61a7da;
+       background-color:#537690;
       }
       #newcol>.table-striped>tbody>tr {
-      border-top:1px solid #61a7da;}
+      border-top:1px solid #61a7da;
+      color:white;
+      }
       #newcol>.table-striped>tbody>tr:first-child {
       border:none;}
       /*#4e86af newones font color*/
@@ -591,10 +596,10 @@ head
         //----------------------------//
         function populate(consolidated) {
          consolidated.forEach(function (element,index){
-            if($(".noitemsnew")[0]&&element.newmovie)
+            if($(".noitemsnew")[0]&&element.newbook)
                    { console.log('HAS LENGTH');
                      $('#newmbooks').empty();}
-            if($(".noitemsold")[0]&&!element.newmovie)
+            if($(".noitemsold")[0]&&!element.newbook)
                    { console.log('HAS LENGTH');
                      $('#oldmbooks').empty();}
            var insert;
@@ -605,7 +610,7 @@ head
                      console.log('2st case');
                       insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.booktitle+"<small style='margin-left:10px;'>"+element.author+"</small></th></tr>"; 
                    }  
-            if(element.newmovie){  
+            if(element.newbook){  
                $('#newmbooks').prepend(insert);
            }
            else {
