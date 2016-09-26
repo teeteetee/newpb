@@ -836,6 +836,11 @@ app.get('/counter/showme',function (req,res){
   });
 });
 
+app.get('/counter/logout',function (req,res){
+  req.session delete;
+  res.redirect('/counter');
+});
+
 app.get('/counter/testdb',function (req,res){
   counter_books.findOne({uid:"57e815540825521938000001"},function(err,done){
     res.send(done);
