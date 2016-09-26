@@ -563,9 +563,9 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('mbooks: '+msg.doc);
-                   mbooks=msg.doc;
-                  if(!mbooks || !mbooks.bookstore) {
+                  console.log('mbooks: '+JSON.stringify(msg.doc));
+                   books=msg.doc;
+                  if(!books || !books.bookstore) {
                    console.log('no mbooks');
                    }
                    else {
