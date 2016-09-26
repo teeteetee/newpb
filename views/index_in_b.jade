@@ -349,7 +349,7 @@ head
                       .col-xs-12#srm
                   .form-group
                     label(for="year") Author
-                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="30"  placeholder="L.N.Tolstoy")
+                    input(type="text" class="form-control" id="author" autocomplete='off' maxlength="30"  placeholder="L.N.Tolstoy")
             .row  
               .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
                 .btn-group#new_old(style='display:block;')
@@ -726,7 +726,7 @@ head
            if($('#nostar').hasClass('active')){
            data.star = 0;
            }
-           data.year = $('#year').val();
+           data.author = $('#author').val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
