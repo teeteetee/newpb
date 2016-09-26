@@ -333,9 +333,9 @@ app.post('/counter/addmovie',function(req,res){
           });
           console.log('breakpoint five');
           if(vnewmovie)
-          {counter_movies.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
+          {counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,total:1}});}
           else {
-           counter_movies.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
+           counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
            res.send('ok');  }       
@@ -828,8 +828,8 @@ app.get('/counter/showusers',function (req,res){
 
 app.get('/counter/showme',function (req,res){
   counter_users.findOne({_id:req.session._id},function(err,done){
-    counter_books.findOne({uid:req.session._id},function(err,done1){
-      counter_movies.findOne({uid:req.session._id},function(err,done2){
+    counter_books.findOne({uid:JSON.stringify(req.session._id)},function(err,done1){
+      counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,done2){
        res.send(req.session._id+'\n'+JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
       });
     });
@@ -877,8 +877,8 @@ app.post('/newuser',function(req,res){
         }
       else {
       //counter_stats.update({$inc:{users:1}});
-      counter_books.insert({uid:done._id,total:0,oldones:0,newones:0,bookstore:[]});
-      counter_movies.insert({uid:done._id,total:0,oldones:0,newones:0,moviestore:[]});
+      counter_books.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,bookstore:[]});
+      counter_movies.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,moviestore:[]});
       req.session._id=done._id;
       ms.trouble =0;
       ms.mtext='success';
