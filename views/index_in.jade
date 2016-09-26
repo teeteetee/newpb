@@ -410,13 +410,25 @@ head
             button.new.btn.btn-default to see
             button.btn.btn-default.add + add
             .btn-group
-              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Category
+              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
                 span.caret
               ul.dropdown-menu(aria-labelledby="dropdownMenu2")
                 li.disabled
                   a(href="#") Movies
                 li
                   a(href="/counter/p3345/b") Books
+                li
+                  .divider(role="separator")
+                li
+                  a(href="#") Firends
+                li
+                  a(href="#") Backup
+                li
+                  a(href="#") Restore
+                li
+                  .divider(role="separator")
+                li
+                  a(href="/counter/logout") Logout
           table.table.table-striped(style='color:#0c7d57;')
             tbody#newmovies
               tr.noitemsnew
