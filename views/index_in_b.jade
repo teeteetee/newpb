@@ -563,10 +563,10 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('mbooks: '+JSON.stringify(msg.doc));
+                  console.log('books: '+JSON.stringify(msg.doc));
                    books=msg.doc;
                   if(!books || !books.bookstore) {
-                   console.log('no mbooks');
+                   console.log('no books');
                    }
                    else {
                     seenmbooks = msg.doc[0].oldones;
