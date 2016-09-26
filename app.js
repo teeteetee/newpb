@@ -176,7 +176,7 @@ app.post('/counter/getbooks',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
-        ms.doc = doc.bookstore;
+        ms.doc = doc;
         ms.trouble=0;
         res.send(ms);
       }
