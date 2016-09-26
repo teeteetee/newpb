@@ -356,7 +356,7 @@ app.post('/counter/addbook',function(req,res){
             console.log('breakpoint one');
             var vbookauth = req.body.auth;
             var vbookstar = parseInt(req.body.star);
-            console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookyear+' ,star: '+vbookstar+' , newbook: '+vnewbook);
+            console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookauth+' ,star: '+vbookstar+' , newbook: '+vnewbook);
             var dd= new Date();
             var vday = dd.getDate().toString();
             if (vday.length===1){
@@ -377,7 +377,7 @@ app.post('/counter/addbook',function(req,res){
               vbooktitle = '--';
               //SEND ERROR
             }
-            if(!vbookyear){
+            if(!vbookauth){
               vvbookyear = '--';
             }
             console.log('breakpoint four: '+req.session._id);
