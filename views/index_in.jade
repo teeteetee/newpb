@@ -542,13 +542,13 @@ head
                    console.log('no movies');
                    }
                    else {
-                    seenmovies = msg.doc[0].oldones;
-                    newmovies = msg.doc[0].newones;
+                    seenmovies = msg.doc.oldones;
+                    newmovies = msg.doc.newones;
                     $('#oldnum').text(seenmovies);
                     $('#newnum').text(newmovies);
-                    msg.doc[0].moviestoremovies.forEach(function (element,index){
-                    element.item_type = 'movie';
-                    consolidated.push(element);
+                    msg.doc.moviestore.forEach(function (element,index){
+                    if(element.movietitle)
+                    {consolidated.push(element);}
                     });
                    }
                    if(consolidated.length){
