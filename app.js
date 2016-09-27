@@ -118,11 +118,11 @@ app.get('/counter/p3345/b',function (req,res){
   res.render('index_in_b');
 });
 
-app.get('/counter/friend_in',function (req,res){
+app.get('/counter/friends_in',function (req,res){
   res.render('index_in_friend');
 });
 
-app.get('/counter/friend_out',function (req,res){
+app.get('/counter/friends_out',function (req,res){
   res.render('index_out_friend');
 });
 
