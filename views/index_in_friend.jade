@@ -379,31 +379,27 @@ head
           h1(style='color:white;') FRIENDS
           h5(style='color:white;') фильмов посмотрел
           .btn-group(style='margin-bottom:10%;')
-            button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default to see
-            button.btn.btn-default.add + add
-            .btn-group
-              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
-                span.caret
-              ul.dropdown-menu(aria-labelledby="dropdownMenu2")
-                li
-                  a(href="/counter/p3345/b") books
-                li
-                  a(href="/counter/p3345") movies
-                li
-                  .divider(role="separator")
-                li.disabled
-                  a Friends
-                li
-                  a(href="#") Backup
-                li
-                  a(href="#") Restore
-                li 
-                  a(href="/counter/settings") Settings
-                li
-                  .divider(role="separator")
-                li
-                  a(href="/counter/logout") Logout
+            button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
+              span.caret
+            ul.dropdown-menu(aria-labelledby="dropdownMenu2")
+              li
+                a(href="/counter/p3345/b") books
+              li
+                a(href="/counter/p3345") movies
+              li
+                .divider(role="separator")
+              li.disabled
+                a Friends
+              li
+                a(href="#") Backup
+              li
+                a(href="#") Restore
+              li 
+                a(href="/counter/settings") Settings
+              li
+                .divider(role="separator")
+              li
+                a(href="/counter/logout") Logout
           table.table.table-striped
             tbody#oldmovies
               tr.noitemsold
