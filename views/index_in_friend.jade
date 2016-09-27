@@ -369,7 +369,7 @@ head
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
         .col-sm-8.col-sm-offset-2.itemcol#oldcol
-          h1(style='color:white;')#oldnum 0
+          h1(style='color:white;') FRIENDS
           h5(style='color:white;') фильмов посмотрел
           .btn-group(style='margin-bottom:10%;')
             button.seen.btn.btn-default.active seen 
@@ -400,43 +400,7 @@ head
               tr.noitemsold
                 th(style='padding-left:30px !important;') Пока пусто
                 th --
-    #newones.container-fluid(style='z-index:2;')
-      .row(style='text-align:center;')
-        .col-sm-8.col-sm-offset-2.itemcol#newcol
-          h1(style='color:#e4f339;')#newnum 0
-          h5(style='color:#e4f339;') фильмов в планах
-          .btn-group(style='margin-bottom:10%;')
-            button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default to see
-            button.btn.btn-default.add + add
-            .btn-group
-              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
-                span.caret
-              ul.dropdown-menu(aria-labelledby="dropdownMenu2")
-                li
-                  a(href="/counter/p3345/b") Show books
-                li
-                  .divider(role="separator")
-                li
-                  a(href="#") Firends
-                li
-                  a(href="#") Backup
-                li
-                  a(href="#") Restore
-                li 
-                  a(href="/counter/settings") Settings
-                li
-                  .divider(role="separator")
-                li
-                  a(href="/counter/logout") Logout
-          table.table.table-striped(style='color:#0c7d57;')
-            tbody#newmovies
-              tr.noitemsnew
-                th(style='padding-left:30px !important;') Пока пусто
-                th --
-              
 
-      
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
