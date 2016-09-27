@@ -468,8 +468,7 @@ head
           $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
         }
         //---------------------------//
-        var seenmovies;
-        var newmovies;
+        var friends;
         //$.ajax({
         //      method: "POST",
         //      url: "/counter/getstat_m",
@@ -487,24 +486,21 @@ head
         var consolidated=[];
         $.ajax({
               method: "POST",
-              url: "/counter/getmovies",
+              url: "/counter/getfriends",
               data: 0
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log('movies: '+JSON.stringify(msg.doc));
-                   movies=msg.doc;
-                  if(!movies || !movies.moviestore) {
-                   console.log('no movies');
+                   friends=msg.doc;
+                  if(!friends || !friends.moviestore) {
+                   console.log('no friends');
                    }
                    else {
-                    seenmovies = msg.doc.oldones;
-                    newmovies = msg.doc.newones;
-                    $('#oldnum').text(seenmovies);
-                    $('#newnum').text(newmovies);
-                    msg.doc.moviestore.forEach(function (element,index){
-                    if(element.movietitle)
-                    {consolidated.push(element);}
+                    friends = msg.doc.total;
+                    $('#oldnum').text(friends);
+                    msg.doc.friendstore.forEach(function (element,index){
+                    consolidated.push(element);
                     });
                    }
                    if(consolidated.length){
@@ -517,26 +513,12 @@ head
         //----------------------------//
         function populate(consolidated) {
          consolidated.forEach(function (element,index){
-            if($(".noitemsnew")[0]&&element.newmovie)
-                   { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
             if($(".noitemsold")[0]&&!element.newmovie)
                    { console.log('HAS LENGTH');
                      $('#oldmovies').empty();}
            var insert;
-                if(element.star&&!element.newmovie){
-                     console.log('1st case');
-                     insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.movietitle+"</th><th>"+element.year+"</th></tr>";
-                     }else{
-                     console.log('2st case');
-                      insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:39px !important;'>"+element.movietitle+"</th><th>"+element.year+"</th></tr>"; 
-                   }  
-            if(element.newmovie){  
-               $('#newmovies').prepend(insert);
-           }
-           else {
+             insert = "<tr class='pop movie_"+element._id+"' id='"+element._id+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span>"+element.nick+"</th></tr>";
             $('#oldmovies').prepend(insert);
-           }
            });
            //level();
           }   
@@ -590,89 +572,6 @@ head
                   }
               });
         }
-        //-----------------------------------//
-        function switch_clmn(movieid) {
-          $.ajax({
-                method: "POST",
-                url: "/counter/switch_clmn/"+consolidated[movieid]._id,
-                data: 0
-              })
-                .done(function( msg ) {
-                  console.log(msg);
-                  $('#moviemodal').modal('hide');
-                  console.log('breakpoint 1');
-                  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
-                  console.log('breakpoint 2');
-                  var vname = '.movie_'+consolidated[movieid]._id;
-                  console.log('breakpoint 3');
-                  var element = $(vname).detach();
-                  console.log('breakpoint 4');
-                  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                  if(consolidated[movieid].newmovie)
-                  {if($(".noitemsnew")[0])
-                   { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
-                     $('#newmovies').prepend(element);
-                  seenmovies--;
-                  newmovies++;
-                  $('#newnum').text(newmovies);
-                  $('#oldnum').text(seenmovies);
-                  if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row_old);
-                  }
-                  console.log('case 1');}
-                else
-                  {if($(".noitemsold")[0])
-                   { console.log('HAS LENGTH');
-                     $('#oldmovies').empty();}
-                    $('#oldmovies').prepend(element);
-                  newmovies--;
-                  seenmovies++;
-                  $('#oldnum').text(seenmovies);
-                  $('#newnum').text(newmovies);
-                  if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row_new);
-                  }
-                }
-                  console.log('case 2');
-                });
-        }
-        //----------------------------//
-        $('#submitmovie').click(function(){
-        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
-        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
-          $('#add').fadeOut(350);
-          $('#wait').css('display','block');
-          //-------------
-           var data={};
-           data.movietitle = $('#mtitle').val();
-           data.newmovie = 1;
-           if($('#oldmovie').hasClass('active')){
-           data.newmovie = 0;
-           }
-           data.star = 1;
-           if($('#nostar').hasClass('active')){
-           data.star = 0;
-           }
-           data.year = $('#year').val();
-           console.log(JSON.stringify(data));
-          $.ajax({
-              method: "POST",
-              url: "/counter/addmovie",
-              data: data
-            })
-              .done(function( msg ) {
-                $('#mtitle').val('');
-                $('#year').val('');
-                $('#addbook').modal('hide');
-                //$('#wait').fadeOut(350);
-                //console.log(msg);
-                window.location='/counter/p3345';
-              });
-          }
-        });
-        
         
         
         

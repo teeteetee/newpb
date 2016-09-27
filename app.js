@@ -201,6 +201,30 @@ else{
 }
 });
 
+app.post('/counter/getfriends',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        console.log(doc);
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else{
+   res.send(ms);
+}
+});
+
 app.post('/counter/getstat_m',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -944,6 +968,7 @@ app.post('/newuser',function(req,res){
       //counter_stats.update({$inc:{users:1}});
       counter_books.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,bookstore:[]});
       counter_movies.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,moviestore:[]});
+      counter_friends.insert({uid:JSON.stringify(done._id),total:0,friendstore:[]});
       req.session._id=done._id;
       ms.trouble =0;
       ms.mtext='success';
