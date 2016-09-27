@@ -325,6 +325,13 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
+      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+          background-color: #ddd;
+      }
+      .dropdown-menu>.disabled>a:hover {
+        background-color: #ddd;
+        cursor:auto;
+      }
   body
     .modal.fade.bs-example-modal-sm(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -399,8 +406,10 @@ head
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
                 span.caret
               ul.dropdown-menu(aria-labelledby="dropdownMenu2")
+                li.disabled
+                  a books
                 li
-                  a(href="/counter/p3345") Show movies
+                  a(href="/counter/p3345") movies
                 li
                   .divider(role="separator")
                 li

@@ -316,6 +316,13 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
+      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+          background-color: #ddd;
+      }
+      .dropdown-menu>.disabled>a:hover {
+        background-color: #ddd;
+        cursor:auto;
+      }
   body
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -391,6 +398,8 @@ head
                   a(href="#") Backup
                 li
                   a(href="#") Restore
+                li 
+                  a Settings
                 li
                   .divider(role="separator")
                 li

@@ -316,6 +316,13 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
+      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+          background-color: #ddd;
+      }
+      .dropdown-menu>.disabled>a:hover {
+        background-color: #ddd;
+        cursor:auto;
+      }
   body
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -385,6 +392,8 @@ head
                   a(href="/counter/p3345") Show movies
                 li
                   .divider(role="separator")
+                li
+                  a Friends
                 li
                   a(href="#") Backup
                 li
