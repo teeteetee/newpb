@@ -76,6 +76,10 @@ app.get('/test',function (req,res){
                   res.send(done);});
 });
 
+app.get('/counter/settings',function (req,res) {
+  res.render('counter_settings');
+});
+
 //-----------------test-----------------//
 
 app.get('/counter',function (req,res){
