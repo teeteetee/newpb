@@ -147,6 +147,16 @@ app.get('/counter/showstats',function (req,res){
   });
 });
 
+app.get('/counter/clear',function (req,res){
+  counter_users.remove({});
+  counter_friends.remove({});
+  counter_movies.remove({});
+  counter_books.remove({});
+  delete req.session._id;
+  delete req.session;
+  res.redirect('/counter');
+});
+
 //app.get('/counter/deletemovies',function (req,res){
 //  movies.remove({},function(err,done){
 //  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
