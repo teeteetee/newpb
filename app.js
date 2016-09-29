@@ -397,8 +397,50 @@ app.post('/counter/switch_clmn/:movie_id',function(req,res){
     });
   }
 });
+
+app.post('/counter/addfriend',function (req,res){
+  if(req.session&&req.session._id)
+ {var ms={};
+  ms.trouble=1;
+  console.log('adding a friend');
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{firendstore:{_id:req.body._id}},$inc:{total:1}},function (err,done){
+    if(err){
+      console.log('err adding a friend');
+      res.send(ms);
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    }
+  });
+ }       
+      else {
+        res.send('err');
+      }   
+});
+
+app.post('/counter/removefriend',function (req,res){
+  if(req.session&&req.session._id)
+ {var ms={};
+  ms.trouble=1;
+  console.log('removing a friend');
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{firendstore:{_id:req.body._id}},$inc:{total:-1}},function (err,done){
+    if(err){
+      console.log('err removing a friend');
+      res.send(ms);
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    }
+  });
+ }       
+      else {
+        res.send('err');
+      }   
+});
   
-app.post('/counter/addmovie',function(req,res){
+app.post('/counter/addmovie',function (req,res){
   if(req.session&&req.session._id)
  {console.log('adding a movie');
           var ms = {};
