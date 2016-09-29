@@ -463,7 +463,7 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         var isfriend = #{isfriend};
-        var _id= #{_id};
+        var _id= '#{_id}';
         if(isfriend){
           $('.add').text('unfollow');
         }
