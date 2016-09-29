@@ -205,6 +205,41 @@ app.get('/counter/profile/:_id',function (req,res){
     }
 });
 
+app.get('/counter/profile/:_id/b',function (req,res){
+  if(req.session&&req.session._id){
+    counter_users.findOne({_id:req.params._id},function (err,done){
+      if(err){
+        console.log('err /counter/profile/'+req.params._id);
+      }
+      if(done){
+        counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
+          if(done1){
+            if(done1.friendstore.indexOf(req.params._id)!=-1){
+              res.render('index_in_profile_books',{'_id':req.params._id,'isfriend':1});
+            }
+            else {
+              res.render('index_in_profile_books',{'_id':req.params._id,'isfriend':0});
+            }
+          }
+        });
+      }
+      else {
+        res.send('no such user');
+      }
+    });
+  }
+    else{
+    counter_users.findOne({_id:req.params._id},function (err,done){
+      if(done){
+        res.render('index_profile_books',{'_id':req.params._id});
+      }
+      else {
+        res.send('no such user');
+      }
+    });
+    }
+});
+
 app.post('/counter/getmovies',function (req,res){
   var ms ={};
   ms.trouble=1;
