@@ -406,12 +406,11 @@ app.post('/counter/addfriend',function (req,res){
   counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{firendstore:{_id:req.body._id}},$inc:{total:1}},function (err,done){
     if(err){
       console.log('err adding a friend');
-      res.send(ms);
+      res.send(ms);}
       else {
         ms.trouble=0;
         res.send(ms);
       }
-    }
   });
  }       
       else {
@@ -427,12 +426,11 @@ app.post('/counter/removefriend',function (req,res){
   counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{firendstore:{_id:req.body._id}},$inc:{total:-1}},function (err,done){
     if(err){
       console.log('err removing a friend');
-      res.send(ms);
+      res.send(ms);}
       else {
         ms.trouble=0;
         res.send(ms);
       }
-    }
   });
  }       
       else {
