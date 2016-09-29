@@ -471,6 +471,23 @@ head
           $('.add').text('follow');
         }
         //----------------------------//
+        $('.seen').click(function(){
+          if(!$('.seen').hasClass('active')){
+            $('#newones').hide();
+            $('#oldones').show();
+            $('.new').removeClass('active');
+            $('.seen').addClass('active');
+          }
+          });
+        $('.new').click(function(){
+          if(!$('.new').hasClass('active')) {
+            $('#newones').show();
+            $('#oldones').hide();
+            $('.seen').removeClass('active');
+            $('.new').addClass('active');
+          }
+          });
+        //----------------------------//
         $('.add').click(function(){
           addfriend();
           });
