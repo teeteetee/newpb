@@ -148,7 +148,9 @@ app.get('/counter/showstats',function (req,res){
 });
 
 app.get('/counter/clearfriends',function (req,res){
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0,firendstore:[]}});
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0,friendstore:[]}},{$unset:{firendstore:1}},function (err,done){
+    res.redirect('/counter');
+  });
 });
 
 app.get('/counter/clear',function (req,res){
