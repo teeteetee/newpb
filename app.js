@@ -968,7 +968,7 @@ app.get('/signin', function (req,res){
 
 app.get('/counter/logout',function (req,res){
   req.session.reset();
-  res.redirect('http://peopleandbooks.com/');
+  res.redirect('/counter');
 });
 
 app.get('/gets',function(req,res){
