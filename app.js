@@ -162,7 +162,7 @@ app.get('/counter/clear',function (req,res){
 //  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
 //    res.redirect('/counter/initdb');
 //  });
-//});
+//});/
 
 app.get('/counter/profile/:_id',function (req,res){
   if(req.session&&req.session._id){
