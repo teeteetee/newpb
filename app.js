@@ -228,7 +228,7 @@ app.post('/counter/friend/getmovies/:_id',function (req,res){
   ms.trouble=1;
   if(req.session&&req.session._id&&req.params._id)
   {
-    counter_movies.findOne({uid:req.params._id},function(err,doc){
+    counter_movies.findOne({uid:JSON.stringify(req.params._id)},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
