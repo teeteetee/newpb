@@ -409,7 +409,7 @@ app.post('/counter/addfriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('adding a friend');
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{friendstore:req.body._id}},{$inc:{total:1}},function (err,done){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{{$push:{friendstore:req.body._id}},{$inc:{total:1}}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
