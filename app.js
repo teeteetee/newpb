@@ -147,6 +147,10 @@ app.get('/counter/showstats',function (req,res){
   });
 });
 
+app.get('/counter/clearfriends',function (req,res){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0,firendstore:[]}});
+});
+
 app.get('/counter/clear',function (req,res){
   counter_users.remove({});
   counter_friends.remove({});
@@ -403,7 +407,7 @@ app.post('/counter/addfriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('adding a friend');
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{friendstore:{_id:req.body._id}}},{$inc:{total:1}},function (err,done){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{friendstore:req.body._id}},{$inc:{total:1}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
