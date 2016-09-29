@@ -173,7 +173,7 @@ app.get('/counter/profile/:_id',function (req,res){
       if(done){
         counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
           if(done1){
-            if(done1.friendstore.indeOf(req.params._id)!=-1){
+            if(done1.friendstore.indexOf(req.params._id)!=-1){
               res.render('index_in_profile_movies',{'_id':req.params._id,'isfriend':1});
             }
             else {
