@@ -154,11 +154,71 @@ app.get('/counter/showstats',function (req,res){
 //  });
 //});
 
+app.get('/counter/profile/:_id',function (req,res){
+  if(req.session&&req.session._id){
+    counter_users.findOne({_id:req.params._id},function (err,done){
+      if(err){
+        console.log('err /counter/profile/'+req.params._id);
+      }
+      if(done){
+        counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
+          if(done1){
+            done1.friendstore.indeOf(req.params._id!=-1){
+              res.render('index_in_profile_movies',{'_id':req.params._id,'isfriend':1});
+            }
+            else {
+              res.render('index_in_profile_movies',{'_id':req.params._id,'isfriend':0});
+            }
+          }
+        });
+      }
+      else {
+        res.send('no such user');
+      }
+    });
+  }
+    else{
+    counter_users.findOne({_id:req.params._id},function (err,done){
+      if(done){
+        res.render('index_profile_movies',{'_id':req.params._id});
+      }
+      else {
+        res.send('no such user');
+      }
+    });
+    }
+});
+
 app.post('/counter/getmovies',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
   {counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        console.log(doc);
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else{
+   res.send(ms);
+}
+});
+
+app.post('/counter/friend/getmovies/:_id',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id&&req.params._id)
+  {
+    counter_movies.findOne({uid:req.params._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
