@@ -1031,6 +1031,7 @@ app.get('/counter/showme',function (req,res){
       counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,done2){
         counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,done3){
        res.send(req.session._id+'\n'+JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2)+'\n'+JSON.stringify(done3));
+        });
       });
     });
   });
