@@ -337,7 +337,7 @@ head
               | Friends
           .modal-body  
             table.table.table-striped(style='color:#0c7d57;')
-              tbody.friendlist
+              tbody.friendslist
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
@@ -794,7 +794,7 @@ head
                    }
                    else {
                     friends = msg.doc.total;
-                    $('#oldnum').text(friends);
+                   // $('#friendsnum').text(friends);
                     msg.doc.friendstore.forEach(function (element,index){
                     consolidated.push(element);
                     });
