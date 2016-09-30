@@ -326,6 +326,22 @@ head
         cursor:auto;
       }
   body
+    .modal.fade(id='friends' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content(style='background-color:#21b363;')
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" ) 
+              span(style='font-weight:bold;') + 
+              | Friends
+          .modal-body  
+            table.table.table-striped(style='color:#0c7d57;')
+              tbody.friendlist
+                tr.noitemsfriends
+                  th(style='padding-left:30px !important;') Пока пусто
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Close
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content(style='background-color:#21b363;')
@@ -406,7 +422,7 @@ head
                 li
                   .divider(role="separator")
                 li
-                  a(href="/counter/friends_in") Firends
+                  a(onclick='getfriends()') Firends
                 li
                   a(href="#") Backup
                 li
@@ -442,7 +458,7 @@ head
                 li
                   .divider(role="separator")
                 li
-                  a(href="/counter/friends_in") Firends
+                  a(onlick='getfriends()') Firends
                 li
                   a(href="#") Backup
                 li
@@ -760,6 +776,49 @@ head
               });
           }
         });
+        function getfriends() {
+          //---------------------------//
+        var friends;
+        var consolidated=[];
+        $.ajax({
+              method: "POST",
+              url: "/counter/getfriends",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log('movies: '+JSON.stringify(msg.doc));
+                   friends=msg.doc;
+                  if(!friends || !friends.friendstore) {
+                   console.log('no friends');
+                   }
+                   else {
+                    friends = msg.doc.total;
+                    $('#oldnum').text(friends);
+                    msg.doc.friendstore.forEach(function (element,index){
+                    consolidated.push(element);
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   populate_friends(consolidated);
+                   $('#friends').modal('show');
+                 }
+                }
+              });
+        //---------------------------//
+        //----------------------------//
+        function populate_friends(consolidated) {
+         consolidated.forEach(function (element,index){
+            if($(".noitemsfriends")[0])
+                   { console.log('HAS LENGTH');
+                     $('#friends').empty();}
+           var insert;
+             insert = "<tr class='pop movie_"+element+"' id='"+element+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span><a href='/counter/profile/"+element+"'>Друг</a></th></tr>";
+            $('.friendslist').prepend(insert);
+           });
+          } 
+        }
         
         
         
