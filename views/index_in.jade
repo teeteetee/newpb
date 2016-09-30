@@ -341,7 +341,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Close
+            button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content(style='background-color:#21b363;')
@@ -819,6 +819,9 @@ head
            });
           } 
         }
+        $('#closefriends').click(function(){
+          $('#friends').modal('hide');
+          });
         
         
         
