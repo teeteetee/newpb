@@ -812,7 +812,7 @@ head
          consolidated.forEach(function (element,index){
             if($(".noitemsfriends")[0])
                    { console.log('HAS LENGTH');
-                     $('#friends').empty();}
+                     $('.friendslist').empty();}
            var insert;
              insert = "<tr class='pop movie_"+element+"' id='"+element+"' onclick='redactmoviemodal("+index+")'><th style='padding-left:15px !important;'><span style='margin-right:5px;' class='glyphicon glyphicon-star'></span><a href='/counter/profile/"+element+"'>Друг</a></th></tr>";
             $('.friendslist').prepend(insert);
