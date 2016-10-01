@@ -110,6 +110,10 @@ app.get('/counter/session/:session',function (req,res){
   }
 });
 
+app.get('/counter/comb',function (req,res){
+  res.render('index_counter_comb');
+});
+
 app.get('/counter/p3345',function (req,res){
   res.render('index_in');
 });
