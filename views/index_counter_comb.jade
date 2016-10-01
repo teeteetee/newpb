@@ -33,10 +33,6 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
-      font-weight:100;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:10px;
       }
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
@@ -578,8 +574,8 @@ head
            var insert_m_new= '--';
            var insert_b_old= '--';
            var insert_b_new= '--';
-           if(consolidated_m_old[i]){insert_m_old=consolidated_m_old[i].movietitle+" ("+consolidated_m_old[i].year+")";}
-           if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" ("+consolidated_m_new[i].year+")";}
+           if(consolidated_m_old[i]){insert_m_old=consolidated_m_old[i].movietitle+" <small>"+consolidated_m_old[i].year+"</small>";}
+           if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
            if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
            if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
            insert="<tr><td>"+insert_m_old+"</td><td>"+insert_m_new+"</td><td>"+insert_b_old+"</td><td>"+insert_b_new+"</td></tr>";
