@@ -392,31 +392,16 @@ head
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
-      .row
-        //background: linear-gradient(to bottom, #0d8edd 0%,#ff670f 100%);
-        .col-xs-12(style='text-align:center;padding-top:10%;color:white;')
-          h1(style='font-weight:300 !important;') Simple movie list
-          //h5 done like it should be done:
-          .wrp(style='margin:auto;max-width:350px;margin-top:5%;')
-            ul(style='text-align:left;font-size:15px;')
-              li no social networks integration
-              li you do your own backups
-              li looks nice only on desktop
-          button.btn.btn-ioslight#closewait(style="margin:auto;margin-top:5%;") close
     //.container(style='z-index:2;')  
-    #oldones.container-fluid(style='z-index:2;')
+    .container-fluid(style='z-index:2;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
-        .col-sm-8.col-sm-offset-2.itemcol#oldcol
-          h1(style='color:#0f5c82;')#oldnum 0
-          h5(style='color:#0f5c82;') фильмов посмотрел
+        .col-sm-10.col-sm-offset-1
+          h1(style='font-family:boldproxima;color:#0f5c82;') MY LISTS
           //h2(style='font-family:boldproxima;text-transform:uppercase;') фильмов посмотрел
           .btn-group(style='margin-bottom:10%;')
-            button.seen.btn.btn-default.active seen 
-            button.new.btn.btn-default to see
             button.btn.btn-default.add + add
             .btn-group
               button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
