@@ -655,7 +655,7 @@ head
            if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
            if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
            insert="<tr><th>"+insert_m_old+"</th><th>"+insert_m_new+"</th><th>"+insert_b_old+"</th><th>"+insert_b_new+"</th></tr>";
-           $('#combitems').prepend(insert);
+           $('#combitems').append(insert);
           }
           }   
         function redactmoviemodal (i) {
