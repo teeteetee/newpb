@@ -632,9 +632,10 @@ head
                  if(consolidated_b_new.length){
                    sortByKey(consolidated_b_new, 'tmstmp');
                  }
+              populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
-          populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
+          //populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
         //----------------------------//
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
