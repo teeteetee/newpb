@@ -586,7 +586,7 @@ head
            if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
            if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
            if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           insert="<tr><td>"+insert_m_old+"</td><td>"+insert_m_new+"</td><td>"+insert_b_old+"</td><td>"+insert_b_new+"</td></tr>";
+           insert="<tr><td class='mo'>"+insert_m_old+"</td><td class='mn'>"+insert_m_new+"</td><td class='bo'>"+insert_b_old+"</td><td class='bn'>"+insert_b_new+"</td></tr>";
            $('#combitems').append(insert);
           }
           }   
