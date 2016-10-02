@@ -371,16 +371,16 @@ head
                 li
                   a(href="/counter/logout") Logout
           .row
-            .col-xs-3.first 
+            .col-xs-3.first#first
               h4 Посмотрел 
                 small#sm
-            .col-xs-3.second
+            .col-xs-3.second#second
               h4 В планах 
                 small#nm
-            .col-xs-3.third
+            .col-xs-3.third#third
               h4 Прочитал 
                 small#rb
-            .col-xs-3.fourth
+            .col-xs-3.fourth#fourth
               h4 В планах 
                 small#nb
           //
@@ -596,24 +596,40 @@ head
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
           var count;
-          count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
-          for(var i=0;i<count;i++){
-            console.log('iter: '+i);
+          consolidated_m_old.forEach(function (element,index){
+            var insert=consolidated_m_old[i].movietitle+" <small>"+consolidated_m_old[i].year+"</small>"+'\n';
+            $('#first').prepend(insert);
+            });
+          consolidated_m_new.forEach(function (element,index){
+            var insert=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>"+'\n';
+            $('#second').prepend(insert);
+            });
+          consolidated_b_old.forEach(function (element,index){
+            var insert=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>"+'\n';
+            $('#third').prepend(insert);
+            });
+          consolidated_b_new.forEach(function (element,index){
+            var insert=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>"+'\n';
+            $('#fourth').prepend(insert);
+            });
+          //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
+          //for(var i=0;i<count;i++){
+          //  console.log('iter: '+i);
             //if($(".noitems")[0])
             // { $('#combitems').empty();
             //  }
-           var insert;
-           var insert_m_old= '';
-           var insert_m_new= '';
-           var insert_b_old= '';
-           var insert_b_new= '';
-           if(consolidated_m_old[i]){insert_m_old=consolidated_m_old[i].movietitle+" <small>"+consolidated_m_old[i].year+"</small>";}
-           if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
-           if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
-           if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
-           $('#combitems').append(insert);
-          }
+           //var insert;
+           //var insert_m_old= '';
+           //var insert_m_new= '';
+           //var insert_b_old= '';
+           //var insert_b_new= '';
+           //if(consolidated_m_old[i]){insert_m_old=consolidated_m_old[i].movietitle+" <small>"+consolidated_m_old[i].year+"</small>";}
+           //if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
+           //if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
+           //if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
+           //insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
+           //$('#combitems').append(insert);
+          //}
           }   
         function redactmoviemodal (i) {
           console.log('redact');
