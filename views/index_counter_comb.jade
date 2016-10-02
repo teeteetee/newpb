@@ -579,8 +579,8 @@ head
                    if(consolidated_m_old.length){
                     sortByKey(consolidated_m_old,'tmstmp');
                    }
-                   $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Посмотрел</li>');
-                   $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>В планах</li>');
+                   $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li>');
+                   $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li>');
                    $.ajax({
               method: "POST",
               url: "/counter/getbooks",
@@ -615,8 +615,8 @@ head
                  if(consolidated_b_new.length){
                    sortByKey(consolidated_b_new, 'tmstmp');
                  }
-                 $('#third').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Прочитал</li>');
-                 $('#fourth').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>В планах</li>');
+                 $('#third').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
+                 $('#fourth').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
               populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
