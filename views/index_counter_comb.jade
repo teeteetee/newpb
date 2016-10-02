@@ -330,7 +330,7 @@ head
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;')
-        .col-sm-10.col-sm-offset-1
+        .col-sm-12#combitems
           h1(style='font-family:boldproxima;color:#0f5c82;') MY LISTS
           //h2(style='font-family:boldproxima;text-transform:uppercase;') фильмов посмотрел
           .btn-group(style='margin-bottom:10%;')
@@ -357,21 +357,35 @@ head
                   .divider(role="separator")
                 li
                   a(href="/counter/logout") Logout
-          table.table.table-striped.table-bordered.table-hover
-            thead
-              tr
-                th Посмотрел 
-                  small#sm
-                th В планах 
-                  small#nm
-                th Прочитал 
-                  small#rb
-                th В планах 
-                  small#nb
-            tbody#combitems
-              tr.noitems
-                th(style='padding-left:30px !important;') Пока пусто
-                th --
+          .row
+            .col-xs-3 
+              | Посмотрел
+              small#sm
+            .col-xs-3 
+              | В планах
+              small#nm
+            .col-xs-3 
+              | Прочитал
+              small#rb
+            .col-xs-3 
+              | В планах
+              small#nb
+          //
+            table.table.table-striped.table-bordered.table-hover
+              thead
+                tr
+                  th Посмотрел 
+                    small#sm
+                  th В планах 
+                    small#nm
+                  th Прочитал 
+                    small#rb
+                  th В планах 
+                    small#nb
+              tbody
+                tr.noitems
+                  th(style='padding-left:30px !important;') Пока пусто
+                  th --
     
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -586,7 +600,7 @@ head
            if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
            if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
            if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           insert="<tr><td>"+insert_m_old+"</td><td>"+insert_m_new+"</td><td>"+insert_b_old+"</td><td>"+insert_b_new+"</td></tr>";
+           insert="<div class='row'><div class='col-xs-3'>"+insert_m_old+"</div><div class='col-xs-3'>"+insert_m_new+"</div><div class='col-xs-3'>"+insert_b_old+"</div><div class='col-xs-3'>"+insert_b_new+"</div></div>";
            $('#combitems').append(insert);
           }
           }   
