@@ -264,21 +264,27 @@ head
           a(class="navbar-brand" href="/") LISTS
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
-            li.nav-item.btn-group
-              a(class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
-              ul.dropdown-menu(aria-labelledby="dropdownMenu1")
-                li
-                  a(onclick='getfriends()') Firends
-                li
-                  a(href="#") Backup
-                li
-                  a(href="#") Restore
-                li 
-                  a(href="/counter/settings") Settings
-                li
-                  .divider(role="separator")
-                li
-                  a(href="/counter/logout") Logout
+            li
+              a(onclick='getfriends()') Firends
+            li 
+              a(href="/counter/settings") Settings
+            li
+              a(href="/counter/logout") Logout
+            //li.nav-item.btn-group
+            //  a(class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
+            //  ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+            //    li
+            //      a(onclick='getfriends()') Firends
+            //    li
+            //      a(href="#") Backup
+            //    li
+            //      a(href="#") Restore
+            //    li 
+            //      a(href="/counter/settings") Settings
+            //    li
+            //      .divider(role="separator")
+            //    li
+            //      a(href="/counter/logout") Logout
           button.btn.btn-primary.add.pull-right(style='margin-top:8px;margin-bottom:8px;') + add
           //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
