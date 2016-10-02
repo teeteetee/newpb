@@ -592,7 +592,7 @@ app.post('/counter/addbook',function(req,res){
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
   { var json = {};
-     counter_movies.find({uid:JSON.stringify(req.session._id)},function (err,doc){
+     counter_movies.findOne({uid:JSON.stringify(req.session._id)},function (err,doc){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
@@ -607,7 +607,7 @@ app.post('/backup',function (req,res){
          json.movies.total=doc.total;
          json.movies.oldones=doc.oldones;
          json.movies.newones=doc.newones;
-         counter_books.find({uid:JSON.stringify(req.session._id)},function (err,doc2){
+         counter_books.findOne({uid:JSON.stringify(req.session._id)},function (err,doc2){
             if(err){
                console.log('ERR WHILE BACKUP REQUEST');
                console.log(err3);
