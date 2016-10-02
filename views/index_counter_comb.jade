@@ -266,10 +266,13 @@ head
           ul(class='nav navbar-nav')
             li.nav-item.btn-group
               a(class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
-              .dropdown-menu(aria-labelledby="dropdownMenu1")
-                a(class="dropdown-item" href="#") Action
-                a(class="dropdown-item" href="#") Another action
-                a(class="dropdown-item" href="#") Something else here
+              ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+                li(class="dropdown-item")
+                  a(href="") Action
+                li(class="dropdown-item")
+                  a(href="") Another action
+                li(class="dropdown-item")
+                  a(href="") Something else here
             li(class='active')
               a(href="#") lists
             li
