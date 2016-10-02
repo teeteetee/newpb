@@ -265,6 +265,19 @@ head
         background-color: #ddd;
         cursor:auto;
       }
+      .first{
+        background-color:#ff9b2f;
+      }
+      .second{
+        background-color:#2b8;
+      }
+      .third{
+        background-color:#ff5639;
+      }
+      .fourth{
+        background-color:#5d84a0;
+      }
+
   body
     .modal.fade(id='friends' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -358,16 +371,16 @@ head
                 li
                   a(href="/counter/logout") Logout
           .row
-            .col-xs-3 
+            .col-xs-3.first 
               h4 Посмотрел 
                 small#sm
-            .col-xs-3 
+            .col-xs-3.second
               h4 В планах 
               small#nm
-            .col-xs-3 
+            .col-xs-3.third
               h4 Прочитал 
               small#rb
-            .col-xs-3 
+            .col-xs-3.fourth
               h4 В планах 
               small#nb
           //
@@ -598,7 +611,7 @@ head
            if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
            if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
            if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           insert="<div class='row'><div class='col-xs-3'>"+insert_m_old+"</div><div class='col-xs-3'>"+insert_m_new+"</div><div class='col-xs-3'>"+insert_b_old+"</div><div class='col-xs-3'>"+insert_b_new+"</div></div>";
+           insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
            $('#combitems').append(insert);
           }
           }   
