@@ -340,47 +340,48 @@ head
             button(class='btn btn-iosdark  form-control switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
     //.container(style='z-index:2;')  
-    .container-fluid(style='z-index:2;')
+    .container-fluid(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
+          //
+            .row
+              .col-sm-12#combitems
+                h1(style='font-family:boldproxima;color:#0f5c82;') MY LISTS
+                //h2(style='font-family:boldproxima;text-transform:uppercase;') фильмов посмотрел
+                .btn-group(style='margin-bottom:10%;')
+                  button.btn.btn-default.add + add
+                  .btn-group
+                    button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
+                      span.caret
+                    ul.dropdown-menu(aria-labelledby="dropdownMenu2")
+                      li.disabled
+                        a movies
+                      li
+                        a(href="/counter/p3345/b") books
+                      li
+                        .divider(role="separator")
+                      li
+                        a(onclick='getfriends()') Firends
+                      li
+                        a(href="#") Backup
+                      li
+                        a(href="#") Restore
+                      li 
+                        a(href="/counter/settings") Settings
+                      li
+                        .divider(role="separator")
+                      li
+                        a(href="/counter/logout") Logout
       .row
-        .col-sm-12#combitems
-          h1(style='font-family:boldproxima;color:#0f5c82;') MY LISTS
-          //h2(style='font-family:boldproxima;text-transform:uppercase;') фильмов посмотрел
-          .btn-group(style='margin-bottom:10%;')
-            button.btn.btn-default.add + add
-            .btn-group
-              button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Menu
-                span.caret
-              ul.dropdown-menu(aria-labelledby="dropdownMenu2")
-                li.disabled
-                  a movies
-                li
-                  a(href="/counter/p3345/b") books
-                li
-                  .divider(role="separator")
-                li
-                  a(onclick='getfriends()') Firends
-                li
-                  a(href="#") Backup
-                li
-                  a(href="#") Restore
-                li 
-                  a(href="/counter/settings") Settings
-                li
-                  .divider(role="separator")
-                li
-                  a(href="/counter/logout") Logout
-          .row
-            .col-sm-3.first
-              ul.list-group#first
-            .col-sm-3.second
-              ul.list-group#second
-            .col-sm-3.third
-              ul.list-group#third
-            .col-sm-3.fourth
-              ul.list-group#fourth
+        .col-sm-3.first
+          ul.list-group#first
+        .col-sm-3.second
+          ul.list-group#second
+        .col-sm-3.third
+          ul.list-group#third
+        .col-sm-3.fourth
+          ul.list-group#fourth
           //  
             table.table.table-striped.table-bordered.table-hover
               thead
