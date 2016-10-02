@@ -251,7 +251,11 @@ head
       }
       .fourth{
       }
-
+      .navbar-inverse .navbar-brand {
+      color: #ff9d00;
+      font-family: boldproxima;
+      letter-spacing: 2px;
+      font-size: 13px;}
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -285,7 +289,7 @@ head
             //      .divider(role="separator")
             //    li
             //      a(href="/counter/logout") Logout
-          button.btn.btn-primary.add.pull-right(style='margin-top:8px;margin-bottom:8px;') + add
+          button.btn.btn-sm.btn-success.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
           //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
              .input-group
