@@ -276,6 +276,25 @@ head
       }
 
   body
+    nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:500;')
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/") LISTS
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') you follow 
+            li
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') settings 
+            li
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') logout 
+          //
+            form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+             .input-group
+                input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+                span(class='input-group-btn')
+                  button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                    span(class='glyphicon glyphicon-search') 
     .modal.fade(id='friends' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -590,6 +609,7 @@ head
           console.log('hello');
           var count;
           consolidated_m_old.forEach(function (element,index){
+            var star=
             var insert='<li class="list-group-item">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('#first').append(insert);
             });
