@@ -663,7 +663,7 @@ function validateJSON(body) {
 
 
 app.post('/counter/restore',function (req,res){
- // if(req.session._id){      
+ if(req.session&&req.session._id){      
   console.log('breakpoint 0, req.files: \n'+req.files);
     var oldPath = req.files.userjson.path;
      console.log('breakpoint 1');
@@ -674,27 +674,33 @@ app.post('/counter/restore',function (req,res){
        if (valid) {
          console.log('breakpoint 4');
          data = JSON.parse(data);
-         data.forEach(function(element,index){
-           console.log('breakpoint loop');
-          movies.insert({year:element.year,movietitle:element.movietitle,newmovie:element.newmovie,star:element.moviestar,regdateint:element.regdateint,tmstmp:element.tmstmp});
-          if(element.newmovie)
-          {stats.update({queryhook:'stats'},{$inc:{newmovies:1,totalmovies:1}});}
-          else {
-            stats.update({queryhook:'stats'},{$inc:{seenmovies:1,totalmovies:1}});
-          }
+         counter_movies.update({uid:JSON.stringify(req.session._id)},{$set:{total:data.movies.total,newones:data.movies.newones,oldones:data.movies.oldones,moviestore:data.movies.moviestore}},function (err,done){
+           if(err){
+            console.log('err');
+           }
+           else {
+              counter_books.update({uid:JSON.stringify(req.session._id)},{$set:{total:data.books.total,newones:data.books.newones,oldones:data.books.oldones,bookstore:data.books.bookstore}},function (err2,done2){
+                if(err2){
+                 console.log('err');
+                }
+                else {
+
+                }
+              });
+           }
          });
        }
         console.log('breakpoint 5');
       fs.unlink(oldPath, function(){
         //if(err) throw err;
         if(err) console.log(err);
-        res.redirect('/counter');
+        res.redirect('/counter/comb');
        });
     });
- //  }
- // else {
- //   res.redirect('/');
- // }
+  }
+  else{
+    res.send('err');
+  }
 });
 
 //------------------test-------------------//
