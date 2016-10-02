@@ -271,7 +271,7 @@ head
             li
               a(onclick='getfriends()') Firends
             li 
-              a(href="/counter/settings") Settings
+              a#settings_btn Settings
             li
               a(href="/counter/logout") Logout
             //li.nav-item.btn-group
@@ -309,6 +309,17 @@ head
               tbody.friendslist
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
+          .modal-footer(style='text-align:center;')
+            button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
+    .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" ) Settings
+          .modal-body  
+            .btn.btn-primary#backup
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -417,6 +428,12 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#settings_btn').click(function(){
+          $('#settings').modal('show');
+          });
+        $('#backup').click(function(){
+          $('#backupform').submit();
+          });
         $('#about').click(function(){
           if($('#oldones').css('display')!='none'){
           $('#oldones').css('overflow','hidden');
