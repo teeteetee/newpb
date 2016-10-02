@@ -374,19 +374,19 @@ head
             .col-xs-3.first
               h4 Посмотрел 
                 small#sm
-              ul#first
+              ul.list-group#first
             .col-xs-3.second
               h4 В планах 
                 small#nm
-              ul#second
+              ul.list-group#second
             .col-xs-3.third
               h4 Прочитал 
                 small#rb
-              ul#third
+              ul.list-group#third
             .col-xs-3.fourth
               h4 В планах 
                 small#nb
-              ul#fourth
+              ul.list-group#fourth
           //  
             table.table.table-striped.table-bordered.table-hover
               thead
@@ -601,19 +601,19 @@ head
           console.log('hello');
           var count;
           consolidated_m_old.forEach(function (element,index){
-            var insert='<li>'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var insert='<li class="list-group-item">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('#first').append(insert);
             });
           consolidated_m_new.forEach(function (element,index){
-            var insert='<li>'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var insert='<li class="list-group-item">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('#second').append(insert);
             });
           consolidated_b_old.forEach(function (element,index){
-            var insert='<li>'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var insert='<li class="list-group-item">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('#third').append(insert);
             });
           consolidated_b_new.forEach(function (element,index){
-            var insert='<li>'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var insert='<li class="list-group-item">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('#fourth').append(insert);
             });
           //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
