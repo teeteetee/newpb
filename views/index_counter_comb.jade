@@ -38,9 +38,9 @@ head
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
       }
-      .navbar-nav {
+      /*.navbar-nav {
        float: right;
-      }
+      }*/
       .container {
         transition: 0.5s -webkit-filter linear;
         transition: 0.5s -moz-filter linear;
@@ -280,7 +280,7 @@ head
       .container
         .navbar-header
           a(class="navbar-brand" href="/") LISTS
-        .collapse.navbar-collapse#navbar-collapse-9
+        .collapse.navbar-collapse
           ul(class='nav navbar-nav')
             li(class='active')
               a(href="#") lists
@@ -611,20 +611,23 @@ head
           console.log('hello');
           var count;
           consolidated_m_old.forEach(function (element,index){
-            var star=
-            var insert='<li class="list-group-item">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var star=parseInt(element.star)?'success':'';
+            var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('#first').append(insert);
             });
           consolidated_m_new.forEach(function (element,index){
-            var insert='<li class="list-group-item">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var star=parseInt(element.star)?'success':'';
+            var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('#second').append(insert);
             });
           consolidated_b_old.forEach(function (element,index){
-            var insert='<li class="list-group-item">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var star=parseInt(element.star)?'success':'';
+            var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('#third').append(insert);
             });
           consolidated_b_new.forEach(function (element,index){
-            var insert='<li class="list-group-item">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var star=parseInt(element.star)?'success':'';
+            var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('#fourth').append(insert);
             });
           //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
