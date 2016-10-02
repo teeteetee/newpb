@@ -515,7 +515,7 @@ head
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
-              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+              return ((x < y) ? 1 : ((x > y) ? -1 : 0));
           });
         }
         String.prototype.capitalizeFirstLetter = function() {
