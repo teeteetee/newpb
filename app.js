@@ -590,39 +590,62 @@ app.post('/counter/addbook',function(req,res){
 });
 
 app.post('/backup',function (req,res){
-  { var json = [];
-     movies.find({},function (err,doc2){
+  if(req.session&&req.session._id)
+  { var json = {};
+     counter_movies.find({uid:JSON.stringify(req.session._id)},function (err,doc){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
          }
          else 
        {
-         doc2.forEach(function(element,index){
-          json.push(element);
+         //doc2.forEach(function(element,index){
+         // json.push(element);
+         //});
+         json.movies={};
+         json.movies.moviestore=doc.moviestore;
+         json.movies.total=doc.total;
+         json.movies.oldones=doc.oldones;
+         json.movies.newones=doc.newones;
+         counter_books.find({uid:JSON.stringify(req.session._id)},function (err,doc2){
+            if(err){
+               console.log('ERR WHILE BACKUP REQUEST');
+               console.log(err3);
+             }
+             else 
+           {
+            json.books={};
+            json.books.bookstore=doc2.bookstore;
+            json.books.total=doc2.total;
+            json.books.oldones=doc2.oldones;
+            json.books.newones=doc2.newones;
+            var d = new Date();
+            var vday = d.getDate().toString();
+            var vmonth = d.getMonth()+1;
+            vmonth = vmonth.toString();
+            var vyear = d.getUTCFullYear().toString();
+            console.log('beginning');
+            if (vday.length===1){
+                   vday='0'+vday;
+                 }
+            if (vmonth.length===1){
+                   vmonth='0'+vmonth;
+                 }
+            var date= vday+'/'+vmonth+'/'+vyear;
+            var filename = 'Movies_backup_'+date+'.json'; // or whatever
+            var mimetype = 'application/json';
+            res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            res.setHeader('Content-type', mimetype);
+            res.write(JSON.stringify(json));
+            res.end();
+           }
          });
-         var d = new Date();
-         var vday = d.getDate().toString();
-         var vmonth = d.getMonth()+1;
-         vmonth = vmonth.toString();
-         var vyear = d.getUTCFullYear().toString();
-         console.log('beginning');
-         if (vday.length===1){
-                vday='0'+vday;
-              }
-         if (vmonth.length===1){
-                vmonth='0'+vmonth;
-              }
-         var date= vday+'/'+vmonth+'/'+vyear;
-         var filename = 'Movies_backup_'+date+'.json'; // or whatever
-         var mimetype = 'application/json';
-         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-         res.setHeader('Content-type', mimetype);
-         res.write(JSON.stringify(json));
-         res.end();
        }
      });
     //res.redirect('/');
+    }
+    else {
+      res.send('err');
     }
 });
 
