@@ -304,7 +304,7 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" ) You follow
-              span.badge#friendsnum
+              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
             table.table.table-striped(style='color:#0c7d57;')
               tbody.friendslist
@@ -850,10 +850,9 @@ head
         //----------------------------//
         function populate_friends(consolidated) {
          consolidated.forEach(function (element,index){
-            //if($(".noitemsfriends")[0])
-            //       { console.log('HAS LENGTH');
-            //         $('.friendslist').empty();}
-            $('.friendslist').empty();
+            if($(".noitemsfriends")[0])
+                   { console.log('HAS LENGTH');
+                     $('.friendslist').empty();}
            var insert;
              insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>Друг</a></th></tr>";
             $('.friendslist').prepend(insert);
