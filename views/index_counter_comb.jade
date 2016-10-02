@@ -502,6 +502,8 @@ head
         //        });
         var consolidated_m_old=[];
         var consolidated_m_new=[];
+        var consolidated_b_old = [];
+        var consolidated_b_new =[];
         $.ajax({
               method: "POST",
               url: "/counter/getmovies",
@@ -538,12 +540,7 @@ head
                    }
                    $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Посмотрел</li>');
                    $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>В планах</li>');
-                }
-              });
-        //---------------------------//
-        var consolidated_b_old = [];
-        var consolidated_b_new =[];
-        $.ajax({
+                   $.ajax({
               method: "POST",
               url: "/counter/getbooks",
               data: 0
@@ -582,6 +579,11 @@ head
               populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
+                }
+              });
+        //---------------------------//
+        
+        
           //populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
         //----------------------------//
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
