@@ -269,7 +269,7 @@ head
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
-              a(onclick='getfriends()') Firends
+              a(onclick='getfriends()') You follow
             li 
               a#settings_btn Settings
             li
@@ -319,7 +319,14 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title" ) Settings
           .modal-body  
-            .btn.btn-primary#backup
+            .row
+              .btn.btn-primary#backup download backup
+            .row
+              .btn.btn-default#restore restore from backup file
+            .row
+              form
+                input(type='text' placeholder='nick')
+                button.btn.btn-success change nick
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
     .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
