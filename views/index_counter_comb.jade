@@ -33,6 +33,7 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
+        background-color:#ddd;
       }
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
@@ -266,16 +267,12 @@ head
         cursor:auto;
       }
       .first{
-        background-color:#ff9b2f;
       }
       .second{
-        background-color:#2b8;
       }
       .third{
-        background-color:#ff5639;
       }
       .fourth{
-        background-color:#5d84a0;
       }
 
   body
@@ -371,21 +368,13 @@ head
                 li
                   a(href="/counter/logout") Logout
           .row
-            .col-xs-3.first
-              h4 Посмотрел 
-                small#sm
+            .col-sm-3.first
               ul.list-group#first
-            .col-xs-3.second
-              h4 В планах 
-                small#nm
+            .col-sm-3.second
               ul.list-group#second
-            .col-xs-3.third
-              h4 Прочитал 
-                small#rb
+            .col-sm-3.third
               ul.list-group#third
-            .col-xs-3.fourth
-              h4 В планах 
-                small#nb
+            .col-sm-3.fourth
               ul.list-group#fourth
           //  
             table.table.table-striped.table-bordered.table-hover
