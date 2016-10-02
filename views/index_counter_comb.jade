@@ -304,6 +304,7 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" ) You follow
+              span.badge#friendsnum
           .modal-body  
             table.table.table-striped(style='color:#0c7d57;')
               tbody.friendslist
@@ -833,7 +834,7 @@ head
                    }
                    else {
                     friends = msg.doc.total;
-                   // $('#friendsnum').text(friends);
+                    $('#friendsnum').text(friends);
                     msg.doc.friendstore.forEach(function (element,index){
                     consolidated.push(element);
                     });
