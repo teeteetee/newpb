@@ -33,7 +33,7 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
-        background-color:#ddd;
+        background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
       }
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
@@ -252,10 +252,18 @@ head
       .fourth{
       }
       .navbar-inverse .navbar-brand {
-      color: #ff9d00;
+      color: white;
       font-family: boldproxima;
       letter-spacing: 2px;
-      font-size: 13px;}
+      font-size: 22px;}
+      .navbar-inverse {
+        background-color: rgba(255, 255, 255, 0.29);
+        border:none;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+          color: white;
+          font-weight:100;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
