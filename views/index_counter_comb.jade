@@ -264,6 +264,28 @@ head
           color: white;
           font-weight:100;
       }
+      .list-group-item{
+        border:none;
+        font-weight: 200;
+       letter-spacing: 1px;
+       background-color: rgba(255, 255, 255, 0.48);
+      }
+      .list-group-item.disabled{
+        color:#bdbdbd;
+        font-weight:100;
+        letter-spacing:1px;
+        background-color:rgba(0, 0, 0, 0.64);
+      }
+      .btn-add{
+        border:1px solid white;
+        background-color:transparent;
+        color:white;
+      }
+      .btn-add:focus,.btn-add:active,.btn-add:hover{
+        border:1px solid white;
+        background-color:white;
+        color:#333;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -297,7 +319,7 @@ head
             //      .divider(role="separator")
             //    li
             //      a(href="/counter/logout") Logout
-          button.btn.btn-sm.btn-success.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
+          button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
           //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
              .input-group
