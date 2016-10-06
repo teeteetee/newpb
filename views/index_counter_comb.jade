@@ -421,8 +421,7 @@ head
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
-    //.container(style='z-index:2;')  
-    .container-fluid(style='z-index:2;padding-top:70px;')
+    .container(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
@@ -634,8 +633,8 @@ head
                    if(consolidated_m_old.length){
                     sortByKey(consolidated_m_old,'tmstmp');
                    }
-                   $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li>');
-                   $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li>');
+                   $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li><li class="list-group-item"><button id="addold_m" class="btn btn-sm btn-add">+ add item</button></li>');
+                   $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li><li class="list-group-item"><button id="addnew_m" class="btn btn-sm btn-add">+ add item</button></li>');
                    $.ajax({
               method: "POST",
               url: "/counter/getbooks",
@@ -670,8 +669,8 @@ head
                  if(consolidated_b_new.length){
                    sortByKey(consolidated_b_new, 'tmstmp');
                  }
-                 $('#third').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
-                 $('#fourth').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
+                 $('#third').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li><li class="list-group-item"><button id="addold_b" class="btn btn-sm btn-add">+ add item</button></li>');
+                 $('#fourth').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li><li class="list-group-item"><button id="addnew_b" class="btn btn-sm btn-add">+ add item</button></li>');
               populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
