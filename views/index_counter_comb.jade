@@ -316,7 +316,7 @@ head
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
-              a(onclick='$("#add_comd").modal("show);"') Add item
+              a(onclick='add_dialog()') Add item
             li
               a(onclick='getfriends()') You follow
             li 
@@ -547,6 +547,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        function add_dialog() {
+          $('#add_comb').modal('show');
+        }
         $('#settings_btn').click(function(){
           $('#settings').modal('show');
           });
