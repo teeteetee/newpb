@@ -215,10 +215,10 @@ head
       .form-control:focus{
        /* border:none;*/
       }/*
-      input[type=text]::-webkit-input-placeholder {color:#28d476;}
-      input[type=text]::-moz-placeholder          {color:#28d476;}
-      input[type=text]:-moz-placeholder           {color:#28d476;}
-      input[type=text]:-ms-input-placeholder      {color:#28d476;}*/
+      input[type=text]::-webkit-input-placeholder {font-weight:200;}
+      input[type=text]::-moz-placeholder          {font-weight:200;}
+      input[type=text]:-moz-placeholder           {font-weight:200;}
+      input[type=text]:-ms-input-placeholder      {font-weight:200;}*/
       #addbook .btn-iosdark-add.active {
       background-color: #178e4d;
       color: #28d476;
@@ -321,7 +321,7 @@ head
               a#settings_btn Settings
             li
               a(href="/counter/logout") Logout
-          //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
+          button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
           //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
              .input-group
