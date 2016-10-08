@@ -135,15 +135,15 @@ head
         background-color:white;
         color:#333;
       }
-      .modal-sm .btn-iosdark, .modal-footer .btn-iosdark {
+      .modal-sm .btn_mod .btn-iosdark, .modal-footer .btn-iosdark {
         box-shadow:none;
         border:none;
         background-color:#2d2d2d;
       }
-      .modal-sm .btn-iosdark:hover,.modal-footer .btn-iosdark:hover {
+      .modal-sm .btn_mod .btn-iosdark:hover,.modal-footer .btn-iosdark:hover {
         background-color:#424242;
       }
-      .modal-sm .modal-body .btn, .modal-footer .btn {
+      .modal-sm .btn_mod .modal-body .btn, .modal-footer .btn {
       height:50px;
       border-radius:0px;
       border-bottom:1px solid #4e4e4e;
@@ -156,7 +156,7 @@ head
         padding-right:15px;
         padding-left:15px;
       }
-      .modal-sm .modal-body .btn:last-child,.modal-footer .btn:last-child {
+      .modal-sm btn_mod .modal-body .btn:last-child,.modal-footer .btn:last-child {
         border:none;
         border-bottom-left-radius:6px;
         border-bottom-right-radius:6px;
@@ -199,7 +199,7 @@ head
       .modal-dialog {
       margin-top: 15%;
       }
-      .modal-sm .modal-body .btn,.modal-footer .btn {
+      .modal-sm .btn_mod .modal-body .btn,.modal-footer .btn {
       color: #b9b9b9;  
       letter-spacing: 2px;
       font-weight: 100;
@@ -431,7 +431,9 @@ head
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-    .modal.fade.bs-example-modal-sm(id='addold_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+          .modal-footer
+            button(data-dissmiss="modal" class='btn btn-primary')
+    .modal.fade.bs-example-modal-sm.btn_mod(id='addold_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -442,7 +444,7 @@ head
             input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="название")
             input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder='год')
             button(class='btn btn-iosdark form-control movie_remove') Добавить
-    .modal.fade.bs-example-modal-sm(id='addnew_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='addnew_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -453,7 +455,7 @@ head
             input(type="text" maxlength="50" class="form-control"  autocomplete='off' placeholder="название")
             input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
             button(class='btn btn-iosdark form-control movie_remove') Добавить
-    .modal.fade.bs-example-modal-sm(id='addold_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='addold_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -464,7 +466,7 @@ head
             input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
             input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
             button(class='btn btn-iosdark form-control movie_remove') Добавить
-    .modal.fade.bs-example-modal-sm(id='addnew_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='addnew_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -475,7 +477,7 @@ head
             input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
             input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
             button(class='btn btn-iosdark form-control movie_remove') Добавить
-    .modal.fade.bs-example-modal-sm(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
           .modal-header
