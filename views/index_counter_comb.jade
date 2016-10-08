@@ -316,7 +316,7 @@ head
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
-              a(onclick='additem_dialog()') Add item
+              a(onclick='$("#add_comd").modal("show);"') Add item
             li
               a(onclick='getfriends()') You follow
             li 
@@ -403,6 +403,34 @@ head
                   button(class=' btn btn-iosdark-add active' id='nostar'  type='button' )  Не надо            
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
+    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title") Посмотрел фильм:
+          .modal-body
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_one') Первый
+            .collapse#sec_one
+              input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+              input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+              button(class='btn btn-sm btn-add') Добавить
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_two') Второй
+            .collapse#sec_two
+              input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+              input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+              button(class='btn btn-sm btn-add') Добавить
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_three') Третий
+            .collapse#sec_three
+              input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+              input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+              button(class='btn btn-sm btn-add') Добавить
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_four') Четвертый
+            .collapse#sec_four
+              input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+              input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+              button(class='btn btn-sm btn-add') Добавить
     .modal.fade.bs-example-modal-sm(id='addold_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
