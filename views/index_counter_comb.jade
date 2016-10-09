@@ -620,27 +620,27 @@ head
       .row.visible-sm.visible-xs
         .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
           .panel.panel-default
-            .panel-heading(role="tab")
-              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile") Movies seen
-              span.badge#num_one
+            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
+              h4(class="panel-title") Movies seen
+                span.badge#num_one
             #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.first
           .panel.panel-default
-            .panel-heading(role="tab")
-              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile") New movies
-              span.badge#num_two
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
+              h4(class="panel-title") New movies
+                span.badge#num_two
             #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.second
           .panel.panel-default
-            .panel-heading(role="tab")
-              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile") Books read
-              span.badge#num_three
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
+              h4(class="panel-title") Books read
+                span.badge#num_three
             #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.third
           .panel.panel-default
-            .panel-heading(role="tab")
-              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile") New movies
-              span.badge#num_four
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
+              h4(class="panel-title") New movies
+                span.badge#num_four
             #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.fourth
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
