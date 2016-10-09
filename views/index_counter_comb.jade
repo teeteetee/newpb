@@ -265,20 +265,17 @@ head
           color: #333;
           fbackground-color:white;
       }
-      .list-group-item{
+      .data-lg .list-group-item{
         color:white;
         border:none;
         font-weight: 200;
        letter-spacing: 1px;
        background-color: rgba(255, 255, 255, 0.48);
       }
-      .list-group-item:first-child:hover{
-
-      }
-      .list-group-item.disabled:hover{
+      .data-lg .list-group-item.disabled:hover{
         background-color:rgba(0, 0, 0, 0.64);
       }
-      .list-group-item.disabled{
+      .data-lg .list-group-item.disabled{
         color:#bdbdbd;
         font-weight:100;
         letter-spacing:1px;
@@ -608,7 +605,7 @@ head
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
-      .row.visible-md.visible-lg
+      .row.visible-md.visible-lg.data_lg
         .col-sm-3.first
           ul.list-group.first#first_lg
         .col-sm-3.second
