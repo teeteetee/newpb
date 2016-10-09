@@ -301,7 +301,7 @@ head
       padding: 15px;
       text-align: center;
       }
-      #add_comb .btn .form-control:focus {
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
       border-color: none;
       box-shadow:none;
       }
@@ -309,7 +309,7 @@ head
       text-align: center;
       background-color: rgb(238, 238, 238);
       }
-      #add_comb .modal-body .btn-iosdark, btn-iosdark-add {
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
       background-color: white;
       color: #333;
       min-height: 50px;
@@ -511,9 +511,8 @@ head
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne")
-                  h4(class="panel-title")
-                    a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne") Фильм, посмотрел
-                      span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
@@ -542,9 +541,9 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   h4(class="panel-title")
-                    a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, новая
+                    a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree") Книга, новая
                       span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
                     input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
