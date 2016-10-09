@@ -303,6 +303,43 @@ head
         height:50px;
         border-radius: 0px;
       }
+      #addcomb .btn-iosdark {
+      background-color: white;
+      color: #333;
+      min-height: 50px;
+      border-radius: 0px;
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      }
+      #addcomb .footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #addcomb .btn .form-control:focus {
+      border-color: none;
+      box-shadow:none;
+      }
+      #addcomb .sec {
+      text-align: center;
+      background-color: rgb(238, 238, 238);
+      }
+      #addcomb .modal-body input.form-control {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      height: 50px;
+      border-radius: 0px;
+      background-color: rgba(243, 243, 243, 0.83);
+      }
+      #addcomb .sec .btn-add {
+        background-color:#39cc95;
+        letter-spacing:1px;
+      }
+      #addcomb .sec .btn-add:hover {
+        color:white;
+        background-color:#32b798;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -411,23 +448,27 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title") Посмотрел фильм:
           .modal-body
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_one') Первый
-            .collapse#sec_one
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
+              span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+            .collapse.sec#sec_one
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_two') Второй
-            .collapse#sec_two
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_two') Фильм, новый
+              span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+            .collapse.sec#sec_two
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_three') Третий
-            .collapse#sec_three
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_three') Книгу, прочитал
+              span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+            .collapse.sec#sec_three
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_four') Четвертый
-            .collapse#sec_four
+            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_four') Книгу, новую
+              span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+            .collapse.sec#sec_four
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
