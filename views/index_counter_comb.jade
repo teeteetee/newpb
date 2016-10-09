@@ -374,7 +374,7 @@ head
         background-color: #eee;
       }
       .panel-heading{
-        padding:16px;}
+        padding:0px;}
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -520,9 +520,8 @@ head
                     button(class='btn btn-sm btn-add') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
-                  h4(class="panel-title")
-                    a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
-                      span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")     
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
                 #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body
                     input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
@@ -530,9 +529,8 @@ head
                     button(class='btn btn-sm btn-add') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
-                  h4(class="panel-title")
-                    a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
-                      span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
@@ -540,9 +538,8 @@ head
                     button(class='btn btn-sm btn-add') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
-                  h4(class="panel-title")
-                    a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree") Книга, новая
-                      span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
