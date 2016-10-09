@@ -338,6 +338,16 @@ head
       #add_comb .modal-header{
         border-bottom:1px solid #eee;
       }
+      .btn-warning{
+        border:none;
+        background-color:#ff7556;
+        color:white;
+        letter-spacing:1px;
+      }
+      .btn-warning:hover{
+        background-color:#f15330;
+        color:white;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -445,8 +455,8 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title") Посмотрел фильм:
-          .modal-body
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
+          .modal-body#add_choice
+            button(class='btn btn-iosdark form-control' data-parent="#add_choice" data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
               span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
             .collapse.sec#sec_one
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
@@ -471,7 +481,7 @@ head
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
           .modal-footer
-            button(data-dissmiss="modal" class='btn btn-add') close
+            button(data-dissmiss="modal" class='btn btn-warning') close
     .modal.fade.bs-example-modal-sm.btn_mod(id='addold_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
