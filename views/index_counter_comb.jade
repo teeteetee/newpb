@@ -456,27 +456,27 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title") Посмотрел фильм:
           .modal-body#add_choice
-            button(class='btn btn-iosdark form-control' data-parent="#add_choice" data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
+            button(class='btn btn-iosdark form-control' aria-expanded="true" data-parent="#add_choice" data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
               span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-            .collapse.sec#sec_one
+            .collapse.sec#sec_one(aria-labelledby="sec_one")
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_two') Фильм, новый
+            button(class='btn btn-iosdark form-control' aria-expanded="true" data-toggle='collapse' data-target='#sec_two') Фильм, новый
               span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-            .collapse.sec#sec_two
+            .collapse.sec#sec_two(aria-labelledby="sec_two")
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_three') Книгу, прочитал
+            button(class='btn btn-iosdark form-control' aria-expanded="true" data-toggle='collapse' data-target='#sec_three') Книгу, прочитал
               span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-            .collapse.sec#sec_three
+            .collapse.sec#sec_three(aria-labelledby="sec_three")
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
-            button(class='btn btn-iosdark form-control' data-toggle='collapse' data-target='#sec_four') Книгу, новую
+            button(class='btn btn-iosdark form-control' aria-expanded="true" data-toggle='collapse' data-target='#sec_four') Книгу, новую
               span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-            .collapse.sec#sec_four
+            .collapse.sec#sec_four(aria-labelledby="sec_three")
               input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
               input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
               button(class='btn btn-sm btn-add') Добавить
