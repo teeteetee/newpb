@@ -608,15 +608,41 @@ head
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
-      .row
+      .row.visible-md.visible-lg
         .col-sm-3.first
-          ul.list-group#first
+          ul.list-group.first#first_lg
         .col-sm-3.second
-          ul.list-group#second
+          ul.list-group.second#second_lg
         .col-sm-3.third
-          ul.list-group#third
+          ul.list-group.third#third_lg
         .col-sm-3.fourth
-          ul.list-group#fourth
+          ul.list-group.fourth#fourth_lg
+      .row.visible-sm.visible-xs
+        .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
+          .panel.panel-default
+            .panel-heading(role="tab")
+              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile") Movies seen
+              span.badge#num_one
+            #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.first
+          .panel.panel-default
+            .panel-heading(role="tab")
+              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile") New movies
+              span.badge#num_two
+            #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.second
+          .panel.panel-default
+            .panel-heading(role="tab")
+              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile") Books read
+              span.badge#num_three
+            #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.third
+          .panel.panel-default
+            .panel-heading(role="tab")
+              h4(class="panel-title" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile") New movies
+              span.badge#num_four
+            #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.fourth
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
@@ -774,8 +800,10 @@ head
                    if(consolidated_m_old.length){
                     sortByKey(consolidated_m_old,'tmstmp');
                    }
-                   $('#first').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li>');
-                   $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li>');
+                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li>');
+                   $('#num_one').text(consolidated_m_old.length);
+                   $('#second_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li>');
+                   $('#num_two').text(consolidated_m_new.length);
                    $.ajax({
               method: "POST",
               url: "/counter/getbooks",
@@ -810,8 +838,10 @@ head
                  if(consolidated_b_new.length){
                    sortByKey(consolidated_b_new, 'tmstmp');
                  }
-                 $('#third').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
-                 $('#fourth').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
+                 $('#third_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
+                 $('#num_three').text(consolidated_b_old.length);
+                 $('#fourth_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
+                 $('#num_four').text(consolidated_b_new.length);
               populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
@@ -838,22 +868,22 @@ head
           consolidated_m_old.forEach(function (element,index){
             var star=parseInt(element.star)?'success':'';
             var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
-            $('#first').append(insert);
+            $('.first').append(insert);
             });
           consolidated_m_new.forEach(function (element,index){
             var star=parseInt(element.star)?'success':'';
             var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
-            $('#second').append(insert);
+            $('.second').append(insert);
             });
           consolidated_b_old.forEach(function (element,index){
             var star=parseInt(element.star)?'success':'';
             var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('#third').append(insert);
+            $('.third').append(insert);
             });
           consolidated_b_new.forEach(function (element,index){
             var star=parseInt(element.star)?'success':'';
             var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('#fourth').append(insert);
+            $('.fourth').append(insert);
             });
           //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
           //for(var i=0;i<count;i++){
