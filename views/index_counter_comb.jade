@@ -197,7 +197,7 @@ head
         background-color:white;
       }
       .modal-dialog {
-      margin-top: 15%;
+      margin-top: 10%;
       }
       .modal-sm .btn_mod .modal-body .btn, .btn_mod .modal-footer .btn {
       color: #b9b9b9;  
@@ -482,39 +482,6 @@ head
                 |Your profile is visible only for logged in users. Make it visible to everybody?
           .modal-footer(style='text-align:center;')
             button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
-    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content(style='background-color:#21b363;')
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" ) 
-              span(style='font-weight:bold;') + 
-              | Добавляем фильм
-          .modal-body
-            .row  
-              .col-xs-12
-                form
-                  .form-group
-                    label(for="mtitle") Titile
-                    //input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
-                    .row.autocomp#autocompmovies
-                      .col-xs-12#srm
-                  .form-group
-                    label(for="year") Year
-                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark-add active' id='oldmovie' type='button') Посмотрел
-                  button(class=' btn btn-iosdark-add' id='newmovie'  type='button' )  В планах
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group(style='display:block;')
-                  button(class='btn btn-iosdark-add' id='hasstar' type='button') Выделить
-                  button(class=' btn btn-iosdark-add active' id='nostar'  type='button' )  Не надо            
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -557,7 +524,7 @@ head
                   .panel-body
                     input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
                     input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                    button(class='btn btn-sm btn-add' onclick='submitmovie(1)') Добавить
+                    button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
@@ -566,7 +533,7 @@ head
                   .panel-body
                     input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
                     input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                    button(class='btn btn-sm btn-add' onclick='submitmovie(0)') Добавить
+                    button(class='btn btn-sm btn-add' onclick='submit_movie(0)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
