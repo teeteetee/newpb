@@ -408,7 +408,7 @@ head
       .panel-title{
         letter-spacing:1px;
       }
-      #accordion .panel-body{
+      #accordion2 .panel-body{
         padding:0px;
       }
       #accordion2 .list-group-item:first-child {
@@ -555,26 +555,26 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
-                    input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                    button(class='btn btn-sm btn-add') Добавить
+                    input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+                    input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    button(class='btn btn-sm btn-add' onclick='submitmovie(1)' Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
                 #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body
-                    input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                    button(class='btn btn-sm btn-add') Добавить
+                    input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+                    input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    button(class='btn btn-sm btn-add' onclick='submitmovie(0)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
-                    input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+                    input#author_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
                     button(class='btn btn-sm btn-add') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
@@ -582,8 +582,8 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
-                    input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
+                    input#author_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
                     button(class='btn btn-sm btn-add') Добавить
           .modal-footer
             button(data-dissmiss="modal" class='btn btn-warning') close
@@ -1046,8 +1046,12 @@ head
                 });
         }
         //----------------------------//
-        $('#submitmovie').click(function(){
-        if($('#mtitle').val() && $('#year').val())//what if I dont know year yet?
+        function submit_movie(old){
+          var mtitle;
+          var year;
+          if(old){mtitle="#mtitle_old";year="#year_old";}
+          else{mtitle="#mtitle_new";year="#year_new";}
+        if($(mtitle).val() && $(year).val())//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
@@ -1055,7 +1059,7 @@ head
            var data={};
            data.movietitle = $('#mtitle').val();
            data.newmovie = 1;
-           if($('#oldmovie').hasClass('active')){
+           if(old){
            data.newmovie = 0;
            }
            data.star = 1;
@@ -1075,10 +1079,10 @@ head
                 $('#addbook').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
-                window.location='/counter/p3345';
+                window.location='/counter/comb';
               });
           }
-        });
+        }
         function getfriends() {
           //---------------------------//
         var friends;
