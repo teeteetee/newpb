@@ -1024,7 +1024,7 @@ head
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.movietitle = $('#mtitle').val();
+           data.movietitle = $(mtitle).val();
            data.newmovie = 1;
            if(old){
            data.newmovie = 0;
@@ -1033,7 +1033,7 @@ head
            if($('#nostar').hasClass('active')){
            data.star = 0;
            }
-           data.year = $('#year').val();
+           data.year = $(year).val();
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
