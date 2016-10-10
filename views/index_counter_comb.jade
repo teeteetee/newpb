@@ -374,6 +374,22 @@ head
       #add_choice .panel-group{
         margin-bottom:0px;
       }
+      #accordion2 .panel-title badge{
+        margin-left:7px;
+      }
+      #accordion2 .panel-group .panel+.panel {
+      margin-top:0px;
+      }
+      #accordion2 .panel-group .panel {
+          border-radius: 0px;
+      }
+      #accordion2 .panel{
+        border:none;
+        border-bottom:1px solid #eee;
+      }
+      #accordion2 .panel:last-child{
+        border:none;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -620,24 +636,28 @@ head
             .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
               h4(class="panel-title") Movies seen
                 span.badge#num_one
+                span.glyphicon.glyphicon-chevron-right.pull-right
             #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.first
           .panel.panel-default
             .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
               h4(class="panel-title") New movies
                 span.badge#num_two
+                span.glyphicon.glyphicon-chevron-right.pull-right
             #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.second
           .panel.panel-default
             .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
               h4(class="panel-title") Books read
                 span.badge#num_three
+                span.glyphicon.glyphicon-chevron-right.pull-right
             #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.third
           .panel.panel-default
             .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
               h4(class="panel-title") New movies
                 span.badge#num_four
+                span.glyphicon.glyphicon-chevron-right.pull-right
             #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.fourth
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
