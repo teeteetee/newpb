@@ -392,8 +392,8 @@ head
         border:none;
       }
       .panel-default .panel-heading{
-       height: 50px;
-      padding: 17px;
+       height: 20%;
+      padding: 15%;
       }
       .panel-default>.panel-heading {
         color:white;
@@ -415,6 +415,9 @@ head
         border-radius:0px;}
       #accordion2 .list-group-item:last-child {
         border-radius:0px;}  
+      .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        border:none;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -522,8 +525,8 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
-                    input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
+                    input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
                     button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
@@ -531,8 +534,8 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
                 #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body
-                    input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
+                    input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
                     button(class='btn btn-sm btn-add' onclick='submit_movie(0)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
@@ -540,8 +543,8 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
-                    input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input#author_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
+                    input#author_old(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
@@ -549,55 +552,11 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
-                    input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                    input#author_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
+                    input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
+                    input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add') Добавить
           .modal-footer
             button(data-dissmiss="modal" class='btn btn-warning') close
-    .modal.fade.bs-example-modal-sm.btn_mod(id='addold_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title") Посмотрел фильм:
-          .modal-body
-            input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="Название")
-            input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder='Год')
-            button(class='btn btn-iosdark form-control movie_remove') Добавить фильм
-    .modal.fade.bs-example-modal-sm.btn_mod(id='addnew_m_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title") Надо посмотреть:
-          .modal-body
-            input(type="text" maxlength="50" class="form-control"  autocomplete='off' placeholder="Название")
-            input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
-            button(class='btn btn-iosdark form-control movie_remove') Добавить фильм
-    .modal.fade.bs-example-modal-sm.btn_mod(id='addold_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title") Прочитал книгу:
-          .modal-body
-            input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-            input(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-            button(class='btn btn-iosdark form-control movie_remove') Добавить книгу
-    .modal.fade.bs-example-modal-sm.btn_mod(id='addnew_b_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title") Надо прочитать:
-          .modal-body
-            input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-            input(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-            button(class='btn btn-iosdark form-control movie_remove') Добавить книгу
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -875,22 +834,22 @@ head
           console.log('hello');
           var count;
           consolidated_m_old.forEach(function (element,index){
-            var star=parseInt(element.star)?'success':'';
+            var star=parseInt(element.star)?'hasstar':'';
             var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('.first').append(insert);
             });
           consolidated_m_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'success':'';
+            var star=parseInt(element.star)?'hasstar':'';
             var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('.second').append(insert);
             });
           consolidated_b_old.forEach(function (element,index){
-            var star=parseInt(element.star)?'success':'';
+            var star=parseInt(element.star)?'hasstar':'';
             var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('.third').append(insert);
             });
           consolidated_b_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'success':'';
+            var star=parseInt(element.star)?'hasstar':'';
             var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('.fourth').append(insert);
             });
