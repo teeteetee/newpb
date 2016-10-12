@@ -38,9 +38,6 @@ head
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
       }
-      /*.navbar-nav {
-       float: right;
-      }*/
       .container {
         transition: 0.5s -webkit-filter linear;
         transition: 0.5s -moz-filter linear;
@@ -252,9 +249,26 @@ head
       font-family: boldproxima;
       letter-spacing: 2px;
       font-size: 22px;}
+      .navbar-header{
+      background-color: rgba(255,255,255,0.3);
+      }
       .navbar-inverse {
-        background-color: rgba(255, 255, 255, 0.29);
         border:none;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+       border-color: #f5f5f5;
+      }
+      .navbar-inverse li {
+        color:#333;
+      }
+      .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+          background-color: rgba(51, 51, 51, 0.35);
+      }
+      .navbar-inverse .navbar-toggle {
+          border-color: white;
+      }
+      .navbar-collapse{
+        background-color: rgba(255, 255, 255, 0.82);
       }
       .navbar-inverse .navbar-nav>li>a {
           color: white;
@@ -425,6 +439,12 @@ head
         border-radius:0px;}  
       .panel-default>.panel-heading+.panel-collapse>.panel-body {
         border:none;
+      }
+      .navbar-inverse .navbar-toggle {
+        border-color:white;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+          border-color: #f5f5f5;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
