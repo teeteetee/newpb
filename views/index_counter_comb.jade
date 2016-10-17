@@ -1015,10 +1015,11 @@ head
            if(old){
            data.newmovie = 0;
            }
-           data.star = 1;
-           if($('#nostar').hasClass('active')){
-           data.star = 0;
-           }
+           //data.star = 1;
+           //if($('#nostar').hasClass('active')){
+           //data.star = 0;
+           //}
+           data.star=0;
            data.year = $(year).val();
            console.log(JSON.stringify(data));
           $.ajax({
@@ -1032,6 +1033,40 @@ head
                 //$('#addbook').modal('hide');
                 //$('#wait').fadeOut(350);
                 //console.log(msg);
+                window.location='/counter/comb';
+              });
+          }
+        }
+        //---------------------------//
+        function submit_book(old){
+          var btitle;
+          var author;
+          if(old){btitle="#btitle_old";author="#author_old";}
+          else{btitle="#btitle_new";author="#author_new";}
+        if($(btitle).val() && $(author).val())//what if I dont know year yet?
+        {
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.booktitle = $('#btitle').val();
+           data.newbook = 1;
+           if(old){
+           data.newbook = 0;
+           }
+           //data.star = 1;
+           //if($('#nostar').hasClass('active')){
+           //data.star = 0;
+           //}
+           data.star=0;
+           data.author = $(author).val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/counter/addbook",
+              data: data
+            })
+              .done(function( msg ) {
                 window.location='/counter/comb';
               });
           }

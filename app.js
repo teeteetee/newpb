@@ -545,7 +545,7 @@ app.post('/counter/addbook',function(req,res){
             var vbooktitle = req.body.booktitle;
             var vnewbook = parseInt(req.body.newbook);
             console.log('breakpoint one');
-            var vbookauth = req.body.auth;
+            var vbookauth = req.body.author;
             var vbookstar = parseInt(req.body.star);
             console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookauth+' ,star: '+vbookstar+' , newbook: '+vnewbook);
             var dd= new Date();
