@@ -572,7 +572,7 @@ head
                   .panel-body 
                     input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_old(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-sm btn-add') Добавить
+                    button(class='btn btn-sm btn-add' onclick='submit_book(1)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
@@ -581,7 +581,7 @@ head
                   .panel-body 
                     input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-sm btn-add') Добавить
+                    button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
           .modal-footer
             button(data-dissmiss="modal" class='btn btn-warning') close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
