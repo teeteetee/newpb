@@ -1070,11 +1070,11 @@ head
         //---------------------------//
         //----------------------------//
         function populate_friends(consolidated) {
+          $('.friendslist').empty();
          consolidated.forEach(function (element,index){
             //if($(".noitemsfriends")[0])
             //       { console.log('HAS LENGTH');
             //         $('.friendslist').empty();}
-              $('.friendslist').empty();
            var insert;
              insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>Друг</a></th></tr>";
             $('.friendslist').prepend(insert);
