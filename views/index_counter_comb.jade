@@ -926,7 +926,7 @@ head
         insert = 'removebook('+i+','+old+')';
         //insert2 = 'switch_book('+i+','+old+')';
         $('.book_remove').attr('onclick',insert);
-        $('.book_switch').attr('onclick',insert2);
+        //$('.book_switch').attr('onclick',insert2);
         if(old)
         {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_old[i].author);
@@ -1008,12 +1008,12 @@ head
           if(old){
             data.mtitle=consolidated_m_old[i].movietitle;
             data.year=consolidated_m_old[i].year;
-            data.newmovie=1;
+            data.newposition=1;
           }
           else {
             data.mtitle=consolidated_m_new[i].movietitle;
             data.year=consolidated_m_new[i].year;
-            data.newmovie=0;
+            data.newposition=0;
           }
           $.ajax({
                 method: "POST",
