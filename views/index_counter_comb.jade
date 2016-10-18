@@ -903,10 +903,13 @@ head
         $('.movie_switch').attr('onclick',insert2);
         if(old)
         {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
-         $('.moviemodalyear').text(consolidated_m_old[i].year);}
+         $('.moviemodalyear').text(consolidated_m_old[i].year);
+         $('.movie_switch').text('mark as not seen');
+        }
         else{
          $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_new[i].year);
+         $('.movie_switch').text('mark as seen');
         }
         $('#moviemodal').modal('show');
         }
@@ -926,10 +929,13 @@ head
         $('.book_switch').attr('onclick',insert2);
         if(old)
         {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_b_old[i].author);}
+         $('.bookmodalauthor').text(consolidated_b_old[i].author);
+         $('.book_switch').text('mark as not read');
+        }
         else{
          $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_new[i].author);
+         $('.book_switch').text('mark as read');
         }
         $('#bookmodal').modal('show');
         }
