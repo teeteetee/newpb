@@ -516,7 +516,7 @@ app.post('/counter/switch_book',function(req,res){
     var newposition = req.body.newposition;
     var btitle = req.body.btitle;
     console.log(newposition+','+btitle);
-    counter_books.update({uid:JSON.stringify(req.session._id),"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":newposition}},function (err,done){
+    counter_books.update({uid:JSON.stringify(req.session._id),"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":parseInt(newposition)}},function (err,done){
       if(err) {
         res.send(ms);
       }
