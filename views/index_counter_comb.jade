@@ -517,31 +517,6 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title") Посмотрел фильм:
           .modal-body#add_choice
-            //
-              button(class='btn btn-iosdark form-control' aria-expanded="false" data-parent="#add_choice" data-toggle='collapse' data-target='#sec_one') Фильм, посмотрел
-                span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-              .collapse.sec#sec_one(aria-labelledby="sec_one")
-                input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                button(class='btn btn-sm btn-add') Добавить
-              button(class='btn btn-iosdark form-control' aria-expanded="false" data-parent="#add_choice" data-toggle='collapse' data-target='#sec_two') Фильм, новый
-                span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-              .collapse.sec#sec_two(aria-labelledby="sec_two")
-                input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                button(class='btn btn-sm btn-add') Добавить
-              button(class='btn btn-iosdark form-control' aria-expanded="false" data-parent="#add_choice" data-toggle='collapse' data-target='#sec_three') Книгу, прочитал
-                span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-              .collapse.sec#sec_three(aria-labelledby="sec_three")
-                input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                button(class='btn btn-sm btn-add') Добавить
-              button(class='btn btn-iosdark form-control' aria-expanded="false" data-parent="#add_choice" data-toggle='collapse' data-target='#sec_four') Книгу, новую
-                span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-              .collapse.sec#sec_four(aria-labelledby="sec_three")
-                input(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="название")
-                input(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='год')
-                button(class='btn btn-sm btn-add') Добавить
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne")
@@ -589,8 +564,9 @@ head
               span(aria-hidden="true") ×
           .modal-body
             h4.moviemodaltitle(style='text-align:center;')
+              small.moviemodalyear
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control switch') Switch column
+            button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
@@ -859,12 +835,12 @@ head
           var count;
           consolidated_m_old.forEach(function (element,index){
             var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',1)">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('.first').append(insert);
             });
           consolidated_m_new.forEach(function (element,index){
             var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',0)">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('.second').append(insert);
             });
           consolidated_b_old.forEach(function (element,index){
@@ -896,7 +872,7 @@ head
            //$('#combitems').append(insert);
           //}
           }   
-        function redactmoviemodal (i) {
+        function redactmoviemodal (i,old) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
@@ -905,17 +881,17 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        if($('#oldones').css('display')!='none')
-          {$('#colourful').css('background-color','#ff0760');}
-        else {
-          $('#colourful').css('background-color','#fdb611');
-        }
         insert = 'removemovie('+i+')';
         insert2 = 'switch_clmn('+i+')';
         $('.movie_remove').attr('onclick',insert);
-        $('.switch').attr('onclick',insert2);
-        $('.moviemodaltitle').text(consolidated[i].movietitle.capitalizeFirstLetter());
-        $('.moviemodalyear').text(consolidated[i].year);
+        $('.movie_switch').attr('onclick',insert2);
+        if(old)
+        {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
+         $('.moviemodalyear').text(consolidated_m_old[i].year);}
+        else{
+         $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
+         $('.moviemodalyear').text(consolidated_m_new[i].year);
+        }
         $('#moviemodal').modal('show');
         }
         //----------------------------//
