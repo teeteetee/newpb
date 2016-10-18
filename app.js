@@ -395,7 +395,7 @@ app.post('/counter/rm_movie/',function(req,res){
   if(req.session&&req.session._id)
   {
     if(vnewmovie){
-  counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:1}},function(err,done){
+  counter_movies.update({uid:JSON.stringify(req.session._id)},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a movie');
@@ -408,7 +408,7 @@ app.post('/counter/rm_movie/',function(req,res){
    });
   }//if newmovie
  else{
-    counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,oldones:1}},function(err,done){
+    counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,oldones:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a movie');
