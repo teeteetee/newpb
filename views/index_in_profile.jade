@@ -450,6 +450,11 @@ head
       .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
           border-color: #f5f5f5;
       }
+      .btn-follow{
+        border:1px solid white;
+        background-color:transparent;
+        color:white;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -541,10 +546,10 @@ head
       .row(style='display:none;')
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
-      .row(style='text-align:center;')
+      .row(style='text-align:center;margin-bottom:30px;')
         .col-xs-12
-           h2 Somebodies lists
-           button.btn.btn-primary(type='button') Follow
+           h2(style='color:white;') Somebodies lists
+           button.btn.btn-follow(type='button') Follow
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
           ul.list-group.first#first_lg
