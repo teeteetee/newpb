@@ -426,6 +426,46 @@ app.post('/counter/rm_movie/',function(req,res){
   }
 });
 
+app.post('/counter/rm_book/',function(req,res){
+  var ms = {};
+  ms.trouble =1;
+  var vbtitle = req.body.btitle;
+  var vauthor= req.body.author;
+  var vnewbook = req.body.newbook;
+  if(req.session&&req.session._id)
+  {
+    if(vnewbook){
+  counter_books.update({uid:JSON.stringify(req.session._id)},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,newones:-1}},function(err,done){
+  if(err)
+  {
+    console.log('trouble removing a book');
+    res.send(ms);
+  }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+   });
+  }//if newmovie
+ else{
+    counter_books.update({uid:req.session._id},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,oldones:-1}},function(err,done){
+  if(err)
+  {
+    console.log('trouble removing a book');
+    res.send(ms);
+  }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+ }
+}
+  else {
+    res.send(ms);
+  }
+});
+
 app.post('/counter/switch_clmn/:movie_id',function(req,res){
   var ms = {};
   ms.trouble =1;
