@@ -466,35 +466,45 @@ app.post('/counter/rm_book/',function(req,res){
   }
 });
 
-app.post('/counter/switch_clmn/:movie_id',function(req,res){
+app.post('/counter/switch_movie',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vmovie_id = req.params.movie_id;
-  if(vmovie_id) {
-    counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,done){
+  if(req.session&&req.session._id){
+    var newposition = req.body.newposition;
+    var mtitle = req.body.mtitle;
+    var vyear = req.body.year;
+    counter_movies.update({uid:JSON.stringify(req.session._id),moviestore:{movietitle:mtitle,year:vyear}},{moviestore.$:{newmovie:newposition}},function (err,done){
       if(err) {
         res.send(ms);
       }
       else {
-        var set_var = parseInt(done.newmovie)?0:1;
-        movies.update({_id:vmovie_id},{$set:{newmovie:set_var}},function(err,done2){
-         if(err) {
-           res.send(ms);
-         }
-         else {
-           if(done.newmovie)
-           {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,seenmovies:1}});}
-           else {
-            stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,newmovies:1}});
-           }
-           ms.trouble=0;
-           ms.present_clmn=set_var;
-           console.log('hey');
-           res.send(ms);
-         }
-    });
+        if(newposition){
+          counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,oldones:-1}},function (err2,done2){
+            if(err){
+              console.log('err when switching list')
+            }
+            else{
+              ms.trouble=0;
+              res.send(ms);
+            }
+          });
+        }
+          else{
+            counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:-1,oldones:1}},function (err2,done2){
+            if(err){
+              console.log('err when switching list')
+            }
+            else{
+              ms.trouble=0;
+              res.send(ms);
+            }
+          });
+          }
       }
     });
+  }
+  else{
+    res.send(ms);
   }
 });
 

@@ -904,12 +904,12 @@ head
         if(old)
         {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_old[i].year);
-         $('.movie_switch').text('mark as not seen');
+         $('.movie_switch').text('Mark as not seen');
         }
         else{
          $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_new[i].year);
-         $('.movie_switch').text('mark as seen');
+         $('.movie_switch').text('Mark as seen');
         }
         $('#moviemodal').modal('show');
         }
@@ -930,12 +930,12 @@ head
         if(old)
         {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_old[i].author);
-         $('.book_switch').text('mark as not read');
+         $('.book_switch').text('Mark as not read');
         }
         else{
          $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_new[i].author);
-         $('.book_switch').text('mark as read');
+         $('.book_switch').text('Mark as read');
         }
         $('#bookmodal').modal('show');
         }
@@ -1003,51 +1003,63 @@ head
               });
         }
         //-----------------------------------//
-        function switch_clmn(movieid) {
+        function switch_clmn(i,old) {
+          var data={};
+          if(old){
+            data.mtitle=consolidated_m_old[i].movietitle;
+            data.year=consolidated_m_old[i].year;
+            data.newmovie=1;
+          }
+          else {
+            data.mtitle=consolidated_m_new[i].movietitle;
+            data.year=consolidated_m_new[i].year;
+            data.newmovie=0;
+          }
           $.ajax({
                 method: "POST",
-                url: "/counter/switch_clmn/"+consolidated[movieid]._id,
-                data: 0
+                url: "/counter/switch_clmn/",
+                data: data
               })
                 .done(function( msg ) {
-                  console.log(msg);
-                  $('#moviemodal').modal('hide');
-                  console.log('breakpoint 1');
-                  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
-                  console.log('breakpoint 2');
-                  var vname = '.movie_'+consolidated[movieid]._id;
-                  console.log('breakpoint 3');
-                  var element = $(vname).detach();
-                  console.log('breakpoint 4');
-                  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                  if(consolidated[movieid].newmovie)
-                  {if($(".noitemsnew")[0])
-                   { console.log('HAS LENGTH');
-                     $('#newmovies').empty();}
-                     $('#newmovies').prepend(element);
-                  seenmovies--;
-                  newmovies++;
-                  $('#newnum').text(newmovies);
-                  $('#oldnum').text(seenmovies);
-                  if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row_old);
-                  }
-                  console.log('case 1');}
-                else
-                  {if($(".noitemsold")[0])
-                   { console.log('HAS LENGTH');
-                     $('#oldmovies').empty();}
-                    $('#oldmovies').prepend(element);
-                  newmovies--;
-                  seenmovies++;
-                  $('#oldnum').text(seenmovies);
-                  $('#newnum').text(newmovies);
-                  if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row_new);
-                  }
-                }
-                  console.log('case 2');
+                //  console.log(msg);
+                //  $('#moviemodal').modal('hide');
+                //  console.log('breakpoint 1');
+                //  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
+                //  console.log('breakpoint 2');
+                //  var vname = '.movie_'+consolidated[movieid]._id;
+                //  console.log('breakpoint 3');
+                //  var element = $(vname).detach();
+                //  console.log('breakpoint 4');
+                //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                //  if(consolidated[movieid].newmovie)
+                //  {if($(".noitemsnew")[0])
+                //   { console.log('HAS LENGTH');
+                //     $('#newmovies').empty();}
+                //     $('#newmovies').prepend(element);
+                //  seenmovies--;
+                //  newmovies++;
+                //  $('#newnum').text(newmovies);
+                //  $('#oldnum').text(seenmovies);
+                //  if($('#oldmovies').children().length == 0){
+                //    $('#oldmovies').prepend(empty_row_old);
+                //  }
+                //  console.log('case 1');}
+                //else
+                //  {if($(".noitemsold")[0])
+                //   { console.log('HAS LENGTH');
+                //     $('#oldmovies').empty();}
+                //    $('#oldmovies').prepend(element);
+                //  newmovies--;
+                //  seenmovies++;
+                //  $('#oldnum').text(seenmovies);
+                //  $('#newnum').text(newmovies);
+                //  if($('#newmovies').children().length == 0){
+                //    $('#newmovies').prepend(empty_row_new);
+                //  }
+                //}
+                //  console.log('case 2');
+                window.location='/counter/comb';
                 });
         }
         //----------------------------//
