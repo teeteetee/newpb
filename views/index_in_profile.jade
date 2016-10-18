@@ -455,6 +455,10 @@ head
         background-color:transparent;
         color:white;
       }
+      .btn-follow:hover{
+        background-color:white;
+        color:#333;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -592,6 +596,10 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var isfriend = #{isfriend};
+        if(isfriend){
+          $('.btn-follow').text('Unfollow');
+        }
         $('#settings_btn').click(function(){
           $('#settings').modal('show');
           });
