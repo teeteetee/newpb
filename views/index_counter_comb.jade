@@ -1063,6 +1063,26 @@ head
                 });
         }
         //----------------------------//
+        function switch_book(i,old) {
+          var data={};
+          if(old){
+            data.btitle=consolidated_b_old[i].booktitle;
+            data.newposition=1;
+          }
+          else {
+            data.btitle=consolidated_b_new[i].booktitle;
+            data.newposition=0;
+          }
+          $.ajax({
+                method: "POST",
+                url: "/counter/switch_book",
+                data: data
+              })
+                .done(function( msg ) {
+                window.location='/counter/comb';
+                });
+        }
+        //----------------------------//
         function submit_movie(old){
           var mtitle;
           var year;
