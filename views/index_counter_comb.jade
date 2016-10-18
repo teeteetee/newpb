@@ -920,8 +920,8 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removebook('+i+')';
-        insert2 = 'switch_clmn('+i+')';
+        insert = 'removebook('+i+','+old+')';
+        insert2 = 'switch_clmn('+i+','+old+')';
         $('.book_remove').attr('onclick',insert);
         $('.book_switch').attr('onclick',insert2);
         if(old)
@@ -971,6 +971,28 @@ head
               //      $('#oldmovies').prepend(empty_row_old);
               //    }
               //    }
+              window.location='/counter/comb';
+              });
+        }
+        //-----------------------------------//
+        function removemovie(i,old) {
+          var data={};
+          if(old){
+            data.btitle=consolidated_b_old[i].movietitle;
+            data.author=consolidated_b_old[i].author;
+            data.newbook=consolidated_b_old[i].newbook;
+          }
+          else {
+            data.btitle=consolidated_b_new[i].movietitle;
+            data.author=consolidated_b_new[i].author;
+            data.newbook=consolidated_b_new[i].newbook;
+          }
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_book/",
+              data: data
+            })
+              .done(function( msg ) {
               window.location='/counter/comb';
               });
         }
