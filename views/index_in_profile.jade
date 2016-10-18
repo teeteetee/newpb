@@ -702,7 +702,7 @@ head
         var consolidated_b_new =[];
         $.ajax({
               method: "POST",
-              url: "/counter/getmovies",
+              url: "/counter/friend/getmovies/#{_id}",
               data: 0
             })
               .done(function( msg ) {
@@ -740,7 +740,7 @@ head
                    $('#num_two').text(consolidated_m_new.length);
                    $.ajax({
               method: "POST",
-              url: "/counter/getbooks",
+              url: "/counter/friend_getbooks/#{_id}",
               data: 0
             })
               .done(function( msg ) {
@@ -781,20 +781,6 @@ head
               });
                 }
               });
-        //---------------------------//
-        function addold_m(){
-          $('#addold_m_modal').modal('show');
-        }
-        function addnew_m(){
-          $('#addnew_m_modal').modal('show');
-        }
-        function addold_b(){
-          $('#addold_b_modal').modal('show');
-        }
-        function addnew_b(){
-          $('#addnew_b_modal').modal('show');
-        }
-          //populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
         //----------------------------//
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');

@@ -293,6 +293,31 @@ else{
 }
 });
 
+app.post('/counter/friend/getbooks/:_id',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id&&req.params._id)
+  {
+    counter_books.findOne({uid:JSON.stringify(req.params._id)},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        console.log(doc);
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else{
+   res.send(ms);
+}
+});
+
 app.post('/counter/getbooks',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -315,6 +340,7 @@ else{
   res.send(ms);
 }
 });
+
 
 app.post('/counter/getfriends',function (req,res){
   var ms ={};
