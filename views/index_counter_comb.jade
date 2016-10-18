@@ -924,9 +924,9 @@ head
           $('.modal-dialog').css('margin-top','15%');
         }
         insert = 'removebook('+i+','+old+')';
-        //insert2 = 'switch_book('+i+','+old+')';
+        insert2 = 'switch_book('+i+','+old+')';
         $('.book_remove').attr('onclick',insert);
-        //$('.book_switch').attr('onclick',insert2);
+        $('.book_switch').attr('onclick',insert2);
         if(old)
         {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_old[i].author);
