@@ -780,8 +780,14 @@ head
                  }
                  $('#third_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
                  $('#num_three').text(consolidated_b_old.length);
+                 if(!consolidated_b_old.length){
+                    $('#third_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                   }
                  $('#fourth_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
                  $('#num_four').text(consolidated_b_new.length);
+                 if(!consolidated_b_new.length){
+                    $('#fourth_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                   }
               populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
                 }
               });
