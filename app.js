@@ -482,7 +482,7 @@ app.post('/counter/switch_movie',function(req,res){
         if(newposition){
           counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,oldones:-1}},function (err2,done2){
             if(err){
-              console.log('err when switching list')
+              console.log('err when movie switching list')
             }
             else{
               ms.trouble=0;
@@ -493,7 +493,49 @@ app.post('/counter/switch_movie',function(req,res){
           else{
             counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:-1,oldones:1}},function (err2,done2){
             if(err){
-              console.log('err when switching list')
+              console.log('err when movie switching list')
+            }
+            else{
+              ms.trouble=0;
+              res.send(ms);
+            }
+          });
+          }
+      }
+    });
+  }
+  else{
+    res.send(ms);
+  }
+});
+
+app.post('/counter/switch_book',function(req,res){
+  var ms = {};
+  ms.trouble =1;
+  if(req.session&&req.session._id){
+    var newposition = req.body.newposition;
+    var btitle = req.body.btitle;
+    console.log(newposition+','+btitle);
+    counter_books.update({uid:JSON.stringify(req.session._id),"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":newposition}},function (err,done){
+      if(err) {
+        res.send(ms);
+      }
+      else {
+        if(newposition){
+          counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,oldones:-1}},function (err2,done2){
+            if(err){
+              console.log('err when book switching list')
+            }
+            else{
+              ms.trouble=0;
+              res.send(ms);
+            }
+          });
+        }
+          else{
+            counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:-1,oldones:1}},function (err2,done2){
+            if(err){
+              console.log('err when book switching list')
             }
             else{
               ms.trouble=0;
