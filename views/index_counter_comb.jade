@@ -897,8 +897,8 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+i+')';
-        insert2 = 'switch_clmn('+i+')';
+        insert = 'removemovie('+i+','+old+')';
+        insert2 = 'switch_clmn('+i+','+old+')';
         $('.movie_remove').attr('onclick',insert);
         $('.movie_switch').attr('onclick',insert2);
         if(old)
@@ -934,32 +934,44 @@ head
         $('#bookmodal').modal('show');
         }
         //----------------------------//
-        function removemovie(movieid) {
+        function removemovie(i,old) {
+          var data={};
+          if(old){
+            data.mtitle=consolidated_m_old[i].movietitle;
+            data.year=consolidated_m_old[i].year;
+            data.newmovie=consolidated_m_old[i].newmovie;
+          }
+          else {
+            data.mtitle=consolidated_m_new[i].movietitle;
+            data.year=consolidated_m_new[i].year;
+            data.newmovie=consolidated_m_new[i].newmovie;
+          }
         $.ajax({
               method: "POST",
-              url: "/counter/rm_movie/"+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
-              data: 0
+              url: "/counter/rm_movie/",//+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              data: data
             })
               .done(function( msg ) {
-                $('#moviemodal').modal('hide');
-                var vname = '.movie_'+movieid;
-                $(vname).empty();
-                var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                if(consolidated[movieid].newmovie){
-                  newmovies --;
-                  $('#newnum').text(newmovies);
-                  if($('#newmovies').children().length == 0){
-                    $('#newmovies').prepend(empty_row_new);
-                  }
-                }
-                  else{
-                    seenmovies --;
-                  $('#oldnum').text(seenmovies);
-                  if($('#oldmovies').children().length == 0){
-                    $('#oldmovies').prepend(empty_row_old);
-                  }
-                  }
+              //  $('#moviemodal').modal('hide');
+              //  var vname = '.movie_'+movieid;
+              //  $(vname).empty();
+              //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  if(consolidated[movieid].newmovie){
+              //    newmovies --;
+              //    $('#newnum').text(newmovies);
+              //    if($('#newmovies').children().length == 0){
+              //      $('#newmovies').prepend(empty_row_new);
+              //    }
+              //  }
+              //    else{
+              //      seenmovies --;
+              //    $('#oldnum').text(seenmovies);
+              //    if($('#oldmovies').children().length == 0){
+              //      $('#oldmovies').prepend(empty_row_old);
+              //    }
+              //    }
+              window.location='/counter/comb';
               });
         }
         //-----------------------------------//

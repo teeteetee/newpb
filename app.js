@@ -386,26 +386,41 @@ else {
 }
 });
 
-app.post('/counter/rm_movie/:newmovie/:movie_id',function(req,res){
+app.post('/counter/rm_movie/',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vmovie_id = req.params.movie_id;
-  var vnewmovie = req.params.newmovie;
-  if(vmovie_id) {
-    movies.remove({_id:vmovie_id},function(err,done){
-      if(err) {
-        res.send(ms);
-      }
-      else {
-        if(vnewmovie)
-        {stats.update({queryhook:'stats'},{$inc:{newmovies:-1,totalmovies:-1}});}
-        else {
-         stats.update({queryhook:'stats'},{$inc:{seenmovies:-1,totalmovies:-1}});
-        }
-        res.send(ms);
-      }
-    });
+  var vmtitle = req.body.mtitle;
+  var vyear= req.body.year;
+  var vnewmovie = req.body.newmovie;
+  if(req.session&&req.session._id)
+  {
+    if(vnewmovie){
+  counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:1}},function(err,done){
+  if(err)
+  {
+    console.log('trouble removing a movie');
+    res.send(ms);
   }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  }
+ }//if newmovie
+ else{
+    counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,oldones:1}},function(err,done){
+  if(err)
+  {
+    console.log('trouble removing a movie');
+    res.send(ms);
+  }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  }
+ }
+}
   else {
     res.send(ms);
   }
