@@ -898,7 +898,7 @@ head
           $('.modal-dialog').css('margin-top','15%');
         }
         insert = 'removemovie('+i+','+old+')';
-        insert2 = 'switch_clmn('+i+','+old+')';
+        insert2 = 'switch_movie('+i+','+old+')';
         $('.movie_remove').attr('onclick',insert);
         $('.movie_switch').attr('onclick',insert2);
         if(old)
@@ -1003,7 +1003,7 @@ head
               });
         }
         //-----------------------------------//
-        function switch_clmn(i,old) {
+        function switch_movie(i,old) {
           var data={};
           if(old){
             data.mtitle=consolidated_m_old[i].movietitle;
@@ -1017,7 +1017,7 @@ head
           }
           $.ajax({
                 method: "POST",
-                url: "/counter/switch_clmn/",
+                url: "/counter/switch_movie",
                 data: data
               })
                 .done(function( msg ) {
