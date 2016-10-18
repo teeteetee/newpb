@@ -488,7 +488,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-warning  form-control' data-dismiss='modal') Close
+            button(class='btn btn-warning ' data-dismiss='modal') Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -572,6 +572,18 @@ head
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
+    .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content#colourful
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body(style='text-align:center;')
+            h4.bookmodaltitle(style='margin-top:20px;font-weight:400;')
+            h5.bookmodalauthor(style='margin-bottom:30px;color:gray;')
+            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control book_switch') Switch column
+            button(class='btn btn-iosdark form-control book_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
         .col-xs-12
@@ -849,12 +861,12 @@ head
             });
           consolidated_b_old.forEach(function (element,index){
             var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('.third').append(insert);
             });
           consolidated_b_new.forEach(function (element,index){
             var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('.fourth').append(insert);
             });
           //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
@@ -897,6 +909,29 @@ head
          $('.moviemodalyear').text(consolidated_m_new[i].year);
         }
         $('#moviemodal').modal('show');
+        }
+        //----------------------------//
+        function redactbookmodal (i,old) {
+          console.log('redact');
+        // TODO screen blocker must be added to prevent user from interfering 
+        if($('body').width()<$('body').height()) {
+          $('.modal-dialog').css('margin-top','60%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','15%');
+        }
+        insert = 'removebook('+i+')';
+        insert2 = 'switch_clmn('+i+')';
+        $('.book_remove').attr('onclick',insert);
+        $('.book_switch').attr('onclick',insert2);
+        if(old)
+        {$('.bookmodaltitle').text(consolidated_m_old[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_m_old[i].author);}
+        else{
+         $('.bookmodaltitle').text(consolidated_m_new[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_m_new[i].author);
+        }
+        $('#bookmodal').modal('show');
         }
         //----------------------------//
         function removemovie(movieid) {
