@@ -174,6 +174,25 @@ app.get('/counter/clear',function (req,res){
 //  });
 //});/
 
+app.post('/counter/setnick',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id){
+    counter_users.update({_id:JSON.stringify(req.session._id)},{$set:{nick:req.body.nick}},function (err,done){
+    if(err){
+      console.log('err while setting nick');
+    }
+      else{
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });
+  }
+    else{
+      res.send(ms);
+    }
+});
+
 app.get('/counter/profile/:_id',function (req,res){
   if(req.session&&req.session._id){
     counter_users.findOne({_id:req.params._id},function (err,done){

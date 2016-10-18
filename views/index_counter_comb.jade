@@ -508,9 +508,9 @@ head
               input(type="file" id="exampleInputFile")
               p(class="help-block") Example block-level help text here.
             .form-group
-              label(for="exampleInputEmail1") Change nick
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Email")
-              button.btn.btn-success change nick
+              label(for="nick") Set nick
+              input(type="email" class="form-control" id="nick" placeholder="nickname")
+              button.btn.btn-success#change_nick change nick
             .checkbox
               label
                 input(type="checkbox") 
@@ -634,6 +634,21 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#change_nick').click(function(){
+          if($('#nick').val()){
+                    var data;
+                    data.nick=$('#nick').val();
+                    $.ajax({
+                        method: "POST",
+                        url: "/counter/setnick",
+                        data: data
+                      })
+                        .done(function( msg ) {
+                          window.location='/counter/comb';
+                          });
+
+                        }
+          });
         function add_dialog() {
           $('#add_comb').modal('show');
         }
