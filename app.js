@@ -405,8 +405,8 @@ app.post('/counter/rm_movie/',function(req,res){
       ms.trouble=0;
       res.send(ms);
     }
-  }
- }//if newmovie
+   });
+  }//if newmovie
  else{
     counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,oldones:1}},function(err,done){
   if(err)
@@ -418,7 +418,7 @@ app.post('/counter/rm_movie/',function(req,res){
       ms.trouble=0;
       res.send(ms);
     }
-  }
+  });
  }
 }
   else {
