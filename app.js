@@ -473,7 +473,7 @@ app.post('/counter/switch_movie',function(req,res){
     var newposition = req.body.newposition;
     var mtitle = req.body.mtitle;
     var vyear = req.body.year;
-    console.log(JSON.stringify(data));
+    console.log(newposition+','+mtitle+','vyear);
     counter_movies.update({uid:JSON.stringify(req.session._id),moviestore:{movietitle:mtitle,year:vyear}},{"moviestore.$":{newmovie:newposition}},function (err,done){
       if(err) {
         res.send(ms);
