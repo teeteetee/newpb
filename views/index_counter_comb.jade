@@ -301,6 +301,10 @@ head
       padding: 15px;
       text-align: center;
       }
+      #friends .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
       #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
       border-color: none;
       box-shadow:none;
@@ -484,7 +488,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-iosdark  form-control btn-submit' data-dismis='modal') Close
+            button(class='btn btn btn-warning  form-control' data-dismiss='modal') Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
