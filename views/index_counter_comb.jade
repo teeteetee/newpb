@@ -636,7 +636,7 @@ head
       script.
         $('#change_nick').click(function(){
           if($('#nick').val()){
-                    var data;
+                    var data={};
                     data.nick=$('#nick').val();
                     $.ajax({
                         method: "POST",
