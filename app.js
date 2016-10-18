@@ -178,7 +178,7 @@ app.post('/counter/setnick',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
-    counter_users.update({_id:JSON.stringify(req.session._id)},{$set:{nick:req.body.nick}},function (err,done){
+    counter_users.update({_id:req.session._id},{$set:{nick:req.body.nick}},function (err,done){
     if(err){
       console.log('err while setting nick');
     }
