@@ -866,7 +866,7 @@ head
             });
           consolidated_b_new.forEach(function (element,index){
             var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',0)">'+element.booktitle+" <small>"+element.author+"</small></li>";
             $('.fourth').append(insert);
             });
           //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
@@ -925,11 +925,11 @@ head
         $('.book_remove').attr('onclick',insert);
         $('.book_switch').attr('onclick',insert2);
         if(old)
-        {$('.bookmodaltitle').text(consolidated_m_old[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_m_old[i].author);}
+        {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_b_old[i].author);}
         else{
-         $('.bookmodaltitle').text(consolidated_m_new[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_m_new[i].author);
+         $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_b_new[i].author);
         }
         $('#bookmodal').modal('show');
         }
