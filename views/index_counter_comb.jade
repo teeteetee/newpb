@@ -507,8 +507,8 @@ head
               label
                 input(type="checkbox") 
                 |Your profile is visible only for logged in users. Make it visible to everybody?
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-iosdark  form-control btn-submit'  id='closefriends' ) Close
+          .modal-footer
+            button#closefriends(data-dissmiss="modal" class='btn btn-warning') close
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
