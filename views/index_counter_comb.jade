@@ -500,21 +500,29 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" ) Settings
-          .modal-body(style='padding-left:10px;padding-right:10px;')  
-            .form-group
-              .btn.btn-primary#backup download backup
-            .form-group
-              label(for="exampleInputFile") Restore from backup file
-              input(type="file" id="exampleInputFile")
-              p(class="help-block") Example block-level help text here.
-            .form-group
-              label(for="nick") Set nick
-              input(type="email" class="form-control" id="nick" placeholder="nickname")
-              button.btn.btn-success#change_nick change nick
-            .checkbox
-              label
-                input(type="checkbox") 
-                |Your profile is visible only for logged in users. Make it visible to everybody?
+          .modal-body(style='padding-left:0px;padding-right:0px;')  
+            .row(style='border-top:1px solid #ddd;') 
+              .col-xs-12
+                .form-group
+                  .btn.btn-primary#backup download backup
+            .row(style='border-top:1px solid #ddd;') 
+              .col-xs-12
+                .form-group
+                  label(for="exampleInputFile") Restore from backup file
+                  input(type="file" id="exampleInputFile")
+                  p(class="help-block") Example block-level help text here.
+            .row(style='border-top:1px solid #ddd;') 
+              .col-xs-12
+                .form-group
+                  label(for="nick") Set nick
+                  input(type="email" class="form-control" id="nick" placeholder="nickname")
+                  button.btn.btn-success#change_nick change nick
+            .row(style='border-top:1px solid #ddd;') 
+              .col-xs-12
+                .checkbox
+                  label
+                    input(type="checkbox") 
+                    |Your profile is visible only for logged in users. Make it visible to everybody?
           .modal-footer
             button(data-dismiss="modal" class='btn btn-warning') close
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
