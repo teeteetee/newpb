@@ -444,6 +444,9 @@ head
       .panel-default>.panel-heading+.panel-collapse>.panel-body {
         border:none;
       }
+      #acccordion .panel:last-child {
+       border-bottom:none;
+      }
       .navbar-inverse .navbar-toggle {
         border-color:white;
       }
@@ -496,7 +499,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
-            button(class='btn btn-warning ' data-dismiss='modal') Close
+            button(class='btn btn-ioslight ' data-dismiss='modal') Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
@@ -582,7 +585,7 @@ head
                     input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
-          .modal-footer
+          .modal-footer(style='border-top: 1px solid #e5e5e5;')
             button(data-dismiss="modal" class='btn btn-ioslight') close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
