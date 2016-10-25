@@ -492,11 +492,11 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title" ) Welcome!
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
-          .modal-body  
-            h4 Unless you want other users to see you as 
-              span(style='font-weight:300;') 'user № #{_id}'
+          .modal-body(style='padding:15px;') 
+            h4(style='padding:0px;') Unless you want other users to see you as 
+              span(style='font-weight:500;') 'user № #{_id}'
               | , you might want to choose a nickname. You can do that lateer in the settings, or now:
-            .input-group
+            .input-group(style='padding-top:10px;')
               input(type="text" class="form-control" placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
                 button(class="btn btn-success" id='change_nick_first' type="button") save   
