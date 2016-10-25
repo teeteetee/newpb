@@ -617,6 +617,34 @@ head
         if(isfriend){
           $('.btn-follow').text('Unfollow');
         }
+        $('.btn-follow').click(function(){
+          if(isfriend)
+          {addfriend(1);}
+          else{
+            addfriend(0);
+          }
+          });
+        function addfriend(isfriend){
+          var url;
+          url=isfriend?'/counter/removefriend':'/counter/addfriend';
+          var data={};
+          data._id='#{_id}';
+          $.ajax({
+              method: "POST",
+              url:url,
+              data: data
+            })
+              .done(function( msg ) {
+                 if(isfriend){
+                  $('.btn-follow').text('Unfollowed');
+                  $('.btn-follow').addClass('disabled');
+                 }
+                 else{
+                  $('.btn-follow').text('Following');
+                  $('.btn-follow').addClass('disabled');
+                 }
+                });
+        }
         $('#settings_btn').click(function(){
           $('#settings').modal('show');
           });
