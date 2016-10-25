@@ -627,7 +627,7 @@ app.post('/counter/removefriend',function (req,res){
       console.log('err removing a friend');
       res.send(ms);}
       else {
-        console.log('step 1');
+        console.log('step 1:\n'+JSON.stringify(done));
         if(done.total<0){
           counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function (err2,done2){
             if(err){
