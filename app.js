@@ -361,6 +361,11 @@ else{
 }
 });
 
+app.get('/counter/sset',function (req,res){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function(err,doc){
+  res.send('done');
+  });
+});
 
 app.post('/counter/getfriends',function (req,res){
   var ms ={};
@@ -627,22 +632,11 @@ app.post('/counter/removefriend',function (req,res){
       console.log('err removing a friend');
       res.send(ms);}
       else {
-        console.log('step 1:\n'+JSON.stringify(done));
-        if(done.total<0){
-          counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function (err2,done2){
-            if(err){
-            console.log('err correcting total');
-            res.send(ms);}
-            else { 
-            console.log('step 2');
-             ms.trouble=0;
-             res.send(ms);
-            }
-          });
-        }
-      }
-  });
- }       
+        ms.trouble=0;
+        res.send(ms);
+          }
+         });
+        }       
       else {
         res.send('err');
       }   
