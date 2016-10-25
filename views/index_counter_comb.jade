@@ -540,7 +540,7 @@ head
                     |Your profile is visible only for logged in users. Make it visible to everybody?
           .modal-footer(style='padding:15px;text-align:center;border-top: 1px solid #eee;')
             button(data-dismiss="modal" class='btn btn-ioslight') close
-    .modal.fade.bs-example-modal-sm.btn_mod(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -590,7 +590,7 @@ head
           //
             .modal-footer(style='border-top: 1px solid #eee;')
               button(data-dismiss="modal" class='btn btn-ioslight') close
-          .modal-footer
+          .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control movie_remove' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
