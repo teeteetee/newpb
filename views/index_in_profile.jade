@@ -130,15 +130,15 @@ head
         background-color:white;
         color:#333;
       }
-      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark {
+      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
         box-shadow:none;
         border:none;
         background-color:#2d2d2d;
       }
-      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover {
+      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
         background-color:#424242;
       }
-      .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn {
+      .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
       height:50px;
       border-radius:0px;
       border-bottom:1px solid #4e4e4e;
@@ -148,10 +148,10 @@ head
         word-wrap:break-word;
       }
       .modal-sm h4 {
-        padding-right:15px;
+        padding-right:18px;
         padding-left:15px;
       }
-      .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child {
+      .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child, .btn_mod .btn:last-child {
         border:none;
         border-bottom-left-radius:6px;
         border-bottom-right-radius:6px;
@@ -184,8 +184,8 @@ head
       }
       .btn-ioslight {
         color:white;
-        background-color:rgba(0,0,0,0);
-        border:1px solid white;
+        background-color:#333;
+        border:1px solid #333;
       }
       .btn-ioslight:hover{
         color:#333;
@@ -444,20 +444,21 @@ head
       .panel-default>.panel-heading+.panel-collapse>.panel-body {
         border:none;
       }
+      #add_choice .panel:last-child {
+       border-bottom:none;
+      }
       .navbar-inverse .navbar-toggle {
         border-color:white;
       }
       .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
           border-color: #f5f5f5;
       }
-      .btn-follow{
-        border:1px solid white;
-        background-color:transparent;
-        color:white;
+      #row_margin .row {
+        margin:0px;
+        padding-top:15px;
       }
-      .btn-follow:hover{
-        background-color:white;
-        color:#333;
+      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+        cursor:auto;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -502,30 +503,46 @@ head
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer(style='text-align:center;')
             button(class='btn btn-warning ' data-dismiss='modal') Close
-    .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
+    .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog.modal-sm(role="document")
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" ) Settings
-          .modal-body(style='padding-left:10px;padding-right:10px;')  
-            .form-group
-              .btn.btn-primary#backup download backup
-            .form-group
-              label(for="exampleInputFile") Restore from backup file
-              input(type="file" id="exampleInputFile")
-              p(class="help-block") Example block-level help text here.
-            .form-group
-              label(for="exampleInputEmail1") Change nick
-              input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Email")
-              button.btn.btn-success change nick
-            .checkbox
-              label
-                input(type="checkbox") 
-                |Your profile is visible only for logged in users. Make it visible to everybody?
-          .modal-footer
-            button(data-dismiss="modal" class='btn btn-warning') close
+          .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
+            .row(style='border-top:1px solid #eee;') 
+              .col-xs-12
+                label(for="backup") Download backup file
+                .form-group
+                  button.btn.btn-ioslight#backup download 
+            .row(style='border-top:1px solid #eee;') 
+              .col-xs-12
+                .form-group
+                  label(for="exampleInputFile") Restore from backup file
+                  input(type="file" id="exampleInputFile")
+                  p(class="help-block") Restore from previously downloaded JSON backup file
+            .row(style='border-top:1px solid #eee;padding-bottom:19px;') 
+              .col-xs-12
+                label(for="nick_group") Set nick
+                .input-group#nick_group
+                  input(type="text" class="form-control" placeholder="nickname" id='nick')
+                  span(class="input-group-btn")
+                    button(class="btn btn-ioslight" id='change_nick' type="button") Submit
+                //
+                  .form-group
+                    label(for="nick") Set nick
+                    input(type="email" class="form-control" id="nick" placeholder="nickname")
+                    button.btn.btn-success#change_nick change nick
+            .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
+              .col-xs-12
+                label(for='visibility') Profile visibility
+                .checkbox#visibility
+                  label
+                    input(type="checkbox") 
+                    |Your profile is visible only for logged in users. Make it visible to everybody?
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -844,19 +861,15 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+i+','+old+')';
-        insert2 = 'switch_movie('+i+','+old+')';
-        $('.movie_remove').attr('onclick',insert);
-        $('.movie_switch').attr('onclick',insert2);
+        insert = 'removemovie('+old+','+i+')';
+        $('.movie_add').attr('onclick',insert);
         if(old)
         {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_old[i].year);
-         $('.movie_switch').text('Mark as not seen');
         }
         else{
          $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_new[i].year);
-         $('.movie_switch').text('Mark as seen');
         }
         $('#moviemodal').modal('show');
         }
@@ -870,36 +883,31 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removebook('+i+','+old+')';
-        insert2 = 'switch_book('+i+','+old+')';
-        $('.book_remove').attr('onclick',insert);
-        $('.book_switch').attr('onclick',insert2);
+        insert = 'submit_book('+old+','+i+')';
+        $('.book_add').attr('onclick',insert);
         if(old)
         {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_old[i].author);
-         $('.book_switch').text('Mark as not read');
         }
         else{
          $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_new[i].author);
-         $('.book_switch').text('Mark as read');
         }
         $('#bookmodal').modal('show');
         }
         //----------------------------//
         //----------------------------//
-        function submit_movie(old){
+        function submit_movie(old,index){
           var mtitle;
           var year;
-          if(old){mtitle="#mtitle_old";year="#year_old";}
-          else{mtitle="#mtitle_new";year="#year_new";}
-        if($(mtitle).val() && $(year).val())//what if I dont know year yet?
+          var arr_name=old?'consolidated_m_old':'consolidated_m_new';
+        if(year && title)//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.movietitle = $(mtitle).val();
+           eval('data.movietitle='+arr_name+'['+index+'].movietitle;');
            data.newmovie = 1;
            if(old){
            data.newmovie = 0;
@@ -909,7 +917,7 @@ head
            //data.star = 0;
            //}
            data.star=0;
-           data.year = $(year).val();
+           eval('data.year='+arr_name+'['+index+'].year;');
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -927,18 +935,17 @@ head
           }
         }
         //---------------------------//
-        function submit_book(old){
+        function submit_book(old,index){
           var btitle;
           var author;
-          if(old){btitle="#btitle_old";author="#author_old";}
-          else{btitle="#btitle_new";author="#author_new";}
-        if($(btitle).val() && $(author).val())//what if I dont know year yet?
+          var arr_name=old?'consolidated_b_old':'consolidated_b_new';
+        if(title && author)//what if I dont know year yet?
         {
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.booktitle = $(btitle).val();
+           eval('data.booktitle='+arr_name+'['+index+'].booktitle;');
            data.newbook = 1;
            if(old){
            data.newbook = 0;
@@ -948,7 +955,7 @@ head
            //data.star = 0;
            //}
            data.star=0;
-           data.author = $(author).val();
+           eval('data.author='+arr_name+'['+index+'].author;');
            console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",

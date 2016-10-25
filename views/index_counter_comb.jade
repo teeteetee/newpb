@@ -25,10 +25,6 @@ head
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
@@ -456,6 +452,9 @@ head
       #row_margin .row {
         margin:0px;
         padding-top:15px;
+      }
+      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+        cursor:auto;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
