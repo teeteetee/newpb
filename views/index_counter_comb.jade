@@ -148,7 +148,7 @@ head
         word-wrap:break-word;
       }
       .modal-sm h4 {
-        padding-right:15px;
+        padding-right:18px;
         padding-left:15px;
       }
       .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child {
@@ -585,8 +585,10 @@ head
                     input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
-          .modal-footer(style='border-top: 1px solid #eee;')
-            button(data-dismiss="modal" class='btn btn-ioslight') close
+          button(class='btn btn-iosdark form-control movie_remove' data-dismiss="modal") Close
+          //
+            .modal-footer(style='border-top: 1px solid #eee;')
+              button(data-dismiss="modal" class='btn btn-ioslight') close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
