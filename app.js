@@ -627,8 +627,17 @@ app.post('/counter/removefriend',function (req,res){
       console.log('err removing a friend');
       res.send(ms);}
       else {
-        ms.trouble=0;
-        res.send(ms);
+        if(done.total<0){
+          counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function (err2,done2){
+            if(err){
+            console.log('err correcting total');
+            res.send(ms);}
+            else {
+             ms.trouble=0;
+             res.send(ms);
+            }
+          });
+        }
       }
   });
  }       
