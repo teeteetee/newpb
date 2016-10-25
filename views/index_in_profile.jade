@@ -861,7 +861,7 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+old+','+i+')';
+        insert = 'submit_movie('+old+','+i+')';
         $('.movie_add').attr('onclick',insert);
         if(old)
         {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
