@@ -898,11 +898,8 @@ head
         //----------------------------//
         //----------------------------//
         function submit_movie(old,index){
-          var mtitle;
-          var year;
           var arr_name=old?'consolidated_m_old':'consolidated_m_new';
-        if(year && title)//what if I dont know year yet?
-        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
@@ -928,15 +925,12 @@ head
                 alert('movie done');
                 //window.location='/counter/comb';
               });
-          }
         }
         //---------------------------//
         function submit_book(old,index){
           var btitle;
           var author;
           var arr_name=old?'consolidated_b_old':'consolidated_b_new';
-        if(title && author)//what if I dont know year yet?
-        {
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
@@ -963,7 +957,6 @@ head
                 //window.location='/counter/comb';
               });
           }
-        }
         function getfriends() {
           //---------------------------//
         var friends;
