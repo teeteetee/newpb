@@ -518,10 +518,16 @@ head
                   p(class="help-block") Restore from previously downloaded JSON backup file
             .row(style='border-top:1px solid #ddd;') 
               .col-xs-12
-                .form-group
+                .input-group
                   label(for="nick") Set nick
-                  input(type="email" class="form-control" id="nick" placeholder="nickname")
-                  button.btn.btn-success#change_nick change nick
+                  input(type="text" class="form-control" placeholder="nickname" id='nick')
+                  span(class="input-group-btn")
+                    button(class="btn btn-success" id='change_nick' type="button") Set nick
+                //
+                  .form-group
+                    label(for="nick") Set nick
+                    input(type="email" class="form-control" id="nick" placeholder="nickname")
+                    button.btn.btn-success#change_nick change nick
             .row(style='border-top:1px solid #ddd;') 
               .col-xs-12
                 .checkbox
