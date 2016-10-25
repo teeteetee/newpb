@@ -460,6 +460,16 @@ head
       .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
         cursor:auto;
       }
+      .btn-follow{
+        background-color:(0,0,0,0);
+        border:1px solid rgba(255,255,255,0.3);
+        color:rgba(255,255,255,0.3)
+      }
+      .btn-follow:hover{
+        background-color:rgba(255,255,255,0.3);
+        border:1px solid rgba(255,255,255,0.3);
+        color:rgba(0,0,0,0.5);
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -569,7 +579,7 @@ head
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;margin-bottom:30px;')
         .col-xs-12
-           h3(style='color:rgba(255,255,255,0.4);')
+           h3(style='color:rgba(255,255,255,0.4);font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
            button.btn.btn-follow(type='button') Follow
