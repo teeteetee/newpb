@@ -540,7 +540,7 @@ head
               .col-xs-12
                 label(for="nick_group") Set nick
                 .input-group#nick_group
-                  input(type="text" class="form-control" placeholder="nickname" id='nick')
+                  input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                   span(class="input-group-btn")
                     button(class="btn btn-ioslight" id='change_nick' type="button") Submit
                 //
@@ -690,14 +690,20 @@ head
                         .done(function( msg ) {
                           if(msg.mtext){
                             console.log('yes');
+                            if($('#change_nick').hasClass('diasbled')){
+                              $('#change_nick').removeClass('disabled');
+                            }
                           }
                             else{
                               console.log('no')
+                             $('#nick').tooltip({title:'This nick is taken'});
+                             $('#change_nick').addClass('disabled');
                             }
                           });
                         }
                         else{
-                          console.log('input too shirt');
+                          $('#nick').tooltip({title:'Too short'});
+                          $('#change_nick').addClass('disabled');
                         }
             })
            e.onpropertychange = e.oninput; // for IE8
