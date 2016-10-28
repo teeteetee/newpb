@@ -1303,17 +1303,7 @@ head
                     friends = msg.doc.total;
                     $('#friendsnum').text(friends);
                     msg.doc.friendstore.forEach(function (element,index){
-                      $.ajax({
-                        method: "POST",
-                        url: "/counter/gn/"+element,
-                        data: 0
-                      })
-                        .done(function(msg) {
-                          if(!msg.trouble){
-                           element.nick=msg.mtext;
-                          }
-                          consolidated.push(element);
-                        });
+                        consolidated.push(element);
                     });
                    }
                    if(consolidated.length){
@@ -1331,9 +1321,20 @@ head
             //if($(".noitemsfriends")[0])
             //       { console.log('HAS LENGTH');
             //         $('.friendslist').empty();}
+            $.ajax({
+                        method: "POST",
+                        url: "/counter/gn/"+element,
+                        data: 0
+                      })
+                        .done(function(msg) {
+                          if(!msg.trouble){
+                           $('#f_'+element).text(msg.mtext);
+                          }
+                          
+                        });
            var insert;
            var friend_name=element.nick?element.nick:'User №'+element;
-             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>"+friend_name+"</a></th></tr>";
+             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a id='f_"+element+"' href='/counter/profile/"+element+"'>"+friend_name+"</a></th></tr>";
             $('.friendslist').prepend(insert);
            });
           } 
