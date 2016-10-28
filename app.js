@@ -151,9 +151,10 @@ app.post('/counter/gn/:_id',function (req,res){
           else{
             console.log('-------- GN --------\n'+JSON.stringify(done)+'\n'+'-------- GN --------');
             if(done&&done.nick)
-            {ms.trouble=0;
-                        ms.mtext=done.nick;
-                        res.send(ms);}
+            {console.log('sending nick');
+              ms.trouble=0;
+            ms.mtext=done.nick;
+            res.send(ms);}
             else {
               res.send(ms);
             }
