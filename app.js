@@ -1329,7 +1329,7 @@ app.post('/newuser',function(req,res){
     
     });
 
-app.post('/chknck',function (req,res){
+app.post('/counter/chcknck',function (req,res){
   var ms={};
   ms.mtext=0;
   if(req.body.nick)

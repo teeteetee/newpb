@@ -674,9 +674,31 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        function checknick() {
+          if($('#nick').val()&&$('#nick').val().length>2){
+                    var data={};
+                    data.nick=$('#nick').val();
+                    $.ajax({
+                        method: "POST",
+                        url: "/counter/chcknck",
+                        data: data
+                      })
+                        .done(function( msg ) {
+                          if(msg.mtext){
+                            console.log('yes');
+                          }
+                            else{
+                              console.log('no')
+                            }
+                          });
+                        }
+                        else{
+                          console.log('input too shirt');
+                        }
+        }
         onload = function () {
            var e = document.getElementById('nick');
-           e.oninput = (function(){console.log('hey hey!')});
+           e.oninput = chekcnick();
            e.onpropertychange = e.oninput; // for IE8
            // e.onchange = e.oninput; // FF needs this in <select><option>...
            // other things for onload()
