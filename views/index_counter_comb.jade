@@ -691,7 +691,7 @@ head
                         data: data
                       }).done(function( msg ) {
                           if(msg.mtext){
-                            console.log('yes');
+                            console.log('MTEXT: '+msg.mtext);
                             if($('#change_nick').prop('diasbled')){
                               $('#change_nick').attr('disabled',false);
                               console.log('DISABLED OFF');
