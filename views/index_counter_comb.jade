@@ -41,7 +41,10 @@ head
       }
       @media(max-width:767px){
         .navbar-collapse{
-      background-color: rgba(255, 255, 255, 0.82);
+      background-color: rgba(0, 0, 0, 0.82);
+      }
+      .navbar-header{
+        background-color:black;
       }
       }
       h1, h2, h3, h4, h5, h6 {
@@ -489,7 +492,7 @@ head
                 |Settings
             li
               a(href="/counter/logout") 
-                span.hidden-lg.hidden-md.glyphicon.glyphicon-logout(style='margin-right:3px;')
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
                 |Logout
           //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
           //
