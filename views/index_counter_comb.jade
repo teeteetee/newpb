@@ -689,23 +689,23 @@ head
                         method: "POST",
                         url: "/counter/chcknck",
                         data: data
-                      })
-                        .done(function( msg ) {
+                      }).done(function( msg ) {
                           if(msg.mtext){
                             console.log('yes');
                             if($('#change_nick').prop('diasbled')){
                               $('#change_nick').attr('disabled',false);
+                            $('#nick').tooltip('destroy');
                             }
                           }
                             else{
                               console.log('no')
-                             $('#nick').tooltip({title:'This nick is taken','placement':'top'});
+                             $('#nick').tooltip({title:'This nick is taken','placement':'top',trigger: 'manual'}}).tooltip('show');
                              $('#change_nick').attr('disabled',true);
                             }
                           });
                         }
                         else{
-                          $('#nick').tooltip({title:'Too short','placement':'top'});
+                          $('#nick').tooltip({title:'Too short','placement':'top',trigger: 'manual'}}).tooltip('show')
                           $('#change_nick').attr('disabled',true);
                         }
             })
