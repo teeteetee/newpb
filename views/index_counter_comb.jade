@@ -1331,8 +1331,8 @@ head
             //       { console.log('HAS LENGTH');
             //         $('.friendslist').empty();}
            var insert;
-           var friend_name=element.nick?element.nick:element;
-             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>"+friend_name+"г</a></th></tr>";
+           var friend_name=element.nick?element.nick:'User №'+element;
+             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>"+friend_name+"</a></th></tr>";
             $('.friendslist').prepend(insert);
            });
           } 
