@@ -701,7 +701,6 @@ head
                               $('#change_nick').prop('disabled',false);
                               console.log('DISABLED OFF');
                             $('#nick').tooltip('destroy');
-                            
                           }
                             else{
                               console.log('no')
@@ -737,7 +736,19 @@ head
           $('#add_comb').modal('show');
         }
         $('#settings_btn').click(function(){
+          $('#nick').tooltip('destroy');
           $('#settings').modal('show');
+          $.ajax({
+              method: "POST",
+              url: "/counter/getnick",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  $('#nick').prop('placeholder',msg.mtext);
+                }
+                });
+              }
           });
         $('#backup').click(function(){
           $('#backupform').submit();

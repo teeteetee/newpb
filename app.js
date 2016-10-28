@@ -139,6 +139,32 @@ app.get('/counter/comb',function (req,res){
  }
 });
 
+app.post('/counter/getnick',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id&&req.body.nick&&is_nick(req.body.nick)){
+    console.log(req.body.nick);
+        counter_users.findOne({_id:req.session._id},function (err,done){
+          if(err){
+            res.send(ms);
+          }
+          else{
+            if(done.nick)
+            {ms.trouble=0;
+                        ms.mtext=done.nick;
+                        res.send(ms);}
+            else {
+              res.send(ms);
+            }
+          }
+        });
+      }
+      else{
+        res.send(ms);
+      }
+});
+
+
 app.get('/counter/p3345',function (req,res){
   res.render('index_in');
 });
