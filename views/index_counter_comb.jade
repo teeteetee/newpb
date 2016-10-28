@@ -699,13 +699,13 @@ head
                           }
                             else{
                               console.log('no')
-                             $('#nick').tooltip({title:'This nick is taken','placement':'top',trigger: 'manual'}).tooltip('show');
+                             $('#nick').tooltip({title:'This nick is taken','placement':'top','trigger': 'manual'}).tooltip('show');
                              $('#change_nick').attr('disabled',true);
                             }
                           });
                         }
                         else{
-                          $('#nick').tooltip({title:'Too short','placement':'top',trigger: 'manual'}).tooltip('show')
+                          $('#nick').tooltip({title:'Too short','placement':'top','trigger': 'manual'}).tooltip('show')
                           $('#change_nick').attr('disabled',true);
                         }
             })
