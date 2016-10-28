@@ -325,16 +325,16 @@ head
       box-shadow: none;
       text-align: left;
       }
-      /*#add_comb*/
-      .panel-body .btn-add {
+      /*#add_comb .panel-body */
+      .btn-add {
         /*background-color:#39cc95;*/
         background-color:#36b7d4;
         letter-spacing:1px;
         margin:14px;
         color:#347888;
       }
-      /*#add_comb */
-      .panel-body .btn-add:hover {
+      /*#add_comb .panel-body */
+      .btn-add:hover {
         color:white;
         background-color:#3ad1f3;
       }
@@ -555,7 +555,7 @@ head
               .col-xs-12
                 label(for="backup") Download backup file
                 .form-group
-                  button.btn.btn-ioslight#backup download 
+                  button.btn.btn-add#backup download 
             .row(style='border-top:1px solid #eee;') 
               .col-xs-12
                 .form-group
@@ -568,7 +568,7 @@ head
                 .input-group#nick_group
                   input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                   span(class="input-group-btn")
-                    button(class="btn btn-ioslight" id='change_nick' type="button") Submit
+                    button(class="btn btn-add" id='change_nick' type="button") Submit
                 //
                   .form-group
                     label(for="nick") Set nick
