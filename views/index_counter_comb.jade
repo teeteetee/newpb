@@ -675,6 +675,9 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         onload = function () {
+           $(function () {
+             $('[data-toggle="tooltip"]').tooltip()
+           });
            var e = document.getElementById('nick');
            //console.log('hey');
            e.oninput = (function(){
