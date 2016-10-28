@@ -132,16 +132,16 @@ head
       .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
         box-shadow:none;
         border:none;
-        background-color:#2d2d2d;
+        background-color:#f7926c;
       }
       .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
-        background-color:#424242;
+        background-color:#fd6e38;
       }
       .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
       height:50px;
       border-radius:0px;
       border-bottom:1px solid #4e4e4e;
-      color:#afafaf;
+      color:#b33636;
       }
       h4 {
         word-wrap:break-word;
@@ -466,6 +466,10 @@ head
       .tooltip.top .tooltip-arrow {
           border-top-color: #ff6767;
        }
+       .btn-close{
+        letter-spacing:1px;
+        text-transform:uppercase;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -519,7 +523,7 @@ head
               span(class="input-group-btn")
                 button(class="btn btn-success" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -534,7 +538,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
@@ -574,7 +578,7 @@ head
                     input(type="checkbox") 
                     |Your profile is visible only for logged in users. Make it visible to everybody?
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -621,7 +625,7 @@ head
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
