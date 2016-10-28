@@ -139,12 +139,11 @@ app.get('/counter/comb',function (req,res){
  }
 });
 
-app.post('/counter/getnick',function (req,res){
+app.post('/counter/gn/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
-    console.log(req.body.nick);
-        counter_users.findOne({_id:req.session._id},function (err,done){
+        counter_users.findOne({_id:req.params._id},function (err,done){
           if(err){
             res.send(ms);
           }

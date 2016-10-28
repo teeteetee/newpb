@@ -451,7 +451,8 @@ head
       }
       #row_margin .row {
         margin:0px;
-        padding-top:15px;
+        padding-top:20px;
+        padding-bottom:10px;
       }
       .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
         cursor:auto;
@@ -496,7 +497,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='padding-left:0px;' ) Welcome!
+            h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body(style='padding:15px;padding-top:0px;') 
             h4(style='padding:0px;') Unless you want other users to see you as 
@@ -514,7 +515,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" ) You follow
+            h4(class="modal-title" style='text-align:center;' ) You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
             table.table.table-striped(style='color:#0c7d57;')
@@ -529,7 +530,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" ) Settings
+            h4(class="modal-title" style='text-align:center;' ) Settings
           .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
             .row(style='border-top:1px solid #eee;') 
               .col-xs-12
@@ -569,7 +570,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title") Посмотрел фильм:
+            h4(class="modal-title" style='text-align:center;') Посмотрел фильм:
           .modal-body#add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
@@ -740,7 +741,7 @@ head
           $('#settings').modal('show');
           $.ajax({
               method: "POST",
-              url: "/counter/getnick",
+              url: "/counter/gn"+'#{_id}',
               data: 0
             })
               .done(function( msg ) {
@@ -1301,7 +1302,17 @@ head
                     friends = msg.doc.total;
                     $('#friendsnum').text(friends);
                     msg.doc.friendstore.forEach(function (element,index){
-                    consolidated.push(element);
+                      $.ajax({
+                        method: "POST",
+                        url: "/counter/gn/"+element,
+                        data: 0
+                      })
+                        .done(function(msg) {
+                          if(!ms.trouble){
+                           element.nick=msg.mtext;
+                          }
+                        });
+                        consolidated.push(element);
                     });
                    }
                    if(consolidated.length){
@@ -1320,7 +1331,8 @@ head
             //       { console.log('HAS LENGTH');
             //         $('.friendslist').empty();}
            var insert;
-             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>Друг</a></th></tr>";
+           var friend_name=element.nick?element.nick:element;
+             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a href='/counter/profile/"+element+"'>"+friend_name+"г</a></th></tr>";
             $('.friendslist').prepend(insert);
            });
           } 
