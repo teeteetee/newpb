@@ -699,7 +699,7 @@ head
         onload = function () {
            var e = document.getElementById('nick');
            //console.log('hey');
-           e.oninput = checknick();
+           e.oninput = (checknick());
            e.onpropertychange = e.oninput; // for IE8
            // e.onchange = e.oninput; // FF needs this in <select><option>...
            // other things for onload()
