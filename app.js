@@ -149,7 +149,7 @@ app.post('/counter/gn/:_id',function (req,res){
             res.send(ms);
           }
           else{
-            console.log('-------- GN --------\n'+done+'\n'+'-------- GN --------');
+            console.log('-------- GN --------\n'+JSON.stringify(done)+'\n'+'-------- GN --------');
             if(done&&done.nick)
             {ms.trouble=0;
                         ms.mtext=done.nick;
