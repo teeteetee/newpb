@@ -690,7 +690,7 @@ head
                         .done(function( msg ) {
                           if(msg.mtext){
                             console.log('yes');
-                            if($('#change_nick').hasClass('diasbled')){
+                            if($('#change_nick').prop('diasbled')){
                               $('#change_nick').attr('disabled',false);
                             }
                           }
