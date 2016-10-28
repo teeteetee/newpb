@@ -674,9 +674,13 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        window.addEventListener('#nick', function (e) {
-         console.log("keyup event detected! coming from this element:", e.target);
-        }, false);
+        onload = function () {
+           var e = document.getElementById('nick');
+           e.oninput = (function(){console.log('hey hey!')});
+           e.onpropertychange = e.oninput; // for IE8
+           // e.onchange = e.oninput; // FF needs this in <select><option>...
+           // other things for onload()
+        };
         $('#change_nick').click(function(){
           if($('#nick').val()){
                     var data={};
