@@ -741,7 +741,7 @@ head
           $('#settings').modal('show');
           $.ajax({
               method: "POST",
-              url: "/counter/gn"+'#{_id}',
+              url: "/counter/gn/"+'#{_id}',
               data: 0
             })
               .done(function( msg ) {
