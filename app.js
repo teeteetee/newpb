@@ -1329,6 +1329,29 @@ app.post('/newuser',function(req,res){
     
     });
 
+app.post('/chknck',function (req,res){
+  var ms={};
+  ms.mtext=0;
+  if(req.body.nick)
+  {counter_users.findOne({nick:req.body.nick},function(err,confirmed){
+      if (err)
+        {res.send(ms);}
+      else 
+      {
+        if(confirmed){
+          res.send(ms);
+        }
+        else{
+          ms.mtext=1;
+          res.send(ms);
+        }
+      }
+    });}
+else {
+  res.send(ms);
+}
+});
+
 app.post('/check',function(req,res){
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email

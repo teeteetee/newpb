@@ -490,7 +490,7 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='padding-right:0px;font-weight:600;' ) Welcome!
+            h4(class="modal-title" style='padding-left:0px;' ) Welcome!
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body(style='padding:15px;padding-top:0px;') 
             h4(style='padding:0px;') Unless you want other users to see you as 
@@ -674,6 +674,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        window.addEventListener('#nick', function (e) {
+         console.log("keyup event detected! coming from this element:", e.target);
+        }, false);
         $('#change_nick').click(function(){
           if($('#nick').val()){
                     var data={};
