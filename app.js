@@ -149,6 +149,7 @@ app.post('/counter/gn/:_id',function (req,res){
             res.send(ms);
           }
           else{
+            console.log('-------- GN --------\n'+done+'\n'+'-------- GN --------');
             if(done&&done.nick)
             {ms.trouble=0;
                         ms.mtext=done.nick;
@@ -350,7 +351,6 @@ app.post('/counter/friend/getmovies/:_id',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
-        console.log(doc);
         ms.doc = doc;
         ms.trouble=0;
         res.send(ms);
@@ -375,7 +375,6 @@ app.post('/counter/friend/getbooks/:_id',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
-        console.log(doc);
         ms.doc = doc;
         ms.trouble=0;
         res.send(ms);
