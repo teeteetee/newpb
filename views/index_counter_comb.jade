@@ -746,6 +746,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble){
                   $('#nick').prop('placeholder',msg.mtext);
+                  $('#change_nick').text('Change');
                 }
                 });
           });
