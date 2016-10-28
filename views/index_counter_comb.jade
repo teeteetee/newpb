@@ -518,7 +518,7 @@ head
             h4(class="modal-title" style='text-align:center;' ) You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
-            table.table.table-striped(style='color:#0c7d57;')
+            table.table(style='color:#0c7d57;')
               tbody.friendslist
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
@@ -1297,6 +1297,7 @@ head
                    friends=msg.doc;
                   if(!friends || !friends.friendstore) {
                    console.log('no friends');
+                   $('#friendsnum').text(0);
                    }
                    else {
                     friends = msg.doc.total;
