@@ -692,8 +692,8 @@ head
                       }).done(function( msg ) {
                           if(msg.mtext){
                             console.log('MTEXT: '+msg.mtext);
-                            if($('#change_nick').attr('diasbled')){
-                              $('#change_nick').attr('disabled',false);
+                            if($('#change_nick').prop('diasbled')){
+                              $('#change_nick').prop('disabled',false);
                               console.log('DISABLED OFF');
                             $('#nick').tooltip('destroy');
                             }
@@ -701,13 +701,13 @@ head
                             else{
                               console.log('no')
                              $('#nick').tooltip({title:'This nick is taken',placement:'top',trigger: 'manual'}).tooltip('show');
-                             $('#change_nick').attr('disabled',true);
+                             $('#change_nick').prop('disabled',true);
                             }
                           });
                         }
                         else{
                           $('#nick').tooltip({title:'Too short',placement:'top',trigger: 'manual'}).tooltip('show')
-                          $('#change_nick').attr('disabled',true);
+                          $('#change_nick').prop('disabled',true);
                         }
             })
            e.onpropertychange = e.oninput; // for IE8
