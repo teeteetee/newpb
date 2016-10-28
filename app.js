@@ -143,8 +143,8 @@ app.post('/counter/gn/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
-     var v_id = req.params._id[1]==='"'?req.params._id:'"'+req.params._id+'"';
-        counter_users.findOne({_id:v_id},function (err,done){
+     //var v_id = req.params._id[1]==='"'?req.params._id:'"'+req.params._id+'"';
+        counter_users.findOne({_id:req.params._id},function (err,done){
           if(err){
             res.send(ms);
           }
