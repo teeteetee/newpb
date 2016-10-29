@@ -594,7 +594,7 @@ head
                 label(for='visibility') Email visibility
                 .checkbox#visibility
                   label
-                    input(type="checkbox") 
+                    input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                     |Show my email, so people can contact me
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
@@ -715,6 +715,17 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        function showmail_submit(){
+          var data;
+          data.state=$('#show_mail').checked?1:0;
+          $.ajax({
+            method: "POST",
+            url: "/counter/setshowmail",
+            data: data
+          }).done(function( msg ) {
+               $('#show_mail').prop('disabled',true);
+            });
+        }
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -784,6 +795,14 @@ head
                   $('#change_nick').text('Change');
                 }
                 });
+            $.ajax({
+            method: "POST",
+            url: "/counter/getshowmail/"+'#{_id}',
+            data: data
+          }).done(function( msg ) {
+               if(msg.mtext)
+               {$('#show_mail').prop('checked',true);}
+            });
           });
         $('#backup').click(function(){
           $('#backupform').submit();

@@ -139,6 +139,56 @@ app.get('/counter/comb',function (req,res){
  }
 });
 
+app.post('/counter/getshowmail/:id',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id){
+     counter_users.findOne({_id:req.params._id},function (err,done){
+          if(err){
+            res.send(ms);
+          }
+          else{
+            if(done&&done.showmail)
+            {console.log('sending nick');
+            ms.trouble=0;
+            ms.mtext=done.showmail;
+            res.send(ms);}
+            else {
+              res.send(ms);
+            }
+          }
+        });
+  }
+    else{
+      res.send(ms);
+    }
+  });
+
+app.post('/counter/setshowmail',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id){
+     counter_users.update({_id:req.session._id},{$set:{showmail:parseInt(req.body.state)}},function (err,done){
+          if(err){
+            res.send(ms);
+          }
+          else{
+            if(done&&done.showmail)
+            {console.log('sending nick');
+            ms.trouble=0;
+            ms.mtext=done.showmail;
+            res.send(ms);}
+            else {
+              res.send(ms);
+            }
+          }
+        });
+  }
+    else{
+      res.send(ms);
+    }
+  });
+
 app.post('/counter/gn/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
