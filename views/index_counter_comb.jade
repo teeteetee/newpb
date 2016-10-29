@@ -716,7 +716,7 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         function showmail_submit(){
-          var data;
+          var data={};
           data.state=$('#show_mail').checked?1:0;
           $.ajax({
             method: "POST",
