@@ -168,7 +168,7 @@ app.post('/counter/setshowmail',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
-     console.log(parseInt('SET SHOWMAIL '+req.body.state));
+     console.log('SET SHOWMAIL '+parseInt(req.body.state));
      counter_users.update({_id:req.session._id},{$set:{showmail:parseInt(req.body.state)}},function (err,done){
           if(err){
             res.send(ms);
@@ -200,7 +200,7 @@ app.post('/counter/gn/:_id',function (req,res){
             res.send(ms);
           }
           else{
-            console.log('-------- GN --------\n'+JSON.stringify(done)+'\n'+'-------- GN --------');
+            //console.log('-------- GN --------\n'+JSON.stringify(done)+'\n'+'-------- GN --------');
             if(done&&done.nick)
             {console.log('sending nick');
             ms.trouble=0;
