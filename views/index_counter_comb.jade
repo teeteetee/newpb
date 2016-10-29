@@ -717,7 +717,7 @@ head
       script.
         function showmail_submit(){
           var data={};
-          data.state=$('#show_mail').checked?1:0;
+          data.state=$('#show_mail').prop('checked')?1:0;
           $.ajax({
             method: "POST",
             url: "/counter/setshowmail",
