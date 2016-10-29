@@ -154,6 +154,7 @@ app.post('/counter/gn/:_id',function (req,res){
             {console.log('sending nick');
             ms.trouble=0;
             ms.mtext=done.nick;
+            ms.lastitem=done.lastitem;
             res.send(ms);}
             else {
               res.send(ms);

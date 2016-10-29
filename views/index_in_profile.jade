@@ -972,14 +972,13 @@ head
               data: data
             })
               .done(function( msg ) {
-                alert('movie done');
+                //alert('movie done');
+                $('#moviemodal').modal('hide');
                 //window.location='/counter/comb';
               });
         }
         //---------------------------//
         function submit_book(old,index){
-          var btitle;
-          var author;
           var arr_name=old?'consolidated_b_old':'consolidated_b_new';
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
@@ -1003,7 +1002,8 @@ head
               data: data
             })
               .done(function( msg ) {
-                alert(' book done');
+                //alert(' book done');
+                $('#bookmodal').modal('hide');
                 //window.location='/counter/comb';
               });
           }
