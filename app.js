@@ -148,8 +148,9 @@ app.post('/counter/getshowmail/:id',function (req,res){
             res.send(ms);
           }
           else{
+            console.log(' ------- gsm ------- \n'+JSON.stringify(done));
             if(done&&done.showmail)
-            {console.log('sending nick');
+            {console.log('sending showmail');
             ms.trouble=0;
             ms.mtext=done.showmail;
             res.send(ms);}
