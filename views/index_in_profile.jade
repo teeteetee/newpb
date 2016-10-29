@@ -628,7 +628,7 @@ head
       script.
         var mail = '#{mail}';
         console.log('mail: '+mail);
-        if(!parseInt(mail)===0){
+        if(mail.length>1){
           $('#user_mail').text(mail);
           $('.btn-follow').css({'margin-bottom':'30px','margin-top':'30px'});
         }
