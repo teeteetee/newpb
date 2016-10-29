@@ -463,7 +463,7 @@ head
       .btn-follow{
         background-color:transparent;
         border:1px solid rgba(255,255,255,0.3);
-        color:rgba(255,255,255,0.3)
+        color:rgba(255,255,255,0.3);
       }
       .btn-follow:hover{
         background-color:rgba(255,255,255,0.3);
@@ -583,7 +583,7 @@ head
              span(style='font-weight:400;') user № 
              | #{_id}
            h5#user_mail(style='color:rgba(255,255,255,0.4);font-weight:200;')
-           button.btn.btn-follow(type='button' style='margin-top:30px;margin-bottom:30px;') Follow
+           button.btn.btn-follow(type='button') Follow
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
           ul.list-group.first#first_lg
@@ -627,8 +627,9 @@ head
       script(async src='/js/bootstrap.min.js')
       script.
         var mail = '#{mail}';
-        if(mail){
+        if(!parseInt(mail)===0){
           $('#user_mail').text(mail);
+          $('.btn-follow').css({'margin-bottom':'30px','margin-top':'30px'});
         }
         var isfriend = #{isfriend};
         if(isfriend){
