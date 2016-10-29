@@ -798,7 +798,7 @@ head
             $.ajax({
             method: "POST",
             url: "/counter/getshowmail/"+'#{_id}',
-            data: data
+            data: 0
           }).done(function( msg ) {
                if(msg.mtext)
                {$('#show_mail').prop('checked',true);}
