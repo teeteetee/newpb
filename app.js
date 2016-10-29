@@ -105,7 +105,7 @@ app.get('/counter/settings',function (req,res) {
 app.get('/counter',function (req,res){
   if(req.session&&req.session._id)
  {console.log(req.session);
-  res.render('index_in');}
+  res.render('index_counter_comb',{'_id':req.session._id});}
  else {
   res.render('counter_index_login');
  }
