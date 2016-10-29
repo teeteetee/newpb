@@ -305,7 +305,7 @@ app.get('/counter/profile/:_id',function (req,res){
         console.log('err /counter/profile/'+req.params._id);
       }
       if(done){
-        var mail = done.showmail?donw.mail:0;
+        var mail = done.showmail?done.mail:0;
         counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
           if(done1){
             if(done1.friendstore.indexOf(req.params._id)!=-1){
