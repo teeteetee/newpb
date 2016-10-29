@@ -168,6 +168,7 @@ app.post('/counter/setshowmail',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
+     console.log(parseInt('SET SHOWMAIL '+req.body.state));
      counter_users.update({_id:req.session._id},{$set:{showmail:parseInt(req.body.state)}},function (err,done){
           if(err){
             res.send(ms);
