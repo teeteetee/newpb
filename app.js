@@ -180,6 +180,7 @@ app.post('/counter/current/done',function (req,res){
       res.send(ms);
     }
     else{
+      console.log(done);
       ms.trouble=0;
       res.send(ms);
     }
