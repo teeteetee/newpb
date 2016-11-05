@@ -498,7 +498,7 @@ head
             span(class="icon-bar")
             span(class="icon-bar")
             span(class="icon-bar")
-          a(class="navbar-brand" href="/") IV LISTS
+          a(class="navbar-brand" href="/") TASKS
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
@@ -506,76 +506,13 @@ head
                span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
                | Add item
             li
-              a(onclick='getfriends()') 
+              a(href="/counter/comb") 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
-                |You follow
-            li 
-              a#settings_btn 
-                span.hidden-lg.hidden-md.glyphicon.glyphicon-cog(style='margin-right:3px;')
-                |Settings
+                |Profile
             li
               a(href="/counter/logout") 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
                 |Logout
-          //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
-          //
-            form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-             .input-group
-                input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
-                span(class='input-group-btn')
-                  button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
-                    span(class='glyphicon glyphicon-search') 
-    .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='text-align:center;' ) You follow
-              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
-          .modal-body  
-            table.table(style='color:#0c7d57;')
-              tbody.friendslist
-                tr.noitemsfriends
-                  th(style='padding-left:30px !important;') Пока пусто
-          .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog.modal-sm(role="document")
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='text-align:center;' ) Settings
-          .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
-            .row(style='border-top:1px solid #eee;') 
-              .col-xs-12
-                label(for="backup") Download backup file
-                .form-group
-                  button.btn.btn-add#backup download 
-            .row(style='border-top:1px solid #eee;') 
-              .col-xs-12
-                .form-group
-                  label(for="exampleInputFile") Restore from backup file
-                  input(type="file" id="exampleInputFile")
-                  p(class="help-block") Restore from previously downloaded JSON backup file
-            .row(style='border-top:1px solid #eee;padding-bottom:19px;') 
-              .col-xs-12
-                label(for="nick_group") Set nick
-                .input-group#nick_group
-                  input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
-                  span(class="input-group-btn")
-                    button(class="btn btn-add" id='change_nick' type="button") Submit
-                    button.btn.btn-success#change_nick change nick
-            .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
-              .col-xs-12
-                label(for='visibility') Email visibility
-                .checkbox#visibility
-                  label
-                    input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
-                    |Show my email, so people can contact me
-          .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -607,18 +544,6 @@ head
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
-    .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content#colourful
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body(style='text-align:center;')
-            h4.bookmodaltitle(style='margin-top:20px;font-weight:400;')
-            h5.bookmodalauthor(style='margin-bottom:30px;color:gray;')
-            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control book_switch') Switch column
-            button(class='btn btn-iosdark form-control book_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
         .col-xs-12
