@@ -525,24 +525,6 @@ head
                 span(class='input-group-btn')
                   button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                     span(class='glyphicon glyphicon-search') 
-    .modal.fade.bs-example-modal-sm(id='first_time' tabindex="-1")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
-              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
-          .modal-body(style='padding:15px;padding-top:0px;') 
-            h4(style='padding:0px;') Unless you want other users to see you as 
-              span(style='font-weight:500;') 'user № #{_id}'
-              | , you might want to choose a nickname. You can do that later in the settings, or now:
-            .input-group(style='padding-top:10px;padding-bottom:15px;')
-              input(type="text" class="form-control" placeholder="nickname" id='nick_first')
-              span(class="input-group-btn")
-                button(class="btn btn-success" id='change_nick_first' type="button") save   
-          .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -584,10 +566,6 @@ head
                   input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                   span(class="input-group-btn")
                     button(class="btn btn-add" id='change_nick' type="button") Submit
-                //
-                  .form-group
-                    label(for="nick") Set nick
-                    input(type="email" class="form-control" id="nick" placeholder="nickname")
                     button.btn.btn-success#change_nick change nick
             .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
               .col-xs-12
@@ -613,7 +591,7 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
-                    input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Название")
+                    input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст задачи")
                     button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
@@ -664,27 +642,6 @@ head
                 span.glyphicon.glyphicon-chevron-right.pull-right
             #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
               .panel-body.first
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
-              h4(class="panel-title") New movies
-                span.badge#num_two
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.second
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
-              h4(class="panel-title") Books read
-                span.badge#num_three
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.third
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
-              h4(class="panel-title") New movies
-                span.badge#num_four
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.fourth
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
@@ -832,7 +789,7 @@ head
                    if(consolidated_current.length){
                     sortByKey(consolidated_current,'tmstmp');
                    }
-                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Фильмов посмотрел</li>');
+                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Задачи</li>');
                    $('#num_one').text(consolidated_current.length);
                    if(!consolidated_current.length){
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
