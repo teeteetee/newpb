@@ -174,6 +174,7 @@ app.post('/counter/current/done',function (req,res){
    ms.trouble=1;
   if(req.session&&req.session._id){
     var vstatus = req.body.vstatus?0:1;
+    console.log('BODY: '+req.body._id+' '+vstatus);
   counter_current.update({_id:req.body._id},{$set:{done:vstatus}},function(err,done){
    if(err){
       res.send(ms);
