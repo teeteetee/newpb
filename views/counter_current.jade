@@ -489,6 +489,32 @@ head
            filter: alpha(opacity=50);
            opacity: .65;
        }
+       button.collapsed .glyphicon-chevron-up
+       {
+         -webkit-transform: rotate(45deg);
+         -moz-transform:    rotate(45deg);
+         -ms-transform:     rotate(45deg);
+         -o-transform:      rotate(45deg);
+         transform:         rotate(45deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       button .glyphicon-chevron-up
+       {
+         -webkit-transform: rotate(-45deg);
+         -moz-transform:    rotate(-45deg);
+         -ms-transform:     rotate(-45deg);
+         -o-transform:      rotate(-45deg);
+         transform:         rotate(-45deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -524,8 +550,8 @@ head
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne")
-                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Добавить задачу
+                    span(class="glyphicon glyphicon-chevron-up pull-right" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст задачи")
