@@ -776,7 +776,7 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('movies: '+JSON.stringify(msg.doc));
+                  console.log('movies: '+JSON.stringify(msg.msg));
                   if(!msg.msg) {
                    console.log('no movies');
                    }
