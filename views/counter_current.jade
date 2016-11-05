@@ -1001,12 +1001,11 @@ head
                 });
         }
         //----------------------------//
-        function submit_movie(){
+        function submit_movie( old){
           var mtitle;
-          var year;
-          if(old){mtitle="#mtitle_old";year="#year_old";}
-          else{mtitle="#mtitle_new";year="#year_new";}
-        if($(mtitle).val() && $(year).val())//what if I dont know year yet?
+          if(old){mtitle="#mtitle_old";}
+          else{mtitle="#mtitle_new";}
+        if($(mtitle).val())//what if I dont know year yet?
         { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
