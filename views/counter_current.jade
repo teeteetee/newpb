@@ -850,83 +850,16 @@ head
               });
         }
         //-----------------------------------//
-        function switch_movie(i,old) {
+        function switch_movie(i) {
           var data={};
-          if(old){
-            data.mtitle=consolidated_current[i].movietitle;
-            data.year=consolidated_current[i].year;
-            data.newposition=1;
-          }
-          else {
-            data.mtitle=consolidated_m_new[i].movietitle;
-            data.year=consolidated_m_new[i].year;
-            data.newposition=0;
-          }
+          data.vstatus=consolidated_current[i].done;
           $.ajax({
                 method: "POST",
-                url: "/counter/switch_movie",
+                url: "/counter/current/done",
                 data: data
               })
                 .done(function( msg ) {
-                //  console.log(msg);
-                //  $('#moviemodal').modal('hide');
-                //  console.log('breakpoint 1');
-                //  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
-                //  console.log('breakpoint 2');
-                //  var vname = '.movie_'+consolidated[movieid]._id;
-                //  console.log('breakpoint 3');
-                //  var element = $(vname).detach();
-                //  console.log('breakpoint 4');
-                //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                //  if(consolidated[movieid].newmovie)
-                //  {if($(".noitemsnew")[0])
-                //   { console.log('HAS LENGTH');
-                //     $('#newmovies').empty();}
-                //     $('#newmovies').prepend(element);
-                //  seenmovies--;
-                //  newmovies++;
-                //  $('#newnum').text(newmovies);
-                //  $('#currentnum').text(seenmovies);
-                //  if($('#oldmovies').children().length == 0){
-                //    $('#oldmovies').prepend(empty_row_old);
-                //  }
-                //  console.log('case 1');}
-                //else
-                //  {if($(".noitemsold")[0])
-                //   { console.log('HAS LENGTH');
-                //     $('#oldmovies').empty();}
-                //    $('#oldmovies').prepend(element);
-                //  newmovies--;
-                //  seenmovies++;
-                //  $('#currentnum').text(seenmovies);
-                //  $('#newnum').text(newmovies);
-                //  if($('#newmovies').children().length == 0){
-                //    $('#newmovies').prepend(empty_row_new);
-                //  }
-                //}
-                //  console.log('case 2');
-                window.location='/counter/comb';
-                });
-        }
-        //----------------------------//
-        function switch_book(i,old) {
-          var data={};
-          if(old){
-            data.btitle=consolidated_b_old[i].booktitle;
-            data.newposition=1;
-          }
-          else {
-            data.btitle=consolidated_b_new[i].booktitle;
-            data.newposition=0;
-          }
-          $.ajax({
-                method: "POST",
-                url: "/counter/switch_book",
-                data: data
-              })
-                .done(function( msg ) {
-                window.location='/counter/comb';
+                window.location='/counter/counter';
                 });
         }
         //----------------------------//
@@ -948,40 +881,6 @@ head
             })
               .done(function( msg ) {
                 window.location='/counter/current';
-              });
-          }
-        }
-        //---------------------------//
-        function submit_book(old){
-          var btitle;
-          var author;
-          if(old){btitle="#btitle_old";author="#author_old";}
-          else{btitle="#btitle_new";author="#author_new";}
-        if($(btitle).val() && $(author).val())//what if I dont know year yet?
-        {
-          $('#add').fadeOut(350);
-          $('#wait').css('display','block');
-          //-------------
-           var data={};
-           data.booktitle = $(btitle).val();
-           data.newbook = 1;
-           if(old){
-           data.newbook = 0;
-           }
-           //data.star = 1;
-           //if($('#nostar').hasClass('active')){
-           //data.star = 0;
-           //}
-           data.star=0;
-           data.author = $(author).val();
-           console.log(JSON.stringify(data));
-          $.ajax({
-              method: "POST",
-              url: "/counter/addbook",
-              data: data
-            })
-              .done(function( msg ) {
-                window.location='/counter/comb';
               });
           }
         }
