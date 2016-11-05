@@ -1,0 +1,1217 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      }
+      @font-face {
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      body {
+        background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
+      }
+      @media(min-width:768px){
+        .navbar-collapse{
+      background-color: transparent;
+      }
+      .navbar-fixed-top{
+        background-color:rgba(255, 255, 255, 0.12);
+      }
+      }
+      @media(max-width:767px){
+        .navbar-collapse{
+      background-color: rgba(0, 0, 0, 0.82);
+      }
+      .navbar-header{
+        background-color:black;
+      }
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight:300;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      .itemcol {
+        min-height:100vh;
+        padding-left:0px;
+        padding-right:0px;
+        padding-bottom:30px;
+      }
+      .itemcol h1{
+        margin-top:10%;
+        margin-bottom:0px;
+        color:black;
+        font-size:100px;
+        font-family:high;
+        text-align:center;
+      }
+      .itemcol h5{
+        margin-top:0px;
+        margin-bottom:5%;
+        font-family:arial;
+        text-transform:uppercase;
+        letter-spacing:2px;
+        font-size:10px;
+        text-align:center;
+      }
+      //th:first-child {
+      //  padding-left:30px !important;
+      //}
+      th {
+        font-weight:300;
+      }
+      .btn-iosdark,btn-iosdark-add {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
+      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#f7926c;
+      }
+      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
+        background-color:#e07e59;
+      }
+      .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
+      height:50px;
+      border-radius:0px;
+      border-bottom:1px solid #de7964;
+      color:#ab5e4f;
+      }
+      h4 {
+        word-wrap:break-word;
+      }
+      .modal-sm h4 {
+        padding-right:18px;
+        padding-left:15px;
+      }
+      .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child, .btn_mod .btn:last-child {
+        border:none;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+      }
+      .modal-sm .modal-body {
+        padding:0px;
+      }
+      .modal-header {
+      border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
+      }
+      .fileUpload {
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+      }
+      .fileUpload input.upload {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          cursor: pointer;
+          opacity: 0;
+          filter: alpha(opacity=0);
+      }
+      .btn-ioslight {
+        color:white;
+        background-color:#333;
+        border:1px solid #333;
+      }
+      .btn-ioslight:hover{
+        color:#333;
+        background-color:white;
+      }
+      .modal-dialog {
+      margin-top: 10%;
+      }
+      .modal-sm .btn_mod .modal-body .btn, .btn_mod .modal-footer .btn {
+      color: #b9b9b9;  
+      letter-spacing: 2px;
+      font-weight: 100;
+      }
+      .modal-footer{
+        padding:0px;
+        border-top:0px;
+      }
+      .form-control#year,.form-control#mtitle{
+        color:#0d5830;
+        font-weight:300 !important;
+      }
+      .form-control:focus{
+       /* border:none;*/
+      }/*
+      input[type=text]::-webkit-input-placeholder {font-weight:200;}
+      input[type=text]::-moz-placeholder          {font-weight:200;}
+      input[type=text]:-moz-placeholder           {font-weight:200;}
+      input[type=text]:-ms-input-placeholder      {font-weight:200;}*/
+      #addbook .btn-iosdark-add.active {
+      background-color: #178e4d;
+      color: #28d476;
+      }
+      #addbook .btn-iosdark-add {
+      background-color: #21b363;
+      border: 1px solid #158448;
+      color: #0d5830;
+      }
+      #addbook input{
+      background-color: #1aa057;
+      border: 1px solid #178e4d;
+      }
+      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+          background-color: #ddd;
+      }
+      .dropdown-menu>.disabled>a:hover {
+        background-color: #ddd;
+        cursor:auto;
+      }
+      #first_lg{
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+      }
+      #second_lg{
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+      }
+      #third_lg{
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+      }
+      #fourth_lg{
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+      }
+      .navbar-inverse .navbar-brand {
+      color: white;
+      font-family: boldproxima;
+      letter-spacing: 2px;
+      font-size: 22px;}
+      .navbar-inverse {
+        border:none;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+       border-color: #f5f5f5;
+      }
+      .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+          background-color: rgba(51, 51, 51, 0.35);
+      }
+      .navbar-inverse .navbar-toggle {
+          border-color: white;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+      color:rgba(255, 255, 255, 0.6);
+      font-weight:200;
+      letter-spacing:1px;
+      }
+      .navbar-inverse .navbar-nav>li:hover {
+          color: #333;
+          background-color:rgba(255,255,255,0.2);
+      }
+      .data_lg .list-group-item{
+        color:white;
+        border:none;
+        font-weight: 200;
+       letter-spacing: 1px;
+       background-color: rgba(255, 255, 255, 0.48);
+      }
+      .data_lg .list-group-item.disabled:hover{
+        background-color:rgba(0, 0, 0, 0.64);
+      }
+      .data_lg .list-group-item.disabled{
+        color:#bdbdbd;
+        font-weight:100;
+        letter-spacing:1px;
+        background-color:rgba(0, 0, 0, 0.64);
+      }
+      /*.btn-add{
+        border:none;
+        background-color:rgba(0,0,0,0.4);
+        color:white;
+      }
+      .btn-add:focus,.btn-add:active,.btn-add:hover{
+        border:none;
+        background-color:white;
+        color:#333;
+      }*/
+      small {
+      color: rgba(0, 0, 0, 0.45);
+      }
+      #add_comb .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #friends .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
+      border-color: none;
+      box-shadow:none;
+      }
+      #add_comb .sec {
+      text-align: center;
+      background-color: rgb(238, 238, 238);
+      }
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
+      background-color: white;
+      color: #333;
+      min-height: 50px;
+      border-radius: 0px;
+      border: none;
+      box-shadow: none;
+      text-align: left;
+      }
+      .btn-add {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        color:#347888;
+        border:1px solid #36b7d4;
+      }
+      #add_comb .panel-body .btn-add {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        margin:14px;
+        color:#347888;
+        border:none;
+      }
+      /*#add_comb .panel-body */
+      #add_comb .panel-body .btn-add:hover, .btn-add:hover {
+        color:white;
+        background-color:#3ad1f3;
+        border-color:#3ad1f3;
+      }
+      #add_comb .modal-body input.form-control {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      height: 50px;
+      border-radius: 0px;
+      background-color: rgba(243, 243, 243, 0.83);
+      }
+      #add_comb .modal-header{
+        border-bottom:1px solid #eee;
+      }
+      .btn-warning{
+        border:none;
+        background-color:#ff7556;
+        color:white;
+        letter-spacing:1px;
+      }
+      .btn-warning:hover{
+        background-color:#f15330;
+        color:white;
+      }
+      #add_choice .panel-body{
+        text-align:center;
+        padding:0px;
+      }
+      #add_choice .panel-body .btn-add{
+        margin:15px;
+      }
+      #add_choice .panel-default>.panel-heading {
+       color: #333;
+       background-color: white;
+       border-color: #ddd;}
+      #add_choice .panel-group .panel+.panel {
+          margin-top: 0px;
+      }
+      #add_choice .panel-group .panel {
+          border-radius: 0px;
+      }
+      #add_choice .panel-default>.panel-heading {
+        height:50px;
+      }
+      #add_choice .panel{
+        border:none;
+        border-bottom:1px solid #eee;
+        background-color: #eee;
+      }
+      #add_choice .panel-heading{
+        padding:0px;}
+      #add_choice .panel-group{
+        margin-bottom:0px;
+      }
+      #accordion2 .panel-title .badge{
+        margin-left:7px;
+      }
+      .panel-group .panel+.panel {
+      margin-top:0px;
+      border-radius: 0px;
+      }
+      .panel-group .panel{
+        border-radius: 0px;
+      }
+      #accordion2 .panel{
+        border:none;
+        border-bottom:1px solid rgba(0,0,0,0.32);
+        color:white;
+      }
+      #accordion2 small{
+        color:rgba(230, 230, 230, 0.45);
+      }
+      #accordion2 .panel:last-child{
+        border:none;
+      }
+      #accordion2 .panel-default .panel-heading{
+       height: 20%;
+      padding: 15%;
+      }
+      #accordion2 .list-group-item {
+        background-color:rgba(255,255,255,0.35);
+        border:none;
+        font-weight:200;
+        font-size:17px;
+        letter-sapcing:1px;
+        padding:17px 15px;
+      }
+      h4.panel-title{
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .panel-default>.panel-heading {
+        color:white;
+        background-color:transparent;
+      }
+      .panel {
+        background-color:rgba(0,0,0,0.34);
+      }
+      .glyphicon-chevron-right{
+        color:rgba(255, 255, 255, 0.51);
+      }
+      .panel-title{
+        letter-spacing:1px;
+      }
+      #accordion2 .panel-body{
+        padding:0px;
+      }
+      #accordion2 .list-group-item:first-child {
+        border-radius:0px;}
+      #accordion2 .list-group-item:last-child {
+        border-radius:0px;}  
+      .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        border:none;
+      }
+      #add_choice .panel:last-child {
+       border-bottom:none;
+      }
+      .navbar-inverse .navbar-toggle {
+        border-color:white;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+          border-color: #f5f5f5;
+      }
+      #row_margin .row {
+        margin:0px;
+        padding-top:20px;
+        padding-bottom:10px;
+      }
+      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+        cursor:auto;
+      }
+      .tooltip.top .tooltip-inner {
+          background-color:#ff6767;
+        }
+      .tooltip.top .tooltip-arrow {
+          border-top-color: #ff6767;
+       }
+       .btn-close{
+        letter-spacing:1px;
+        text-transform:uppercase;
+       }
+       .friendlist .table>tbody>tr>th{
+        border-top:1px solid #eee;
+       }
+       .modal-backdrop.in {
+           filter: alpha(opacity=50);
+           opacity: .65;
+       }
+  body
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="/") IV LISTS
+        .collapse.navbar-collapse#navbar
+          ul(class='nav navbar-nav')
+            li
+              a(onclick='add_dialog()')
+               span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
+               | Add item
+            li
+              a(onclick='getfriends()') 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
+                |You follow
+            li 
+              a#settings_btn 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-cog(style='margin-right:3px;')
+                |Settings
+            li
+              a(href="/counter/logout") 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
+                |Logout
+          //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
+          //
+            form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
+             .input-group
+                input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+                span(class='input-group-btn')
+                  button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                    span(class='glyphicon glyphicon-search') 
+    .modal.fade.bs-example-modal-sm(id='first_time' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
+              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+          .modal-body(style='padding:15px;padding-top:0px;') 
+            h4(style='padding:0px;') Unless you want other users to see you as 
+              span(style='font-weight:500;') 'user № #{_id}'
+              | , you might want to choose a nickname. You can do that later in the settings, or now:
+            .input-group(style='padding-top:10px;padding-bottom:15px;')
+              input(type="text" class="form-control" placeholder="nickname" id='nick_first')
+              span(class="input-group-btn")
+                button(class="btn btn-success" id='change_nick_first' type="button") save   
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+    .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='text-align:center;' ) You follow
+              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+          .modal-body  
+            table.table(style='color:#0c7d57;')
+              tbody.friendslist
+                tr.noitemsfriends
+                  th(style='padding-left:30px !important;') Пока пусто
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+    .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog.modal-sm(role="document")
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='text-align:center;' ) Settings
+          .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
+            .row(style='border-top:1px solid #eee;') 
+              .col-xs-12
+                label(for="backup") Download backup file
+                .form-group
+                  button.btn.btn-add#backup download 
+            .row(style='border-top:1px solid #eee;') 
+              .col-xs-12
+                .form-group
+                  label(for="exampleInputFile") Restore from backup file
+                  input(type="file" id="exampleInputFile")
+                  p(class="help-block") Restore from previously downloaded JSON backup file
+            .row(style='border-top:1px solid #eee;padding-bottom:19px;') 
+              .col-xs-12
+                label(for="nick_group") Set nick
+                .input-group#nick_group
+                  input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
+                  span(class="input-group-btn")
+                    button(class="btn btn-add" id='change_nick' type="button") Submit
+                //
+                  .form-group
+                    label(for="nick") Set nick
+                    input(type="email" class="form-control" id="nick" placeholder="nickname")
+                    button.btn.btn-success#change_nick change nick
+            .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
+              .col-xs-12
+                label(for='visibility') Email visibility
+                .checkbox#visibility
+                  label
+                    input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
+                    |Show my email, so people can contact me
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='text-align:center;') Add item
+          .modal-body#add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingOne")
+                  button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                  .panel-body
+                    input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Название")
+                    button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content#colourful
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body(style='text-align:center;')
+            h4.moviemodaltitle(style='margin-top:20px;font-weight:400;')
+            h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
+            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control movie_switch') Switch column
+            button(class='btn btn-iosdark form-control movie_remove') Remove
+    .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content#colourful
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body(style='text-align:center;')
+            h4.bookmodaltitle(style='margin-top:20px;font-weight:400;')
+            h5.bookmodalauthor(style='margin-bottom:30px;color:gray;')
+            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control book_switch') Switch column
+            button(class='btn btn-iosdark form-control book_remove') Remove
+    .container(style='z-index:2;padding-top:70px;')
+      .row(style='display:none;')
+        .col-xs-12
+          form(method='post',action='/backup',role='form',id='backupform')
+      .row.visible-md.visible-lg.data_lg
+        .col-sm-3
+          ul.list-group.first#first_lg
+        .col-sm-3
+          ul.list-group.second#second_lg
+        .col-sm-3
+          ul.list-group.third#third_lg
+        .col-sm-3
+          ul.list-group.fourth#fourth_lg
+      .row.visible-sm.visible-xs
+        .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
+          .panel.panel-default
+            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
+              h4(class="panel-title") Movies seen
+                span.badge#num_one
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.first
+          .panel.panel-default
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
+              h4(class="panel-title") New movies
+                span.badge#num_two
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.second
+          .panel.panel-default
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
+              h4(class="panel-title") Books read
+                span.badge#num_three
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.third
+          .panel.panel-default
+            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
+              h4(class="panel-title") New movies
+                span.badge#num_four
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.fourth
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        function showmail_submit(){
+          var data={};
+          data.state=$('#show_mail').prop('checked')?1:0;
+          $.ajax({
+            method: "POST",
+            url: "/counter/setshowmail",
+            data: data
+          }).done(function( msg ) {
+               $('#show_mail').prop('disabled',true);
+            });
+        }
+        onload = function () {
+           $(function () {
+             $('[data-toggle="tooltip"]').tooltip()
+           });
+           var e = document.getElementById('nick');
+           //console.log('hey');
+           e.oninput = (function(){
+            console.log('yo');
+          if($('#nick').val()&&$('#nick').val().length>2){
+                    var data={};
+                    data.nick=$('#nick').val();
+                    $.ajax({
+                        method: "POST",
+                        url: "/counter/chcknck",
+                        data: data
+                      }).done(function( msg ) {
+                          if(msg.mtext){
+                            console.log('MTEXT: '+msg.mtext);
+                              $('#change_nick').prop('disabled',false);
+                              console.log('DISABLED OFF');
+                            $('#nick').tooltip('destroy');
+                          }
+                            else{
+                              console.log('no')
+                             $('#nick').tooltip({title:'This nick is taken',placement:'top',trigger: 'manual'}).tooltip('show');
+                             $('#change_nick').prop('disabled',true);
+                            }
+                          });
+                        }
+                        else{
+                          $('#nick').tooltip({title:'Too short',placement:'top',trigger: 'manual'}).tooltip('show')
+                          $('#change_nick').prop('disabled',true);
+                        }
+            })
+           e.onpropertychange = e.oninput; // for IE8
+           // e.onchange = e.oninput; // FF needs this in <select><option>...
+           // other things for onload()
+        };
+        $('#change_nick').click(function(){
+          if($('#nick').val()){
+                    var data={};
+                    data.nick=$('#nick').val();
+                    $.ajax({
+                        method: "POST",
+                        url: "/counter/setnick",
+                        data: data
+                      })
+                        .done(function( msg ) {
+                          window.location='/counter/comb';
+                          });
+                        }
+          });
+        function add_dialog() {
+          $('#add_comb').modal('show');
+        }
+        $('#settings_btn').click(function(){
+          $('#nick').tooltip('destroy');
+          $('#settings').modal('show');
+          $.ajax({
+              method: "POST",
+              url: "/counter/gn/"+'#{_id}',
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  $('#nick').prop('placeholder',msg.mtext);
+                  $('#change_nick').text('Change');
+                }
+                });
+            $.ajax({
+            method: "POST",
+            url: "/counter/getshowmail/"+'#{_id}',
+            data: 0
+          }).done(function( msg ) {
+               if(msg.mtext)
+               {$('#show_mail').prop('checked',true);}
+            });
+          });
+        $('#backup').click(function(){
+          $('#backupform').submit();
+          });
+        $('#about').click(function(){
+          if($('#oldones').css('display')!='none'){
+          $('#oldones').css('overflow','hidden');
+          }
+          else {
+          $('#newones').css('overflow','hidden');
+          }
+          $('#wait').fadeIn();
+          });
+        $('.seen').click(function(){
+          if(!$('.seen').hasClass('active')){
+            $('#newones').hide();
+            $('#oldones').show();
+            $('.new').removeClass('active');
+            $('.seen').addClass('active');
+          }
+          });
+        $('.new').click(function(){
+          if(!$('.new').hasClass('active')) {
+            $('#newones').show();
+            $('#oldones').hide();
+            $('.seen').removeClass('active');
+            $('.new').addClass('active');
+          }
+          });
+        $('#closewait').click(function(){
+          $('#wait').fadeOut();
+          if($('#oldones').css('display')!='none'){
+          $('#oldones').css('overflow','auto');
+          }
+          else {
+          $('#newones').css('overflow','auto');
+          }
+          });
+        //----------------------------//
+        $('.add').click(function(){
+          $('#addbook').modal('show');
+          if($('#oldones').css('display')!='none')
+            { $('#oldmovie').addClass('active');
+              $('#newmovie').removeClass('active');}
+          else {
+             $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+          }
+          });
+        $('#oldmovie').click(function(){
+        if($('#oldmovie').hasClass('active')){
+        }
+        else{
+          $('#oldmovie').addClass('active');
+          $('#newmovie').removeClass('active');
+        }
+        });
+        $('#newmovie').click(function(){
+        if($('#newmovie').hasClass('active')){
+        }
+        else{
+          $('#newmovie').addClass('active');
+          $('#oldmovie').removeClass('active');
+        }
+        });
+        //
+         $('#hasstar').click(function(){
+        if($('#hasstar').hasClass('active')){
+        }
+        else{
+          $('#hasstar').addClass('active');
+          $('#nostar').removeClass('active');
+        }
+        });
+        $('#nostar').click(function(){
+        if($('#nostar').hasClass('active')){
+        }
+        else{
+          $('#nostar').addClass('active');
+          $('#hasstar').removeClass('active');
+        }
+        });
+        function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+          });
+        }
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        function level() {
+          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
+        }
+        //---------------------------//
+        var seenmovies;
+        var newmovies;
+        
+        var consolidated_current=[];
+        $.ajax({
+              method: "POST",
+              url: "/counter/current/get",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log('movies: '+JSON.stringify(msg.doc));
+                  if(!msg.msg) {
+                   console.log('no movies');
+                   }
+                   else {
+                    $('#currentnum').text(msg.msg.length;
+                    msg.msg.forEach(function (element,index){
+                       consolidated_current.push(element);
+                    });
+                   }
+                   if(consolidated_current.length){
+                    sortByKey(consolidated_current,'tmstmp');
+                   }
+                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Фильмов посмотрел</li>');
+                   $('#num_one').text(consolidated_current.length);
+                   if(!consolidated_current.length){
+                    $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                   }
+                   
+                   
+        //---------------------------//
+        function addold_m(){
+          $('#addold_m_modal').modal('show');
+        }
+        function addnew_m(){
+          $('#addnew_m_modal').modal('show');
+        }
+        function addold_b(){
+          $('#addold_b_modal').modal('show');
+        }
+        function addnew_b(){
+          $('#addnew_b_modal').modal('show');
+        }
+          //populate(consolidated_current,consolidated_m_new,consolidated_b_old,consolidated_b_new);
+        //----------------------------//
+        function populate(consolidated_current,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
+          console.log('hello');
+          var count;
+          consolidated_current.forEach(function (element,index){
+            var star=parseInt(element.star)?'hasstar':'';
+            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',1)">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            $('.first').append(insert);
+            });
+          consolidated_m_new.forEach(function (element,index){
+            var star=parseInt(element.star)?'hasstar':'';
+            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',0)">'+element.movietitle+" <small>"+element.year+"</small></li>";
+            $('.second').append(insert);
+            });
+          consolidated_b_old.forEach(function (element,index){
+            var star=parseInt(element.star)?'hasstar':'';
+            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            $('.third').append(insert);
+            });
+          consolidated_b_new.forEach(function (element,index){
+            var star=parseInt(element.star)?'hasstar':'';
+            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',0)">'+element.booktitle+" <small>"+element.author+"</small></li>";
+            $('.fourth').append(insert);
+            });
+          //count=Math.max(consolidated_current.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
+          //for(var i=0;i<count;i++){
+          //  console.log('iter: '+i);
+            //if($(".noitems")[0])
+            // { $('#combitems').empty();
+            //  }
+           //var insert;
+           //var insert_m_old= '';
+           //var insert_m_new= '';
+           //var insert_b_old= '';
+           //var insert_b_new= '';
+           //if(consolidated_current[i]){insert_m_old=consolidated_current[i].movietitle+" <small>"+consolidated_current[i].year+"</small>";}
+           //if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
+           //if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
+           //if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
+           //insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
+           //$('#combitems').append(insert);
+          //}
+          }   
+        function redactmoviemodal (i,old) {
+          console.log('redact');
+        // TODO screen blocker must be added to prevent user from interfering 
+        if($('body').width()<$('body').height()) {
+          $('.modal-dialog').css('margin-top','60%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','15%');
+        }
+        insert = 'removemovie('+i+','+old+')';
+        insert2 = 'switch_movie('+i+','+old+')';
+        $('.movie_remove').attr('onclick',insert);
+        $('.movie_switch').attr('onclick',insert2);
+        if(old)
+        {$('.moviemodaltitle').text(consolidated_current[i].movietitle.capitalizeFirstLetter());
+         $('.moviemodalyear').text(consolidated_current[i].year);
+         $('.movie_switch').text('Mark as not seen');
+        }
+        else{
+         $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
+         $('.moviemodalyear').text(consolidated_m_new[i].year);
+         $('.movie_switch').text('Mark as seen');
+        }
+        $('#moviemodal').modal('show');
+        }
+        //----------------------------//
+        function redactbookmodal (i,old) {
+          console.log('redact');
+        // TODO screen blocker must be added to prevent user from interfering 
+        if($('body').width()<$('body').height()) {
+          $('.modal-dialog').css('margin-top','60%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','15%');
+        }
+        insert = 'removebook('+i+','+old+')';
+        insert2 = 'switch_book('+i+','+old+')';
+        $('.book_remove').attr('onclick',insert);
+        $('.book_switch').attr('onclick',insert2);
+        if(old)
+        {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_b_old[i].author);
+         $('.book_switch').text('Mark as not read');
+        }
+        else{
+         $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
+         $('.bookmodalauthor').text(consolidated_b_new[i].author);
+         $('.book_switch').text('Mark as read');
+        }
+        $('#bookmodal').modal('show');
+        }
+        //----------------------------//
+        function removemovie(i,old) {
+          var data={};
+          if(old){
+            data.mtitle=consolidated_current[i].movietitle;
+            data.year=consolidated_current[i].year;
+            data.newmovie=consolidated_current[i].newmovie;
+          }
+          else {
+            data.mtitle=consolidated_m_new[i].movietitle;
+            data.year=consolidated_m_new[i].year;
+            data.newmovie=consolidated_m_new[i].newmovie;
+          }
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_movie/",//+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              data: data
+            })
+              .done(function( msg ) {
+              //  $('#moviemodal').modal('hide');
+              //  var vname = '.movie_'+movieid;
+              //  $(vname).empty();
+              //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  if(consolidated[movieid].newmovie){
+              //    newmovies --;
+              //    $('#newnum').text(newmovies);
+              //    if($('#newmovies').children().length == 0){
+              //      $('#newmovies').prepend(empty_row_new);
+              //    }
+              //  }
+              //    else{
+              //      seenmovies --;
+              //    $('#currentnum').text(seenmovies);
+              //    if($('#oldmovies').children().length == 0){
+              //      $('#oldmovies').prepend(empty_row_old);
+              //    }
+              //    }
+              window.location='/counter/comb';
+              });
+        }
+        //-----------------------------------//
+        function removebook(i,old) {
+          var data={};
+          if(old){
+            data.btitle=consolidated_b_old[i].booktitle;
+            data.author=consolidated_b_old[i].author;
+            data.newbook=consolidated_b_old[i].newbook;
+          }
+          else {
+            data.btitle=consolidated_b_new[i].booktitle;
+            data.author=consolidated_b_new[i].author;
+            data.newbook=consolidated_b_new[i].newbook;
+          }
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_book/",
+              data: data
+            })
+              .done(function( msg ) {
+              window.location='/counter/comb';
+              });
+        }
+        //-----------------------------------//
+        function switch_movie(i,old) {
+          var data={};
+          if(old){
+            data.mtitle=consolidated_current[i].movietitle;
+            data.year=consolidated_current[i].year;
+            data.newposition=1;
+          }
+          else {
+            data.mtitle=consolidated_m_new[i].movietitle;
+            data.year=consolidated_m_new[i].year;
+            data.newposition=0;
+          }
+          $.ajax({
+                method: "POST",
+                url: "/counter/switch_movie",
+                data: data
+              })
+                .done(function( msg ) {
+                //  console.log(msg);
+                //  $('#moviemodal').modal('hide');
+                //  console.log('breakpoint 1');
+                //  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
+                //  console.log('breakpoint 2');
+                //  var vname = '.movie_'+consolidated[movieid]._id;
+                //  console.log('breakpoint 3');
+                //  var element = $(vname).detach();
+                //  console.log('breakpoint 4');
+                //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+                //  if(consolidated[movieid].newmovie)
+                //  {if($(".noitemsnew")[0])
+                //   { console.log('HAS LENGTH');
+                //     $('#newmovies').empty();}
+                //     $('#newmovies').prepend(element);
+                //  seenmovies--;
+                //  newmovies++;
+                //  $('#newnum').text(newmovies);
+                //  $('#currentnum').text(seenmovies);
+                //  if($('#oldmovies').children().length == 0){
+                //    $('#oldmovies').prepend(empty_row_old);
+                //  }
+                //  console.log('case 1');}
+                //else
+                //  {if($(".noitemsold")[0])
+                //   { console.log('HAS LENGTH');
+                //     $('#oldmovies').empty();}
+                //    $('#oldmovies').prepend(element);
+                //  newmovies--;
+                //  seenmovies++;
+                //  $('#currentnum').text(seenmovies);
+                //  $('#newnum').text(newmovies);
+                //  if($('#newmovies').children().length == 0){
+                //    $('#newmovies').prepend(empty_row_new);
+                //  }
+                //}
+                //  console.log('case 2');
+                window.location='/counter/comb';
+                });
+        }
+        //----------------------------//
+        function switch_book(i,old) {
+          var data={};
+          if(old){
+            data.btitle=consolidated_b_old[i].booktitle;
+            data.newposition=1;
+          }
+          else {
+            data.btitle=consolidated_b_new[i].booktitle;
+            data.newposition=0;
+          }
+          $.ajax({
+                method: "POST",
+                url: "/counter/switch_book",
+                data: data
+              })
+                .done(function( msg ) {
+                window.location='/counter/comb';
+                });
+        }
+        //----------------------------//
+        function submit_movie(){
+          var mtitle;
+          var year;
+          if(old){mtitle="#mtitle_old";year="#year_old";}
+          else{mtitle="#mtitle_new";year="#year_new";}
+        if($(mtitle).val() && $(year).val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.c_text = $(mtitle).val();
+          $.ajax({
+              method: "POST",
+              url: "/counter/current/add",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/current';
+              });
+          }
+        }
+        //---------------------------//
+        function submit_book(old){
+          var btitle;
+          var author;
+          if(old){btitle="#btitle_old";author="#author_old";}
+          else{btitle="#btitle_new";author="#author_new";}
+        if($(btitle).val() && $(author).val())//what if I dont know year yet?
+        {
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.booktitle = $(btitle).val();
+           data.newbook = 1;
+           if(old){
+           data.newbook = 0;
+           }
+           //data.star = 1;
+           //if($('#nostar').hasClass('active')){
+           //data.star = 0;
+           //}
+           data.star=0;
+           data.author = $(author).val();
+           console.log(JSON.stringify(data));
+          $.ajax({
+              method: "POST",
+              url: "/counter/addbook",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/comb';
+              });
+          }
+        }
+        
+        
+        
+        
+        
+      

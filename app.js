@@ -17,7 +17,7 @@ var gm = require('gm');
 var mongo = require('mongodb').MongoClient;
 //var db = require('monk')('localhost/tav'),users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 
-var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends');
+var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current');
 
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
@@ -99,6 +99,103 @@ app.get('/test',function (req,res){
 app.get('/counter/settings',function (req,res) {
   res.render('counter_settings');
 });
+
+app.get('/counter/current',function (req,res) {
+  if(req.session&&req.session._id){
+  res.render('counter_current');
+  }
+  else{
+    res.send('no');
+  }
+});
+
+app.get('/counter/current/get',function (req,res){
+  var ms={};
+  if(req.session&&req.session._id){
+  counter_current.find({},function (err,done){
+    if(err){
+     ms.trouble=1;
+     res.send(ms);
+    }
+    else {
+      ms.trouble=0;
+      ms.msg=done;
+      res.send(ms);
+    }
+  });
+  }
+  else{
+    res.send('no');
+  }
+});
+
+app.post('/counter/current/add',function (req,res){
+  if(req.session&&req.session._id){
+    var vtmstmp=Date.now();
+    var ms={};
+  counter_current.insert({c_text:req.body.c_text,tmstmp:vtmstmp,done:0},function(err,done){
+    if(err){
+      ms.trouble=1;
+      res.send(ms);
+    }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send('no');
+   }
+});
+
+app.post('/counter/current/remove',function (req,res){
+  var ms={};
+   ms.trouble=1;
+  if(req.session&&req.session._id){
+  counter_current.remove({_id:req.body._id},function(err,done){
+   if(err){
+      res.send(ms);
+    }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send(ms);
+   }
+});
+
+app.post('/counter/current/done',function (req,res){
+  var ms={};
+   ms.trouble=1;
+  if(req.session&&req.session._id){
+    var vstatus = req.body.vstatus?0:1;
+  counter_current.update({_id:req.body._id},{$set:{done:vstatus}},function(err,done){
+   if(err){
+      res.send(ms);
+    }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send(ms);
+   }
+});
+
+//app.post('/counter/current/todo',function (req,res){
+//  if(req.session&&req.session._id){
+//  counter_current.insert({},function(err,done){});
+//   }
+//   else{
+//    res.send('no');
+//   }
+//});
 
 //-----------------test-----------------//
 
