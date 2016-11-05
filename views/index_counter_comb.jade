@@ -366,34 +366,34 @@ head
         background-color:#f15330;
         color:white;
       }
-      #add_choice .panel-body{
+      #add_choice .panel-body,#settings_choice .panel-body{
         text-align:center;
         padding:0px;
       }
       #add_choice .panel-body .btn-add{
         margin:15px;
       }
-      #add_choice .panel-default>.panel-heading {
+      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
        color: #333;
        background-color: white;
        border-color: #ddd;}
-      #add_choice .panel-group .panel+.panel {
+      #add_choice .panel-group .panel+.panel,#settings_choice .panel-group .panel+.panel {
           margin-top: 0px;
       }
-      #add_choice .panel-group .panel {
+      #add_choice .panel-group .panel,#settings_choice .panel-group .panel {
           border-radius: 0px;
       }
-      #add_choice .panel-default>.panel-heading {
+      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
         height:50px;
       }
-      #add_choice .panel{
+      #add_choice .panel,#settings_choice .panel{
         border:none;
         border-bottom:1px solid #eee;
         background-color: #eee;
       }
-      #add_choice .panel-heading{
+      #add_choice .panel-heading,#settings_choice .panel-heading{
         padding:0px;}
-      #add_choice .panel-group{
+      #add_choice .panel-group,#settings_choice .panel-group{
         margin-bottom:0px;
       }
       #accordion2 .panel-title .badge{
@@ -455,7 +455,7 @@ head
       .panel-default>.panel-heading+.panel-collapse>.panel-body {
         border:none;
       }
-      #add_choice .panel:last-child {
+      #add_choice .panel:last-child,#settings_choice .panel:last-child {
        border-bottom:none;
       }
       .navbar-inverse .navbar-toggle {
@@ -623,7 +623,7 @@ head
                     label
                       input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                       |Show my email, so people can contact me
-          .modal-body
+          .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne3")
