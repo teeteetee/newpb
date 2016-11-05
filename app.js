@@ -109,7 +109,7 @@ app.get('/counter/current',function (req,res) {
   }
 });
 
-app.get('/counter/current/get',function (req,res){
+app.post('/counter/current/get',function (req,res){
   var ms={};
   if(req.session&&req.session._id){
   counter_current.find({},function (err,done){
@@ -118,6 +118,7 @@ app.get('/counter/current/get',function (req,res){
      res.send(ms);
     }
     else {
+      console.log(done);
       ms.trouble=0;
       ms.msg=done;
       res.send(ms);
