@@ -626,37 +626,37 @@ head
           .modal-body
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
-                .panel-heading(role="tab" id="headingOne")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Download backup file
+                .panel-heading(role="tab" id="headingOne3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     .form-group
                       button.btn.btn-add#backup download 
               .panel.panel-default
-                .panel-heading(role="tab" id="headingTwo")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Restore from file
+                .panel-heading(role="tab" id="headingTwo3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
-                #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
+                #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body
                     .form-group
                       input(type="file" id="exampleInputFile")
                       p(class="help-block") Restore from previously downloaded JSON backup file
               .panel.panel-default
-                .panel-heading(role="tab" id="headingThree")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Set nick
+                .panel-heading(role="tab" id="headingThree3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Set nick
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     .input-group#nick_group
                       input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                       span(class="input-group-btn")
                         button(class="btn btn-add" id='change_nick' type="button") Submit
               .panel.panel-default
-                .panel-heading(role="tab" id="headingThree")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Email visibility
+                .panel-heading(role="tab" id="headingFour3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     .checkbox#visibility
                       label
@@ -701,7 +701,7 @@ head
                     input#author_old(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add' onclick='submit_book(1)') Добавить
               .panel.panel-default
-                .panel-heading(role="tab" id="headingThree")
+                .panel-heading(role="tab" id="headingFour")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
