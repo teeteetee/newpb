@@ -804,11 +804,11 @@ head
           console.log('hello');
           var count;
           consolidated_current.forEach(function (element,index){
-            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.c_text+" </li>";
+            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')">'+element.c_text+" </li>";
             $('.first').append(insert);
             });
           }   
-        function redactmoviemodal (i,old) {
+        function redactmoviemodal (i,done) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
@@ -817,19 +817,18 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+i+','+old+')';
-        insert2 = 'switch_movie('+i+','+old+')';
+        insert = 'removemovie('+i+','+done+')';
+        insert2 = 'switch_movie('+i+','+done+')';
         $('.movie_remove').attr('onclick',insert);
         $('.movie_switch').attr('onclick',insert2);
-        if(old)
-        {$('.moviemodaltitle').text(consolidated_current[i].movietitle.capitalizeFirstLetter());
-         $('.moviemodalyear').text(consolidated_current[i].year);
-         $('.movie_switch').text('Mark as not seen');
+        $('.moviemodaltitle').text(consolidated_current[i].c_text);
+        //$('.moviemodalyear').text(consolidated_current[i].year);
+        if(done)
+        {
+         $('.movie_switch').text('Mark as not done');
         }
         else{
-         $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
-         $('.moviemodalyear').text(consolidated_m_new[i].year);
-         $('.movie_switch').text('Mark as seen');
+         $('.movie_switch').text('Mark as done');
         }
         $('#moviemodal').modal('show');
         }
