@@ -234,17 +234,9 @@ head
         cursor:auto;
       }
       #first_lg{
+        border-bottom:4px;
         box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
         background: -webkit-linear-gradient(90deg, #0180bd 0%,#0eb2e6 100%);
-      }
-      #second_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
-      }
-      #third_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
-      }
-      #fourth_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
       }
       .navbar-inverse .navbar-brand {
       color: white;
@@ -277,7 +269,11 @@ head
         border:none;
         font-weight: 200;
        letter-spacing: 1px;
-       background-color: rgba(255, 255, 255, 0.48);
+       background-color: rgba(255, 255, 255, 0);
+       border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+      .data_lg .list-group-item:last-child{
+        border-bottom:none;
       }
       .data_lg .list-group-item.disabled{
         text-align:center;
@@ -522,7 +518,7 @@ head
        .label-primary{
         background-color:#40c186;
        }
-       #num_one{
+       .badge{
         text-shadow: 1px 1px 1px #a90f0f;
         background: -webkit-linear-gradient(90deg, #d72207 0%,#fd4b2f 100%);
         border: 2px solid white;
