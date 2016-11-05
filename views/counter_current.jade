@@ -804,7 +804,11 @@ head
           console.log('hello');
           var count;
           consolidated_current.forEach(function (element,index){
-            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')">'+element.c_text+" </li>";
+            var done;
+            if(element.done){
+              done='<span class="label label-primary">DONE</span>';
+            }
+            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')">'+element.c_text+done+" </li>";
             $('.first').append(insert);
             });
           }   
