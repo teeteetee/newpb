@@ -489,6 +489,32 @@ head
            filter: alpha(opacity=50);
            opacity: .65;
        }
+       button.collapsed .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(0deg);
+         -moz-transform:    rotate(0deg);
+         -ms-transform:     rotate(0deg);
+         -o-transform:      rotate(0deg);
+         transform:         rotate(0deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       button .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(90deg);
+         -moz-transform:    rotate(90deg);
+         -ms-transform:     rotate(90deg);
+         -o-transform:      rotate(90deg);
+         transform:         rotate(90deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -610,7 +636,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right pull-right collapsed" style="color:gray;")
                 #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
@@ -619,7 +645,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
+                    span(class="glyphicon glyphicon-chevron-right pull-right collapsed" style="color:gray;")    
                 #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body
                     input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
@@ -628,7 +654,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right pull-right collapsed" style="color:gray;")
                 #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
@@ -637,7 +663,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right pull-right collapsed" style="color:gray;")
                 #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
