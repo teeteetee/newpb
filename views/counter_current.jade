@@ -833,92 +833,16 @@ head
         $('#moviemodal').modal('show');
         }
         //----------------------------//
-        function redactbookmodal (i,old) {
-          console.log('redact');
-        // TODO screen blocker must be added to prevent user from interfering 
-        if($('body').width()<$('body').height()) {
-          $('.modal-dialog').css('margin-top','60%');
-        }
-        else{
-          $('.modal-dialog').css('margin-top','15%');
-        }
-        insert = 'removebook('+i+','+old+')';
-        insert2 = 'switch_book('+i+','+old+')';
-        $('.book_remove').attr('onclick',insert);
-        $('.book_switch').attr('onclick',insert2);
-        if(old)
-        {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_b_old[i].author);
-         $('.book_switch').text('Mark as not read');
-        }
-        else{
-         $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_b_new[i].author);
-         $('.book_switch').text('Mark as read');
-        }
-        $('#bookmodal').modal('show');
-        }
-        //----------------------------//
-        function removemovie(i,old) {
+        function removemovie(i) {
           var data={};
-          if(old){
-            data.mtitle=consolidated_current[i].movietitle;
-            data.year=consolidated_current[i].year;
-            data.newmovie=consolidated_current[i].newmovie;
-          }
-          else {
-            data.mtitle=consolidated_m_new[i].movietitle;
-            data.year=consolidated_m_new[i].year;
-            data.newmovie=consolidated_m_new[i].newmovie;
-          }
+          data._id=consolidated_current[i]._id;
         $.ajax({
               method: "POST",
-              url: "/counter/rm_movie/",//+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              url: "/counter/current/remove",
               data: data
             })
               .done(function( msg ) {
-              //  $('#moviemodal').modal('hide');
-              //  var vname = '.movie_'+movieid;
-              //  $(vname).empty();
-              //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-              //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-              //  if(consolidated[movieid].newmovie){
-              //    newmovies --;
-              //    $('#newnum').text(newmovies);
-              //    if($('#newmovies').children().length == 0){
-              //      $('#newmovies').prepend(empty_row_new);
-              //    }
-              //  }
-              //    else{
-              //      seenmovies --;
-              //    $('#currentnum').text(seenmovies);
-              //    if($('#oldmovies').children().length == 0){
-              //      $('#oldmovies').prepend(empty_row_old);
-              //    }
-              //    }
-              window.location='/counter/comb';
-              });
-        }
-        //-----------------------------------//
-        function removebook(i,old) {
-          var data={};
-          if(old){
-            data.btitle=consolidated_b_old[i].booktitle;
-            data.author=consolidated_b_old[i].author;
-            data.newbook=consolidated_b_old[i].newbook;
-          }
-          else {
-            data.btitle=consolidated_b_new[i].booktitle;
-            data.author=consolidated_b_new[i].author;
-            data.newbook=consolidated_b_new[i].newbook;
-          }
-        $.ajax({
-              method: "POST",
-              url: "/counter/rm_book/",
-              data: data
-            })
-              .done(function( msg ) {
-              window.location='/counter/comb';
+              window.location='/counter/current';
               });
         }
         //-----------------------------------//
