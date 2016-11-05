@@ -688,69 +688,6 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        function showmail_submit(){
-          var data={};
-          data.state=$('#show_mail').prop('checked')?1:0;
-          $.ajax({
-            method: "POST",
-            url: "/counter/setshowmail",
-            data: data
-          }).done(function( msg ) {
-               $('#show_mail').prop('disabled',true);
-            });
-        }
-        onload = function () {
-           $(function () {
-             $('[data-toggle="tooltip"]').tooltip()
-           });
-           var e = document.getElementById('nick');
-           //console.log('hey');
-           e.oninput = (function(){
-            console.log('yo');
-          if($('#nick').val()&&$('#nick').val().length>2){
-                    var data={};
-                    data.nick=$('#nick').val();
-                    $.ajax({
-                        method: "POST",
-                        url: "/counter/chcknck",
-                        data: data
-                      }).done(function( msg ) {
-                          if(msg.mtext){
-                            console.log('MTEXT: '+msg.mtext);
-                              $('#change_nick').prop('disabled',false);
-                              console.log('DISABLED OFF');
-                            $('#nick').tooltip('destroy');
-                          }
-                            else{
-                              console.log('no')
-                             $('#nick').tooltip({title:'This nick is taken',placement:'top',trigger: 'manual'}).tooltip('show');
-                             $('#change_nick').prop('disabled',true);
-                            }
-                          });
-                        }
-                        else{
-                          $('#nick').tooltip({title:'Too short',placement:'top',trigger: 'manual'}).tooltip('show')
-                          $('#change_nick').prop('disabled',true);
-                        }
-            })
-           e.onpropertychange = e.oninput; // for IE8
-           // e.onchange = e.oninput; // FF needs this in <select><option>...
-           // other things for onload()
-        };
-        $('#change_nick').click(function(){
-          if($('#nick').val()){
-                    var data={};
-                    data.nick=$('#nick').val();
-                    $.ajax({
-                        method: "POST",
-                        url: "/counter/setnick",
-                        data: data
-                      })
-                        .done(function( msg ) {
-                          window.location='/counter/comb';
-                          });
-                        }
-          });
         function add_dialog() {
           $('#add_comb').modal('show');
         }
@@ -900,6 +837,7 @@ head
                    if(!consolidated_current.length){
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                    }
+                 }});
                    
         //----------------------------//
         function populate(consolidated_current,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
