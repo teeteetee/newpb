@@ -853,6 +853,7 @@ head
         function switch_movie(i) {
           var data={};
           data.vstatus=consolidated_current[i].done;
+          data._id=consolidated_current[i]._id;
           $.ajax({
                 method: "POST",
                 url: "/counter/current/done",
