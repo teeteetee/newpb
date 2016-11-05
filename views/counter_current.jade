@@ -886,7 +886,7 @@ head
                    console.log('no movies');
                    }
                    else {
-                    $('#currentnum').text(msg.msg.length;
+                    $('#currentnum').text(msg.msg.length);
                     msg.msg.forEach(function (element,index){
                        consolidated_current.push(element);
                     });
@@ -900,21 +900,6 @@ head
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                    }
                    
-                   
-        //---------------------------//
-        function addold_m(){
-          $('#addold_m_modal').modal('show');
-        }
-        function addnew_m(){
-          $('#addnew_m_modal').modal('show');
-        }
-        function addold_b(){
-          $('#addold_b_modal').modal('show');
-        }
-        function addnew_b(){
-          $('#addnew_b_modal').modal('show');
-        }
-          //populate(consolidated_current,consolidated_m_new,consolidated_b_old,consolidated_b_new);
         //----------------------------//
         function populate(consolidated_current,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
@@ -924,39 +909,6 @@ head
             var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',1)">'+element.movietitle+" <small>"+element.year+"</small></li>";
             $('.first').append(insert);
             });
-          consolidated_m_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',0)">'+element.movietitle+" <small>"+element.year+"</small></li>";
-            $('.second').append(insert);
-            });
-          consolidated_b_old.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('.third').append(insert);
-            });
-          consolidated_b_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',0)">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('.fourth').append(insert);
-            });
-          //count=Math.max(consolidated_current.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
-          //for(var i=0;i<count;i++){
-          //  console.log('iter: '+i);
-            //if($(".noitems")[0])
-            // { $('#combitems').empty();
-            //  }
-           //var insert;
-           //var insert_m_old= '';
-           //var insert_m_new= '';
-           //var insert_b_old= '';
-           //var insert_b_new= '';
-           //if(consolidated_current[i]){insert_m_old=consolidated_current[i].movietitle+" <small>"+consolidated_current[i].year+"</small>";}
-           //if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
-           //if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
-           //if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           //insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
-           //$('#combitems').append(insert);
-          //}
           }   
         function redactmoviemodal (i,old) {
           console.log('redact');
