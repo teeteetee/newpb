@@ -961,7 +961,7 @@ app.post('/counter/addweb',function (req,res){
               v_r_link = '--';
             }
           var vtmstmp = Date.now();
-          counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+          counter_web.update({uid:JSON.stringify(req.session._id)},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
           });
            res.send('ok');  }       
