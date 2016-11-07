@@ -369,8 +369,12 @@ app.get('/counter/clear',function (req,res){
 //});/
 
 app.get('/counter/web_init',function (req,res){
-  counter_web.insert({uid:JSON.stringify(done._id),total:0,weblinkstore:[]});
-  res.redirect('/counter/current');
+  if(req.session&&req.session._id)
+  {counter_web.insert({uid:JSON.stringify(req.session._id),total:0,weblinkstore:[]});
+    res.redirect('/counter/current');}
+    else {
+      res.redirect('/counter');
+    }
 });
 
 app.post('/counter/setnick',function (req,res){
