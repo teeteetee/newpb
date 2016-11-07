@@ -753,12 +753,12 @@ head
                                   consolidated_current.push(element);
                                });
                               }
-                              if(consolidated_current.length){
-                               sortByKey(consolidated_current,'tmstmp');
+                              if(consolidated_web.length){
+                               sortByKey(consolidated_web,'tmstmp');
                               }
-                              $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Задачи</li>');
-                              $('#num_two').text(consolidated_current.length);
-                              if(!consolidated_current.length){
+                              $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_web.length+'</span>Задачи</li>');
+                              $('#num_two').text(consolidated_web.length);
+                              if(!consolidated_web.length){
                                $('#second').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                               }
                               else {
