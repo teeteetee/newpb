@@ -957,7 +957,7 @@ app.post('/counter/addweb',function (req,res){
               v_r_name = '--';
               //SEND ERROR
             }
-            if(!r_link){
+            if(!v_r_link){
               v_r_link = '--';
             }
           var vtmstmp = Date.now();
