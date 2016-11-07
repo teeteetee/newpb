@@ -169,6 +169,8 @@ app.post('/counter/current/remove',function (req,res){
    }
 });
 
+
+
 app.post('/counter/current/done',function (req,res){
   var ms={};
    ms.trouble=1;
@@ -191,14 +193,6 @@ app.post('/counter/current/done',function (req,res){
    }
 });
 
-//app.post('/counter/current/todo',function (req,res){
-//  if(req.session&&req.session._id){
-//  counter_current.insert({},function(err,done){});
-//   }
-//   else{
-//    res.send('no');
-//   }
-//});
 
 //-----------------test-----------------//
 
@@ -212,11 +206,6 @@ app.get('/counter',function (req,res){
  //res.render('index_counter_out');
 });
 
-//app.get('/counter/stats/:what',function (req,res){
-//  if(req.params.what==='init'){
-//    counter_stats.
-//  }
-//});
 
 app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give') {
@@ -379,6 +368,11 @@ app.get('/counter/clear',function (req,res){
 //  });
 //});/
 
+app.get('/counter/web_init',function (req,res){
+  counter_web.insert({uid:JSON.stringify(done._id),total:0,weblinkstore:[]});
+  res.redirect('/counter/current');
+});
+
 app.post('/counter/setnick',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -494,6 +488,30 @@ else{
 }
 });
 
+app.post('/counter/getweb',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {counter_web.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        //console.log(doc);
+        ms.doc = doc;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else{
+   res.send(ms);
+}
+});
+
 app.post('/counter/friend/getmovies/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -565,11 +583,11 @@ else{
 }
 });
 
-app.get('/counter/sset',function (req,res){
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function(err,doc){
-  res.send('done');
-  });
-});
+//app.get('/counter/sset',function (req,res){
+//  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function(err,doc){
+//  res.send('done');
+//  });
+//});
 
 app.post('/counter/getfriends',function (req,res){
   var ms ={};
@@ -675,6 +693,31 @@ app.post('/counter/rm_movie/',function(req,res){
     }
   });
  }
+}
+  else {
+    res.send(ms);
+  }
+});
+
+app.post('/counter/rm_web',function(req,res){
+  var ms = {};
+  ms.trouble =1;
+  var v_r_name = req.body.r_name;
+  var v_r_link= req.body.r_link;
+  if(req.session&&req.session._id)
+  {
+  counter_web.update({uid:JSON.stringify(req.session._id)},{$pull:{weblinkstore:{r_name:v_r_name,r_link:v_r_link}},$inc:{total:-1}},function(err,done){
+  if(err)
+  {
+    console.log('trouble removing a web article');
+    res.send(ms);
+  }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+   });
+ 
 }
   else {
     res.send(ms);
@@ -893,6 +936,30 @@ app.post('/counter/addmovie',function (req,res){
            counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
+           res.send('ok');  }       
+      else {
+        res.send('err');
+      }   
+});
+
+app.post('/counter/addweb',function (req,res){
+  if(req.session&&req.session._id)
+ {console.log('adding a web link');
+          var ms = {};
+          ms.trouble =1;
+            var v_r_name = req.body.r_name;//RESOURCE NAME
+            var v_r_link = req.body.r_link;// RESOURCE LINK
+            if(!v_r_name){
+              v_r_name = '--';
+              //SEND ERROR
+            }
+            if(!r_link){
+              v_r_link = '--';
+            }
+          var vtmstmp = Date.now();
+          counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+            console.log(done);
+          });
            res.send('ok');  }       
       else {
         res.send('err');

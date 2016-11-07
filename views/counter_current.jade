@@ -238,6 +238,11 @@ head
         box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
         background: -webkit-linear-gradient(90deg, #0180bd 0%,#0eb2e6 100%);
       }
+      #second_lg{
+        border-radius:4px;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        background: -webkit-linear-gradient(90deg, #9e2267 0%,#f15681 100%);
+      }
       .navbar-inverse .navbar-brand {
       color: white;
       font-family: boldproxima;
@@ -567,6 +572,14 @@ head
                   .panel-body
                     input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст задачи")
                     button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
+                .panel-heading(role="tab" id="headingTwo")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Добавить задачу
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
+                  .panel-body
+                    input#web_title(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Название")
+                    input#web_address(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Адрес")
+                    button(class='btn btn-sm btn-add' onclick='submit_web(1)') Добавить
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -588,9 +601,9 @@ head
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
           ul.list-group.first#first_lg
+        .col-sm-3
+          ul.list-group.second#second_lg
         //
-          .col-sm-3
-            ul.list-group.second#second_lg
           .col-sm-3
             ul.list-group.third#third_lg
           .col-sm-3
@@ -599,10 +612,16 @@ head
         .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
           .panel.panel-default
             .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
-              h4(class="panel-title") Movies seen
+              h4(class="panel-title") Задачи
                 span.badge#num_one
                 span.glyphicon.glyphicon-chevron-right.pull-right
             #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.first
+            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#web" aria-expanded="true" aria-controls="web")
+              h4(class="panel-title") WEB
+                span.badge#num_two
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #web(class="panel-collapse collapse " role="tabpanel")
               .panel-body.first
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
@@ -671,49 +690,6 @@ head
           }
           });
         //----------------------------//
-        $('.add').click(function(){
-          $('#addbook').modal('show');
-          if($('#oldones').css('display')!='none')
-            { $('#oldmovie').addClass('active');
-              $('#newmovie').removeClass('active');}
-          else {
-             $('#newmovie').addClass('active');
-          $('#oldmovie').removeClass('active');
-          }
-          });
-        $('#oldmovie').click(function(){
-        if($('#oldmovie').hasClass('active')){
-        }
-        else{
-          $('#oldmovie').addClass('active');
-          $('#newmovie').removeClass('active');
-        }
-        });
-        $('#newmovie').click(function(){
-        if($('#newmovie').hasClass('active')){
-        }
-        else{
-          $('#newmovie').addClass('active');
-          $('#oldmovie').removeClass('active');
-        }
-        });
-        //
-         $('#hasstar').click(function(){
-        if($('#hasstar').hasClass('active')){
-        }
-        else{
-          $('#hasstar').addClass('active');
-          $('#nostar').removeClass('active');
-        }
-        });
-        $('#nostar').click(function(){
-        if($('#nostar').hasClass('active')){
-        }
-        else{
-          $('#nostar').addClass('active');
-          $('#hasstar').removeClass('active');
-        }
-        });
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
@@ -729,8 +705,8 @@ head
         //---------------------------//
         var seenmovies;
         var newmovies;
-        
         var consolidated_current=[];
+        var consolidated_web=[];
         $.ajax({
               method: "POST",
               url: "/counter/current/get",
@@ -743,7 +719,7 @@ head
                    console.log('no movies');
                    }
                    else {
-                    $('#currentnum').text(msg.msg.length);
+                    //$('#currentnum').text(msg.msg.length);
                     msg.msg.forEach(function (element,index){
                        consolidated_current.push(element);
                     });
@@ -757,12 +733,43 @@ head
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                    }
                    else {
-                    populate(consolidated_current);
+                    //populate(consolidated_current);
+                    //---------------------//
+                    $.ajax({
+                         method: "POST",
+                         url: "/counter/getweb",
+                         data: 0
+                       })
+                         .done(function( msg ) {
+                           if(!msg.trouble) {
+                             console.log('movies: '+JSON.stringify(msg.msg));
+                             if(!msg.weblinkstore) {
+                              console.log('no movies');
+                              }
+                              else {
+                               //$('#currentnum').text(msg.msg.length);
+                               msg.weblinkstore.forEach(function (element,index){
+                                  consolidated_current.push(element);
+                               });
+                              }
+                              if(consolidated_current.length){
+                               sortByKey(consolidated_current,'tmstmp');
+                              }
+                              $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Задачи</li>');
+                              $('#num_two').text(consolidated_current.length);
+                              if(!consolidated_current.length){
+                               $('#second').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                              }
+                              else {
+                               populate(consolidated_current,consolidated_web);
+                              }
+                            }});
+                    //---------------------//
                    }
                  }});
                    
         //----------------------------//
-        function populate(consolidated_current) {
+        function populate(consolidated_current,consolidated_web) {
           console.log('hello');
           var count;
           consolidated_current.forEach(function (element,index){
@@ -772,6 +779,10 @@ head
             }
             var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')">'+element.c_text+done+" </li>";
             $('.first').append(insert);
+            });
+          consolidated_web.forEach(function (element,index){
+            var insert='<li class="list-group-item " onclick="redactbookmodal('+index+')"><a href="'+element.r_link+'">'+element.r_name+"</a> </li>";
+            $('.second').append(insert);
             });
           }   
         function redactmoviemodal (i,done) {
@@ -812,6 +823,20 @@ head
               });
         }
         //-----------------------------------//
+        function removeweb(i) {
+          var data={};
+          data.r_name=consolidated_web[i].r_name;
+          data.r_link=consolidated_web[i].r_link;
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_web",
+              data: data
+            })
+              .done(function( msg ) {
+              window.location='/counter/current';
+              });
+        }
+        //-----------------------------------//
         function switch_movie(i) {
           var data={};
           data.vstatus=consolidated_current[i].done;
@@ -840,6 +865,25 @@ head
           $.ajax({
               method: "POST",
               url: "/counter/current/add",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/current';
+              });
+          }
+        }
+        function submit_web(){
+        if($(web_title).val()&&$(web_address).val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.r_name = $(web_title).val();
+           data.r_link = $(web_address).val();
+          $.ajax({
+              method: "POST",
+              url: "/counter/addweb",
               data: data
             })
               .done(function( msg ) {
