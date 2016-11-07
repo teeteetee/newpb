@@ -756,10 +756,10 @@ head
                               if(consolidated_web.length){
                                sortByKey(consolidated_web,'tmstmp');
                               }
-                              $('#second').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_web.length+'</span>Задачи</li>');
+                              $('#second_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_web.length+'</span>Сайты</li>');
                               $('#num_two').text(consolidated_web.length);
                               if(!consolidated_web.length){
-                               $('#second').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                               $('#second_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                               }
                               else {
                                populate(consolidated_current,consolidated_web);
