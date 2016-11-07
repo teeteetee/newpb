@@ -1538,7 +1538,9 @@ app.get('/counter/showme',function (req,res){
     counter_books.findOne({uid:JSON.stringify(req.session._id)},function(err,done1){
       counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,done2){
         counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,done3){
-       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'BOOKS:'+'\n'+JSON.stringify(done1)+'\n'+'MOVIES:'+'\n'+JSON.stringify(done2)+'\n'+'FRIENDS:'+'\n'+JSON.stringify(done3));
+          counter_web.findOne({uid:JSON.stringify(req.session._id)},function(err,done4){
+       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'BOOKS:'+'\n'+JSON.stringify(done1)+'\n'+'MOVIES:'+'\n'+JSON.stringify(done2)+'\n'+'FRIENDS:'+'\n'+JSON.stringify(done3)+'\n'+'WEB:'+'\n'+JSON.stringify(done4));
+          });
         });
       });
     });
