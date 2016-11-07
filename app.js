@@ -946,6 +946,15 @@ app.post('/counter/addmovie',function (req,res){
       }   
 });
 
+app.get('/counter/cleanweb',function (req,res){
+  if(req.session&&req.session._id){
+   counter_movies.update({uid:JSON.stringify(req.session._id)},{$unset:{weblinkstore:1}});
+  }
+  else{
+    res.redirect('/counter');
+  }
+});
+
 app.post('/counter/addweb',function (req,res){
   if(req.session&&req.session._id)
  {console.log('adding a web link');
