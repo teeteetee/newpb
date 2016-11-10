@@ -25,8 +25,8 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
-      background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
-      font-weight:100;
+      /*background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
+      background-color:#171717;
       text-transform:uppercase;
       letter-spacing:2px;
       font-size:10px;
@@ -299,10 +299,10 @@ head
       .form-control:focus{
        /* border:none;*/
       }
-      input[type=text]::-webkit-input-placeholder {color:white;}
-      input[type=text]::-moz-placeholder          {color:white;}/* Firefox 19+ */
-      input[type=text]:-moz-placeholder           {color:white;}/* Firefox 18- */
-      input[type=text]:-ms-input-placeholder      {color:white;}/**/
+      input[type=text]::-webkit-input-placeholder {color:#ddd;}
+      input[type=text]::-moz-placeholder          {color:#ddd;}/* Firefox 19+ */
+      input[type=text]:-moz-placeholder           {color:#ddd;}/* Firefox 18- */
+      input[type=text]:-ms-input-placeholder      {color:#ddd;}/**/
       #addbook .btn-iosdark-add.active {
       background-color: #178e4d;
       color: #28d476;
@@ -321,7 +321,7 @@ head
         padding:30px;
       }
       .input-colour{
-        background-color: rgba(255, 255, 255, 0.43);
+        background-color: white;
         border:none;
       }
       .btn-login{
@@ -356,6 +356,11 @@ head
       #login{
         border-bottom-left-radius:4px;
         border-bottom-right-radius:4px;
+        background: -webkit-linear-gradient(90deg, #018e5e 0%,#06eaa0 100%);
+        color: #007951;
+      }
+      #mail {
+      border-bottom: 1px solid rgba(232, 232, 232, 0.7);
       }
   body
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -371,46 +376,13 @@ head
               input#reg_p.sp_input.form-control(type='text' placeholder='password')
               input#reg_pc.sp_input.form-control(type='text' placeholder='confirm password')
               button#reg_run(class='btn btn-iosdark form-control movie_remove') Register
-    .modal.fade.add_mod(id="addbook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
-      .modal-dialog(role="document")
-        .modal-content(style='background-color:#21b363;')
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" ) 
-              span(style='font-weight:bold;') + 
-              | Добавляем фильм
-          .modal-body
-            .row  
-              .col-xs-12
-                form
-                  .form-group
-                    label(for="mtitle") Titile
-                    input(type="text" maxlength="50" class="form-control" id="mtitle" autocomplete='off' placeholder="The Matrix")
-                    .row.autocomp#autocompmovies
-                      .col-xs-12#srm
-                  .form-group
-                    label(for="year") Year
-                    input(type="text" class="form-control" id="year" autocomplete='off' maxlength="4"  placeholder="1999")
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group#new_old(style='display:block;')
-                  button(class='btn btn-iosdark-add active' id='oldmovie' type='button') Посмотрел
-                  button(class=' btn btn-iosdark-add' id='newmovie'  type='button' )  В планах
-            .row  
-              .col-xs-12(style='padding-top:20px;padding-bottom:20px;')
-                .btn-group(style='display:block;')
-                  button(class='btn btn-iosdark-add' id='hasstar' type='button') Выделить
-                  button(class=' btn btn-iosdark-add active' id='nostar'  type='button' )  Не надо            
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn btn-iosdark  form-control btn-submit'  id='submitmovie' ) Добавить
     #oldones.container
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
           h1(style='font-weight:100;color:white;') IV LISTS
           h4(style='color: rgba(255,255,255,0.5);text-transform: none;letter-spacing: initial;font-weight: 200;') Keep track of what you read and watch
           form(method='post',action='/backup',role='form',id='loginform')
-            input#mail(type='text' class='form-control input-colour' style='border-bottom:1px solid rgba(158, 158, 158, 0.7);' placeholder='login')
+            input#mail(type='text' class='form-control input-colour' placeholder='login')
             input#p(type='text' class='form-control input-colour' placeholder='password')
             button#login(type='button' style='letter-spacing:3px;margin-bottom:20px;' class='btn btn-login form-control') LOGIN
             a#reglink(style='color:#bbb;') Register

@@ -118,7 +118,7 @@ app.post('/counter/current/get',function (req,res){
      res.send(ms);
     }
     else {
-      console.log(done);
+      //console.log(done);
       ms.trouble=0;
       ms.msg=done;
       res.send(ms);
