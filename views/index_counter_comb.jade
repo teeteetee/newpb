@@ -1407,37 +1407,44 @@ head
               });
           }
         }
+        var friends_loaded=0;
+        var friends_consolidated=[];
         function getfriends() {
           //---------------------------//
         var friends;
-        var consolidated=[];
-        $.ajax({
-              method: "POST",
-              url: "/counter/getfriends",
-              data: 0
-            })
-              .done(function( msg ) {
-                if(!msg.trouble) {
-                  console.log('movies: '+JSON.stringify(msg.doc));
-                   friends=msg.doc;
-                  if(!friends || !friends.friendstore) {
-                   console.log('no friends');
-                   $('#friendsnum').text(0);
-                   }
-                   else {
-                    friends = msg.doc.total;
-                    $('#friendsnum').text(friends);
-                    msg.doc.friendstore.forEach(function (element,index){
-                        consolidated.push(element);
-                    });
-                   }
-                   if(consolidated.length){
-                   sortByKey(consolidated, 'tmstmp');
-                   populate_friends(consolidated);
-                   $('#friends').modal('show');
-                 }
+        if(!friends_loaded)
+        {$.ajax({
+             method: "POST",
+             url: "/counter/getfriends",
+             data: 0
+           })
+             .done(function( msg ) {
+               if(!msg.trouble) {
+                 console.log('movies: '+JSON.stringify(msg.doc));
+                  friends=msg.doc;
+                 if(!friends || !friends.friendstore) {
+                  console.log('no friends');
+                  $('#friendsnum').text(0);
+                  }
+                  else {
+                   friends = msg.doc.total;
+                   $('#friendsnum').text(friends);
+                   msg.doc.friendstore.forEach(function (element,index){
+                       friends_consolidated.push(element);
+                   });
+                  }
+                  if(friends_consolidated.length){
+                  sortByKey(friends_consolidated, 'tmstmp');
+                  populate_friends(friends_consolidated);
+                  friends_loaded=1;
+                  $('#friends').modal('show');
                 }
-              });
+               }
+             });}
+             else {
+               $('#friends').modal('show');
+             }
+            }
         //---------------------------//
         //----------------------------//
         function populate_friends(consolidated) {
