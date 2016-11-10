@@ -16,14 +16,6 @@ head
       |       
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
-      @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
-      font-family:high;
-      src: url('/bootstrap/fonts/Attentica.ttf');
-      }
       body {
       /*background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
       background-color:#171717;
@@ -34,40 +26,12 @@ head
       h1, h2, h3, h4, h5, h6 {
         font-weight:300;
       }
-      .navbar-nav {
-       float: right;
-      }
-      .container {
+      /*.container {
         transition: 0.5s -webkit-filter linear;
         transition: 0.5s -moz-filter linear;
         -webkit-transition: 0.5s -webkit-filter linear;
         -moz-transition: 0.5s -moz-filter linear;
-      }
-      .navbar-right {
-        float: none !important; 
-      }
-      .navbar-form {
-        padding-top: 6 !important;
-      }
-      input[type="text"], textarea {
-      outline: none;
-      box-shadow:none !important;
-      }
-      .datecl {
-        color:#333;
-      }
-      .yet{
-       color:white;
-      }
-      .alreadyb{
-      color:rgba(0, 0, 0, 0.27);
-      }
-      .alreadym{
-      color:rgba(255, 255, 255, 0.21);
-      }
-      .leftPaddingExtended{
-        padding-left:30px;
-      }
+      }*/
       textarea:hover, 
       input:hover, 
       textarea:active, 
@@ -83,32 +47,6 @@ head
        -webkit-box-shadow: none !important;
        -moz-box-shadow: none !important;
        box-shadow: none !important;
-      }
-      nav ul li a {
-        border:0px !important;
-        background-color:rgba(255, 255, 255, 0.26) !important;
-        color:white !important;
-      }
-      .btn-iosdark,btn-iosdark-add {
-      background-color:white;
-      border:1px solid #333;
-      color:#333;
-      }
-      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosdark.active {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosdark .badge {
-        background-color:#ddd;
-        color:#333;
-      }
-      .btn-iosdark.active .badge {
-        background-color:white;
-        color:#333;
       }
       .modal-sm .btn-iosdark, .modal-footer .btn-iosdark {
         box-shadow:none;
@@ -147,27 +85,6 @@ head
         border:none;
         box-shadow:none;
       }
-      .btn-ioslight {
-        color:white;
-        background-color:rgba(0,0,0,0);
-        border:1px solid white;
-      }
-      .btn-ioslight:hover{
-        color:#333;
-        background-color:white;
-      }
-      /*.pop:hover{
-        background-color:#e47e66 !important;;
-        color:white;
-      }*/
-      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-      border-top: 0px;}
-      .table.table-striped {
-        color:white;
-      }
-      #newones{
-        display:none;
-      }
       .modal-dialog {
       margin-top: 15%;
       }
@@ -182,13 +99,6 @@ head
       .modal-footer{
         padding:0px;
         border-top:0px;
-      }
-      .form-control#year,.form-control#mtitle{
-        color:#0d5830;
-        font-weight:300 !important;
-      }
-      .form-control:focus{
-       /* border:none;*/
       }
       input[type=text]::-webkit-input-placeholder {color:#ddd;}
       input[type=text]::-moz-placeholder          {color:#ddd;}/* Firefox 19+ */
@@ -213,12 +123,6 @@ head
       border-top: 1px solid #ddd;
       height:50px;
       background-color:white;
-      }
-      /*.sp_input{
-        transition: 0.4s background-color linear;
-        transition: 0.4s background-color linear;
-        -webkit-transition: 0.4s background-color linear;
-        -moz-transition: 0.4s background-color linear;
       }
       .sp_input:focus, .sp_input:active {
         border-top:1px solid #ddd;
