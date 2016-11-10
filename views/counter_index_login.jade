@@ -112,11 +112,11 @@ head
         background-color: white;
         border:none;
       }
-      .btn-login{
+      /*.btn-login{
         color:white;
         background-color:rgba(25, 25, 25, 0.34);
         border:none;
-      }
+      }*/
       .sp_input {
       border-radius: 0px;
       border: none;
@@ -169,7 +169,7 @@ head
               input#reg_mail.sp_input.form-control(type='text' placeholder='mail')
               input#reg_p.sp_input.form-control(type='text' placeholder='password')
               input#reg_pc.sp_input.form-control(type='text' placeholder='confirm password')
-              button#reg_run(class='btn btn-iosdark form-control movie_remove') Register
+              button#reg_run(class='btn form-control movie_remove' style='letter-spacing:3px;') Register
     #oldones.container
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
@@ -305,13 +305,6 @@ head
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("mail="+vmail+"&p="+vp+"&pc="+vpc);
           }
-        //var remodal=0;
-        //$('#reglink').click(function(){
-        //  if(!regmodal){$('#regmodal').modal('show');regmodal=1;}
-        //  else {
-        // $('#regmodal').modal('hide');regmodal=0;
-        //  }
-        //  });
         
         
         
