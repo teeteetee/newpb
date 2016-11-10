@@ -1334,7 +1334,7 @@ head
                if(!msg.trouble) {
                  console.log('movies: '+JSON.stringify(msg.doc));
                   friends=msg.doc;
-                 if(!friends || !friends.friendstore) {
+                 if(!friends || friends.friendstore.length===0) {
                   console.log('no friends');
                   $('#friendsnum').text(0);
                   }
@@ -1366,16 +1366,16 @@ head
             //       { console.log('HAS LENGTH');
             //         $('.friendslist').empty();}
             $.ajax({
-                        method: "POST",
-                        url: "/counter/gn/"+element,
-                        data: 0
-                      })
-                        .done(function(msg) {
-                          if(!msg.trouble){
-                           $('#f_'+element).text(msg.mtext);
-                          }
-                          
-                        });
+              method: "POST",
+              url: "/counter/gn/"+element,
+              data: 0
+            })
+              .done(function(msg) {
+                if(!msg.trouble){
+                 $('#f_'+element).text(msg.mtext);
+                }
+                
+              });
            var insert;
            var friend_name=element.nick?element.nick:'User №'+element;
              insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a id='f_"+element+"' href='/counter/profile/"+element+"'>"+friend_name+"</a></th></tr>";
