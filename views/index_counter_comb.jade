@@ -853,10 +853,12 @@ head
         function add_dialog() {
           $('#add_comb').modal('show');
         }
+        var settings_loaded =0;
         $('#settings_btn').click(function(){
           $('#nick').tooltip('destroy');
           $('#settings').modal('show');
-          $.ajax({
+          if(!settings_loaded)
+          {$.ajax({
               method: "POST",
               url: "/counter/gn/"+'#{_id}',
               data: 0
@@ -874,89 +876,13 @@ head
           }).done(function( msg ) {
                if(msg.mtext)
                {$('#show_mail').prop('checked',true);}
-            });
+             });
+          settings_loaded=1;
+          }
           });
         $('#backup').click(function(){
           $('#backupform').submit();
           });
-        $('#about').click(function(){
-          if($('#oldones').css('display')!='none'){
-          $('#oldones').css('overflow','hidden');
-          }
-          else {
-          $('#newones').css('overflow','hidden');
-          }
-          $('#wait').fadeIn();
-          });
-        $('.seen').click(function(){
-          if(!$('.seen').hasClass('active')){
-            $('#newones').hide();
-            $('#oldones').show();
-            $('.new').removeClass('active');
-            $('.seen').addClass('active');
-          }
-          });
-        $('.new').click(function(){
-          if(!$('.new').hasClass('active')) {
-            $('#newones').show();
-            $('#oldones').hide();
-            $('.seen').removeClass('active');
-            $('.new').addClass('active');
-          }
-          });
-        $('#closewait').click(function(){
-          $('#wait').fadeOut();
-          if($('#oldones').css('display')!='none'){
-          $('#oldones').css('overflow','auto');
-          }
-          else {
-          $('#newones').css('overflow','auto');
-          }
-          });
-        //----------------------------//
-        $('.add').click(function(){
-          $('#addbook').modal('show');
-          if($('#oldones').css('display')!='none')
-            { $('#oldmovie').addClass('active');
-              $('#newmovie').removeClass('active');}
-          else {
-             $('#newmovie').addClass('active');
-          $('#oldmovie').removeClass('active');
-          }
-          });
-        $('#oldmovie').click(function(){
-        if($('#oldmovie').hasClass('active')){
-        }
-        else{
-          $('#oldmovie').addClass('active');
-          $('#newmovie').removeClass('active');
-        }
-        });
-        $('#newmovie').click(function(){
-        if($('#newmovie').hasClass('active')){
-        }
-        else{
-          $('#newmovie').addClass('active');
-          $('#oldmovie').removeClass('active');
-        }
-        });
-        //
-         $('#hasstar').click(function(){
-        if($('#hasstar').hasClass('active')){
-        }
-        else{
-          $('#hasstar').addClass('active');
-          $('#nostar').removeClass('active');
-        }
-        });
-        $('#nostar').click(function(){
-        if($('#nostar').hasClass('active')){
-        }
-        else{
-          $('#nostar').addClass('active');
-          $('#hasstar').removeClass('active');
-        }
-        });
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
@@ -1083,20 +1009,6 @@ head
               });
                 }
               });
-        //---------------------------//
-        function addold_m(){
-          $('#addold_m_modal').modal('show');
-        }
-        function addnew_m(){
-          $('#addnew_m_modal').modal('show');
-        }
-        function addold_b(){
-          $('#addold_b_modal').modal('show');
-        }
-        function addnew_b(){
-          $('#addnew_b_modal').modal('show');
-        }
-          //populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
         //----------------------------//
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
