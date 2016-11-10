@@ -78,60 +78,16 @@ head
       button:active,
       button:hover
       {
-          outline:0px !important;
-          -webkit-appearance:none;
-      }
-      .bckgrnd {
-      width:100%;
-      height:100%;
-      background-image:url('/bootstrap/images/books.jpg');
-      position:fixed;
-      background-position:center;
-      background-size: cover;
-      background-repeat:no-repeat;
-      filter: brightness(0.6);
-      -webkit-filter: brightness(0.6);
-      -moz-filter: brightness(0.6);
-      -o-filter: brightness(0.6);
-      transition: 0.5s -webkit-filter linear;
-        transition: 0.5s -webkit-filter linear;
-        transition: 0.5s -moz-filter linear;
-        -webkit-transition: 0.5s -webkit-filter linear;
-        -moz-transition: 0.5s -moz-filter linear;
+       outline: none;
+       border: none !important;
+       -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+       box-shadow: none !important;
       }
       nav ul li a {
         border:0px !important;
         background-color:rgba(255, 255, 255, 0.26) !important;
         color:white !important;
-      }
-      .itemcol {
-        min-height:100vh;
-        padding-left:0px;
-        padding-right:0px;
-        padding-bottom:30px;
-      }
-      .itemcol h1{
-        margin-top:10%;
-        margin-bottom:0px;
-        color:black;
-        font-size:100px;
-        font-family:high;
-        text-align:center;
-      }
-      .itemcol h5{
-        margin-top:0px;
-        margin-bottom:5%;
-        font-family:arial;
-        text-transform:uppercase;
-        letter-spacing:2px;
-        font-size:10px;
-        text-align:center;
-      }
-      //th:first-child {
-      //  padding-left:30px !important;
-      //}
-      th {
-        font-weight:300;
       }
       .btn-iosdark,btn-iosdark-add {
       background-color:white;
@@ -191,22 +147,6 @@ head
         border:none;
         box-shadow:none;
       }
-      .fileUpload {
-          position: relative;
-          overflow: hidden;
-          margin: 10px;
-      }
-      .fileUpload input.upload {
-          position: absolute;
-          top: 0;
-          right: 0;
-          margin: 0;
-          padding: 0;
-          font-size: 20px;
-          cursor: pointer;
-          opacity: 0;
-          filter: alpha(opacity=0);
-      }
       .btn-ioslight {
         color:white;
         background-color:rgba(0,0,0,0);
@@ -216,59 +156,10 @@ head
         color:#333;
         background-color:white;
       }
-      #oldones{
-       min-height:100%;
-      }
-      #newones{
-       background-color:#2b8;
-      }
-      #oldones .btn-default {
-        border:1px solid #0f5c82;
-        color:#0f5c82;
-      }
-      #oldones .btn-default.active, .btn-default:focus {
-        border:1px solid #0f5c82;
-       background-color: #2176a0;
-       color:#40a0d0;
-      }
-      #newones .btn-default{
-       border: 1px solid #aa0a0a;
-       background-color: #e02727;
-       color: #a90a0a;
-      }
-      #newones .btn-default.active, .btn-default:focus {
-      border: 1px solid #a90a0a;
-      background-color: #ab0b0b;
-      color: #e02727;
-      }
       /*.pop:hover{
         background-color:#e47e66 !important;;
         color:white;
       }*/
-      #oldcol>.table-striped>tbody>tr:nth-of-type(odd) {
-      /*background-color: #2176a0;*/
-      background-color:#ff9b2f;
-      }
-      #oldcol>.table-striped>tbody>tr {
-      border-top:1px solid #e68924;
-      color:#bd6d15;
-      }
-      #oldcol>.table-striped>tbody>tr:first-child {
-      border:none;
-      }
-      #oldcol>.table-striped>tbody>tr:hover {
-       background-color:#e68924;
-      }
-      #newcol>.table-striped>tbody>tr:nth-of-type(odd) {
-      /*background-color: #b73030;*/
-      background-color: #22bb88; }
-      #newcol>.table-striped>tbody>tr:hover {
-       background-color:#18a073;
-      }
-      #newcol>.table-striped>tbody>tr {
-      border-top:1px solid #1aa777;}
-      #newcol>.table-striped>tbody>tr:first-child {
-      border:none;}
       .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
       border-top: 0px;}
       .table.table-striped {
@@ -303,19 +194,6 @@ head
       input[type=text]::-moz-placeholder          {color:#ddd;}/* Firefox 19+ */
       input[type=text]:-moz-placeholder           {color:#ddd;}/* Firefox 18- */
       input[type=text]:-ms-input-placeholder      {color:#ddd;}/**/
-      #addbook .btn-iosdark-add.active {
-      background-color: #178e4d;
-      color: #28d476;
-      }
-      #addbook .btn-iosdark-add {
-      background-color: #21b363;
-      border: 1px solid #158448;
-      color: #0d5830;
-      }
-      #addbook input{
-      background-color: #1aa057;
-      border: 1px solid #178e4d;
-      }
       #loginform{
         border-radius:10px;
         padding:30px;
