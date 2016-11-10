@@ -180,6 +180,16 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script. 
+        $("input").keypress(function(event) {
+            if (event.which == 13) {
+                if($('#regmodal').css('display')==='none'){
+                  authsubmit();
+                }
+                else{
+                  runregister();
+                }
+            }
+        });
         $('#reg_run').click(function(){
           runregister();
           });
