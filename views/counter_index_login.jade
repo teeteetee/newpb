@@ -179,7 +179,7 @@ head
             input#mail(type='email' class='form-control input-colour' placeholder='login')
             input#p(type='password' class='form-control input-colour' placeholder='password')
             button#login(type='button' style='letter-spacing:3px;margin-bottom:20px;' class='btn btn-login form-control') LOGIN
-            h5#reglink(style='color:#bbb;') Register
+            h5#reglink(style='color:#bbb;' data-toggle="modal" data-target="#regmodal") Register
       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
@@ -305,13 +305,13 @@ head
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("mail="+vmail+"&p="+vp+"&pc="+vpc);
           }
-        var remodal=0;
-        $('#reglink').click(function(){
-          if(!regmodal){$('#regmodal').modal('show');regmodal=1;}
-          else {
-         $('#regmodal').modal('hide');regmodal=0;
-          }
-          });
+        //var remodal=0;
+        //$('#reglink').click(function(){
+        //  if(!regmodal){$('#regmodal').modal('show');regmodal=1;}
+        //  else {
+        // $('#regmodal').modal('hide');regmodal=0;
+        //  }
+        //  });
         
         
         
