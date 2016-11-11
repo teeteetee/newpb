@@ -228,6 +228,40 @@ app.get('/counter/comb',function (req,res){
  }
 });
 
+app.get('/counter/setfirsttime',function (req,res){
+  counter_users.update({},{$set:{first_time:1}},function (err,done){
+    res.redirect('/counter/comb');
+});
+
+app.post('/counter/greeting/:_id',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id){
+    counter_users.findOne({_id:req.params._id},function (err,done){
+          if(err){
+            res.send(ms);
+          }
+          else{
+            if(done)
+            {console.log('sending greeting');
+            ms.trouble=0;
+            ms.mtext=done.first_time;
+            if(parseInt(done.first_time)){
+              counter_users.update({_id:req.params._id},{$set:{first_time:0}},function (err,done){
+               res.send(ms);
+              });
+            }
+            else{ 
+            res.send(ms);
+            }
+            }
+            else {
+              res.send(ms);
+            }
+          }
+        });
+});
+
 app.post('/counter/getshowmail/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
@@ -267,6 +301,7 @@ app.post('/counter/setshowmail',function (req,res){
             {console.log('sending nick');
             ms.trouble=0;
             ms.mtext=done.showmail;
+            ms.first_time=done.first_time;
             res.send(ms);}
             else {
               res.send(ms);

@@ -797,7 +797,16 @@ head
                $('#show_mail').prop('disabled',true);
             });
         }
-        //-
+        //--------------------//
+        $.ajax({
+            method: "POST",
+            url: "/counter/greeting/"+'#{_id}',
+            data: 0
+          }).done(function( msg ) {
+               if(msg.mtext&&parseInt(msg.mtext))
+               {$('#first_time').modal('show');}
+             });
+        //--------------------//
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -805,7 +814,7 @@ head
            var e = document.getElementById('nick');
            //console.log('hey');
            e.oninput = (function(){
-            console.log('yo');
+            //console.log('yo');
           if($('#nick').val()&&$('#nick').val().length>2){
                     var data={};
                     data.nick=$('#nick').val();
@@ -1376,7 +1385,6 @@ head
                 if(!msg.trouble){
                  $('#f_'+element).text(msg.mtext);
                 }
-                
               });
            var insert;
            var friend_name=element.nick?element.nick:'User №'+element;
