@@ -235,7 +235,6 @@ head
                   authsubmit();
                 }
                 else{
-                  $('#wait').css('display','block');
                   runregister();
                 }
             }
@@ -294,6 +293,10 @@ head
           request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           //Most libraries like jQuery/Prototype/Dojo do this
           request.send("phr="+vphr+"&lgn="+vlgn);}
+          else {
+            $('#wait').css('display','none');
+            alert('smt is wrong');
+          }
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
@@ -331,7 +334,8 @@ head
           return;
         }
         if(vmail&&vp&&vpc)
-        {console.log('submitting now');
+        {$('#wait').css('display','block');
+          console.log('submitting now');
           //$("#regform").submit();
           request = new XMLHttpRequest();
           request.onreadystatechange = function () {
@@ -342,6 +346,7 @@ head
           // do your job here
           if (parsed.trouble === 1)
           {
+          $('#wait').css('display','none');
           $('#message').empty();
           switch (parsed.mtext)
           {
