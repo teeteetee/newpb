@@ -230,7 +230,7 @@ app.get('/counter/comb',function (req,res){
 
 app.get('/counter/setfirsttime',function (req,res){
   counter_users.update({},{$set:{first_time:1}},function (err,done){
-    res.redirect('/counter/comb');
+    res.send(done);
 });
 });
 
