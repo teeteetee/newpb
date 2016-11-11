@@ -260,6 +260,7 @@ app.post('/counter/greeting/:_id',function (req,res){
             }
           }
         });
+  }
 });
 
 app.post('/counter/getshowmail/:_id',function (req,res){
