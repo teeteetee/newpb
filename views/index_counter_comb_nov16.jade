@@ -29,20 +29,20 @@ head
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
       body {
-        background-color: #797979;
+        background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
       }
       @media(min-width:768px){
         .navbar-collapse{
       background-color: transparent;
       }
-      .navbar-nav{
-        font-size:10px;
+      .navbar-fixed-top{
+        background-color:rgba(255, 255, 255, 0.12);
       }
       }
       @media(max-width:767px){
-      /*  .navbar-collapse{
+        .navbar-collapse{
       background-color: rgba(0, 0, 0, 0.82);
-      }*/
+      }
       .navbar-header{
         background-color:black;
       }
@@ -120,6 +120,14 @@ head
       .btn-iosdark.active {
         background-color:#333;
         color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
       }
       .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
         box-shadow:none;
@@ -227,16 +235,16 @@ head
         cursor:auto;
       }
       #first_lg{
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
       }
       #second_lg{
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
       }
       #third_lg{
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
       }
       #fourth_lg{
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
       }
       .navbar-inverse .navbar-brand {
       color: white;
@@ -265,21 +273,20 @@ head
           background-color:rgba(255,255,255,0.2);
       }
       .data_lg .list-group-item{
-        color:#2f2f2f;
+        color:white;
         border:none;
         font-weight: 200;
        letter-spacing: 1px;
-       background-color: white;
+       background-color: rgba(255, 255, 255, 0.48);
       }
-      /*.data_lg .list-group-item.disabled:hover{
+      .data_lg .list-group-item.disabled:hover{
         background-color:rgba(0, 0, 0, 0.64);
-      }*/
+      }
       .data_lg .list-group-item.disabled{
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
-        font-weight: 500;
-        letter-spacing: 0px;
+        color:#bdbdbd;
+        font-weight:100;
+        letter-spacing:1px;
+        background-color:rgba(0, 0, 0, 0.64);
       }
       /*.btn-add{
         border:none;
@@ -293,7 +300,6 @@ head
       }*/
       small {
       color: rgba(0, 0, 0, 0.45);
-      letter-spacing:0px;
       }
       #add_comb .modal-footer{
       padding: 15px;
@@ -515,12 +521,6 @@ head
                        -ms-transition: all 0.5s;
                         -o-transition: all 0.5s;
                            transition: all 0.5s;
-       }
-       .list-group-item .badge{
-        float: right;
-        background-color: #ee5d44;
-        color: white;
-        font-weight: 200;
        }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
