@@ -908,7 +908,7 @@ head
          $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_new[i].year);
         }
-        if(already_added_movie.indexOf(old+','+index)<0){
+        if(already_added_movie.indexOf(old+','+i)<0){
          $('.movie_add').text('Add to my list');
          $('.movie_add').removeClass('disabled');
         }
