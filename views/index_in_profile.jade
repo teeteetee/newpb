@@ -908,6 +908,14 @@ head
          $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
          $('.moviemodalyear').text(consolidated_m_new[i].year);
         }
+        if(already_added_movie.indexOf(old+','+index)<0){
+         $('.movie_add').text('Add to my list');
+         $('.movie_add').removeClass('disabled');
+        }
+        else{
+         $('.movie_add').text('Added to your list');
+         $('.movie_add').addClass('disabled');
+        }
         $('#moviemodal').modal('show');
         }
         //----------------------------//
@@ -930,13 +938,21 @@ head
          $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_new[i].author);
         }
+        if(already_added_book.indexOf(old+','+index)<0){
+         $('.book_add').text('Add to my list');
+         $('.movie_add').removeClass('disabled');
+        }
+        else{
+         $('.book_add').text('Added to your list');
+         $('.book_add').addClass('disabled');
+        }
         $('#bookmodal').modal('show');
         }
         //----------------------------//
         //----------------------------//
         var already_added_movie=[];
         function submit_movie(old,index){
-          if(already_added_movie.indexOf('old'+','+'index')<0)
+          if(already_added_movie.indexOf(old+','+index)<0)
           {
           var arr_name=old?'consolidated_m_old':'consolidated_m_new';
           // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
@@ -964,7 +980,7 @@ head
               .done(function( msg ) {
                 //alert('movie done');
                 $('#moviemodal').modal('hide');
-                var this_movie='old'+','+'index';
+                var this_movie=old+','+index;
                 already_added_movie.push(this_movie);
                 //window.location='/counter/comb';
               });}
@@ -975,7 +991,7 @@ head
         //---------------------------//
         var already_added_book=[];
         function submit_book(old,index){
-          if(already_added_book.indexOf('old'+','+'index')<0)
+          if(already_added_book.indexOf(old+','+index)<0)
           {var arr_name=old?'consolidated_b_old':'consolidated_b_new';
             $('#add').fadeOut(350);
             $('#wait').css('display','block');
@@ -1001,7 +1017,7 @@ head
                 .done(function( msg ) {
                   //alert(' book done');
                   $('#bookmodal').modal('hide');
-                  var this_book='old'+','+'index';
+                  var this_book=old+','+index;
                   already_added_book.push(this_book);
                   //window.location='/counter/comb';
                 });}
