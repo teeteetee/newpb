@@ -938,7 +938,7 @@ head
          $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
          $('.bookmodalauthor').text(consolidated_b_new[i].author);
         }
-        if(already_added_book.indexOf(old+','+index)<0){
+        if(already_added_book.indexOf(old+','+i)<0){
          $('.book_add').text('Add to my list');
          $('.movie_add').removeClass('disabled');
         }
@@ -980,7 +980,7 @@ head
               .done(function( msg ) {
                 //alert('movie done');
                 $('#moviemodal').modal('hide');
-                var this_movie=old+','+index;
+                var this_movie=old+','+i;
                 already_added_movie.push(this_movie);
                 //window.location='/counter/comb';
               });}
