@@ -819,9 +819,9 @@ head
         };
         //------------------//
         function change_nick(mode){
-          switch(mode):
+          switch(mode)
           {
-          case '1':
+          case 1:
           if($('#nick').val()){
              var data={};
              data.nick=$('#nick').val();
@@ -835,7 +835,7 @@ head
                    });
                  }
           break;
-          case '0':
+          case 0:
           if($('#nick_first').val()){
              var data={};
              data.nick=$('#nick_first').val();
