@@ -129,15 +129,18 @@ head
       .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
         background-color:#444;
       }
-      .btn-red{
+      .btn_mod .btn-red,.btn_mod .modal-footer .btn-red,.btn_mod .btn-red{
+        box-shadow:none;
+        border:none;
         background-color:#ee544d;
       }
-      .btn-red:hover{
+      .btn_mod .btn-red:hover,.btn_mod .modal-footer .btn-red:hover,.btn_mod .btn-red:hover {
         background-color:#da4b4b;
       }
       .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
       height:50px;
       border-radius:0px;
+      border-bottom:1px solid #333;
       color:white;
       }
       h4 {
@@ -579,7 +582,7 @@ head
               span(class="input-group-btn")
                 button(class="btn btn-add" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -594,7 +597,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
@@ -602,38 +605,6 @@ head
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4(class="modal-title" style='text-align:center;' ) Settings
-          //
-            .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
-              .row(style='border-top:1px solid #eee;') 
-                .col-xs-12
-                  label(for="backup") Download backup file
-                  .form-group
-                    button.btn.btn-add#backup download 
-              .row(style='border-top:1px solid #eee;') 
-                .col-xs-12
-                  .form-group
-                    label(for="exampleInputFile") Restore from backup file
-                    input(type="file" id="exampleInputFile")
-                    p(class="help-block") Restore from previously downloaded JSON backup file
-              .row(style='border-top:1px solid #eee;padding-bottom:19px;') 
-                .col-xs-12
-                  label(for="nick_group") Set nick
-                  .input-group#nick_group
-                    input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
-                    span(class="input-group-btn")
-                      button(class="btn btn-add" id='change_nick' type="button") Submit
-                  //
-                    .form-group
-                      label(for="nick") Set nick
-                      input(type="email" class="form-control" id="nick" placeholder="nickname")
-                      button.btn.btn-success#change_nick change nick
-              .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
-                .col-xs-12
-                  label(for='visibility') Email visibility
-                  .checkbox#visibility
-                    label
-                      input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
-                      |Show my email, so people can contact me
           .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
@@ -673,7 +644,7 @@ head
                         input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                         |Show my email, so people can contact me
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -720,7 +691,7 @@ head
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
                     button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -732,7 +703,7 @@ head
             h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
-            button(class='btn btn-iosdark form-control movie_remove btn-red') Remove
+            button(class='btn btn-iosdark form-control movie_remove ') Remove
     .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -744,7 +715,7 @@ head
             h5.bookmodalauthor(style='margin-bottom:30px;color:gray;')
             //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
             button(class='btn btn-iosdark  form-control book_switch') Switch column
-            button(class='btn btn-iosdark form-control book_remove btn-red') Remove
+            button(class='btn btn-iosdark form-control book_remove ') Remove
     .container(style='z-index:2;padding-top:70px;')
       .row(style='display:none;')
         .col-xs-12
