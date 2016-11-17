@@ -263,6 +263,11 @@ head
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
+        if(!validateEmail(vlgn)){
+        $('#mail').tooltip('destroy');
+        $('#mail').tooltip({title:'No such user',placement:'top',trigger: 'manual'}).tooltip('show');
+        return;
+        }
         if(vlgn&&vphr)
         {request = new XMLHttpRequest();
           request.onreadystatechange = function () {
