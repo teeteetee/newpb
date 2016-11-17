@@ -586,7 +586,7 @@ head
                       p(class="help-block") Restore from previously downloaded JSON backup file
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree3")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Set nick
+                  button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Set nick
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
@@ -869,6 +869,7 @@ head
                 if(!msg.trouble){
                   $('#nick').prop('placeholder',msg.mtext);
                   $('#change_nick').text('Change');
+                  $('#set_nick_button').text('Change nick');
                 }
                 });
             $.ajax({
