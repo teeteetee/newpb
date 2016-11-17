@@ -1318,8 +1318,8 @@ head
               });
            var insert;
            var friend_name=element.nick?element.nick:'User №'+element;
-           var away = 'window.location="/counter/profile/'+element._id+'"';
-             insert = "<li class=' list-group-item friend_"+element+"' id='"+element+"' onclick="+away+">"+friend_name+"</li>";
+           var away = 'window.location="/counter/profile/'+element+'"';
+             insert = "<li class=' list-group-item friend_"+element+"' id='f_"+element+"' onclick="+away+">"+friend_name+"</li>";
             $('.friendslist').prepend(insert);
            });
           } 
