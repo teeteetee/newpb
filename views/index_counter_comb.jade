@@ -447,7 +447,7 @@ head
         letter-spacing:1px;
         text-transform:uppercase;
        }
-       .friendlist .table>tbody>tr>th{
+       .friendlist .list-group-item{
         border-top:1px solid #eee;
        }
        .modal-backdrop.in {
@@ -548,10 +548,8 @@ head
             h4(class="modal-title" style='text-align:center;' ) You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
-            table.table
-              tbody.friendslist
-                tr.noitemsfriends
-                  th(style='padding-left:30px !important;') Пока пусто
+            ul.list-group.friendlist
+              li.list-group-item.noitemsfriends Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -1320,7 +1318,8 @@ head
               });
            var insert;
            var friend_name=element.nick?element.nick:'User №'+element;
-             insert = "<tr class='pop movie_"+element+"' id='"+element+"'><th style='padding-left:15px !important;'><a id='f_"+element+"' href='/counter/profile/"+element+"'>"+friend_name+"</a></th></tr>";
+           var away = 'window.location="/counter/profile/'+element._id+'"';
+             insert = "<li class=' list-group-item friend_"+element+"' id='"+element+"' onclick="+away+">"+friend_name+"</li>";
             $('.friendslist').prepend(insert);
            });
           } 
