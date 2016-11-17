@@ -776,12 +776,14 @@ head
         function populate(consolidated_current,consolidated_web) {
           console.log('hello');
           var count;
+          var date;
           consolidated_current.forEach(function (element,index){
             var done='';
+            date = new Date(element.tmstmp);
             if(element.done){
               done='<span class="label label-primary">DONE</span>';
             }
-            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')">'+element.c_text+done+" </li>";
+            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')"><h5 style="color:white;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</h5>'+element.c_text+done+" </li>";
             $('.first').append(insert);
             });
           consolidated_web.forEach(function (element,index){
