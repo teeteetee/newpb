@@ -1626,7 +1626,7 @@ app.post('/newuser',function(req,res){
     // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
     // CHECK MAIL BEFOR WRTING
     //checkmail function was here before being moved out of scope
-      counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,first_time:0,regdate:Date.now()},function (err,done){
+      counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
