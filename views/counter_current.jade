@@ -749,14 +749,14 @@ head
             $('.first').append(insert);
             });
           consolidated_web.forEach(function (element,index){
-            var insert='<li class="list-group-item " onclick="redactbookmodal('+index+')"><a href="http://'+element.r_link+'">'+element.r_name+"</a> </li>";
+            var insert='<li class="list-group-item "><a href="http://'+element.r_link+'">'+element.r_name+"</a> </li>";
             $('.second').append(insert);
             });
           }   
         function redactmoviemodal (i,done) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
-        if($('body').width()<$('body').height()) {
+        if(screen.width()<$screen.height()) {
           $('.modal-dialog').css('margin-top','60%');
         }
         else{
