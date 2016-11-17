@@ -824,6 +824,7 @@ head
           if($('#nick').val()){
              var data={};
              data.nick=$('#nick').val();
+             $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
                  url: "/counter/setnick",
@@ -838,6 +839,7 @@ head
           if($('#nick_first').val()){
              var data={};
              data.nick=$('#nick_first').val();
+             $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
                  url: "/counter/setnick",
