@@ -121,12 +121,18 @@ head
         background-color:#333;
         color:white;
       }
-      .btn_mod .btn-iosdark .btn-close,.btn_mod .modal-footer .btn-iosdark .btn-close,.btn_mod .btn-iosdark  .btn-close{
+      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
         box-shadow:none;
         border:none;
+        background-color:#222;
+      }
+      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
+        background-color:#444;
+      }
+      .btn-red{
         background-color:#ee544d;
       }
-      .btn_mod .btn-iosdark .btn-close:hover,.btn_mod .modal-footer .btn-iosdark .btn-close:hover,.btn_mod .btn-iosdark btn-red:hover {
+      .btn-red:hover{
         background-color:#da4b4b;
       }
       .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
@@ -574,7 +580,7 @@ head
               span(class="input-group-btn")
                 button(class="btn btn-add" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -589,7 +595,7 @@ head
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
