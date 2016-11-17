@@ -265,7 +265,7 @@ head
         console.log(vlgn +" , "+vphr);
         if(!validateEmail(vlgn)){
         $('#mail').tooltip('destroy');
-        $('#mail').tooltip({title:'Invalid email',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
+        $('#mail').tooltip({title:'Invalid email',placement:'top',trigger: 'manual'}).tooltip('show');
         $('#wait').css('display','none');
         return;
         }
@@ -288,11 +288,11 @@ head
           allowauth = 1;
           break;
           case('wrong pas'):
-          $('#mail').tooltip({title:'Wrong password',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
+          $('#mail').tooltip({title:'Wrong password',placement:'top',trigger: 'manual'}).tooltip('show');
           allowauth = 1;
           break;
           case('wronguser'):
-          $('#mail').tooltip({title:'No such user',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
+          $('#mail').tooltip({title:'No such user',placement:'top',trigger: 'manual'}).tooltip('show');
           allowauth =1;
           break;
           }}
@@ -309,7 +309,7 @@ head
           else {
             $('#wait').css('display','none');
             $('#mail').tooltip('destroy');
-            $('#mail').tooltip({title:'Provide emaili and password',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
+            $('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
           }
         }
         //END OF AUTHSUBMIT FUNCTION
