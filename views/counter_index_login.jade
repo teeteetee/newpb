@@ -268,18 +268,16 @@ head
           console.log('TROUBLE === 1');
           switch (parsed.mtext){
           case('db'):
-          $('#message').empty();
-          $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+          alert('db maintenance, service unavaliable');
+          //$('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
           allowauth = 1;
           break;
           case('wrong pas'):
-          $('#message').empty();
-          $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+          alert('wrong pas')''
           allowauth = 1;
           break;
           case('wronguser'):
-          $('#message').empty();
-          $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+          alert('No such user');
           allowauth =1;
           break;
           }}
@@ -351,10 +349,12 @@ head
           switch (parsed.mtext)
           {
           case('fail'):
-          $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+          console.log('db maintenance, service unavaliable');
+          //$('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
           break;
           case('email exists'):
-          $('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
+          console.log('povide another mail');
+          //$('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
           break;
           
           }
