@@ -533,14 +533,14 @@ app.post('/counter/getweb',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_web.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+  {counter_web.findOne({},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
       }
       else if(doc!=null){
         //console.log(doc);
-        ms.doc = doc;
+        ms.doc = doc[0];
         ms.trouble=0;
         res.send(ms);
       }
