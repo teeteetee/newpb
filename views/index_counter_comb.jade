@@ -1301,7 +1301,7 @@ head
         //---------------------------//
         //----------------------------//
         function populate_friends(consolidated) {
-          $('.friendslist').empty();
+          $('.friendlist').empty();
          consolidated.forEach(function (element,index){
             //if($(".noitemsfriends")[0])
             //       { console.log('HAS LENGTH');
@@ -1320,7 +1320,7 @@ head
            var friend_name=element.nick?element.nick:'User №'+element;
            var away = 'window.location="/counter/profile/'+element+'"';
              insert = "<li class=' list-group-item friend_"+element+"' id='f_"+element+"' onclick="+away+">"+friend_name+"</li>";
-            $('.friendslist').prepend(insert);
+            $('.friendlist').prepend(insert);
            });
           } 
         
