@@ -24,28 +24,23 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
-      @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
-      font-family:high;
-      src: url('/bootstrap/fonts/Attentica.ttf');
-      }
       body {
-        background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
+        background-color: #797979;
       }
       @media(min-width:768px){
         .navbar-collapse{
       background-color: transparent;
       }
-      .navbar-fixed-top{
-        background-color:rgba(255, 255, 255, 0.12);
+      .navbar-nav{
+        font-size:10px;
       }
       }
       @media(max-width:767px){
-        .navbar-collapse{
-      background-color: rgba(255, 255, 255, 0.82);
+      /*  .navbar-collapse{
+      background-color: rgba(0, 0, 0, 0.82);
+      }*/
+      .navbar-header{
+        background-color:black;
       }
       }
       h1, h2, h3, h4, h5, h6 {
@@ -77,51 +72,48 @@ head
       button:active,
       button:hover
       {
-          outline:0px !important;
+          outline:none !important;
           -webkit-appearance:none;
       }
-      .itemcol {
-        min-height:100vh;
-        padding-left:0px;
-        padding-right:0px;
-        padding-bottom:30px;
+      .btn-iosdark,btn-iosdark-add {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
       }
-      .itemcol h1{
-        margin-top:10%;
-        margin-bottom:0px;
-        color:black;
-        font-size:100px;
-        font-family:high;
-        text-align:center;
+      /*.btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
       }
-      .itemcol h5{
-        margin-top:0px;
-        margin-bottom:5%;
-        font-family:arial;
-        text-transform:uppercase;
-        letter-spacing:2px;
-        font-size:10px;
-        text-align:center;
-      }
-      //th:first-child {
-      //  padding-left:30px !important;
-      //}
-      th {
-        font-weight:300;
-      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }*/
       .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
         box-shadow:none;
         border:none;
-        background-color:#4cc177;
-        color: #3b905a;
+        border-bottom:1px solid #31a2bb;
+        color:#1f6a7b;
+        background-color:#36b7d4;;
       }
       .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
-        background-color:#40b36a;
+        background-color:#22a9c7;
+      }
+      .btn_mod .btn-red,.btn_mod .modal-footer .btn-red,.btn_mod .btn-red{
+        color:#822c28;
+        box-shadow:none;
+        border:none;
+        background-color:#ee544d;
+      }
+      .btn_mod .btn-red:hover,.btn_mod .modal-footer .btn-red:hover,.btn_mod .btn-red:hover {
+        color:#822c28;
+        background-color:#da4b4b;
+      }
+      .btn-red:active,btn-red:focus{
+        outline:0px !important;
       }
       .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
       height:50px;
       border-radius:0px;
-      border-bottom:1px solid #4e4e4e;
       }
       h4 {
         word-wrap:break-word;
@@ -161,15 +153,6 @@ head
           opacity: 0;
           filter: alpha(opacity=0);
       }
-      .btn-ioslight {
-        color:white;
-        background-color:#333;
-        border:1px solid #333;
-      }
-      .btn-ioslight:hover{
-        color:#333;
-        background-color:white;
-      }
       .modal-dialog {
       margin-top: 10%;
       }
@@ -185,9 +168,6 @@ head
       .form-control#year,.form-control#mtitle{
         color:#0d5830;
         font-weight:300 !important;
-      }
-      .form-control:focus{
-       /* border:none;*/
       }/*
       input[type=text]::-webkit-input-placeholder {font-weight:200;}
       input[type=text]::-moz-placeholder          {font-weight:200;}
@@ -206,24 +186,17 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
-      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
-          background-color: #ddd;
-      }
-      .dropdown-menu>.disabled>a:hover {
-        background-color: #ddd;
-        cursor:auto;
-      }
       #first_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
       }
       #second_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
       }
       #third_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
       }
       #fourth_lg{
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
       }
       .navbar-inverse .navbar-brand {
       color: white;
@@ -252,22 +225,27 @@ head
           background-color:rgba(255,255,255,0.2);
       }
       .data_lg .list-group-item{
-        color:white;
+        color:#2f2f2f;
         border:none;
         font-weight: 200;
        letter-spacing: 1px;
-       background-color: rgba(255, 255, 255, 0.48);
+       background-color: white;
+       border-top: 1px solid rgb(241, 241, 241);
       }
       .data_lg .list-group-item.disabled:hover{
-        background-color:rgba(0, 0, 0, 0.64);
+        background-color:white;
       }
       .data_lg .list-group-item.disabled{
-        color:#bdbdbd;
-        font-weight:100;
-        letter-spacing:1px;
-        background-color:rgba(0, 0, 0, 0.64);
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        font-weight: 500;
+        letter-spacing: 0px;
       }
-      .btn-add{
+      .data_lg .list-group-item:hover{
+        background-color:#eee;
+      }
+      /*.btn-add{
         border:none;
         background-color:rgba(0,0,0,0.4);
         color:white;
@@ -276,9 +254,10 @@ head
         border:none;
         background-color:white;
         color:#333;
-      }
+      }*/
       small {
       color: rgba(0, 0, 0, 0.45);
+      letter-spacing:0px;
       }
       #add_comb .modal-footer{
       padding: 15px;
@@ -288,7 +267,7 @@ head
       padding: 15px;
       text-align: center;
       }
-      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus,#settings .panel-group .panel .panel-heading .btn .form-control:focus {
       border-color: none;
       box-shadow:none;
       }
@@ -296,7 +275,7 @@ head
       text-align: center;
       background-color: rgb(238, 238, 238);
       }
-      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark,#settings .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
       background-color: white;
       color: #333;
       min-height: 50px;
@@ -305,14 +284,26 @@ head
       box-shadow: none;
       text-align: left;
       }
+      .btn-add {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        color:#347888;
+        border:1px solid #36b7d4;
+      }
       #add_comb .panel-body .btn-add {
-        background-color:#39cc95;
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
         letter-spacing:1px;
         margin:14px;
+        color:#347888;
+        border:none;
       }
-      #add_comb .panel-body .btn-add:hover {
+      /*#add_comb .panel-body */
+      #add_comb .panel-body .btn-add:hover, .btn-add:hover {
         color:white;
-        background-color:#32b798;
+        background-color:#3ad1f3;
+        border-color:#3ad1f3;
       }
       #add_comb .modal-body input.form-control {
       border: none;
@@ -334,35 +325,41 @@ head
         background-color:#f15330;
         color:white;
       }
-      #add_choice .panel-body{
+      #add_choice .panel-body,#settings_choice .panel-body{
         text-align:center;
         padding:0px;
       }
       #add_choice .panel-body .btn-add{
         margin:15px;
       }
-      #add_choice .panel-default>.panel-heading {
+      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
        color: #333;
        background-color: white;
        border-color: #ddd;}
-      #add_choice .panel-group .panel+.panel {
+      #add_choice .panel-group .panel+.panel,#settings_choice .panel-group .panel+.panel {
           margin-top: 0px;
       }
-      #add_choice .panel-group .panel {
+      #add_choice .panel-group .panel,#settings_choice .panel-group .panel {
           border-radius: 0px;
       }
-      #add_choice .panel-default>.panel-heading {
+      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
         height:50px;
       }
-      #add_choice .panel{
+      #add_choice .panel,#settings_choice .panel{
         border:none;
         border-bottom:1px solid #eee;
         background-color: #eee;
       }
-      #add_choice .panel-heading{
+      #add_choice .panel-heading,#settings_choice .panel-heading{
         padding:0px;}
-      #add_choice .panel-group{
+      #add_choice .panel-group,#settings_choice .panel-group{
         margin-bottom:0px;
+      }
+      #settings_choice .panel-body{
+        padding-top:20px;
+        padding-bottom:20px;
+        padding-left:15px;
+        padding-right:15px;
       }
       #accordion2 .panel-title .badge{
         margin-left:7px;
@@ -423,7 +420,7 @@ head
       .panel-default>.panel-heading+.panel-collapse>.panel-body {
         border:none;
       }
-      #add_choice .panel:last-child {
+      #add_choice .panel:last-child,#settings_choice .panel:last-child {
        border-bottom:none;
       }
       .navbar-inverse .navbar-toggle {
@@ -434,11 +431,55 @@ head
       }
       #row_margin .row {
         margin:0px;
-        padding-top:15px;
+        padding-top:20px;
+        padding-bottom:10px;
       }
       .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
         cursor:auto;
       }
+      .tooltip.top .tooltip-inner {
+          background-color:#ff6767;
+        }
+      .tooltip.top .tooltip-arrow {
+          border-top-color: #ff6767;
+       }
+       .btn-close{
+        letter-spacing:1px;
+        text-transform:uppercase;
+       }
+       .friendlist .table>tbody>tr>th{
+        border-top:1px solid #eee;
+       }
+       .modal-backdrop.in {
+           filter: alpha(opacity=50);
+           opacity: .65;
+       }
+       button.collapsed .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(0deg);
+         -moz-transform:    rotate(0deg);
+         -ms-transform:     rotate(0deg);
+         -o-transform:      rotate(0deg);
+         transform:         rotate(0deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       button .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(90deg);
+         -moz-transform:    rotate(90deg);
+         -ms-transform:     rotate(90deg);
+         -o-transform:      rotate(90deg);
+         transform:         rotate(90deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
       .btn-follow{
         background-color:transparent;
         border:1px solid rgba(255,255,255,0.3);
@@ -469,70 +510,69 @@ head
             li 
               a#settings_btn Settings
             li
-              a(href="/counter/logout") Logout
-          //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
-          //
-            form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-             .input-group
-                input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
-                span(class='input-group-btn')
-                  button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
-                    span(class='glyphicon glyphicon-search') 
+              a(href="/counter/logout") Logout 
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" ) You follow
+            h4(class="modal-title" style='text-align:center;' ) You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
-            table.table.table-striped(style='color:#0c7d57;')
+            table.table
               tbody.friendslist
                 tr.noitemsfriends
                   th(style='padding-left:30px !important;') Пока пусто
-          .modal-footer(style='text-align:center;')
-            button(class='btn btn-warning ' data-dismiss='modal') Close
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
-          .modal-header
+          .modal-header(style='border-bottom: 1px solid #eee;')
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" ) Settings
-          .modal-body#row_margin(style='padding-left:0px;padding-right:0px;')  
-            .row(style='border-top:1px solid #eee;') 
-              .col-xs-12
-                label(for="backup") Download backup file
-                .form-group
-                  button.btn.btn-ioslight#backup download 
-            .row(style='border-top:1px solid #eee;') 
-              .col-xs-12
-                .form-group
-                  label(for="exampleInputFile") Restore from backup file
-                  input(type="file" id="exampleInputFile")
-                  p(class="help-block") Restore from previously downloaded JSON backup file
-            .row(style='border-top:1px solid #eee;padding-bottom:19px;') 
-              .col-xs-12
-                label(for="nick_group") Set nick
-                .input-group#nick_group
-                  input(type="text" class="form-control" placeholder="nickname" id='nick')
-                  span(class="input-group-btn")
-                    button(class="btn btn-ioslight" id='change_nick' type="button") Submit
-                //
-                  .form-group
-                    label(for="nick") Set nick
-                    input(type="email" class="form-control" id="nick" placeholder="nickname")
-                    button.btn.btn-success#change_nick change nick
-            .row(style='border-top:1px solid #eee;padding-bottom:10px;') 
-              .col-xs-12
-                label(for='visibility') Profile visibility
-                .checkbox#visibility
-                  label
-                    input(type="checkbox") 
-                    |Your profile is visible only for logged in users. Make it visible to everybody?
+            h4(class="modal-title" style='text-align:center;' ) Settings
+          .modal-body#settings_choice
+            .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingOne3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                  .panel-body
+                    button.btn.btn-add#backup download 
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingTwo3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
+                #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
+                  .panel-body(style='padding-top:30px;')
+                    .form-group
+                      input(type="file" id="exampleInputFile")
+                      p(class="help-block") Restore from previously downloaded JSON backup file
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingThree3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Set nick
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                  .panel-body 
+                    .input-group#nick_group
+                      input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
+                      span(class="input-group-btn")
+                        button(class="btn btn-add" id='change_nick' type="button") Submit
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingFour3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                  .panel-body 
+                    .checkbox#visibility
+                      label
+                        input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
+                        |Show my email, so people can contact me
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control' data-dismiss="modal") Close
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
