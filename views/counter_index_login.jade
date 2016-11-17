@@ -252,6 +252,8 @@ head
         var allowauth = 1;
         function authsubmit() {
         allowauth = 0;
+        $('#mail').tooltip('destroy');
+        $('#p').tooltip('destroy');
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
@@ -274,11 +276,11 @@ head
           allowauth = 1;
           break;
           case('wrong pas'):
-          alert('wrong pas');
+          $('#p').tooltip({title:'Wrong password',placement:'top',trigger: 'manual'}).tooltip('show');
           allowauth = 1;
           break;
           case('wronguser'):
-          alert('No such user');
+          $('#mail').tooltip({title:'No such user',placement:'top',trigger: 'manual'}).tooltip('show');
           allowauth =1;
           break;
           }}
@@ -299,34 +301,40 @@ head
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
+        $('#reg_p').tooltip('destroy');
+        $('#reg_pc').tooltip('destroy');
+        $('#reg_mail').tooltip('destroy');
          var errcount =0;
         var vp = $('#reg_p').val();
         var vpc = $('#reg_pc').val();
         $('#message').empty();
         console.log(vp.length);
-        if(vpc.length === 0 && vp.length === 0) {
+        if(vpc.length === 0 || vp.length === 0) {
         console.log('pass length 0');
         //$('#message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        alert('Provide a password, and verify it');
-        $('#p').empty();
-        $('#pc').empty();
+        //alert('Provide a password, and verify it');
+        $('#reg_p').tooltip({title:'Provide a password',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#reg_pc').tooltip({title:'and verify it',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#reg_p').empty();
+        $('#reg_pc').empty();
         errcount++;
         }
         if(vp != vpc && errcount===0) {
         //$('#message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
-        alert("Passwords don't match");
-        $('#p').empty();
-        $('#pc').empty();
+        //alert("Passwords don't match");
+        $('#reg_p').tooltip({title:'Passwords dont match',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#reg_p').empty();
+        $('#reg_pc').empty();
         errcount++;
         }
-        
         var vmail = $('#reg_mail').val();
         console.log(vmail);
         var mailx = validateEmail(vmail);
         if(mailx != true)
         {
         //$('#message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        alert('Incorrect email');
+        //alert('Incorrect email');
+        $('#reg_mail').tooltip({title:'Invalid email',placement:'top',trigger: 'manual'}).tooltip('show');
         errcount++;
         }
         if(errcount!=0) {
@@ -346,18 +354,19 @@ head
           if (parsed.trouble === 1)
           {
           $('#wait').css('display','none');
-          $('#message').empty();
           switch (parsed.mtext)
           {
           case('fail'):
           console.log('db maintenance, service unavaliable');
+          alert('db maintenance, service unavaliable');
           //$('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
           break;
           case('email exists'):
           console.log('povide another mail');
+          $('#reg_mail').tooltip('destroy');
+          $('#reg_mail').tooltip({title:'Provide another email',placement:'top',trigger: 'manual'}).tooltip('show');
           //$('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
           break;
-          
           }
           }
           else { console.log('HEY');window.location = '/counter';}
