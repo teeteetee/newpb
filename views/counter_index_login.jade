@@ -265,7 +265,8 @@ head
         console.log(vlgn +" , "+vphr);
         if(!validateEmail(vlgn)){
         $('#mail').tooltip('destroy');
-        $('#mail').tooltip({title:'No such user',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#mail').tooltip({title:'Invalid email',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#wait').css('display','none');
         return;
         }
         if(vlgn&&vphr)
