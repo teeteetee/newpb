@@ -259,7 +259,6 @@ head
         function authsubmit() {
         allowauth = 0;
         $('#mail').tooltip('destroy');
-        $('#p').tooltip('destroy');
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
@@ -288,7 +287,7 @@ head
           allowauth = 1;
           break;
           case('wrong pas'):
-          $('#p').tooltip({title:'Wrong password',placement:'top',trigger: 'manual'}).tooltip('show');
+          $('#mail').tooltip({title:'Wrong password',placement:'top',trigger: 'manual'}).tooltip('show');
           allowauth = 1;
           break;
           case('wronguser'):
@@ -308,7 +307,8 @@ head
           request.send("phr="+vphr+"&lgn="+vlgn);}
           else {
             $('#wait').css('display','none');
-            alert('smt is wrong');
+            $('#mail').tooltip('destroy');
+            $('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
           }
         }
         //END OF AUTHSUBMIT FUNCTION
