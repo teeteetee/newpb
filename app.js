@@ -1579,6 +1579,12 @@ app.get('/counter/showusers',function (req,res){
   });
 });
 
+app.get('/counter/showweb',function (req,res){
+  counter_web.find({},function(err,done){
+       res.send(JSON.stringify(done));
+  });
+});
+
 app.get('/counter/showme',function (req,res){
   counter_users.findOne({_id:req.session._id},function(err,done){
     counter_books.findOne({uid:JSON.stringify(req.session._id)},function(err,done1){
