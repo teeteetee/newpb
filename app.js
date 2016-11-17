@@ -533,7 +533,7 @@ app.post('/counter/getweb',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_web.find{},function(err,doc){
+  {counter_web.find({},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
