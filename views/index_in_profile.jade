@@ -608,7 +608,7 @@ head
            h3#user_name(style='color:white;font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
-           h5#user_mail(style='color:white;font-weight:200;')
+           h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
            button.btn.btn-follow(type='button') Follow
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
@@ -656,7 +656,7 @@ head
         console.log('mail: '+mail);
         if(mail.length>1){
           $('#user_mail').text(mail);
-          $('.btn-follow').css({'margin-bottom':'30px','margin-top':'30px'});
+          $('.btn-follow').css('margin-bottom','30px');
         }
         var isfriend = #{isfriend};
         if(isfriend){
