@@ -543,7 +543,7 @@ head
             .input-group(style='padding-top:10px;padding-bottom:15px;')
               input(type="text" class="form-control" placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
-                button(class="btn btn-add" id='change_nick_first' type="button") save   
+                button(class="btn btn-add" onclick="change_nick(0);" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
@@ -593,7 +593,7 @@ head
                     .input-group#nick_group
                       input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                       span(class="input-group-btn")
-                        button(class="btn btn-add" id='change_nick' type="button") Submit
+                        button(class="btn btn-add" onclick="change_nick(1);" id="change_nick" type="button") Submit
               .panel.panel-default
                 .panel-heading(role="tab" id="headingFour3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
@@ -782,19 +782,74 @@ head
            // e.onchange = e.oninput; // FF needs this in <select><option>...
            // other things for onload()
         };
-        $('#change_nick').click(function(){
-          if($('#nick').val()){
+        //------------------//
+        onload = function () {
+           $(function () {
+             $('[data-toggle="tooltip"]').tooltip()
+           });
+           var e = document.getElementById('nick_first');
+           e.oninput = (function(){
+          if($('#nick_first').val()&&$('#nick_first').val().length>2){
                     var data={};
-                    data.nick=$('#nick').val();
+                    data.nick=$('#nick_first').val();
                     $.ajax({
                         method: "POST",
-                        url: "/counter/setnick",
+                        url: "/counter/chcknck",
                         data: data
-                      })
-                        .done(function( msg ) {
-                          window.location='/counter/comb';
+                      }).done(function( msg ) {
+                          if(msg.mtext){
+                            console.log('MTEXT: '+msg.mtext);
+                              $('#change_nick_first').prop('disabled',false);
+                              console.log('DISABLED OFF');
+                            $('#nick_first').tooltip('destroy');
+                          }
+                            else{
+                              console.log('no')
+                             $('#nick_first').tooltip({title:'This nick is taken',placement:'top',trigger: 'manual'}).tooltip('show');
+                             $('#change_nick_first').prop('disabled',true);
+                            }
                           });
                         }
+                        else{
+                          $('#nick_first').tooltip({title:'Too short',placement:'top',trigger: 'manual'}).tooltip('show')
+                          $('#change_nick_first').prop('disabled',true);
+                        }
+            })
+           e.onpropertychange = e.oninput; 
+        };
+        //------------------//
+        function change_nick(mode){
+          switch(mode):
+          {
+          case '1':
+          if($('#nick').val()){
+             var data={};
+             data.nick=$('#nick').val();
+             $.ajax({
+                 method: "POST",
+                 url: "/counter/setnick",
+                 data: data
+               })
+                 .done(function( msg ) {
+                   window.location='/counter/comb';
+                   });
+                 }
+          break;
+          case '0':
+          if($('#nick_first').val()){
+             var data={};
+             data.nick=$('#nick_first').val();
+             $.ajax({
+                 method: "POST",
+                 url: "/counter/setnick",
+                 data: data
+               })
+                 .done(function( msg ) {
+                   window.location='/counter/comb';
+                   });
+                 }
+          break;
+          }
           });
         function add_dialog() {
           $('#add_comb').modal('show');
