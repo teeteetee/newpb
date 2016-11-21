@@ -442,11 +442,11 @@ head
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.post_body = $(#post_body).val();
-           data.heading = $(#heading).val();
-           data.web_link = $(#web_link).val();
-           data.picture = $(#picture).val();
-           data.post_tags = $(#post_tags).val();
+           data.post_body = $('#post_body').val();
+           data.heading = $('#heading').val();
+           data.web_link = $('#web_link').val();
+           data.picture = $('#picture').val();
+           data.post_tags = $('#post_tags').val();
           $.ajax({
               method: "POST",
               url: "/ltsp/add",
