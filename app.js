@@ -101,7 +101,7 @@ app.get('/ltps/login',function (req,res) {
   if(req.session&&req.session._id){
   res.render('ltps_admin');}
   else {
-    res.render('ltps');
+    res.render('ltps_login');
   }
 });
 
@@ -178,7 +178,7 @@ app.post('/ltps/newuser',function(req,res){
     }
     var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
     var ms = {};
-      ltps.insert({mail:vmail,phr:vp,posts:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
+      ltps_users.insert({mail:vmail,phr:vp,posts:0,regdate:Date.now()},function (err,done){
         if(err)
         {
           ms.mtext='db';
@@ -195,6 +195,42 @@ app.post('/ltps/newuser',function(req,res){
     
     });
 
+
+app.post('/ltps/check',function(req,res){
+  vphr=req.body.phr;
+  vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
+   var  ms = {};
+  ms.trouble=1;
+  ms.mtext='db';
+  ltps_users.findOne({mail:vlgn},function(err,confirmed){
+    if (err)
+      {res.send(ms);}
+    else 
+    {
+      if (confirmed)
+      {console.log('we have found :'+JSON.stringify(confirmed));
+          if(bcrypt.compareSync(vphr,confirmed.phr))
+          {
+          req.session._id = confirmed._id;
+          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+          ms.trouble = 0;
+          ms.mtext= 'success';
+          res.send(ms);
+           }
+           else {
+            ms.mtext='wrong pas';
+              res.send(ms);
+              //WRONG PASSWORD
+           } 
+      }
+      else {
+        ms.mtext='wronguser'
+        res.send(ms);
+      }
+    }
+  });
+});
 //----------------------//
 
 
