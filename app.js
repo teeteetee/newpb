@@ -152,7 +152,7 @@ app.post('/ltps/getposts',function (req,res){
       else {
         res.send(ms);
       }
-    });}
+    });
 });
 
 app.post('/ltps/newuser',function(req,res){
