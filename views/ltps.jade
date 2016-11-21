@@ -274,6 +274,10 @@ head
       font-weight: 100;
       letter-spacing: 2px;
       }
+      .modal-body .row{
+        padding-left:15px;
+        padding-right:15px;
+      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;')
       .container
@@ -282,16 +286,16 @@ head
             h1(style='color:#d2d2d2;text-align:center;font-family:high;letter-spacing:4px;') ЛЕТОПИСЕЦ
     .modal.fadebtn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog
-        .modal-content#colourful
-          .modal-header(style='margin-bottom:20px;')
+        .modal-content
+          .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
             h4#heading.modal-title(style="font-weight:200;")
           .modal-body(style='text-align:left;padding:0px;')
             img#picture(style='width:100%;')
-            .row
+            .row(style='margin-top:20px;')
               #post_body
-            .row(style='color:#ddd;margin-top:20px;margin-bottom:20px;')
+            .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
               span#tags
     .container(style='z-index:2;')
       .row
