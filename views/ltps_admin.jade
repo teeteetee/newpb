@@ -265,9 +265,23 @@ head
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
-        .row  
-          .col-xs-12
-            h1(style='color:white;') ЛЕТОПИСЬ
+        .navbar-header
+          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="/") TASKS
+        .collapse.navbar-collapse#navbar
+          ul(class='nav navbar-nav')
+            li
+              a(data-toggle='modal' data-target="#add_post")
+               span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
+               | Add post
+            li
+              a(href="/counter/logout") 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
+                |Logout
     .modal.fade.bs-example-modal-sm(id='add_post' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -405,7 +419,63 @@ head
               });
         }
         //-----------------------------------//
-        
+        function switch_movie(i) {
+          var data={};
+          data.vstatus=consolidated[i].done;
+          data._id=consolidated[i]._id;
+          $.ajax({
+                method: "POST",
+                url: "/counter/current/done",
+                data: data
+              })
+                .done(function( msg ) {
+                window.location='/counter/current';
+                });
+        }
+        //----------------------------//
+        function submit_post( old){
+          var mtitle;
+          if(old){mtitle="#mtitle_old";}
+          else{mtitle="#mtitle_new";}
+        if($('#post_body').val() && $('#heading').val()&&$('#web_link').val()){
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.post_body = $('#post_body').val();
+           data.heading = $('#heading').val();
+           data.web_link = $('#web_link').val();
+           data.picture = $('#picture').val();
+           data.post_tags = $('#post_tags').val();
+          $.ajax({
+              method: "POST",
+              url: "/ltps/add",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/ltps';
+              });
+          }
+        }
+        function submit_web(){
+        if($(web_title).val()&&$(web_address).val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.r_name = $(web_title).val();
+           data.r_link = $(web_address).val();
+          $.ajax({
+              method: "POST",
+              url: "/counter/addweb",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/current';
+              });
+          }
+        }
         
         
         
