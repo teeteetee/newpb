@@ -348,10 +348,10 @@ head
                        consolidated.push(element);
                     });
                    }
-                   if(consolidated_current.length){
-                    sortByKey(consolidated_current,'tmstmp');
+                   if(consolidated.length){
+                    sortByKey(consolidated,'tmstmp');
                    }
-                   if(!consolidated_current.length){
+                   if(!consolidated.length){
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                    }
                    populate(consolidated);
