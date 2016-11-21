@@ -24,7 +24,9 @@ head
         /*background-color:#1d1d1d;*/
         background-color:#111;
       }
+      .navbar{
       background-color: #111;
+      }
       @media(min-width:768px){
         .navbar-collapse{
       background-color: transparent;
@@ -278,18 +280,17 @@ head
         .row  
           .col-xs-12
             h1(style='color:#d2d2d2;text-align:center;font-family:high;letter-spacing:4px;') ЛЕТОПИСЬ
-    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
           .modal-body(style='text-align:center;')
-            h4.moviemodaltitle(style='margin-top:20px;font-weight:400;')
-            h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
-            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control movie_switch') Switch column
-            button(class='btn btn-iosdark form-control movie_remove') Remove
+            img#picture
+            h3.heading
+            span#post_body
+            span#tags(style='color:#ddd;')
     .container(style='z-index:2;')
       .row
         .col-md-8.col-md-offset-2
@@ -347,11 +348,11 @@ head
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
             style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
-            var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
+            var insert='<li class="list-group-item onclick="postmodal('+index+')" "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
             $('.first').append(insert);
             });
           }    
-        function redactmoviemodal (i,done) {
+        function postmodal (i) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if(screen.width<screen.height) {
@@ -360,20 +361,11 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+i+','+done+')';
-        insert2 = 'switch_movie('+i+','+done+')';
-        $('.movie_remove').attr('onclick',insert);
-        $('.movie_switch').attr('onclick',insert2);
-        $('.moviemodaltitle').text(consolidated[i].c_text);
-        //$('.moviemodalyear').text(consolidated[i].year);
-        if(done)
-        {
-         $('.movie_switch').text('Mark as not done');
-        }
-        else{
-         $('.movie_switch').text('Mark as done');
-        }
-        $('#moviemodal').modal('show');
+        $('#heading').text(consolidated[i].heading);
+        $('#post_body').text(consolidated[i].post_body);
+        $('#picture').attr('src',consolidated[i].picture);
+        $('#tags').text(consolidated[i].tags);
+        $('#postmodal').modal('show');
         }
         //----------------------------//
         function removemovie(i) {
