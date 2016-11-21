@@ -123,13 +123,13 @@ app.post('/ltps/add',function (req,res){
     console.log('POST \n'+req.body.heading+'\n'+req.body.post_body+'\n'+req.body.web_link+'\n'+req.body.picture+'\n'+req.body.post_tags+'\n');
     var vtmstmp=Date.now();
     var ms={};
-  ltps_posts.insert({heading:req.body.heading,post_body:req.body.post_body,web_link:req.body.web_link,author_id:req.session._id,picture:req.body.picture,tags:req.body.post_tags,views:0,share:0,tmstmp:vtmstmp},function(err,done){
+  ltps_posts.insert({heading:req.body.heading,post_body:req.body.post_body,web_link:req.body.web_link,author_id:req.session._id,picture:req.body.picture,tags:req.body.post_tags,views:0,share:0,tmstmp:vtmstmp},function (err,done){
     if(err){
       ms.trouble=1;
       res.send(ms);
     }
     else{
-      console.log('breakpoint');
+      console.log('breakpoint:'+done);
       ltps_users.update({_id:req.session._id},{$inc:{posts:1}},function (err,done){
         if(err){
           console.log('users update err');
