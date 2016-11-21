@@ -6,7 +6,7 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title P&B
+    title Летопись
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -72,33 +72,12 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      .btn-iosdark,btn-iosdark-add {
-      background-color:white;
-      border:1px solid #333;
-      color:#333;
-      }
-      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosdark.active {
-        background-color:#333;
-        color:white;
-      }
-      .btn-iosdark .badge {
-        background-color:#ddd;
-        color:#333;
-      }
-      .btn-iosdark.active .badge {
-        background-color:white;
-        color:#333;
-      }
-      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
+      .btn_mod .btn,.btn_mod .modal-footer .btn,.btn_mod .btn {
         box-shadow:none;
         border:none;
         background-color:#4cc177;
       }
-      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
+      .btn_mod .btn:hover,.btn_mod .modal-footer .btn:hover,.btn_mod .btn:hover {
         background-color:#40b36a;
       }
       .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
@@ -128,22 +107,6 @@ head
       .modal-content{
         border:none;
         box-shadow:none;
-      }
-      .fileUpload {
-          position: relative;
-          overflow: hidden;
-          margin: 10px;
-      }
-      .fileUpload input.upload {
-          position: absolute;
-          top: 0;
-          right: 0;
-          margin: 0;
-          padding: 0;
-          font-size: 20px;
-          cursor: pointer;
-          opacity: 0;
-          filter: alpha(opacity=0);
       }
       .modal-dialog {
       margin-top: 10%;
@@ -181,33 +144,6 @@ head
       background-color: #1aa057;
       border: 1px solid #178e4d;
       }
-      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
-          background-color: #ddd;
-      }
-      .dropdown-menu>.disabled>a:hover {
-        background-color: #ddd;
-        cursor:auto;
-      }
-      /*#first_lg{
-        border-radius:4px;
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
-        background: -webkit-linear-gradient(90deg, #0180bd 0%,#0eb2e6 100%);
-      }
-      #second_lg{
-        border-radius:4px;
-        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
-        background: -webkit-linear-gradient(90deg, #9e2267 0%,#f15681 100%);
-      }*/
-      #first_lg{
-        background-color:white;
-        border-radius:4px;
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
-      }
-      #second_lg{
-        background-color:white;
-        border-radius:4px;
-        box-shadow: 0px 6px 15px 3px #6f6e6e;
-      }
       .navbar-inverse .navbar-brand {
       color: white;
       font-family: boldproxima;
@@ -234,57 +170,14 @@ head
           color: #333;
           background-color:rgba(255,255,255,0.2);
       }
-      .data_lg .list-group-item{
-        color:#2f2f2f;
-        border:none;
-        font-weight: 200;
-       letter-spacing: 1px;
-       background-color: white;
-       border-top: 1px solid rgb(241, 241, 241);
-      }
-      .data_lg .list-group-item.disabled:hover{
-        background-color:white;
-      }
-      .data_lg .list-group-item.disabled{
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
-        font-weight: 500;
-        letter-spacing: 0px;
-      }
-      .data_lg .list-group-item:hover{
-        background-color:#eee;
-      }
-      /*.btn-add{
-        border:none;
-        background-color:rgba(0,0,0,0.4);
-        color:white;
-      }
-      .btn-add:focus,.btn-add:active,.btn-add:hover{
-        border:none;
-        background-color:white;
-        color:#333;
-      }*/
       small {
       color: rgba(0, 0, 0, 0.45);
       }
-      #add_comb .modal-footer{
+      .modal-footer{
       padding: 15px;
       text-align: center;
       }
-      #friends .modal-footer{
-      padding: 15px;
-      text-align: center;
-      }
-      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
-      border-color: none;
-      box-shadow:none;
-      }
-      #add_comb .sec {
-      text-align: center;
-      background-color: rgb(238, 238, 238);
-      }
-      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn {
       background-color: white;
       color: #333;
       min-height: 50px;
@@ -292,27 +185,6 @@ head
       border: none;
       box-shadow: none;
       text-align: left;
-      }
-      .btn-add {
-        /*background-color:#39cc95;*/
-        background-color:#36b7d4;
-        letter-spacing:1px;
-        color:#347888;
-        border:1px solid #36b7d4;
-      }
-      #add_comb .panel-body .btn-add {
-        /*background-color:#39cc95;*/
-        background-color:#36b7d4;
-        letter-spacing:1px;
-        margin:14px;
-        color:#347888;
-        border:none;
-      }
-      /*#add_comb .panel-body */
-      #add_comb .panel-body .btn-add:hover, .btn-add:hover {
-        color:white;
-        background-color:#3ad1f3;
-        border-color:#3ad1f3;
       }
       #add_comb .modal-body input.form-control {
       border: none;
@@ -334,97 +206,8 @@ head
         background-color:#f15330;
         color:white;
       }
-      #add_choice .panel-body{
-        text-align:center;
-        padding:0px;
-      }
-      #add_choice .panel-body .btn-add{
-        margin:15px;
-      }
-      #add_choice .panel-default>.panel-heading {
-       color: #333;
-       background-color: white;
-       border-color: #ddd;}
-      #add_choice .panel-group .panel+.panel {
-          margin-top: 0px;
-      }
-      #add_choice .panel-group .panel {
-          border-radius: 0px;
-      }
-      #add_choice .panel-default>.panel-heading {
-        height:50px;
-      }
-      #add_choice .panel{
-        border:none;
-        border-bottom:1px solid #eee;
-        background-color: #eee;
-      }
-      #add_choice .panel-heading{
-        padding:0px;}
-      #add_choice .panel-group{
-        margin-bottom:0px;
-      }
-      #accordion2 .panel-title .badge{
-        margin-left:7px;
-      }
-      .panel-group .panel+.panel {
-      margin-top:0px;
-      border-radius: 0px;
-      }
-      .panel-group .panel{
-        border-radius: 0px;
-      }
-      #accordion2 .panel{
-        border:none;
-        border-bottom:1px solid rgba(0,0,0,0.32);
-        color:white;
-      }
-      #accordion2 small{
-        color:rgba(230, 230, 230, 0.45);
-      }
-      #accordion2 .panel:last-child{
-        border:none;
-      }
-      #accordion2 .panel-default .panel-heading{
-       height: 20%;
-      padding: 15%;
-      }
-      #accordion2 .list-group-item {
-        background-color:rgba(255,255,255,0.35);
-        border:none;
-        font-weight:200;
-        font-size:17px;
-        letter-sapcing:1px;
-        padding:17px 15px;
-      }
       h4.panel-title{
         color: rgba(255, 255, 255, 0.8);
-      }
-      .panel-default>.panel-heading {
-        color:white;
-        background-color:transparent;
-      }
-      .panel {
-        background-color:rgba(0,0,0,0.34);
-      }
-      .glyphicon-chevron-right{
-        color:rgba(255, 255, 255, 0.51);
-      }
-      .panel-title{
-        letter-spacing:1px;
-      }
-      #accordion2 .panel-body{
-        padding:0px;
-      }
-      #accordion2 .list-group-item:first-child {
-        border-radius:0px;}
-      #accordion2 .list-group-item:last-child {
-        border-radius:0px;}  
-      .panel-default>.panel-heading+.panel-collapse>.panel-body {
-        border:none;
-      }
-      #add_choice .panel:last-child {
-       border-bottom:none;
       }
       .navbar-inverse .navbar-toggle {
         border-color:white;
@@ -432,70 +215,53 @@ head
       .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
           border-color: #f5f5f5;
       }
-      #row_margin .row {
-        margin:0px;
-        padding-top:20px;
-        padding-bottom:10px;
+      .btn-close{
+       letter-spacing:1px;
+       text-transform:uppercase;
       }
-      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
-        cursor:auto;
+      .modal-backdrop.in {
+          filter: alpha(opacity=50);
+          opacity: .65;
       }
-      .tooltip.top .tooltip-inner {
-          background-color:#ff6767;
-        }
-      .tooltip.top .tooltip-arrow {
-          border-top-color: #ff6767;
-       }
-       .btn-close{
-        letter-spacing:1px;
-        text-transform:uppercase;
-       }
-       .friendlist .table>tbody>tr>th{
-        border-top:1px solid #eee;
-       }
-       .modal-backdrop.in {
-           filter: alpha(opacity=50);
-           opacity: .65;
-       }
-       button.collapsed .glyphicon-chevron-right
-       {
-         -webkit-transform: rotate(0deg);
-         -moz-transform:    rotate(0deg);
-         -ms-transform:     rotate(0deg);
-         -o-transform:      rotate(0deg);
-         transform:         rotate(0deg);
-         -webkit-transition: all 0.5s;
-                      -moz-transition: all 0.5s;
-                       -ms-transition: all 0.5s;
-                        -o-transition: all 0.5s;
-                           transition: all 0.5s;
-       }
-       button .glyphicon-chevron-right
-       {
-         -webkit-transform: rotate(90deg);
-         -moz-transform:    rotate(90deg);
-         -ms-transform:     rotate(90deg);
-         -o-transform:      rotate(90deg);
-         transform:         rotate(90deg);
-         -webkit-transition: all 0.5s;
-                      -moz-transition: all 0.5s;
-                       -ms-transition: all 0.5s;
-                        -o-transition: all 0.5s;
-                           transition: all 0.5s;
-       }
-       .label {
-        margin-left: 10px;
-        font-weight:200;
-       }
-       .label-primary{
-        background-color:#40c186;
-       }
-       .list-group-item .badge{
-        float: right;
-        background-color: #ee5d44;
-        color: white;
-        font-weight: 200;
-       }
+      button.collapsed .glyphicon-chevron-right
+      {
+        -webkit-transform: rotate(0deg);
+        -moz-transform:    rotate(0deg);
+        -ms-transform:     rotate(0deg);
+        -o-transform:      rotate(0deg);
+        transform:         rotate(0deg);
+        -webkit-transition: all 0.5s;
+                     -moz-transition: all 0.5s;
+                      -ms-transition: all 0.5s;
+                       -o-transition: all 0.5s;
+                          transition: all 0.5s;
+      }
+      button .glyphicon-chevron-right
+      {
+        -webkit-transform: rotate(90deg);
+        -moz-transform:    rotate(90deg);
+        -ms-transform:     rotate(90deg);
+        -o-transform:      rotate(90deg);
+        transform:         rotate(90deg);
+        -webkit-transition: all 0.5s;
+                     -moz-transition: all 0.5s;
+                      -ms-transition: all 0.5s;
+                       -o-transition: all 0.5s;
+                          transition: all 0.5s;
+      }
+      .label {
+       margin-left: 10px;
+       font-weight:200;
+      }
+      .label-primary{
+       background-color:#40c186;
+      }
+      .list-group-item .badge{
+       float: right;
+       background-color: #ee5d44;
+       color: white;
+       font-weight: 200;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -511,11 +277,7 @@ head
             li
               a(onclick='add_dialog()')
                span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
-               | Add item
-            li
-              a(href="/counter/comb") 
-                span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
-                |Profile
+               | Add post
             li
               a(href="/counter/logout") 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
@@ -528,25 +290,13 @@ head
               span(aria-hidden="true") ×
             h4(class="modal-title" style='text-align:center;') Add item
           .modal-body#add_choice
-            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingOne")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Добавить задачу
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
-                  .panel-body
-                    input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст задачи")
-                    button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
-                .panel-heading(role="tab" id="headingTwo")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseOne") Добавить веб ресурс
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
-                  .panel-body
-                    input#web_title(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Название")
-                    input#web_address(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Адрес")
-                    button(class='btn btn-sm btn-add' onclick='submit_web(1)') Добавить
+            input#post_body(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Заголовок") 
+            textarea#heading(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст")  
+            input#web_link(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Ссылка")
+            input#picture(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Картинка")
+            input#post_tags(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Тэги")  
           .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+            button(class='btn btn-iosdark form-control btn-close' onclick='submit_post()') POST
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -560,100 +310,12 @@ head
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
-      .row(style='display:none;')
-        .col-xs-12
-          form(method='post',action='/backup',role='form',id='backupform')
       .row.visible-md.visible-lg.data_lg
-        .col-sm-3
+        .col-xs-8.col-xs-offset-2
           ul.list-group.first#first_lg
-        .col-sm-3
-          ul.list-group.second#second_lg
-        //
-          .col-sm-3
-            ul.list-group.third#third_lg
-          .col-sm-3
-            ul.list-group.fourth#fourth_lg
-      .row.visible-sm.visible-xs
-        .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
-          .panel.panel-default
-            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
-              h4(class="panel-title") Задачи
-                span.badge#num_one
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.first
-            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#web" aria-expanded="true" aria-controls="web")
-              h4(class="panel-title") WEB
-                span.badge#num_two
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #web(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.second
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        function add_dialog() {
-          $('#add_comb').modal('show');
-        }
-        $('#settings_btn').click(function(){
-          $('#nick').tooltip('destroy');
-          $('#settings').modal('show');
-          $.ajax({
-              method: "POST",
-              url: "/counter/gn/"+'#{_id}',
-              data: 0
-            })
-              .done(function( msg ) {
-                if(!msg.trouble){
-                  $('#nick').prop('placeholder',msg.mtext);
-                  $('#change_nick').text('Change');
-                }
-                });
-            $.ajax({
-            method: "POST",
-            url: "/counter/getshowmail/"+'#{_id}',
-            data: 0
-          }).done(function( msg ) {
-               if(msg.mtext)
-               {$('#show_mail').prop('checked',true);}
-            });
-          });
-        $('#backup').click(function(){
-          $('#backupform').submit();
-          });
-        $('#about').click(function(){
-          if($('#oldones').css('display')!='none'){
-          $('#oldones').css('overflow','hidden');
-          }
-          else {
-          $('#newones').css('overflow','hidden');
-          }
-          $('#wait').fadeIn();
-          });
-        $('.seen').click(function(){
-          if(!$('.seen').hasClass('active')){
-            $('#newones').hide();
-            $('#oldones').show();
-            $('.new').removeClass('active');
-            $('.seen').addClass('active');
-          }
-          });
-        $('.new').click(function(){
-          if(!$('.new').hasClass('active')) {
-            $('#newones').show();
-            $('#oldones').hide();
-            $('.seen').removeClass('active');
-            $('.new').addClass('active');
-          }
-          });
-        $('#closewait').click(function(){
-          $('#wait').fadeOut();
-          if($('#oldones').css('display')!='none'){
-          $('#oldones').css('overflow','auto');
-          }
-          else {
-          $('#newones').css('overflow','auto');
-          }
-          });
         //----------------------------//
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
@@ -668,13 +330,10 @@ head
           $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
         }
         //---------------------------//
-        var seenmovies;
-        var newmovies;
-        var consolidated_current=[];
-        var consolidated_web=[];
+        var consolidated=[];
         $.ajax({
               method: "POST",
-              url: "/counter/current/get",
+              url: "/ltps/getposts",
               data: 0
             })
               .done(function( msg ) {
@@ -686,71 +345,26 @@ head
                    else {
                     //$('#currentnum').text(msg.msg.length);
                     msg.msg.forEach(function (element,index){
-                       consolidated_current.push(element);
+                       consolidated.push(element);
                     });
                    }
                    if(consolidated_current.length){
                     sortByKey(consolidated_current,'tmstmp');
                    }
-                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Задачи</li>');
-                   $('#num_one').text(consolidated_current.length);
                    if(!consolidated_current.length){
                     $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
                    }
-                   else {
-                    //populate(consolidated_current);
-                    //---------------------//
-                    $.ajax({
-                         method: "POST",
-                         url: "/counter/getweb",
-                         data: 0
-                       })
-                         .done(function( msg ) {
-                           if(!msg.trouble) {
-                             console.log('web: '+JSON.stringify(msg.doc));
-                             var articles = msg.doc;
-                             if(!articles||!articles.weblinkstore) {
-                              console.log('no movies');
-                              }
-                              else {
-                               //$('#currentnum').text(msg.msg.length);
-                               articles.weblinkstore.forEach(function (element,index){
-                                  consolidated_web.push(element);
-                               });
-                              }
-                              if(consolidated_web.length){
-                               sortByKey(consolidated_web,'tmstmp');
-                              }
-                              $('#second_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_web.length+'</span>Сайты</li>');
-                              $('#num_two').text(consolidated_web.length);
-                              if(!consolidated_web.length){
-                               $('#second_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
-                              }
-                              else {
-                               populate(consolidated_current,consolidated_web);
-                              }
-                            }});
-                    //---------------------//
-                   }
+                   populate(consolidated);
                  }});
                    
         //----------------------------//
-        function populate(consolidated_current,consolidated_web) {
+        function populate(consolidated) {
           console.log('hello');
           var count;
           var date;
           consolidated_current.forEach(function (element,index){
-            var done='';
-            date = new Date(element.tmstmp);
-            if(element.done){
-              done='<span class="label label-primary">DONE</span>';
-            }
-            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')"><span style="color:rgba(0,0,0,0.5);letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br>'+element.c_text+done+" </li>";
+            var insert='<li class="list-group-item "><span style="color:rgba(0,0,0,0.5);letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br>'+element.heading+'</br>'+element.post_body+'</br>'+element.web_link+'</br>'+element.picture+'</br>'+element.post_tags+'</br><strong> Views:'+element.views+'</br> Shared:'+element.share+'</strong> </li>';
             $('.first').append(insert);
-            });
-          consolidated_web.forEach(function (element,index){
-            var insert='<li class="list-group-item "><a href="http://'+element.r_link+'">'+element.r_name+"</a> </li>";
-            $('.second').append(insert);
             });
           }   
         function redactmoviemodal (i,done) {
@@ -819,24 +433,27 @@ head
                 });
         }
         //----------------------------//
-        function submit_movie( old){
+        function submit_post( old){
           var mtitle;
           if(old){mtitle="#mtitle_old";}
           else{mtitle="#mtitle_new";}
-        if($(mtitle).val())//what if I dont know year yet?
-        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+        if($(#post_body).val()&&$(#heading).val()&&$(#web_link).val()){
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.c_text = $(mtitle).val();
+           data.post_body = $(#post_body).val();
+           data.heading = $(#heading).val();
+           data.web_link = $(#web_link).val();
+           data.picture = $(#picture).val();
+           data.post_tags = $(#post_tags).val();
           $.ajax({
               method: "POST",
-              url: "/counter/current/add",
+              url: "/ltsp/add",
               data: data
             })
               .done(function( msg ) {
-                window.location='/counter/current';
+                window.location='/ltsp';
               });
           }
         }
