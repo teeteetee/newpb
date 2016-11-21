@@ -129,7 +129,7 @@ app.post('/ltps/add',function (req,res){
       res.send(ms);
     }
     else{
-      console.log('breakpoint:'+done);
+      console.log('breakpoint:'+JSON.stringify(done));
       ltps_users.update({_id:req.session._id},{$inc:{posts:1}},function (err,done){
         if(err){
           console.log('users update err');
