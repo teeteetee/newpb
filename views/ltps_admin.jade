@@ -277,7 +277,7 @@ head
             span(class="icon-bar")
             span(class="icon-bar")
             span(class="icon-bar")
-          a(class="navbar-brand" href="/") Летопись
+          a(class="navbar-brand" href="/") Летописец
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
@@ -303,8 +303,8 @@ head
             input#post_tags(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Тэги")  
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control btn-close' onclick='submit_post()') POST
-    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
+    .modal.fade.btn_mod(id='moviemodal' tabindex="-1" role="dialog" )
+      .modal-dialog
         .modal-content#colourful
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
