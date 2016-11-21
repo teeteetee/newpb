@@ -305,9 +305,9 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('movies: '+JSON.stringify(msg.msg));
+                  console.log('posts: '+JSON.stringify(msg.msg));
                   if(!msg.msg) {
-                   console.log('no movies');
+                   console.log('no posts');
                    }
                    else {
                     //$('#currentnum').text(msg.msg.length);
