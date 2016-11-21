@@ -362,7 +362,7 @@ head
           console.log('hello');
           var count;
           var date;
-          consolidated_current.forEach(function (element,index){
+          consolidated.forEach(function (element,index){
             var insert='<li class="list-group-item "><span style="color:rgba(0,0,0,0.5);letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br>'+element.heading+'</br>'+element.post_body+'</br>'+element.web_link+'</br>'+element.picture+'</br>'+element.post_tags+'</br><strong> Views:'+element.views+'</br> Shared:'+element.share+'</strong> </li>';
             $('.first').append(insert);
             });
@@ -380,8 +380,8 @@ head
         insert2 = 'switch_movie('+i+','+done+')';
         $('.movie_remove').attr('onclick',insert);
         $('.movie_switch').attr('onclick',insert2);
-        $('.moviemodaltitle').text(consolidated_current[i].c_text);
-        //$('.moviemodalyear').text(consolidated_current[i].year);
+        $('.moviemodaltitle').text(consolidated[i].c_text);
+        //$('.moviemodalyear').text(consolidated[i].year);
         if(done)
         {
          $('.movie_switch').text('Mark as not done');
@@ -394,7 +394,7 @@ head
         //----------------------------//
         function removemovie(i) {
           var data={};
-          data._id=consolidated_current[i]._id;
+          data._id=consolidated[i]._id;
         $.ajax({
               method: "POST",
               url: "/counter/current/remove",
@@ -421,8 +421,8 @@ head
         //-----------------------------------//
         function switch_movie(i) {
           var data={};
-          data.vstatus=consolidated_current[i].done;
-          data._id=consolidated_current[i]._id;
+          data.vstatus=consolidated[i].done;
+          data._id=consolidated[i]._id;
           $.ajax({
                 method: "POST",
                 url: "/counter/current/done",
