@@ -89,6 +89,104 @@ function rm_st_sc(input){
   return input.replace(/<script>|<\/script>|<style>|<\/style>|style=/g,' ');
 }
 
+app.get('/ltps',function (req,res) {
+  if(req.session&&req.session._id){
+  res.render('ltps_admin');}
+  else {
+    res.render('ltps');
+  }
+});
+
+app.get('/ltps/login',function (req,res) {
+  if(req.session&&req.session._id){
+  res.render('ltps_admin');}
+  else {
+    res.render('ltps');
+  }
+});
+
+app.get('/ltps/logout',function (req,res){
+  req.session.reset();
+  res.redirect('/ltps');
+});
+
+
+app.post('/ltps/add',function (req,res){
+  if(req.session&&req.session._id){
+    var vtmstmp=Date.now();
+    var ms={};
+  ltps_posts.insert({heading:req.body.heading,post_body:req.body.post_body,web_link:req.body.web_link,author_id:req.session._id,picture:req.body.picture,tags:req.body.post_tags,views:0,share:0,tmstmp:vtmstmp},function(err,done){
+    if(err){
+      ms.trouble=1;
+      res.send(ms);
+    }
+    else{
+      ltps_users.update({_id:req.session._id},{$inc:{posts:1}},function (err,done){
+        if(err){
+          console.log('users update err');
+        }
+        else {
+          ms.trouble=0;
+          res.send(ms);
+        }
+      });
+    }
+  });
+   }
+   else{
+    res.send('no');
+   }
+});
+
+app.post('/ltps/getposts',function (req,res){
+    ltps_posts.find({}, {sort: {tmstmp: -1}, limit: 10},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        ms.doc = doc.reverse();
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+});
+
+app.post('/ltps/newuser',function(req,res){
+    //var reload = req.body.reload;
+    var ms = {};
+    ms.trouble=1;
+    ms.mtext='email incorrect'; 
+    var vp = req.body.p;
+    var vpc = req.body.pc;
+    var vmail = req.body.mail;
+    if(validateEmail(vmail)&&vp===vpc)
+    {
+      console.log('\ndata ok\n')
+    }
+    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var ms = {};
+      ltps.insert({mail:vmail,phr:vp,posts:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
+        if(err)
+        {
+          ms.mtext='db';
+         res.send(ms); 
+        }
+      else {
+      req.session._id=done._id;
+      ms.trouble =0;
+      ms.mtext='success';
+      res.send(ms);
+      }
+      });
+        
+    
+    });
+
+//----------------------//
 
 
 app.get('/test',function (req,res){

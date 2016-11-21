@@ -1,0 +1,867 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title P&B
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      }
+      @font-face {
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      body {
+        background-color:#797979;
+      }
+      @media(min-width:768px){
+        .navbar-collapse{
+      background-color: transparent;
+      }
+      .navbar-nav{
+        font-size:10px;
+      }
+      }
+      @media(max-width:767px){
+      .navbar-header{
+        background-color:black;
+      }
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight:300;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
+      }
+      .btn-iosdark,btn-iosdark-add {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-iosdark:focus, .btn-iosdark:active, .btn-iosdark:hover {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark.active {
+        background-color:#333;
+        color:white;
+      }
+      .btn-iosdark .badge {
+        background-color:#ddd;
+        color:#333;
+      }
+      .btn-iosdark.active .badge {
+        background-color:white;
+        color:#333;
+      }
+      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
+        box-shadow:none;
+        border:none;
+        background-color:#4cc177;
+      }
+      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
+        background-color:#40b36a;
+      }
+      .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
+      height:50px;
+      border-radius:0px;
+      border-bottom: 1px solid #43a968;
+      color: #3b905a;
+      }
+      h4 {
+        word-wrap:break-word;
+      }
+      .modal-sm h4 {
+        padding-right:18px;
+        padding-left:15px;
+      }
+      .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child, .btn_mod .btn:last-child {
+        border:none;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+      }
+      .modal-sm .modal-body {
+        padding:0px;
+      }
+      .modal-header {
+      border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
+      }
+      .fileUpload {
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+      }
+      .fileUpload input.upload {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          cursor: pointer;
+          opacity: 0;
+          filter: alpha(opacity=0);
+      }
+      .modal-dialog {
+      margin-top: 10%;
+      }
+      .modal-sm .btn_mod .modal-body .btn, .btn_mod .modal-footer .btn {
+      color: #b9b9b9;  
+      letter-spacing: 2px;
+      font-weight: 100;
+      }
+      .modal-footer{
+        padding:0px;
+        border-top:0px;
+      }
+      .form-control#year,.form-control#mtitle{
+        color:#0d5830;
+        font-weight:300 !important;
+      }
+      .form-control:focus{
+       /* border:none;*/
+      }/*
+      input[type=text]::-webkit-input-placeholder {font-weight:200;}
+      input[type=text]::-moz-placeholder          {font-weight:200;}
+      input[type=text]:-moz-placeholder           {font-weight:200;}
+      input[type=text]:-ms-input-placeholder      {font-weight:200;}*/
+      #addbook .btn-iosdark-add.active {
+      background-color: #178e4d;
+      color: #28d476;
+      }
+      #addbook .btn-iosdark-add {
+      background-color: #21b363;
+      border: 1px solid #158448;
+      color: #0d5830;
+      }
+      #addbook input{
+      background-color: #1aa057;
+      border: 1px solid #178e4d;
+      }
+      .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+          background-color: #ddd;
+      }
+      .dropdown-menu>.disabled>a:hover {
+        background-color: #ddd;
+        cursor:auto;
+      }
+      /*#first_lg{
+        border-radius:4px;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        background: -webkit-linear-gradient(90deg, #0180bd 0%,#0eb2e6 100%);
+      }
+      #second_lg{
+        border-radius:4px;
+        box-shadow: 0px 6px 15px 3px rgba(8, 8, 8, 0.15);
+        background: -webkit-linear-gradient(90deg, #9e2267 0%,#f15681 100%);
+      }*/
+      #first_lg{
+        background-color:white;
+        border-radius:4px;
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      #second_lg{
+        background-color:white;
+        border-radius:4px;
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      .navbar-inverse .navbar-brand {
+      color: white;
+      font-family: boldproxima;
+      letter-spacing: 2px;
+      font-size: 22px;}
+      .navbar-inverse {
+        border:none;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+       border-color: #f5f5f5;
+      }
+      .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+          background-color: rgba(51, 51, 51, 0.35);
+      }
+      .navbar-inverse .navbar-toggle {
+          border-color: white;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+      color:rgba(255, 255, 255, 0.6);
+      font-weight:200;
+      letter-spacing:1px;
+      }
+      .navbar-inverse .navbar-nav>li:hover {
+          color: #333;
+          background-color:rgba(255,255,255,0.2);
+      }
+      .data_lg .list-group-item{
+        color:#2f2f2f;
+        border:none;
+        font-weight: 200;
+       letter-spacing: 1px;
+       background-color: white;
+       border-top: 1px solid rgb(241, 241, 241);
+      }
+      .data_lg .list-group-item.disabled:hover{
+        background-color:white;
+      }
+      .data_lg .list-group-item.disabled{
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        font-weight: 500;
+        letter-spacing: 0px;
+      }
+      .data_lg .list-group-item:hover{
+        background-color:#eee;
+      }
+      /*.btn-add{
+        border:none;
+        background-color:rgba(0,0,0,0.4);
+        color:white;
+      }
+      .btn-add:focus,.btn-add:active,.btn-add:hover{
+        border:none;
+        background-color:white;
+        color:#333;
+      }*/
+      small {
+      color: rgba(0, 0, 0, 0.45);
+      }
+      #add_comb .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #friends .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus {
+      border-color: none;
+      box-shadow:none;
+      }
+      #add_comb .sec {
+      text-align: center;
+      background-color: rgb(238, 238, 238);
+      }
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
+      background-color: white;
+      color: #333;
+      min-height: 50px;
+      border-radius: 0px;
+      border: none;
+      box-shadow: none;
+      text-align: left;
+      }
+      .btn-add {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        color:#347888;
+        border:1px solid #36b7d4;
+      }
+      #add_comb .panel-body .btn-add {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        margin:14px;
+        color:#347888;
+        border:none;
+      }
+      /*#add_comb .panel-body */
+      #add_comb .panel-body .btn-add:hover, .btn-add:hover {
+        color:white;
+        background-color:#3ad1f3;
+        border-color:#3ad1f3;
+      }
+      #add_comb .modal-body input.form-control {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      height: 50px;
+      border-radius: 0px;
+      background-color: rgba(243, 243, 243, 0.83);
+      }
+      #add_comb .modal-header{
+        border-bottom:1px solid #eee;
+      }
+      .btn-warning{
+        border:none;
+        background-color:#ff7556;
+        color:white;
+        letter-spacing:1px;
+      }
+      .btn-warning:hover{
+        background-color:#f15330;
+        color:white;
+      }
+      #add_choice .panel-body{
+        text-align:center;
+        padding:0px;
+      }
+      #add_choice .panel-body .btn-add{
+        margin:15px;
+      }
+      #add_choice .panel-default>.panel-heading {
+       color: #333;
+       background-color: white;
+       border-color: #ddd;}
+      #add_choice .panel-group .panel+.panel {
+          margin-top: 0px;
+      }
+      #add_choice .panel-group .panel {
+          border-radius: 0px;
+      }
+      #add_choice .panel-default>.panel-heading {
+        height:50px;
+      }
+      #add_choice .panel{
+        border:none;
+        border-bottom:1px solid #eee;
+        background-color: #eee;
+      }
+      #add_choice .panel-heading{
+        padding:0px;}
+      #add_choice .panel-group{
+        margin-bottom:0px;
+      }
+      #accordion2 .panel-title .badge{
+        margin-left:7px;
+      }
+      .panel-group .panel+.panel {
+      margin-top:0px;
+      border-radius: 0px;
+      }
+      .panel-group .panel{
+        border-radius: 0px;
+      }
+      #accordion2 .panel{
+        border:none;
+        border-bottom:1px solid rgba(0,0,0,0.32);
+        color:white;
+      }
+      #accordion2 small{
+        color:rgba(230, 230, 230, 0.45);
+      }
+      #accordion2 .panel:last-child{
+        border:none;
+      }
+      #accordion2 .panel-default .panel-heading{
+       height: 20%;
+      padding: 15%;
+      }
+      #accordion2 .list-group-item {
+        background-color:rgba(255,255,255,0.35);
+        border:none;
+        font-weight:200;
+        font-size:17px;
+        letter-sapcing:1px;
+        padding:17px 15px;
+      }
+      h4.panel-title{
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .panel-default>.panel-heading {
+        color:white;
+        background-color:transparent;
+      }
+      .panel {
+        background-color:rgba(0,0,0,0.34);
+      }
+      .glyphicon-chevron-right{
+        color:rgba(255, 255, 255, 0.51);
+      }
+      .panel-title{
+        letter-spacing:1px;
+      }
+      #accordion2 .panel-body{
+        padding:0px;
+      }
+      #accordion2 .list-group-item:first-child {
+        border-radius:0px;}
+      #accordion2 .list-group-item:last-child {
+        border-radius:0px;}  
+      .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        border:none;
+      }
+      #add_choice .panel:last-child {
+       border-bottom:none;
+      }
+      .navbar-inverse .navbar-toggle {
+        border-color:white;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+          border-color: #f5f5f5;
+      }
+      #row_margin .row {
+        margin:0px;
+        padding-top:20px;
+        padding-bottom:10px;
+      }
+      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+        cursor:auto;
+      }
+      .tooltip.top .tooltip-inner {
+          background-color:#ff6767;
+        }
+      .tooltip.top .tooltip-arrow {
+          border-top-color: #ff6767;
+       }
+       .btn-close{
+        letter-spacing:1px;
+        text-transform:uppercase;
+       }
+       .friendlist .table>tbody>tr>th{
+        border-top:1px solid #eee;
+       }
+       .modal-backdrop.in {
+           filter: alpha(opacity=50);
+           opacity: .65;
+       }
+       button.collapsed .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(0deg);
+         -moz-transform:    rotate(0deg);
+         -ms-transform:     rotate(0deg);
+         -o-transform:      rotate(0deg);
+         transform:         rotate(0deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       button .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(90deg);
+         -moz-transform:    rotate(90deg);
+         -ms-transform:     rotate(90deg);
+         -o-transform:      rotate(90deg);
+         transform:         rotate(90deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       .label {
+        margin-left: 10px;
+        font-weight:200;
+       }
+       .label-primary{
+        background-color:#40c186;
+       }
+       .list-group-item .badge{
+        float: right;
+        background-color: #ee5d44;
+        color: white;
+        font-weight: 200;
+       }
+  body
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="/") TASKS
+        .collapse.navbar-collapse#navbar
+          ul(class='nav navbar-nav')
+            li
+              a(onclick='add_dialog()')
+               span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
+               | Add item
+            li
+              a(href="/counter/comb") 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
+                |Profile
+            li
+              a(href="/counter/logout") 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
+                |Logout
+    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='text-align:center;') Add item
+          .modal-body#add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingOne")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Добавить задачу
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                  .panel-body
+                    input#mtitle_old(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст задачи")
+                    button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
+                .panel-heading(role="tab" id="headingTwo")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseOne") Добавить веб ресурс
+                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
+                  .panel-body
+                    input#web_title(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Название")
+                    input#web_address(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Адрес")
+                    button(class='btn btn-sm btn-add' onclick='submit_web(1)') Добавить
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn btn-iosdark form-control btn-close' data-dismiss="modal") Close
+    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content#colourful
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body(style='text-align:center;')
+            h4.moviemodaltitle(style='margin-top:20px;font-weight:400;')
+            h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
+            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            button(class='btn btn-iosdark  form-control movie_switch') Switch column
+            button(class='btn btn-iosdark form-control movie_remove') Remove
+    .container(style='z-index:2;padding-top:70px;')
+      .row(style='display:none;')
+        .col-xs-12
+          form(method='post',action='/backup',role='form',id='backupform')
+      .row.visible-md.visible-lg.data_lg
+        .col-sm-3
+          ul.list-group.first#first_lg
+        .col-sm-3
+          ul.list-group.second#second_lg
+        //
+          .col-sm-3
+            ul.list-group.third#third_lg
+          .col-sm-3
+            ul.list-group.fourth#fourth_lg
+      .row.visible-sm.visible-xs
+        .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
+          .panel.panel-default
+            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
+              h4(class="panel-title") Задачи
+                span.badge#num_one
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.first
+            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#web" aria-expanded="true" aria-controls="web")
+              h4(class="panel-title") WEB
+                span.badge#num_two
+                span.glyphicon.glyphicon-chevron-right.pull-right
+            #web(class="panel-collapse collapse " role="tabpanel")
+              .panel-body.second
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        function add_dialog() {
+          $('#add_comb').modal('show');
+        }
+        $('#settings_btn').click(function(){
+          $('#nick').tooltip('destroy');
+          $('#settings').modal('show');
+          $.ajax({
+              method: "POST",
+              url: "/counter/gn/"+'#{_id}',
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  $('#nick').prop('placeholder',msg.mtext);
+                  $('#change_nick').text('Change');
+                }
+                });
+            $.ajax({
+            method: "POST",
+            url: "/counter/getshowmail/"+'#{_id}',
+            data: 0
+          }).done(function( msg ) {
+               if(msg.mtext)
+               {$('#show_mail').prop('checked',true);}
+            });
+          });
+        $('#backup').click(function(){
+          $('#backupform').submit();
+          });
+        $('#about').click(function(){
+          if($('#oldones').css('display')!='none'){
+          $('#oldones').css('overflow','hidden');
+          }
+          else {
+          $('#newones').css('overflow','hidden');
+          }
+          $('#wait').fadeIn();
+          });
+        $('.seen').click(function(){
+          if(!$('.seen').hasClass('active')){
+            $('#newones').hide();
+            $('#oldones').show();
+            $('.new').removeClass('active');
+            $('.seen').addClass('active');
+          }
+          });
+        $('.new').click(function(){
+          if(!$('.new').hasClass('active')) {
+            $('#newones').show();
+            $('#oldones').hide();
+            $('.seen').removeClass('active');
+            $('.new').addClass('active');
+          }
+          });
+        $('#closewait').click(function(){
+          $('#wait').fadeOut();
+          if($('#oldones').css('display')!='none'){
+          $('#oldones').css('overflow','auto');
+          }
+          else {
+          $('#newones').css('overflow','auto');
+          }
+          });
+        //----------------------------//
+        function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+          });
+        }
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        function level() {
+          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
+        }
+        //---------------------------//
+        var seenmovies;
+        var newmovies;
+        var consolidated_current=[];
+        var consolidated_web=[];
+        $.ajax({
+              method: "POST",
+              url: "/counter/current/get",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log('movies: '+JSON.stringify(msg.msg));
+                  if(!msg.msg) {
+                   console.log('no movies');
+                   }
+                   else {
+                    //$('#currentnum').text(msg.msg.length);
+                    msg.msg.forEach(function (element,index){
+                       consolidated_current.push(element);
+                    });
+                   }
+                   if(consolidated_current.length){
+                    sortByKey(consolidated_current,'tmstmp');
+                   }
+                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_current.length+'</span>Задачи</li>');
+                   $('#num_one').text(consolidated_current.length);
+                   if(!consolidated_current.length){
+                    $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                   }
+                   else {
+                    //populate(consolidated_current);
+                    //---------------------//
+                    $.ajax({
+                         method: "POST",
+                         url: "/counter/getweb",
+                         data: 0
+                       })
+                         .done(function( msg ) {
+                           if(!msg.trouble) {
+                             console.log('web: '+JSON.stringify(msg.doc));
+                             var articles = msg.doc;
+                             if(!articles||!articles.weblinkstore) {
+                              console.log('no movies');
+                              }
+                              else {
+                               //$('#currentnum').text(msg.msg.length);
+                               articles.weblinkstore.forEach(function (element,index){
+                                  consolidated_web.push(element);
+                               });
+                              }
+                              if(consolidated_web.length){
+                               sortByKey(consolidated_web,'tmstmp');
+                              }
+                              $('#second_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_web.length+'</span>Сайты</li>');
+                              $('#num_two').text(consolidated_web.length);
+                              if(!consolidated_web.length){
+                               $('#second_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
+                              }
+                              else {
+                               populate(consolidated_current,consolidated_web);
+                              }
+                            }});
+                    //---------------------//
+                   }
+                 }});
+                   
+        //----------------------------//
+        function populate(consolidated_current,consolidated_web) {
+          console.log('hello');
+          var count;
+          var date;
+          consolidated_current.forEach(function (element,index){
+            var done='';
+            date = new Date(element.tmstmp);
+            if(element.done){
+              done='<span class="label label-primary">DONE</span>';
+            }
+            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+','+element.done+')"><span style="color:rgba(0,0,0,0.5);letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br>'+element.c_text+done+" </li>";
+            $('.first').append(insert);
+            });
+          consolidated_web.forEach(function (element,index){
+            var insert='<li class="list-group-item "><a href="http://'+element.r_link+'">'+element.r_name+"</a> </li>";
+            $('.second').append(insert);
+            });
+          }   
+        function redactmoviemodal (i,done) {
+          console.log('redact');
+        // TODO screen blocker must be added to prevent user from interfering 
+        if(screen.width<screen.height) {
+          $('.modal-dialog').css('margin-top','60%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','15%');
+        }
+        insert = 'removemovie('+i+','+done+')';
+        insert2 = 'switch_movie('+i+','+done+')';
+        $('.movie_remove').attr('onclick',insert);
+        $('.movie_switch').attr('onclick',insert2);
+        $('.moviemodaltitle').text(consolidated_current[i].c_text);
+        //$('.moviemodalyear').text(consolidated_current[i].year);
+        if(done)
+        {
+         $('.movie_switch').text('Mark as not done');
+        }
+        else{
+         $('.movie_switch').text('Mark as done');
+        }
+        $('#moviemodal').modal('show');
+        }
+        //----------------------------//
+        function removemovie(i) {
+          var data={};
+          data._id=consolidated_current[i]._id;
+        $.ajax({
+              method: "POST",
+              url: "/counter/current/remove",
+              data: data
+            })
+              .done(function( msg ) {
+              window.location='/counter/current';
+              });
+        }
+        //-----------------------------------//
+        function removeweb(i) {
+          var data={};
+          data.r_name=consolidated_web[i].r_name;
+          data.r_link=consolidated_web[i].r_link;
+        $.ajax({
+              method: "POST",
+              url: "/counter/rm_web",
+              data: data
+            })
+              .done(function( msg ) {
+              window.location='/counter/current';
+              });
+        }
+        //-----------------------------------//
+        function switch_movie(i) {
+          var data={};
+          data.vstatus=consolidated_current[i].done;
+          data._id=consolidated_current[i]._id;
+          $.ajax({
+                method: "POST",
+                url: "/counter/current/done",
+                data: data
+              })
+                .done(function( msg ) {
+                window.location='/counter/current';
+                });
+        }
+        //----------------------------//
+        function submit_movie( old){
+          var mtitle;
+          if(old){mtitle="#mtitle_old";}
+          else{mtitle="#mtitle_new";}
+        if($(mtitle).val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.c_text = $(mtitle).val();
+          $.ajax({
+              method: "POST",
+              url: "/counter/current/add",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/current';
+              });
+          }
+        }
+        function submit_web(){
+        if($(web_title).val()&&$(web_address).val())//what if I dont know year yet?
+        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.r_name = $(web_title).val();
+           data.r_link = $(web_address).val();
+          $.ajax({
+              method: "POST",
+              url: "/counter/addweb",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter/current';
+              });
+          }
+        }
+        
+        
+        
+        
+        
+      
