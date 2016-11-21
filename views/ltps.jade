@@ -293,7 +293,10 @@ head
             h4#heading.modal-title
           .modal-body(style='text-align:left;padding:0px;')
             img#picture(style='width:100%;')
-            .row(style='margin-top:20px;')
+            .row
+              span.glyphicon.glyphicon-link(style='color:#ddd;')
+              a#link(style='color:#eee;')
+            .row(style='margin-top:10px;')
               #post_body
             .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
               span#tags
@@ -361,13 +364,14 @@ head
         function postmodal (i) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
-        if(screen.width<screen.height) {
-          $('.modal-dialog').css('margin-top','60%');
-        }
-        else{
-          $('.modal-dialog').css('margin-top','15%');
-        }
+        //if(screen.width<screen.height) {
+        //  $('.modal-dialog').css('margin-top','60%');
+        //}
+        //else{
+        //  $('.modal-dialog').css('margin-top','15%');
+        //}
         $('#heading').text(consolidated[i].heading);
+        %('#link').text(consolidated[i].web_link);
         $('#post_body').text(consolidated[i].post_body);
         $('#picture').attr('src',consolidated[i].picture);
         $('#tags').text(consolidated[i].tags);
