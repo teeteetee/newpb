@@ -112,7 +112,7 @@ app.get('/ltps/logout',function (req,res){
 
 app.get('/ltps/show',function (req,res){
   ltps_users.findOne({_id:req.session._id},function(err,done){
-    ltps_posts.find({uid:JSON.stringify(req.session._id)},function(err,done1){
+    ltps_posts.find({},function(err,done1){
        res.send(req.session._id+'\n//---------------//\n'+'USERS:'+'\n//---------------//\n'+JSON.stringify(done)+'\n//---------------//\n'+'POSTS:'+'\n//---------------//\n'+JSON.stringify(done1));       
     });
   });
