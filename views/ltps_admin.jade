@@ -433,7 +433,7 @@ head
                 });
         }
         //----------------------------//
-        function submit_post( old){
+        function submit_post(){
           var mtitle;
           if(old){mtitle="#mtitle_old";}
           else{mtitle="#mtitle_new";}
@@ -446,7 +446,8 @@ head
            data.heading = $('#heading').val();
            data.web_link = $('#web_link').val();
            data.picture = $('#picture').val();
-           data.post_tags = $('#post_tags').val();
+           data.post_tags = [];
+           data.post_tags=$('#post_tags').val().split(',');
           $.ajax({
               method: "POST",
               url: "/ltps/add",

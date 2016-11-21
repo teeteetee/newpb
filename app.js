@@ -112,7 +112,7 @@ app.get('/ltps/logout',function (req,res){
 
 app.get('/ltps/show',function (req,res){
   ltps_users.findOne({_id:req.session._id},function(err,done){
-    ltps_posts.findOne({uid:JSON.stringify(req.session._id)},function(err,done1){
+    ltps_posts.find({uid:JSON.stringify(req.session._id)},function(err,done1){
        res.send(req.session._id+'\n//---------------//\n'+'USERS:'+'\n//---------------//\n'+JSON.stringify(done)+'\n//---------------//\n'+'POSTS:'+'\n//---------------//\n'+JSON.stringify(done1));       
     });
   });
@@ -120,6 +120,7 @@ app.get('/ltps/show',function (req,res){
 
 app.post('/ltps/add',function (req,res){
   if(req.session&&req.session._id){
+    console.log('POST \n'+req.body.heading+'\n'+req.body.post_body+'\n'+req.body.web_link+'\n'+req.body.picture+'\n'+req.body.post_tags+'\n');
     var vtmstmp=Date.now();
     var ms={};
   ltps_posts.insert({heading:req.body.heading,post_body:req.body.post_body,web_link:req.body.web_link,author_id:req.session._id,picture:req.body.picture,tags:req.body.post_tags,views:0,share:0,tmstmp:vtmstmp},function(err,done){
@@ -128,11 +129,13 @@ app.post('/ltps/add',function (req,res){
       res.send(ms);
     }
     else{
+      console.log('breakpoint');
       ltps_users.update({_id:req.session._id},{$inc:{posts:1}},function (err,done){
         if(err){
           console.log('users update err');
         }
         else {
+          console.log('breakpoint 1');
           ms.trouble=0;
           res.send(ms);
         }
@@ -141,6 +144,7 @@ app.post('/ltps/add',function (req,res){
   });
    }
    else{
+    console.log('trouble');
     res.send('no');
    }
 });
