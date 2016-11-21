@@ -242,7 +242,7 @@ app.post('/ltps/check',function(req,res){
   });
 });
 
-app.post('/ltps/remove',function (req,res){
+app.get('/ltps/remove',function (req,res){
   var ms={};
    ms.trouble=1;
   if(req.session&&req.session._id){
