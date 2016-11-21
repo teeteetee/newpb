@@ -449,11 +449,11 @@ head
            data.post_tags = $('#post_tags').val();
           $.ajax({
               method: "POST",
-              url: "/ltsp/add",
+              url: "/ltps/add",
               data: data
             })
               .done(function( msg ) {
-                window.location='/ltsp';
+                window.location='/ltps';
               });
           }
         }
