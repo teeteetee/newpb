@@ -316,9 +316,9 @@ head
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
-      .row.visible-md.visible-lg.data_lg
-        .col-xs-8.col-xs-offset-2
-          ul.list-group.first#first_lg
+      .row.data_lg
+        .col-md-8.col-md-offset-2
+          ul.list-group.first#first_lg(style='background-color:white;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
@@ -371,7 +371,7 @@ head
           var style;
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
-            style="background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('"+element.picture+"');background-position: center;"
+            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
             var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h2 class="heading">'+element.heading+'</h2></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span style="font-weight:200;" class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span style="font-weight:200;" class="semi">'+element.share+'</span> </li>';
             $('.first').append(insert);
             });
