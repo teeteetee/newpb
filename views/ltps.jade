@@ -249,18 +249,14 @@ head
       .list-group-item {
         border-radius:0px;
         border:none;
+        border-bottom:1px solid white;
       }
       .list-group-item:last-child{
         border-radius:0px;
+        border:none;
       }
       .list-group-item:first-child {
           border-radius:0px;
-      }
-      li {
-        border-bottom:1px solid white;
-      }
-      li:last-child{
-        border:none;
       }
       .semi {
         color:rgba(255,255,255,0.5);
@@ -345,7 +341,7 @@ head
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
             style="background-image:url('"+element.picture+"');"
-            var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h1 class="heading">'+element.heading+'</h1></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
+            var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
             $('.first').append(insert);
             });
           }    
