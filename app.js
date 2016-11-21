@@ -110,6 +110,13 @@ app.get('/ltps/logout',function (req,res){
   res.redirect('/ltps');
 });
 
+app.get('/ltps/show',function (req,res){
+  ltps_users.findOne({_id:req.session._id},function(err,done){
+    ltps_posts.findOne({uid:JSON.stringify(req.session._id)},function(err,done1){
+       res.send(req.session._id+'\n//---------------//\n'+'USERS:'+'\n//---------------//\n'+JSON.stringify(done)+'\n//---------------//\n'+'POSTS:'+'\n//---------------//\n'+JSON.stringify(done1));       
+    });
+  });
+});
 
 app.post('/ltps/add',function (req,res){
   if(req.session&&req.session._id){
