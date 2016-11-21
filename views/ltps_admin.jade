@@ -299,6 +299,7 @@ head
             input#heading(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Заголовок") 
             textarea#post_body(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Текст")  
             input#web_link(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Ссылка")
+            input#source_name(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="название СМИ")
             input#picture(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Картинка")
             input#post_tags(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Тэги")  
           .modal-footer.btn_mod(style='padding:0px;')
@@ -439,6 +440,7 @@ head
            data.post_body = $('#post_body').val();
            data.heading = $('#heading').val();
            data.web_link = $('#web_link').val();
+           data.source_name = $('#source_name').val();
            data.picture = $('#picture').val();
            data.post_tags = [];
            data.post_tags=$('#post_tags').val().split(',');

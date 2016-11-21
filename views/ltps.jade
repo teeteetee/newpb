@@ -371,7 +371,8 @@ head
         //  $('.modal-dialog').css('margin-top','15%');
         //}
         $('#heading').text(consolidated[i].heading);
-        $('#link').text(consolidated[i].web_link);
+        $('#link').text(consolidated[i].source_name)
+        $('#link').attr('href',consolidated[i].web_link);
         $('#post_body').text(consolidated[i].post_body);
         $('#picture').attr('src',consolidated[i].picture);
         $('#tags').text(consolidated[i].tags);
