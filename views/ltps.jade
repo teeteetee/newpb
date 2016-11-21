@@ -345,7 +345,7 @@ head
           var style;
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
-            style="background-image:url('"+element.picture+"');"
+            style="background-image:url('"+element.picture+"');background-position: center;"
             var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
             $('.first').append(insert);
             });
