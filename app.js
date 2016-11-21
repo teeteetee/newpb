@@ -118,11 +118,11 @@ app.get('/ltps/show',function (req,res){
   });
 });
 
-app.get('/ltps/set_images',function (req,res){
-  ltps_posts.update({},{picture:'/images/ny.jpg'},function (err,done){
-    res.redirect('/ltps');
-  })
-});
+//app.get('/ltps/set_images',function (req,res){
+//  ltps_posts.update({},{picture:'/images/ny.jpg'},function (err,done){
+//    res.redirect('/ltps');
+//  })
+//});
 
 app.post('/ltps/add',function (req,res){
   if(req.session&&req.session._id){
