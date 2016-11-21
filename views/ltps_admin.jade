@@ -338,13 +338,13 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('movies: '+JSON.stringify(msg.msg));
-                  if(!msg.msg) {
+                  console.log('movies: '+JSON.stringify(msg.doc));
+                  if(!msg.doc) {
                    console.log('no movies');
                    }
                    else {
-                    //$('#currentnum').text(msg.msg.length);
-                    msg.msg.forEach(function (element,index){
+                    //$('#currentnum').text(msg.doc.length);
+                    msg.doc.forEach(function (element,index){
                        consolidated.push(element);
                     });
                    }
