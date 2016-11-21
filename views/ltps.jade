@@ -245,18 +245,13 @@ head
                        -o-transition: all 0.5s;
                           transition: all 0.5s;
       }
-      .label {
-       margin-left: 10px;
-       font-weight:200;
+      .list-group-item {
+        border-radius:0px;
+        border:none;
+        border-bottom:1px solid rgba(255,255,255,0.3);
       }
-      .label-primary{
-       background-color:#40c186;
-      }
-      .list-group-item .badge{
-       float: right;
-       background-color: #ee5d44;
-       color: white;
-       font-weight: 200;
+      .list-group-item:last-child{
+        border:none;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
