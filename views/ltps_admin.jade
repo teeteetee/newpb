@@ -144,6 +144,8 @@ head
       color: #d2d2d2;
       font-family: high;
       letter-spacing: 4px;
+      font-size: 28px;
+      margin-top: 3px;
       }
       .navbar-inverse {
         border:none;
@@ -262,6 +264,11 @@ head
       .semi {
         color:rgba(255,255,255,0.5);
       }
+      .heading {
+      color:white;
+      font-weight: 100;
+      letter-spacing: 2px;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -271,7 +278,7 @@ head
             span(class="icon-bar")
             span(class="icon-bar")
             span(class="icon-bar")
-          a(class="navbar-brand" href="/") TASKS
+          a(class="navbar-brand" href="/") Летопись
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
@@ -366,7 +373,7 @@ head
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
             style="background-image:url('"+element.picture+"');"
-            var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h1 style="color:white;">'+element.heading+'</h1></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
+            var insert='<li class="list-group-item "style="'+style+'"><span class="semi" style="letter-spacing:0px;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h1 class="heading">'+element.heading+'</h1></br><span class="glyphicon glyphicon-eye-open semi" style="margin-right:5px;"> </span><span class="semi">'+element.views+'</span><span class=" semi glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span><span class="semi">'+element.share+'</span> </li>';
             $('.first').append(insert);
             });
           }   
