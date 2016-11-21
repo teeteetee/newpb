@@ -120,7 +120,7 @@ app.get('/ltps/show',function (req,res){
 
 app.get('/ltps/set_images',function (req,res){
   ltps_posts.update({},{$set:{source_name:'Нская Газета'}},function (err,done){
-    res.redirect('/ltps');
+    res.send(done);
   })
 });
 
