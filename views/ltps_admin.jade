@@ -303,18 +303,6 @@ head
             input#post_tags(type="text" maxlength="300" class="form-control" autocomplete='off' placeholder="Тэги")  
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-iosdark form-control btn-close' onclick='submit_post()') POST
-    .modal.fade.btn_mod(id='moviemodal' tabindex="-1" role="dialog" )
-      .modal-dialog
-        .modal-content#colourful
-          .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body(style='text-align:center;')
-            h4.moviemodaltitle(style='margin-top:20px;font-weight:400;')
-            h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
-            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
-            button(class='btn btn-iosdark  form-control movie_switch') Switch column
-            button(class='btn btn-iosdark form-control movie_remove') Remove
     .container(style='z-index:2;padding-top:70px;')
       .row.data_lg
         .col-md-8.col-md-offset-2
