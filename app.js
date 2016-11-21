@@ -139,6 +139,8 @@ app.post('/ltps/add',function (req,res){
 });
 
 app.post('/ltps/getposts',function (req,res){
+  var ms={};
+  ms.trouble=1;
     ltps_posts.find({}, {sort: {tmstmp: -1}, limit: 10},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
