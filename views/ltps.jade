@@ -33,6 +33,10 @@ head
       }
       }
       @media(max-width:767px){
+        .col-md-8{
+          padding-left:0px;
+          padding-right:0px;
+        }
       .navbar-header{
         background-color:black;
       }
@@ -249,11 +253,12 @@ head
       .list-group-item {
         border-radius:0px;
         border:none;
-        border-bottom:1px solid white;
+        margin-bottom:1px;
       }
       .list-group-item:last-child{
         border-radius:0px;
         border:none;
+        margin-bottom:0px;
       }
       .list-group-item:first-child {
           border-radius:0px;
@@ -285,9 +290,9 @@ head
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove') Remove
     .container(style='z-index:2;')
-      .row.visible-md.visible-lg.data_lg
-        .col-xs-8.col-xs-offset-2
-          ul.list-group.first#first_lg
+      .row
+        .col-md-8.col-md-offset-2
+          ul.list-group.first#first_lg(style='background-color:white;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
