@@ -177,7 +177,7 @@ head
       padding: 15px;
       text-align: center;
       }
-      #add_comb .modal-body .panel-group .panel .panel-heading .btn {
+      #add_post .modal-body .panel-group .panel .panel-heading .btn {
       background-color: white;
       color: #333;
       min-height: 50px;
@@ -186,14 +186,14 @@ head
       box-shadow: none;
       text-align: left;
       }
-      #add_comb .modal-body input.form-control {
+      #add_post .modal-body input.form-control {
       border: none;
       border-bottom: 1px solid #ddd;
       height: 50px;
       border-radius: 0px;
       background-color: rgba(243, 243, 243, 0.83);
       }
-      #add_comb .modal-header{
+      #add_post .modal-header{
         border-bottom:1px solid #eee;
       }
       .btn-warning{
@@ -275,14 +275,14 @@ head
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
             li
-              a(onclick='add_dialog()')
+              a(data-toggle='modal' data-target="#add_post")
                span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
                | Add post
             li
               a(href="/counter/logout") 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
                 |Logout
-    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='add_post' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
