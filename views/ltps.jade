@@ -278,6 +278,15 @@ head
         margin-left:15px;
         margin-right:15px;
       }
+      #close_postmodal {
+       height: 50px;
+       width: 100%;
+       border: none;
+       background-color: #eee;
+       border-top-left-radius: 0px;
+       border-top-right-radius: 0px;
+       color: #969696;
+      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;')
       .container
@@ -300,8 +309,8 @@ head
               #post_body
             .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
               span#tags
-          .modal-footer.visible-xs.visible-sm
-            button.btn(data-dissmis='modal') Закрыть
+          .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
+            button#close_postmodal.btn(data-dissmis='modal') Закрыть
     .container(style='z-index:2;')
       .row
         .col-md-8.col-md-offset-2
