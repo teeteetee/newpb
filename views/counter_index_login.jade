@@ -327,16 +327,16 @@ head
         //alert('Provide a password, and verify it');
         $('#reg_p').tooltip({title:'Provide a password',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
         $('#reg_pc').tooltip({title:'and verify it',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        $('#reg_p').empty();
-        $('#reg_pc').empty();
+        $('#reg_p').text('');
+        $('#reg_pc').text('');
         errcount++;
         }
         if(vp != vpc && errcount===0) {
         //$('#message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
         //alert("Passwords don't match");
         $('#reg_p').tooltip({title:'Passwords dont match',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        $('#reg_p').empty();
-        $('#reg_pc').empty();
+        $('#reg_p').text('');
+        $('#reg_pc').text('');
         errcount++;
         }
         var vmail = $('#reg_mail').val();
