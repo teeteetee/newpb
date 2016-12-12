@@ -374,7 +374,7 @@ head
         if(mailx != true)
         {
           if(errcount){
-            if($('#reg_alert').text.indexOf('• Invalid email')!=-1)
+            if($('#reg_alert').text().indexOf('• Invalid email')!=-1)
               {$('#reg_alert').append("<br> • Invalid email");
                         }          }
             else{
