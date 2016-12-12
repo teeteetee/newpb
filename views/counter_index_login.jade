@@ -298,27 +298,27 @@ head
           case('db'):
           console.log('1');
           if($('#log_alert').css('display')!='none')
-          {$('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');}
+          {$('#log_alert').text('db maintenance, service unavaliable');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');$('#log_alert').slideToggle();
+           $('#log_alert').text('db maintenance, service unavaliable');$('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
           case('wrong pas'):
           console.log('2');
           if($('#log_alert').css('display')!='none')
-          {$('#log_alert').empty();$('#log_alert').append('Wrong password');}
+          {$('#log_alert').text('Wrong password');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('Wrong password');$('#log_alert').slideToggle();
+           $('#log_alert').text('Wrong password');$('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
           case('wronguser'):
           console.log('3');
           if($('#log_alert').css('display')!='none')
-          {$('#log_alert').empty();$('#log_alert').append('No such user');}
+          {$('#log_alert').text('No such user');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('No such user');$('#log_alert').slideToggle();
+           $('#log_alert').text('No such user');$('#log_alert').slideToggle();
           } 
           allowauth =1;
           break;
@@ -338,9 +338,9 @@ head
             //$('#mail').tooltip('destroy');
             //$('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
           if($('#log_alert').css('display')!='none')
-          {$('#log_alert').empty();$('#log_alert').append('Provide emaili and password');}
+          {$('#log_alert').text('Provide emaili and password');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('Provide emaili and password');$('#log_alert').slideToggle();
+           $('#log_alert').text('Provide emaili and password');$('#log_alert').slideToggle();
           } 
           }
         }
@@ -403,17 +403,17 @@ head
           case('fail'):
           console.log('db maintenance, service unavaliable');
           if($('#reg_alert').css('display')!='none')
-          {$('#reg_alert').empty();$('#reg_alert').append('db maintenance, service unavaliable');}
+          {$('#reg_alert').text('db maintenance, service unavaliable');}
           else{
-           $('#reg_alert').empty();$('#reg_alert').append('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
+           $('#reg_alert').text('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
           } 
           break;
           case('email exists'):
           console.log('povide another mail');
           if($('#reg_alert').css('display')!='none')
-          {$('#reg_alert').empty();$('#reg_alert').append('Provide another email');}
+          {$('#reg_alert').text('Provide another email');}
           else{
-           $('#reg_alert').empty();$('#reg_alert').append('Provide another email');$('#reg_alert').slideToggle();
+           $('#reg_alert').text('Provide another email');$('#reg_alert').slideToggle();
           } 
           break;
           }
