@@ -286,7 +286,6 @@ head
           switch (parsed.mtext){
           case('db'):
           alert('db maintenance, service unavaliable');
-          //$('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
           allowauth = 1;
           break;
           case('wrong pas'):
@@ -316,19 +315,25 @@ head
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
-        $('.alert').empty();
-         var errcount =0;
+        if($('.alert').css('display')!=none)
+        {
+          $('.alert').slideToggle();
+          $('.alert').empty();
+        }
+        else{
+          $('.alert').empty();
+         }
+        var errcount =0;
         var vp = $('#reg_p').val();
         var vpc = $('#reg_pc').val();
-        $('#message').empty();
         console.log(vp.length);
         if(vpc.length === 0 || vp.length === 0) {
         console.log('pass length 0');
-        $('.alert').append("Provide a password and verify it");
+        $('.alert').append(" • Provide a password and verify it");
         errcount++;
         }
         if(vp != vpc && errcount===0) {
-        $('.alert').append("Passwords doesn't match");
+        $('.alert').append(" • Passwords doesn't match");
         errcount++;
         }
         var vmail = $('#reg_mail').val();
@@ -337,10 +342,10 @@ head
         if(mailx != true)
         {
           if(errcount){
-            $('.alert').append("<br>Invalid email");
+            $('.alert').append("<br> • Invalid email");
           }
             else{
-              $('.alert').append("Invalid email");
+              $('.alert').append(" • Invalid email");
             }
         errcount++;
         }
@@ -367,13 +372,11 @@ head
           case('fail'):
           console.log('db maintenance, service unavaliable');
           alert('db maintenance, service unavaliable');
-          //$('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
           break;
           case('email exists'):
           console.log('povide another mail');
           $('#reg_mail').tooltip('destroy');
           $('#reg_mail').tooltip({title:'Provide another email',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-          //$('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
           break;
           }
           }
