@@ -212,11 +212,9 @@ head
                 span(aria-hidden="true") ×
               h4.moviemodaltitle(style='text-align:center;margin-top:4px;') Регистрация
             .modal-body
-              .alert.alert-danger(role="alert") Appolo 13
-                button(type="button" class="close" data-dismiss="alert" aria-label="Close")
-                  span(aria-hidden="true") &times;
+              .alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
                 strong Fuck!
-                | What the fuck you think you are doing?
+                | What the fuck you think you are doing now?
               input#reg_mail.sp_input.form-control(type='text' placeholder='mail')
               input#reg_p.sp_input.form-control(type='password' placeholder='password')
               input#reg_pc.sp_input.form-control(type='password' placeholder='confirm password')
@@ -318,10 +316,7 @@ head
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
-        //$('#reg_p').tooltip('destroy');
-        //$('#reg_pc').tooltip('destroy');
-        //$('#reg_mail').tooltip('destroy');
-        $('.clear_me').remove();
+        $('.alert').empty();
          var errcount =0;
         var vp = $('#reg_p').val();
         var vpc = $('#reg_pc').val();
@@ -329,26 +324,11 @@ head
         console.log(vp.length);
         if(vpc.length === 0 || vp.length === 0) {
         console.log('pass length 0');
-        //$('#message').append("<h5 style='color:#fc454e;'>Provide a password, and verify it</h5>");
-        //alert('Provide a password, and verify it');
-        //$('#reg_p').tooltip({title:'Provide a password',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        var insert = "<span class='clear_me badge pull-right' style='right:10px;'>Provide a password</span>";
-        $('#reg_p').append(insert);
-        //$('#reg_pc').tooltip({title:'and verify it',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        insert = "<span class='clear_me badge pull-right' style='right:10px;'>Verify your password</span>";
-        $('#reg_pc').append(insert);
-        $('#reg_p').text('');
-        $('#reg_pc').text('');
+        $('.alert').append("Provide a password and verify it");
         errcount++;
         }
         if(vp != vpc && errcount===0) {
-        //$('#message').append("<h5 style='color:#fc454e;'>passwords don't match</h5>");
-        //alert("Passwords don't match");
-        //$('#reg_p').tooltip({title:'Passwords dont match',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        var insert = "<span class='clear_me badge pull-right' style='right:10px;'>Passwords doesn't match</span>";
-        $('#reg_pc').append(insert);
-        $('#reg_p').text('');
-        $('#reg_pc').text('');
+        $('.alert').append("Passwords doesn't match");
         errcount++;
         }
         var vmail = $('#reg_mail').val();
@@ -356,14 +336,16 @@ head
         var mailx = validateEmail(vmail);
         if(mailx != true)
         {
-        //$('#message').append("<h5 style='color:#fc454e;'>incorrect email</h5>");
-        //alert('Incorrect email');
-        //$('#reg_mail').tooltip({title:'Invalid email',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
-        var insert = "<span class='clear_me badge pull-right' style='right:10px;'>Invalid email</span>";
-        $('#reg_mail').append(insert);
+          if(errcount){
+            $('.alert').append("<br>Invalid email");
+          }
+            else{
+              $('.alert').append("Invalid email");
+            }
         errcount++;
         }
         if(errcount!=0) {
+          $('.alert').slideToggle();
           return;
         }
         if(vmail&&vp&&vpc)
