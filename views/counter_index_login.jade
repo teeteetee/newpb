@@ -296,7 +296,7 @@ head
           $('#wait').css('display','none');
           switch (parsed.mtext){
           case('db'):
-          alert('db maintenance, service unavaliable');
+          console.log('1');
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');}
           else{
@@ -305,6 +305,7 @@ head
           allowauth = 1;
           break;
           case('wrong pas'):
+          console.log('2');
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('Wrong password');}
           else{
@@ -313,6 +314,7 @@ head
           allowauth = 1;
           break;
           case('wronguser'):
+          console.log('3');
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('No such user');}
           else{
