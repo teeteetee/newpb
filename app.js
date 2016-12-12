@@ -938,7 +938,8 @@ app.post('/counter/removefriend',function (req,res){
                 }
          });
         }  
-        });     
+        });  
+        }   
       else {
         res.send('err');
       }   
