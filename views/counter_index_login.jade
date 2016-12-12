@@ -300,7 +300,7 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
+           $('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');$('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
@@ -309,7 +309,7 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('Wrong password');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('Wrong password');$('#reg_alert').slideToggle();
+           $('#log_alert').empty();$('#log_alert').append('Wrong password');$('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
@@ -318,7 +318,7 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').empty();$('#log_alert').append('No such user');}
           else{
-           $('#log_alert').empty();$('#log_alert').append('No such user');$('#reg_alert').slideToggle();
+           $('#log_alert').empty();$('#log_alert').append('No such user');$('#log_alert').slideToggle();
           } 
           allowauth =1;
           break;
@@ -335,8 +335,13 @@ head
           request.send("phr="+vphr+"&lgn="+vlgn);}
           else {
             $('#wait').css('display','none');
-            $('#mail').tooltip('destroy');
-            $('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
+            //$('#mail').tooltip('destroy');
+            //$('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
+          if($('#log_alert').css('display')!='none')
+          {$('#log_alert').empty();$('#log_alert').append('Provide emaili and password');}
+          else{
+           $('#log_alert').empty();$('#log_alert').append('Provide emaili and password');$('#log_alert').slideToggle();
+          } 
           }
         }
         //END OF AUTHSUBMIT FUNCTION
