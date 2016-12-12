@@ -761,7 +761,7 @@ head
             //console.log('yo');
           if($('#nick').val()&&$('#nick').val().length>2){
                     var data={};
-                    data.nick=$('#nick').val();
+                    data.nick=$('#nick').val().replace(/\s{2,}/g,' ').trim();
                     $.ajax({
                         method: "POST",
                         url: "/counter/chcknck",
@@ -798,7 +798,7 @@ head
            e.oninput = (function(){
           if($('#nick_first').val()&&$('#nick_first').val().length>2){
                     var data={};
-                    data.nick=$('#nick_first').val();
+                    data.nick=$('#nick_first').val().replace(/\s{2,}/g,' ').trim();
                     $.ajax({
                         method: "POST",
                         url: "/counter/chcknck",
@@ -830,7 +830,7 @@ head
           case 1:
           if($('#nick').val()){
              var data={};
-             data.nick=$('#nick').val();
+             data.nick=$('#nick').val().replace(/\s{2,}/g,' ').trim();
              $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
@@ -845,7 +845,7 @@ head
           case 0:
           if($('#nick_first').val()){
              var data={};
-             data.nick=$('#nick_first').val();
+             data.nick=$('#nick_first').val().replace(/\s{2,}/g,' ').trim();
              $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
