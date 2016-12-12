@@ -89,172 +89,7 @@ function rm_st_sc(input){
   return input.replace(/<script>|<\/script>|<style>|<\/style>|style=/g,' ');
 }
 
-app.get('/ltps',function (req,res) {
-  if(req.session&&req.session._id){
-  res.render('ltps_admin');}
-  else {
-    res.render('ltps');
-  }
-});
 
-app.get('/ltps/login',function (req,res) {
-  if(req.session&&req.session._id){
-  res.render('ltps_admin');}
-  else {
-    res.render('ltps_login');
-  }
-});
-
-app.get('/ltps/logout',function (req,res){
-  req.session.reset();
-  res.redirect('/ltps');
-});
-
-app.get('/ltps/show',function (req,res){
-  ltps_users.findOne({_id:req.session._id},function(err,done){
-    ltps_posts.find({},function(err,done1){
-       res.send(req.session._id+'\n//---------------//\n'+'USERS:'+'\n//---------------//\n'+JSON.stringify(done)+'\n//---------------//\n'+'POSTS:'+'\n//---------------//\n'+JSON.stringify(done1));       
-    });
-  });
-});
-
-app.get('/ltps/set_images',function (req,res){
-  ltps_posts.update({},{$set:{source_name:'Нская Газета'}},{multi:1},function (err,done){
-    res.send(done);
-  })
-});
-
-app.post('/ltps/add',function (req,res){
-  if(req.session&&req.session._id){
-    console.log('POST \n'+req.body.heading+'\n'+req.body.post_body+'\n'+req.body.web_link+'\n'+req.body.picture+'\n'+req.body.post_tags+'\n');
-    var vtmstmp=Date.now();
-    var ms={};
-  ltps_posts.insert({heading:req.body.heading,post_body:req.body.post_body,source_name:req.body.source_name,web_link:req.body.web_link,author_id:req.session._id,picture:req.body.picture,tags:req.body.post_tags,views:0,share:0,tmstmp:vtmstmp},function (err,done){
-    if(err){
-      ms.trouble=1;
-      res.send(ms);
-    }
-    else{
-      console.log('breakpoint:'+JSON.stringify(done));
-      ltps_users.update({_id:req.session._id},{$inc:{posts:1}},function (err,done){
-        if(err){
-          console.log('users update err');
-        }
-        else {
-          console.log('breakpoint 1');
-          ms.trouble=0;
-          res.send(ms);
-        }
-      });
-    }
-  });
-   }
-   else{
-    console.log('trouble');
-    res.send('no');
-   }
-});
-
-app.post('/ltps/getposts',function (req,res){
-  var ms={};
-  ms.trouble=1;
-    ltps_posts.find({}, {sort: {tmstmp: -1}, limit: 10},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc.reverse();
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });
-});
-
-app.post('/ltps/newuser',function(req,res){
-    //var reload = req.body.reload;
-    var ms = {};
-    ms.trouble=1;
-    ms.mtext='email incorrect'; 
-    var vp = req.body.p;
-    var vpc = req.body.pc;
-    var vmail = req.body.mail;
-    if(validateEmail(vmail)&&vp===vpc)
-    {
-      console.log('\ndata ok\n')
-    }
-    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-    var ms = {};
-      ltps_users.insert({mail:vmail,phr:vp,posts:0,regdate:Date.now()},function (err,done){
-        if(err)
-        {
-          ms.mtext='db';
-         res.send(ms); 
-        }
-      else {
-      req.session._id=done._id;
-      ms.trouble =0;
-      ms.mtext='success';
-      res.send(ms);
-      }
-      });
-        
-    
-    });
-
-
-app.post('/ltps/check',function(req,res){
-  vphr=req.body.phr;
-  vlgn=req.body.lgn; // email
-  console.log(vphr+" , "+vlgn);
-   var  ms = {};
-  ms.trouble=1;
-  ms.mtext='db';
-  ltps_users.findOne({mail:vlgn},function(err,confirmed){
-    if (err)
-      {res.send(ms);}
-    else 
-    {
-      if (confirmed)
-      {console.log('we have found :'+JSON.stringify(confirmed));
-          if(bcrypt.compareSync(vphr,confirmed.phr))
-          {
-          req.session._id = confirmed._id;
-          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
-          ms.trouble = 0;
-          ms.mtext= 'success';
-          res.send(ms);
-           }
-           else {
-            ms.mtext='wrong pas';
-              res.send(ms);
-              //WRONG PASSWORD
-           } 
-      }
-      else {
-        ms.mtext='wronguser'
-        res.send(ms);
-      }
-    }
-  });
-});
-
-app.get('/ltps/remove',function (req,res){
-  var ms={};
-   ms.trouble=1;
-  if(req.session&&req.session._id){
-  ltps_posts.remove({},function(err,done){
-   res.redirect('/ltps');
-  });
-   }
-   else{
-    res.send(ms);
-   }
-});
-//----------------------//
 
 
 app.get('/test',function (req,res){
@@ -1061,13 +896,20 @@ app.post('/counter/addfriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('adding a friend');
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{friendstore:req.body._id},$inc:{total:1}},function (err,done){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$push:{friendstore:req.body._id},$inc:{total_fd:1}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
       else {
-        ms.trouble=0;
-        res.send(ms);
+        counter_friends.update({uid:req.body._id},{$push:{followers:JSON.stringify(req.session._id)},$inc:{total_fd:1}},function (err,done){
+          if(err){
+            console.log('err adding a friend 2');
+            res.send(ms);}
+            else {         
+              ms.trouble=0;
+              res.send(ms);
+            }
+        });
       }
   });
  }       
@@ -1081,14 +923,19 @@ app.post('/counter/removefriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('removing a friend');
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{friendstore:req.body._id.toString()},$inc:{total:-1}},function (err,done){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{friendstore:req.body._id.toString()},$inc:{total_fl:-1}},function (err,done){
     if(err){
       console.log('err removing a friend');
       res.send(ms);}
       else {
-        ms.trouble=0;
-        res.send(ms);
-          }
+        counter_friends.update({uid:req.body._id.toString()},{$pull:{followers:JSON.stringify(req.session._id)},$inc:{total_fl:-1}},function (err,done){
+          if(err){
+            console.log('err removing a friend');
+            res.send(ms);}
+            else {
+              ms.trouble=0;
+              res.send(ms);
+                }
          });
         }       
       else {
@@ -1808,7 +1655,7 @@ app.post('/newuser',function(req,res){
       //counter_stats.update({$inc:{users:1}});
       counter_books.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,bookstore:[]});
       counter_movies.insert({uid:JSON.stringify(done._id),total:0,oldones:0,newones:0,moviestore:[]});
-      counter_friends.insert({uid:JSON.stringify(done._id),total:0,friendstore:[]});
+      counter_friends.insert({uid:JSON.stringify(done._id),total_fd:0,total_fl:0,friendstore:[],followers:[]});
       req.session._id=done._id;
       ms.trouble =0;
       ms.mtext='success';
