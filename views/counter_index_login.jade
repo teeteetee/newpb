@@ -264,10 +264,7 @@ head
         // AUTHSUBMIT FUNCTION
         var allowauth = 1;
         function authsubmit() {
-          if($('#log_alert').css('display')!='none')
-        {
-          $('#log_alert').slideToggle();
-        }
+          console.log('------ authsubmit -----');
         allowauth = 0;
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
@@ -349,6 +346,7 @@ head
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
+          console.log('------ runreg -----');
         if($('#reg_alert').css('display')!='none')
         {
           $('#reg_alert').slideToggle();
