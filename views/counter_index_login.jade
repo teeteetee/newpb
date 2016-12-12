@@ -91,11 +91,11 @@ head
       .modal-sm .modal-body .btn,.modal-footer .btn {
       letter-spacing: 3px;
       text-transform:uppercase;
-      background: -webkit-linear-gradient(90deg, #018e5e 0%,#06eaa0 100%);
+      background-color: #0bd087;
       color: #007951;
       }
       .modal-sm .modal-body .btn:hover,.modal-footer .btn:hover {
-        background: -webkit-linear-gradient(90deg, #017950 0%,#02dc95 100%);
+       background-color: #12bb7c;
       }
       .modal-footer{
         padding:0px;
@@ -132,13 +132,15 @@ head
         border-top-right-radius:4px;
       }
       #login{
-        border-bottom-left-radius:4px;
-        border-bottom-right-radius:4px;
-        background: -webkit-linear-gradient(90deg, #018e5e 0%,#06eaa0 100%);
-        color: #007951;
+      border-bottom-left-radius:4px;
+      border-bottom-right-radius:4px;
+      /*background: -webkit-linear-gradient(90deg, #018e5e 0%,#06eaa0 100%);*/
+      background-color: #0bd087;
+      color: #007951;
       }
       #login:hover{
-        background: -webkit-linear-gradient(90deg, #017950 0%,#02dc95 100%);
+        /*background: -webkit-linear-gradient(90deg, #017950 0%,#02dc95 100%);*/
+        background-color: #12bb7c;
       }
       #mail {
       border-bottom: 1px solid rgba(232, 232, 232, 0.7);
@@ -197,11 +199,10 @@ head
           transform: rotate(360deg);
         }
       }
-      .tooltip.top .tooltip-arrow,.tooltip.left .tooltip-arrow {
-       border-top-color: #e63b3b;
-      }
-      .tooltip-inner {
-      background-color: #e43e3e;
+      .alert-danger{
+        color:white;
+        background-color:background: #fd0069;
+        border-none;
       }
   body
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -212,7 +213,7 @@ head
                 span(aria-hidden="true") ×
               h4.moviemodaltitle(style='text-align:center;margin-top:4px;') Регистрация
             .modal-body
-              .alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
+              #reg_alert.alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
                 strong Fuck!
                 | What the fuck you think you are doing now?
               input#reg_mail.sp_input.form-control(type='text' placeholder='mail')
@@ -228,6 +229,9 @@ head
         .col-sm-4.col-sm-offset-4
           h1(style='font-weight:100;color:white;') IV LISTS
           h4(style='color: rgba(255,255,255,0.5);text-transform: none;letter-spacing: initial;font-weight: 200;') Keep track of what you read and watch
+          #log_alert.alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
+                strong Fuck!
+                | What the fuck you think you are doing now?
           form(method='post',action='/backup',role='form',id='loginform')
             input#mail(type='email' class='form-control input-colour' placeholder='login')
             input#p(type='password' class='form-control input-colour' placeholder='password')
@@ -315,13 +319,13 @@ head
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
-        if($('.alert').css('display')!='none')
+        if($('#reg_alert').css('display')!='none')
         {
-          $('.alert').slideToggle();
-          $('.alert').empty();
+          $('#reg_alert').slideToggle();
+          $('#reg_alert').empty();
         }
         else{
-          $('.alert').empty();
+          $('#reg_alert').empty();
          }
         var errcount =0;
         var vp = $('#reg_p').val();
@@ -329,11 +333,11 @@ head
         console.log(vp.length);
         if(vpc.length === 0 || vp.length === 0) {
         console.log('pass length 0');
-        $('.alert').append(" • Provide a password and verify it");
+        $('#reg_alert').append(" • Provide a password and verify it");
         errcount++;
         }
         if(vp != vpc && errcount===0) {
-        $('.alert').append(" • Passwords doesn't match");
+        $('#reg_alert').append(" • Passwords doesn't match");
         errcount++;
         }
         var vmail = $('#reg_mail').val();
@@ -342,15 +346,15 @@ head
         if(mailx != true)
         {
           if(errcount){
-            $('.alert').append("<br> • Invalid email");
+            $('#reg_alert').append("<br> • Invalid email");
           }
             else{
-              $('.alert').append(" • Invalid email");
+              $('#reg_alert').append(" • Invalid email");
             }
         errcount++;
         }
         if(errcount!=0) {
-          $('.alert').slideToggle();
+          $('#reg_alert').slideToggle();
           return;
         }
         if(vmail&&vp&&vpc)
@@ -371,12 +375,19 @@ head
           {
           case('fail'):
           console.log('db maintenance, service unavaliable');
-          alert('db maintenance, service unavaliable');
+          if($('#reg_alert').css('display')!='none')
+          {$('#reg_alert').empty();$('#reg_alert').append('db maintenance, service unavaliable');}
+          else{
+           $('#reg_alert').empty();$('#reg_alert').append('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
+          } 
           break;
           case('email exists'):
           console.log('povide another mail');
-          $('#reg_mail').tooltip('destroy');
-          $('#reg_mail').tooltip({title:'Provide another email',placement:tooltip_placement,trigger: 'manual'}).tooltip('show');
+          if($('#reg_alert').css('display')!='none')
+          {$('#reg_alert').empty();$('#reg_alert').append('Provide another email');}
+          else{
+           $('#reg_alert').empty();$('#reg_alert').append('Provide another email');$('#reg_alert').slideToggle();
+          } 
           break;
           }
           }
