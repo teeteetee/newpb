@@ -273,8 +273,12 @@ head
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
         if(!validateEmail(vlgn)){
-        $('#log_alert').text('Invalid email');
-        $('#log_alert').slideToggle();
+        if($('#log_alert').css('display')!='none')
+          {$('#log_alert').text('Invalid email');}
+          else{
+           $('#log_alert').text('Invalid email');
+           $('#log_alert').slideToggle();
+          } 
         $('#wait').css('display','none');
         return;
         }
@@ -296,7 +300,8 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').text('db maintenance, service unavaliable');}
           else{
-           $('#log_alert').text('db maintenance, service unavaliable');$('#log_alert').slideToggle();
+           $('#log_alert').text('db maintenance, service unavaliable');
+           $('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
@@ -305,7 +310,8 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').text('Wrong password');}
           else{
-           $('#log_alert').text('Wrong password');$('#log_alert').slideToggle();
+           $('#log_alert').text('Wrong password');
+           $('#log_alert').slideToggle();
           } 
           allowauth = 1;
           break;
@@ -314,7 +320,8 @@ head
           if($('#log_alert').css('display')!='none')
           {$('#log_alert').text('No such user');}
           else{
-           $('#log_alert').text('No such user');$('#log_alert').slideToggle();
+           $('#log_alert').text('No such user');
+           $('#log_alert').slideToggle();
           } 
           allowauth =1;
           break;
