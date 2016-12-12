@@ -338,34 +338,34 @@ head
             //$('#mail').tooltip('destroy');
             //$('#mail').tooltip({title:'Provide emaili and password',placement:'top',trigger: 'manual'}).tooltip('show');
           if($('#log_alert').css('display')!='none')
-          {$('#log_alert').text('Provide emaili and password');}
+          {$('#log_alert').text(' • Provide emaili and password');}
           else{
-           $('#log_alert').text('Provide emaili and password');$('#log_alert').slideToggle();
+           $('#log_alert').text(' • Provide emaili and password');$('#log_alert').slideToggle();
           } 
           }
         }
         //END OF AUTHSUBMIT FUNCTION
         function runregister() {
           console.log('------ runreg -----');
-        if($('#reg_alert').css('display')!='none')
-        {
-          $('#reg_alert').slideToggle();
-          $('#reg_alert').empty();
-        }
-        else{
-          $('#reg_alert').empty();
-         }
+        //if($('#reg_alert').css('display')!='none')
+        //{
+        //  $('#reg_alert').slideToggle();
+        //  $('#reg_alert').empty();
+        //}
+        //else{
+        //  $('#reg_alert').empty();
+        // }
         var errcount =0;
         var vp = $('#reg_p').val();
         var vpc = $('#reg_pc').val();
         console.log(vp.length);
         if(vpc.length === 0 || vp.length === 0) {
         console.log('pass length 0');
-        $('#reg_alert').append(" • Provide a password and verify it");
+        $('#reg_alert').text(" • Provide a password and verify it");
         errcount++;
         }
         if(vp != vpc && errcount===0) {
-        $('#reg_alert').append(" • Passwords doesn't match");
+         $('#reg_alert').text(" • Passwords doesn't match");}
         errcount++;
         }
         var vmail = $('#reg_mail').val();
