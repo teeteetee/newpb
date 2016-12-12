@@ -107,7 +107,7 @@ head
       input[type=text]:-ms-input-placeholder      {color:#ddd;}/**/
       #loginform{
         border-radius:10px;
-        padding:30px;
+        padding:22px;
       }
       .input-colour{
         background-color: white;
@@ -200,9 +200,9 @@ head
         }
       }
       .alert-danger{
-        color:white;
+        color:#98003f;
         background-color:#fd0069;
-        border-none;
+        border:none;
       }
   body
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -213,7 +213,7 @@ head
                 span(aria-hidden="true") ×
               h4.moviemodaltitle(style='text-align:center;margin-top:4px;') Регистрация
             .modal-body
-              #reg_alert.alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
+              #reg_alert.alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;text-align:center;') 
                 strong Fuck!
                 | What the fuck you think you are doing now?
               input#reg_mail.sp_input.form-control(type='text' placeholder='mail')
@@ -236,7 +236,7 @@ head
             input#mail(type='email' class='form-control input-colour' placeholder='login')
             input#p(type='password' class='form-control input-colour' placeholder='password')
             button#login(type='button' style='letter-spacing:3px;margin-bottom:20px;border:none;' class='btn btn-login form-control') LOGIN
-            h5#reglink(style='color:#bbb;' onclick="$('#mail').tooltip('destroy');" data-toggle="modal" data-target="#regmodal") Register
+            h5#reglink(style='color:#6d6d6d;' data-toggle="modal" data-target="#regmodal") Register
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script. 
