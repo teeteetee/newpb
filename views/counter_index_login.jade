@@ -229,7 +229,7 @@ head
         .col-sm-4.col-sm-offset-4
           h1(style='font-weight:100;color:white;') IV LISTS
           h4(style='color: rgba(255,255,255,0.5);text-transform: none;letter-spacing: initial;font-weight: 200;') Keep track of what you read and watch
-          #log_alert.alert.alert-danger(role="alert" style='margin-left:20px;margin-right:20px;display:none;') 
+          #log_alert.alert.alert-danger(role="alert" style='margin:20px;display:none;') 
                 strong Fuck!
                 | What the fuck you think you are doing now?
           form(method='post',action='/backup',role='form',id='loginform')
@@ -264,14 +264,21 @@ head
         // AUTHSUBMIT FUNCTION
         var allowauth = 1;
         function authsubmit() {
+          if($('#log_alert').css('display')!='none')
+        {
+          $('#log_alert').slideToggle();
+          $('#log_alert').empty();
+        }
+        else{
+          $('#log_alert').empty();
+         }
         allowauth = 0;
-        $('#mail').tooltip('destroy');
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
         if(!validateEmail(vlgn)){
-        $('#mail').tooltip('destroy');
-        $('#mail').tooltip({title:'Invalid email',placement:'top',trigger: 'manual'}).tooltip('show');
+        $('#log_alert').append('Invalid email');
+        $('#log_alert').slideToggle();
         $('#wait').css('display','none');
         return;
         }
@@ -290,14 +297,27 @@ head
           switch (parsed.mtext){
           case('db'):
           alert('db maintenance, service unavaliable');
+          if($('#log_alert').css('display')!='none')
+          {$('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');}
+          else{
+           $('#log_alert').empty();$('#log_alert').append('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
+          } 
           allowauth = 1;
           break;
           case('wrong pas'):
-          $('#mail').tooltip({title:'Wrong password',placement:'top',trigger: 'manual'}).tooltip('show');
+          if($('#log_alert').css('display')!='none')
+          {$('#log_alert').empty();$('#log_alert').append('Wrong password');}
+          else{
+           $('#log_alert').empty();$('#log_alert').append('Wrong password');$('#reg_alert').slideToggle();
+          } 
           allowauth = 1;
           break;
           case('wronguser'):
-          $('#mail').tooltip({title:'No such user',placement:'top',trigger: 'manual'}).tooltip('show');
+          if($('#log_alert').css('display')!='none')
+          {$('#log_alert').empty();$('#log_alert').append('No such user');}
+          else{
+           $('#log_alert').empty();$('#log_alert').append('No such user');$('#reg_alert').slideToggle();
+          } 
           allowauth =1;
           break;
           }}
