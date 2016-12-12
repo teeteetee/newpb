@@ -723,6 +723,13 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+       $("input").keypress(function(event) {
+            if (event.which == 13) {
+                if($('#first_time').css('display')!='none'){
+                  change_nick(0);
+                }
+            }
+        });
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
