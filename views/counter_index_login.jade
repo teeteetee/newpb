@@ -240,7 +240,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script. 
-        var tooltip_placement=screen.width>screen.height?'left':'top';
+        //var tooltip_placement=screen.width>screen.height?'left':'top';
         $("input").keypress(function(event) {
             if (event.which == 13) {
                 if($('#regmodal').css('display')==='none'){
@@ -267,17 +267,13 @@ head
           if($('#log_alert').css('display')!='none')
         {
           $('#log_alert').slideToggle();
-          $('#log_alert').empty();
         }
-        else{
-          $('#log_alert').empty();
-         }
         allowauth = 0;
         var vlgn = $('#mail').val();
         var vphr = $('#p').val();
         console.log(vlgn +" , "+vphr);
         if(!validateEmail(vlgn)){
-        $('#log_alert').append('Invalid email');
+        $('#log_alert').text('Invalid email');
         $('#log_alert').slideToggle();
         $('#wait').css('display','none');
         return;
