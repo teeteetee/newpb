@@ -382,7 +382,8 @@ head
         errcount++;
         }
         if(errcount!=0) {
-          $('#reg_alert').slideToggle();
+          if($('#reg_alert').css('display')=='none')
+          {$('#reg_alert').slideToggle();}
           return;
         }
         if(vmail&&vp&&vpc)
