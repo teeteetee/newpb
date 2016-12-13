@@ -1694,9 +1694,9 @@ app.post('/newuser',function(req,res){
         }
       else {
       //counter_stats.update({$inc:{users:1}});
-      counter_books.insert({uid:done._id.toString().replace(/"/g,'').trim(),total:0,oldones:0,newones:0,bookstore:[]});
-      counter_movies.insert({uid:done._id.toString().replace(/"/g,'').trim(),total:0,oldones:0,newones:0,moviestore:[]});
-      counter_friends.insert({uid:done._id.toString().replace(/"/g,'').trim(),total_fd:0,total_fl:0,friendstore:[],followers:[]});
+      counter_books.insert({uid:JSON.stringify(done._id).replace(/"/g,'').trim(),total:0,oldones:0,newones:0,bookstore:[]});
+      counter_movies.insert({uid:JSON.stringify(done._id).replace(/"/g,'').trim(),total:0,oldones:0,newones:0,moviestore:[]});
+      counter_friends.insert({uid:JSON.stringify(done._id).replace(/"/g,'').trim(),total_fd:0,total_fl:0,friendstore:[],followers:[]});
       req.session._id=done._id;
       ms.trouble =0;
       ms.mtext='success';
