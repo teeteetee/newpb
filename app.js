@@ -393,7 +393,7 @@ app.get('/counter/showstats',function (req,res){
 });
 
 app.get('/counter/clearfriends',function (req,res){
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0,friendstore:[]},$unset:{firendstore:1}},function (err,done){
+  counter_friends.update({uid:req.session._id},{$set:{total:0,friendstore:[]},$unset:{firendstore:1}},function (err,done){
     res.redirect('/counter');
   });
 });
@@ -417,7 +417,7 @@ app.get('/counter/clear',function (req,res){
 
 app.get('/counter/web_init',function (req,res){
   if(req.session&&req.session._id)
-  {counter_web.insert({uid:JSON.stringify(req.session._id),total:0,weblinkstore:[]});
+  {counter_web.insert({uid:req.session._id,total:0,weblinkstore:[]});
     res.redirect('/counter/current');}
     else {
       res.redirect('/counter');
@@ -452,7 +452,7 @@ app.get('/counter/profile/:_id',function (req,res){
       }
       if(done){
         var mail = done.showmail?done.mail:0;
-        counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
+        counter_friends.findOne({uid:req.session._id},function (err,done1){
           if(done1){
             if(done1.friendstore.indexOf(req.params._id)!=-1){
               res.render('index_in_profile',{'_id':req.params._id,'isfriend':1,'mail':mail});
@@ -487,7 +487,7 @@ app.get('/counter/profile/:_id/b',function (req,res){
         console.log('err /counter/profile/'+req.params._id);
       }
       if(done){
-        counter_friends.findOne({uid:JSON.stringify(req.session._id)},function (err,done1){
+        counter_friends.findOne({uid:req.session._id},function (err,done1){
           if(done1){
             if(done1.friendstore.indexOf(req.params._id)!=-1){
               res.render('index_in_profile_books',{'_id':req.params._id,'isfriend':1});
@@ -519,7 +519,7 @@ app.post('/counter/getmovies',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_movies.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+  {counter_movies.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -615,7 +615,7 @@ app.post('/counter/getbooks',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_books.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+  {counter_books.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -635,7 +635,7 @@ else{
 });
 
 //app.get('/counter/sset',function (req,res){
-//  counter_friends.update({uid:JSON.stringify(req.session._id)},{$set:{total:0}},function(err,doc){
+//  counter_friends.update({uid:req.session._id},{$set:{total:0}},function(err,doc){
 //  res.send('done');
 //  });
 //});
@@ -644,7 +644,7 @@ app.post('/counter/getfriends',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+  {counter_friends.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -668,7 +668,7 @@ app.post('/counter/getfl_num',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+  {counter_friends.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -743,7 +743,7 @@ app.post('/counter/rm_movie/',function(req,res){
   if(req.session&&req.session._id)
   {
     if(vnewmovie){
-  counter_movies.update({uid:JSON.stringify(req.session._id)},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:-1}},function(err,done){
+  counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a movie');
@@ -781,7 +781,7 @@ app.post('/counter/rm_web',function(req,res){
   var v_r_link= req.body.r_link;
   if(req.session&&req.session._id)
   {
-  counter_web.update({uid:JSON.stringify(req.session._id)},{$pull:{weblinkstore:{r_name:v_r_name,r_link:v_r_link}},$inc:{total:-1}},function(err,done){
+  counter_web.update({uid:req.session._id},{$pull:{weblinkstore:{r_name:v_r_name,r_link:v_r_link}},$inc:{total:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a web article');
@@ -808,7 +808,7 @@ app.post('/counter/rm_book/',function(req,res){
   if(req.session&&req.session._id)
   {
     if(vnewbook){
-  counter_books.update({uid:JSON.stringify(req.session._id)},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,newones:-1}},function(err,done){
+  counter_books.update({uid:req.session._id},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,newones:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a book');
@@ -847,13 +847,13 @@ app.post('/counter/switch_movie',function(req,res){
     var mtitle = req.body.mtitle;
     var vyear = req.body.year;
     console.log(newposition+','+mtitle+','+vyear);
-    counter_movies.update({uid:JSON.stringify(req.session._id),"moviestore.movietitle":mtitle},{$set:{"moviestore.$.newmovie":parseInt(newposition)}},function (err,done){
+    counter_movies.update({uid:req.session._id,"moviestore.movietitle":mtitle},{$set:{"moviestore.$.newmovie":parseInt(newposition)}},function (err,done){
       if(err) {
         res.send(ms);
       }
       else {
         if(newposition){
-          counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,oldones:-1}},function (err2,done2){
+          counter_movies.update({uid:req.session._id},{$inc:{newones:1,oldones:-1}},function (err2,done2){
             if(err){
               console.log('err when movie switching list')
             }
@@ -864,7 +864,7 @@ app.post('/counter/switch_movie',function(req,res){
           });
         }
           else{
-            counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:-1,oldones:1}},function (err2,done2){
+            counter_movies.update({uid:req.session._id},{$inc:{newones:-1,oldones:1}},function (err2,done2){
             if(err){
               console.log('err when movie switching list')
             }
@@ -889,13 +889,13 @@ app.post('/counter/switch_book',function(req,res){
     var newposition = req.body.newposition;
     var btitle = req.body.btitle;
     console.log(newposition+','+btitle);
-    counter_books.update({uid:JSON.stringify(req.session._id),"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":parseInt(newposition)}},function (err,done){
+    counter_books.update({uid:req.session._id,"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":parseInt(newposition)}},function (err,done){
       if(err) {
         res.send(ms);
       }
       else {
         if(newposition){
-          counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,oldones:-1}},function (err2,done2){
+          counter_books.update({uid:req.session._id},{$inc:{newones:1,oldones:-1}},function (err2,done2){
             if(err){
               console.log('err when book switching list')
             }
@@ -906,7 +906,7 @@ app.post('/counter/switch_book',function(req,res){
           });
         }
           else{
-            counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:-1,oldones:1}},function (err2,done2){
+            counter_books.update({uid:req.session._id},{$inc:{newones:-1,oldones:1}},function (err2,done2){
             if(err){
               console.log('err when book switching list')
             }
@@ -931,7 +931,7 @@ app.post('/counter/addfriend',function (req,res){
   console.log('adding a friend');
   console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
   console.log(req.body._id.toString());
-  counter_friends.update({uid:JSON.stringify(req.session._id).replace(/"/g,'').trim()},{$push:{friendstore:req.body._id},$inc:{total_fd:1}},function (err,done){
+  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$push:{friendstore:req.body._id},$inc:{total_fd:1}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
@@ -962,7 +962,7 @@ app.post('/counter/removefriend',function (req,res){
   console.log('removing a friend');
   console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
   console.log(req.body._id.toString());
-  counter_friends.update({uid:JSON.stringify(req.session._id).replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
+  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
     if(err){
       console.log('err removing a friend');
       res.send(ms);}
@@ -1021,14 +1021,14 @@ app.post('/counter/addmovie',function (req,res){
             }
             console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{moviestore:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
+          counter_movies.update({uid:req.session._id},{$push:{moviestore:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
             console.log(done);
           });
           console.log('breakpoint five');
           if(vnewmovie)
-          {counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,total:1}});}
+          {counter_movies.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
           else {
-           counter_movies.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
+           counter_movies.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
            res.send('ok');  }       
@@ -1039,7 +1039,7 @@ app.post('/counter/addmovie',function (req,res){
 
 app.get('/counter/cleanweb',function (req,res){
   if(req.session&&req.session._id){
-   counter_movies.update({uid:JSON.stringify(req.session._id)},{$unset:{weblinkstore:1}});
+   counter_movies.update({uid:req.session._id},{$unset:{weblinkstore:1}});
   }
   else{
     res.redirect('/counter');
@@ -1061,7 +1061,7 @@ app.post('/counter/addweb',function (req,res){
               v_r_link = '--';
             }
           var vtmstmp = Date.now();
-          counter_web.update({uid:JSON.stringify(req.session._id)},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+          counter_web.update({uid:req.session._id},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
           });
            res.send('ok');  }       
@@ -1107,14 +1107,14 @@ app.post('/counter/addbook',function(req,res){
             }
             console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          counter_books.update({uid:JSON.stringify(req.session._id)},{$push:{bookstore:{author:vbookauth,booktitle:vbooktitle,newbook:vnewbook,star:vbookstar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
+          counter_books.update({uid:req.session._id},{$push:{bookstore:{author:vbookauth,booktitle:vbooktitle,newbook:vnewbook,star:vbookstar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
             console.log(done);
           });
           console.log('breakpoint five');
           if(vnewbook)
-          {counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{newones:1,total:1}});}
+          {counter_books.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
           else {
-           counter_books.update({uid:JSON.stringify(req.session._id)},{$inc:{oldones:1,total:1}});
+           counter_books.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
           }
           console.log('breakpoint six');
            res.send('ok');  }       
@@ -1126,7 +1126,7 @@ app.post('/counter/addbook',function(req,res){
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
   { var json = {};
-     counter_movies.findOne({uid:JSON.stringify(req.session._id)},function (err,doc){
+     counter_movies.findOne({uid:req.session._id},function (err,doc){
         if(err){
            console.log('ERR WHILE BACKUP REQUEST');
            console.log(err2);
@@ -1141,7 +1141,7 @@ app.post('/backup',function (req,res){
          json.movies.total=doc.total;
          json.movies.oldones=doc.oldones;
          json.movies.newones=doc.newones;
-         counter_books.findOne({uid:JSON.stringify(req.session._id)},function (err,doc2){
+         counter_books.findOne({uid:req.session._id},function (err,doc2){
             if(err){
                console.log('ERR WHILE BACKUP REQUEST');
                console.log(err3);
@@ -1208,12 +1208,12 @@ app.post('/counter/restore',function (req,res){
        if (valid) {
          console.log('breakpoint 4');
          data = JSON.parse(data);
-         counter_movies.update({uid:JSON.stringify(req.session._id)},{$set:{total:data.movies.total,newones:data.movies.newones,oldones:data.movies.oldones,moviestore:data.movies.moviestore}},function (err,done){
+         counter_movies.update({uid:req.session._id},{$set:{total:data.movies.total,newones:data.movies.newones,oldones:data.movies.oldones,moviestore:data.movies.moviestore}},function (err,done){
            if(err){
             console.log('err');
            }
            else {
-              counter_books.update({uid:JSON.stringify(req.session._id)},{$set:{total:data.books.total,newones:data.books.newones,oldones:data.books.oldones,bookstore:data.books.bookstore}},function (err2,done2){
+              counter_books.update({uid:req.session._id},{$set:{total:data.books.total,newones:data.books.newones,oldones:data.books.oldones,bookstore:data.books.bookstore}},function (err2,done2){
                 if(err2){
                  console.log('err');
                 }
@@ -1620,7 +1620,7 @@ app.get('/counter/logout',function (req,res){
 });
 
 app.get('/gets',function(req,res){
-  counter_movies.update({uid:JSON.stringify(req.session._id)},{$push:{moviestore:{hey:'hello'}}},function(err,done){res.send(done);});
+  counter_movies.update({uid:req.session._id},{$push:{moviestore:{hey:'hello'}}},function(err,done){res.send(done);});
 });
 
 app.get('/counter/showusers',function (req,res){
