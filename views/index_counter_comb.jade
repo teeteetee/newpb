@@ -740,6 +740,7 @@ head
                 }
             }
         });
+        getfollowers_num()
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
@@ -1395,7 +1396,9 @@ head
                 $('#heading').append('<h5>'+msg.doc+' followers</h5>');
                 }
                }
+             }
              });
+           }
         //----------------------------//
         function populate_friends(consolidated) {
           $('.friendlist').empty();
