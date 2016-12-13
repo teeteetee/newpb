@@ -960,6 +960,8 @@ app.post('/counter/removefriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('removing a friend');
+  console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
+  console.log(req.body._id.toString());
   counter_friends.update({uid:JSON.stringify(req.session._id).replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
     if(err){
       console.log('err removing a friend');
