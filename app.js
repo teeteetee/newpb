@@ -214,15 +214,19 @@ app.get('/counter',function (req,res){
 
 
 app.get('/counter/session/:session',function (req,res){
-  if(req.params.session==='give') {
-    req.session._id = 1;
-    console.log(req.session._id);
-    res.send('done');
-  }
-  if(req.params.session==='clean') {
-    delete req.session._id;
-    res.redirect('/counter');
-  }
+  if(req.params.session==='give'||req.params.session==='clean')
+  {if(req.params.session==='give') {
+      req.session._id = 1;
+      console.log(req.session._id);
+      res.send('done');
+    }
+    if(req.params.session==='clean') {
+      delete req.session._id;
+      res.redirect('/counter');
+    }}
+    else {
+res.redirect('/counter');
+    }
 });
 
 app.get('/counter/comb',function (req,res){
