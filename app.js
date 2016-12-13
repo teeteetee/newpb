@@ -660,6 +660,30 @@ else{
 }
 });
 
+app.post('/counter/getfl_num',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {counter_friends.findOne({uid:JSON.stringify(req.session._id)},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null&&doc.total_fl){
+        console.log(doc);
+        ms.doc = doc.total_fl;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+    });}
+else{
+   res.send(ms);
+}
+});
+
 app.post('/counter/getstat_m',function (req,res){
   var ms ={};
   ms.trouble=1;

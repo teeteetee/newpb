@@ -682,7 +682,7 @@ head
         .col-xs-12
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;margin-bottom:30px;')
-        .col-xs-12
+        .col-xs-12#heading
            h3#user_name(style='color:white;font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
@@ -1379,6 +1379,23 @@ head
              }
             }
         //---------------------------//
+        function getfollowers_num() {
+          console.log('getting followers num');
+        $.ajax({
+             method: "POST",
+             url: "/counter/getfl_num",
+             data: 0
+           })
+             .done(function( msg ) {
+               if(!msg.trouble) {
+                 if(msg.doc){
+                   if(msg.doc==1){
+                $('#heading').append('<h5>'+msg.doc+' follower</h5>');}
+                else{
+                $('#heading').append('<h5>'+msg.doc+' followers</h5>');
+                }
+               }
+             });
         //----------------------------//
         function populate_friends(consolidated) {
           $('.friendlist').empty();
