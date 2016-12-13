@@ -1381,7 +1381,7 @@ head
             }
         //---------------------------//
         function getfollowers_num() {
-          console.log('getting followers num');
+          console.log('getting followers num:');
         $.ajax({
              method: "POST",
              url: "/counter/getfl_num",
@@ -1390,12 +1390,16 @@ head
              .done(function( msg ) {
                if(!msg.trouble) {
                  if(msg.doc){
+                  console.log(msg.doc);
                    if(msg.doc==1){
                 $('#heading').append('<h5>'+msg.doc+' follower</h5>');}
                 else{
                 $('#heading').append('<h5>'+msg.doc+' followers</h5>');
                 }
                }
+             }
+             else{
+              console.log('getting followers num trouble');
              }
              });
            }
