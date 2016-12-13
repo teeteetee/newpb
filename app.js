@@ -936,7 +936,7 @@ app.post('/counter/addfriend',function (req,res){
             console.log('err adding a friend 2');
             res.send(ms);}
             else {    
-              conso.log('added a follower');     
+              console.log('added a follower');     
               ms.trouble=0;
               res.send(ms);
             }
