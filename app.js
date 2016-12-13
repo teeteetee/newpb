@@ -958,12 +958,12 @@ app.post('/counter/removefriend',function (req,res){
  {var ms={};
   ms.trouble=1;
   console.log('removing a friend');
-  counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{friendstore:req.body._id.toString()},$inc:{total_fd:-1}},function (err,done){
+  counter_friends.update({uid:JSON.stringify(req.session._id)},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
     if(err){
       console.log('err removing a friend');
       res.send(ms);}
       else {
-        counter_friends.update({uid:req.body._id.toString()},{$pull:{followers:JSON.stringify(req.session._id)},$inc:{total_fl:-1}},function (err,done){
+        counter_friends.update({uid:req.body._id},{$pull:{followers:JSON.stringify(req.session._id)},$inc:{total_fl:-1}},function (err,done){
           if(err){
             console.log('err removing a friend');
             res.send(ms);}
