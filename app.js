@@ -200,7 +200,12 @@ app.post('/counter/current/done',function (req,res){
 app.get('/counter',function (req,res){
   if(req.session&&req.session._id)
  {console.log(req.session);
-  res.render('index_counter_comb',{'_id':req.session._id});}
+  if(req.session.nick){
+    res.render('index_counter_comb',{'_id':req.session._id,'nick':req.session.nick});
+  }
+  else{
+  res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
+}}
  else {
   res.render('counter_index_login');
  }
@@ -951,7 +956,7 @@ app.post('/counter/addmovie',function (req,res){
           var ms = {};
           ms.trouble =1;
          
-            var vmovietitle = req.body.movietitle;
+            var vmovietitle = req.body.movietitle.replace(/\s{2,}/g,' ').trim();;
             var vnewmovie = parseInt(req.body.newmovie);
             console.log('breakpoint one');
             var vmovieyear = req.body.year;
@@ -1037,10 +1042,10 @@ app.post('/counter/addbook',function(req,res){
           var ms = {};
           ms.trouble =1;
          
-            var vbooktitle = req.body.booktitle;
+            var vbooktitle = req.body.booktitle.replace(/\s{2,}/g,' ').trim();;
             var vnewbook = parseInt(req.body.newbook);
             console.log('breakpoint one');
-            var vbookauth = req.body.author;
+            var vbookauth = req.body.author.replace(/\s{2,}/g,' ').trim();;
             var vbookstar = parseInt(req.body.star);
             console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookauth+' ,star: '+vbookstar+' , newbook: '+vnewbook);
             var dd= new Date();
