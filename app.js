@@ -1737,6 +1737,9 @@ app.post('/check',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           req.session._id = confirmed._id;
+          if(confirmed.nick){
+            req.session.nick = confirmed.nick;
+          }
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
