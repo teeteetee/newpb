@@ -1424,7 +1424,8 @@ head
               vcontent+='</ul>'
             }
             });
-           $('#heading').prop({'data-content':vcontent,'title':vtitle});
+          // $('#heading').prop({'data-content':vcontent});
+           $('#heading').popover({'content':vcontent,'placement':'bottom'}).toggle();
          });
         //----------------------------//
         function populate_friends(consolidated) {
