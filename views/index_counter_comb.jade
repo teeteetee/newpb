@@ -518,10 +518,6 @@ head
               a(onclick='add_dialog()')
                span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
                | Add item
-            li
-              a(onclick='getfriends()') 
-                span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
-                |You follow
             li 
               a#settings_btn 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-cog(style='margin-right:3px;')
@@ -530,6 +526,11 @@ head
               a(href="/counter/logout") 
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
                 |Logout
+          //
+            li
+              a(onclick='getfriends()') 
+                span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
+                |You follow
           //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
           //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
@@ -695,7 +696,10 @@ head
            h3#user_name(style='color:white;font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
-           a#heading(tabindex="0" class="btn btn-default" role="button"  data-toggle="popover" data-trigger="focus")
+           .btn-group
+             button.btn-default following
+             button#heading.btn-default followers
+             //a#heading(tabindex="0" class="btn btn-default" role="button"  data-toggle="popover" data-trigger="focus")
            h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
