@@ -1432,7 +1432,8 @@ head
                 followers=msg.doc.followers;
                 $('#followed_by').css('display','block');
                 //-----------------------//
-                var vcontent="<ul class='list-group'>";
+                var vcontent_1="<ul class='list-group'>";
+                var vcontent_2="<ul class='list-group'>";
                 var insert;
                 var away;
                 var follow_name;
@@ -1449,13 +1450,14 @@ head
                         // $('#f_'+element).text(msg.mtext);
                           follow_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
-                          vcontent+= "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
+                          vcontent_1+= "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
                         }
                       });
                     //-----------------//
                    if(index+1===followers.length){
-                     vcontent+='</ul>'
+                     vcontent_1+='</ul>'
                    }
+                   console.log(index+': '+vcontent_1);
                    });
                  // $('#followed_by').prop({'data-content':vcontent});
                  $('#followed_by').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
@@ -1482,13 +1484,14 @@ head
                         // $('#f_'+element).text(msg.mtext);
                           friend_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
-                          vcontent+= "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
+                          vcontent_2+= "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
                         }
                       });
                     //-----------------//
                    if(index+1===msg.doc.friendstore.length){
-                     vcontent+='</ul>'
+                     vcontent_2+='</ul>'
                    }
+                   console.log(index+': '+vcontent_2);
                    });
                    //-------------------//
                   $('#im_following').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
