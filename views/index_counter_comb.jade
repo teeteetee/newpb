@@ -496,6 +496,9 @@ head
        #heading{
         display:none;
        }
+       .popover-title {
+        text-align:center;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -1399,14 +1402,15 @@ head
                   var insert;
                    if(msg.doc.num==1){
                 $('#heading').text(msg.doc.num+' follower');
-                insert=msg.doc.num+' follower';
-                $('#heading').prop({'title':insert});
+                //insert=msg.doc.num+' follower';
+                //$('#heading').prop({'title':insert});
                 }
                 else{
                 $('#heading').text(msg.doc.num+' followers');
-                insert=msg.doc.num+' followers';
-                $('#heading').prop({'title':insert});
+                //insert=msg.doc.num+' followers';
+                //$('#heading').prop({'title':insert});
                 }
+                $('#heading').prop({'title':'Followers'});
                 followers=msg.doc.followers;
                 $('#heading').css('display','block');
                 //-----------------------//
@@ -1418,7 +1422,7 @@ head
                    }
                    });
                  // $('#heading').prop({'data-content':vcontent});
-                 $('#heading').popover({'content':vcontent,'placement':'bottom'});
+                 $('#heading').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
                  //--------------------------//
                }
              }
