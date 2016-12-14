@@ -675,7 +675,8 @@ app.post('/counter/getfl_num',function (req,res){
       }
       else if(doc!=null&&doc.total_fl){
         console.log(doc);
-        ms.doc = doc.total_fl;
+        ms.doc.num = doc.total_fl;
+        ms.doc.followers=doc.followers;
         ms.trouble=0;
         res.send(ms);
       }
@@ -1655,6 +1656,7 @@ app.get('/counter/showme',function (req,res){
 
 app.get('/counter/logout',function (req,res){
   delete req.session._id;
+  delete req.session.nick;
   res.redirect('/counter');
 });
 

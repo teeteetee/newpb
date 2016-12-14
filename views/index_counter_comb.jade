@@ -1380,6 +1380,7 @@ head
              }
             }
         //---------------------------//
+        var followers = [];
         function getfollowers_num() {
           console.log('getting followers num:');
         $.ajax({
@@ -1390,12 +1391,14 @@ head
              .done(function( msg ) {
                if(!msg.trouble) {
                  if(msg.doc){
-                  console.log(msg.doc);
+                  console.log(msg.doc&&msg.doc.num);
                    if(msg.doc==1){
-                $('#heading').append('<h5>'+msg.doc+' follower</h5>');}
+                $('#heading').text(msg.doc+' follower');}
                 else{
-                $('#heading').append('<h5>'+msg.doc+' followers</h5>');
+                $('#heading').text(msg.doc+' followers');
                 }
+                followers=doc.followers;
+                $('#heading').css('display','block');
                }
              }
              else{
@@ -1403,6 +1406,16 @@ head
              }
              });
            }
+           $('#heading').click(function(){
+           var vcontent="<ul class='list-group'>";
+           followers.forEach(function (element,index){
+            vcontent+='<li>'+element+'</li>';
+            if(index+1===followers.length){
+              vcontent+='</ul>'
+            }
+            });
+           $('#heading').popover({'content':vcontent,'placement':'bottom'}});
+         });
         //----------------------------//
         function populate_friends(consolidated) {
           $('.friendlist').empty();
