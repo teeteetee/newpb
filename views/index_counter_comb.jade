@@ -1432,8 +1432,26 @@ head
                 $('#followed_by').css('display','block');
                 //-----------------------//
                 var vcontent="<ul class='list-group'>";
+                var insert;
+                var away;
+                var follow_name;
+                var friend_name
                   followers.forEach(function (element,index){
-                   vcontent+='<li class="list-group-item">'+element+'</li>';
+                    //-----------------//
+                   $.ajax({
+                      method: "POST",
+                      url: "/counter/gn/"+element,
+                      data: 0
+                    })
+                      .done(function(msg) {
+                        if(!msg.trouble){
+                        // $('#f_'+element).text(msg.mtext);
+                          follow_name=element.nick?element.nick:'User №'+element;
+                          away = 'window.location="/counter/profile/'+element+'"';
+                          vcontent+== "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
+                        }
+                      });
+                    //-----------------//
                    if(index+1===followers.length){
                      vcontent+='</ul>'
                    }
@@ -1441,8 +1459,7 @@ head
                  // $('#followed_by').prop({'data-content':vcontent});
                  $('#followed_by').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
                  //--------------------------//
-               }
-               if(msg.doc.friendstore.length===0) {
+                 if(msg.doc.friendstore.length===0) {
                  console.log('no friends');
                 // $('#friendsnum').text(0);
                  $('#im_following').text('Follow nobody').prop('disabled',true);
@@ -1453,8 +1470,29 @@ head
                   //msg.doc.friendstore.forEach(function (element,index){
                   //    friends_consolidated.push(element);
                   //});
-                  console.log('do smth');
+                   msg.doc.friendstore.forEach(function (element,index){
+                   $.ajax({
+                      method: "POST",
+                      url: "/counter/gn/"+element,
+                      data: 0
+                    })
+                      .done(function(msg) {
+                        if(!msg.trouble){
+                        // $('#f_'+element).text(msg.mtext);
+                          friend_name=element.nick?element.nick:'User №'+element;
+                          away = 'window.location="/counter/profile/'+element+'"';
+                          vcontent+== "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
+                        }
+                      });
+                    //-----------------//
+                   if(index+1===msg.doc.friendstore.length){
+                     vcontent+='</ul>'
+                   }
+                   });
+                   //-------------------//
+                  $('#im_following').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
                  }
+               }
              }
              else{
               console.log('getting followers num trouble');
