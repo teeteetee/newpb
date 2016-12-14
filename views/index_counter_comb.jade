@@ -1400,12 +1400,12 @@ head
                    if(msg.doc.num==1){
                 $('#heading').text(msg.doc.num+' follower');
                 insert=msg.doc.num+' follower';
-                $('#heading').prop('title':insert);
+                $('#heading').prop({'title':insert});
                 }
                 else{
                 $('#heading').text(msg.doc.num+' followers');
                 insert=msg.doc.num+' followers';
-                $('#heading').prop('title':insert);
+                $('#heading').prop({'title':insert});
                 }
                 followers=doc.followers;
                 $('#heading').css('display','block');
