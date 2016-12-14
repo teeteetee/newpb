@@ -493,6 +493,9 @@ head
         color: white;
         font-weight: 200;
        }
+       #heading{
+        display:none;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -686,6 +689,7 @@ head
            h3#user_name(style='color:white;font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
+           a#heading(tabindex="0"  data-toggle="popover" data-trigger="focus")
            h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
@@ -1392,10 +1396,13 @@ head
                if(!msg.trouble) {
                  if(msg.doc){
                   console.log(msg.doc&&msg.doc.num);
-                   if(msg.doc==1){
-                $('#heading').text(msg.doc.num+' follower');}
+                   if(msg.doc.num==1){
+                $('#heading').text(msg.doc.num+' follower');
+                $('#heading').prop('title':msg.doc.num+' follower');
+                }
                 else{
                 $('#heading').text(msg.doc.num+' followers');
+                $('#heading').prop('title':msg.doc.num+' followers');
                 }
                 followers=doc.followers;
                 $('#heading').css('display','block');
@@ -1414,7 +1421,7 @@ head
               vcontent+='</ul>'
             }
             });
-           $('#heading').popover({'content':vcontent,'placement':'bottom'});
+           $('#heading').prop({'data-content':vcontent,'title':vtitle});
          });
         //----------------------------//
         function populate_friends(consolidated) {
