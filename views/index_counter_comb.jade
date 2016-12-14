@@ -1393,9 +1393,9 @@ head
                  if(msg.doc){
                   console.log(msg.doc&&msg.doc.num);
                    if(msg.doc==1){
-                $('#heading').text(msg.doc+' follower');}
+                $('#heading').text(msg.doc.num+' follower');}
                 else{
-                $('#heading').text(msg.doc+' followers');
+                $('#heading').text(msg.doc.num+' followers');
                 }
                 followers=doc.followers;
                 $('#heading').css('display','block');
