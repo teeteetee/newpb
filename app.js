@@ -675,6 +675,7 @@ app.post('/counter/getfl_num',function (req,res){
       }
       else if(doc!=null&&doc.total_fl){
         console.log(doc);
+        ms.doc={};
         ms.doc.num = doc.total_fl;
         ms.doc.followers=doc.followers;
         ms.trouble=0;
