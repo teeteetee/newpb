@@ -493,7 +493,7 @@ head
         color: white;
         font-weight: 200;
        }
-       #heading{
+       #followed_by{
         display:none;
        }
        .popover-title {
@@ -643,7 +643,7 @@ head
                   .panel-body
                     input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
-                    button(class='btn btn-sm btn-add' onclick='submit_movie(1)') Добавить
+                    button(class='btn btn-add' onclick='submit_movie(1)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
@@ -652,7 +652,7 @@ head
                   .panel-body
                     input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
-                    button(class='btn btn-sm btn-add' onclick='submit_movie(0)') Добавить
+                    button(class='btn btn-add' onclick='submit_movie(0)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
@@ -661,7 +661,7 @@ head
                   .panel-body 
                     input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_old(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-sm btn-add' onclick='submit_book(1)') Добавить
+                    button(class='btn btn-add' onclick='submit_book(1)') Добавить
               .panel.panel-default
                 .panel-heading(role="tab" id="headingFour")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
@@ -670,7 +670,7 @@ head
                   .panel-body 
                     input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                     input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-sm btn-add' onclick='submit_book(0)') Добавить
+                    button(class='btn btn-add' onclick='submit_book(0)') Добавить
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -703,12 +703,12 @@ head
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;margin-bottom:30px;')
         .col-xs-12
-           h3#user_name(style='font-weight:200;')
+           h3#user_name(style='font-weight:200;margin-bottom:20px;')
              span(style='font-weight:400;') user № 
              | #{_id}
            .btn-group
              button.btn.btn-default(data-toggle='popover') following
-             button#heading.btn.btn-default(data-toggle='popover') followers
+             button#followed_by.btn.btn-default(data-toggle='popover') followers
              //a#heading(tabindex="0" class="btn btn-default" role="button"  data-toggle="popover" data-trigger="focus")
            h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
       .row.visible-md.visible-lg.data_lg
@@ -764,7 +764,7 @@ head
                 }
             }
         });
-        getfollowers_num()
+        getfollow()
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
@@ -1365,47 +1365,47 @@ head
         }
         var friends_loaded=0;
         var friends_consolidated=[];
-        function getfriends() {
+        //function getfriends() {
           //---------------------------//
-        var friends;
-        if(!friends_loaded)
-        {$.ajax({
-             method: "POST",
-             url: "/counter/getfriends",
-             data: 0
-           })
-             .done(function( msg ) {
-               if(!msg.trouble) {
-                 console.log('movies: '+JSON.stringify(msg.doc));
-                  friends=msg.doc;
-                 if(!friends || friends.friendstore.length===0) {
-                  console.log('no friends');
-                  $('#friendsnum').text(0);
-                  $('#friends').modal('show');
-                  friends_loaded=1;
-                  }
-                  else {
-                   friends = msg.doc.total;
-                   $('#friendsnum').text(friends);
-                   msg.doc.friendstore.forEach(function (element,index){
-                       friends_consolidated.push(element);
-                   });
-                  }
-                  if(friends_consolidated.length){
-                  sortByKey(friends_consolidated, 'tmstmp');
-                  populate_friends(friends_consolidated);
-                  friends_loaded=1;
-                  $('#friends').modal('show');
-                }
-               }
-             });}
-             else {
-               $('#friends').modal('show');
-             }
-            }
+        //var friends;
+        //if(!friends_loaded)
+        //{$.ajax({
+        //     method: "POST",
+        //     url: "/counter/getfriends",
+        //     data: 0
+        //   })
+        //     .done(function( msg ) {
+        //       if(!msg.trouble) {
+        //         console.log('movies: '+JSON.stringify(msg.doc));
+        //          friends=msg.doc;
+        //         if(!friends || friends.friendstore.length===0) {
+        //          console.log('no friends');
+        //          $('#friendsnum').text(0);
+        //          $('#friends').modal('show');
+        //          friends_loaded=1;
+        //          }
+        //          else {
+        //           friends = msg.doc.total;
+        //           $('#friendsnum').text(friends);
+        //           msg.doc.friendstore.forEach(function (element,index){
+        //               friends_consolidated.push(element);
+        //           });
+        //          }
+        //          if(friends_consolidated.length){
+        //          sortByKey(friends_consolidated, 'tmstmp');
+        //          populate_friends(friends_consolidated);
+        //          friends_loaded=1;
+        //          $('#friends').modal('show');
+        //        }
+        //       }
+        //     });}
+        //     else {
+        //       $('#friends').modal('show');
+        //     }
+        //    }
         //---------------------------//
         var followers = [];
-        function getfollowers_num() {
+        function getfollow() {
           console.log('getting followers num:');
         $.ajax({
              method: "POST",
@@ -1418,18 +1418,18 @@ head
                   console.log(msg.doc&&msg.doc.num);
                   var insert;
                    if(msg.doc.num==1){
-                $('#heading').text(msg.doc.num+' follower');
+                $('#followed_by').text(msg.doc.num+' follower');
                 //insert=msg.doc.num+' follower';
-                //$('#heading').prop({'title':insert});
+                //$('#followed_by').prop({'title':insert});
                 }
                 else{
-                $('#heading').text(msg.doc.num+' followers');
+                $('#followed_by').text(msg.doc.num+' followers');
                 //insert=msg.doc.num+' followers';
-                //$('#heading').prop({'title':insert});
+                //$('#followed_by').prop({'title':insert});
                 }
-                $('#heading').prop({'title':'Followers'});
+                $('#followed_by').prop({'title':'Followers'});
                 followers=msg.doc.followers;
-                $('#heading').css('display','block');
+                $('#followed_by').css('display','block');
                 //-----------------------//
                 var vcontent="<ul class='list-group'>";
                   followers.forEach(function (element,index){
@@ -1438,10 +1438,23 @@ head
                      vcontent+='</ul>'
                    }
                    });
-                 // $('#heading').prop({'data-content':vcontent});
-                 $('#heading').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
+                 // $('#followed_by').prop({'data-content':vcontent});
+                 $('#followed_by').popover({'content':vcontent,'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
                  //--------------------------//
                }
+               if(msg.doc.friendstore.length===0) {
+                 console.log('no friends');
+                // $('#friendsnum').text(0);
+                 $('#im_following').text('Follow nobody').prop('disabled',true);
+                 friends_loaded=1;
+                 }
+                 else {
+                  $('#im_following').text('Follow '+msg.doc.friendstore.length);
+                  //msg.doc.friendstore.forEach(function (element,index){
+                  //    friends_consolidated.push(element);
+                  //});
+                  console.log('do smth');
+                 }
              }
              else{
               console.log('getting followers num trouble');
