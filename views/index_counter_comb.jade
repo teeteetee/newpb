@@ -1450,12 +1450,12 @@ head
                         // $('#f_'+element).text(msg.mtext);
                           follow_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
-                          vcontent_1+= "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
+                          vcontent_1=+ "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
                         }
                       });
                     //-----------------//
                    if(index+1===followers.length){
-                     vcontent_1+='</ul>'
+                     vcontent_1=+'</ul>'
                    }
                    console.log(index+': '+vcontent_1);
                    });
@@ -1484,12 +1484,12 @@ head
                         // $('#f_'+element).text(msg.mtext);
                           friend_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
-                          vcontent_2+= "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
+                          vcontent_2=+ "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
                         }
                       });
                     //-----------------//
                    if(index+1===msg.doc.friendstore.length){
-                     vcontent_2+='</ul>'
+                     vcontent_2=+'</ul>'
                    }
                    console.log(index+': '+vcontent_2);
                    });
