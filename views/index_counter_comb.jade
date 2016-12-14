@@ -1409,6 +1409,17 @@ head
                 }
                 followers=msg.doc.followers;
                 $('#heading').css('display','block');
+                //-----------------------//
+                var vcontent="<ul class='list-group'>";
+                  followers.forEach(function (element,index){
+                   vcontent+='<li>'+element+'</li>';
+                   if(index+1===followers.length){
+                     vcontent+='</ul>'
+                   }
+                   });
+                 // $('#heading').prop({'data-content':vcontent});
+                 $('#heading').popover({'content':vcontent,'placement':'bottom'});
+                 //--------------------------//
                }
              }
              else{
@@ -1416,17 +1427,9 @@ head
              }
              });
            }
-           $('#heading').click(function(){
-           var vcontent="<ul class='list-group'>";
-           followers.forEach(function (element,index){
-            vcontent+='<li>'+element+'</li>';
-            if(index+1===followers.length){
-              vcontent+='</ul>'
-            }
-            });
-          // $('#heading').prop({'data-content':vcontent});
-           $('#heading').popover({'content':vcontent,'placement':'bottom'}).toggle();
-         });
+      //     $('#heading').click(function(){
+      //    $('#heading').popover('toggle');
+      //   });
         //----------------------------//
         function populate_friends(consolidated) {
           $('.friendlist').empty();
