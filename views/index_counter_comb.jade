@@ -502,6 +502,16 @@ head
        .popover-content {
            padding: 0px;
        }
+       .btn-default, .btn-default:focus{
+        color: #404040;
+        background-color: rgba(0, 0, 0, 0.16);
+        border-color: none;
+       }
+       .btn-follow:hover {
+       color: #ffffff;
+       background-color: #36b7d4;
+       border-color: #36b7d4;
+      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -693,12 +703,12 @@ head
           form(method='post',action='/backup',role='form',id='backupform')
       .row(style='text-align:center;margin-bottom:30px;')
         .col-xs-12
-           h3#user_name(style='color:white;font-weight:200;')
+           h3#user_name(style='font-weight:200;')
              span(style='font-weight:400;') user № 
              | #{_id}
            .btn-group
-             button.btn-default following
-             button#heading.btn-default followers
+             button.btn.btn-default(data-toggle='popover') following
+             button#heading.btn.btn-default(data-toggle='popover') followers
              //a#heading(tabindex="0" class="btn btn-default" role="button"  data-toggle="popover" data-trigger="focus")
            h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
       .row.visible-md.visible-lg.data_lg
