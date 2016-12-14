@@ -678,6 +678,7 @@ app.post('/counter/getfl_num',function (req,res){
         ms.doc={};
         ms.doc.num = doc.total_fl;
         ms.doc.followers=doc.followers;
+        ms.doc.friendstore=doc.friendstore;
         ms.trouble=0;
         res.send(ms);
       }
