@@ -499,6 +499,9 @@ head
        .popover-title {
         text-align:center;
        }
+       .popover-content {
+           padding: 0px;
+       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -1416,7 +1419,7 @@ head
                 //-----------------------//
                 var vcontent="<ul class='list-group'>";
                   followers.forEach(function (element,index){
-                   vcontent+='<li>'+element+'</li>';
+                   vcontent+='<li class="list-group-item">'+element+'</li>';
                    if(index+1===followers.length){
                      vcontent+='</ul>'
                    }
