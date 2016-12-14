@@ -1396,13 +1396,16 @@ head
                if(!msg.trouble) {
                  if(msg.doc){
                   console.log(msg.doc&&msg.doc.num);
+                  var insert;
                    if(msg.doc.num==1){
                 $('#heading').text(msg.doc.num+' follower');
-                $('#heading').prop('title':msg.doc.num+' follower');
+                insert=msg.doc.num+' follower';
+                $('#heading').prop('title':insert);
                 }
                 else{
                 $('#heading').text(msg.doc.num+' followers');
-                $('#heading').prop('title':msg.doc.num+' followers');
+                insert=msg.doc.num+' followers';
+                $('#heading').prop('title':insert);
                 }
                 followers=doc.followers;
                 $('#heading').css('display','block');
