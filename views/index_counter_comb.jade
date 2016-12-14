@@ -1446,7 +1446,7 @@ head
                       .done(function(msg) {
                         if(!msg.trouble){
                         // $('#f_'+element).text(msg.mtext);
-                          follow_name=element.nick?element.nick:'User №'+element;
+                          follow_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
                           vcontent+= "<li class=' list-group-item follow_"+element+"' id='fl_"+element+"' onclick="+away+">"+follow_name+"</li>";
                         }
@@ -1479,7 +1479,7 @@ head
                       .done(function(msg) {
                         if(!msg.trouble){
                         // $('#f_'+element).text(msg.mtext);
-                          friend_name=element.nick?element.nick:'User №'+element;
+                          friend_name=msg.mtext?msg.mtext:'User №'+element;
                           away = 'window.location="/counter/profile/'+element+'"';
                           vcontent+= "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+away+">"+friend_name+"</li>";
                         }
