@@ -1417,17 +1417,18 @@ head
                  if(msg.doc){
                   console.log(msg.doc&&msg.doc.num);
                   var insert;
-                   if(msg.doc.num==1){
-                $('#followed_by').text(msg.doc.num+' follower');
-                //insert=msg.doc.num+' follower';
-                //$('#followed_by').prop({'title':insert});
-                }
-                else{
-                $('#followed_by').text(msg.doc.num+' followers');
-                //insert=msg.doc.num+' followers';
-                //$('#followed_by').prop({'title':insert});
-                }
-                $('#followed_by').prop({'title':'Followers'});
+               //    if(msg.doc.num==1){
+               // $('#followed_by').text('Follower '+msg.doc.num);
+               // //insert=msg.doc.num+' follower';
+               // //$('#followed_by').prop({'title':insert});
+               // }
+               // else{
+               // $('#followed_by').text('Followers '+msg.doc.num);
+               // //insert=msg.doc.num+' followers';
+               // //$('#followed_by').prop({'title':insert});
+               // }
+                $('#followed_by').text('Followers '+msg.doc.num);
+                //$('#followed_by').prop({'title':'Followers'});
                 followers=msg.doc.followers;
                 $('#followed_by').css('display','block');
                 //-----------------------//
@@ -1466,7 +1467,7 @@ head
                  friends_loaded=1;
                  }
                  else {
-                  $('#im_following').text('Follow '+msg.doc.friendstore.length);
+                  $('#im_following').text('Following '+msg.doc.friendstore.length);
                   //msg.doc.friendstore.forEach(function (element,index){
                   //    friends_consolidated.push(element);
                   //});
