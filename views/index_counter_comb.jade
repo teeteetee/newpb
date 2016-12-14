@@ -761,7 +761,10 @@ head
                 }
             }
         });
-        getfollow()
+        $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
+        $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
+        //initialising popovers so we can push list items
+        getfollow();
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
@@ -1426,7 +1429,7 @@ head
                 // $('#f_'+element).text(msg.mtext);
                   temp_var_1=msg.mtext?msg.mtext:'User №'+element;
                   temp_var_2 = 'window.location="/counter/profile/'+element+'"';
-                  temp_var_3=+ "<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
+                  temp_var_3="<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
                   if(cell_type){
                     $('#followed_by').append(temp_var_3);
                   }
@@ -1445,9 +1448,7 @@ head
          }
          var followers = [];
          function getfollow() {
-          $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
-          $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
-          //initialising popovers so we can push list items
+          
            console.log('getting followers num:');
          $.ajax({
               method: "POST",
