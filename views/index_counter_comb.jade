@@ -1427,13 +1427,14 @@ head
               .done(function(msg) {
                 if(!msg.trouble){
                 // $('#f_'+element).text(msg.mtext);
-                  temp_var_1=msg.mtext?msg.mtext:'User №'+element;
-                  temp_var_2 = 'window.location="/counter/profile/'+element+'"';
-                  temp_var_3="<li class=' list-group-item friend_"+element+"' id='fl_"+element+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
+                  temp_var_1=msg.mtext?msg.mtext:'User №'+arr[index-1];
+                  temp_var_2 = 'window.location="/counter/profile/'+arr[index-1]+'"';
                   if(cell_type){
+                    temp_var_3="<li class=' list-group-item' id='fl_by_"+arr[index-1]+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
                     $('#followed_by').append(temp_var_3);
                   }
                   else{
+                    temp_var_3="<li class=' list-group-item' id='im_fl_"+arr[index-1]+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
                     $('#im_following').append(temp_var_3);
                   }
                   index--;
