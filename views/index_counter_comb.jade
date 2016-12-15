@@ -763,7 +763,7 @@ head
         });
         $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
         $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
-        //initialising popovers so we can push list items
+        //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
         getfollow();
         function showmail_submit(){
           var data={};
@@ -1419,6 +1419,7 @@ head
         //----------------------------//
         function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
           //let 1 be followed_by, and 0 be im_following
+          //TODO more indicator in case there is more than ten followers or friends
             $.ajax({
               method: "POST",
               url: "/counter/gn/"+arr[index-1],
@@ -1448,6 +1449,8 @@ head
               });
          }
          var followers = [];
+         var local_followed_by;
+         var local_im_following;
          function getfollow() {
           
            console.log('getting followers num:');
@@ -1457,8 +1460,6 @@ head
               data: 0
             })
               .done(function( msg ) {
-                var local_followed_by;
-                var local_im_following;
                 if(!msg.trouble) {
                   if(msg.doc){
                     $('#followed_by').text(msg.doc.followers.length+' Followers');
@@ -1470,7 +1471,7 @@ head
                       local_followed_by=msg.doc.followers.slice(0,9);
                     }
                     else{
-                      local_followed_by=msg.doc.followers
+                      local_followed_by=msg.doc.followers;
                     }
                     var temp_var_1;
                     var temp_var_2;
