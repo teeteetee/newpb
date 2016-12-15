@@ -1421,9 +1421,10 @@ head
           //let 1 be followed_by, and 0 be im_following
           //TODO more indicator in case there is more than ten followers or friends
           console.log('populate_f_cell arr: '+arr[index-1]);
+          var temp_4 = arr[index-1];
             $.ajax({
               method: "POST",
-              url: "/counter/gn/"+arr[index-1],
+              url: "/counter/gn/"+temp_4,
               data: 0
             })
               .done(function(msg) {
