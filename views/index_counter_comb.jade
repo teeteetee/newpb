@@ -509,7 +509,7 @@ head
        background-color: #36b7d4;
        border-color: #36b7d4;
       }
-  body(onload='init_popovers()')
+  body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
         .navbar-header
@@ -761,11 +761,6 @@ head
                 }
             }
         });
-        function init_popovers() {
-        $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
-        $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
-        //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
-        }
         getfollow();
         function showmail_submit(){
           var data={};
@@ -1419,6 +1414,8 @@ head
             });
         });
         //----------------------------//
+        var followed_by_string;
+        var im_following_string;
         function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
           //let 1 be followed_by, and 0 be im_following
           //TODO more indicator in case there is more than ten followers or friends
@@ -1437,18 +1434,26 @@ head
                   temp_var_2 = 'window.location="/counter/profile/'+arr[index]+'"';
                   if(cell_type){
                     temp_var_3="<li class=' list-group-item' id='fl_by_"+arr[index]+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
-                    $('#followed_by_list').append(temp_var_3);
+                    followed_by_string+=temp_var_3;
                   }
                   else{
                     temp_var_3="<li class=' list-group-item' id='im_fl_"+arr[index]+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
-                    $('#im_following_list').append(temp_var_3);
+                    im_following_string+=temp_var_3;
                   }
                   
                   if(!index==0){
                    callback(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback);
                   }
                   else{
-                    return;
+                    if(cell_type){
+                      $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group">'+followed_by_string+'</ul></div></div>'});
+                      return;
+                    }
+                      else{
+                     $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group">'+im_following_string+'</ul></div></div>'});
+                     //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
+                      return
+                      }
                   }
                 }
               });
