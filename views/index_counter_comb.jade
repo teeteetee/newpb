@@ -1477,7 +1477,7 @@ head
                     var temp_var_4;
                     var temp_var_5;
                     var temp_var_6;
-                    populate_f_cell(1,local_followed_by,local_followed_by.length,vtemp_var_1,temp_var_2,temp_var_3,populate_f_cell);
+                    populate_f_cell(1,local_followed_by,local_followed_by.length,temp_var_1,temp_var_2,temp_var_3,populate_f_cell);
                      $('#im_following').text(msg.doc.friendstore.length+' Following');
                      if(msg.doc.friendstore.length===0) {
                      $('#im_following').prop('disabled',true);
@@ -1488,7 +1488,7 @@ head
                     else{
                       local_im_following=msg.doc.friendstore
                     }
-                    populate_f_cell(0,local_im_following,local_im_following.length,vtemp_var_4,temp_var_5,temp_var_6,populate_f_cell);
+                    populate_f_cell(0,local_im_following,local_im_following.length,temp_var_4,temp_var_5,temp_var_6,populate_f_cell);
                 }
               }
               else{
