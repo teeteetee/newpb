@@ -1462,6 +1462,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   if(msg.doc){
+                    console.log(JSON.stringify(msg.doc));
                     $('#followed_by').text(msg.doc.followers.length+' Followers');
                     if(msg.doc.followers.length===0) {
                      $('#followed_by').prop('disabled',true);
