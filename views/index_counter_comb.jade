@@ -1420,6 +1420,7 @@ head
         function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
           //let 1 be followed_by, and 0 be im_following
           //TODO more indicator in case there is more than ten followers or friends
+          console.log('populate_f_cell arr: '+arr);
             $.ajax({
               method: "POST",
               url: "/counter/gn/"+arr[index-1],
@@ -1475,7 +1476,7 @@ head
                       msg.doc.followers.forEach(function (element,index){
                           local_followed_by.push(element);
                         });
-                      console.log('local_followed_by: '+local_followed_by);
+                      //console.log('local_followed_by: '+typeof local_followed_by);
                     }
                     var temp_var_1;
                     var temp_var_2;
@@ -1495,7 +1496,7 @@ head
                       msg.doc.friendstore.forEach(function (element,index){
                           local_im_following.push(element);
                         });
-                      console.log('local_im_following: '+local_im_following);
+                     // console.log('local_im_following: '+typeof local_im_following);
                     }
                     populate_f_cell(0,local_im_following,local_im_following.length,temp_var_4,temp_var_5,temp_var_6,populate_f_cell);
                 }
