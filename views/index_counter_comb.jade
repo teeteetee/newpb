@@ -1420,7 +1420,7 @@ head
         function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
           //let 1 be followed_by, and 0 be im_following
           //TODO more indicator in case there is more than ten followers or friends
-          console.log('populate_f_cell arr: '+arr);
+          console.log('populate_f_cell arr: '+arr[index-1]);
             $.ajax({
               method: "POST",
               url: "/counter/gn/"+arr[index-1],
