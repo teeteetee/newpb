@@ -1472,6 +1472,7 @@ head
                     }
                     else{
                       local_followed_by=msg.doc.followers;
+                      console.log('local_followed_by: '+local_followed_by);
                     }
                     var temp_var_1;
                     var temp_var_2;
@@ -1488,7 +1489,8 @@ head
                       local_im_following=msg.doc.friendstore.slice(0,9);
                     }
                     else{
-                      local_im_following=msg.doc.friendstore
+                      local_im_following=msg.doc.friendstore;
+                      console.log('local_im_following: '+local_im_following);
                     }
                     populate_f_cell(0,local_im_following,local_im_following.length,temp_var_4,temp_var_5,temp_var_6,populate_f_cell);
                 }
