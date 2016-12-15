@@ -1447,12 +1447,14 @@ head
                   else{
                     if(cell_type){
                       $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group">'+followed_by_string+'</ul></div></div>'});
+                      console.log('followed by popover ready');
                       return;
                     }
                       else{
                      $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group">'+im_following_string+'</ul></div></div>'});
                      //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
-                      return
+                      console.log('im following popover ready');
+                      return;
                       }
                   }
                 }
