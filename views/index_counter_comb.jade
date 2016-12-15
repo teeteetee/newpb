@@ -1420,6 +1420,7 @@ head
         function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
           //let 1 be followed_by, and 0 be im_following
           //TODO more indicator in case there is more than ten followers or friends
+          index--;
           console.log('populate_f_cell arr: '+arr[index-1]);
           var temp_4 = arr[index-1];
             $.ajax({
@@ -1440,8 +1441,8 @@ head
                     temp_var_3="<li class=' list-group-item' id='im_fl_"+arr[index-1]+"' onclick="+temp_var_2+">"+temp_var_1+"</li>";
                     $('#im_following_list').append(temp_var_3);
                   }
-                  index--;
-                  if(index>-1){
+                  
+                  if(!index==0){
                    callback(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback);
                   }
                   else{
