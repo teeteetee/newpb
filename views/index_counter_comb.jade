@@ -1472,8 +1472,9 @@ head
                       local_followed_by=msg.doc.followers.slice(0,9);
                     }
                     else{
-                      local_followed_by=msg.doc.followers;
-                      console.log('type of followers: '+typeof msg.doc.followers);
+                      msg.doc.followers.forEach(function (element,index){
+                          local_followed_by.push(element);
+                        });
                       console.log('local_followed_by: '+local_followed_by);
                     }
                     var temp_var_1;
@@ -1491,8 +1492,9 @@ head
                       local_im_following=msg.doc.friendstore.slice(0,9);
                     }
                     else{
-                      local_im_following=msg.doc.friendstore;
-                      console.log('type of friendstore: '+typeof msg.doc.friendstore);
+                      msg.doc.friendstore.forEach(function (element,index){
+                          local_im_following.push(element);
+                        });
                       console.log('local_im_following: '+local_im_following);
                     }
                     populate_f_cell(0,local_im_following,local_im_following.length,temp_var_4,temp_var_5,temp_var_6,populate_f_cell);
