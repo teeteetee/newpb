@@ -509,7 +509,7 @@ head
        background-color: #36b7d4;
        border-color: #36b7d4;
       }
-  body
+  body(onload='init_popovers()');
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
         .navbar-header
@@ -761,11 +761,11 @@ head
                 }
             }
         });
-        $('body').onload(function(){
+        function init_popovers() {
         $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
         $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"><li class="list-group-item">Пусто</li></ul></div></div>'});
         //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
-        });
+        }
         getfollow();
         function showmail_submit(){
           var data={};
