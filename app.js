@@ -670,7 +670,7 @@ app.post('/counter/getfl_num',function (req,res){
   if(req.session&&req.session._id)
   {counter_friends.findOne({uid:req.session._id},function(err,doc){
       if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
+        console.log('ERR WHILE FRIENDS QUERY');
         res.send(ms);
       }
       else if(doc!=null&&doc.total_fl){
@@ -683,10 +683,12 @@ app.post('/counter/getfl_num',function (req,res){
         res.send(ms);
       }
       else {
+        console.log('doc null');
         res.send(ms);
       }
     });}
 else{
+   console.log('session absent');
    res.send(ms);
 }
 });
