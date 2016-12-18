@@ -782,6 +782,7 @@ head
         var data_content_fl;
         var loop_temp;
         function get_name_loop(){
+          console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
           $.ajax({
             method: "POST",
             url: "/counter/gn"+friends_and_followers[f_n_f_count]._id,
