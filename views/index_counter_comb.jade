@@ -831,6 +831,7 @@ head
                           temp_person._id=element;
                           console.log('HELLO ELL: '+temp_person.section);
                           friends_and_followers.push(temp_person);
+                          console.log('breakpoint 1 '+JSON.stringify(friends_and_followers));
                           });
               f_n_f_count+=msg.doc.friends.length;
               following_num=msg.doc.friends.length;
@@ -840,11 +841,13 @@ head
                            temp_person.section='follower';
                            temp_person._id=element;
                            friends_and_followers.push(temp_person);
+                           console.log('breakpoint 2 '+JSON.stringify(friends_and_followers));
                            });
               f_n_f_count+=msg.doc.followers.length;
               follow_num=msg.doc.followers.length;
               }
               if(f_n_f_count){
+                console.log(JSON.stringify(friends_and_followers));
                get_name_loop();
               }
             }   
