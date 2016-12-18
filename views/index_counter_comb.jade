@@ -806,7 +806,8 @@ head
                 get_name_loop();
               }
             }
-        };
+        });
+        }
         function get_follow(){
           $.ajax({
             method: "POST",
@@ -841,6 +842,7 @@ head
             }  
             });
         }
+        get_follow();
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
