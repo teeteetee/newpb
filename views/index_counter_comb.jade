@@ -829,7 +829,7 @@ head
             { msg.doc.friends.forEach(function (element, index){
                           temp_person.section='friend';
                           temp_person._id=element;
-                          console.log('HELLO ELL: '+temp_person);
+                          console.log('HELLO ELL: '+temp_person.section);
                           friends_and_followers.push(temp_person);
                           });
               f_n_f_count+=msg.doc.friends.length;
