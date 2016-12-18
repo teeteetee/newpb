@@ -826,6 +826,32 @@ head
                           get_name_loop();
                         }
                       }
+                      else{
+                        loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
+                      if(friends_and_followers[f_n_f_count].section==='friend'){
+                        data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
+                      }
+                      else{
+                       data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
+                      }
+                        if(!f_n_f_count){
+                          if(more_followers){
+                          data_content_fr+='<li class="list-group-item"><button class="btn btn-primary" style="margin:20px;">More</button></li>';
+                          }
+                          if(more_friends){
+                          data_content_fl+='<li class="list-group-item"><button class="btn btn-primary" style="margin:20px;">More</button></li>';
+                          }
+                          data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
+                          data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
+                          $('#followed_by').attr('data-content',data_content_fl);
+                          $('#im_following').attr('data-content',data_content_fr);
+                          $('#followed_by').text('Follow '+follow_num);
+                          $('#im_following').text('Following '+following_num);
+                        }
+                        else{
+                          get_name_loop();
+                        }
+                      }
                   });}
         }
         function get_more() {
