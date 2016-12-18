@@ -333,6 +333,7 @@ app.post('/counter/gn/:_id',function (req,res){
      //var v_id = req.params._id[1]==='"'?req.params._id:'"'+req.params._id+'"';
         counter_users.findOne({_id:req.params._id},function (err,done){
           if(err){
+            console.log('GN/ db err');
             res.send(ms);
           }
           else{
@@ -344,6 +345,7 @@ app.post('/counter/gn/:_id',function (req,res){
             ms.lastitem=done.lastitem;
             res.send(ms);}
             else {
+              console.log('GN/ found nobody');
               res.send(ms);
             }
           }
