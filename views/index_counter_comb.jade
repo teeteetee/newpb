@@ -796,12 +796,13 @@ head
                       data: 0
                     }).done(function( msg ) {
                       if(!msg.trouble){
-                      loop_temp = "window.location='/counter/profile/"+friends_and_followers[f_n_f_count]._id+"'";
+                      //loop_temp = "window.location='/counter/profile/"+friends_and_followers[f_n_f_count]._id+"'";
+                      loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
                       if(friends_and_followers[f_n_f_count].section==='friend'){
-                        data_content_fr+='<li class="list-group-item" onclick="'+loop_temp+'">'+msg.mtext+'</li>';
+                        data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
                       }
                       else{
-                       data_content_fl+='<li class="list-group-item" onclick="'+loop_temp+'">'+msg.mtext+'</li>';
+                       data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
                       }
                         if(!f_n_f_count){
                           data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
