@@ -786,6 +786,10 @@ head
         var follow_num=0;
         var following_num=0;
         var loop_temp;
+        var temp_friends=0;//these two are here to implement 'more'
+        var temp_followers=0;
+        var more_friends=0;
+        var more_followers=0;
         function get_name_loop(){
           console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
           f_n_f_count--;
@@ -805,6 +809,12 @@ head
                        data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
                       }
                         if(!f_n_f_count){
+                          if(more_followers){
+                          data_content_fr+='<li class="list-group-item"><button class="btn btn-primary" style="margin:20px;">More</button></li>';
+                          }
+                          if(more_friends){
+                          data_content_fl+='<li class="list-group-item"><button class="btn btn-primary" style="margin:20px;">More</button></li>';
+                          }
                           data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
                           data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
                           $('#followed_by').attr('data-content',data_content_fl);
@@ -818,6 +828,9 @@ head
                       }
                   });}
         }
+        function get_more() {
+          //TODO
+        }
         function get_follow(){
           $.ajax({
             method: "POST",
@@ -826,18 +839,26 @@ head
           }).done(function( msg ) {
             if(!msg.trouble){
             if(msg.doc.friends.length)
-            { msg.doc.friends.forEach(function (element, index){
+            { if(msg.doc.friends.length>10){
+              temp_friends=msg.doc.friends.slice(0,9):msg.doc.friends;
+              more_friends=1;
+            }
+              temp_friends.forEach(function (element, index){
                           friends_and_followers.push({'_id':element,'section':'friend'});
                           });
-              f_n_f_count+=msg.doc.friends.length;
-              following_num=msg.doc.friends.length;
+              f_n_f_count+=temp_friends.length;
+              following_num=temp_friends.length;
              }
              if(msg.doc.followers.length)
-             {msg.doc.followers.forEach(function (element, index){
+             {{ if(msg.doc.friends.length>10){
+              temp_followers=msg.doc.followers.slice(0,9):msg.doc.followers;
+              more_followers=1;
+              }
+              temp_followers.forEach(function (element, index){
                            friends_and_followers.push({'_id':element,'section':'follower'});
                            });
-              f_n_f_count+=msg.doc.followers.length;
-              follow_num=msg.doc.followers.length;
+              f_n_f_count+=temp_followers.length;
+              follow_num=temp_followers.length;
               }
               if(f_n_f_count){
                 console.log(JSON.stringify(friends_and_followers));
