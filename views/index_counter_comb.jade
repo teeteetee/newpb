@@ -829,7 +829,7 @@ head
             { msg.doc.friends.forEach(function (element, index){
                           temp_person.section='friend';
                           temp_person._id=element;
-                          console.log('HELLO ELL: '+temp_person.section);
+                          console.log('HELLO ELL: '+JSON.stringify(temp_person));
                           friends_and_followers.push(temp_person);
                           console.log('breakpoint 1 '+JSON.stringify(friends_and_followers));
                           });
@@ -840,7 +840,7 @@ head
              {msg.doc.followers.forEach(function (element, index){
                            temp_person.section='follower';
                            temp_person._id=element;
-                           console.log('HELLO ELL: '+temp_person.section);
+                           console.log('HELLO ELL: '+JSON.stringify(temp_person));
                            friends_and_followers.push(temp_person);
                            console.log('breakpoint 2 '+JSON.stringify(friends_and_followers));
                            });
