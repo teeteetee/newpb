@@ -664,7 +664,7 @@ else{
 }
 });
 
-app.post('/counter/getfl_num',function (req,res){
+app.post('/counter/getfl',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
@@ -676,9 +676,8 @@ app.post('/counter/getfl_num',function (req,res){
       else if(doc!=null&&doc.total_fl){
         console.log(doc);
         ms.doc={};
-        ms.doc.num = doc.total_fl;
         ms.doc.followers=doc.followers;
-        ms.doc.friendstore=doc.friendstore;
+        ms.doc.friends=doc.friendstore;
         ms.trouble=0;
         res.send(ms);
       }

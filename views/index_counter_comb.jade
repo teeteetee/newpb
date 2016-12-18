@@ -776,7 +776,71 @@ head
         });
        $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
        $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
-       $('#im_following').attr('data-content','<ul class="list-group" id="im_following_list"><li class="list-group-item">Something something</li><li class="list-group-item">Something something else</li></ul>');
+        var friends_and_followers=[];
+        var f_n_f_count=0;
+        var data_content_fr;
+        var data_content_fl;
+        var loop_temp;
+        function get_name_loop(){
+          $.ajax({
+            method: "POST",
+            url: "/counter/gn"+friends_and_followers[f_n_f_count]._id,
+            data: 0
+          }).done(function( msg ) {
+            if(!msg.trouble){
+            loop_temp = "window.location='/counter/profile/"+element+"'";
+            if(element.section==='friend'){
+              data_content_fr+='<li class="list-group-item" onclick="'+loop_temp+'">'+msg.mtext+'</li>';
+            }
+            else{
+             data_content_fl+='<li class="list-group-item" onclick="'+loop_temp+'">'+msg.mtext+'</li>';
+            }
+              if(f_n_f_count+1===friends_and_followers.length){
+                data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
+                data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
+                $('#followed_by').attr('data-content',data_content_fl);
+                $('#im_following').attr('data-content',data_content_fr);
+              }
+              else{
+                f_n_f_count++;
+                get_name_loop();
+              }
+            }
+        };
+        function get_follow(){
+          $.ajax({
+            method: "POST",
+            url: "/counter/getfl",
+            data: 0
+          }).done(function( msg ) {
+            if(!msg.trouble){
+              var temp_person={};
+            if(msg.friends.length)
+            { msg.friends.forEach(function (element, index){
+                          temp_person.section='freind';
+                          temp_person._id=element;
+                          friends_and_followers.push(temp_person);
+                          });
+              f_n_f_count+=msg.friends.length;
+             }
+             if(msg.followers.length)
+             {msg.followers.forEach(function (element, index){
+                           temp_person.section='follower';
+                           temp_person._id=element;
+                           friends_and_followers.push(temp_person);
+                           });
+              f_n_f_count+=msg.followers.length;
+              }
+              if(friends_and_followers.length){
+               
+              }
+            }   
+            else{
+              $('#im_following').attr('data-content','<ul class="list-group" id="im_following_list"><li class="list-group-item">Пусто</li></ul>');
+              $('#followed_by').attr('data-content','<ul class="list-group" id="im_following_list"><li class="list-group-item">Пусто</li></ul>');
+            }  
+            });
+        }
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
