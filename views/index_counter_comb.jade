@@ -761,7 +761,8 @@ head
                 }
             }
         });
-       // getfollow();
+       $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group"></ul></div></div>'});
+       $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group"></ul></div></div>'});
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
@@ -1413,113 +1414,6 @@ head
         
             });
         });
-        //----------------------------//
-        var followed_by_string='';
-        var im_following_string='';
-        function populate_f_cell(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback) {
-          //let 1 be followed_by, and 0 be im_following
-          //TODO more indicator in case there is more than ten followers or friends
-          index--;
-          console.log('populate_f_cell arr: '+arr[index]);
-          var temp_4 = arr[index];
-            $.ajax({
-              method: "POST",
-              url: "/counter/gn/"+temp_4,
-              data: 0
-            })
-              .done(function(msg) {
-                if(!msg.trouble){
-                // $('#f_'+element).text(msg.mtext);
-                  temp_var_1=msg.mtext?msg.mtext:'User №'+arr[index];
-                  temp_var_2 = 'window.location="/counter/profile/'+arr[index]+'"';
-                  if(cell_type){
-                    temp_var_3="<li class=' list-group-item' id='fl_by_"+arr[index]+"' onclick='"+temp_var_2+"'>"+temp_var_1+"</li>";
-                    followed_by_string+=temp_var_3;
-                    console.log(followed_by_string);
-                  }
-                  else{
-                    temp_var_3="<li class=' list-group-item' id='im_fl_"+arr[index]+"' onclick='"+temp_var_2+"'>"+temp_var_1+"</li>";
-                    im_following_string+=temp_var_3;
-                    console.log(im_following_string);
-                  }
-                  
-                  if(!index==0){
-                   callback(cell_type,arr,index,temp_var_1,temp_var_2,temp_var_3,callback);
-                  }
-                  else{
-                    if(cell_type){
-                      $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="followed_by_list" class="list-group">'+followed_by_string+'</ul></div></div>'});
-                      console.log('followed by popover ready');
-                      return;
-                    }
-                      else{
-                     $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"><ul id="im_following_list" class="list-group">'+im_following_string+'</ul></div></div>'});
-                     //initialising popovers so we can push list items; 'container:body' should have been used to keep button-group rounded corners when toggling popover
-                      console.log('im following popover ready');
-                      return;
-                      }
-                  }
-                }
-              });
-         }
-         var followers = [];
-         var local_followed_by=[];
-         var local_im_following=[];
-         function getfollow() {
-          
-           console.log('getting followers num:');
-         $.ajax({
-              method: "POST",
-              url: "/counter/getfl_num",
-              data: 0
-            })
-              .done(function( msg ) {
-                if(!msg.trouble) {
-                  if(msg.doc){
-                    console.log(JSON.stringify(msg.doc));
-                    $('#followed_by').text(msg.doc.followers.length+' Followers');
-                    if(msg.doc.followers.length===0) {
-                     $('#followed_by').prop('disabled',true);
-                     }
-                    followers=msg.doc.followers; //for outside use
-                    if(msg.doc.followers.length>10){
-                      local_followed_by=msg.doc.followers.slice(0,9);
-                    }
-                    else{
-                      msg.doc.followers.forEach(function (element,index){
-                          local_followed_by.push(element);
-                        });
-                      //console.log('local_followed_by: '+typeof local_followed_by);
-                    }
-                    var temp_var_1;
-                    var temp_var_2;
-                    var temp_var_3;
-                    var temp_var_4;
-                    var temp_var_5;
-                    var temp_var_6;
-                    populate_f_cell(1,local_followed_by,local_followed_by.length,temp_var_1,temp_var_2,temp_var_3,populate_f_cell);
-                     $('#im_following').text(msg.doc.friendstore.length+' Following');
-                     if(msg.doc.friendstore.length===0) {
-                     $('#im_following').prop('disabled',true);
-                     }
-                     if(msg.doc.friendstore.length>10){
-                      local_im_following=msg.doc.friendstore.slice(0,9);
-                    }
-                    else{
-                      msg.doc.friendstore.forEach(function (element,index){
-                          local_im_following.push(element);
-                        });
-                     // console.log('local_im_following: '+typeof local_im_following);
-                    }
-                    populate_f_cell(0,local_im_following,local_im_following.length,temp_var_4,temp_var_5,temp_var_6,populate_f_cell);
-                }
-              }
-              else{
-               console.log('getting followers num trouble: '+msg.trouble);
-              }
-              });
-            }
-         //----------------------------//
         
         
         
