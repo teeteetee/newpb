@@ -763,7 +763,7 @@ head
         });
        $('#followed_by').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
        $('#im_following').popover({'placement':'bottom','html':true,'template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
-       $('#im_following').prop('data-content','<ul class="list-group" id="im_following_list"><li class="list-group-item">Something something</li><li class="list-group-item">Something something else</li></ul>');
+       $('#im_following').attr('data-content','<ul class="list-group" id="im_following_list"><li class="list-group-item">Something something</li><li class="list-group-item">Something something else</li></ul>');
         function showmail_submit(){
           var data={};
           data.state=$('#show_mail').prop('checked')?1:0;
