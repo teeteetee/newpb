@@ -780,8 +780,8 @@ head
         var f_n_f_count=0;
         var data_content_fr='';
         var data_content_fl='';
-        var follow_num;
-        var following_num;
+        var follow_num=0;
+        var following_num=0;
         var loop_temp;
         function get_name_loop(){
           console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
@@ -829,6 +829,7 @@ head
                           friends_and_followers.push(temp_person);
                           });
               f_n_f_count+=msg.doc.friends.length;
+              following_num=msg.doc.friends.length;
              }
              if(msg.doc.followers.length)
              {msg.doc.followers.forEach(function (element, index){
@@ -837,6 +838,7 @@ head
                            friends_and_followers.push(temp_person);
                            });
               f_n_f_count+=msg.doc.followers.length;
+              follow_num=msg.doc.followers.length;
               }
               if(f_n_f_count){
                get_name_loop();
