@@ -805,7 +805,6 @@ head
                           $('#im_following').attr('data-content',data_content_fr);
                         }
                         else{
-                          f_n_f_count++;
                           get_name_loop();
                         }
                       }
@@ -835,7 +834,7 @@ head
                            });
               f_n_f_count+=msg.doc.followers.length;
               }
-              if(friends_and_followers.length){
+              if(f_n_f_count){
                get_name_loop();
               }
             }   
