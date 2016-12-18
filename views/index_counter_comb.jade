@@ -816,21 +816,21 @@ head
           }).done(function( msg ) {
             if(!msg.trouble){
               var temp_person={};
-            if(msg.friends.length)
-            { msg.friends.forEach(function (element, index){
+            if(msg.doc.friends.length)
+            { msg.doc.friends.forEach(function (element, index){
                           temp_person.section='freind';
                           temp_person._id=element;
                           friends_and_followers.push(temp_person);
                           });
-              f_n_f_count+=msg.friends.length;
+              f_n_f_count+=msg.doc.friends.length;
              }
-             if(msg.followers.length)
-             {msg.followers.forEach(function (element, index){
+             if(msg.doc.followers.length)
+             {msg.doc.followers.forEach(function (element, index){
                            temp_person.section='follower';
                            temp_person._id=element;
                            friends_and_followers.push(temp_person);
                            });
-              f_n_f_count+=msg.followers.length;
+              f_n_f_count+=msg.doc.followers.length;
               }
               if(friends_and_followers.length){
                
