@@ -787,7 +787,7 @@ head
           if(f_n_f_count>-1)
           {$.ajax({
                       method: "POST",
-                      url: "/counter/gn"+friends_and_followers[f_n_f_count]._id,
+                      url: "/counter/gn/"+friends_and_followers[f_n_f_count]._id,
                       data: 0
                     }).done(function( msg ) {
                       if(!msg.trouble){
