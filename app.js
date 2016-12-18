@@ -437,6 +437,7 @@ app.post('/counter/setnick',function (req,res){
         }
           else{
             ms.trouble=0;
+            req.session.nick=req.body.nick;
             res.send(ms);
           }
         });
