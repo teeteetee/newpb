@@ -791,7 +791,7 @@ head
                       data: 0
                     }).done(function( msg ) {
                       if(!msg.trouble){
-                      loop_temp = "window.location='/counter/profile/"+element+"'";
+                      loop_temp = "window.location='/counter/profile/"+friends_and_followers[f_n_f_count]._id+"'";
                       if(element.section==='friend'){
                         data_content_fr+='<li class="list-group-item" onclick="'+loop_temp+'">'+msg.mtext+'</li>';
                       }
