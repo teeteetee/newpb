@@ -668,7 +668,8 @@ app.post('/counter/getfl',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_friends.findOne({uid:req.session._id},function(err,doc){
+  {console.log('get_fl: '+req.session._id);
+    counter_friends.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE FRIENDS QUERY');
         res.send(ms);
