@@ -824,25 +824,16 @@ head
             data: 0
           }).done(function( msg ) {
             if(!msg.trouble){
-              var temp_person={};
             if(msg.doc.friends.length)
             { msg.doc.friends.forEach(function (element, index){
-                          temp_person.section='friend';
-                          temp_person._id=element;
-                          console.log('HELLO ELL: '+JSON.stringify(temp_person));
-                          friends_and_followers.push(temp_person);
-                          console.log('breakpoint 1 '+JSON.stringify(friends_and_followers));
+                          friends_and_followers.push({'_id':element,'section':'friend'});
                           });
               f_n_f_count+=msg.doc.friends.length;
               following_num=msg.doc.friends.length;
              }
              if(msg.doc.followers.length)
              {msg.doc.followers.forEach(function (element, index){
-                           temp_person.section='follower';
-                           temp_person._id=element;
-                           console.log('HELLO ELL: '+JSON.stringify(temp_person));
-                           friends_and_followers.push(temp_person);
-                           console.log('breakpoint 2 '+JSON.stringify(friends_and_followers));
+                           friends_and_followers.push({'_id':element,'section':'follower'});
                            });
               f_n_f_count+=msg.doc.followers.length;
               follow_num=msg.doc.followers.length;
