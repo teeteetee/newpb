@@ -229,14 +229,14 @@ res.redirect('/counter');
     }
 });
 
-app.get('/counter/comb',function (req,res){
-  if(req.session&&req.session._id)
- {console.log(req.session);
-  res.render('index_counter_comb',{'_id':req.session._id});}
- else {
-  res.render('counter_index_login');
- }
-});
+//app.get('/counter/comb',function (req,res){
+//  if(req.session&&req.session._id)
+// {console.log(req.session);
+//  res.render('index_counter_comb',{'_id':req.session._id});}
+// else {
+//  res.render('counter_index_login');
+// }
+//});
 
 app.get('/counter/setfirsttime',function (req,res){
   counter_users.update({},{$set:{first_time:1}},function (err,done){
