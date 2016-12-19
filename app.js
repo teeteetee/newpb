@@ -438,6 +438,7 @@ app.post('/counter/setnick',function (req,res){
           else{
             ms.trouble=0;
             req.session.nick=req.body.nick;
+            console.log('req.session.nick: '+req.session.nick);
             res.send(ms);
           }
         });
