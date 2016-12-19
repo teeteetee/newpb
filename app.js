@@ -1722,6 +1722,8 @@ app.post('/newuser',function(req,res){
           }
           });}
           else{
+            var ms={};
+            ms.trouble=1;
              ms.mtext='email exists';
              res.send(ms); 
           }
