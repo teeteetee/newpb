@@ -411,6 +411,14 @@ head
            $('#reg_alert').text('db maintenance, service unavaliable');$('#reg_alert').slideToggle();
           } 
           break;
+          case('bad data'):
+          console.log('inconsistent data');
+          if($('#reg_alert').css('display')!='none')
+          {$('#reg_alert').text('inconsistent data');}
+          else{
+           $('#reg_alert').text('inconsistent data');$('#reg_alert').slideToggle();
+          } 
+          break;
           case('email exists'):
           console.log('povide another mail');
           if($('#reg_alert').css('display')!='none')

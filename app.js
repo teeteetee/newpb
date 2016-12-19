@@ -1689,7 +1689,6 @@ app.post('/newuser',function(req,res){
     if(validateEmail(vmail)&&vp===vpc)
     {
       console.log('\ndata ok\n')
-    }
     counter_users.findOne({mail:vmail},function (err,done_0){
       if(err)
         {
@@ -1728,7 +1727,11 @@ app.post('/newuser',function(req,res){
           }
         }
       });
-    
+    }
+    else{
+      ms.mtext='bad data';
+      res.send(ms);
+    }
     });
 
 app.post('/counter/chcknck',function (req,res){
