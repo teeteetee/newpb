@@ -1690,31 +1690,44 @@ app.post('/newuser',function(req,res){
     {
       console.log('\ndata ok\n')
     }
-    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-    var ms = {};
-    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
-    // CHECK MAIL BEFOR WRTING
-    //checkmail function was here before being moved out of scope
-      counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
-        if(err)
+    counter_users.findOne({mail:vmail},function (err,done_0){
+      if(err)
         {
           ms.mtext='db';
          res.send(ms); 
         }
       else {
-      //counter_stats.update({$inc:{users:1}});
-      var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
-      console.log('vuid: '+vuid);
-      counter_books.insert({uid:vuid,total:0,oldones:0,newones:0,bookstore:[]});
-      counter_movies.insert({uid:vuid,total:0,oldones:0,newones:0,moviestore:[]});
-      counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
-      req.session._id=done._id;
-      ms.trouble =0;
-      ms.mtext='success';
-      res.send(ms);
-      }
+        if(!done_0)
+    {var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+        var ms = {};
+        // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
+        // CHECK MAIL BEFOR WRTING
+        //checkmail function was here before being moved out of scope
+          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
+            if(err)
+            {
+              ms.mtext='db';
+             res.send(ms); 
+            }
+          else {
+          //counter_stats.update({$inc:{users:1}});
+          var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
+          console.log('vuid: '+vuid);
+          counter_books.insert({uid:vuid,total:0,oldones:0,newones:0,bookstore:[]});
+          counter_movies.insert({uid:vuid,total:0,oldones:0,newones:0,moviestore:[]});
+          counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
+          req.session._id=done._id;
+          ms.trouble =0;
+          ms.mtext='success';
+          res.send(ms);
+          }
+          });}
+          else{
+             ms.mtext='email exists';
+             res.send(ms); 
+          }
+        }
       });
-        
     
     });
 
