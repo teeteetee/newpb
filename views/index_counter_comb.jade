@@ -518,12 +518,23 @@ head
       .popover-content .list-group-item{
        border:none;
        border-top:1px solid #eee;
+       min-width: 200;
       }
       .popover-content .list-group-item:first-child{
        border:none;
       }
       .popover-content .list-group-item:hover{
        background-color:#eee;
+      }
+      .popover-content .list-group-item.more:hover{
+       background-color:white;
+      }
+      .popover-content .list-group-item.more{
+        padding:0px;
+      }
+      .popover-content .btn{
+        border-top-left-radius:0px;
+        border-top-left-radius:0px;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -810,10 +821,10 @@ head
                       }
                         if(!f_n_f_count){
                           if(more_followers){
-                          data_content_fr+='<li class="list-group-item"><button class="btn btn-primary form-control">More</button></li>';
+                          data_content_fr+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
                           }
                           if(more_friends){
-                          data_content_fl+='<li class="list-group-item"><button class="btn btn-primary form-control">More</button></li>';
+                          data_content_fl+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
                           }
                           data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
                           data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
@@ -836,10 +847,10 @@ head
                       }
                         if(!f_n_f_count){
                           if(more_followers){
-                          data_content_fl+='<li class="list-group-item"><button class="btn btn-primary form-control">More</button></li>';
+                          data_content_fl+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
                           }
                           if(more_friends){
-                          data_content_fr+='<li class="list-group-item"><button class="btn btn-primary form-control">More</button></li>';
+                          data_content_fr+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
                           }
                           data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
                           data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
@@ -878,8 +889,11 @@ head
               f_n_f_count+=temp_friends.length;
               following_num=msg.doc.friends.length;
              }
+             else{
+             $('#im_following').text('Following 0');
+             }
              if(msg.doc.followers.length)
-             { if(msg.doc.friends.length>10){
+             { if(msg.doc.followers.length>10){
               temp_followers=msg.doc.followers.slice(0,10);
               more_followers=1;
               }
@@ -891,6 +905,9 @@ head
                            });
               f_n_f_count+=temp_followers.length;
               follow_num=msg.doc.followers.length;
+              }
+              else{
+              $('#followed_by').text('Follow 0');
               }
               if(f_n_f_count){
                 console.log(JSON.stringify(friends_and_followers));
