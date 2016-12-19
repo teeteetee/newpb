@@ -767,7 +767,7 @@ head
       script(src='/js/bootstrap.min.js')
       script.
        var nick = '#{nick}';
-       if(nick){
+       if(parseInt(nick)){
         $('#user_name').text(nick);
        }
        $("input").keypress(function(event) {
