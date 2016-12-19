@@ -876,7 +876,7 @@ head
                           friends_and_followers.push({'_id':element,'section':'friend'});
                           });
               f_n_f_count+=temp_friends.length;
-              following_num=temp_friends.length;
+              following_num=msg.doc.friends.length;
              }
              if(msg.doc.followers.length)
              { if(msg.doc.friends.length>10){
@@ -890,7 +890,7 @@ head
                            friends_and_followers.push({'_id':element,'section':'follower'});
                            });
               f_n_f_count+=temp_followers.length;
-              follow_num=temp_followers.length;
+              follow_num=msg.doc.followers.length;
               }
               if(f_n_f_count){
                 console.log(JSON.stringify(friends_and_followers));
