@@ -343,12 +343,13 @@ head
       .row
         .col-md-8.col-md-offset-2
           ul.list-group.first#first_lg(style='background-color:white;')
+          ul.list-group.hidden.second#second_lg(style='background-color:white;')
     .navbar(style='background-color:#111;margin-bottom:0px;')
       .container
         .row(style='padding-top:30px;padding-bottom:30px;')
           .col-xs-12(style='text-align:center; border-top: 1px solid #444343;padding-top:15px;padding-bottom:20px;')
-            h5 СТАНЬ АВТОРОМ
             h5 О ПРОЕКТЕ
+            h5 СТАНЬ АВТОРОМ
             h5 КОНТАКТЫ
           .col-xs-12(style='text-align:center;margin-top:20px;')
             h4(style='font-family: high;font-size: 35px;') 2017
@@ -404,8 +405,10 @@ head
           var style;
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
-            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
-            var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
+            //style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
+            //var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
+            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));"
+            var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><img class="z-first" src="'+element.picture+'"><div class="z-second"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div></div> </li>';
             $('.first').append(insert);
             });
           }    
