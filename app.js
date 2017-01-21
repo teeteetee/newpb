@@ -110,6 +110,17 @@ app.get('/ltps/red',function (req,res){
     }
 });
 
+app.post('/ltps/getposts',function (req,res){
+  ltps_posts.find({},function(err,done){
+    if(err){
+
+    }
+    else{
+      res.send(done);
+    }
+  });
+});
+
 
 app.get('/counter/settings',function (req,res) {
   res.render('counter_settings');
