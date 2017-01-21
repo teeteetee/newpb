@@ -111,12 +111,22 @@ app.get('/ltps/red',function (req,res){
 });
 
 app.post('/ltps/getposts',function (req,res){
+  var msg={};
+  msg.trouble=1;
   ltps_posts.find({},function(err,done){
     if(err){
 
     }
     else{
-      res.send(done);
+      if(done)
+      {
+       msg.trouble=0;
+       msg.doc=done;
+       res.send(msg);
+      }
+      else{
+      res.send(msg);
+      }
     }
   });
 });
