@@ -302,6 +302,9 @@ head
       h5:hover{
         color:#abaaaa;
       }
+      h5.current{
+        color:#abaaaa;
+      }
       .list-group{
         margin-top:20px;
       }
@@ -313,6 +316,7 @@ head
             //h1(style='color:#d2d2d2;text-align:center;font-family:high;letter-spacing:4px;') ЛЕТОПИСЕЦ
             img(src='/images/ltps_logo.png' style='width:200px;')
           .col-xs-12(style='text-align: center;padding-top:15px;padding-bottom:15px;')
+            h5.current ПОКАЗАТЬ ВСЁ
             h5 РОССИЯ
             h5 МИР
             h5 ПОЛИТИКА
@@ -401,7 +405,7 @@ head
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
             style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
-            var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:200;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
+            var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
             $('.first').append(insert);
             });
           }    
