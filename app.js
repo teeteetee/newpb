@@ -97,6 +97,20 @@ app.get('/test',function (req,res){
                   res.send(done);});
 });
 
+app.get('/ltps',function (req,res){
+  res.render('ltps');
+});
+
+app.get('/ltps/red',function (req,res){
+  if(req.session&&req.session.red_allow==1){
+    res.render('ltps_admin');
+  }
+    else{
+      res.render('ltps_login');
+    }
+});
+
+
 app.get('/counter/settings',function (req,res) {
   res.render('counter_settings');
 });

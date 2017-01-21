@@ -794,15 +794,17 @@ head
        $('#followed_by').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
        $('#im_following').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
         var friends_and_followers=[];
+        var friends_full=[];
+        var followers_full=[];
         var f_n_f_count=0;
         var data_content_fr='';
         var data_content_fl='';
         var follow_num=0;
         var following_num=0;
         var loop_temp;
-        var temp_friends=0;//these two are here to implement 'more'
+        var temp_friends=0;//these two are here to implement 'more', holding sliced part of ten enteries
         var temp_followers=0;
-        var more_friends=0;
+        var more_friends=0;//these two are first used to indicate the need for the 'more' button insertion, then to keep track of which more to add from corresponding array
         var more_followers=0;
         function get_name_loop(){
           console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
@@ -824,13 +826,13 @@ head
                       }
                         if(!f_n_f_count){
                           if(more_followers){
-                          data_content_fl+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
+                          data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
                           }
                           if(more_friends){
-                          data_content_fr+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
+                          data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
                           }
-                          data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
-                          data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
+                          data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
+                          data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
                           $('#followed_by').attr('data-content',data_content_fl);
                           $('#im_following').attr('data-content',data_content_fr);
                           $('#followed_by').text('Follow '+follow_num);
@@ -850,13 +852,13 @@ head
                       }
                         if(!f_n_f_count){
                           if(more_followers){
-                          data_content_fl+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
+                          data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
                           }
                           if(more_friends){
-                          data_content_fr+='<li class="list-group-item more"><button class="btn btn-default form-control">More</button></li>';
+                          data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
                           }
-                          data_content_fr='<ul class="list-group">'+data_content_fr+'</ul>';
-                          data_content_fl='<ul class="list-group">'+data_content_fl+'</ul>';
+                          data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
+                          data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
                           $('#followed_by').attr('data-content',data_content_fl);
                           $('#im_following').attr('data-content',data_content_fr);
                           $('#followed_by').text('Follow '+follow_num);
@@ -868,8 +870,50 @@ head
                       }
                   });}
         }
-        function get_more() {
+        //---------------------//
+        
+        function more_get_names(section) {
+          var more_get_names_count=section?temp_followers.length:temp_friends.length;
+          (function(){
+         more_get_names_count--; 
+         var v_url = section?"/counter/gn/"+temp_followers[more_get_names_count]:"/counter/gn/"+temp_friends[more_get_names_count];
+        if(more_get_names_count>-1)
+         {$.ajax({
+              method: "POST",
+              url: v_url,
+              data: 0
+            }).done(function( msg ) { 
+              if(section){
+                if(!msg.trouble){
+                  $('#followerlist').append('<a href="counter/profile/'+temp_followers[more_get_names_count]+'"<li class="list-group-item">'+msg.mtext+'</li></a>');
+                }
+                  else{
+                    $('#followerlist').append('<a href="counter/profile/'+temp_followers[more_get_names_count]+'"<li class="list-group-item"> User №'+temp_followers[more_get_names_count]+'</li></a>');
+                  }
+              }
+                else{
+                  if(!msg.trouble){
+                  $('#friendlist').append('<a href="counter/profile/'+temp_friends[more_get_names_count]+'"<li class="list-group-item">'+msg.mtext+'</li></a>');
+                }
+                  else{
+                    $('#friendlist').append('<a href="counter/profile/'+temp_friends[more_get_names_count]+'"<li class="list-group-item"> User №'+temp_friends[more_get_names_count]+'</li></a>');
+                  }
+                }
+            }); 
+          } 
+        });
+        }
+        //---------------------//
+        function more(section) {
           //TODO
+          if(section){
+           temp_followers=followers_full.slice((more_follower)*10,(more_follower+1)*10);
+           more_followers++;
+          }
+          else{
+          temp_friends=friends_full.slice((more_follower)*10,(more_follower+1)*10);
+           more_friends++;
+          }
         }
         function get_follow(){
           $.ajax({
@@ -891,6 +935,7 @@ head
                           });
               f_n_f_count+=temp_friends.length;
               following_num=msg.doc.friends.length;
+              friends_full=msg.doc.friends;
              }
              else{
              $('#im_following').text('Following 0');
@@ -908,6 +953,7 @@ head
                            });
               f_n_f_count+=temp_followers.length;
               follow_num=msg.doc.followers.length;
+              friends_full=msg.doc.followers;
               }
               else{
               $('#followed_by').text('Follow 0');
