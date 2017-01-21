@@ -315,7 +315,8 @@ head
       .date_indicator_text{
         margin-left: 20;
        font-size: 12px;
-       color: #848484;
+       /*color: #848484;*/
+       color:rgba(255,255,255,0.57);
        letter-spacing: 0px;
        font-weight: 200;
       }
@@ -351,6 +352,14 @@ head
       }
       .post:last-child{
         border-bottom:0px;
+        padding-bottom:1px;
+      }
+      .text_block{
+       padding: 15px;
+       position: absolute;
+       bottom: 0px;
+       background-color: rgba(0,0,0,0.6);
+       width: 100%;
       }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
@@ -472,7 +481,7 @@ head
             //style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
             //var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
             style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));"
-            var insert='<li class="list-group-item"  onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><span class=" date_indicator">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></li>';
+            var insert='<li class="list-group-item"  onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div></li>';
             $('.first').append(insert);
             insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
             $('.second').append(insert);
