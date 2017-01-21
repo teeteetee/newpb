@@ -342,8 +342,8 @@ head
             h5 МИР
             h5 ПОЛИТИКА
             h5 НАУКА/КУЛЬТУРА
-            span.glyphicon.glyphicon-align-justify(style='position:absolute;top:5px;right:10px;')
-            span.glyphicon.glyphicon-list(style='position:absolute;top:5px;right:25px;')
+            span#text_only.glyphicon.glyphicon-align-justify(style='position:absolute;top:5px;right:10px;')
+            span#pics.glyphicon.glyphicon-list(style='position:absolute;top:5px;right:25px;')
     .modal.fadebtn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog
         .modal-content
@@ -368,7 +368,7 @@ head
           .row 
             .col-md-8.col-md-offset-2
               ul.list-group.first#first_lg(style='background-color:#252525;')
-              ul.list-group.second#second_lg(style='background-color:white;')
+              ul.hidden.list-group.second#second_lg(style='background-color:white;')
     .navbar(style='background-color:#111;margin-bottom:0px;')
       .container
         .row(style='padding-top:30px;padding-bottom:30px;')
@@ -381,6 +381,22 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#text_only').click(function(){
+          if($('#second_lg').css('display')=='none'){
+            $('#first_lg').addClass('hidden');
+            $('#second_lg').removeClass('hidden');
+            $('#text_only').css('color','#abaaaa');
+            $('#pics').css('color','#4e4e4e');
+          }
+          });
+        $('#pics').click(function(){
+          if($('#first_lg').css('display')=='none'){
+            $('#second_lg').addClass('hidden');
+            $('#first_lg').removeClass('hidden');
+            $('#pics').css('color','#abaaaa');
+            $('#text_only').css('color','#4e4e4e');
+          }
+          });
         //----------------------------//
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
