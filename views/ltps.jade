@@ -36,6 +36,9 @@ head
       .navbar-nav{
         font-size:10px;
       }
+      .navbar{
+        border-radius:0px;
+      }
       }
       @media(max-width:767px){
         .col-md-8{
@@ -335,11 +338,13 @@ head
           ul.list-group.first#first_lg(style='background-color:white;')
     .navbar.navbar-fixed-bottom(style='background-color:#111;')
       .container
-        .row
-          .col-xs-12(style='text-align:center; border-top: 1px solid #444343;')
+        .row(style='padding-top:30px;padding-bottom:30px;')
+          .col-xs-12(style='text-align:center; border-top: 1px solid #444343;padding-top:15px;padding-bottom:20px;')
             h5 СТАНЬ АВТОРОМ
             h5 О ПРОЕКТЕ
             h5 КОНТАКТЫ
+          .col-xs-12(style='text-align:center;')
+            h5 2017
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
