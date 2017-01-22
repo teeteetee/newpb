@@ -444,11 +444,13 @@ head
       script.
         // console.log('width: '+window.width);
         if($(window).width()<400){
-          console.log('width: '+$(window).width()+', RESISING');
-          $('.resize').css('width',$(window).width());
-          console.log('width: '+$(window).width());
-          $('.resize').css('height',$(window).width()/1.4);
-          console.log('height: '+$(window).height());
+          var width =$(window).width();
+          var height =width/1.4;
+          console.log('width: '+width+', RESISING');
+          $('.resize').css('width',width);
+          console.log('width: '+width);
+          $('.resize').css('height',height);
+          console.log('height: '+height);
         }
         $('#text_only').click(function(){
           if($('#second_lg').css('display')=='none'){
