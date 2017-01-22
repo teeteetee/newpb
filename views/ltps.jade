@@ -418,7 +418,7 @@ head
             h5 НАУКА/КУЛЬТУРА
             span#text_only.glyphicon.glyphicon-align-justify(style='position:absolute;top:11px;right:10px;')
             span#pics.glyphicon.glyphicon-th-large(style='position:absolute;top:11px;right:30px;')
-    .modal.fadebtn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog
         .modal-content
           .modal-header(style='text-align:center;')
@@ -436,7 +436,7 @@ head
               span#tags
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dissmis='modal') Закрыть
-    .container(style='z-index:2;')
+    .container(style='/*z-index:2;*/')
       .row
         .col-md-10.col-md-offset-1
           .row
