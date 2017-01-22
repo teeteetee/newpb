@@ -504,10 +504,12 @@ head
             //$('.second').append(insert);
             //-------- third iteration --------//
             if(!temp_count){
+              console.log('hello 0');
               temp_count=1;
               temp_store='<li class="list-group-item"><div class="row"><div class="col-xs-6" onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
             }
             else{
+              console.log('hello 1');
               temp_count=0;
               temp_store+='<div class="col-xs-6" onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(insert);
