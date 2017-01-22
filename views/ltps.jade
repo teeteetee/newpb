@@ -386,6 +386,10 @@ head
        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
        width: 100%;
       }
+      .resize{
+        width:400px;
+        height:285px;
+      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
       .container
@@ -441,6 +445,7 @@ head
         // console.log('width: '+window.width);
         if($(window).width()<400){
           $('.resize').css('width',$(window).width());
+          $('.resize').css('height',$(window).width()/1.4);
           console.log('width: '+$(window).width()+', RESISING');
         }
         $('#text_only').click(function(){
@@ -519,7 +524,7 @@ head
             //insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
             //$('.second').append(insert);
             //-------- third iteration --------//
-            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;width:400px;height:285px;padding-left:0px;padding-right:0px;"
+            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"
             if(!temp_count){
               //console.log('hello 0');
               temp_count=1;
