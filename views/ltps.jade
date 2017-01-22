@@ -381,7 +381,7 @@ head
         .row  
           .col-xs-12(style='text-align: center;padding-top: 40px;padding-bottom: 10px;padding-bottom: 20px;border-bottom: 1px solid #444343;')
             //h1(style='color:#d2d2d2;text-align:center;font-family:high;letter-spacing:4px;') ЛЕТОПИСЕЦ
-            img(src='/images/ltps_logo.png' style='width:200px;')
+            img(src='/images/ltps_logo.png' style='width:200px;opacity:0.6;')
           .col-xs-12(style='text-align: center;padding-top:15px;padding-bottom:15px;')
             h5.current ПОКАЗАТЬ ВСЁ
             h5 РОССИЯ
@@ -490,14 +490,29 @@ head
           var count;
           var date;
           var style;
+          var temp_count=0;
+          var temp_store;
           consolidated.forEach(function (element,index){
             date = new Date(element.tmstmp);
             //style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-position: center;"
             //var insert='<li class="list-group-item" style="'+style+'" onclick="postmodal('+index+')"><span class="semi pull-right" style="letter-spacing:0px;font-weight:100;">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></br><h3 class="heading">'+element.heading+'</h3></br><div class=" semi pull-right"><span class="glyphicon glyphicon-eye-open " style="margin-right:5px;"> </span>'+element.views+'<span class=" glyphicon glyphicon-bullhorn" style="margin-left:10px;margin-right:5px;"> </span>'+element.share+'</div>> </li>';
-            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));"
-            var insert='<li class="list-group-item"  onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></li>';
-            $('.first').append(insert);
-            insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
+            //-------- second iteration ---------//
+            //style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));"
+            //var insert='<li class="list-group-item"  onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></li>';
+            //$('.first').append(insert);
+            //insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
+            //$('.second').append(insert);
+            //-------- third iteration --------//
+            if(!temp_count){
+              temp_count=1;
+              temp_store='<li class="list-group-item"><div class="row"><div class="col-xs-6" onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
+            }
+            else{
+              temp_count=0;
+              temp_store+='<div class="col-xs-6" onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
+              $('.first').append(insert);
+            }
+            var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
             $('.second').append(insert);
             });
           }    
