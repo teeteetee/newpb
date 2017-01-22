@@ -386,10 +386,6 @@ head
        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
        width: 100%;
       }
-      .resize{
-        width:400px;
-        height:285px;
-      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
       .container
@@ -451,6 +447,9 @@ head
           console.log('width: '+width);
           $('.resize').css('height',height+' !important');
           console.log('height: '+height);
+        }
+        else{
+          $('.resize').css({'width':'400','height':'285'});
         }
         $('#text_only').click(function(){
           if($('#second_lg').css('display')=='none'){
