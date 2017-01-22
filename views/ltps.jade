@@ -444,9 +444,11 @@ head
       script.
         // console.log('width: '+window.width);
         if($(window).width()<400){
-          $('.resize').css('width',$(window).width());
-          $('.resize').css('height',$(window).width()/1.4);
           console.log('width: '+$(window).width()+', RESISING');
+          $('.resize').css('width',$(window).width());
+          console.log('width: '+$(window).width());
+          $('.resize').css('height',$(window).width()/1.4);
+          console.log('height: '+$(window).height());
         }
         $('#text_only').click(function(){
           if($('#second_lg').css('display')=='none'){
