@@ -410,7 +410,7 @@ head
           .col-xs-12(style='text-align: center;padding-top: 40px;padding-bottom: 10px;padding-bottom: 20px;border-bottom: 1px solid #444343;')
             //h1(style='color:#d2d2d2;text-align:center;font-family:high;letter-spacing:4px;') ЛЕТОПИСЕЦ
             img(src='/images/ltps_logo.png' style='width:200px;opacity:0.6;')
-          .col-xs-12(style='text-align: center;padding-top:15px;padding-bottom:15px;')
+          .col-xs-12.hidden-xs.hidden-sm(style='text-align: center;padding-top:15px;padding-bottom:15px;')
             h5.current ПОКАЗАТЬ ВСЁ
             h5 РОССИЯ
             h5 МИР
@@ -418,6 +418,11 @@ head
             h5 НАУКА/КУЛЬТУРА
             span#text_only.glyphicon.glyphicon-align-justify(style='position:absolute;top:11px;right:10px;')
             span#pics.glyphicon.glyphicon-th-large(style='position:absolute;top:11px;right:30px;')
+          .col-xs-12.visible-xs.visible-sm(style='text-align: center;padding-top:15px;padding-bottom:15px;')
+            .btn-group(style='margin-top:10px,margin-bottom:10px;margin-left:auto;margin-right:auto;')
+              button#text_only_btn.btn.btn-default картинки
+              button#pics_btn.btn.btn-default текст
+
     .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog
         .modal-content
@@ -474,6 +479,8 @@ head
             $('#second_lg').removeClass('hidden');
             $('#text_only').css('color','#abaaaa');
             $('#pics').css('color','#4e4e4e');
+            $('#pics_btn').removeClass('active');
+            $('#text_only_btn').addClass('active');
           }
           });
         $('#pics').click(function(){
@@ -482,6 +489,28 @@ head
             $('#first_lg').removeClass('hidden');
             $('#pics').css('color','#abaaaa');
             $('#text_only').css('color','#4e4e4e');
+            $('#text_only_btn').removeClass('active');
+            $('#pics_btn').addClass('active');
+          }
+          });
+        $('#text_only_btn').click(function(){
+          if($('#second_lg').css('display')=='none'){
+            $('#first_lg').addClass('hidden');
+            $('#second_lg').removeClass('hidden');
+            $('#text_only').css('color','#abaaaa');
+            $('#pics').css('color','#4e4e4e');
+            $('#pics_btn').removeClass('active');
+            $('#text_only_btn').addClass('active');
+          }
+          });
+        $('#pics_btn').click(function(){
+          if($('#first_lg').css('display')=='none'){
+            $('#second_lg').addClass('hidden');
+            $('#first_lg').removeClass('hidden');
+            $('#pics').css('color','#abaaaa');
+            $('#text_only').css('color','#4e4e4e');
+            $('#text_only_btn').removeClass('active');
+            $('#pics_btn').addClass('active');
           }
           });
         //----------------------------//
