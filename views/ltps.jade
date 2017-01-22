@@ -438,6 +438,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        if(window.width<400){
+          $('.resize').css('width',window.width);
+        }
         $('#text_only').click(function(){
           if($('#second_lg').css('display')=='none'){
             $('#first_lg').addClass('hidden');
@@ -518,12 +521,12 @@ head
             if(!temp_count){
               console.log('hello 0');
               temp_count=1;
-              temp_store='<li class="list-group-item"><div class="row" ><div class="col-sm-12 col-md-6" style="'+style+'" onclick="postmodal('+index+')"><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
+              temp_store='<li class="list-group-item"><div class="row" ><div class="col-sm-12 col-md-6 resize" style="'+style+'" onclick="postmodal('+index+')"><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
             }
             else{
               console.log('hello 1');
               temp_count=0;
-              temp_store+='<div class="col-sm-12 col-md-6 second-column" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
+              temp_store+='<div class="col-sm-12 col-md-6 resize second-column" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(temp_store);
             }
             var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
