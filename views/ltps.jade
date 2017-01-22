@@ -438,6 +438,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        console.log('width: '+window.width);
         if(window.width<400){
           $('.resize').css('width',window.width);
           console.log('width: '+window.width+', RESISING');
@@ -480,9 +481,9 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('posts: '+JSON.stringify(msg.doc));
+                  //console.log('posts: '+JSON.stringify(msg.doc));
                   if(!msg.doc) {
-                   console.log('no posts');
+                   //console.log('no posts');
                    }
                    else {
                     //$('#currentnum').text(msg.doc.length);
@@ -501,7 +502,7 @@ head
                    
         //----------------------------//
         function populate(consolidated) {
-          console.log('hello');
+          //console.log('hello');
           var count;
           var date;
           var style;
@@ -520,12 +521,12 @@ head
             //-------- third iteration --------//
             style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;width:400px;height:285px;padding-left:0px;padding-right:0px;"
             if(!temp_count){
-              console.log('hello 0');
+              //console.log('hello 0');
               temp_count=1;
               temp_store='<li class="list-group-item"><div class="row" ><div class="col-sm-12 col-md-6 resize" style="'+style+'" onclick="postmodal('+index+')"><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
             }
             else{
-              console.log('hello 1');
+            //  console.log('hello 1');
               temp_count=0;
               temp_store+='<div class="col-sm-12 col-md-6 resize second-column" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(temp_store);
@@ -535,7 +536,7 @@ head
             });
           }    
         function postmodal (i) {
-          console.log('redact');
+         // console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         //if(screen.width<screen.height) {
         //  $('.modal-dialog').css('margin-top','60%');
