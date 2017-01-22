@@ -265,6 +265,7 @@ head
         border-radius:0px;
         border:none;
         margin-bottom:20px;
+        background-color:transparent;
       }
       .list-group-item:last-child{
         border-radius:0px;
@@ -410,9 +411,11 @@ head
             button#close_postmodal.btn( type='button' data-dissmis='modal') Закрыть
     .container(style='z-index:2;')
       .row
-        .col-md-12
-          ul.list-group.first#first_lg(style='background-color:#252525;')
-          .hidden.list-group.second#second_lg
+        .col-md-10.col-md-offset-1
+          .row
+            .col-md-10.col-md-offset-1
+              ul.list-group.first#first_lg(style='background-color:#252525;')
+              .hidden.list-group.second#second_lg
     .navbar(style='background-color:#111;margin-bottom:0px;')
       .container
         .row(style='padding-top:30px;padding-bottom:30px;')
@@ -510,7 +513,7 @@ head
             else{
               console.log('hello 1');
               temp_count=0;
-              temp_store+='<div class="col-xs-6" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
+              temp_store+='<div class="col-xs-6 pull-right" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(temp_store);
             }
             var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
