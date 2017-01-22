@@ -51,8 +51,9 @@ head
           padding-left:0px;
           padding-right:0px;
         }
-        .col-sm-12.pull-right{
+        .col-sm-12.second-column{
           margin-top:20px;
+          float:none;
         }
       .navbar-header{
         background-color:black;
@@ -519,7 +520,7 @@ head
             else{
               console.log('hello 1');
               temp_count=0;
-              temp_store+='<div class="col-sm-12 col-md-6 pull-right" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
+              temp_store+='<div class="col-sm-12 col-md-6 second-column" style="'+style+'float:right;" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(temp_store);
             }
             var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
