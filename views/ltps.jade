@@ -410,6 +410,23 @@ head
        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
        width: 100%;
       }
+      .bul{
+      color: white;
+      margin-right: 5px;
+      font-size: 26px;
+      line-height: 0.13;
+      vertical-align: middle;
+      }
+      .btn-default {
+          color: #006b49;
+          background-color: #2ed29e;
+          border-color: #2ed29e;
+      }
+      .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+      color: #035f42;
+      background-color: #139a6e;
+      border-color: #118f66;
+      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
       .container
@@ -427,8 +444,12 @@ head
             span#pics.glyphicon.glyphicon-th-large(style='position:absolute;top:11px;right:30px;')
           .col-xs-12.visible-xs.visible-sm(style='text-align: center;padding-top:15px;padding-bottom:15px;')
             .btn-group(style='margin-top:10px,margin-bottom:10px;margin-left:auto;margin-right:auto;')
-              button#text_only_btn.btn.btn-default текст
-              button#pics_btn.btn.btn-default.active c картинками
+              button#text_only_btn.btn.btn-default
+                span#bul_text_only_btn.bul.hidden •
+                | текст
+              button#pics_btn.btn.btn-default.active 
+                span#bul_pics_btn.bul •
+                | c картинками
 
     .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog
@@ -488,6 +509,8 @@ head
             $('#pics').css('color','#4e4e4e');
             $('#pics_btn').removeClass('active');
             $('#text_only_btn').addClass('active');
+            $('#bul_text_only_btn').removeClass('hidden');
+            $('#bul_pics_btn').addClass('hidden');
           }
           });
         $('#pics').click(function(){
@@ -498,6 +521,8 @@ head
             $('#text_only').css('color','#4e4e4e');
             $('#text_only_btn').removeClass('active');
             $('#pics_btn').addClass('active');
+            $('#bul_pics_btn').removeClass('hidden');
+            $('#bul_text_only_btn').addClass('hidden');
           }
           });
         $('#text_only_btn').click(function(){
@@ -508,6 +533,8 @@ head
             $('#pics').css('color','#4e4e4e');
             $('#pics_btn').removeClass('active');
             $('#text_only_btn').addClass('active');
+            $('#bul_text_only_btn').removeClass('hidden');
+            $('#bul_pics_btn').addClass('hidden');
           }
           });
         $('#pics_btn').click(function(){
@@ -518,6 +545,8 @@ head
             $('#text_only').css('color','#4e4e4e');
             $('#text_only_btn').removeClass('active');
             $('#pics_btn').addClass('active');
+            $('#bul_pics_btn').removeClass('hidden');
+            $('#bul_text_only_btn').addClass('hidden');
           }
           });
         //----------------------------//
