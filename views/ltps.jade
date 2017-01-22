@@ -512,7 +512,7 @@ head
               console.log('hello 1');
               temp_count=0;
               temp_store+='<div class="col-xs-6" onclick="postmodal('+index+')"><img style="width:100%" src="'+element.picture+'" alt="..."><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
-              $('.first').append(insert);
+              $('.first').append(temp_store);
             }
             var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
             $('.second').append(insert);
