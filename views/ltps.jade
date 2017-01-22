@@ -447,9 +447,9 @@ head
           var width =$(window).width();
           var height =width/1.4;
           console.log('width: '+width+', RESISING');
-          $('.resize').css('width',width);
+          $('.resize').css('width',width+' !important');
           console.log('width: '+width);
-          $('.resize').css('height',height);
+          $('.resize').css('height',height+' !important');
           console.log('height: '+height);
         }
         $('#text_only').click(function(){
