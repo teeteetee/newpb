@@ -627,7 +627,8 @@ head
             else{
               style_insert='width:400;height:285;';
             }
-            style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"+style_insert;
+            // HAS DIMMED BACKGROUND PICTURE style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"+style_insert;
+            style="url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"+style_insert;
             if(!temp_count){
               //console.log('hello 0');
               temp_count=1;
