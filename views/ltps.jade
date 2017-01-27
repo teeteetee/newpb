@@ -72,6 +72,9 @@ head
       }
       }
       @media(max-width:767px){
+        #main_row{
+          margin-top: -20px;
+        }
         #main_logo{
           opacity:1;
         }
@@ -510,7 +513,7 @@ head
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
     .container(style='/*z-index:2;*/')
-      .row
+      .row#main_row
         .col-md-10.col-md-offset-1
           .row
             .col-md-10.col-md-offset-1
