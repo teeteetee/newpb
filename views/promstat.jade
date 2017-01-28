@@ -256,6 +256,14 @@ head
             button#mining.btn.btn-lg.btn-default(type='button')
               span.bul •
               | горнодобыча
+      .row 
+        .col-xs-12
+          .panel.panel-default
+            .panel-body
+              ul.nav.nav-tabs.nav-justified
+                li.active строительные экскаваторы
+                li катки асфальтовые
+                li асфальтоукладчики
       //
         .navbar(style='background-color:#111;margin-bottom:0px;')
           .container
@@ -269,9 +277,15 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
-        $('#metal').click(function(){});
-        $('#roads').click(function(){});
-        $('#mining').click(function(){});
+        $('#metal').click(function(){
+
+          });
+        $('#roads').click(function(){
+
+          });
+        $('#mining').click(function(){
+
+          });
         //----------------------------//
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
