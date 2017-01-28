@@ -1303,6 +1303,8 @@ app.get('/',function(req,res) {
     }
   else {
     console.log('NEW CLIENT');
+    console.log('User-Agent: ' + req.headers['user-agent']);
+    console.log('IP: '+req.ip);
     req.session.tmstmp = Date.now();
   }
    if (req.session._id)
