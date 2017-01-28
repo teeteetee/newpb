@@ -97,6 +97,14 @@ app.get('/test',function (req,res){
                   res.send(done);});
 });
 
+//-----------------------//
+
+app.get('/promstat',function (req,res){
+  res.render('promstat');
+});
+
+//-----------------------//
+
 app.get('/ltps',function (req,res){
   res.render('ltps');
 });
@@ -109,6 +117,8 @@ app.get('/ltps/red',function (req,res){
       res.render('ltps_login');
     }
 });
+
+
 
 app.post('/ltps/getposts',function (req,res){
   var msg={};
