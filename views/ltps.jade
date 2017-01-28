@@ -651,25 +651,28 @@ head
             //$('.second').append(insert);
             //-------- third iteration --------//
             if($(window).width()<769){
-              style_insert='width:'+($(window).width()-60)/2+';height:'+(($(window).width()-60)/2)/1.4+';';
+              //style_insert='width:'+($(window).width()-60)/2+';height:'+(($(window).width()-60)/2)/1.4+';';
+              style_insert='height:'+(($(window).width()-60)/2)/1.4+';';
               if($(window).width()<400){
-              style_insert='width:'+$(window).width()+';height:'+$(window).width()/1.4+';';
+              //style_insert='width:'+$(window).width()+';height:'+$(window).width()/1.4+';';
+              style_insert='height:'+$(window).width()/1.4+';';
               }
             }
             else{
-              style_insert='width:400px;height:285px;';
+              //style_insert='width:400px;height:285px;';
+              style_insert='height:285px;';
             }
             // HAS DIMMED BACKGROUND PICTURE style="background:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"+style_insert;
             style="background:url('"+element.picture+"');background-size: cover;padding-left:0px;padding-right:0px;"+style_insert;
             if(!temp_count){
               //console.log('hello 0');
               temp_count=1;
-              temp_store='<li class="list-group-item"><div class="row" ><div class="col-xs-12 col-sm-6 resize" style="'+style+'" onclick="postmodal('+index+')"><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
+              temp_store='<li class="list-group-item"><div class="row" ><div class="col-xs-12 col-sm-6 resize" style="'+style+'border-right: 8px solid #252525;" onclick="postmodal('+index+')"><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div>';
             }
             else{
             //  console.log('hello 1');
               temp_count=0;
-              temp_store+='<div class="col-xs-12 col-sm-6 resize second-column" style="'+style+'" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
+              temp_store+='<div class="col-xs-12 col-sm-6 resize" style="'+style+'border-left: 8px solid #252525;" onclick="postmodal('+index+')" ><div class="text_block"><h3 class="heading">'+element.heading+'</h3><span class=" date_indicator_text pull-right">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></div></div></div></li>'
               $('.first').append(temp_store);
             }
             var insert='<div class="post" onclick="postmodal('+index+')"><h3 style="margin-bottom:20px;font-weight:100;font-size:17px;letter-spacing:1px;">'+element.heading+'<span class=" date_indicator_text">'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getUTCFullYear()+'</span></h3></div>';
