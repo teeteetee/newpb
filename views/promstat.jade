@@ -137,6 +137,7 @@ head
         margin: 15px;
         letter-spacing: 1px;
         color: #186d51;
+        padding-bottom: 4px;
       }
       h5:hover{
         border-bottom:4px solid white;
@@ -145,16 +146,19 @@ head
         border-bottom:4px solid white;
       } 
   body
-    nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#1dc38d;')
+    nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#1dc38d;padding-top: 20;')
       .container
         .row  
           .col-xs-12
             h1(style='color:white;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
-          .col-xs-12.hidden-xs(style='text-align: center;padding-top:15px;padding-bottom:15px;')
-            h5.current ПОКАЗАТЬ ВСЁ
-            h5 МЕТАЛЛУРГИЯ
-            h5 ДОРОЖНОЕ СТРОИТЕЛЬСТВО
-            h5 ГОРНОДОБЫЧА
+          .col-xs-12.hidden-xs(style='text-align: center;padding-top:15px;padding-bottom:25px;')
+            h3(style='text-transform:uppercase;') сравнение характеристик промышленного оборудования
+          //
+            .col-xs-12.hidden-xs(style='text-align: center;padding-top:15px;padding-bottom:25px;')
+              h5.current ПОКАЗАТЬ ВСЁ
+              h5 МЕТАЛЛУРГИЯ
+              h5 ДОРОЖНОЕ СТРОИТЕЛЬСТВО
+              h5 ГОРНОДОБЫЧА
           .col-xs-12.visible-xs(style='text-align: center;padding-top:15px;padding-bottom:35px;')
             .btn-group(style='margin-top:10px,margin-bottom:10px;margin-left:auto;margin-right:auto;')
               button#text_only_btn.btn.btn-default
@@ -187,15 +191,16 @@ head
         .col-xs-12.col-md-10.col-md-offset-1
               ul.list-group.first#first_lg(style='background-color:#252525;')
               .hidden.list-group.second#second_lg
-    .navbar(style='background-color:#111;margin-bottom:0px;')
-      .container
-        .row(style='padding-top:30px;padding-bottom:30px;')
-          .col-xs-12(style='text-align:center; /*border-top: 1px solid #444343;*/padding-top:15px;padding-bottom:20px;')
-            h5 О ПРОЕКТЕ
-            h5 СТАНЬ АВТОРОМ
-            h5 КОНТАКТЫ
-          .col-xs-12(style='text-align:center;margin-top:20px;')
-            h4(style='font-family: high;font-size: 35px;') 2017
+      //
+        .navbar(style='background-color:#111;margin-bottom:0px;')
+          .container
+            .row(style='padding-top:30px;padding-bottom:30px;')
+              .col-xs-12(style='text-align:center; /*border-top: 1px solid #444343;*/padding-top:15px;padding-bottom:20px;')
+                h5 О ПРОЕКТЕ
+                h5 СТАНЬ АВТОРОМ
+                h5 КОНТАКТЫ
+              .col-xs-12(style='text-align:center;margin-top:20px;')
+                h4(style='font-family: high;font-size: 35px;') 2017
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
