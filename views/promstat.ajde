@@ -131,19 +131,7 @@ head
        border-bottom:1px solid white;
       }
       }
-      h5{
-        font-size: 10px;
-        display: inline;
-        margin: 15px;
-        letter-spacing: 1px;
-        color: #4e4e4e;
-      }
-      h5:hover{
-        color:#abaaaa;
-      }
-      h5.current{
-        color:#abaaaa;
-      } 
+      
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
       .container
