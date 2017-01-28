@@ -145,8 +145,29 @@ head
       h5.current{
         border-bottom:4px solid white;
       } 
+      .btn-default{
+       color: #adadad;
+       background-color: transparent;
+       border-color: #444343;
+       font-weight: 200;
+      }
+      .btn-default.active{
+      color: #adadad;
+      background-color: #444343;
+      border-color: #444343;
+      }
+      .bul{
+      color: #f35c2b;
+      margin-right: 5px;
+      font-size: 26px;
+      line-height: 0.13;
+      vertical-align: middle;
+      }
+      .btn-default.active .bul{
+      display:inline;
+      }
   body
-    nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#1dc38d;padding-top: 20;box-shadow: 0px 6px 15px 1px #1b1a1a;')
+    nav(class="navbar navbar-inverse" style='margin-bottom:0px;/*background-color:#1dc38d*/background-color:#24a553;padding-top: 20;box-shadow: 0px 6px 15px 1px #1b1a1a;')
       .container(style='padding-bottom:20px;')
         .row  
           .col-xs-12
@@ -189,9 +210,15 @@ head
       .row(style='padding-top:50px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
-            button.btn.btn-lg.btn-default.active(type='button') металлургия
-            button.btn.btn-lg.btn-default(type='button') дорожное строительство
-            button.btn.btn-lg.btn-default(type='button') горнодобыча
+            button.btn.btn-lg.btn-default.active(type='button') 
+              span.bul.hidden •
+              | металлургия
+            button.btn.btn-lg.btn-default(type='button')
+              span.bul.hidden •
+              | дорожное строительство
+            button.btn.btn-lg.btn-default(type='button')
+              span.bul.hidden •
+              | горнодобыча
       //
         .navbar(style='background-color:#111;margin-bottom:0px;')
           .container
