@@ -166,9 +166,13 @@ head
       }
       .btn-default:hover{
        background-color: transparent;
+       color: #adadad;
+       border-color: #444343;
       }
       .btn-default.active:hover{
        background-color: #444343;
+       color: #adadad;
+      border-color: #444343;
       }
       .btn-default.active{
       color: #adadad;
@@ -230,13 +234,13 @@ head
       .row(style='padding-top:50px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
-            button.btn.btn-lg.btn-default.active(type='button') 
+            button#metal.btn.btn-lg.btn-default.active(type='button') 
               span.bul •
               | металлургия
-            button.btn.btn-lg.btn-default(type='button')
+            button#roads.btn.btn-lg.btn-default(type='button')
               span.bul •
               | дорожное строительство
-            button.btn.btn-lg.btn-default(type='button')
+            button#mining.btn.btn-lg.btn-default(type='button')
               span.bul •
               | горнодобыча
       //
@@ -252,6 +256,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        $('#metal').click(function(){});
+        $('#roads').click(function(){});
+        $('#mining').click(function(){});
         //----------------------------//
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
