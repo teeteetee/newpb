@@ -1,0 +1,227 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title Летопись
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+        font-family:proxima;
+        src: url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      body {
+        /*background-color:#1d1d1d;
+        background-color:#111;*/
+        background-color:#252525;
+      }
+      .second-column{
+        float:right;
+      }
+      .navbar{
+      background-color: #111;
+      }
+      .list-group-item {
+        border-radius:0px;
+        border:none;
+        margin-bottom:20px;
+        background-color:transparent;
+      }
+      .list-group-item:last-child{
+        border-radius:0px;
+        border:none;
+        margin-bottom:0px;
+      }
+      .list-group-item:first-child {
+          border-radius:0px;
+      }
+      #img_cont{
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 10px;
+      padding-bottom: 20px;
+      }
+      #main_logo{
+          width:200px;
+          opacity:0.6;
+        }
+      .left_column{
+      border-right: 8px solid #252525;
+        }
+      .right_column{
+      border-left: 8px solid #252525;
+      }
+      @media(min-width:768px){
+        .navbar-collapse{
+      background-color: transparent;
+      }
+      .navbar-nav{
+        font-size:10px;
+      }
+      .navbar{
+        border-radius:0px;
+      }
+      #img_cont{
+        border-bottom: 1px solid #444343;
+      }
+      }
+      @media(max-width:767px){
+        #main_row{
+          margin-top: -20px;
+        }
+        #main_logo{
+          opacity:1;
+        }
+        .col-sm-12{
+          margin:auto;
+        }
+        .col-md-8{
+          padding-left:0px;
+          padding-right:0px;
+        }
+        .col-sm-12.second-column{
+          margin-top:20px;
+          float:none;
+        }
+      .navbar-header{
+        background-color:black;
+      }
+      .modal {
+        position: absolute;
+        overflow:visible;
+      }
+      .modal-open {
+          overflow:visible;
+      }
+      }
+      @media(max-width:414px){
+      .left_column{
+      border:none;
+        }
+      .right_column{
+      border:none;
+      }
+       .list-group-item:first-child{
+         margin-top:20px;
+         margin-bottom:0px;
+         border-top:0px;
+       }
+       .list-group-item{
+         margin-bottom:0px;
+       }
+      .col-sm-12.second-column {
+          margin-top: 0px;
+          float: none;
+      }
+      .col-sm-12{
+       border-bottom:1px solid white;
+      }
+      }
+      
+  body
+    nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
+      .container
+        .row  
+          .col-xs-12
+            h1(style='color:white;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
+          .col-xs-12.hidden-xs(style='text-align: center;padding-top:15px;padding-bottom:15px;')
+            h5.current ПОКАЗАТЬ ВСЁ
+            h5 МЕТАЛЛУРГИЯ
+            h5 ДОРОЖНОЕ СТРОИТЕЛЬСТВО
+            h5 ГОРНОДОБЫЧА
+          .col-xs-12.visible-xs(style='text-align: center;padding-top:15px;padding-bottom:35px;')
+            .btn-group(style='margin-top:10px,margin-bottom:10px;margin-left:auto;margin-right:auto;')
+              button#text_only_btn.btn.btn-default
+                span#bul_text_only_btn.bul.hidden •
+                | текст
+              button#pics_btn.btn.btn-default.active 
+                span#bul_pics_btn.bul •
+                | c картинками
+
+    .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog
+        .modal-content
+          .modal-header(style='text-align:center;')
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4#heading.modal-title(style='font-family:proxima;text-transform:uppercase;')
+          .modal-body(style='text-align:left;padding:0px;')
+            img#picture(style='width:100%;')
+            .row(style='margin-top:10px;')
+              span.glyphicon.glyphicon-link(style='color:#ddd;margin-right:5px;')
+              a#link(style='color:#ddd;')
+            .row(style='margin-top:10px;')
+              #post_body
+            .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
+              span#tags
+          .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
+            button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
+    .container(style='/*z-index:2;*/')
+      .row#main_row
+        .col-xs-12.col-md-10.col-md-offset-1
+              ul.list-group.first#first_lg(style='background-color:#252525;')
+              .hidden.list-group.second#second_lg
+    .navbar(style='background-color:#111;margin-bottom:0px;')
+      .container
+        .row(style='padding-top:30px;padding-bottom:30px;')
+          .col-xs-12(style='text-align:center; /*border-top: 1px solid #444343;*/padding-top:15px;padding-bottom:20px;')
+            h5 О ПРОЕКТЕ
+            h5 СТАНЬ АВТОРОМ
+            h5 КОНТАКТЫ
+          .col-xs-12(style='text-align:center;margin-top:20px;')
+            h4(style='font-family: high;font-size: 35px;') 2017
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(async src='/js/bootstrap.min.js')
+      script.
+        //----------------------------//
+        function sortByKey(array, key) {
+          return array.sort(function(a, b) {
+              var x = parseInt(a[key]); var y = parseInt(b[key]);
+              return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+          });
+        }
+        String.prototype.capitalizeFirstLetter = function() {
+          return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        function level() {
+          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
+        }
+        //---------------------------// 
+        function postmodal (i) {
+         // console.log('redact');
+        // TODO screen blocker must be added to prevent user from interfering 
+        //if(screen.width<screen.height) {
+        //  $('.modal-dialog').css('margin-top','60%');
+        //}
+        //else{
+        //  $('.modal-dialog').css('margin-top','15%');
+        //}
+        $('#heading').text(consolidated[i].heading);
+        $('#link').text(consolidated[i].source_name)
+        $('#link').attr('href',consolidated[i].web_link);
+        $('#post_body').text(consolidated[i].post_body);
+        $('#picture').attr('src',consolidated[i].picture);
+        $('#tags').text(consolidated[i].tags);
+        $('#postmodal').modal('show');
+        }
+        
+        
+        
+        
+        
+        
+      
