@@ -143,8 +143,7 @@ head
       }
       h5.current{
         color:#abaaaa;
-      }
-      
+      } 
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:#111;')
       .container
