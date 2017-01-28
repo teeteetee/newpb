@@ -203,6 +203,10 @@ head
       .btn-default.active .bul{
       display:inline;
       }
+      .panel-default{
+        border-color: #444343;
+        background-color: #353535;
+      }
   body
     nav(class="navbar navbar-inverse" style='margin-bottom:0px;/*background-color:#1dc38d*/background-color:#24a553;padding-top: 20;box-shadow: 0px 6px 15px 1px #1b1a1a;')
       .container(style='padding-bottom:20px;')
@@ -258,12 +262,15 @@ head
               | горнодобыча
       .row 
         .col-xs-12
-          .panel.panel-default
+          .panel.panel-default(style='min-height: 400px;')
             .panel-body
               ul.nav.nav-tabs.nav-justified
-                li.active строительные экскаваторы
-                li катки асфальтовые
-                li асфальтоукладчики
+                li.active 
+                  a(href='#') строительные экскаваторы
+                li 
+                  a(href='#') катки асфальтовые
+                li 
+                  a(href='#') асфальтоукладчики
       //
         .navbar(style='background-color:#111;margin-bottom:0px;')
           .container
