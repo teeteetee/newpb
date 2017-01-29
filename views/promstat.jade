@@ -207,13 +207,19 @@ head
         border-color: #444343;
         background-color: #353535;
       }
+      h4{
+      color: rgb(255, 255, 255);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      }
   body
-    nav(class="navbar navbar-inverse" style='margin-bottom:0px;/*background-color:#1dc38d*/background-color:#24a553;padding-top: 20;box-shadow: 0px 6px 15px 1px #1b1a1a;')
+    nav(class="navbar navbar-inverse" style='margin-bottom:0px;background-color:white;padding-top: 20;')
       .container(style='padding-bottom:20px;')
         .row  
           .col-xs-12
-            h1(style='color:white;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
-            h6(style="text-align: center;color: rgba(255, 255, 255, 0.7);font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования
+            h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
+            h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования
           //
             .col-xs-12.hidden-xs(style='text-align: center;padding-top:15px;padding-bottom:25px;')
               h5.current ПОКАЗАТЬ ВСЁ
@@ -247,8 +253,15 @@ head
               span#tags
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
+    .row(style="text-align: center;padding-top: 20px;padding-bottom: 20px;background-color: #ce4141;")
+      .col-xs-4(style='text-align:right;') 
+        h4(style="display:inline;margin: 20px;") Металлургия
+      .col-xs-4(style='text-align:center;')
+        h4(style="display:inline;margin: 20px;") Дорожное строительство
+      .col-xs-4(style='text-align:left;')
+        h4(style="display:inline;margin: 20px;") Горнодобыча
     .container(style='/*z-index:2;*/')
-      .row(style='padding-top:50px;padding-bottom:30px;text-align:center;')
+      .row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
             button#metal.btn.btn-lg.btn-default.active(type='button') 
@@ -271,6 +284,18 @@ head
                   a(href='#') катки асфальтовые
                 li 
                   a(href='#') асфальтоукладчики
+              li(role="presentation" class="active">
+                a(href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+              li(role="presentation">
+                a(href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+              li(role="presentation">
+                a(href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+              li(role="presentation">
+                a(href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+            .tab-content
+              .tab-pane.active(role="tabpanel" id="home")
+              .tab-pane(role="tabpanel" id="profile")
+              .tab-pane(role="tabpanel" id="messages")
       //
         .navbar(style='background-color:#111;margin-bottom:0px;')
           .container
