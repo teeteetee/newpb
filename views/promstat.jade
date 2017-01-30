@@ -363,19 +363,19 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
-        $window = $(window);
-        $window.scroll(function() {
-          $scroll_position = $window.scrollTop();
-            if ($scroll_position > 140) { // if body is scrolled down by 300 pixels
-                $('.navbar').addClass('sticky');
-                // to get rid of jerk
-                header_height = $('.navbar').innerHeight();
-                $('body').css('padding-top' , header_height);
-            } else {
-                $('body').css('padding-top' , '0');
-                $('.navbar').removeClass('sticky');
-            }
-         });
+        //$window = $(window);
+        //$window.scroll(function() {
+        //  $scroll_position = $window.scrollTop();
+        //    if ($scroll_position > 140) { // if body is scrolled down by 300 pixels
+        //        $('.navbar').addClass('sticky');
+        //        // to get rid of jerk
+        //        header_height = $('.navbar').innerHeight();
+        //        $('body').css('padding-top' , header_height);
+        //    } else {
+        //        $('body').css('padding-top' , '0');
+        //        $('.navbar').removeClass('sticky');
+        //    }
+        // });
         $('body').scrollspy({ target: '#navbar' });
         $('#myScrollspy').on('activate.bs.scrollspy', function () {
           console.log('hello');
