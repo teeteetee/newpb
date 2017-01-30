@@ -219,8 +219,14 @@ head
         z-index: 9999;
         width: 100%;
       }
+      .navbar {
+       background-color: #ce4141;
+      }
+      .navbar a {
+        color:white;
+      }
   body(data-spy="scroll" data-target="#navbar")
-    .row(style="background-color:white;")  
+    .row(style="background-color:white;padding-top:20px;padding-bottom:20px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
         h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
@@ -243,7 +249,7 @@ head
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
     nav(class="navbar" id="navbar" style='')
-      .container(style='padding-bottom:20px;background-color: #ce4141;color:white;')
+      .container
         .navbar-nav
           ul.nav.navbar-nav(role="tablist")
             li
