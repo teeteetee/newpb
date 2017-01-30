@@ -229,6 +229,10 @@ head
       p {
       color: #989898;
       }
+      .nav>li>a:focus, .nav>li>a:hover {
+          text-decoration: none;
+          background-color: #a72a2a;
+      }
   body(data-spy="scroll" data-target="#navbar")
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;")  
       .col-xs-12
@@ -252,12 +256,12 @@ head
               span#tags
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
-    nav(class="navbar" id="navbar" style='')
+    nav(class="navbar" id="navbar" style='border:none;')
       .container
         .navbar-nav
           ul.nav.navbar-nav(role="tablist")
             li
-              a(href="#metal") Металлургия
+              a.active(href="#metal") Металлургия
             li 
               a(href="#roads") Дорожное строительство
             li 
