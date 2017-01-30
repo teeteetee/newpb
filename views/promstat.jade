@@ -218,6 +218,7 @@ head
         position: fixed;
         z-index: 9999;
         width: 100%;
+        top:0px;
       }
       .navbar {
        background-color: #ce4141;
@@ -360,7 +361,7 @@ head
         $window = $(window);
         $window.scroll(function() {
           $scroll_position = $window.scrollTop();
-            if ($scroll_position > 131) { // if body is scrolled down by 300 pixels
+            if ($scroll_position > 136) { // if body is scrolled down by 300 pixels
                 $('.navbar').addClass('sticky');
                 // to get rid of jerk
                 header_height = $('.navbar').innerHeight();
