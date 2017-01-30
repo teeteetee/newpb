@@ -234,29 +234,33 @@ head
           text-decoration: none;
           background-color: #a72a2a;
       }
+      .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+      background-color: #a72a2a;
+      }
   body(data-spy="scroll" data-target="#navbar" )
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
         h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
-    .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog
-        .modal-content
-          .modal-header(style='text-align:center;')
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4#heading.modal-title(style='font-family:proxima;text-transform:uppercase;')
-          .modal-body(style='text-align:left;padding:0px;')
-            img#picture(style='width:100%;')
-            .row(style='margin-top:10px;')
-              span.glyphicon.glyphicon-link(style='color:#ddd;margin-right:5px;')
-              a#link(style='color:#ddd;')
-            .row(style='margin-top:10px;')
-              #post_body
-            .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
-              span#tags
-          .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
-            button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
+    // 
+      .modal.fade.btn_mod(id='postmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog
+          .modal-content
+            .modal-header(style='text-align:center;')
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+              h4#heading.modal-title(style='font-family:proxima;text-transform:uppercase;')
+            .modal-body(style='text-align:left;padding:0px;')
+              img#picture(style='width:100%;')
+              .row(style='margin-top:10px;')
+                span.glyphicon.glyphicon-link(style='color:#ddd;margin-right:5px;')
+                a#link(style='color:#ddd;')
+              .row(style='margin-top:10px;')
+                #post_body
+              .row(style='color:#ddd;margin-top:20px;padding-bottom:20px;')
+                span#tags
+            .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
+              button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
     nav(class="navbar" style='border:none;')
       .container
         .collapse.navbar-collapse#navbar
