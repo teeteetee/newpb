@@ -233,7 +233,7 @@ head
           text-decoration: none;
           background-color: #a72a2a;
       }
-  body(data-spy="scroll" data-target="#navbar")
+  body(data-spy="scroll" data-target="#parent")
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -258,7 +258,7 @@ head
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
     nav(class="navbar" id="navbar" style='border:none;')
       .container
-        .navbar-nav
+        .navbar-nav#parent
           ul.nav.navbar-nav(role="tablist")
             li
               a.active(href="#metal") Металлургия
