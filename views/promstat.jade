@@ -234,7 +234,7 @@ head
           text-decoration: none;
           background-color: #a72a2a;
       }
-  body
+  body(data-spy="scroll" data-target="#navbar" )
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -257,10 +257,10 @@ head
               span#tags
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
-    nav(class="navbar" id="navbar" style='border:none;')
+    nav(class="navbar" style='border:none;')
       .container
         .collapse.navbar-collapse
-        ul.nav.navbar-nav(role="tablist")
+        ul#navbar.nav.navbar-nav(role="tablist")
           li
             a.active(href="#metal") Металлургия
           li 
@@ -275,7 +275,7 @@ head
           h4(style="display:inline;margin: 20px;") Дорожное строительство
         .col-xs-2(style='text-align:left;')
           h4(style="display:inline;margin: 20px;") Горнодобыча
-    .container(data-spy="scroll" data-target="#navbar" )
+    .container(style='/*z-index:2;*/')
       .row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
