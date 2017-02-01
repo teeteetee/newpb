@@ -264,8 +264,8 @@ head
     //
     nav(class="navbar navbar-red" style='border:none;')
       .container
-        .collapse.navbar-collapse#navbar
-          ul.nav.navbar-nav(role="tablist")
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav#navbar(role="tablist")
             li
               a.active(href="#metal") Металлургия
             li 
@@ -394,19 +394,6 @@ head
         //  });
         //$('#mining').click(function(){
         //  });
-        //----------------------------//
-        function sortByKey(array, key) {
-          return array.sort(function(a, b) {
-              var x = parseInt(a[key]); var y = parseInt(b[key]);
-              return ((x < y) ? 1 : ((x > y) ? -1 : 0));
-          });
-        }
-        String.prototype.capitalizeFirstLetter = function() {
-          return this.charAt(0).toUpperCase() + this.slice(1);
-        }
-        function level() {
-          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
-        }
         //---------------------------// 
         function postmodal (i) {
          // console.log('redact');
