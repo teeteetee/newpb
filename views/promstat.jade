@@ -238,7 +238,7 @@ head
       .navbar-red .navbar-nav>.active>a, .navbar-red .navbar-nav>.active>a:focus, .navbar-red .navbar-nav>.active>a:hover {
       background-color: #a72a2a;
       }
-  body(data-spy="sroll" data-target="#navbar" )
+  body
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -273,15 +273,7 @@ head
               a(href="#roads") Дорожное строительство
             li 
               a(href="#mining") Горнодобыча
-    //
-      .row(style="text-align: center;padding-top: 20px;padding-bottom: 20px;background-color: #ce4141;")
-        .col-xs-2.col-xs-offset-3(style='text-align:right;') 
-          h4(style="display:inline;margin: 20px;") Металлургия
-        .col-xs-2(style='text-align:center;')
-          h4(style="display:inline;margin: 20px;") Дорожное строительство
-        .col-xs-2(style='text-align:left;')
-          h4(style="display:inline;margin: 20px;") Горнодобыча
-    .container(style='/*z-index:2;*/')
+    .container(data-spy="sroll" data-target="#navbar" )
       //.row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
       //  .col-xs-12
       //    .btn-group
