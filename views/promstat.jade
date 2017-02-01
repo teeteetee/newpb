@@ -237,7 +237,7 @@ head
       .navbar-red .navbar-nav>.active>a, .navbar-red .navbar-nav>.active>a:focus, .navbar-red .navbar-nav>.active>a:hover {
       background-color: #a72a2a;
       }
-  body(data-spy="scroll" data-target="#navbar" )
+  body
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -264,8 +264,8 @@ head
     //
     nav(class="navbar navbar-red" style='border:none;')
       .container
-        .collapse.navbar-collapse
-          ul.nav.navbar-nav#navbar(role="tablist")
+        .collapse.navbar-collapse#navbar
+          ul.nav.navbar-nav(role="tablist")
             li
               a.active(href="#metal") Металлургия
             li 
@@ -281,18 +281,18 @@ head
         .col-xs-2(style='text-align:left;')
           h4(style="display:inline;margin: 20px;") Горнодобыча
     .container(style='/*z-index:2;*/')
-      .row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
-        .col-xs-12
-          .btn-group
-            button#metal.btn.btn-lg.btn-default.active(type='button') 
-              span.bul •
-              | металлургия
-            button#roads.btn.btn-lg.btn-default(type='button')
-              span.bul •
-              | дорожное строительство
-            button#mining.btn.btn-lg.btn-default(type='button')
-              span.bul •
-              | горнодобыча
+      //.row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
+      //  .col-xs-12
+      //    .btn-group
+      //      button#metal.btn.btn-lg.btn-default.active(type='button') 
+      //        span.bul •
+      //        | металлургия
+      //      button#roads.btn.btn-lg.btn-default(type='button')
+      //        span.bul •
+      //        | дорожное строительство
+      //      button#mining.btn.btn-lg.btn-default(type='button')
+      //        span.bul •
+      //        | горнодобыча
       .row
         .col-xs-12
           h1#metal HELLO METAL
@@ -385,9 +385,10 @@ head
         //    }
         // });
         $('body').scrollspy({ target: '#navbar' });
-        $('#roads').on('activate.bs.scrollspy', function () {
-          console.log('hello');
-        });
+        //$('#roads').on('activate.bs.scrollspy', function () {
+        //  console.log('hello');
+        //});
+        //-------------//
         //$('#metal').click(function(){
         //  });
         //$('#roads').click(function(){
