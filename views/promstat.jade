@@ -261,16 +261,58 @@ head
                 span#tags
             .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
               button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
-    nav(class="navbar navbar-red" style='border:none;')
-      .container
-        .collapse.navbar-collapse#navbar
-          ul.nav.navbar-nav(role="tablist")
-            li
-              a.active(href="#metal") Металлургия
-            li 
-              a(href="#roads") Дорожное строительство
-            li 
-              a(href="#mining") Горнодобыча
+    //
+      nav(class="navbar navbar-red" style='border:none;')
+        .container
+          .collapse.navbar-collapse#navbar
+            ul.nav.navbar-nav(role="tablist")
+              li
+                a.active(href="#metal") Металлургия
+              li 
+                a(href="#roads") Дорожное строительство
+              li 
+                a(href="#mining") Горнодобыча
+    <nav class="navbar navbar-default navbar-static" id="navbar-example2">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="collapsed navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+          </button>
+        <a href="#" class="navbar-brand">Project Name</a>
+       </div>
+       <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
+         <ul class="nav navbar-nav">
+           <li class="active">
+             <a href="#fat">@fat</a>
+           </li>
+           <li>
+             <a href="#mdo">@mdo</a>
+           </li>
+           <li class="dropdown">
+             <a href="#" class="dropdown-toggle" id="navbarDrop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dropdown 
+               <span class="caret"></span>
+             </a>
+         <ul class="dropdown-menu" aria-labelledby="navbarDrop1">
+       <li>
+         <a href="#one">one</a>
+      </li>
+       <li>
+       <a href="#two">two</a>
+      </li>
+       <li role="separator" class="divider">
+       </li>
+       <li>
+       <a href="#three">three</a>
+      </li>
+       </ul>
+       </li>
+       </ul>
+       </div>
+       </div>
+       </nav>
     //
       .row(style="text-align: center;padding-top: 20px;padding-bottom: 20px;background-color: #ce4141;")
         .col-xs-2.col-xs-offset-3(style='text-align:right;') 
@@ -292,8 +334,9 @@ head
             button#mining.btn.btn-lg.btn-default(type='button')
               span.bul •
               | горнодобыча
-      .row#metal
+      .row
         .col-xs-12
+          h1#metal HELLO METAL
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
               ul.nav.nav-tabs.nav-justified
@@ -316,8 +359,9 @@ head
                   p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                   p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                   p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-      .row#roads
+      .row
         .col-xs-12
+          h1#roads HELLO ROADS
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
               ul.nav.nav-tabs.nav-justified
@@ -340,8 +384,9 @@ head
                   p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                   p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                   p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-      .row#mining
+      .row
         .col-xs-12
+          h1#mining HELLO MINING
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
               ul.nav.nav-tabs.nav-justified
