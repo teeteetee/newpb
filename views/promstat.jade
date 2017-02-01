@@ -238,7 +238,7 @@ head
       .navbar-red .navbar-nav>.active>a, .navbar-red .navbar-nav>.active>a:focus, .navbar-red .navbar-nav>.active>a:hover {
       background-color: #a72a2a;
       }
-  body(data-spy="sroll" )
+  body(data-spy="sroll" data-target="#navbar" )
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       .col-xs-12
         h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -385,9 +385,10 @@ head
                 $('.navbar').removeClass('sticky');
             }
          });
-        $('#navbar').scrollspy({
-          offset: 50
-        });
+        $("#navbar").on("activate.bs.scrollspy", function(){
+        var currentItem = $(".nav li.active > a").text();
+        console.log(currentItem);
+         });
         //$('body').scrollspy({ target: '#navbar' });
         //$('#navbar').on('activate.bs.scrollspy', function () {
         //  console.log('hello');
