@@ -392,9 +392,7 @@ head
             var scrollPos = $('body > .container').find($(this).attr('href')).offset().top - offsetHeight;
             $('body,html').animate({
                 scrollTop: scrollPos
-            }, 500, function () {
-                $(".btn-navbar").click();
-            });
+            }, 500);
             return false;
         });
         //$('body').scrollspy({ target: '#navbar' });
