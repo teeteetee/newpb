@@ -308,14 +308,24 @@ head
                   button.btn.btn-default(type='button' aria-controls="exk") строительные экскаваторы
                   button.btn.btn-default(type='button' aria-controls="katok") катки асфальтовые
                   button.btn.btn-default(type='button' aria-controls="asph") асфальтоукладчики
-                //
-                  ul.nav.nav-tabs.nav-justified
-                    li(role="presentation" class="active")
-                      a(href="#exk" aria-controls="exk" role="tab" data-toggle="tab") строительные экскаваторы
-                    li(role="presentation") 
-                      a(href="#katok" aria-controls="katok" role="tab" data-toggle="tab") катки асфальтовые
-                    li(role="presentation") 
-                      a(href="#asph" aria-controls="asph" role="tab" data-toggle="tab") асфальтоукладчики
+                .dropdown
+                  button(class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true") Выберите тип оборудования:
+                    span.caret
+                  ul(class="dropdown-menu" aria-labelledby="dropdownMenu1")
+                    li
+                      a(href="#") Строительные экскаваторы
+                    li
+                      a(href="#") Катки асфальтовые
+                    li
+                      a(href="#") Асфальтоукладчики
+                  //  
+                    ul.nav.nav-tabs.nav-justified
+                      li(role="presentation" class="active")
+                        a(href="#exk" aria-controls="exk" role="tab" data-toggle="tab") строительные экскаваторы
+                      li(role="presentation") 
+                        a(href="#katok" aria-controls="katok" role="tab" data-toggle="tab") катки асфальтовые
+                      li(role="presentation") 
+                        a(href="#asph" aria-controls="asph" role="tab" data-toggle="tab") асфальтоукладчики
                 .tab-content
                   .tab-pane.active(role="tabpanel" id="exk")
                     p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
