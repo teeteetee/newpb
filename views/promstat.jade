@@ -224,7 +224,7 @@ head
           h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
     .container
       .row.row-offcanvas.row-offcanvas-left
-        .col-sm-3
+        .col-sm-3#navbar
           //
             .collapse.navbar-collapse#navbar(data-spy="affix" data-offset-top="60" data-offset-bottom="200" style='height:100%;')
               ul.nav.navbar-nav(role="tablist")
@@ -233,16 +233,21 @@ head
                 li 
                   a(href="#roads") Дорожное строительство
                 li 
-                  a(href="#mining") Горнодобыча
-          ul.list-group#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
-            li.list-group-item
-              a(href="#metal") Металл
-            li.list-group-item
-              span.badge 3
-              a(href="#roads") 
-                | Дорожное строительство
-            li.list-group-item
-              a(href="#mining") Горнодобыча
+                  a(href="#mining") Горнодобыча 
+          //
+            ul.list-group.nav
+              li.list-group-item
+                a(href="#metal") Металл
+              li.list-group-item
+                span.badge 3
+                a(href="#roads") 
+                  | Дорожное строительство
+              li.list-group-item
+                a(href="#mining") Горнодобыча
+          .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+            a(href="#metal" class="list-group-item") Металургия
+            a(href="#roads" class="list-group-item") Дорожное строительство
+            a(href="#mining" class="list-group-item") Горнодобыча
 
         .col-sm-9(data-spy="scroll" data-target="#navbar")
             h1#metal HELLO METAL
