@@ -232,6 +232,13 @@ head
       .list-group-item.active a, .list-group-item.active:focus a, .list-group-item.active:hover a{
         color:white;
       } 
+      .nav>li>a:focus, .nav>li>a:hover {
+          text-decoration: none;
+         background-color: transparent; 
+      }
+      .nav>li:focus, .nav>li:hover {
+         background-color: #efefef; 
+      }
   body(data-spy="scroll" data-target="#navbar")
     .row#metal(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
