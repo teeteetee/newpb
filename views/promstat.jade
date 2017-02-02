@@ -330,10 +330,11 @@ head
                 $('.navbar').removeClass('sticky');
             }
          });
-        var parentSize = $('.col-sm-3').width();
             $('.affix').each(function() {
-                var affixPadding = $(this).innerWidth() - $(this).width();
-                $(this).width(parentSize - affixPadding);
+                //var affixPadding = $(this).innerWidth() - $(this).width();
+                console.log($('.col-sm-3').width())
+                $(this).width($('.col-sm-3').width());
+                console.log($(this).width());
             });
         $(window).resize(function () {
             console.log('hello');
