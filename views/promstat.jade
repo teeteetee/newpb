@@ -222,6 +222,15 @@ head
        left: 0px;
        right: 0px;
       }
+      .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+        z-index: 2;
+        color: #fff;
+        background-color: #b73333;
+        border-color: #a94442;
+      }
+      .list-group-item.active a, .list-group-item.active:focus a, .list-group-item.active:hover a{
+        color:white;
+      } 
   body(data-spy="scroll" data-target="#navbar")
     .row#metal(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
@@ -248,6 +257,8 @@ head
                 | Дорожное строительство
             li.list-group-item
               a(href="#mining") Горнодобыча
+            li.list-group-item.disabled
+              a(href="#") По мере наполнения здесь будут появлятся новые разделы
           //
             .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
               a(href="#metal" class="list-group-item") Металургия
@@ -255,7 +266,7 @@ head
               a(href="#mining" class="list-group-item") Горнодобыча
 
         .col-sm-9
-            h1 HELLO METAL
+            h3 Металлургия
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
                 ul.nav.nav-tabs.nav-justified
@@ -278,7 +289,7 @@ head
                     p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                     p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                     p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-            h1#roads HELLO ROADS
+            h3 Дорожное строительство
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
                 ul.nav.nav-tabs.nav-justified
@@ -301,7 +312,7 @@ head
                     p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                     p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                     p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-            h1#mining HELLO MINING
+            h3 Горнодобыча
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
                 ul.nav.nav-tabs.nav-justified
@@ -324,6 +335,14 @@ head
                     p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                     p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                     p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+    .navbar(style='background-color:#111;margin-bottom:0px;')
+      .container
+        .row(style='padding-top:30px;padding-bottom:30px;')
+          .col-xs-12(style='text-align:center;padding-top:15px;padding-bottom:20px;')
+            h5 О ПРОЕКТЕ
+            h5 КОНТАКТЫ
+          .col-xs-12(style='text-align:center;margin-top:20px;')
+            h6 2017
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
