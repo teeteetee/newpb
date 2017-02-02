@@ -241,8 +241,8 @@ head
         .col-xs-12
           h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
           h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
-      .row
-        .col-md-3
+      .row.row-offcanvas.row-offcanvas-left
+        .col-sm-3
           .collapse.navbar-collapse#navbar(data-spy="affix" data-offset-top="60" data-offset-bottom="200" style='height:100%;')
             ul.nav.navbar-nav(role="tablist")
               li
@@ -251,7 +251,7 @@ head
                 a(href="#roads") Дорожное строительство
               li 
                 a(href="#mining") Горнодобыча
-        .col-md-9(data-spy="scroll" data-target="#navbar")
+        .col-sm-9(data-spy="scroll" data-target="#navbar")
             h1#metal HELLO METAL
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
