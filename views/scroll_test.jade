@@ -7,7 +7,7 @@ head
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')       
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-  body(data-spy="scroll" data-target="#navbar" data-offset="50" style='position:relative;padding-top:51px;')
+  body(style='padding-top:51px;')
     nav#navbar(class="navbar navbar-default navbar-fixed-top")
       .container
         .navbar-header
@@ -45,28 +45,26 @@ head
                     a(href="#") Separated link
                   li
                     a(href="#") One more separated link
-    .container
-      .row
+    .container#hey(data-spy="scroll" data-target="#navbar" data-offset="50") 
+      .row(style='height:500px;background-color:#ddd;')
         .col-xs-12
           h1#first First row
-          .row(style='height:500px;background-color:#ddd;')
-            .col-xs-12
+      .row(style='height:500px;background-color:#ffc;')
+        .col-xs-12
           h1#second Second row
-          .row(style='height:500px;background-color:#ffc;')
-            .col-xs-12
+      .row(style='height:500px;background-color:cyan;')
+        .col-xs-12 
           h1#third Third row
-          .row(style='height:500px;background-color:cyan;')
-            .col-xs-12
+      .row(style='height:500px;background-color:green;')
+        .col-xs-12
           h1#fourth fourth row
-          .row(style='height:500px;background-color:green;')
-            .col-xs-12
+      .row(style='height:500px;background-color:green;')
+        .col-xs-12
           h1#fifth fifth row
-          .row(style='height:500px;background-color:green;')
-            .col-xs-12
        
 
     
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script( src='/js/bootstrap.js')
     script.
-      
+      $('#hey').scrollspy();
