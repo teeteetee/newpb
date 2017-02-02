@@ -330,6 +330,11 @@ head
                 $('.navbar').removeClass('sticky');
             }
          });
+        var parentSize = $('.col-sm-3').width();
+            $('.affix').each(function() {
+                var affixPadding = $(this).innerWidth() - $(this).width();
+                $(this).width(parentSize - affixPadding);
+            });
         $(window).resize(function () {
             console.log('hello');
             var parentSize = $('.col-sm-3').width();
