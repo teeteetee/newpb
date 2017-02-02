@@ -239,35 +239,22 @@ head
       background-color: #a72a2a;
       }
   body(data-spy="scroll" data-target="#navbar" style="overflow-y:scroll; height:100%;")
-    .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
-      .col-xs-12
-        h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
-        h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
-    nav(class="navbar navbar-red" style='border:none;')
-      .container
-        .collapse.navbar-collapse#navbar
-          ul.nav.navbar-nav(role="tablist")
-            li
-              a(href="#metal") Металлургия
-            li 
-              a(href="#roads") Дорожное строительство
-            li 
-              a(href="#mining") Горнодобыча
-    .container(data-spy="sroll" data-target="#navbar" )
-      //.row.hidden(style='padding-top:50px;padding-bottom:30px;text-align:center;')
-      //  .col-xs-12
-      //    .btn-group
-      //      button#metal.btn.btn-lg.btn-default.active(type='button') 
-      //        span.bul •
-      //        | металлургия
-      //      button#roads.btn.btn-lg.btn-default(type='button')
-      //        span.bul •
-      //        | дорожное строительство
-      //      button#mining.btn.btn-lg.btn-default(type='button')
-      //        span.bul •
-      //        | горнодобыча
-      .row
+    .container
+      .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
+          h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
+          h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
+      .row
+        .col-md-3
+          .collapse.navbar-collapse#navbar
+            ul.nav.navbar-nav(role="tablist")
+              li
+                a(href="#metal") Металлургия
+              li 
+                a(href="#roads") Дорожное строительство
+              li 
+                a(href="#mining") Горнодобыча
+      .col-md-9(data-spy="scroll" data-target="#navbar")
           h1#metal HELLO METAL
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
@@ -291,8 +278,6 @@ head
                   p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                   p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                   p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-      .row
-        .col-xs-12
           h1#roads HELLO ROADS
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
@@ -316,8 +301,6 @@ head
                   p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
                   p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
                   p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-      .row
-        .col-xs-12
           h1#mining HELLO MINING
           .panel.panel-default(style='min-height: 400px;')
             .panel-body
