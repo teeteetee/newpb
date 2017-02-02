@@ -45,7 +45,6 @@ head
                     a(href="#") Separated link
                   li
                     a(href="#") One more separated link
-          
     .container
       .row#first(style='height:500px;background-color:#ddd;')
         .col-xs-12
@@ -68,6 +67,9 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script( src='/js/bootstrap.js')
     script.
+      $('body').scrollspy({
+         offset: $(window).height() * 0.2
+      });
       //$("#navbar").on("activate.bs.scrollspy", function(){
       //   var currentItem = $(".nav li.active > a").text();
       //   console.log(currentItem);
