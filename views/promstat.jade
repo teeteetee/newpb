@@ -317,10 +317,10 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
-            //var affixPadding = $(this).innerWidth() - $(this).width();
-            console.log($('.col-sm-3').width())
-            $('.affix').css('width',$('.col-sm-3').width());
-            console.log($('.affix').css('width'));
+        //var affixPadding = $(this).innerWidth() - $(this).width();
+        console.log($('.col-sm-3').width())
+        $('.affix').css('width',$('.col-sm-3').width());
+        console.log($('.affix').css('width'));
         $(window).resize(function () {
             console.log('hello');
             var parentSize = $('.col-sm-3').width();
