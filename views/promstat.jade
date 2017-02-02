@@ -293,7 +293,15 @@ head
                 a(class="list-group-item small") Катки асфальтовые
                 a(class="list-group-item small") Асфальтоукладчики
               a(href="#" class="list-group-item") Горнодобыча 
-               span(class="badge") 0 
+               span(class="badge") 0
+              a(href="#" class="list-group-item" data-toggle="collapse" data-target="#brands" data-parent="#menu") 
+                span.glyphicon.glyphicon-star(style='margin-right:5px;')
+                |Производители 
+                span(class="badge") 3
+              #brands(class="sublinks collapse")
+                a(class="list-group-item small") CAT
+                a(class="list-group-item small") JCB
+                a(class="list-group-item small") Volvo
     
           //
             .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
@@ -302,9 +310,9 @@ head
               a(href="#mining" class="list-group-item") Горнодобыча
 
         .col-sm-9
-          .panel.panel-default(style='min-height: 400px;')
+          .panel.panel-default(style='min-height: 400px;margin-top: 20;box-shadow:0px 3px 5px 0px #a9a6a6')
             .panel-body#details(style='padding-top:20px;text-align:center;')
-              h4 Выберите сферу применения и тип оборудования 
+              h4(style='color:gray;font-weight:200;') Выберите отрасль и тип оборудования в меню слева
 
     #footer
       .row(style='padding-top:30px;padding-bottom:30px;background-color:#111')
