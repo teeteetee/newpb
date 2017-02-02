@@ -103,6 +103,10 @@ app.get('/promstat',function (req,res){
   res.render('promstat');
 });
 
+app.get('/scroll',function (req,res){
+  res.render('scroll_test');
+});
+
 //-----------------------//
 
 app.get('/ltps',function (req,res){
