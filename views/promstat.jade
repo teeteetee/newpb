@@ -239,6 +239,9 @@ head
       .nav>li:focus, .nav>li:hover {
          background-color: #efefef; 
       }
+      .panel{
+        border:none;
+      }
   body(data-spy="scroll" data-target="#navbar")
     .row#metal(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
@@ -323,13 +326,19 @@ head
             h3#mining Горнодобыча
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
-                ul.nav.nav-tabs.nav-justified
-                  li(role="presentation" class="active")
-                    a(href="#first" aria-controls="first" role="tab" data-toggle="tab") строительные экскаваторы
-                  li(role="presentation") 
-                    a(href="#second" aria-controls="second" role="tab" data-toggle="tab") катки асфальтовые
-                  li(role="presentation") 
-                    a(href="#third" aria-controls="third" role="tab" data-toggle="tab") асфальтоукладчики
+                h4 Выберите тип оборудования:
+                .btn-group
+                  button.btn.btn-default(type='button' aria-controls="first") строительные экскаваторы
+                  button.btn.btn-default(type='button' aria-controls="second") катки асфальтовые
+                  button.btn.btn-default(type='button' aria-controls="third") асфальтоукладчики
+                //
+                  ul.nav.nav-tabs.nav-justified
+                    li(role="presentation" class="active")
+                      a(href="#first" aria-controls="first" role="tab" data-toggle="tab") строительные экскаваторы
+                    li(role="presentation") 
+                      a(href="#second" aria-controls="second" role="tab" data-toggle="tab") катки асфальтовые
+                    li(role="presentation") 
+                      a(href="#third" aria-controls="third" role="tab" data-toggle="tab") асфальтоукладчики
                 .tab-content
                   .tab-pane.active(role="tabpanel" id="first")
                     p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
