@@ -27,7 +27,7 @@ head
       body {
         /*background-color:#1d1d1d;
         background-color:#111;*/
-        background-color:#f5f5f5;
+        background-color:#ddd;
       }
       .second-column{
         float:right;
@@ -239,6 +239,7 @@ head
       }
       .panel{
         border:none;
+       background-color:#f5f5f5;
       }
       a.small:first-child{
         border-radius:0px;
@@ -248,12 +249,13 @@ head
       }
       a.small{
         background-color:#e8e8e8;
+        padding-left: 23px;
       }
   body
-    .row#metal(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
+    .row#metal(style="/*background-color:white;*/background-color: #dc4242;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
-          h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
-          h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
+          h1(style='/*color:#353535;*/color:white;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
+          h6(style="text-align: center;/*color: #b7b7b7;*/color: #a02626;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
     .container.cont-fix
       .row.row-offcanvas.row-offcanvas-left
         .col-sm-3#navbar
@@ -278,7 +280,7 @@ head
                 a(href="#mining") Горнодобыча
               li.list-group-item.disabled
                 a(href="#") По мере наполнения здесь будут появлятся новые разделы
-          .panel.list-group(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+          .panel.list-group#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
               a(href="#" class="list-group-item") Металлургия 
                 span(class="label label-info") 0 
               a(href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#menu") Дорожное строительство 
