@@ -244,14 +244,23 @@ head
     .container
       .row.row-offcanvas.row-offcanvas-left
         .col-sm-3
-          .collapse.navbar-collapse#navbar(data-spy="affix" data-offset-top="60" data-offset-bottom="200" style='height:100%;')
-            ul.nav.navbar-nav(role="tablist")
-              li
-                a(href="#metal") Металлургия
-              li 
-                a(href="#roads") Дорожное строительство
-              li 
-                a(href="#mining") Горнодобыча
+          //
+            .collapse.navbar-collapse#navbar(data-spy="affix" data-offset-top="60" data-offset-bottom="200" style='height:100%;')
+              ul.nav.navbar-nav(role="tablist")
+                li
+                  a(href="#metal") Металлургия
+                li 
+                  a(href="#roads") Дорожное строительство
+                li 
+                  a(href="#mining") Горнодобыча
+          ul.list-group
+            li.list-group-item
+              a(href="#metal") металл
+            li.list-group-item
+              a(href="#roads") дорожное строительство
+            li.list-group-item
+              a(href="#mining") горнодобыча
+
         .col-sm-9(data-spy="scroll" data-target="#navbar")
             h1#metal HELLO METAL
             .panel.panel-default(style='min-height: 400px;')
