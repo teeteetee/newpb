@@ -408,6 +408,26 @@ head
                   td Стандарт
           .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
             button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
+    .modal.fade.bs-example-modal-sm(id='about' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body(style='min-height:300px;')
+              h4(style='text-align:center;') О проекте
+            .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
+              button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
+    .modal.fade.bs-example-modal-sm(id='contacts' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+            .modal-body(style='min-height:300px;')
+              h4(style='text-align:center;') Контакты 
+            .modal-footer.visible-xs.visible-sm(style='padding:0px;border-top:1px solid #eee;')
+              button#close_postmodal.btn( type='button' data-dismiss='modal') Закрыть
     .container
       .row.row-offcanvas.row-offcanvas-left
         .col-sm-3#navbar
@@ -451,6 +471,8 @@ head
                 a(class="list-group-item small") CAT
                 a(class="list-group-item small") JCB
                 a(class="list-group-item small") Volvo
+              a(href="#" class="list-group-item" data-toggle="modal" data-target="#about" ) О проекте
+              a(href="#" class="list-group-item" data-toggle="modal" data-target="#contacts" ) Контакты 
     
           //
             .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
