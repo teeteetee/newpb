@@ -28,6 +28,7 @@ head
         /*background-color:#1d1d1d;
         background-color:#111;*/
         background-color:#f5f5f5;
+        position:relative;
       }
       .second-column{
         float:right;
@@ -217,7 +218,7 @@ head
       .affix{
         top:10px;
       }
-  body
+  body(data-spy="scroll" data-target="#navbar")
     .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
           h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -234,22 +235,22 @@ head
                   a(href="#roads") Дорожное строительство
                 li 
                   a(href="#mining") Горнодобыча 
+          ul.list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+            li.list-group-item
+              a(href="#metal") Металл
+            li.list-group-item
+              span.badge 3
+              a(href="#roads") 
+                | Дорожное строительство
+            li.list-group-item
+              a(href="#mining") Горнодобыча
           //
-            ul.list-group.nav
-              li.list-group-item
-                a(href="#metal") Металл
-              li.list-group-item
-                span.badge 3
-                a(href="#roads") 
-                  | Дорожное строительство
-              li.list-group-item
-                a(href="#mining") Горнодобыча
-          .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
-            a(href="#metal" class="list-group-item") Металургия
-            a(href="#roads" class="list-group-item") Дорожное строительство
-            a(href="#mining" class="list-group-item") Горнодобыча
+            .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+              a(href="#metal" class="list-group-item") Металургия
+              a(href="#roads" class="list-group-item") Дорожное строительство
+              a(href="#mining" class="list-group-item") Горнодобыча
 
-        .col-sm-9(data-spy="scroll" data-target="#navbar")
+        .col-sm-9
             h1#metal HELLO METAL
             .panel.panel-default(style='min-height: 400px;')
               .panel-body
