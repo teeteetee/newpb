@@ -234,7 +234,7 @@ head
                   a(href="#roads") Дорожное строительство
                 li 
                   a(href="#mining") Горнодобыча
-          ul.list-group(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+          ul.list-group#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
             li.list-group-item
               a(href="#metal") Металл
             li.list-group-item
@@ -317,18 +317,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
-        //var affixPadding = $(this).innerWidth() - $(this).width();
-        console.log($('.col-sm-3').width())
-        $('.affix').css('width',$('.col-sm-3').width());
-        console.log($('.affix').css('width'));
-        $(window).resize(function () {
-            console.log('hello');
-            var parentSize = $('.col-sm-3').width();
-            $('.affix').each(function() {
-                var affixPadding = $(this).innerWidth() - $(this).width();
-                $(this).width(parentSize - affixPadding);
-            });
-        });
+        $('#lg').on('affixed.bs.affix',function(){
+          $('#lg').css('width',$('.col-sm-3').width());
+          });
         //-------------//
         //$('#metal').click(function(){
         //  });
