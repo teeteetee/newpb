@@ -238,14 +238,14 @@ head
       .navbar-red .navbar-nav>.active>a, .navbar-red .navbar-nav>.active>a:focus, .navbar-red .navbar-nav>.active>a:hover {
       background-color: #a72a2a;
       }
-  body(data-spy="scroll" data-target="#navbar" style="overflow-y:scroll; height:100%;")
+  body
     .container
       .row(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
           h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
           h6(style="text-align: center;color: #b7b7b7;font-weight: 200;letter-spacing: 1px;word-spacing: 4px;text-transform: uppercase;") сравнение характеристик  промышленного оборудования 
       .row
-        .col-md-3
+        .col-md-3(style='height:100%;background-color:#ce4141;')
           .collapse.navbar-collapse#navbar
             ul.nav.navbar-nav(role="tablist")
               li
@@ -254,76 +254,76 @@ head
                 a(href="#roads") Дорожное строительство
               li 
                 a(href="#mining") Горнодобыча
-      .col-md-9(data-spy="scroll" data-target="#navbar")
-          h1#metal HELLO METAL
-          .panel.panel-default(style='min-height: 400px;')
-            .panel-body
-              ul.nav.nav-tabs.nav-justified
-                li(role="presentation" class="active")
-                  a(href="#home" aria-controls="home" role="tab" data-toggle="tab") Первый
-                li(role="presentation") 
-                  a(href="#profile" aria-controls="profile" role="tab" data-toggle="tab") Второй
-                li(role="presentation") 
-                  a(href="#messages" aria-controls="messages" role="tab" data-toggle="tab") Третий
-              .tab-content
-                .tab-pane.active(role="tabpanel" id="home")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-                .tab-pane(role="tabpanel" id="profile")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                .tab-pane(role="tabpanel" id="messages")
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-          h1#roads HELLO ROADS
-          .panel.panel-default(style='min-height: 400px;')
-            .panel-body
-              ul.nav.nav-tabs.nav-justified
-                li(role="presentation" class="active")
-                  a(href="#exk" aria-controls="exk" role="tab" data-toggle="tab") строительные экскаваторы
-                li(role="presentation") 
-                  a(href="#katok" aria-controls="katok" role="tab" data-toggle="tab") катки асфальтовые
-                li(role="presentation") 
-                  a(href="#asph" aria-controls="asph" role="tab" data-toggle="tab") асфальтоукладчики
-              .tab-content
-                .tab-pane.active(role="tabpanel" id="exk")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-                .tab-pane(role="tabpanel" id="katok")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                .tab-pane(role="tabpanel" id="asph")
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-          h1#mining HELLO MINING
-          .panel.panel-default(style='min-height: 400px;')
-            .panel-body
-              ul.nav.nav-tabs.nav-justified
-                li(role="presentation" class="active")
-                  a(href="#first" aria-controls="first" role="tab" data-toggle="tab") строительные экскаваторы
-                li(role="presentation") 
-                  a(href="#second" aria-controls="second" role="tab" data-toggle="tab") катки асфальтовые
-                li(role="presentation") 
-                  a(href="#third" aria-controls="third" role="tab" data-toggle="tab") асфальтоукладчики
-              .tab-content
-                .tab-pane.active(role="tabpanel" id="first")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
-                .tab-pane(role="tabpanel" id="second")
-                  p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                .tab-pane(role="tabpanel" id="third")
-                  p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
-                  p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
-                  p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+        .col-md-9(data-spy="scroll" data-target="#navbar")
+            h1#metal HELLO METAL
+            .panel.panel-default(style='min-height: 400px;')
+              .panel-body
+                ul.nav.nav-tabs.nav-justified
+                  li(role="presentation" class="active")
+                    a(href="#home" aria-controls="home" role="tab" data-toggle="tab") Первый
+                  li(role="presentation") 
+                    a(href="#profile" aria-controls="profile" role="tab" data-toggle="tab") Второй
+                  li(role="presentation") 
+                    a(href="#messages" aria-controls="messages" role="tab" data-toggle="tab") Третий
+                .tab-content
+                  .tab-pane.active(role="tabpanel" id="home")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+                  .tab-pane(role="tabpanel" id="profile")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                  .tab-pane(role="tabpanel" id="messages")
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+            h1#roads HELLO ROADS
+            .panel.panel-default(style='min-height: 400px;')
+              .panel-body
+                ul.nav.nav-tabs.nav-justified
+                  li(role="presentation" class="active")
+                    a(href="#exk" aria-controls="exk" role="tab" data-toggle="tab") строительные экскаваторы
+                  li(role="presentation") 
+                    a(href="#katok" aria-controls="katok" role="tab" data-toggle="tab") катки асфальтовые
+                  li(role="presentation") 
+                    a(href="#asph" aria-controls="asph" role="tab" data-toggle="tab") асфальтоукладчики
+                .tab-content
+                  .tab-pane.active(role="tabpanel" id="exk")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+                  .tab-pane(role="tabpanel" id="katok")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                  .tab-pane(role="tabpanel" id="asph")
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+            h1#mining HELLO MINING
+            .panel.panel-default(style='min-height: 400px;')
+              .panel-body
+                ul.nav.nav-tabs.nav-justified
+                  li(role="presentation" class="active")
+                    a(href="#first" aria-controls="first" role="tab" data-toggle="tab") строительные экскаваторы
+                  li(role="presentation") 
+                    a(href="#second" aria-controls="second" role="tab" data-toggle="tab") катки асфальтовые
+                  li(role="presentation") 
+                    a(href="#third" aria-controls="third" role="tab" data-toggle="tab") асфальтоукладчики
+                .tab-content
+                  .tab-pane.active(role="tabpanel" id="first")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
+                  .tab-pane(role="tabpanel" id="second")
+                    p Quo inventore natus enim. Reprehenderit est ipsum distinctio animi. Quibusdam rem aut magni quo.
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                  .tab-pane(role="tabpanel" id="third")
+                    p Reprehenderit soluta recusandae vitae et. In nisi minima rem assumenda impedit et non voluptate. Iure consequatur minus consectetur reiciendis corrupti voluptas facilis occaecati.
+                    p Necessitatibus earum velit id sed ut suscipit. Soluta voluptatem necessitatibus ducimus. Consequuntur eum maiores debitis eos fugit dolore eaque dolor. Adipisci eum ratione impedit soluta voluptate odio.
+                    p Totam quo magnam ipsa autem fuga quasi non. Porro dignissimos at laboriosam nemo. Nemo dolores expedita dolor maxime maxime mollitia autem esse. Maxime quo sit deserunt atque ducimus ad amet. Est sit incidunt ut blanditiis dolores cumque voluptates similique. Fuga est reprehenderit praesentium et fugiat.
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
