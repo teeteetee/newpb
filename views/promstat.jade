@@ -331,6 +331,7 @@ head
             }
          });
         $(window).resize(function () {
+            console.log('hello');
             var parentSize = $('.col-sm-3').width();
             $('.affix').each(function() {
                 var affixPadding = $(this).innerWidth() - $(this).width();
