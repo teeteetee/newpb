@@ -28,6 +28,8 @@ head
         /*background-color:#1d1d1d;
         background-color:#111;*/
         background-color:#f5f5f5;
+        position:relative;
+        height:100vh;
       }
       .second-column{
         float:right;
@@ -240,7 +242,7 @@ head
       .panel{
         border:none;
       }
-  body
+  body(data-spy="scroll" data-target="#navbar")
     .row#metal(style="background-color:white;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
         .col-xs-12
           h1(style='color:#353535;font-size:44px;;text-align:center;font-family:proxima;letter-spacing:4px;') ПРОМСТАТ
@@ -257,30 +259,17 @@ head
                   a(href="#roads") Дорожное строительство
                 li 
                   a(href="#mining") Горнодобыча 
-              ---------------------
-            ul.list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
-              li.list-group-item
-                a(href="#metal") Металл
-              li.list-group-item
-                span.badge 3
-                a(href="#roads") 
-                  | Дорожное строительство
-              li.list-group-item
-                a(href="#mining") Горнодобыча
-              li.list-group-item.disabled
-                a(href="#") По мере наполнения здесь будут появлятся новые разделы
-          .panel.list-group(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
-              a(href="#" class="list-group-item") Металлургия 
-                span(class="label label-info") 0 
-              a(href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#menu") Дорожное строительство 
-                span(class="label label-info") 3
-              #sm(class="sublinks collapse")
-                a(class="list-group-item small") Строительные экскаваторы
-                a(class="list-group-item small") Катки асфальтовые
-                a(class="list-group-item small") Асфальтоукладчики
-              a(href="#" class="list-group-item") Горнодобыча 
-               span(class="label label-info") 0 
-    
+          ul.list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
+            li.list-group-item
+              a(href="#metal") Металл
+            li.list-group-item
+              span.badge 3
+              a(href="#roads") 
+                | Дорожное строительство
+            li.list-group-item
+              a(href="#mining") Горнодобыча
+            li.list-group-item.disabled
+              a(href="#") По мере наполнения здесь будут появлятся новые разделы
           //
             .list-group.nav#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
               a(href="#metal" class="list-group-item") Металургия
