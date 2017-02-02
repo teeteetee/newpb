@@ -317,12 +317,6 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script( src='/js/bootstrap.min.js')
       script.
-        //$(document).ready(function(){
-        //    $("body").scrollspy({
-        //        target: "#navbar",
-        //        offset: 50
-        //    }) 
-        //});
         $window = $(window);
         $window.scroll(function() {
           $scroll_position = $window.scrollTop();
@@ -336,14 +330,13 @@ head
                 $('.navbar').removeClass('sticky');
             }
          });
-        $("#navbar").on("activate.bs.scrollspy", function(){
-        var currentItem = $(".nav li.active > a").text();
-        console.log(currentItem);
-         });
-        //$('body').scrollspy({ target: '#navbar' });
-        //$('#navbar').on('activate.bs.scrollspy', function () {
-        //  console.log('hello');
-        //});
+        $(window).resize(function () {
+            var parentSize = $('.col-sm-3').width();
+            $('.affix').each(function() {
+                var affixPadding = $(this).innerWidth() - $(this).width();
+                $(this).width(parentSize - affixPadding);
+            });
+        });
         //-------------//
         //$('#metal').click(function(){
         //  });
