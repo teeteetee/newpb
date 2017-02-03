@@ -454,24 +454,24 @@ head
                 a(href="#") По мере наполнения здесь будут появлятся новые разделы
           .panel.list-group#lg(style='margin-top:20px;')
               //.panel.list-group#lg(data-spy="affix" data-offset-top="141" style='margin-top:20px;')
-              a(href="#" class="list-group-item") Металлургия 
+              a(href="#" class="list-group-item empty") Металлургия 
                 span(class="badge") 0 
               a(href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#menu") Дорожное строительство 
                 span(class="badge") 3
               #sm(class="sublinks collapse")
-                a#roads_first(class="list-group-item small") Строительные экскаваторы
-                a(class="list-group-item small") Катки асфальтовые
-                a(class="list-group-item small") Асфальтоукладчики
-              a(href="#" class="list-group-item") Горнодобыча 
+                a#roads_first(class="list-group-item small empty") Строительные экскаваторы
+                a(class="list-group-item small empty") Катки асфальтовые
+                a(class="list-group-item small empty") Асфальтоукладчики
+              a(href="#" class="list-group-item empty") Горнодобыча 
                span(class="badge") 0
               a(href="#" class="list-group-item" data-toggle="collapse" data-target="#brands" data-parent="#menu") 
                 span.glyphicon.glyphicon-star(style='margin-right:5px;')
                 |Производители 
                 span(class="badge") 3
               #brands(class="sublinks collapse")
-                a(class="list-group-item small") CAT
-                a(class="list-group-item small") JCB
-                a(class="list-group-item small") Volvo
+                a(class="list-group-item small empty") CAT
+                a(class="list-group-item small empty") JCB
+                a(class="list-group-item small empty") Volvo
               a(href="#" class="list-group-item" data-toggle="modal" data-target="#about" ) О проекте
               a(href="#" class="list-group-item" data-toggle="modal" data-target="#contacts" ) Контакты 
           h6(style='color:#c3c3c3;;text-align:center;margin-top:30px;font-weight:200;') 2017
@@ -485,7 +485,8 @@ head
         .col-sm-9
           .panel.panel-default(style='min-height: 400px;margin-top: 20;box-shadow:0px 3px 5px 0px #a9a6a6')
             .panel-body#details(style='padding-top:20px;text-align:center;')
-              h4#empty(style='color:gray;font-weight:200;') Выберите отрасль и тип оборудования в меню слева
+              h4#initial(style='color:gray;font-weight:200;') Выберите отрасль и тип оборудования в меню слева
+              h4#empty(style='color:gray;font-weight:200;') Пока пусто
               #roads_first_block.hidden.table-responsive
                 table.table.table-striped(style='font-size:10px;')
                   thead
@@ -643,8 +644,22 @@ head
         $('#roads_first').click(function (){
           if($('#empty').css('display')!='none'){
             $('#empty').toggle();
+            $('#roads_first_block').toggleClass('hidden');
           }
-          $('#roads_first_block').toggleClass('hidden');
+          if($('#initial').css('display')!='none'){
+            $('#initial').toggle();
+            $('#roads_first_block').toggleClass('hidden');
+          }
+          });
+        $('.empty').click(function(){
+          if($('#initial').css('display')!='none'){
+            $('#initial').toggle();
+            $('#empty').toggle();
+          }
+          if($('#roads_first_block').css('display')!='none'){
+            $('#roads_first_block').toggle();
+            $('#empty').toggle();
+          }
           });
         //-------------//
         //$('#metal').click(function(){
