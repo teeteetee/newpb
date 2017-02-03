@@ -251,6 +251,12 @@ head
         background-color:#e8e8e8;
         padding-left: 23px;
       }
+      #empty{
+        display:none;
+      }
+      #roads_first_block{
+        display:none;
+      }
   body(style='min-height:100%;')
     .row#metal(style="/*background-color:white;*/background-color: #dc4242;padding-top:20px;padding-bottom:20px;margin-left:0px;margin-right:0px;")  
       //img(src='url(/images/14.jpg)')
@@ -487,7 +493,7 @@ head
             .panel-body#details(style='padding-top:20px;text-align:center;')
               h4#initial(style='color:gray;font-weight:200;') Выберите отрасль и тип оборудования в меню слева
               h4#empty(style='color:gray;font-weight:200;') Пока пусто
-              #roads_first_block.hidden.table-responsive
+              #roads_first_block.table-responsive
                 table.table.table-striped(style='font-size:10px;')
                   thead
                     tr
@@ -644,11 +650,11 @@ head
         $('#roads_first').click(function (){
           if($('#empty').css('display')!='none'){
             $('#empty').toggle();
-            $('#roads_first_block').toggleClass('hidden');
+            $('#roads_first_block').toggle();
           }
           if($('#initial').css('display')!='none'){
             $('#initial').toggle();
-            $('#roads_first_block').toggleClass('hidden');
+            $('#roads_first_block').toggle();
           }
           });
         $('.empty').click(function(){
