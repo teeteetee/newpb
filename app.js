@@ -954,7 +954,7 @@ app.post('/counter/additem',function (req,res){
           ms.trouble =1;
          
             var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();;
-            var vlink = parseInt(req.body.item_link);
+            var vlink = req.body.item_link;
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;
             var vtags = req.body.item_tags.split(',');
@@ -988,7 +988,7 @@ app.post('/counter/additem',function (req,res){
             if(!vtags){
               vtags = [];
             }
-            //console.log('breakpoint four: '+req.session._id);
+            console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
           counter_items.update({uid:req.session._id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp},$inc:{total:1}}},function(err,done){
             console.log(done);
