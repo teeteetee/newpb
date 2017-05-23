@@ -992,6 +992,7 @@ app.post('/counter/additem',function (req,res){
           var vtmstmp = Date.now();
           counter_items.update({uid:req.session._id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp},$inc:{total:1}}},function(err,done){
             console.log(done);
+            console.log(err);
           });
           //console.log('breakpoint five');
           
