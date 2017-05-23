@@ -957,7 +957,7 @@ app.post('/counter/additem',function (req,res){
             var vlink = parseInt(req.body.item_link);
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;
-            var vtags = preq.body.item_tags.split(',');
+            var vtags = req.body.item_tags.split(',');
             console.log('ADDING AN ITEM: title:'+vtitle+' ,link: '+vlink+' ,comment: '+vcomment+' , tags: '+vtags);
             var dd= new Date();
             var vday = dd.getDate().toString();
