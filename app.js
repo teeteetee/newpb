@@ -92,7 +92,7 @@ function rm_st_sc(input){
 
 
 
-app.get('/test',function (req,res){
+/*app.get('/test',function (req,res){
   items.findOne({user:req.session._id},function (err,done){
                   res.send(done);});
 });
@@ -143,13 +143,14 @@ app.post('/ltps/getposts',function (req,res){
       }
     }
   });
-});
+});*/
 
 
 app.get('/counter/settings',function (req,res) {
   res.render('counter_settings');
 });
 
+/*
 app.get('/counter/current',function (req,res) {
   if(req.session&&req.session._id){
   res.render('counter_current');
@@ -243,7 +244,7 @@ app.post('/counter/current/done',function (req,res){
    }
 });
 
-
+*/
 //-----------------test-----------------//
 
 app.get('/counter',function (req,res){
@@ -405,7 +406,7 @@ app.post('/counter/gn/:_id',function (req,res){
       }
 });
 
-
+/*
 app.get('/counter/p3345',function (req,res){
   res.render('index_in');
 });
@@ -413,7 +414,7 @@ app.get('/counter/p3345',function (req,res){
 app.get('/counter/p3345/b',function (req,res){
   res.render('index_in_b');
 });
-
+*/
 app.get('/counter/friends_in',function (req,res){
   res.render('index_in_friend');
 });
@@ -422,6 +423,7 @@ app.get('/counter/friends_out',function (req,res){
   res.render('index_out_friend');
 });
 
+/*
 app.get('/counter/initdb',function (req,res){
   stats.remove({},function(err,done){
   stats.insert({queryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
@@ -448,6 +450,7 @@ app.get('/counter/clearfriends',function (req,res){
     res.redirect('/counter');
   });
 });
+*/
 
 app.get('/counter/clear',function (req,res){
   counter_users.remove({});
@@ -568,11 +571,11 @@ app.get('/counter/profile/:_id/b',function (req,res){
     }
 });
 
-app.post('/counter/getmovies',function (req,res){
+app.post('/counter/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_movies.findOne({uid:req.session._id},function(err,doc){
+  {counter_items.findOne({uid:req.session._id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -857,19 +860,18 @@ app.post('/counter/rm_web',function(req,res){
   }
 });
 
-app.post('/counter/rm_book/',function(req,res){
+app.post('/counter/rm_item/',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vbtitle = req.body.btitle;
-  var vauthor= req.body.author;
-  var vnewbook = req.body.newbook;
+  var vtitle = req.body.item_title;
+  var vlink= req.body.item_link;
   if(req.session&&req.session._id)
   {
-    if(vnewbook){
-  counter_books.update({uid:req.session._id},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,newones:-1}},function(err,done){
+    
+  counter_items.update({uid:req.session._id},{$pull:{item_store:{title:vtitle,link:vlink}},$inc:{total:-1}},function(err,done){
   if(err)
   {
-    console.log('trouble removing a book');
+    console.log('trouble removing an item');
     res.send(ms);
   }
     else{
@@ -877,110 +879,13 @@ app.post('/counter/rm_book/',function(req,res){
       res.send(ms);
     }
    });
-  }//if newmovie
- else{
-    counter_books.update({uid:req.session._id},{$pull:{bookstore:{booktitle:vbtitle,author:vauthor}},$inc:{total:-1,oldones:-1}},function(err,done){
-  if(err)
-  {
-    console.log('trouble removing a book');
-    res.send(ms);
-  }
-    else{
-      ms.trouble=0;
-      res.send(ms);
-    }
-  });
- }
+ 
 }
   else {
     res.send(ms);
   }
 });
 
-app.post('/counter/switch_movie',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  if(req.session&&req.session._id){
-    var newposition = req.body.newposition;
-    var mtitle = req.body.mtitle;
-    var vyear = req.body.year;
-    console.log(newposition+','+mtitle+','+vyear);
-    counter_movies.update({uid:req.session._id,"moviestore.movietitle":mtitle},{$set:{"moviestore.$.newmovie":parseInt(newposition)}},function (err,done){
-      if(err) {
-        res.send(ms);
-      }
-      else {
-        if(newposition){
-          counter_movies.update({uid:req.session._id},{$inc:{newones:1,oldones:-1}},function (err2,done2){
-            if(err){
-              console.log('err when movie switching list')
-            }
-            else{
-              ms.trouble=0;
-              res.send(ms);
-            }
-          });
-        }
-          else{
-            counter_movies.update({uid:req.session._id},{$inc:{newones:-1,oldones:1}},function (err2,done2){
-            if(err){
-              console.log('err when movie switching list')
-            }
-            else{
-              ms.trouble=0;
-              res.send(ms);
-            }
-          });
-          }
-      }
-    });
-  }
-  else{
-    res.send(ms);
-  }
-});
-
-app.post('/counter/switch_book',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  if(req.session&&req.session._id){
-    var newposition = req.body.newposition;
-    var btitle = req.body.btitle;
-    console.log(newposition+','+btitle);
-    counter_books.update({uid:req.session._id,"bookstore.booktitle":btitle},{$set:{"bookstore.$.newbook":parseInt(newposition)}},function (err,done){
-      if(err) {
-        res.send(ms);
-      }
-      else {
-        if(newposition){
-          counter_books.update({uid:req.session._id},{$inc:{newones:1,oldones:-1}},function (err2,done2){
-            if(err){
-              console.log('err when book switching list')
-            }
-            else{
-              ms.trouble=0;
-              res.send(ms);
-            }
-          });
-        }
-          else{
-            counter_books.update({uid:req.session._id},{$inc:{newones:-1,oldones:1}},function (err2,done2){
-            if(err){
-              console.log('err when book switching list')
-            }
-            else{
-              ms.trouble=0;
-              res.send(ms);
-            }
-          });
-          }
-      }
-    });
-  }
-  else{
-    res.send(ms);
-  }
-});
 
 app.post('/counter/addfriend',function (req,res){
   if(req.session&&req.session._id)
@@ -1042,53 +947,56 @@ app.post('/counter/removefriend',function (req,res){
       }   
 });
   
-app.post('/counter/addmovie',function (req,res){
+app.post('/counter/additem',function (req,res){
   if(req.session&&req.session._id)
  {console.log('adding a movie');
           var ms = {};
           ms.trouble =1;
          
-            var vmovietitle = req.body.movietitle.replace(/\s{2,}/g,' ').trim();;
-            var vnewmovie = parseInt(req.body.newmovie);
-            console.log('breakpoint one');
-            var vmovieyear = req.body.year;
-            var vmoviestar = parseInt(req.body.star);
-            console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie: '+vnewmovie);
+            var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();;
+            var vlink = parseInt(req.body.item_link);
+            //console.log('breakpoint one');
+            var vcomment = req.body.item_comment;
+            var vtags = preq.body.item_tags.split(',');
+            //console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie: '+vnewmovie);
             var dd= new Date();
             var vday = dd.getDate().toString();
             if (vday.length===1){
               vday='0'+vday;
             }
             var vmonth = dd.getMonth()+1;
-            console.log('breakpoint two');
+            //console.log('breakpoint two');
             vmonth = vmonth.toString();
             if (vmonth.length===1){
               vmonth='0'+vmonth;
             }
-            console.log('breakpoint three');
+            //console.log('breakpoint three');
             var vyear = dd.getUTCFullYear().toString();
             var fulldate = vyear+vmonth+vday;
             fulldate = parseInt(fulldate);
         
-            if(!vmovietitle){
-              vmovietitle = '--';
+            if(!vtitle){
+              vtitle = '--';
               //SEND ERROR
             }
-            if(!vmovieyear){
-              vvmovieyear = '--';
+            if(!vcomment){
+              vcomment = '--';
             }
-            console.log('breakpoint four: '+req.session._id);
+            if(!vlink){
+              vlink = '--';
+            }
+            if(!vtags){
+              vtags = [];
+            }
+            //console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          counter_movies.update({uid:req.session._id},{$push:{moviestore:{year:vmovieyear,movietitle:vmovietitle,newmovie:vnewmovie,star:vmoviestar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
+          counter_items.update({uid:req.session._id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp},$inc:{total:1}}},function(err,done){
             console.log(done);
           });
-          console.log('breakpoint five');
-          if(vnewmovie)
-          {counter_movies.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
-          else {
-           counter_movies.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
+          //console.log('breakpoint five');
           }
-          console.log('breakpoint six');
+          
+          console.log('item added');
            res.send('ok');  }       
       else {
         res.send('err');
@@ -1764,8 +1672,7 @@ app.post('/newuser',function(req,res){
           //counter_stats.update({$inc:{users:1}});
           var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
           console.log('vuid: '+vuid);
-          counter_books.insert({uid:vuid,total:0,oldones:0,newones:0,bookstore:[]});
-          counter_movies.insert({uid:vuid,total:0,oldones:0,newones:0,moviestore:[]});
+          counter_items.insert({uid:vuid,total:0,itemstore:[]});
           counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
           ms.trouble =0;
@@ -2270,7 +2177,7 @@ else {
 });
 
 
-
+/*
 app.post('/additem/:id',function (req,res){
   if(req.session && req.session._id ){
     //conditioning is left due to plans of bringing in a section of "terms", to be added the same way
@@ -2483,7 +2390,7 @@ app.post('/livesearch/:id',function (req,res){
     break;
   }
 });
-
+*/
 
 
 // production error handler

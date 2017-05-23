@@ -666,38 +666,13 @@ head
                 .panel-heading(role="tab" id="headingOne")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseOne(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
-                  .panel-body
-                    input#mtitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-                    input#year_old(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
-                    button(class='btn btn-add' onclick='submit_movie(1)') Добавить
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingTwo")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Фильм, новый
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
-                #collapseTwo(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
-                  .panel-body
-                    input#mtitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-                    input#year_new(type="text" class="form-control" autocomplete='off' maxlength="4"  placeholder='Год')
-                    button(class='btn btn-add' onclick='submit_movie(0)') Добавить
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingThree")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Книга, прочитал
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseThree(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
-                  .panel-body 
-                    input#btitle_old(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-                    input#author_old(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-add' onclick='submit_book(1)') Добавить
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingFour")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Книга, новая
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
-                #collapseFour(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
-                  .panel-body 
-                    input#btitle_new(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
-                    input#author_new(type="text" class="form-control" autocomplete='off' maxlength="50"  placeholder='Автор')
-                    button(class='btn btn-add' onclick='submit_book(0)') Добавить
+                .panel-body
+                  input#item_title(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
+                  input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+                  input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+                  input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+                  button(class='btn btn-add' onclick='submit_item()') Добавить
+              
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -740,43 +715,38 @@ head
            h5#user_mail(style='color:rgba(255,255,255,0.5);font-weight:200;')
       .row.visible-md.visible-lg.data_lg
         .col-sm-3
-          ul.list-group.first#first_lg
-        .col-sm-3
-          ul.list-group.second#second_lg
-        .col-sm-3
-          ul.list-group.third#third_lg
-        .col-sm-3
-          ul.list-group.fourth#fourth_lg
-      .row.visible-sm.visible-xs
-        .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
-          .panel.panel-default
-            .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
-              h4(class="panel-title") Movies seen
-                span.badge#num_one
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.first
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
-              h4(class="panel-title") New movies
-                span.badge#num_two
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.second
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
-              h4(class="panel-title") Books read
-                span.badge#num_three
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.third
-          .panel.panel-default
-            .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
-              h4(class="panel-title") New movies
-                span.badge#num_four
-                span.glyphicon.glyphicon-chevron-right.pull-right
-            #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
-              .panel-body.fourth
+          ul.list-group.first#main_list
+      //  
+        .row.visible-sm.visible-xs
+          .panel-group(id="accordion2" role="tablist" aria-multiselectable="true")
+            .panel.panel-default
+              .panel-heading(role="tab"  data-toggle="collapse" data-parent="#accordion2" data-target="#seen_movies_mobile" aria-expanded="true" aria-controls="seen_movies_mobile")
+                h4(class="panel-title") Movies seen
+                  span.badge#num_one
+                  span.glyphicon.glyphicon-chevron-right.pull-right
+              #seen_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+                .panel-body.first
+            .panel.panel-default
+              .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_movies_mobile" aria-expanded="true" aria-controls="new_movies_mobile")
+                h4(class="panel-title") New movies
+                  span.badge#num_two
+                  span.glyphicon.glyphicon-chevron-right.pull-right
+              #new_movies_mobile(class="panel-collapse collapse " role="tabpanel")
+                .panel-body.second
+            .panel.panel-default
+              .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#books_read_mobile" aria-expanded="true" aria-controls="books_read_mobile")
+                h4(class="panel-title") Books read
+                  span.badge#num_three
+                  span.glyphicon.glyphicon-chevron-right.pull-right
+              #books_read_mobile(class="panel-collapse collapse " role="tabpanel")
+                .panel-body.third
+            .panel.panel-default
+              .panel-heading(role="tab" data-toggle="collapse" data-parent="#accordion2" data-target="#new_books_mobile" aria-expanded="true" aria-controls="new_books_mobile")
+                h4(class="panel-title") New movies
+                  span.badge#num_four
+                  span.glyphicon.glyphicon-chevron-right.pull-right
+              #new_books_mobile(class="panel-collapse collapse " role="tabpanel")
+                .panel-body.fourth
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
@@ -1161,145 +1131,41 @@ head
         //          $('#newnum').text(newmovies);
         //        }
         //        });
-        var consolidated_m_old=[];
-        var consolidated_m_new=[];
-        var consolidated_b_old = [];
-        var consolidated_b_new =[];
+        var consolidated=[];
         $.ajax({
               method: "POST",
-              url: "/counter/getmovies",
+              url: "/counter/getitems",
               data: 0
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('movies: '+JSON.stringify(msg.doc));
-                   movies=msg.doc;
-                  if(!movies || !movies.moviestore) {
-                   console.log('no movies');
+                  console.log('items: '+JSON.stringify(msg.doc));
+                   items=msg.doc;
+                  if(!items || !items.itemstore) {
+                   console.log('no items');
                    }
                    else {
-                    seenmovies = msg.doc.oldones;
-                    newmovies = msg.doc.newones;
-                    $('#oldnum').text(seenmovies);
-                    $('#newnum').text(newmovies);
-                    msg.doc.moviestore.forEach(function (element,index){
-                    if(element.movietitle)
-                    { element.i_type='m';
-                      if(element.newmovie)
-                      {consolidated_m_new.push(element);}
-                      else{
-                       consolidated_m_old.push(element);
-                      }
-                    }
+                    msg.doc.itemtore.forEach(function (element,index){
+                    if(element.item_title)
+                    
+                       consolidated.push(element);
+                      
                     });
                    }
-                   if(consolidated_m_new.length){
-                   sortByKey(consolidated_m_new, 'tmstmp');
-                   }
-                   if(consolidated_m_old.length){
-                    sortByKey(consolidated_m_old,'tmstmp');
-                   }
-                   $('#first_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_old.length+'</span>Фильмов посмотрел</li>');
-                   $('#num_one').text(consolidated_m_old.length);
-                   if(!consolidated_m_old.length){
-                    $('#first_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
-                   }
-                   $('#second_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_m_new.length+'</span>Фильмов в планах</li>');
-                   $('#num_two').text(consolidated_m_new.length);
-                   if(!consolidated_m_new.length){
-                    $('#second_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
-                   }
-                   $.ajax({
-              method: "POST",
-              url: "/counter/getbooks",
-              data: 0
-            })
-              .done(function( msg ) {
-                if(!msg.trouble) {
-                  console.log('books: '+JSON.stringify(msg.doc));
-                   books=msg.doc;
-                  if(!books || !books.bookstore) {
-                   console.log('no books');
-                   }
-                   else {
-                    seenmbooks = msg.doc.oldones;
-                    newmbooks = msg.doc.newones;
-                    $('#oldnum').text(seenmbooks);
-                    $('#newnum').text(newmbooks);
-                    books.bookstore.forEach(function (element,index){
-                    if(element.booktitle)
-                    { element.i_type='b';
-                      if(element.newbook)
-                      {consolidated_b_new.push(element);}
-                    else {
-                      consolidated_b_old.push(element);
-                    }
-                       }
-                    });
-                   }
-                   if(consolidated_b_old.length){
-                   sortByKey(consolidated_b_old, 'tmstmp');
-                 }
-                 if(consolidated_b_new.length){
-                   sortByKey(consolidated_b_new, 'tmstmp');
-                 }
-                 $('#third_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_old.length+'</span>Книг прочитал</li>');
-                 $('#num_three').text(consolidated_b_old.length);
-                 if(!consolidated_b_old.length){
-                    $('#third_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
-                   }
-                 $('#fourth_lg').append('<li class="list-group-item disabled"><span class="badge">'+consolidated_b_new.length+'</span>Книг в планах</li>');
-                 $('#num_four').text(consolidated_b_new.length);
-                 if(!consolidated_b_new.length){
-                    $('#fourth_lg').append('<li class="list-group-item" style="text-align:center;">Пусто</li>');
-                   }
-              populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new);
-                }
-              });
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   }  
                 }
               });
         //----------------------------//
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
           var count;
-          consolidated_m_old.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',1)">'+element.movietitle+" <small>"+element.year+"</small></li>";
-            $('.first').append(insert);
+          consolidated.forEach(function (element,index){
+            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.item_title+"</li>";
+            $('.main_list').append(insert);
             });
-          consolidated_m_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactmoviemodal('+index+',0)">'+element.movietitle+" <small>"+element.year+"</small></li>";
-            $('.second').append(insert);
-            });
-          consolidated_b_old.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',1)">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('.third').append(insert);
-            });
-          consolidated_b_new.forEach(function (element,index){
-            var star=parseInt(element.star)?'hasstar':'';
-            var insert='<li class="list-group-item '+star+'" onclick="redactbookmodal('+index+',0)">'+element.booktitle+" <small>"+element.author+"</small></li>";
-            $('.fourth').append(insert);
-            });
-          //count=Math.max(consolidated_m_old.length,consolidated_m_new.length,consolidated_b_old.length,consolidated_b_new.length);
-          //for(var i=0;i<count;i++){
-          //  console.log('iter: '+i);
-            //if($(".noitems")[0])
-            // { $('#combitems').empty();
-            //  }
-           //var insert;
-           //var insert_m_old= '';
-           //var insert_m_new= '';
-           //var insert_b_old= '';
-           //var insert_b_new= '';
-           //if(consolidated_m_old[i]){insert_m_old=consolidated_m_old[i].movietitle+" <small>"+consolidated_m_old[i].year+"</small>";}
-           //if(consolidated_m_new[i]){insert_m_new=consolidated_m_new[i].movietitle+" <small>"+consolidated_m_new[i].year+"</small>";}
-           //if(consolidated_b_old[i]){insert_b_old=consolidated_b_old[i].booktitle+" <small>"+consolidated_b_old[i].author+"</small>";}
-           //if(consolidated_b_new[i]){insert_b_new=consolidated_b_new[i].booktitle+" <small>"+consolidated_b_new[i].author+"</small>";}
-           //insert="<div class='row'><div class='col-xs-3 first'>"+insert_m_old+"</div><div class='col-xs-3 second'>"+insert_m_new+"</div><div class='col-xs-3 third'>"+insert_b_old+"</div><div class='col-xs-3 fourth'>"+insert_b_new+"</div></div>";
-           //$('#combitems').append(insert);
-          //}
+          
           }   
         function redactmoviemodal (i,old) {
           console.log('redact');
@@ -1394,173 +1260,40 @@ head
               });
         }
         //-----------------------------------//
-        function removebook(i,old) {
+        function removebook(i) {
           var data={};
-          if(old){
-            data.btitle=consolidated_b_old[i].booktitle;
-            data.author=consolidated_b_old[i].author;
-            data.newbook=consolidated_b_old[i].newbook;
-          }
-          else {
-            data.btitle=consolidated_b_new[i].booktitle;
-            data.author=consolidated_b_new[i].author;
-            data.newbook=consolidated_b_new[i].newbook;
-          }
+          data.item_id=consolidated[i].item_title;
+          data.item_id=consolidated[i].item_link;
         $.ajax({
               method: "POST",
-              url: "/counter/rm_book/",
+              url: "/counter/rm_item/",
               data: data
             })
               .done(function( msg ) {
               window.location='/counter';
               });
         }
-        //-----------------------------------//
-        function switch_movie(i,old) {
-          var data={};
-          if(old){
-            data.mtitle=consolidated_m_old[i].movietitle;
-            data.year=consolidated_m_old[i].year;
-            data.newposition=1;
-          }
-          else {
-            data.mtitle=consolidated_m_new[i].movietitle;
-            data.year=consolidated_m_new[i].year;
-            data.newposition=0;
-          }
-          $.ajax({
-                method: "POST",
-                url: "/counter/switch_movie",
-                data: data
-              })
-                .done(function( msg ) {
-                //  console.log(msg);
-                //  $('#moviemodal').modal('hide');
-                //  console.log('breakpoint 1');
-                //  consolidated[movieid].newmovie=parseInt(msg.present_clmn);
-                //  console.log('breakpoint 2');
-                //  var vname = '.movie_'+consolidated[movieid]._id;
-                //  console.log('breakpoint 3');
-                //  var element = $(vname).detach();
-                //  console.log('breakpoint 4');
-                //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
-                //  if(consolidated[movieid].newmovie)
-                //  {if($(".noitemsnew")[0])
-                //   { console.log('HAS LENGTH');
-                //     $('#newmovies').empty();}
-                //     $('#newmovies').prepend(element);
-                //  seenmovies--;
-                //  newmovies++;
-                //  $('#newnum').text(newmovies);
-                //  $('#oldnum').text(seenmovies);
-                //  if($('#oldmovies').children().length == 0){
-                //    $('#oldmovies').prepend(empty_row_old);
-                //  }
-                //  console.log('case 1');}
-                //else
-                //  {if($(".noitemsold")[0])
-                //   { console.log('HAS LENGTH');
-                //     $('#oldmovies').empty();}
-                //    $('#oldmovies').prepend(element);
-                //  newmovies--;
-                //  seenmovies++;
-                //  $('#oldnum').text(seenmovies);
-                //  $('#newnum').text(newmovies);
-                //  if($('#newmovies').children().length == 0){
-                //    $('#newmovies').prepend(empty_row_new);
-                //  }
-                //}
-                //  console.log('case 2');
-                window.location='/counter';
-                });
-        }
-        //----------------------------//
-        function switch_book(i,old) {
-          var data={};
-          if(old){
-            data.btitle=consolidated_b_old[i].booktitle;
-            data.newposition=1;
-          }
-          else {
-            data.btitle=consolidated_b_new[i].booktitle;
-            data.newposition=0;
-          }
-          $.ajax({
-                method: "POST",
-                url: "/counter/switch_book",
-                data: data
-              })
-                .done(function( msg ) {
-                window.location='/counter';
-                });
-        }
-        //----------------------------//
-        function submit_movie(old){
-          var mtitle;
-          var year;
-          if(old){mtitle="#mtitle_old";year="#year_old";}
-          else{mtitle="#mtitle_new";year="#year_new";}
-        if($(mtitle).val() && $(year).val())//what if I dont know year yet?
-        { // TO DO now we use modals, this should be adapted to such, and it has a part in the end of this function
-          $('#add').fadeOut(350);
-          $('#wait').css('display','block');
-          //-------------
-           var data={};
-           data.movietitle = $(mtitle).val();
-           data.newmovie = 1;
-           if(old){
-           data.newmovie = 0;
-           }
-           //data.star = 1;
-           //if($('#nostar').hasClass('active')){
-           //data.star = 0;
-           //}
-           data.star=0;
-           data.year = $(year).val();
-           console.log(JSON.stringify(data));
-          $.ajax({
-              method: "POST",
-              url: "/counter/addmovie",
-              data: data
-            })
-              .done(function( msg ) {
-                //$(mtitle).val('');
-                //$(year).val('');
-                //$('#addbook').modal('hide');
-                //$('#wait').fadeOut(350);
-                //console.log(msg);
-                window.location='/counter';
-              });
-          }
-        }
+        
         //---------------------------//
-        function submit_book(old){
-          var btitle;
-          var author;
-          if(old){btitle="#btitle_old";author="#author_old";}
-          else{btitle="#btitle_new";author="#author_new";}
-        if($(btitle).val() && $(author).val())//what if I dont know year yet?
+        function submit_item(){
+          var item_title;
+          var comment;
+          var link;
+          var tags;
+        if($('#item_title').val() )//what if I dont know year yet?
         {
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.booktitle = $(btitle).val();
-           data.newbook = 1;
-           if(old){
-           data.newbook = 0;
-           }
-           //data.star = 1;
-           //if($('#nostar').hasClass('active')){
-           //data.star = 0;
-           //}
-           data.star=0;
-           data.author = $(author).val();
-           console.log(JSON.stringify(data));
+           data.item_title = $('#item_title').val();
+           data.item_link = $('#item_link').val();
+           data.item_comment = $('#item_comment').val();
+           data.item_tags = $('#item_tags').val();
+           //console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/counter/addbook",
+              url: "/counter/additem",
               data: data
             })
               .done(function( msg ) {
