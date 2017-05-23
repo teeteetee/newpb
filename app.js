@@ -868,7 +868,7 @@ app.post('/counter/rm_item/',function(req,res){
   if(req.session&&req.session._id)
   {
     
-  counter_items.update({uid:req.session._id},{$pull:{item_store:{title:vtitle,link:vlink}},$inc:{total:-1}},function(err,done){
+  counter_items.update({uid:req.session._id},{$pull:{itemstore:{title:vtitle,link:vlink}},$inc:{total:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing an item');
