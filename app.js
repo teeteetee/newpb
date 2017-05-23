@@ -949,28 +949,28 @@ app.post('/counter/removefriend',function (req,res){
   
 app.post('/counter/additem',function (req,res){
   if(req.session&&req.session._id)
- {console.log('adding a movie');
+ {console.log('adding an item');
           var ms = {};
           ms.trouble =1;
          
             var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();;
             var vlink = parseInt(req.body.item_link);
-            //console.log('breakpoint one');
+            console.log('breakpoint one');
             var vcomment = req.body.item_comment;
             var vtags = preq.body.item_tags.split(',');
-            //console.log('ADDING A movie: movietitle:'+vmovietitle+' ,year: '+vmovieyear+' ,star: '+vmoviestar+' , newmovie: '+vnewmovie);
+            console.log('ADDING AN ITEM: title:'+vtitle+' ,link: '+vlink+' ,comment: '+vcomment+' , tags: '+vtags);
             var dd= new Date();
             var vday = dd.getDate().toString();
             if (vday.length===1){
               vday='0'+vday;
             }
             var vmonth = dd.getMonth()+1;
-            //console.log('breakpoint two');
+            console.log('breakpoint two');
             vmonth = vmonth.toString();
             if (vmonth.length===1){
               vmonth='0'+vmonth;
             }
-            //console.log('breakpoint three');
+            console.log('breakpoint three');
             var vyear = dd.getUTCFullYear().toString();
             var fulldate = vyear+vmonth+vday;
             fulldate = parseInt(fulldate);
