@@ -1231,11 +1231,15 @@ head
         function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
           console.log('hello');
           var count;
-          consolidated.forEach(function (element,index){
-            var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.item_title+"</li>";
-            $('.main_list').append(insert);
-            });
-          
+          if(consolidated.length)
+          {consolidated.forEach(function (element,index){
+                      var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.item_title+"</li>";
+                      $('.main_list').append(insert);
+                      });}
+        else{
+          var insert='<li class="list-group-item " >ПУСТО</li>';
+                      $('.main_list').append(insert);
+        }
           }   
         function redactmoviemodal (i,old) {
           console.log('redact');
