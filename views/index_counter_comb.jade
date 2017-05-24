@@ -1236,15 +1236,15 @@ head
                           inarr=0;
                           insert+="<span class='label pull-right label-primary'>"+element+"</span>";
                           $.each(tags, function(key, tag) {
-                           if (tags.tag_name === element) {
+                           if (tag.tag_name === element) {
                            tags[index].quantity++;
                            inarr=1;
                            }
-                           if(!inarr){
+                          });
+                          if(!inarr){
                             tags.push({'tag_name':element,'quantity':1});
                             console.log('TAGS LENGTH: '+tags.length);
                            }
-                          });
                          // temp_obj = tags.filter(function ( temp_obj ) {return temp_obj.name === element;})[0];
                          // if(!temp_obj){
                          //   //console.log(temp_obj);
