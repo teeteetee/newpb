@@ -947,6 +947,10 @@ app.post('/counter/removefriend',function (req,res){
       }   
 });
   
+function trim1 (str) {
+    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
 app.post('/counter/additem',function (req,res){
   if(req.session&&req.session._id)
  {console.log('adding an item');
@@ -958,6 +962,9 @@ app.post('/counter/additem',function (req,res){
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;
             var vtags = req.body.item_tags.split(',');
+            vtags.forEach(function (element, index){
+              vtags[index]=trim1(element);
+            });
             console.log('ADDING AN ITEM: title:'+vtitle+' ,link: '+vlink+' ,comment: '+vcomment+' , tags: '+vtags);
             var dd= new Date();
             var vday = dd.getDate().toString();
