@@ -990,7 +990,7 @@ app.post('/counter/additem',function (req,res){
             }
             console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          counter_items.update({uid:req.session._id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp},$inc:{total:1}}},function(err,done){
+          counter_items.update({uid:req.session._id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
             console.log(err);
           });
@@ -1037,58 +1037,6 @@ app.post('/counter/addweb',function (req,res){
       }   
 });
 
-app.post('/counter/addbook',function(req,res){
-  if(req.session&&req.session._id)
- {console.log('adding a book');
-          var ms = {};
-          ms.trouble =1;
-         
-            var vbooktitle = req.body.booktitle.replace(/\s{2,}/g,' ').trim();;
-            var vnewbook = parseInt(req.body.newbook);
-            console.log('breakpoint one');
-            var vbookauth = req.body.author.replace(/\s{2,}/g,' ').trim();;
-            var vbookstar = parseInt(req.body.star);
-            console.log('ADDING A book: booktitle:'+vbooktitle+' ,year: '+vbookauth+' ,star: '+vbookstar+' , newbook: '+vnewbook);
-            var dd= new Date();
-            var vday = dd.getDate().toString();
-            if (vday.length===1){
-              vday='0'+vday;
-            }
-            var vmonth = dd.getMonth()+1;
-            console.log('breakpoint two');
-            vmonth = vmonth.toString();
-            if (vmonth.length===1){
-              vmonth='0'+vmonth;
-            }
-            console.log('breakpoint three');
-            var vyear = dd.getUTCFullYear().toString();
-            var fulldate = vyear+vmonth+vday;
-            fulldate = parseInt(fulldate);
-        
-            if(!vbooktitle){
-              vbooktitle = '--';
-              //SEND ERROR
-            }
-            if(!vbookauth){
-              vvbookyear = '--';
-            }
-            console.log('breakpoint four: '+req.session._id);
-          var vtmstmp = Date.now();
-          counter_books.update({uid:req.session._id},{$push:{bookstore:{author:vbookauth,booktitle:vbooktitle,newbook:vnewbook,star:vbookstar,regdateint:fulldate,tmstmp:vtmstmp}}},function(err,done){
-            console.log(done);
-          });
-          console.log('breakpoint five');
-          if(vnewbook)
-          {counter_books.update({uid:req.session._id},{$inc:{newones:1,total:1}});}
-          else {
-           counter_books.update({uid:req.session._id},{$inc:{oldones:1,total:1}});
-          }
-          console.log('breakpoint six');
-           res.send('ok');  }       
-      else {
-        res.send('err');
-      }   
-});
 
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
@@ -1588,9 +1536,6 @@ app.get('/counter/logout',function (req,res){
   res.redirect('/counter');
 });
 
-app.get('/gets',function(req,res){
-  counter_movies.update({uid:req.session._id},{$push:{moviestore:{hey:'hello'}}},function(err,done){res.send(done);});
-});
 
 app.get('/counter/showusers',function (req,res){
   counter_users.find({},function(err,done){
@@ -2028,44 +1973,6 @@ app.post('/number/:jesus', function (req,res){
   }
 });
 
-app.post('/remitem/:id',function (req,res){
-  if(req.session && req.session._id && req.body._id){
-    var cond = req.params.id; 
-    var ms ={};
-    ms.trouble=0;
-    switch(cond){
-      case('link'):
-      console.log('removing a link');
-      items.remove({_id:req.body._id});
-      users.update({_id:req.session._id},{$inc:{totallinks:-1,nlinks:-1}});
-      res.send(ms);
-      break;
-      case('ic'):
-      console.log('removing a consept');
-      concepts.remove({_id:req.body._id});
-      users.update({_id:req.session._id},{$inc:{blinks:-1}});
-      res.send(ms);
-      break;
-      case('b'):
-      console.log('removing a b_item');
-      business.remove({_id:req.body._id});
-      users.update({_id:req.session._id},{$inc:{totallinks:-1,blinks:-1}});
-      res.send(ms);
-      break;
-      case('m'):
-      console.log('removing a m_item');
-      misc.remove({_id:req.body._id});
-      users.update({_id:req.session._id},{$inc:{totallinks:-1,mlinks:-1}});
-      res.send(ms);
-      break;
-      case('q'):
-      console.log('removing a question');
-      questions.remove({_id:req.body._id});
-      res.send(ms);
-      break;
-  }
-}
-});
 
 
 app.post('/edititem/:id',function (req,res){
