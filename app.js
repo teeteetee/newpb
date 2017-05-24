@@ -805,7 +805,7 @@ app.post('/counter/rm_item/',function(req,res){
   counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function(err,done){
   if(err)
   {
-    console.log('trouble removing a movie');
+    console.log('trouble removing a item');
     res.send(ms);
   }
     else{
@@ -845,31 +845,6 @@ app.post('/counter/rm_web',function(req,res){
   }
 });
 
-app.post('/counter/rm_item/',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  var vtitle = req.body.item_title;
-  var vlink= req.body.item_link;
-  if(req.session&&req.session._id)
-  {
-    
-  counter_items.update({uid:req.session._id},{$pull:{itemstore:{title:vtitle,link:vlink}},$inc:{total:-1}},function(err,done){
-  if(err)
-  {
-    console.log('trouble removing an item');
-    res.send(ms);
-  }
-    else{
-      ms.trouble=0;
-      res.send(ms);
-    }
-   });
- 
-}
-  else {
-    res.send(ms);
-  }
-});
 
 
 app.post('/counter/addfriend',function (req,res){
