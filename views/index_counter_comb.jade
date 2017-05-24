@@ -1234,17 +1234,17 @@ head
                       //<small>12.05.1992</small> <span class="label pull-right label-primary">Primary</span>
                       if(element.item_tags.length){
                         console.log('TAGS: '+element.item_tags);
-                        element.item_tags.forEach(function (element,index){
+                        element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
-                          insert+="<span class='label pull-right label-primary'>"+element+"</span>";
+                          insert+="<span class='label pull-right label-primary'>"+element_1+"</span>";
                           $.each(tags, function(key, tag) {
-                           if (tag.tag_name === element) {
-                           tags[index].quantity++;
+                           if (tag.tag_name === element_1) {
+                           tags[index_1].quantity++;
                            inarr=1;
                            }
                           });
                           if(!inarr){
-                            tags.push({'tag_name':element,'quantity':1});
+                            tags.push({'tag_name':element_1,'quantity':1});
                             console.log('TAGS LENGTH: '+tags.length);
                            }
                          // temp_obj = tags.filter(function ( temp_obj ) {return temp_obj.name === element;})[0];
