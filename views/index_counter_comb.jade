@@ -772,9 +772,7 @@ head
       .row 
         .col-xs-12.col-md-8.col-md-offset-2
           h1(style="text-align:center;text-transform:uppercase;margin-top:50px;margin-bottom:21px;font-family:boldproxima;font-size: 94px;letter-spacing:2px;color:white;") CONSORCIO 
-          .row(style='padding-top:25px;padding-bottom:25px;border-top:1px solid #00448c;border-bottom:1px solid #00448c;margin-bottom:30px;')
-            a фильм 
-              span.badge 40
+          .row#tags(style='padding-top:25px;padding-bottom:25px;border-top:1px solid #00448c;border-bottom:1px solid #00448c;margin-bottom:30px;')
           button( onclick='add_dialog()' class='btn btn-success' data-toggle="modal" data-target="#myModal" style='margin:auto;width:200px;margin-bottom:30px;border-radius:300px;letter-spacing:1px;text-transform:uppercase;') Добавить
           .panel.panel-default(style='border:none;border-radius:6px;')
             ul.list-group#main_list
@@ -1238,12 +1236,12 @@ head
                           inarr=0;
                           insert+="<span class='label pull-right label-primary'>"+element+"</span>";
                           $.each(tags, function(key, tag) {
-                           if (tag.name === element) {
+                           if (tag.tag_name === element) {
                            tags[index].quantity++;
                            inarr=1;
                            }
                            if(!inarr){
-                            tags.push({'name':element,'quantity':1});
+                            tags.push({'tag_name':element,'quantity':1});
                            }
                           });
                          // temp_obj = tags.filter(function ( temp_obj ) {return temp_obj.name === element;})[0];
@@ -1260,6 +1258,11 @@ head
                       $('#main_list').append(insert);
                       });
         //POPULATE TAGS HERE
+        if(tags.length){
+          tags.forEach(function (element, index){
+           $('#tags').append("<a>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+            });
+        }
         }
         else{
           var insert='<li class="list-group-item " >ПУСТО</li>';
