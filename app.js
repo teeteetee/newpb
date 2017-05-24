@@ -799,7 +799,7 @@ app.post('/counter/rm_item/',function(req,res){
   var ms = {};
   ms.trouble =1;
   var vtitle = req.body.item_title;
-  var vtmstmp= parseInt(req.body.tmstmp);
+  var vtmstmp= parseInt(req.body.item_tmstmp);
   console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
