@@ -1242,6 +1242,7 @@ head
                            }
                            if(!inarr){
                             tags.push({'tag_name':element,'quantity':1});
+                            console.log('TAGS LENGTH: '+tags.length);
                            }
                           });
                          // temp_obj = tags.filter(function ( temp_obj ) {return temp_obj.name === element;})[0];
@@ -1258,6 +1259,7 @@ head
                       $('#main_list').append(insert);
                       });
         //POPULATE TAGS HERE
+        console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
         if(tags.length){
           tags.forEach(function (element, index){
             console.log(element);
