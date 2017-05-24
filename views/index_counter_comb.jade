@@ -728,16 +728,17 @@ head
               
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm.btn_mod(id='moviemodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm.btn_mod(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
           .modal-body(style='text-align:center;')
-            h4.moviemodaltitle(style='margin-top:20px;font-weight:400;')
-            h5.moviemodalyear(style='margin-bottom:30px;color:gray;')
-            //a(class='btn btn-iosdark  form-control link_view' style='margin-top:5px;') View 
+            h4.item_title(style='margin-top:20px;font-weight:400;')
+            h5.item_link(style='margin-bottom:30px;color:gray;')
+            h5.item_comment(style='margin-bottom:30px;color:gray;')
+            h5.item_tags(style='margin-bottom:30px;color:gray;')  
             button(class='btn btn-iosdark  form-control movie_switch') Switch column
             button(class='btn btn-iosdark form-control movie_remove ') Remove
     .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1229,7 +1230,7 @@ head
           if(consolidated.length)
           {consolidated.forEach(function (element,index){
                       var date=new Date(parseInt(element.tmstmp));
-                      var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.item_title+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
+                      var insert='<li class="list-group-item " onclick="redactitem('+index+')">'+element.item_title+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //<small>12.05.1992</small> <span class="label pull-right label-primary">Primary</span>
                       if(element.item_tags.length){
                         console.log('TAGS: '+element.item_tags);
@@ -1273,7 +1274,7 @@ head
                       $('#main_list').append(insert);
         }
           }   
-        function redactmoviemodal (i,old) {
+        function redactitem (i) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
@@ -1282,47 +1283,16 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removemovie('+i+','+old+')';
-        insert2 = 'switch_movie('+i+','+old+')';
-        $('.movie_remove').attr('onclick',insert);
-        $('.movie_switch').attr('onclick',insert2);
-        if(old)
-        {$('.moviemodaltitle').text(consolidated_m_old[i].movietitle.capitalizeFirstLetter());
-         $('.moviemodalyear').text(consolidated_m_old[i].year);
-         $('.movie_switch').text('Mark as not seen');
-        }
-        else{
-         $('.moviemodaltitle').text(consolidated_m_new[i].movietitle.capitalizeFirstLetter());
-         $('.moviemodalyear').text(consolidated_m_new[i].year);
-         $('.movie_switch').text('Mark as seen');
-        }
-        $('#moviemodal').modal('show');
-        }
-        //----------------------------//
-        function redactbookmodal (i,old) {
-          console.log('redact');
-        // TODO screen blocker must be added to prevent user from interfering 
-        if($('body').width()<$('body').height()) {
-          $('.modal-dialog').css('margin-top','60%');
-        }
-        else{
-          $('.modal-dialog').css('margin-top','15%');
-        }
-        insert = 'removebook('+i+','+old+')';
-        insert2 = 'switch_book('+i+','+old+')';
-        $('.book_remove').attr('onclick',insert);
-        $('.book_switch').attr('onclick',insert2);
-        if(old)
-        {$('.bookmodaltitle').text(consolidated_b_old[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_b_old[i].author);
-         $('.book_switch').text('Mark as not read');
-        }
-        else{
-         $('.bookmodaltitle').text(consolidated_b_new[i].booktitle.capitalizeFirstLetter());
-         $('.bookmodalauthor').text(consolidated_b_new[i].author);
-         $('.book_switch').text('Mark as read');
-        }
-        $('#bookmodal').modal('show');
+        //insert = 'removemovie('+i+','+old+')';
+        //insert2 = 'switch_movie('+i+','+old+')';
+        //$('.movie_remove').attr('onclick',insert);
+        //$('.movie_switch').attr('onclick',insert2);
+        $('.item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+        $('.item_link').text(consolidated[i].item_link);
+        $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        $('.item_tags').text(consolidated[i].item_tags);
+         //$('.movie_switch').text('Mark as not seen');
+        $('#itemmodal').modal('show');
         }
         //----------------------------//
         function removemovie(i,old) {
