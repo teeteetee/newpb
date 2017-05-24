@@ -740,7 +740,7 @@ head
             h5.item_comment(style='padding-bottom:30px;color:gray;border-bottom:1px solid #eee;')
             h5.item_tags(style='margin-bottom:30px;color:gray;')  
             //button(class='btn btn-iosdark  form-control movie_switch') Switch column
-            button(class='btn btn-iosdark form-control movie_remove ') Remove
+            button(class='btn btn-iosdark form-control item_remove ') Remove
     .modal.fade.bs-example-modal-sm.btn_mod(id='bookmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
@@ -1302,7 +1302,7 @@ head
         $('#itemmodal').modal('show');
         }
         //----------------------------//
-        function removemovie(i) {
+        function removeitem(i) {
           var data={};
           
             data.item_title=consolidated[i].item_title;
