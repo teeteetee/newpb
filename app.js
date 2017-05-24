@@ -799,7 +799,7 @@ app.post('/counter/rm_item/',function(req,res){
   var ms = {};
   ms.trouble =1;
   var vtitle = req.body.item_title;
-  var vtmstmp= req.body.tmstmp;
+  var vtmstmp= parseInt(req.body.tmstmp);
   if(req.session&&req.session._id)
   {
   counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function(err,done){
