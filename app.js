@@ -798,13 +798,11 @@ else {
 app.post('/counter/rm_movie/',function(req,res){
   var ms = {};
   ms.trouble =1;
-  var vmtitle = req.body.mtitle;
-  var vyear= req.body.year;
-  var vnewmovie = req.body.newmovie;
+  var vtitle = req.body.item_title;
+  var vtmstmp= req.body.tmstmp;
   if(req.session&&req.session._id)
   {
-    if(vnewmovie){
-  counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,newones:-1}},function(err,done){
+  counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function(err,done){
   if(err)
   {
     console.log('trouble removing a movie');
@@ -815,20 +813,7 @@ app.post('/counter/rm_movie/',function(req,res){
       res.send(ms);
     }
    });
-  }//if newmovie
- else{
-    counter_movies.update({uid:req.session._id},{$pull:{moviestore:{movietitle:vmtitle,year:vyear}},$inc:{total:-1,oldones:-1}},function(err,done){
-  if(err)
-  {
-    console.log('trouble removing a movie');
-    res.send(ms);
-  }
-    else{
-      ms.trouble=0;
-      res.send(ms);
-    }
-  });
- }
+  
 }
   else {
     res.send(ms);

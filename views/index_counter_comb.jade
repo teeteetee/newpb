@@ -1305,9 +1305,8 @@ head
         function removemovie(i) {
           var data={};
           
-            data.mtitle=consolidated_m_old[i].movietitle;
-            data.year=consolidated_m_old[i].year;
-            data.newmovie=consolidated_m_old[i].newmovie;
+            data.item_title=consolidated[i].item_title;
+            data.item_tmstmp=consolidated[i].tmstmp;
           
         $.ajax({
               method: "POST",
