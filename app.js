@@ -800,12 +800,13 @@ app.post('/counter/rm_item/',function(req,res){
   ms.trouble =1;
   var vtitle = req.body.item_title;
   var vtmstmp= parseInt(req.body.tmstmp);
+  console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
   counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function(err,done){
   if(err)
   {
-    console.log('trouble removing a item');
+    console.log('trouble removing a item\n'+err);
     res.send(ms);
   }
     else{
@@ -820,30 +821,6 @@ app.post('/counter/rm_item/',function(req,res){
   }
 });
 
-app.post('/counter/rm_web',function(req,res){
-  var ms = {};
-  ms.trouble =1;
-  var v_r_name = req.body.r_name;
-  var v_r_link= req.body.r_link;
-  if(req.session&&req.session._id)
-  {
-  counter_web.update({uid:req.session._id},{$pull:{weblinkstore:{r_name:v_r_name,r_link:v_r_link}},$inc:{total:-1}},function(err,done){
-  if(err)
-  {
-    console.log('trouble removing a web article');
-    res.send(ms);
-  }
-    else{
-      ms.trouble=0;
-      res.send(ms);
-    }
-   });
- 
-}
-  else {
-    res.send(ms);
-  }
-});
 
 
 
