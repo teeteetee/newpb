@@ -1210,25 +1210,25 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   console.log('items: '+JSON.stringify(msg.doc));
-                   items=msg.doc;
-                  if(!items || !items.itemstore) {
+                   items=msg.doc.itemstore;
+                  if(!items ) {
                    console.log('no items');
                    }
                    else {
-                    msg.doc.itemstore.forEach(function (element,index){
+                    items.forEach(function (element,index){
                     if(element.item_title)
-                    
-                       consolidated.push(element);
-                      
+                       console.log('element pushed');
+                       consolidated.push(element);        
                     });
                    }
                    if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
                    }  
                 }
               });
         //----------------------------//
-        function populate(consolidated_m_old,consolidated_m_new,consolidated_b_old,consolidated_b_new) {
+        function populate(consolidated) {
           console.log('hello');
           var count;
           if(consolidated.length)
