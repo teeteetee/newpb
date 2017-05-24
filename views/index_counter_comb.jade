@@ -1260,6 +1260,7 @@ head
         //POPULATE TAGS HERE
         if(tags.length){
           tags.forEach(function (element, index){
+            console.log(element);
            $('#tags').append("<a>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
