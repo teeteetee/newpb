@@ -1236,8 +1236,8 @@ head
                       var date=new Date(parseInt(element.tmstmp));
                       var insert='<li class="list-group-item " onclick="redactmoviemodal('+index+',1)">'+element.item_title+"<small>"+date+"</small>";
                       //<small>12.05.1992</small> <span class="label pull-right label-primary">Primary</span>
-                      if(element.tags.length){
-                        element.tags.forEach(function (element,index){
+                      if(element.item_tags.length){
+                        element.item_tags.forEach(function (element,index){
                           insert+="<span class='label pull-right label primary'>"+element+"</span>";
                           });
                       }
