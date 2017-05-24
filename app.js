@@ -795,7 +795,7 @@ else {
 }
 });
 
-app.post('/counter/rm_movie/',function(req,res){
+app.post('/counter/rm_item/',function(req,res){
   var ms = {};
   ms.trouble =1;
   var vtitle = req.body.item_title;
