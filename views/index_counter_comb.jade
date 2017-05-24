@@ -1200,6 +1200,8 @@ head
         //        }
         //        });
         var consolidated=[];
+        var tags=[];
+        var temp_obj={};//used in tags processing
         $.ajax({
               method: "POST",
               url: "/counter/getitems",
@@ -1237,11 +1239,21 @@ head
                       if(element.item_tags.length){
                         element.item_tags.forEach(function (element,index){
                           insert+="<span class='label pull-right label-primary'>"+element+"</span>";
+                          temp_obj = tags.filter(function ( temp_obj ) {return temp_obj.name === element;})[0];
+                          if(!temp_obj){
+                            console.log(temp_obj);
+                            tags.push({'name':element,'quantity':1});
+                          }
+                          else{
+                           //hey
+                          }
                           });
                       }
                       insert=insert+"</li>";
                       $('#main_list').append(insert);
-                      });}
+                      });
+        //POPULATE TAGS HERE
+        }
         else{
           var insert='<li class="list-group-item " >ПУСТО</li>';
                       $('#main_list').append(insert);
