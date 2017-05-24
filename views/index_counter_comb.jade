@@ -1295,7 +1295,7 @@ head
         $('.item_remove').attr('onclick',insert);
         //$('.movie_switch').attr('onclick',insert2);
         $('.item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
-        $('.item_link').text('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
+        $('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
         $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
         $('.item_tags').text(consolidated[i].item_tags);
          //$('.movie_switch').text('Mark as not seen');
