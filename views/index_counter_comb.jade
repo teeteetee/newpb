@@ -1249,7 +1249,8 @@ head
         if(tags.length){
           tags.forEach(function (element, index){
             console.log(element);
-           $('#tags').append("<a onclick='tag_modal("+element.tag_name+")'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+            var onclick="'"+element.tag_name+"'";
+           $('#tags').append("<a onclick='tag_modal("+onclick+")'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
         }
