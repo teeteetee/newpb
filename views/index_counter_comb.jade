@@ -627,8 +627,8 @@ head
           .modal-header
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='text-align:center;' ) Нашли
-              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+            h4(id="tag_name_title" class="modal-title" style='text-align:center;' ) Нашли
+              span.badge#tag_name_title_num(style='margin-left:10px;margin-bottom:3px;')
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;')
               li.list-group-item.noitemstags Пока пусто
@@ -1294,6 +1294,8 @@ head
             mention_indexes.forEach(function (element,index){
               $('.itemlist').append('<li class="list-group-item">'+consolidated[element].item_title+'</li>');
               });
+            $('#tag_name_title').text(tags[tags_index].tag_name);
+            $('#tag_name_title_num').text(mention_indexes.length);
             $('#tagsmodal').modal('show');
           }
           console.log(mention_indexes);
