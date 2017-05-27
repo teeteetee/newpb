@@ -1263,13 +1263,15 @@ head
           //find them
           mentions_indexes=[];
           var results = consolidated.find(function (element,index) {
-            var has_mentions=element.item_tags.find(function (element_1,index_1,array_1) {
+            var has_mentions;
+            element.item_tags.find(function (element_1,index_1,array_1) {
               console.log('checking: '+element_1+' ? '+tags[tags_index].tag_name);
                 if(element_1===tags[tags_index].tag_name)
                   {console.log('is mentioned');
-                    return true}
+                    has_mantions=1;}
               });
               if(has_mentions){
+                has_mentions=0;
                 mentions_indexes.push(index);
               }
             });
