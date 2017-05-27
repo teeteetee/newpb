@@ -562,7 +562,7 @@ head
         margin-right:10px;
         margin-left:4px;
       }
-      .list-group-item{
+      #main_list .list-group-item{
         background-color: #034b98;
       border: 1px solid #003c7b;
           color: #002042;
@@ -1292,7 +1292,7 @@ head
           if(mention_indexes){
             $('.itemlist').empty();
             mention_indexes.forEach(function (element,index){
-              $('.itemlist').append('<li class="list-group-item">'+element+'</li>');
+              $('.itemlist').append('<li class="list-group-item">'+consolidated[element].item_name+'</li>');
               });
             $('#tagsmodal').modal('show');
           }
