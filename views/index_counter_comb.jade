@@ -1265,10 +1265,11 @@ head
           var results = consolidated.find(function (element,index) {
             var has_mentions=element.item_tags.find(function (element_1,index_1,array_1) {
                 if(element===tags[tags_index].tag_name)
-                  {return true}
+                  {console.log('is mentioned');
+                    return true}
               });
               if(has_mentions){
-                mentoins_indexes.push(index);
+                mentions_indexes.push(index);
               }
             });
           //show them
