@@ -1249,8 +1249,7 @@ head
         if(tags.length){
           tags.forEach(function (element, index){
             console.log(element);
-            var onclick="'"+element.tag_name+"'";
-           $('#tags').append("<a onclick='tag_modal("+onclick+")'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+           $('#tags').append("<a tag_name='"+element.tag_name+"' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
         }
@@ -1258,7 +1257,11 @@ head
           var insert='<li class="list-group-item " >ПУСТО</li>';
                       $('#main_list').append(insert);
         }
-          }   
+          }  
+        $('.tag_name').click(function() {
+          var tag_name = $(this).getAttribute('tag_name');
+          tag_modal(tag_name);
+          }); 
         function tag_modal(tag_name) {
           console.log(tag_name);
         }
