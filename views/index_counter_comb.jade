@@ -1249,7 +1249,7 @@ head
         if(tags.length){
           tags.forEach(function (element, index){
             console.log(element);
-           $('#tags').append("<a tag_name='"+element.tag_name+"' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+           $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
         }
@@ -1258,13 +1258,8 @@ head
                       $('#main_list').append(insert);
         }
           }  
-        $('.tag_name').click(function() {
-          var tag_name = $(this).getAttribute('tag_name');
-          console.log(tag_name);
-          tag_modal(tag_name);
-          }); 
         function tag_modal(tag_name) {
-          console.log(tag_name);
+          console.log(tags[tag_name]);
         }
         function redactitem (i) {
           console.log('redact');
