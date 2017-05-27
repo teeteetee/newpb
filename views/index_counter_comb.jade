@@ -1258,8 +1258,21 @@ head
                       $('#main_list').append(insert);
         }
           }  
-        function tag_modal(tag_name) {
-          console.log(tags[tag_name]);
+        function tag_modal(tags_index) {
+          //console.log(tags[tags_index]);
+          //find them
+          mentions_indexes=[];
+          var results = consolidated.find(function (element,index) {
+            var has_mentions=element.item_tags.find(function (element_1,index_1,array_1) {
+                if(element===tags[tags_index].tag_name)
+                  {return true}
+              });
+              if(has_mentions){
+                mentoins_indexes.push(index);
+              }
+            });
+          //show them
+          console.log(mentions_indexes);
         }
         function redactitem (i) {
           console.log('redact');
