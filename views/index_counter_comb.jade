@@ -621,6 +621,19 @@ head
                 span(class='input-group-btn')
                   button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                     span(class='glyphicon glyphicon-search') 
+    .modal.fade.bs-example-modal-sm(id='tagsmodal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class="modal-title" style='text-align:center;' ) Нашли
+              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+          .modal-body  
+            ul.list-group.itemlist(style='margin-bottom:0px;')
+              li.list-group-item.noitemstags Пока пусто
+          .modal-footer.btn_mod(style='padding:0px;')
+            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -1261,7 +1274,7 @@ head
         function tag_modal(tags_index) {
           //console.log(tags[tags_index]);
           //find them
-          mentions_indexes=[];
+          mention_indexes=[];
           var results = consolidated.find(function (element,index) {
             var has_mentions;
             element.item_tags.find(function (element_1,index_1,array_1) {
@@ -1272,11 +1285,19 @@ head
               });
               if(has_mentions){
                 has_mentions=0;
-                mentions_indexes.push(index);
+                mention_indexes.push(index);
               }
             });
           //show them
-          console.log(mentions_indexes);
+          if(mention_indexes){
+            $('.itemlist').empty();
+            mention_indexes.forEach(function (element,index){
+              $('.itemlist').append('<li class='list-group-item'>'+element+'</li>');
+
+              });
+            $('#tagsmodal').modal('show');
+          }
+          console.log(mention_indexes);
         }
         function redactitem (i) {
           console.log('redact');
