@@ -105,10 +105,28 @@ head
         padding:0px;
         border-top:0px;
       }
-      input::-webkit-input-placeholder {color:#005ab9;}
-      input::-moz-placeholder          {color:#005ab9;}/* Firefox 19+ */
-      input:-moz-placeholder           {color:#005ab9;}/* Firefox 18- */
-      input:-ms-input-placeholder      {color:#005ab9;}/**/
+      /*input[type=text]::-webkit-input-placeholder {color:#005ab9;}
+      input[type=text]::-moz-placeholder          {color:#005ab9;}/* Firefox 19+ */
+      input[type=text]:-moz-placeholder           {color:#005ab9;}/* Firefox 18- */
+      input[type=text]:-ms-input-placeholder      {color:#005ab9;}/**/
+      */
+      ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+          color:    #005ab9;
+      }
+      :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+         color:    #005ab9;
+         opacity:  1;
+      }
+      ::-moz-placeholder { /* Mozilla Firefox 19+ */
+         color:    #005ab9;
+         opacity:  1;
+      }
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+         color:    #005ab9;
+      }
+      ::-ms-input-placeholder { /* Microsoft Edge */
+         color:    #005ab9;
+      }
       #loginform{
         border-radius:10px;
         padding:22px;
