@@ -16,9 +16,13 @@ head
       |       
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
+      @font-face {
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
       body {
       /*background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
-      background-color:#171717;
+      background-color:#005ab9;
       text-transform:uppercase;
       letter-spacing:2px;
       font-size:10px;
@@ -227,7 +231,7 @@ head
     #oldones.container
       .row(style='text-align:center;padding-top:15%;')
         .col-sm-4.col-sm-offset-4
-          h1(style='font-weight:100;color:white;') IV LISTS
+          h1(style='font-family:boldproxima;font-weight:100;color:white;') CONSORCIO
           h4(style='color: rgba(255,255,255,0.5);text-transform: none;letter-spacing: initial;font-weight: 200;') Keep track of what you read and watch
           #log_alert.alert.alert-danger(role="alert" style='margin:20px;margin-bottom:0px;display:none;') 
                 strong Fuck!
