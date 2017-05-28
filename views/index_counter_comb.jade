@@ -742,9 +742,10 @@ head
           .modal-body#add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
-                .panel-heading(role="tab" id="headingOne")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                //
+                  .panel-heading(role="tab" id="headingOne")
+                    button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Фильм, посмотрел
+                      span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 .panel-body
                   input#item_title(type="text" maxlength="50" class="form-control" autocomplete='off' placeholder="Название")
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
@@ -1319,7 +1320,7 @@ head
             $('#tag_name_title_num').text(mention_indexes.length);
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','60%');
-            
+
             }
             else{
               $('.modal-dialog').css('margin-top','15%');
