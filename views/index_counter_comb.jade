@@ -558,7 +558,7 @@ head
         background-color:transparent;
         border:1px solid #ccc;
         font-weight:200;
-        color:#aaa;
+        color:#2872c1;
         margin-right:10px;
         margin-left:4px;
       }
@@ -1277,7 +1277,7 @@ head
         if(tags.length){
           tags.forEach(function (element, index){
             console.log(element);
-           $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+           $('#tags').append("<a style='color: #013975;' onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
         }
