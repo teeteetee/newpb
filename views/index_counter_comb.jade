@@ -597,8 +597,8 @@ head
        padding-top:25px;
        padding-bottom:25px;
        /*border-top:1px solid #00448c;
-       border-bottom:1px solid #00448c;*/
-       border-top: 10px solid #0264cc;
+       border-bottom:1px solid #00448c;
+       border-top: 10px solid #0264cc;*/
        margin-bottom:30px;
       }
       .itemlist li{
@@ -1317,6 +1317,13 @@ head
               });
             $('#tag_name_title').text(tags[tags_index].tag_name);
             $('#tag_name_title_num').text(mention_indexes.length);
+            if($('body').width()<$('body').height()) {
+            $('.modal-dialog').css('margin-top','60%');
+            
+            }
+            else{
+              $('.modal-dialog').css('margin-top','15%');
+            }
             $('#tagsmodal').modal('show');
           }
           console.log(mention_indexes);
