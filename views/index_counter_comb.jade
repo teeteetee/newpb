@@ -1322,11 +1322,10 @@ head
             mention_indexes.forEach(function (element,index){
               $('.itemlist').append('<li class="list-group-item">'+consolidated[element].item_title+'</li>');
               });
-            $('#tag_name_title').text(tags[tags_index].tag_name);
+            $('#tag_name_title').text(tags[tags_index].tag_name.capitalizeFirstLetter());
             $('#tag_name_title_num').text(mention_indexes.length);
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','60%');
-
             }
             else{
               $('.modal-dialog').css('margin-top','15%');
