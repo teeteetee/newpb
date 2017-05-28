@@ -1332,7 +1332,7 @@ head
         $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
         //$('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
         $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
-        $('.item_tags').text('Tags: 'consolidated[i].item_tags);
+        $('.item_tags').text('Tags: '+consolidated[i].item_tags);
          //$('.movie_switch').text('Mark as not seen');
         $('#itemmodal').modal('show');
         }
