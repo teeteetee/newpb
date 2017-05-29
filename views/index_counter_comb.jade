@@ -613,6 +613,12 @@ head
         border:none;
         border-top: 1px solid #eee;
       }
+      .title_num{
+        margin-left:5px;
+        margin-bottom:3px;
+        font-weight:200;
+        background-color: #6bb9ff;
+      }
   body
     //
       nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -1326,7 +1332,7 @@ head
               $('.itemlist').append('<li class="list-group-item">'+consolidated[element].item_title+'</li>');
               });
             $('#tag_name_title').text(tags[tags_index].tag_name.capitalizeFirstLetter());
-            $('#tag_name_title').append('<span class="badge">'+mention_indexes.length+'</span>');
+            $('#tag_name_title').append('<span class="badge title_num">'+mention_indexes.length+'</span>');
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','60%');
             }
