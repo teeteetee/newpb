@@ -1269,10 +1269,17 @@ head
         function populate(consolidated) {
           var count;
           var inarr;
+          var temp_insert;
           if(consolidated.length)
           {consolidated.forEach(function (element,index){
                       var date=new Date(parseInt(element.tmstmp));
-                      var insert='<li class="list-group-item " onclick="redactitem('+index+')">'+element.item_title+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
+                      if(element.item_title.length()>25){
+                      temp_insert = element.item_title.slice(0,25)+'...';
+                      }
+                      else{
+                        temp_insert=element.item_title;
+                      }
+                      var insert='<li class="list-group-item " onclick="redactitem('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //<small>12.05.1992</small> <span class="label pull-right label-primary">Primary</span>
                       if(element.item_tags.length){
                         element.item_tags.forEach(function (element_2, index_2){
