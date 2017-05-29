@@ -1297,6 +1297,7 @@ head
                       });
         console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
         if(tags.length){
+          sortByKey(tags,'quantity');
           tags.forEach(function (element, index){
             console.log(element);
            $('#tags').append("<a style='color: #013975;' onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
