@@ -1244,7 +1244,7 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  console.log('items: '+JSON.stringify(msg.doc));
+                 // console.log('items: '+JSON.stringify(msg.doc));
                    items=msg.doc.itemstore;
                   if(!items ) {
                    console.log('no items');
@@ -1252,7 +1252,7 @@ head
                    else {
                     items.forEach(function (element,index){
                     if(element.item_title)
-                       console.log('element pushed');
+                       //console.log('element pushed');
                        consolidated.push(element);        
                     });
                    }
@@ -1285,20 +1285,20 @@ head
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
-                        console.log('TAGS: '+element.item_tags);
+                        //console.log('TAGS: '+element.item_tags);
                         element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
                           insert+="<span class='label pull-right label-primary'>"+element_1+"</span>";
                           $.each(tags, function(key, tag) {
                            if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
-                            console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
+                            //console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
                            tags[key].quantity++;
                            inarr=1;
                            }
                           });
                           if(!inarr){
                             tags.push({'tag_name':element_1,'quantity':1});
-                            console.log('TAGS LENGTH: '+tags.length);
+                           // console.log('TAGS LENGTH: '+tags.length);
                            }
                           });
                         element.item_tags.forEach(function (element_3,index_3){
@@ -1315,8 +1315,8 @@ head
         if(tags.length){
           sortByKey(tags,'quantity');
           tags.forEach(function (element, index){
-            console.log(element);
-           $('#tags').append("<a style='color: #013975;' onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name+"<span class='badge'>"+element.quantity+"</span></a>");
+            //console.log(element);
+           $('#tags').append("<a style='color: #013975;' onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
         }
