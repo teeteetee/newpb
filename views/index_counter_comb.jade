@@ -1325,8 +1325,8 @@ head
             mention_indexes.forEach(function (element,index){
               $('.itemlist').append('<li class="list-group-item">'+consolidated[element].item_title+'</li>');
               });
-            $('#tag_name_title').text(tags[tags_index].tag_name.capitalizeFirstLetter()+'<span class="badge">'+mention_indexes.length+'</span>');
-            //$('#tag_name_title_num').text(mention_indexes.length);
+            $('#tag_name_title').text(tags[tags_index].tag_name.capitalizeFirstLetter());
+            $('#tag_name_title').append('<span class="badge">'+mention_indexes.length+'</span>');
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','60%');
             }
