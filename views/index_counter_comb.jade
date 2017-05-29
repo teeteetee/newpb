@@ -640,8 +640,8 @@ head
           a(class="navbar-brand" style='font-family:boldproxima;' href="/") CONSORCIO
         .collapse.navbar-collapse#navbar
           ul(class='nav navbar-nav')
-            li(data-toggle="modal" data-target="#myModal")
-              a#add_modal_trigger(onlick='adddialog()')
+            li(onlick='add_dialog()' data-toggle="modal" data-target="#myModal")
+              a#add_modal_trigger
                span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
                | Add item
             li 
