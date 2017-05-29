@@ -1290,7 +1290,7 @@ head
                           inarr=0;
                           insert+="<span class='label pull-right label-primary'>"+element_1+"</span>";
                           $.each(tags, function(key, tag) {
-                           if (tag.tag_name === element_1) {
+                           if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                             console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
                            tags[key].quantity++;
                            inarr=1;
