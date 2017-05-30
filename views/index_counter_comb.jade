@@ -659,10 +659,10 @@ head
                 span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
                 |You follow
           //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
-          //
             form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
              .input-group
-                input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+                input(type="text" class="form-control" name='searc_input' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+              //  
                 span(class='input-group-btn')
                   button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                     span(class='glyphicon glyphicon-search') 
@@ -1324,7 +1324,20 @@ head
           var insert='<li class="list-group-item " >ПУСТО</li>';
                       $('#main_list').append(insert);
         }
-          }  
+          } 
+        $('#search_input').change(function (){
+          var search_tmp;
+         if($('#search_input').val().length>3){
+          consolidated.find(function (elem, index){
+            if (elem.item_title.indexOf($('#search_input').val()) >= 0){
+              search_tmp.push(elem.item_title);
+            }
+            });
+           if(search_tmp.length){
+            console.log('found smth: '+search_tmp);
+           }
+        }
+          }); 
         function tag_modal(tags_index) {
           //console.log(tags[tags_index]);
           //find them
