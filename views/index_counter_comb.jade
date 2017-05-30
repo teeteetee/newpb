@@ -1331,8 +1331,9 @@ head
           var query = $('#search_input').val();
          if(query.length>3){
           consolidated.find(function (elem, index){
-            console.log('searching: '+elem.item_title+', for: '+query);
+            //console.log('searching: '+elem.item_title+', for: '+query);
             if (elem.item_title.indexOf(query) >= 0){
+              console.log('found: 'elem.item_title)
               search_tmp.push(elem.item_title);
             }
             });
