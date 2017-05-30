@@ -662,7 +662,7 @@ head
                //form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
           form(class="navbar-form navbar-right" role="search")
            .input-group.pull-right
-              input(type="text" class="form-control" name='searc_input' id='search_input' placeholder='search' style='background-color: #005ab9;border-radius: 6px;border: none;') 
+              input(type="text" class="form-control" name='searc_input' id='search_input' placeholder='search' style='background-color: #005ab9;border-radius: 6px;border: none;color:white;') 
             //  
               span(class='input-group-btn')
                 button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
@@ -1328,13 +1328,15 @@ head
           } 
         $('#search_input').change(function (){
           var search_tmp;
-         if($('#search_input').val().length>3){
+          var query = $('#search_input').val();
+         if(query.length>3){
           consolidated.find(function (elem, index){
-            if (elem.item_title.indexOf($('#search_input').val()) >= 0){
+            console.log('searching: '+elem.item_title+', for: '+query);
+            if (elem.item_title.indexOf(query) >= 0){
               search_tmp.push(elem.item_title);
             }
             });
-           if(search_tmp.length){
+           if(search_tmp&&search_tmp.length){
             console.log('found smth: '+search_tmp);
            }
         }
