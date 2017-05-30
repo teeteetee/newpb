@@ -1327,8 +1327,8 @@ head
         }
           } 
         //var search_results_exist=0;
+        var previous_search_results;
         $('#search_input').on('input',function (){
-          $('#search_input').popover('destroy');
           var search_tmp=[];
           var query = $('#search_input').val().toLowerCase();
          if(query.length>3){
@@ -1339,7 +1339,8 @@ head
               search_tmp.push(elem.item_title);
             }
             });
-           if(search_tmp&&search_tmp.length){
+           if(search_tmp&&search_tmp.length&&search_tmp!=previous_search_results){
+            $('#search_input').popover('destroy');
             console.log('found smth: '+search_tmp);
             var content;
             //if(!search_results_exist)
@@ -1349,6 +1350,7 @@ head
               content+="<li class='list-group-item'>"+element_1+"</li>";
               });
             content+="</ul>";
+            previous_search_results = search_tmp;
             $('#search_input').popover({'placement':'bottom','title':'Нашли','content':content,'html':true});
             $('#search_input').popover('show');
            }
