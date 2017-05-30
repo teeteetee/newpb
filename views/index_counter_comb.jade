@@ -1332,7 +1332,7 @@ head
          if(query.length>3){
           consolidated.find(function (elem, index){
             //console.log('searching: '+elem.item_title+', for: '+query);
-            if (elem.item_title.indexOf(query) >= 0){
+            if (elem.item_title.toLowerCase().indexOf(query) >= 0){
               console.log('found: '+elem.item_title)
               search_tmp.push(elem.item_title);
             }
