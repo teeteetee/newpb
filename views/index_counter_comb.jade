@@ -1326,9 +1326,9 @@ head
                       $('#main_list').append(insert);
         }
           } 
-        var search_results_exist=0;
+        //var search_results_exist=0;
         $('#search_input').on('input',function (){
-          $('#search_input').popover('hide');
+          $('#search_input').popover('destroy');
           var search_tmp=[];
           var query = $('#search_input').val().toLowerCase();
          if(query.length>3){
@@ -1342,23 +1342,13 @@ head
            if(search_tmp&&search_tmp.length){
             console.log('found smth: '+search_tmp);
             var content;
-            if(!search_results_exist)
-            {content="<ul id='search_results' class='list-group'>";}
-            else{
-              console.log('EMPTYING RESULTS');
-              $('#search_results').empty();
-            }
+            //if(!search_results_exist)
+            content="<ul id='search_results' class='list-group'>";
             search_tmp.forEach(function (element_1, index_1){
               console.log('forming a popover');
-              if(!search_results_exist)
-              {content+="<li class='list-group-item'>"+element_1+"</li>";}
-              else{
-                $('#search_results').append("<li class='list-group-item'>"+element_1+"</li>");
-              }
+              content+="<li class='list-group-item'>"+element_1+"</li>";}
               });
-            if(!search_results_exist){
             content+="</ul>";
-            search_results_exist=1;}
             $('#search_input').popover({'placement':'bottom','title':'Нашли','content':content,'html':true});
             $('#search_input').popover('show');
            }
