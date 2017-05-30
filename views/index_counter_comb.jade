@@ -1328,6 +1328,7 @@ head
           } 
         var search_results_exist=0;
         $('#search_input').on('input',function (){
+          $('#search_input').popover('hide');
           var search_tmp=[];
           var query = $('#search_input').val().toLowerCase();
          if(query.length>3){
