@@ -1326,8 +1326,7 @@ head
                       $('#main_list').append(insert);
         }
           } 
-        $('#search_input').change(function (){
-          console.log('search running');
+        $('#search_input').on('input',function (){
           var search_tmp;
           var query = $('#search_input').val();
          if(query.length>3){
