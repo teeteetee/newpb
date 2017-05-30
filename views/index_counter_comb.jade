@@ -1356,7 +1356,8 @@ head
               }
               });
             if(!search_results_exist){
-            content+="</ul>";}
+            content+="</ul>";
+            search_results_exist=1;}
             $('#search_input').popover({'placement':'bottom','title':'Нашли','content':content,'html':true});
             $('#search_input').popover('show');
            }
