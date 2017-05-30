@@ -1340,8 +1340,8 @@ head
            if(search_tmp&&search_tmp.length){
             console.log('found smth: '+search_tmp);
             var content="<ul class='list-group'>";
-            search_tmp.forEach(function (el, in){
-              content+="<li class='list-group-item'>"+el+"</li>";
+            search_tmp.forEach(function (element_1, index_1){
+              content+="<li class='list-group-item'>"+element_1+"</li>";
               });
             content+="</ul>";
             $('#search_input').popover({'placement':'top','title':'Нашли','content':content});
