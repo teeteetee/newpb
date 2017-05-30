@@ -1344,6 +1344,7 @@ head
             if(!search_results_exist)
             {content="<ul id='search_results' class='list-group'>";}
             else{
+              console.log('EMPTYING RESULTS');
               $('#search_results').empty();
             }
             search_tmp.forEach(function (element_1, index_1){
