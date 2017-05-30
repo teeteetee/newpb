@@ -1335,18 +1335,19 @@ head
           consolidated.find(function (elem, index){
             //console.log('searching: '+elem.item_title+', for: '+query);
             if (elem.item_title.toLowerCase().indexOf(query) >= 0){
-              console.log('found: '+elem.item_title)
+             // console.log('found: '+elem.item_title)
               search_tmp.push(elem.item_title);
             }
             });
            if(search_tmp&&search_tmp.length&&search_tmp!=previous_search_results){
             $('#search_input').popover('destroy');
-            console.log('found smth: '+search_tmp);
+            console.log(' popover destroyed');
+            //console.log('found smth: '+search_tmp);
             var content;
             //if(!search_results_exist)
             content="<ul id='search_results' class='list-group'>";
             search_tmp.forEach(function (element_1, index_1){
-              console.log('forming a popover');
+             // console.log('forming a popover');
               content+="<li class='list-group-item'>"+element_1+"</li>";
               });
             content+="</ul>";
