@@ -1327,8 +1327,8 @@ head
         }
           } 
         $('#search_input').on('input',function (){
-          var search_tmp;
-          var query = $('#search_input').val();
+          var search_tmp=[];
+          var query = $('#search_input').val().toLowerCase();
          if(query.length>3){
           consolidated.find(function (elem, index){
             //console.log('searching: '+elem.item_title+', for: '+query);
@@ -1339,6 +1339,12 @@ head
             });
            if(search_tmp&&search_tmp.length){
             console.log('found smth: '+search_tmp);
+            var content="<ul class='list-group'>";
+            search_tmp.forEach(function (el, in){
+              content+="<li class='list-group-item'>"+el+"</li>";
+              });
+            content+="</ul>";
+            $('#search_input').popover({'placement':'top','title':'Нашли','content':content});
            }
         }
           }); 
