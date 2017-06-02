@@ -1435,8 +1435,8 @@ head
         insert_remove = 'removeitem('+i+')';
         insert_redact = 'redactitem('+i+')';
         //insert2 = 'switch_movie('+i+','+old+')';
-        $('.item_remove').attr('onclick',insert);
-        $('.item_redact_submit').attr('onclick',insert);
+        $('.item_remove').attr('onclick',insert_remove);
+        $('.item_redact_submit').attr('onclick',insert_redact);
         //$('.movie_switch').attr('onclick',insert2);
         $('.item_title').text('');
         $('.item_title_redact').text('');
