@@ -844,9 +844,9 @@ app.post('/counter/rd_item/',function(req,res){
       console.log('found a profile');
       //--------------//
       if(done&&done.itemstore){
-        console.log('has an itemstore');
-        //console.log('redacting, '+typeof done.itemstore);
-        for(var i =parseInt(done.itemstore.length);i<parseInt(done.itemstore.length);i++){
+        var itemstore_length = done.itemstore.length;
+        console.log('has an itemstore, length: '+itemstore_length);
+        for(var i =itemstore_length;i<itemstore_length;i++){
           console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
               console.log('found to redact: '+done.itemstore[i].item_title);
