@@ -841,8 +841,10 @@ app.post('/counter/rd_item/',function(req,res){
     res.send(ms);
   }
     else{
+      console.log('found a profile');
       //--------------//
       if(done&&done.itemstore){
+        console.log('has an itemstore');
         //console.log('redacting, '+typeof done.itemstore);
         for(var i =done.itemstore.length;i<done.itemstore.length;i++){
           console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
