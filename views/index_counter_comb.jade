@@ -251,12 +251,12 @@ head
       .data_lg .list-group-item:hover{
         background-color:#eee;
       }
-      /*.btn-add{
+      /*.btn-blue{
         border:none;
         background-color:rgba(0,0,0,0.4);
         color:white;
       }
-      .btn-add:focus,.btn-add:active,.btn-add:hover{
+      .btn-blue:focus,.btn-blue:active,.btn-blue:hover{
         border:none;
         background-color:white;
         color:#333;
@@ -290,14 +290,14 @@ head
       box-shadow: none;
       text-align: left;
       }
-      .btn-add {
+      .btn-blue {
         /*background-color:#39cc95;*/
         background-color:#36b7d4;
         letter-spacing:1px;
         color:#347888;
         border:1px solid #36b7d4;
       }
-      #add_comb .panel-body .btn-add {
+      #add_comb .panel-body .btn-blue {
         /*background-color:#39cc95;*/
         background-color:#36b7d4;
         letter-spacing:1px;
@@ -306,7 +306,7 @@ head
         border:none;
       }
       /*#add_comb .panel-body */
-      #add_comb .panel-body .btn-add:hover, .btn-add:hover {
+      #add_comb .panel-body .btn-blue:hover, .btn-blue:hover {
         color:white;
         background-color:#3ad1f3;
         border-color:#3ad1f3;
@@ -331,34 +331,34 @@ head
         background-color:#f15330;
         color:white;
       }
-      #add_choice .panel-body,#settings_choice .panel-body{
+      .modal-body .panel-body,#settings_choice .panel-body{
         text-align:center;
         padding:0px;
       }
-      #add_choice .panel-body .btn-add{
+      .modal-body .panel-body .btn-blue{
         margin:15px;
       }
-      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
+      .modal-body .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
        color: #333;
        background-color: white;
        border-color: #ddd;}
-      #add_choice .panel-group .panel+.panel,#settings_choice .panel-group .panel+.panel {
+      .modal-body .panel-group .panel+.panel,#settings_choice .panel-group .panel+.panel {
           margin-top: 0px;
       }
-      #add_choice .panel-group .panel,#settings_choice .panel-group .panel {
+      .modal-body .panel-group .panel,#settings_choice .panel-group .panel {
           border-radius: 0px;
       }
-      #add_choice .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
+      .modal-body .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
         height:50px;
       }
-      #add_choice .panel,#settings_choice .panel{
+      .modal-body .panel,#settings_choice .panel{
         border:none;
         border-bottom:1px solid #eee;
         background-color: #eee;
       }
-      #add_choice .panel-heading,#settings_choice .panel-heading{
+      .modal-body .panel-heading,#settings_choice .panel-heading{
         padding:0px;}
-      #add_choice .panel-group,#settings_choice .panel-group{
+      .modal-body .panel-group,#settings_choice .panel-group{
         margin-bottom:0px;
       }
       #settings_choice .panel-body{
@@ -671,7 +671,7 @@ head
                  a(onclick='getfriends()') 
                    span.hidden-lg.hidden-md.glyphicon.glyphicon-user(style='margin-right:3px;')
                    |You follow
-             //button.btn.btn-sm.btn-add.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
+             //button.btn.btn-sm.btn-blue.add.pull-right(style='margin-top:10px;margin-bottom:10px;') + add
                //form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
           form(class="navbar-form navbar-right" role="search")
            .input-group.pull-right
@@ -707,7 +707,7 @@ head
             .input-group(style='padding-top:10px;padding-bottom:15px;')
               input(type="text" class="form-control" placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
-                button(class="btn btn-add" onclick="change_nick(0);" id='change_nick_first' type="button") save   
+                button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
@@ -738,7 +738,7 @@ head
                     span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
                 #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
-                    button.btn.btn-add#backup download 
+                    button.btn.btn-blue#backup download 
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
@@ -757,7 +757,7 @@ head
                     .input-group#nick_group
                       input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                       span(class="input-group-btn")
-                        button(class="btn btn-add" onclick="change_nick(1);" id="change_nick" type="button") Submit
+                        button(class="btn btn-blue" onclick="change_nick(1);" id="change_nick" type="button") Submit
               .panel.panel-default
                 .panel-heading(role="tab" id="headingFour3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
@@ -789,7 +789,7 @@ head
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
                   input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-                  button(class='btn btn-add' onclick='submit_item()') Добавить
+                  button(class='btn btn-blue' onclick='submit_item()') Добавить
               
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
@@ -804,12 +804,21 @@ head
             //h5.item_link(style='margin-bottom:30px;color:gray;')
             h5.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h5.item_tags(style='margin-bottom:30px;color:#bbb;') 
-            #redact_item_dialog(style='display:none;')
-              input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
-              input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
-              input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
-              input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-              button(class='btn btn-yellow form-control item_redact_submit') Submit
+            .panel-group(id="redact_item_dialog" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-body
+                  input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
+                  input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+                  input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+                  input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+                  button(class='btn btn-blue form-control item_redact_submit') Submit
+            //
+              #redact_item_dialog(style='display:none;')
+                input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
+                input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+                input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+                input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+                button(class='btn btn-yellow form-control item_redact_submit') Submit
             button(class='btn btn-yellow form-control item_redact') Redact
             button(class='btn btn-red form-control item_remove ') Remove
     .container(style='z-index:2;')
