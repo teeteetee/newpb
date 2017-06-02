@@ -1449,20 +1449,20 @@ head
         $('.item_redact_submit').attr('onclick',insert_redact);
         //$('.movie_switch').attr('onclick',insert2);
         $('.item_title').text('');
-        $('#item_title_redact').text('');
+        $('#item_title_redact').val('');
         if(consolidated[i].item_link!='--'){
         $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
-        $('#item_link_redact').text(consolidated[i].item_link);
+        $('#item_link_redact').val(consolidated[i].item_link);
         }
         else{
           $('.item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
-          $('#item_title_redact').text(consolidated[i].item_title.capitalizeFirstLetter());
+          $('#item_title_redact').val(consolidated[i].item_title.capitalizeFirstLetter());
         }
         //$('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
         $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
-        $('#item_comment_redact').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        $('#item_comment_redact').val(consolidated[i].item_comment.capitalizeFirstLetter());
         $('.item_tags').text('Tags: '+consolidated[i].item_tags);
-        $('#item_tags_redact').text(consolidated[i].item_tags);
+        $('#item_tags_redact').val(consolidated[i].item_tags);
          //$('.movie_switch').text('Mark as not seen');
         $('#itemmodal').modal('show');
         }
