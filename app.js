@@ -843,6 +843,7 @@ app.post('/counter/rd_item/',function(req,res){
     else{
       //--------------//
       if(done&&done.itemstore){
+        console.log('redacting, '+typeof done.itemstore);
         done.itemstore.find(function (elem, index){
             //console.log('searching: '+elem.item_title+', for: '+query);
             if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
