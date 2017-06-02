@@ -822,6 +822,33 @@ app.post('/counter/rm_item/',function(req,res){
   }
 });
 
+app.get('/counter/tmp_corr',function (req,res){
+  counter_items.findOne({uid:req.session._id},function (err,done){
+  if(err)
+  {
+    console.log('trouble removing a item\n'+err);
+    res.send(ms);
+  }
+    else{
+      for(var i =0;i<done.itemstore.length;i++){
+        if(done.itemstore[i].tmstmp===1496353377409){
+          var tags=['фильм','посмотрел'];
+          done.itemstore[i].item_tags=tags;
+          counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+                 if(err2){
+                   console.log(err2);
+                 res.send(ms);
+                 }
+                   else{
+                  ms.trouble=0;
+                 res.send(ms);
+                   }
+        });
+        }
+      }
+    }
+});
+
 app.post('/counter/rd_item/',function(req,res){
   // add user verification
   var ms = {};
@@ -829,7 +856,7 @@ app.post('/counter/rd_item/',function(req,res){
   var vtitle = req.body.item_title;
   var vcomment = req.body.item_comment;
   var vlink = req.body.item_link;
-  var vtags = req.body.item_tags;
+  var vtags = req.body.item_tags.split(',');
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp);
@@ -854,6 +881,9 @@ app.post('/counter/rd_item/',function(req,res){
               done.itemstore[i].item_title = vtitle;
               done.itemstore[i].item_comment = vlink;
               done.itemstore[i].item_link = vlink;
+              vtags.forEach(function (element, index){
+              vtags[index]=trim1(element);
+              });
               done.itemstore[i].item_tags = vtags;
               counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
