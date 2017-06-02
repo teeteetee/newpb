@@ -847,6 +847,7 @@ app.get('/counter/tmp_corr',function (req,res){
         }
       }
     }
+  });
 });
 
 app.post('/counter/rd_item/',function(req,res){
