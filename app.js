@@ -844,26 +844,34 @@ app.post('/counter/rd_item/',function(req,res){
       //--------------//
       if(done&&done.itemstore){
         console.log('redacting, '+typeof done.itemstore);
-        done.itemstore.find(function (elem, index){
-            //console.log('searching: '+elem.item_title+', for: '+query);
-            if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
-             // console.log('found: '+elem.item_title)
-              done.itemstore[index].item_title = vtitle;
-              done.itemstore[index].item_comment = vlink;
-              done.itemstore[index].item_link = vlink;
-              done.itemstore[index].item_tags = vtags;
-            }
-            });
-        counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
-          if(err2){
-            console.log(err2);
-          res.send(ms);
-          }
-            else{
-           ms.trouble=0;
-          res.send(ms);
-            }
+        for(var i =done.itemstore.length;i<done.itemstore.length;i++){
+         if (parseInt(done.itemstore[i].tmstmp) === vtmstmp){
+              done.itemstore[i].item_title = vtitle;
+              done.itemstore[i].item_comment = vlink;
+              done.itemstore[i].item_link = vlink;
+              done.itemstore[i].item_tags = vtags;
+              counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+                 if(err2){
+                   console.log(err2);
+                 res.send(ms);
+                 }
+                   else{
+                  ms.trouble=0;
+                 res.send(ms);
+                   }
         });
+            }
+        }
+           //done.itemstore.find(function (elem, index){
+           // //console.log('searching: '+elem.item_title+', for: '+query);
+           // if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
+           //  // console.log('found: '+elem.item_title)
+           //   done.itemstore[index].item_title = vtitle;
+           //   done.itemstore[index].item_comment = vlink;
+           //   done.itemstore[index].item_link = vlink;
+           //   done.itemstore[index].item_tags = vtags;
+           // }
+           // });
       }
       //--------------//
       res.send(ms);
