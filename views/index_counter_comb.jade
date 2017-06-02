@@ -1505,12 +1505,11 @@ head
         function redactitem_submit(i) {
           var data={};
             data.v_index=i;
-            data.item_title=consolidated[i].item_title;
-            data.item_link=consolidated[i].item_link;
-            data.item_comment=consolidated[i].item_comment;
-            data.item_tags=consolidated[i].item_tags;
+            data.item_title=$('#item_title_redact').val();
+            data.item_link=$('#item_link_redact').val();
+            data.item_comment=$('#item_comment_redact').val();
+            data.item_tags=$('#item_tags_redact').val();
             data.item_tmstmp=consolidated[i].tmstmp;
-          
         $.ajax({
               method: "POST",
               url: "/counter/rd_item/",

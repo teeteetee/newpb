@@ -832,7 +832,7 @@ app.post('/counter/rd_item/',function(req,res){
   var vtags = req.body.item_tags;
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
-  
+  console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp);
   if(req.session&&req.session._id&&vtmstmp)
   {
   counter_items.findOne({uid:req.session._id},function (err,done){
@@ -842,28 +842,41 @@ app.post('/counter/rd_item/',function(req,res){
     res.send(ms);
   }
     else{
-     // console.log('found a profile');
+      console.log('found a profile');
       //--------------//
       if(done&&done.itemstore){
-        console.log(vtitle+'  :  '+done.itemstore[done.itemstore.length-parseInt(v_index)].item_title);
-      //  var itemstore_length = done.itemstore.length;
-      //  //console.log('has an itemstore, length: '+itemstore_length);
-      //  //console.log('found to redact: '+done.itemstore[i].item_title);
-      //  done.itemstore[v_index].item_title = vtitle;
-      //  done.itemstore[v_index].item_comment = vlink;
-      //  done.itemstore[v_index].item_link = vlink;
-      //  done.itemstore[v_index].item_tags = vtags;
-      //  counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
-      //     if(err2){
-      //       console.log(err2);
-      //     res.send(ms);
-      //     }
-      //       else{
-      //      ms.trouble=0;
-      //     res.send(ms);
-      //       }
-      //     }); 
-      res.send(ms);//delete after test     
+        var itemstore_length = done.itemstore.length;
+        console.log('has an itemstore, length: '+itemstore_length);
+        for(var i =0;i<itemstore_length;i++){
+          console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
+         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
+              console.log('found to redact: '+done.itemstore[i].item_title);
+              done.itemstore[i].item_title = vtitle;
+              done.itemstore[i].item_comment = vlink;
+              done.itemstore[i].item_link = vlink;
+              done.itemstore[i].item_tags = vtags;
+              counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+                 if(err2){
+                   console.log(err2);
+                 res.send(ms);
+                 }
+                   else{
+                  ms.trouble=0;
+                 res.send(ms);
+                   }
+        });
+            }
+      
+           //done.itemstore.find(function (elem, index){
+           // //console.log('searching: '+elem.item_title+', for: '+query);
+           // if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
+           //  // console.log('found: '+elem.item_title)
+           //   done.itemstore[index].item_title = vtitle;
+           //   done.itemstore[index].item_comment = vlink;
+           //   done.itemstore[index].item_link = vlink;
+           //   done.itemstore[index].item_tags = vtags;
+           // }
+           // });
       }
       //--------------//
       res.send(ms);
