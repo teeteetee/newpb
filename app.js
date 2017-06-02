@@ -845,7 +845,8 @@ app.post('/counter/rd_item/',function(req,res){
       if(done&&done.itemstore){
         //console.log('redacting, '+typeof done.itemstore);
         for(var i =done.itemstore.length;i<done.itemstore.length;i++){
-         if (parseInt(done.itemstore[i].tmstmp) === vtmstmp){
+          console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
+         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
               console.log('found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
               done.itemstore[i].item_comment = vlink;
