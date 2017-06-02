@@ -796,6 +796,7 @@ else {
 });
 
 app.post('/counter/rm_item/',function(req,res){
+  //add user verification
   var ms = {};
   ms.trouble =1;
   var vtitle = req.body.item_title;
@@ -803,7 +804,7 @@ app.post('/counter/rm_item/',function(req,res){
   console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
-  counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function(err,done){
+  counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
   if(err)
   {
     console.log('trouble removing a item\n'+err);
@@ -811,6 +812,59 @@ app.post('/counter/rm_item/',function(req,res){
   }
     else{
       ms.trouble=0;
+      res.send(ms);
+    }
+   });
+  
+}
+  else {
+    res.send(ms);
+  }
+});
+
+app.post('/counter/rd_item/',function(req,res){
+  // add user verification
+  var ms = {};
+  ms.trouble =1;
+  var vtitle = req.body.item_title;
+  var vcomment = req.body.item_comment;
+  var vlink = req.body.item_link;
+  var vtags = req.body.item_tags;
+  var vtmstmp= parseInt(req.body.item_tmstmp);
+  console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp);
+  if(req.session&&req.session._id&&vtmstmp)
+  {
+  counter_items.findOne({uid:req.session._id},function (err,done){
+  if(err)
+  {
+    console.log('trouble removing a item\n'+err);
+    res.send(ms);
+  }
+    else{
+      //--------------//
+      if(done&&done.itemstore){
+        done.itemstore.find(function (elem, index){
+            //console.log('searching: '+elem.item_title+', for: '+query);
+            if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
+             // console.log('found: '+elem.item_title)
+              done.itemstore[index].item_title = vtitle;
+              done.itemstore[index].item_comment = vlink;
+              done.itemstore[index].item_link = vlink;
+              done.itemstore[index].item_tags = vtags;
+            }
+            });
+        counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+          if(err2){
+            console.log(err2);
+          res.send(ms);
+          }
+            else{
+           ms.trouble=0;
+          res.send(ms);
+            }
+        });
+      }
+      //--------------//
       res.send(ms);
     }
    });

@@ -1502,6 +1502,44 @@ head
               });
         }
         //-----------------------------------//
+        function redactitem(i) {
+          var data={};
+          
+            data.item_title=consolidated[i].item_title;
+            data.item_link=consolidated[i].item_link;
+            data.item_comment=consolidated[i].item_comment;
+            data.item_tags=consolidated[i].item_tags;
+            data.item_tmstmp=consolidated[i].tmstmp;
+          
+        $.ajax({
+              method: "POST",
+              url: "/counter/rd_item/",
+              data: data
+            })
+              .done(function( msg ) {
+              //  $('#moviemodal').modal('hide');
+              //  var vname = '.movie_'+movieid;
+              //  $(vname).empty();
+              //  var empty_row_new ='<tr class="noitemsnew"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  var empty_row_old ='<tr class="noitemsold"><th style="padding-left:30px !important;"> Пока пусто </th><th> -- </th></tr>';
+              //  if(consolidated[movieid].newmovie){
+              //    newmovies --;
+              //    $('#newnum').text(newmovies);
+              //    if($('#newmovies').children().length == 0){
+              //      $('#newmovies').prepend(empty_row_new);
+              //    }
+              //  }
+              //    else{
+              //      seenmovies --;
+              //    $('#oldnum').text(seenmovies);
+              //    if($('#oldmovies').children().length == 0){
+              //      $('#oldmovies').prepend(empty_row_old);
+              //    }
+              //    }
+              window.location='/counter';
+              });
+        }
+        //-----------------------------------//
         function removebook(i) {
           var data={};
           data.item_id=consolidated[i].item_title;
