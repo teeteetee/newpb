@@ -803,7 +803,13 @@ head
             h4.item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
             //h5.item_link(style='margin-bottom:30px;color:gray;')
             h5.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
-            h5.item_tags(style='margin-bottom:30px;color:#bbb;')  
+            h5.item_tags(style='margin-bottom:30px;color:#bbb;') 
+            #redact_item_dialog(style='display:none;')
+              input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
+              input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+              input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+              input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+              button(class='btn btn-yellow form-control item_redact_submit') Submit
             button(class='btn btn-yellow form-control item_redact') Redact
             button(class='btn btn-red form-control item_remove ') Remove
     .container(style='z-index:2;')
@@ -1414,6 +1420,9 @@ head
           }
           console.log(mention_indexes);
         }
+        $('.item_redact').click(function() {
+          $('#redact_item_dialog').slideToggle();
+          })
         function redactitem (i) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
@@ -1423,20 +1432,27 @@ head
         else{
           $('.modal-dialog').css('margin-top','15%');
         }
-        insert = 'removeitem('+i+')';
+        insert_remove = 'removeitem('+i+')';
+        insert_redact = 'redactitem('+i+')';
         //insert2 = 'switch_movie('+i+','+old+')';
         $('.item_remove').attr('onclick',insert);
+        $('.item_redact_submit').attr('onclick',insert);
         //$('.movie_switch').attr('onclick',insert2);
         $('.item_title').text('');
+        $('.item_title_redact').text('');
         if(consolidated[i].item_link!='--'){
         $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
+        $('.item_link_redact').text(consolidated[i].item_link);
         }
         else{
           $('.item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+          $('.item_title_redact').text(consolidated[i].item_title.capitalizeFirstLetter());
         }
         //$('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
         $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        $('.item_comment_redact').text(consolidated[i].item_comment.capitalizeFirstLetter());
         $('.item_tags').text('Tags: '+consolidated[i].item_tags);
+        $('.item_tags_redact').text(consolidated[i].item_tags);
          //$('.movie_switch').text('Mark as not seen');
         $('#itemmodal').modal('show');
         }
