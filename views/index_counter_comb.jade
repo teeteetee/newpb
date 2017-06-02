@@ -1309,7 +1309,7 @@ head
                       else{
                         temp_insert=element.item_title;
                       }
-                      var insert='<li class="list-group-item " onclick="redactitem('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
+                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //<small>12.05.1992</small> <span class="label pull-right label-primary">Primary</span>
                       if(element.item_tags.length){
                         element.item_tags.forEach(function (element_2, index_2){
@@ -1433,7 +1433,7 @@ head
         $('.item_redact').click(function() {
           $('#redact_item_dialog').slideToggle();
           })
-        function redactitem (i) {
+        function redactitem_dialog (i) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
@@ -1443,7 +1443,7 @@ head
           $('.modal-dialog').css('margin-top','15%');
         }
         insert_remove = 'removeitem('+i+')';
-        insert_redact = 'redactitem('+i+')';
+        insert_redact = 'redactitem_submit('+i+')';
         //insert2 = 'switch_movie('+i+','+old+')';
         $('.item_remove').attr('onclick',insert_remove);
         $('.item_redact_submit').attr('onclick',insert_redact);
@@ -1502,7 +1502,7 @@ head
               });
         }
         //-----------------------------------//
-        function redactitem(i) {
+        function redactitem_submit(i) {
           var data={};
           
             data.item_title=consolidated[i].item_title;
