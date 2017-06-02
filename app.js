@@ -827,7 +827,7 @@ app.get('/counter/tmp_corr',function (req,res){
   if(err)
   {
     console.log('trouble removing a item\n'+err);
-    res.send(ms);
+    res.redirect('/counter');
   }
     else{
       for(var i =0;i<done.itemstore.length;i++){
@@ -837,11 +837,10 @@ app.get('/counter/tmp_corr',function (req,res){
           counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
                    console.log(err2);
-                 res.send(ms);
+                 res.redirect('/counter');
                  }
                    else{
-                  ms.trouble=0;
-                 res.send(ms);
+                  res.redirect('/counter');
                    }
         });
         }
