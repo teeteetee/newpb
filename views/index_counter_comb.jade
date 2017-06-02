@@ -793,7 +793,7 @@ head
               
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm.btn_mod(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade.bs-example-modal-sm(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
           .modal-header
@@ -804,14 +804,14 @@ head
             //h5.item_link(style='margin-bottom:30px;color:gray;')
             h5.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h5.item_tags(style='margin-bottom:30px;color:#bbb;') 
-            .panel-group(id="redact_item_dialog" role="tablist" aria-multiselectable="true")
+            .panel-group(id="redact_item_dialog" role="tablist")
               .panel.panel-default
                 .panel-body
                   input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
                   input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
                   input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
                   input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-                  button(class='btn btn-blue form-control item_redact_submit') Submit
+                  button(class='btn btn-blue item_redact_submit') Submit
             //
               #redact_item_dialog(style='display:none;')
                 input#item_title_redact(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
@@ -819,6 +819,7 @@ head
                 input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
                 input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                 button(class='btn btn-yellow form-control item_redact_submit') Submit
+          .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn btn-yellow form-control item_redact') Redact
             button(class='btn btn-red form-control item_remove ') Remove
     .container(style='z-index:2;')
