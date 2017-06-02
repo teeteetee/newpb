@@ -1504,7 +1504,7 @@ head
         //-----------------------------------//
         function redactitem_submit(i) {
           var data={};
-          
+            data.v_index=i;
             data.item_title=consolidated[i].item_title;
             data.item_link=consolidated[i].item_link;
             data.item_comment=consolidated[i].item_comment;
