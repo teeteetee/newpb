@@ -1087,33 +1087,16 @@ app.post('/counter/addweb',function (req,res){
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
   { var json = {};
-     counter_movies.findOne({uid:req.session._id},function (err,doc){
-        if(err){
-           console.log('ERR WHILE BACKUP REQUEST');
-           console.log(err2);
-         }
-         else 
-       {
-         //doc2.forEach(function(element,index){
-         // json.push(element);
-         //});
-         json.movies={};
-         json.movies.moviestore=doc.moviestore;
-         json.movies.total=doc.total;
-         json.movies.oldones=doc.oldones;
-         json.movies.newones=doc.newones;
-         counter_books.findOne({uid:req.session._id},function (err,doc2){
+     counter_items.findOne({uid:req.session._id},function (err,doc){
             if(err){
                console.log('ERR WHILE BACKUP REQUEST');
                console.log(err3);
              }
              else 
            {
-            json.books={};
-            json.books.bookstore=doc2.bookstore;
-            json.books.total=doc2.total;
-            json.books.oldones=doc2.oldones;
-            json.books.newones=doc2.newones;
+            json.items={};
+            json.items.itemstore=doc.itemstore;
+            json.items.total=doc.total;
             var d = new Date();
             var vday = d.getDate().toString();
             var vmonth = d.getMonth()+1;
@@ -1127,7 +1110,7 @@ app.post('/backup',function (req,res){
                    vmonth='0'+vmonth;
                  }
             var date= vday+'/'+vmonth+'/'+vyear;
-            var filename = 'Movies_backup_'+date+'.json'; // or whatever
+            var filename = 'CONSORCIO_backup_'+date+'.json'; // or whatever
             var mimetype = 'application/json';
             res.setHeader('Content-disposition', 'attachment; filename=' + filename);
             res.setHeader('Content-type', mimetype);
@@ -1135,9 +1118,7 @@ app.post('/backup',function (req,res){
             res.end();
            }
          });
-       }
-     });
-    //res.redirect('/');
+
     }
     else {
       res.send('err');
