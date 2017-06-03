@@ -815,10 +815,10 @@ head
             button(class='btn btn-yellow form-control item_redact') Redact
             button(class='btn btn-red form-control item_remove ' style='margin:0px;') Remove
     .container(style='z-index:2;')
+      .row(style='display:none;')
+        .col-xs-12
+          form(method='post',action='/backup',role='form',id='backupform')
       //
-        .row(style='display:none;')
-          .col-xs-12
-            form(method='post',action='/backup',role='form',id='backupform')
         .row(style='text-align:center;margin-bottom:30px;')
           .col-xs-12
              h3#user_name(style='font-weight:200;margin-bottom:20px;')
