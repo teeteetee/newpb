@@ -882,7 +882,7 @@ app.post('/counter/rd_item/',function(req,res){
               done.itemstore[i].item_comment = vlink;
               done.itemstore[i].item_link = vlink;
               vtags.forEach(function (element, index){
-              vtags[index]=trim1(element);
+              vtags[index]=trim1(element).toLowerCase();
               });
               done.itemstore[i].item_tags = vtags;
               counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
