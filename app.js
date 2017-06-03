@@ -1150,28 +1150,20 @@ app.post('/counter/restore',function (req,res){
        if (valid) {
          console.log('breakpoint 4');
          data = JSON.parse(data);
-         counter_movies.update({uid:req.session._id},{$set:{total:data.movies.total,newones:data.movies.newones,oldones:data.movies.oldones,moviestore:data.movies.moviestore}},function (err,done){
+         counter_items.update({uid:req.session._id},{$set:{total:data.items.total,itemstore:data.items.itemstore}},function (err,done){
            if(err){
             console.log('err');
            }
            else {
-              counter_books.update({uid:req.session._id},{$set:{total:data.books.total,newones:data.books.newones,oldones:data.books.oldones,bookstore:data.books.bookstore}},function (err2,done2){
-                if(err2){
-                 console.log('err');
-                }
-                else {
-
-                }
-              });
+              console.log('breakpoint 5');
+              fs.unlink(oldPath, function(){
+                //if(err) throw err;
+                if(err) console.log(err);
+                res.redirect('/counter/comb');
+               });
            }
          });
        }
-        console.log('breakpoint 5');
-      fs.unlink(oldPath, function(){
-        //if(err) throw err;
-        if(err) console.log(err);
-        res.redirect('/counter/comb');
-       });
     });
   }
   else{
