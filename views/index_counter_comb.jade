@@ -1303,10 +1303,9 @@ head
                       else{
                         temp_insert=element.item_title;
                       }
-                      //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
-                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
+                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
+                      //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags.length){
-                        insert+='<div class="col-sm-3">';
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
@@ -1326,7 +1325,6 @@ head
                            // console.log('TAGS LENGTH: '+tags.length);
                            }
                           });
-                        insert+="</div>";
                         element.item_tags.forEach(function (element_3,index_3){
                         //console.log('correcting an array: '+element.item_tags);
                         element.item_tags[index_3]=' '+element.item_tags[index_3];
