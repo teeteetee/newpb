@@ -561,8 +561,9 @@ head
       .NEW_VERSION_ITEMS{}
       #menu_bar {
       min-height:100vh;
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(0,0,0,0.9);
       padding-top:20px;
+      color:rgba(255,255,255,0.7);
       }
       #lists {
         height: 100vh;
@@ -643,6 +644,11 @@ head
         letter-spacing:0px;
         margin-left:10px;
         }
+      #user_name {
+      padding-bottom: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+      }
   body
     //  
       nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -814,7 +820,11 @@ head
         .col-md-2#menu_bar
           .row(style='border-bottom:1px solid rgba(255,255,255,0.3);margin-bottom:30px;')
             h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;margin-bottom:20px;') Content Digest
-          h4 Reso 
+          h4#user_name Reso 
+          .row.menu_item.active_menu_item Your list
+          .row.menu_item 
+            span(style='color:#ff9900;') +
+            | Invite friends, create team list
           .row.menu_item#add_modal_trigger(onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.menu_item Mates
           .row.menu_item#settings_btn Settings
