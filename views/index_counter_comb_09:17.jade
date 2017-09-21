@@ -563,7 +563,8 @@ head
       min-height:100vh;
       background-color: rgba(0,0,0,0.9);
       padding-top:20px;
-      color:rgba(255,255,255,0.7);
+      color:rgba(255,255,255,0.3);
+      font-weight:100;
       }
       #lists {
         height: 100vh;
@@ -574,7 +575,9 @@ head
         padding-left:15px;
       }
       .menu_item:hover{
-        background-color:#ffd3b7;
+        /*background-color:#ffd3b7;*/
+        background-color:rgba(255,255,255,0.1);
+        color:black;
       }
       .menu_item.selected {
         background-color:#ffd3b7;
@@ -824,9 +827,8 @@ head
           .row.menu_item.active_menu_item Your list
           .row.menu_item 
             span(style='color:#ff9900;') +
-            | Invite friends, create team list
-          .row.menu_item#add_modal_trigger(onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
-          .row.menu_item Mates
+            | Create team list
+          .row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
