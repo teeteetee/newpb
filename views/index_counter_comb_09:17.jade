@@ -828,6 +828,7 @@ head
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous")
       script.
        var nick = '#{nick}';
+       alert(nick);
        if(nick.length>1){
         $('#user_name').text(nick);
        }
@@ -1029,8 +1030,8 @@ head
             });
         }
         //--------------------//
-        alert("DEBUG--------DEBUG----------DEBUG ");
-        alert("/counter/greeting/"+'#{_id}');
+        //alert("DEBUG--------DEBUG----------DEBUG ");
+        //alert("/counter/greeting/"+'#{_id}');
         $.ajax({
             method: "POST",
             url: "/counter/greeting/"+'#{_id}',
@@ -1190,9 +1191,9 @@ head
         String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
         }
-        function level() {
-          $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
-        }
+        //function level() {
+        //  $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
+        //}
         //---------------------------//
         var seenmovies;
         var newmovies;
