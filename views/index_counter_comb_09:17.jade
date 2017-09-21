@@ -26,26 +26,10 @@ head
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       body{
-      background-color: #005ab9;
-      }
-      @media(min-width:768px){
-        .navbar-collapse{
-      background-color: transparent;
-      }
-      .navbar-nav{
-        font-size:10px;
-      }
-      }
-      @media(max-width:767px){
-      /*  .navbar-collapse{
-      background-color: rgba(0, 0, 0, 0.82);
-      }*/
-      .navbar-header{
-        background-color:black;
-      }
-      }
-      h1, h2, h3, h4, h5, h6 {
-        font-weight:300;
+      bbackground: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
       }
       .container {
         transition: 0.5s -webkit-filter linear;
@@ -538,7 +522,7 @@ head
       .popover {
         padding:0px;
       }
-      .label-primary{
+      .badge-primary{
       background-color: #013975;
       color: #1a6cc3;
       margin: 3px;
@@ -635,6 +619,89 @@ head
         font-weight:200;
         background-color: #6bb9ff;
       }
+      .NEW_VERSION_ITEMS{}
+      #menu_bar {
+      min-height:100vh;
+      background-color: rgba(255,255,255,0.2);
+      padding-top:20px;
+      }
+      #lists {
+        min-height:100vh;
+        padding-top:100px;
+      }
+      .menu_item{
+        padding-left:15px;
+      }
+      .menu_item:hover{
+        background-color:#ffd3b7;
+      }
+      .menu_item.selected {
+        background-color:#ffd3b7;
+      }
+      .list-group{
+        background-color:none;
+      }
+      .list-group-item{
+        background-color:rgba(255,255,255,0.2);
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:5px;
+        padding-bottom:5px;
+        color:white;
+        font-weight:100;
+      }
+      .list-group-item:hover{
+        background-color:rgba(255,255,255,0.3);
+      }
+      .list-group-item{
+        border:none;
+        border-bottom:rgba(255,255,255,0.3);
+      }
+      .list-group-item:last-child{
+        border-bottom:none;
+      }
+      #tags{
+        padding:10px;
+        min-width:100%;
+        min-height:40px;
+        background-color:rgba(255,255,255,0.1);
+        border-radius:6px;
+        margin-bottom:40px;
+        color:rgba(255,255,255,0.5);
+      }
+      a .badge {
+       background-color: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 200;
+      color: white;
+      margin-right: 10px;
+      margin-left: 4px;
+      }
+      .badge {
+      display: inline-block;
+      min-width: 10px;
+      padding: 3px 7px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 10px;
+      }
+      .badge-primary {
+             background-color: rgba(255,255,255,0.3);
+             color: white;
+             margin: 3px;
+             font-weight: 200;
+             letter-spacing: 1px;
+             padding: 4px 5px;
+              }
+          small {
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing:0px;
+            margin-left:10px;
+            }
   body(style='padding-top:51px;')
     //  
       nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -662,7 +729,7 @@ head
                   |Logout
              
             form(class="navbar-form navbar-right" role="search")
-             .input-group.pull-right
+             .input-group.float-right
                 input(type="text" class="form-control" name='searc_input' onKeyUp="typewatch(function(){search();}, 1000 );" id='search_input' placeholder='search' style='background-color: #005ab9;border-radius: 6px;border: none;color:white;') 
             
     .modal.fade.bs-example-modal-sm(id='tagsmodal' tabindex="-1")
@@ -720,14 +787,14 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     button.btn.btn-blue#backup download 
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")    
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
                 #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body(style='padding-top:30px;')
                     .form-group
@@ -736,7 +803,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree3")
                   button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     .input-group#nick_group
@@ -746,7 +813,7 @@ head
               .panel.panel-default
                 .panel-heading(role="tab" id="headingFour3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
-                    span(class="glyphicon glyphicon-chevron-right pull-right" style="color:gray;")
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
                     .checkbox#visibility
@@ -1262,7 +1329,7 @@ head
                         //console.log('TAGS: '+element.item_tags);
                         element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
-                          insert+="<span class='label pull-right label-primary'>"+element_1+"</span>";
+                          insert+="<span class='label float-right badge-primary'>"+element_1+"</span>";
                           $.each(tags, function(key, tag) {
                            if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                             //console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
