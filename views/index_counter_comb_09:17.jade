@@ -858,11 +858,11 @@ head
        if(nick.length>1){
         $('#user_name').text(nick);
        }
-       var has_team = #{team};
-       if(has_team){
-        $('#create_team').empty();
-        alert('has a team');
-       }
+       //var has_team = #{team};
+       //if(has_team){
+       // $('#create_team').empty();
+       // alert('has a team');
+       //}
        $("input").keypress(function(event) {
             if (event.which == 13) {
                 if($('#first_time').css('display')!='none'){
