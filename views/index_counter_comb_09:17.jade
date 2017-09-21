@@ -1274,7 +1274,7 @@ head
                         //console.log('TAGS: '+element.item_tags);
                         element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
-                          insert+="<span class='float-right badge-primary'>"+element_1+"</span>";
+                          insert+="<span class='badge float-right badge-primary'>"+element_1+"</span>";
                           $.each(tags, function(key, tag) {
                            if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                             //console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
