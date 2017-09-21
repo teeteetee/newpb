@@ -707,10 +707,10 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
             h4(class="modal-title" style='text-align:center;' ) You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
           .modal-body  
             ul.list-group.friendlist(style='margin-bottom:0px;')
               li.list-group-item.noitemsfriends Пока пусто
@@ -720,9 +720,9 @@ head
       .modal-dialog.modal-sm(role="document")
         .modal-content
           .modal-header(style='border-bottom: 1px solid #eee;')
+            h4(class="modal-title" style='text-align:center;' ) Settings
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") &times;
-            h4(class="modal-title" style='text-align:center;' ) Settings
           .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
@@ -767,9 +767,9 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
+            h4(class="modal-title" style='text-align:center;') Add item
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            h4(class="modal-title" style='text-align:center;') Add item
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default
