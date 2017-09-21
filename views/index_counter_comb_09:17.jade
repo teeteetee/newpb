@@ -1066,7 +1066,7 @@ head
                             console.log('MTEXT: '+msg.mtext);
                               $('#change_nick').prop('disabled',false);
                               console.log('DISABLED OFF');
-                            $('#nick').tooltip('destroy');
+                            //$('#nick').tooltip('destroy');
                           }
                             else{
                               console.log('no')
@@ -1103,7 +1103,7 @@ head
                             console.log('MTEXT: '+msg.mtext);
                               $('#change_nick_first').prop('disabled',false);
                               console.log('DISABLED OFF');
-                            $('#nick_first').tooltip('destroy');
+                            //$('#nick_first').tooltip('destroy');
                           }
                             else{
                               console.log('no')
@@ -1159,7 +1159,7 @@ head
         }
         var settings_loaded =0;
         $('#settings_btn').click(function(){
-          $('#nick').tooltip('destroy');
+          //$('#nick').tooltip('destroy');
           $('#settings').modal('show');
           if(!settings_loaded)
           {$.ajax({
@@ -1320,7 +1320,7 @@ head
             }
             });
            if(search_tmp&&search_tmp.length&&search_tmp!=previous_search_results){
-            $('#search_input').popover('destroy');
+           // $('#search_input').popover('destroy');
             console.log(' popover destroyed');
             //console.log('found smth: '+search_tmp);
             var content;
