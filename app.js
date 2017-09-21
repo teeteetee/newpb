@@ -251,10 +251,12 @@ app.get('/counter',function (req,res){
   if(req.session&&req.session._id)
  {console.log(req.session);
   if(req.session.nick){
-    res.render('index_counter_comb',{'_id':req.session._id,'nick':req.session.nick});
+    //res.render('index_counter_comb',{'_id':req.session._id,'nick':req.session.nick});
+    res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick});
   }
   else{
-  res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
+  //res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
+  res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':0});
 }}
  else {
   res.render('counter_index_login');
