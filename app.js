@@ -1556,22 +1556,7 @@ app.post('/newteamlist',function(req,res){
                    res.send(ms); 
                   }
                 else {
-                  if(done_0&&done_0.teamlists){
-                    counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
-                      if(err)
-                       {
-                         ms.mtext='db';
-                        res.send(ms); 
-                       }
-                     else {
-                      ms.trouble =0;
-                      ms.mtext='success';
-                      res.send(ms);
-                     }
-                  });
-                  }
-                    else{
-                      counter_users.update({_id:req.session._id},{$set:{teamlists:[done._id]}},function (err,done_1){
+                  counter_users.update({_id:req.session._id},{$push:{teamlists:[done._id]}},function (err,done_1){
                         if(err)
                        {
                          ms.mtext='db';
@@ -1583,7 +1568,6 @@ app.post('/newteamlist',function(req,res){
                       res.send(ms);
                      }
                   });
-                    }
               }
             });
           //ms.trouble =0;

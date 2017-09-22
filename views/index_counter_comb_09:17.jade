@@ -797,15 +797,15 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4(class="modal-title" style='text-align:center;') Invite friends
+            h4(class="modal-title" style='text-align:center;') New team list
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default     
                 .panel-body
-                  input#friend_email(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="friend's email")
-                  button(class='btn btn-blue' onclick='invite_friend()') Добавить          
+                  input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                  button(class='btn btn-blue' onclick='add_list()') Добавить          
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1610,6 +1610,32 @@ head
         
             });
         });
+        function submit_teamlist(){
+          var teamlist_name;
+          
+        if($('#item_title').val() )//what if I dont know year yet?
+        {
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.teamlisname = $('#teamlist_name').val();
+           
+          $.ajax({
+              method: "POST",
+              url: "/counter/newteamlist",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter';
+              });
+          }
+          else{
+            alert('no name provided');
+          }
+        }
+        
+      
         
         
         
