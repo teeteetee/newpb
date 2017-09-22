@@ -250,12 +250,12 @@ app.post('/counter/current/done',function (req,res){
 app.get('/update_users',function (req,res){
   counter_users.update({},{$set:{teamlists:[]}},function(err,done){
     if(err){
-      console.log('err updating users: '+err)
+      console.log('err updating users: '+err);}
       else{
         console.log('update users success');
         res.redirect('/counter');
       }
-    }
+    
   });
 });
 
