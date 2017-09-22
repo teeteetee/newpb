@@ -1534,7 +1534,7 @@ function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
 
-app.post('/newteamlist',function(req,res){
+app.post('/counter/newteamlist',function(req,res){
   console.log('brp 1');
   var ms = {};
     ms.trouble=1;
