@@ -1593,7 +1593,7 @@ else{
 }
 });
 
-app.get('/correction',function(res,req){
+app.get('/correction',function(req,res){
   counter_users.update({_id:req.session._id},{$set:{teamlists:["59c502dcc2fb5a2c61000001"]}},function(err,done){
     if(err){
       res.send(err);
