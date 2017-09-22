@@ -629,7 +629,7 @@ app.post('/counter/getitems',function (req,res){
         res.send(ms);
       }
       else {
-        console.log('hey 2');
+        console.log('hey 2: '+doc);
         res.send(ms);
       }
     });}
