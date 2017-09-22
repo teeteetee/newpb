@@ -248,7 +248,7 @@ app.post('/counter/current/done',function (req,res){
 //-----------------test-----------------//
 
 app.get('/update_users',function (req,res){
-  counter_users.update({},{$set:{teamlists:[]}},function(err,done){
+  counter_users.update({},{$set:{'teamlists':[]}},function(err,done){
     if(err){
       console.log('err updating users: '+err);}
       else{
