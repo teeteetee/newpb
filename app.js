@@ -1567,7 +1567,7 @@ app.post('/counter/newteamlist',function(req,res){
                   }
                 else {
                   console.log('brp 6');
-                  counter_users.update({_id:req.session._id},{$push:{teamlists:[done._id]}},function (err,done_1){
+                  counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
                     console.log('brp 7');
                         if(err)
                        {
@@ -1591,6 +1591,17 @@ app.post('/counter/newteamlist',function(req,res){
 else{
   res.send('err');
 }
+});
+
+app.get('/correction',function(res,req){
+  counter_users.update({_id:req.session._id},{$set:{teamlists:["59c502dcc2fb5a2c61000001"]}},function(err,done){
+    if(err){
+      res.send(err);
+    }
+    else {
+      res.redirect('/counter');
+    }
+  });
 });
 
 app.post('/newuser',function(req,res){
