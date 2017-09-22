@@ -613,8 +613,9 @@ app.post('/counter/getteamlists',function (req,res){
 app.post('/counter/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
-  if(req.session&&req.session._id)
-  {counter_items.findOne({uid:req.session._id},function(err,doc){
+  var vuid = req.body._id;
+  if(req.session&&req.session._id&&vuid)
+  {counter_items.findOne({uid:rvuid},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -658,76 +659,76 @@ else{
 }
 });
 
-app.post('/counter/friend/getmovies/:_id',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id&&req.params._id)
-  {
-    counter_movies.findOne({uid:req.params._id},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else{
-   res.send(ms);
-}
-});
+//app.post('/counter/friend/getmovies/:_id',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id&&req.params._id)
+//  {
+//    counter_movies.findOne({uid:req.params._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
+//
+//app.post('/counter/friend/getbooks/:_id',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id&&req.params._id)
+//  {
+//    counter_books.findOne({uid:req.params._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
 
-app.post('/counter/friend/getbooks/:_id',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id&&req.params._id)
-  {
-    counter_books.findOne({uid:req.params._id},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else{
-   res.send(ms);
-}
-});
-
-app.post('/counter/getbooks',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id)
-  {counter_books.findOne({uid:req.session._id},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else{
-  res.send(ms);
-}
-});
+//app.post('/counter/getbooks',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_books.findOne({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//  res.send(ms);
+//}
+//});
 
 //app.get('/counter/sset',function (req,res){
 //  counter_friends.update({uid:req.session._id},{$set:{total:0}},function(err,doc){
@@ -788,51 +789,51 @@ else{
 }
 });
 
-app.post('/counter/getstat_m',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id)
-  {counter_movies.find({uid:req.session._id},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE STATS QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else {
-  res.send(ms);
-}
-});
-
-app.post('/counter/getstat_b',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id)
-  {counter_books.find({uid:req.session._id},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE STATS QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else {
-  res.send(ms);
-}
-});
+//app.post('/counter/getstat_m',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_movies.find({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE STATS QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else {
+//  res.send(ms);
+//}
+//});
+//
+//app.post('/counter/getstat_b',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_books.find({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE STATS QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else {
+//  res.send(ms);
+//}
+//});
 
 app.post('/counter/rm_item/',function(req,res){
   //add user verification
@@ -1558,7 +1559,24 @@ function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
 
-app.post('/counter/newteamlist',function(req,res){
+app.post('/counter/rmteamlist',function (req,res){
+  var ms = {};
+    ms.trouble=1;
+    ms.mtext='trouble'; 
+    var vteamlistid= req.body.teamlistid;
+    //var vmail = req.body.mail;
+    if(req.session&&req.session._id&&vteamlistname)
+ {
+   counter_teamlists.remove({_id:vteamlistname});
+
+ }
+else {
+  res.send('err');
+}
+});
+
+
+app.post('/counter/newteamlist',function (req,res){
   console.log('brp 1');
   var ms = {};
     ms.trouble=1;
@@ -1591,6 +1609,7 @@ app.post('/counter/newteamlist',function(req,res){
                   }
                 else {
                   console.log('brp 6');
+                  counter_items.insert({uid:done._id,total:0,itemstore:[]});
                   counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:vteamlistname}}},function (err,done_1){
                     console.log('brp 7');
                         if(err)

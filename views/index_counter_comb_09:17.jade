@@ -950,8 +950,9 @@ head
                       }
                   });}
         }
-        //---------------------//
-        
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         function more_get_names(section) {
           var more_get_names_count=section?temp_followers.length:temp_friends.length;
           (function(){
@@ -983,7 +984,9 @@ head
           } 
         });
         }
-        //---------------------//
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         function more(section) {
           //TODO
           if(section){
@@ -1061,9 +1064,9 @@ head
                $('#show_mail').prop('disabled',true);
             });
         }
-        //--------------------//
-        //alert("DEBUG--------DEBUG----------DEBUG ");
-        //alert("/counter/greeting/"+'#{_id}');
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         $.ajax({
             method: "POST",
             url: "/counter/greeting/"+'#{_id}',
@@ -1072,7 +1075,9 @@ head
                if(msg.mtext&&parseInt(msg.mtext))
                {$('#first_time').modal('show');}
              });
-        //--------------------//
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -1111,7 +1116,9 @@ head
            // e.onchange = e.oninput; // FF needs this in <select><option>...
            // other things for onload()
         };
-        //------------------//
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -1146,7 +1153,9 @@ head
             })
            e.onpropertychange = e.oninput; 
         };
-        //------------------///
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         function change_nick(mode){
           switch(mode){
           case 1:
@@ -1181,9 +1190,13 @@ head
           break;
           }
           };
+        //--------------------------------------//
         function add_dialog() {
           $('#add_comb').modal('show');
         }
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         var settings_loaded =0;
         $('#settings_btn').click(function(){
           //$('#nick').tooltip('destroy');
@@ -1214,6 +1227,9 @@ head
         $('#backup').click(function(){
           $('#backupform').submit();
           });
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         function sortByKey(array, key) {
           return array.sort(function(a, b) {
               var x = parseInt(a[key]); var y = parseInt(b[key]);
@@ -1223,27 +1239,11 @@ head
         String.prototype.capitalizeFirstLetter = function() {
           return this.charAt(0).toUpperCase() + this.slice(1);
         }
-        //function level() {
-        //  $('#oldcol').height()>$('#newcol').height()?$('#newcol').height($('#oldcol').height()):$('#oldcol').height($('#newcol').height());
-        //}
-        //---------------------------//
-        var seenmovies;
-        var newmovies;
-        //$.ajax({
-        //      method: "POST",
-        //      url: "/counter/getstat_m",
-        //      data: 0
-        //    })
-        //      .done(function( msg ) {
-        //        if(!msg.trouble) {
-        //          console.log(msg.doc);
-        //          seenmovies = msg.doc[0].oldones;
-        //          newmovies = msg.doc[0].newones;
-        //          $('#oldnum').text(seenmovies);
-        //          $('#newnum').text(newmovies);
-        //        }
-        //        });
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         var consolidated=[];
+        var consolidated_teamlists=[];
         var tags=[];
         $.ajax({
               method: "POST",
@@ -1270,6 +1270,40 @@ head
                    }  
                 }
               });
+            
+            function get_items(_id){
+              var consolidated=[];
+              $.ajax({
+              method: "POST",
+              url: "/counter/getitems",
+              data: {'_id':_id}
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                 // console.log('items: '+JSON.stringify(msg.doc));
+                   items=msg.doc.itemstore;
+                  if(!items ) {
+                   console.log('no items in teamlist');
+                   //return consolidated;
+                   }
+                   else {
+                    items.forEach(function (element,index){
+                    if(element.item_title)
+                       //console.log('element pushed');
+                       consolidated.push(element);        
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   populate(consolidated);
+                   //return consolidated;
+                   }  
+                }
+              });
+            }
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//     
         $.ajax({
               method: "POST",
               url: "/counter/getteamlists",
@@ -1282,7 +1316,8 @@ head
                    }
                    else {
                     msg.doc.forEach(function (element,index){
-                      $('#team_lists_insert').append('<div class="row menu_item">'+element.list_name+'</div>');
+                      var temp_insert='open_list("'+element._id+'")';
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+element.list_name+')">'+element.list_name+'</div>');
                     //if(element.item_title)
                     //   //console.log('element pushed');
                     //   consolidated.push(element); 
@@ -1472,15 +1507,13 @@ head
         //----------------------------//
         function removeitem(i) {
           var data={};
-          
-            data.item_title=consolidated[i].item_title;
-            data.item_tmstmp=consolidated[i].tmstmp;
-          
-        $.ajax({
+          data.item_title=consolidated[i].item_title;
+          data.item_tmstmp=consolidated[i].tmstmp;  
+         $.ajax({
               method: "POST",
-              url: "/counter/rm_item/",//+consolidated[movieid].newmovie+"/"+consolidated[movieid]._id,
+              url: "/counter/rm_item/",
               data: data
-            })
+                })
               .done(function( msg ) {
               //  $('#moviemodal').modal('hide');
               //  var vname = '.movie_'+movieid;
@@ -1517,8 +1550,7 @@ head
               method: "POST",
               url: "/counter/rd_item/",
               data: data
-            })
-              .done(function( msg ) {
+              }).done(function( msg ) {
               //  $('#moviemodal').modal('hide');
               //  var vname = '.movie_'+movieid;
               //  $(vname).empty();
@@ -1554,8 +1586,7 @@ head
               .done(function( msg ) {
               window.location='/counter';
               });
-        }
-        
+        } 
         //---------------------------//
         function submit_item(){
           var item_title;
@@ -1660,6 +1691,19 @@ head
             alert('no name provided');
           }
         }
+        function open_list(list_id){
+          var list_id_jq='#'+list_id;
+         $('#main_list').empty();
+         $('#tags').empty();
+         $('.menu_item').removeClass('selected');
+         $(list_id_jq).addClass('selected');
+         get_items(list_id);
+        }
+        //function load_team_lists(team_lists_arr){
+        //  team_lists_arr.forEach(function (element,index){
+        //      
+        //    });
+        //}
         
       
         
