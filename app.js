@@ -1618,7 +1618,7 @@ else{
 });
 
 app.get('/correction',function(req,res){
-  counter_users.update({_id:req.session._id},{$set:{teamlists:[{_id:"59c502dcc2fb5a2c61000001",list_name:'Test team list']}},function(err,done){
+  counter_users.update({_id:req.session._id},{$set:{teamlists:[{_id:"59c502dcc2fb5a2c61000001",list_name:'Test team list'}]}},function(err,done){
     if(err){
       res.send(err);
     }
