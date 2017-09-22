@@ -805,7 +805,7 @@ head
               .panel.panel-default     
                 .panel-body
                   input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
-                  button(class='btn btn-blue' onclick='add_list()') Добавить          
+                  button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade.bs-example-modal-sm(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1610,7 +1610,7 @@ head
         
             });
         });
-        function submit_teamlist(){
+        function add_team_list(){
           var teamlist_name;
           
         if($('#item_title').val() )//what if I dont know year yet?
@@ -1619,7 +1619,7 @@ head
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.teamlisname = $('#teamlist_name').val();
+           data.teamlistname = $('#list_name').val();
            
           $.ajax({
               method: "POST",
