@@ -617,7 +617,7 @@ app.post('/counter/getitems',function (req,res){
   //var vuid = req.body._id.replace(/"/g,'').trim();
   //console.log('vuid: '+vuid);
   if(req.session&&req.session._id&&req.body._id)
-  {counter_items.findOne({uid:req.body._id},function(err,doc){
+  {counter_items.findOne({uid:req.body._id.toString()},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
