@@ -253,6 +253,7 @@ app.get('/update_users',function (req,res){
       console.log('err updating users: '+err);}
       else{
         console.log('update users success');
+        console.log('done: '+done)
         res.redirect('/counter');
       }
     
@@ -1189,6 +1190,7 @@ app.post('/counter/restore',function (req,res){
 
 
 app.get('/',function(req,res) {
+  res.send('boo');
 /*   var tmstmp=0;
     if(req.session.tmstmp)
     {console.log('setting last_visit');
