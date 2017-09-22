@@ -310,6 +310,7 @@ app.get('/counter/setfirsttime',function (req,res){
 });
 
 app.post('/counter/greeting/:_id',function (req,res){
+  //cancel that from server so it wont appear more that once 
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
@@ -319,7 +320,7 @@ app.post('/counter/greeting/:_id',function (req,res){
           }
           else{
             if(done)
-            {console.log('sending greeting');
+            {//console.log('sending greeting');
             ms.trouble=0;
             ms.mtext=done.first_time;
             if(parseInt(done.first_time)){
@@ -614,6 +615,7 @@ app.post('/counter/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
   var vuid = req.body._id;
+  console.log('vuid: '+vuid);
   if(req.session&&req.session._id&&vuid)
   {counter_items.findOne({uid:rvuid},function(err,doc){
       if(err) {
