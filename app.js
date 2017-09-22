@@ -1514,6 +1514,12 @@ app.get('/counter/showteamlists',function (req,res){
     });
 });
 
+app.get('/counter/showitems',function (req,res){
+  counter_items.find({},function(err,done){
+      res.send(JSON.stringify(done));
+    });
+});
+
 //app.get('/counter/showusers',function (req,res){
 //  counter_users.find({},function(err,done){
 //    counter_books.find({},function(err,done1){
