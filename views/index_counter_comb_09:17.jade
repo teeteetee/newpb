@@ -1249,7 +1249,7 @@ head
         $.ajax({
               method: "POST",
               url: "/counter/getitems",
-              data: 0
+              data: {'_id':'#{_id}'}
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
