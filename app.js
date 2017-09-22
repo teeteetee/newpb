@@ -17,7 +17,7 @@ var gm = require('gm');
 var mongo = require('mongodb').MongoClient;
 //var db = require('monk')('localhost/tav'),users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 
-var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
+var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_teamlists = db.get('counter_teamlist'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
 
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
@@ -246,6 +246,18 @@ app.post('/counter/current/done',function (req,res){
 
 */
 //-----------------test-----------------//
+
+app.get('/update_users',function (req,res){
+  counter_users.update({},{$set:{teamlists:[]}},function(err,done){
+    if(err){
+      console.log('err updating users: '+err)
+      else{
+        console.log('update users success');
+        res.redirect('/counter');
+      }
+    }
+  });
+});
 
 app.get('/counter',function (req,res){
   if(req.session&&req.session._id)
@@ -1508,6 +1520,75 @@ function validateEmail(email) {
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
+
+app.post('/newteamlist',function(req,res){
+  var ms = {};
+    ms.trouble=1;
+    ms.mtext='trouble'; 
+    var vteamlistname = req.body.teamlistname;
+    //var vmail = req.body.mail;
+    if(req.session&&req.session._id&&vteamlistname)
+ {
+   counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),users:[req.session._id]},function (err,done){
+            if(err)
+            {
+              ms.mtext='db';
+             res.send(ms); 
+            }
+          else {
+          //counter_stats.update({$inc:{users:1}});
+          //var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
+          //console.log('vuid: '+vuid);
+          //counter_items.insert({uid:vuid,total:0,itemstore:[]});
+          //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
+          //req.session._id=done._id;
+               counter_users.findOne({_id:req.session._id},function (err,done_0){
+                if(err)
+                  {
+                    ms.mtext='db';
+                   res.send(ms); 
+                  }
+                else {
+                  if(done_0&&done_0.teamlists){
+                    counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
+                      if(err)
+                       {
+                         ms.mtext='db';
+                        res.send(ms); 
+                       }
+                     else {
+                      ms.trouble =0;
+                      ms.mtext='success';
+                      res.send(ms);
+                     }
+                  });
+                  }
+                    else{
+                      counter_users.update({_id:req.session._id},{$set:{teamlists:[done._id]}},function (err,done_1){
+                        if(err)
+                       {
+                         ms.mtext='db';
+                        res.send(ms); 
+                       }
+                     else {
+                      ms.trouble =0;
+                      ms.mtext='success';
+                      res.send(ms);
+                     }
+                  });
+                    }
+              }
+            });
+          //ms.trouble =0;
+          //ms.mtext='success';
+          //res.send(ms);
+          }
+          });
+        }
+else{
+  res.send('err');
+}
+});
 
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
