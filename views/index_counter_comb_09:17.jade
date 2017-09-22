@@ -1319,7 +1319,7 @@ head
                    else {
                     msg.doc.forEach(function (element,index){
                       var temp_insert='open_list("'+element._id+'")';
-                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+element.list_name+')">'+element.list_name+'</div>');
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick='+temp_insert+'>'+element.list_name+'</div>');
                     //if(element.item_title)
                     //   //console.log('element pushed');
                     //   consolidated.push(element); 
