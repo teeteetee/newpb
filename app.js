@@ -1245,9 +1245,9 @@ app.get('/',function(req,res) {
    }*/
 });
 
-app.get('/userpage',function (req,res){
-  res.render('userpage_new');
-});
+//app.get('/userpage',function (req,res){
+//  res.render('userpage_new');
+//});
 
 //DATA VALIDATION
 // half of this shit doesnt work and fucks the thing up, needs to be tested
@@ -1311,126 +1311,126 @@ function is_email(email) {
 
 //END OF DATA VALIDATION
 
-app.post('/getitems',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  items.find({},function (err,doc){
-    //console.log(doc);
-    if(err) {
-      console.log('ERR WHILE ITEMS QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
+//app.post('/getitems',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  items.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+//
+//app.post('/getitems_b',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  business.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_b QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
 
-app.post('/getitems_b',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  business.find({},function (err,doc){
-    //console.log(doc);
-    if(err) {
-      console.log('ERR WHILE ITEMS_b QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
-
-app.post('/getitems_m',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  misc.find({},function (err,doc){
-    //console.log(doc);
-    if(err) {
-      console.log('ERR WHILE ITEMS_b QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
+//app.post('/getitems_m',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  misc.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_b QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
 
 //
 
-app.post('/getitems_q',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  questions.find({},function (err,doc){
-    //console.log(doc);
-    if(err) {
-      console.log('ERR WHILE ITEMS_q QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
+//app.post('/getitems_q',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  questions.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_q QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
 
-app.post('/getitems_ic',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  concepts.find({},function (err,doc){
-    //console.log(doc);
-    if(err) {
-      console.log('ERR WHILE CONCEPTS QUERY');
-      res.send(ms);
-    }
-    else if(doc!=null){
-      ms.doc = doc;
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      res.send(ms);
-    }
-  });
-});
-
-
+//app.post('/getitems_ic',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  concepts.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE CONCEPTS QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
 
 
-app.post('/ic',function (err,done){
-  var ms ={};
-  concepts.find({},function(err,done){
-    if(err)
-    {
-      ms.trouble=0;
-      res.send(ms);
-    }
-    else {
-      ms.articles=done;
-      ms.trouble=0;
-      res.send(ms);
-    }
-  });
-});
+
+
+//app.post('/ic',function (err,done){
+//  var ms ={};
+//  concepts.find({},function(err,done){
+//    if(err)
+//    {
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      ms.articles=done;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//  });
+//});
 
 
 function validateJSON(body) {
@@ -1449,60 +1449,65 @@ function validateJSON(body) {
 
 
 
-app.get('/signin', function (req,res){
-  var color;
-   switch(Math.floor(Math.random() * 4) + 1){
-     case(1):
-     color='#ec3737';
-     break
-     case(2):
-     color='#37b6ec';
-     break
-     case(3):
-     color='#1FD081';
-     break
-     case(4):
-     color='#ec8637';
-     break
-   }
-   res.render('signin',{'color':color});
-});
+//app.get('/signin', function (req,res){
+//  var color;
+//   switch(Math.floor(Math.random() * 4) + 1){
+//     case(1):
+//     color='#ec3737';
+//     break
+//     case(2):
+//     color='#37b6ec';
+//     break
+//     case(3):
+//     color='#1FD081';
+//     break
+//     case(4):
+//     color='#ec8637';
+//     break
+//   }
+//   res.render('signin',{'color':color});
+//});
 
 app.get('/counter/logout',function (req,res){
   req.session.reset();
   res.redirect('/counter');
 });
 
-
 app.get('/counter/showusers',function (req,res){
   counter_users.find({},function(err,done){
-    counter_books.find({},function(err,done1){
-      counter_movies.find({},function(err,done2){
-       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
-      });
+      res.send(JSON.stringify(done));
     });
-  });
 });
 
-app.get('/counter/showweb',function (req,res){
-  counter_web.find({},function(err,done){
-       res.send(JSON.stringify(done));
-  });
-});
+//app.get('/counter/showusers',function (req,res){
+//  counter_users.find({},function(err,done){
+//    counter_books.find({},function(err,done1){
+//      counter_movies.find({},function(err,done2){
+//       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
+//      });
+//    });
+//  });
+//});
 
-app.get('/counter/showme',function (req,res){
-  counter_users.findOne({_id:req.session._id},function(err,done){
-    counter_books.findOne({uid:req.session._id},function(err,done1){
-      counter_movies.findOne({uid:req.session._id},function(err,done2){
-        counter_friends.findOne({uid:req.session._id},function(err,done3){
-          counter_web.findOne({uid:req.session._id},function(err,done4){
-       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'BOOKS:'+'\n'+JSON.stringify(done1)+'\n'+'MOVIES:'+'\n'+JSON.stringify(done2)+'\n'+'FRIENDS:'+'\n'+JSON.stringify(done3)+'\n'+'WEB:'+'\n'+JSON.stringify(done4));
-          });
-        });
-      });
-    });
-  });
-});
+//app.get('/counter/showweb',function (req,res){
+//  counter_web.find({},function(err,done){
+//       res.send(JSON.stringify(done));
+//  });
+//});
+
+//app.get('/counter/showme',function (req,res){
+//  counter_users.findOne({_id:req.session._id},function(err,done){
+//    counter_books.findOne({uid:req.session._id},function(err,done1){
+//      counter_movies.findOne({uid:req.session._id},function(err,done2){
+//        counter_friends.findOne({uid:req.session._id},function(err,done3){
+//          counter_web.findOne({uid:req.session._id},function(err,done4){
+//       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'BOOKS:'+'\n'+JSON.stringify(done1)+'\n'+'MOVIES:'+'\n'+JSON.stringify(done2)+'\n'+'FRIENDS:'+'\n'+JSON.stringify(done3)+'\n'+'WEB:'+'\n'+JSON.stringify(done4));
+//          });
+//        });
+//      });
+//    });
+//  });
+//});
 
 app.get('/counter/logout',function (req,res){
   delete req.session._id;
