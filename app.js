@@ -629,10 +629,12 @@ app.post('/counter/getitems',function (req,res){
         res.send(ms);
       }
       else {
+        console.log('hey 2');
         res.send(ms);
       }
     });}
 else{
+   console.log('hey 1');
    res.send(ms);
 }
 });
