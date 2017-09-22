@@ -1269,6 +1269,30 @@ head
                    }  
                 }
               });
+        $.ajax({
+              method: "POST",
+              url: "/counter/getteamlists",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  if(!msg.doc ) {
+                   console.log('no teamlists');
+                   }
+                   else {
+                    //items.forEach(function (element,index){
+                    //if(element.item_title)
+                    //   //console.log('element pushed');
+                    //   consolidated.push(element);        
+                    //});
+                   console.log('teamlists: '+msg.doc)
+                   }
+                   //if(consolidated.length){
+                   //sortByKey(consolidated, 'tmstmp');
+                   //populate(consolidated);
+                   //}  
+                }
+              });
         //----------------------------//
         function trim1 (str) {
             return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');

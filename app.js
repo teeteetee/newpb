@@ -586,6 +586,30 @@ app.get('/counter/profile/:_id/b',function (req,res){
     }
 });
 
+app.post('/counter/getteamlists',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {counter_users.findOne({_id:req.session._id},function(err,doc){
+    if(err) {
+        console.log('ERR WHILE MOVIES QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        //console.log(doc);
+        ms.doc = doc.teamlists;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        res.send(ms);
+      }
+  });}
+  else{
+    res.send(ms);
+  }
+  });
+
 app.post('/counter/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
