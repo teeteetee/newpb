@@ -851,7 +851,7 @@ head
           .row(style='border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:30px;')
             h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;margin-bottom:20px;') Content Digest
           h4#user_name Reso 
-          #your_items.row.menu_item.selected(onlick="open_list(-1)") Your items
+          #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create team list
             span(style='color:#ff9900;margin-left:5px;') +
@@ -1713,11 +1713,11 @@ head
           }
         }
         function open_list(list_index){
-          console.log('open_list');
+          //console.log('open_list');
           if(list_index<0){
-            console.log('trying to open "your items"');
+            //console.log('trying to open "your items"');
             if(!$('#your_items').hasClass('selected')){
-              console.log('opening "your items"');
+              //console.log('opening "your items"');
               $('#main_list').empty();
               $('#tags').empty();
               $('.menu_item').removeClass('selected');
