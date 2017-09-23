@@ -1259,12 +1259,11 @@ head
         var tags=[];
         //console.log('heeelooo');
         //alert("{'_id':'#{_id}'}");
-        var temp_ajax_data={};
-        temp_ajax_data._id='#{_id}';
+        
         $.ajax({
               method: "POST",
               url: "/counter/getitems",
-              data: temp_ajax_data
+              data: 0
             })
               .done(function( msg ) {
                 console.log('hello hello');
