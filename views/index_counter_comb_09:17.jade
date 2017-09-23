@@ -851,7 +851,7 @@ head
           .row(style='border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:30px;')
             h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;margin-bottom:20px;') Content Digest
           h4#user_name Reso 
-          .row.menu_item.selected Your list
+          #your_items.row.menu_item.selected(onlick="open_list(-1)") Your items
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create team list
             span(style='color:#ff9900;margin-left:5px;') +
@@ -859,7 +859,7 @@ head
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
-          h4#list_heading(style='font-family:boldproxima;color:rgba(255,255,255,0.5);margin-top: 25;')
+          h4#list_heading(style='font-family:boldproxima;color:rgba(255,255,255,0.5);margin-top: 25;') Your items
           #tags
           ul.list-group#main_list(style='margin-bottom:40px;')
   
@@ -1713,12 +1713,21 @@ head
           }
         }
         function open_list(list_index){
+          if(list_index<0){
+            if(!$('#your_items').hasClass('selected')){
+              populate(consolidated);
+            }
+          }
+            else{
           var list_id_jq='#'+team_lists_arr[list_index]._id;
-         $('#main_list').empty();
-         $('#tags').empty();
-         $('.menu_item').removeClass('selected');
-         $(list_id_jq).addClass('selected');
-         get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);
+          if(!$(list_id_jq).hasClass('selected'))
+         {$('#main_list').empty();
+                  $('#tags').empty();
+                  $('.menu_item').removeClass('selected');
+                  $(list_id_jq).addClass('selected');
+                  get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
+                }
+
         }
         //function load_team_lists(team_lists_arr){
         //  team_lists_arr.forEach(function (element,index){
