@@ -735,8 +735,8 @@ head
               input(type="text" class="form-control" placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
                 button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
-          .modal-footer(style='padding:0px;')
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -748,8 +748,8 @@ head
           .modal-body  
             ul.list-group.friendlist(style='margin-bottom:0px;')
               li.list-group-item.noitemsfriends Пока пусто
-          .modal-footer(style='padding:0px;')
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
@@ -816,7 +816,7 @@ head
                   button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить
               
           .modal-footer
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -830,8 +830,8 @@ head
                 .panel-body
                   input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
-          .modal-footer(style='padding:0px;')
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
