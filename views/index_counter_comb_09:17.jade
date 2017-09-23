@@ -569,7 +569,7 @@ head
       #lists {
         height: 100vh;
         overflow-y: auto;
-        padding-top:93px;
+        padding-top:33px;
       }
       .menu_item{
         padding-left:15px;
@@ -848,6 +848,7 @@ head
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
+          h4#list_heading(style='font-family:bold-proxima;color:rgba(255,255,255,0.5);')
           #tags
           ul.list-group#main_list(style='margin-bottom:40px;')
   
@@ -1273,7 +1274,7 @@ head
                 }
               });
             
-            function get_items(_id){
+            function get_items(_id, list_name){
               var consolidated=[];
               $.ajax({
               method: "POST",
@@ -1283,6 +1284,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
+                  $('#list_heading').text(list_name);
                    items=msg.doc.itemstore;
                   if(items.length<1 ) {
                    console.log('no items in teamlist');
@@ -1318,7 +1320,7 @@ head
                    }
                    else {
                     msg.doc.forEach(function (element,index){
-                      var temp_insert='open_list("'+element._id+'")';
+                      var temp_insert='open_list("'+element._id+'","'+element.list_name+'")';
                       $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick='+temp_insert+'>'+element.list_name+'</div>');
                     //if(element.item_title)
                     //   //console.log('element pushed');
@@ -1693,13 +1695,13 @@ head
             alert('no name provided');
           }
         }
-        function open_list(list_id){
+        function open_list(list_id,list_name){
           var list_id_jq='#'+list_id;
          $('#main_list').empty();
          $('#tags').empty();
          $('.menu_item').removeClass('selected');
          $(list_id_jq).addClass('selected');
-         get_items(list_id);
+         get_items(list_id,list_name);
         }
         //function load_team_lists(team_lists_arr){
         //  team_lists_arr.forEach(function (element,index){
