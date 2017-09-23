@@ -717,21 +717,31 @@ head
             form(class="navbar-form navbar-right" role="search")
              .input-group.float-right
                 input(type="text" class="form-control" name='searc_input' onKeyUp="typewatch(function(){search();}, 1000 );" id='search_input' placeholder='search' style='background-color: #005ab9;border-radius: 6px;border: none;color:white;') 
-            
-    .modal.fade.bs-example-modal-sm(id='tagsmodal' tabindex="-1")
+    .modal.fade(tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
+            h5.modal-title#exampleModalLabel New message
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") &times;
-            h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
-              //span.badge#tag_name_title_num(style='margin-left:10px;margin-bottom:3px;')
+        
+     
+    .modal.fade(id='tagsmodal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+            //  span(aria-hidden="true") &times;
+            //h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
+            h5.modal-title#tag_name_title 
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='first_time' tabindex="-1")
+    .modal.fade(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -748,7 +758,7 @@ head
                 button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='friends' tabindex="-1")
+    .modal.fade(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -761,7 +771,7 @@ head
               li.list-group-item.noitemsfriends Пока пусто
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+    .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
           .modal-header(style='border-bottom: 1px solid #eee;')
@@ -808,7 +818,7 @@ head
                         |Show my email, so people can contact me
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -828,7 +838,7 @@ head
               
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
@@ -843,7 +853,7 @@ head
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade.bs-example-modal-sm(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+    .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content#colourful
           .modal-header
