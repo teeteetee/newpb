@@ -653,6 +653,16 @@ head
       /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
       margin-bottom: 20px;
       }
+      #add_item_located_in_tags {
+        background-color:none;
+        border:1px solid rgba(255,255,255,0.4);
+        color:rgba(255,255,255,0.8);
+        margin-left:10px;
+      }
+      #add_item_located_in_tags:hover {
+        background-color:rgba(255,255,255,0.2);
+        color:white;
+      }
   body
     //  
       nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -848,7 +858,7 @@ head
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
-          h4#list_heading(style='font-family:bold-proxima;color:rgba(255,255,255,0.5);')
+          h4#list_heading(style='font-family:boldproxima;color:rgba(255,255,255,0.5);margin-top: 25;')
           #tags
           ul.list-group#main_list(style='margin-bottom:40px;')
   
@@ -1285,6 +1295,7 @@ head
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                   $('#list_heading').text(list_name);
+                  $('#tags').append('No tags, list is empty <button class="btn btn-sm" id="add_item_located_in_tags">Add an item</button>');
                    items=msg.doc.itemstore;
                   if(items.length<1 ) {
                    console.log('no items in teamlist');
