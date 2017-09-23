@@ -468,15 +468,15 @@ app.get('/counter/clearfriends',function (req,res){
 });
 */
 
-app.get('/counter/clear',function (req,res){
-  counter_users.remove({});
-  counter_friends.remove({});
-  counter_movies.remove({});
-  counter_books.remove({});
-  delete req.session._id;
-  delete req.session;
-  res.redirect('/counter');
-});
+//app.get('/counter/clear',function (req,res){
+//  counter_users.remove({});
+//  counter_friends.remove({});
+//  counter_movies.remove({});
+//  counter_books.remove({});
+//  delete req.session._id;
+//  delete req.session;
+//  res.redirect('/counter');
+//});
 
 //app.get('/counter/deletemovies',function (req,res){
 //  movies.remove({},function(err,done){
@@ -1670,14 +1670,20 @@ else{
 });
 
 app.get('/correction',function(req,res){
-  counter_users.update({_id:req.session._id},{$set:{teamlists:[{_id:"59c502dcc2fb5a2c61000001",list_name:'Test team list'}]}},function(err,done){
+  if(req.session&&req.session._id)
+ {
+  counter_teamlists.remove({});
+  counter_users.update({_id:req.session._id},{$set:{teamlists:[]}},function(err,done){
     if(err){
       res.send(err);
     }
     else {
       res.redirect('/counter');
     }
-  });
+  });}
+  else{
+    res.send('boo');
+  }
 });
 
 app.post('/newuser',function(req,res){
@@ -1806,79 +1812,79 @@ app.post('/check',function(req,res){
 //******************** HELPERS ********************//
 
 
-app.get('/see:items',function (req,res){
-  switch(req.params.items){
-    case('items'):
-  items.find({},function (err,done){
-    if(err){
+//app.get('/see:items',function (req,res){
+//  switch(req.params.items){
+//    case('items'):
+//  items.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('m'):
+//  misc.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('b'):
+//  business.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('ic'):
+//  concepts.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('q'):
+//  questions.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('user'):
+//  users.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//}
+//});
 
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-  case('m'):
-  misc.find({},function (err,done){
-    if(err){
 
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-  case('b'):
-  business.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-  case('ic'):
-  concepts.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-  case('q'):
-  questions.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-  case('user'):
-  users.find({},function (err,done){
-    if(err){
-
-    }
-    else {
-      res.send(done);
-    }
-  });
-  break;
-}
-});
-
-
-app.get('/clearitems',function (req,res){
-  concepts.remove({});
-  business.remove({});
-  misc.remove({});
-  items.remove({});
-  res.redirect('/');
-});
+//app.get('/clearitems',function (req,res){
+//  concepts.remove({});
+//  business.remove({});
+//  misc.remove({});
+//  items.remove({});
+//  res.redirect('/');
+//});
 
 
 app.get('/cs',function (req,res){
