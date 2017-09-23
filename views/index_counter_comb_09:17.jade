@@ -664,6 +664,11 @@ head
         color:white;
         border-color:white;
       }
+      #list_heading_title{
+        font-family:boldproxima;
+        color:rgba(255,255,255,0.5);
+        margin-top: 25;
+      }
   body
     //  
       nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -859,7 +864,8 @@ head
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
-          h4#list_heading(style='font-family:boldproxima;color:rgba(255,255,255,0.5);margin-top: 25;') Your items
+          #list_heading
+            h4#list_heading_title Your items
           #tags
           ul.list-group#main_list(style='margin-bottom:40px;')
   
@@ -1300,7 +1306,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
-                  $('#list_heading').text(list_name);
+                  $('#list_heading').append('<h4 id="list_heading_title">'+list_name+'</h4><button class="btn btn-sm">Redact</button>');
                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" id="add_item_located_in_tags">Add an item</button>');
                    items=msg.doc.itemstore;
                   if(items.length<1 ) {
@@ -1728,7 +1734,7 @@ head
               $('#tags').empty();
               $('.menu_item').removeClass('selected');
               $('#your_items').addClass('selected');
-              $('#list_heading').text('Your items');
+              $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
               populate(consolidated);
             }
