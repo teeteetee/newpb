@@ -523,6 +523,7 @@ head
       .itemlist .list-group-item{
         border:none;
         border-top: 1px solid #eee;
+        rgba(243, 243, 243, 0.83)
       }
       .title_num{
         margin-left:5px;
@@ -825,10 +826,11 @@ head
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
-        .modal-content#colourful
+        .modal-content
           .modal-header
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
+            //
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
           .modal-body.add_choice(style='text-align:center;')
             h5.item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
             //h5.item_link(style='margin-bottom:30px;color:gray;')
