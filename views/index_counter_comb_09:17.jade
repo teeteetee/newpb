@@ -664,6 +664,17 @@ head
        margin-left: auto;
        margin-right: auto;
       }
+      .btn-grey{
+        border-color:#ddd;
+        color:#aaa;
+        background-color:white;
+        margin-bottom:15px;
+      }
+      .btn-grey:hover{
+        border-color:#ddd;
+        color:#aaa;
+        background-color:#eee;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -803,6 +814,7 @@ head
             //h5.item_link(style='margin-bottom:30px;color:gray;')
             h5.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h5.item_tags(style='margin-bottom:30px;color:#bbb;') 
+            button(class='btn btn-grey item_redact') Redact
             .panel-group(id="redact_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body
@@ -812,9 +824,8 @@ head
                   input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button(class='btn btn-blue item_redact_submit') Submit
             
-          .modal-footer(style='padding:0px;')
-            button(class='btn btn-yellow form-control item_redact') Redact
-            button(class='btn btn-red form-control item_remove ' style='margin:0px;') Remove
+          .modal-footer
+            button(class='btn btn-red item_remove ' style='margin:0px;') Remove
     .container-fluid(style='z-index:2;')
       .row(style='display:none;')
         .col-xs-12
