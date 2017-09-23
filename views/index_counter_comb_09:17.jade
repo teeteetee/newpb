@@ -1307,7 +1307,8 @@ head
             }
         //--------------------------------------//
         //--------------------------------------//
-        //--------------------------------------//     
+        //--------------------------------------//   
+        var team_lists_arr =[];
         $.ajax({
               method: "POST",
               url: "/counter/getteamlists",
@@ -1320,8 +1321,8 @@ head
                    }
                    else {
                     msg.doc.forEach(function (element,index){
-                      var temp_insert="open_list('"+element._id+"','"+element.list_name+"')";
-                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick='+temp_insert+'>'+element.list_name+'</div>');
+                      team_lists_arr[index]=element;
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+index+')">'+element.list_name+'</div>');
                     //if(element.item_title)
                     //   //console.log('element pushed');
                     //   consolidated.push(element); 
@@ -1695,13 +1696,13 @@ head
             alert('no name provided');
           }
         }
-        function open_list(list_id,list_name){
-          var list_id_jq='#'+list_id;
+        function open_list(list_index){
+          var list_id_jq='#'+team_lists_arr[list_index]._id;
          $('#main_list').empty();
          $('#tags').empty();
          $('.menu_item').removeClass('selected');
          $(list_id_jq).addClass('selected');
-         get_items(list_id,list_name);
+         get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);
         }
         //function load_team_lists(team_lists_arr){
         //  team_lists_arr.forEach(function (element,index){
