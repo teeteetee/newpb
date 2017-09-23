@@ -1718,7 +1718,8 @@ head
               $('#list_heading').empty();
               $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
-              populate(consolidated);
+              //populate(consolidated);
+              get_items(0,'Your items');
             }
           }
             else{
