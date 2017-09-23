@@ -1535,9 +1535,10 @@ head
         }
         //$('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
         if(!consolidated[i].item_comment||consolidated[i].item_comment=='--'){
-          $('.item_comment').empty();
+          $('.item_comment').css('display','none');
         }
         else{
+          $('.item_comment').css('display','block');
           $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
         }
         $('#item_comment_redact').val(consolidated[i].item_comment.capitalizeFirstLetter());
