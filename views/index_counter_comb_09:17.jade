@@ -1257,6 +1257,7 @@ head
         var consolidated=[];
         var consolidated_teamlists=[];
         var tags=[];
+        var populated_once=0;
         //console.log('heeelooo');
         //alert("{'_id':'#{_id}'}");
         
@@ -1370,7 +1371,7 @@ head
                       }
                       var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
-                      if(element.item_tags.length&&tags.length===0){
+                      if(element.item_tags.length&&populated_once===0){
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
@@ -1407,6 +1408,7 @@ head
             //console.log(element);
            $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
             });
+            populated_once=1;
         }
         }
         else{
