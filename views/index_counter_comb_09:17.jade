@@ -1284,7 +1284,7 @@ head
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                    items=msg.doc.itemstore;
-                  if(!items ) {
+                  if(items.length<1 ) {
                    console.log('no items in teamlist');
                    //return consolidated;
                    }
