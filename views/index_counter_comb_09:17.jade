@@ -1715,6 +1715,11 @@ head
         function open_list(list_index){
           if(list_index<0){
             if(!$('#your_items').hasClass('selected')){
+              $('#main_list').empty();
+              $('#tags').empty();
+              $('.menu_item').removeClass('selected');
+              $('#your_items').addClass('selected');
+              $('#list_heading').text('Your items');
               populate(consolidated);
             }
           }
