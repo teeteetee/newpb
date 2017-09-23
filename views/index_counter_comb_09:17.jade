@@ -1371,7 +1371,7 @@ head
                       }
                       var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
-                      if(element.item_tags.length&&populated_once===0){
+                      if(element.item_tags.length){
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
@@ -1379,7 +1379,8 @@ head
                         element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
                           insert+="<span class='badge float-right badge-primary'>"+element_1+"</span>";
-                          $.each(tags, function(key, tag) {
+                          if(populated_once===0)
+                            {$.each(tags, function(key, tag) {
                            if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                             //console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
                            tags[key].quantity++;
@@ -1390,6 +1391,7 @@ head
                             tags.push({'tag_name':element_1,'quantity':1});
                            // console.log('TAGS LENGTH: '+tags.length);
                            }
+                         }
                           });
                         element.item_tags.forEach(function (element_3,index_3){
                         //console.log('correcting an array: '+element.item_tags);
