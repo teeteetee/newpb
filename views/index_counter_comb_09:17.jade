@@ -691,14 +691,36 @@ head
               li.list-group-item.noitemstags Пока пусто
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
+    .modal.fade(id='redact_list' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h5.modal-title Redacting a list
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") &times;
+          .modal-body   
+             h6#list_name_redact
+             h5#list_size_redact.badge(style='display:inline;')
+             button.btn.btn-grey#list_redact_toggle Rename
+             button.btn.btn-grey(style='color:red;') Delete 
+            .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
+              .panel.panel-default
+                .panel-body
+                  input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                  button(class='btn btn-blue list_name_redact_submit') Submit
+                
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
+            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+            //  span(aria-hidden="true") ×
+            //h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
+            h5.modal-title Welcome!
             button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
-            h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
-              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
+              span(aria-hidden="true") &times;
           .modal-body(style='padding:15px;padding-top:0px;') Unless you want other users to see you as 
             span(style='font-weight:500;') 'user № #{_id}'
             | , you might want to choose a nickname. You can do that later in the settings, or now:
@@ -777,15 +799,13 @@ head
               span(aria-hidden="true") ×
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
-              .panel.panel-default
-                
+              .panel.panel-default  
                 .panel-body
                   input#item_title(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="Название")
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
                   input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-                  button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить
-              
+                  button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить   
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1481,6 +1501,9 @@ head
         }
         $('.item_redact').click(function() {
           $('#redact_item_dialog').slideToggle();
+          })
+        $('.list_redact_toggle').click(function() {
+          $('#redact_list_dialog').slideToggle();
           })
         function redactitem_dialog (i) {
           console.log('redact');
