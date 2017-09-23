@@ -1276,7 +1276,7 @@ head
               });
             
             function get_items(_id, list_name){
-              //var consolidated=[];
+              consolidated=[];
               $.ajax({
               method: "POST",
               url: "/counter/getitems",
@@ -1293,7 +1293,6 @@ head
                    console.log('no items in teamlist');
                    }
                    else {
-                    consolidated=[];
                     items.forEach(function (element,index){
                     if(element.item_title)
                        //console.log('element pushed');
