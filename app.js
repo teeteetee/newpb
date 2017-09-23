@@ -610,7 +610,7 @@ app.post('/counter/getteamlists',function (req,res){
     res.send(ms);
   }
   });
-app.get('/counter/checkdb',function (req,res)}{
+app.get('/counter/checkdb',function (req,res){
 counter_items.findOne({uid:'59c56968db564a4e78000001'},function(err,doc){
   if(err) {
         console.log('ERR WHILE MOVIES QUERY');
