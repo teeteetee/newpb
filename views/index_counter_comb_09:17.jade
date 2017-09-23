@@ -800,7 +800,7 @@ head
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
                   input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-                  button(class='btn btn-blue' onclick='submit_item()') Добавить
+                  button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить
               
           .modal-footer.btn_mod(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
@@ -1613,7 +1613,7 @@ head
               });
         } 
         //---------------------------//
-        function submit_item(){
+        function submit_item(list_index){
           var item_title;
           var comment;
           var link;
@@ -1628,6 +1628,7 @@ head
            data.item_link = $('#item_link').val();
            data.item_comment = $('#item_comment').val();
            data.item_tags = $('#item_tags').val();
+           data.list_id = list_index>-1?team_lists_arr[list_index]._id:0;
            //console.log(JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -1727,6 +1728,7 @@ head
               $('.menu_item').removeClass('selected');
               $('#your_items').addClass('selected');
               $('#list_heading').text('Your items');
+              $('#submit_item_button').attr('onclick':list_index);
               populate(consolidated);
             }
           }
@@ -1734,11 +1736,12 @@ head
           var list_id_jq='#'+team_lists_arr[list_index]._id;
           if(!$(list_id_jq).hasClass('selected'))
          {$('#main_list').empty();
-                  $('#tags').empty();
-                  $('.menu_item').removeClass('selected');
-                  $(list_id_jq).addClass('selected');
-                  get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
-                }
+          $('#tags').empty();
+          $('.menu_item').removeClass('selected');
+          $(list_id_jq).addClass('selected');
+          $('#submit_item_button').attr('onclick':list_index);
+          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
+           }
 
         }
         //function load_team_lists(team_lists_arr){
