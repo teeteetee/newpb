@@ -638,11 +638,9 @@ app.post('/counter/getitems',function (req,res){
   ms.trouble=1;
   //var vuid = req.body._id.replace(/"/g,'').trim();
   //console.log('vuid: '+vuid);
-  if(req.session&&req.session._id&&req.body._id)
-  {console.log('req.body._id: '+req.body._id);
-   console.log('typeof req.body._id: '+typeof req.body._id);
-    var temp_id=new ObjectID(req.body._id);
-    console.log('typeof temp_id: '+typeof temp_id);
+  if(req.session&&req.session._id)
+  {
+    var temp_id=req.body._id?new ObjectID(req.body._id):req.session._id;
     counter_items.findOne({'uid':temp_id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
