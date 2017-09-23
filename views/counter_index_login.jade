@@ -21,7 +21,10 @@ head
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       body {
-      background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);
+      background: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      /*background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
       /*background-color:#005ab9;*/
       text-transform:uppercase;
       letter-spacing:2px;
