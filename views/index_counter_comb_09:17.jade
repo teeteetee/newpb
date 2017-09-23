@@ -783,16 +783,17 @@ head
                       input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
                       span(class="input-group-btn")
                         button(class="btn btn-blue" onclick="change_nick(1);" id="change_nick" type="button") Submit
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingFour3")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
-                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
-                #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
-                  .panel-body 
-                    .checkbox#visibility
-                      label
-                        input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
-                        |Show my email, so people can contact me
+              //
+                .panel.panel-default
+                  .panel-heading(role="tab" id="headingFour3")
+                    button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
+                      span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                  #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                    .panel-body 
+                      .checkbox#visibility
+                        label
+                          input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
+                          |Show my email, so people can contact me
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
