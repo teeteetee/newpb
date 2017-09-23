@@ -662,6 +662,7 @@ head
       #add_item_located_in_tags:hover {
         background-color:rgba(255,255,255,0.2);
         color:white;
+        border-color:white;
       }
   body
     //  
@@ -1264,6 +1265,7 @@ head
               data: {'_id':'#{_id}'}
             })
               .done(function( msg ) {
+                console.log('hello hello');
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                    items=msg.doc.itemstore;
