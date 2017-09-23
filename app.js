@@ -613,8 +613,8 @@ app.post('/counter/getteamlists',function (req,res){
 app.get('/counter/checkdb',function (req,res){
   var ms ={};
   ms.trouble=1;
-  var fixed_id='59c56968db564a4e78000001';
-counter_items.findOne({'uid':fixed_id.ObjectID()},function(err,doc){
+  var fixed_id= new ObjectID('59c56968db564a4e78000001');
+counter_items.findOne({'uid':fixed_id},function(err,doc){
   if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
