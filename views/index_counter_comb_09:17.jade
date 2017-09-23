@@ -76,16 +76,17 @@ head
         background-color:#22a9c7;
       }
       .btn_mod .btn-red,.btn_mod .modal-footer .btn-red,.btn_mod .btn-red{
-        color:#822c28;
         box-shadow:none;
         border:none;
-        background-color:#ee544d;
+        background-color: #ef496e;
+       letter-spacing: 1px;
+       color: #a51636;
       }
       .btn_mod .btn-red:hover,.btn_mod .modal-footer .btn-red:hover,.btn_mod .btn-red:hover {
         /*color:#822c28;
         background-color:#da4b4b;*/
         color:white;
-        background-color:#f54139;
+        background-color:#d2375a;
       }
       .btn-red:active,btn-red:focus{
         outline:0px !important;
@@ -554,7 +555,7 @@ head
       }
       .title_num{
         margin-left:5px;
-        margin-bottom:3px;
+        margin-bottom: 2px;
         font-weight:200;
         background-color: #6bb9ff;
       }
@@ -588,8 +589,8 @@ head
       }
       .list-group-item{
         background-color:rgba(255,255,255,0.2);
-        padding-left:10px;
-        padding-right:10px;
+        padding-left: 15px;
+    padding-right: 15px;
         padding-top:5px;
         padding-bottom:5px;
         color:white;
@@ -687,6 +688,10 @@ head
       }
       .modal-body .list-group-item{
         color:#333;
+      }
+      .modal-sm h4{
+       margin-left: auto;
+       margin-right: auto;
       }
   body
     //  
@@ -816,8 +821,8 @@ head
                       label
                         input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                         |Show my email, so people can contact me
-          .modal-footer.btn_mod(style='padding:0px;')
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+          .modal-footer.btn_mod
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
