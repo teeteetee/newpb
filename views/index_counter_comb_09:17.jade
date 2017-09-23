@@ -1257,7 +1257,7 @@ head
         var consolidated=[];
         var consolidated_teamlists=[];
         var tags=[];
-        var populated_once=0;
+        //var populated_once=0;
         //console.log('heeelooo');
         //alert("{'_id':'#{_id}'}");
         
@@ -1357,6 +1357,7 @@ head
             return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         }
         function populate(consolidated) {
+          tags=[];
           var count;
           var inarr;
           var temp_insert;
@@ -1379,8 +1380,7 @@ head
                         element.item_tags.forEach(function (element_1,index_1){
                           inarr=0;
                           insert+="<span class='badge float-right badge-primary'>"+element_1+"</span>";
-                          if(populated_once===0)
-                            {$.each(tags, function(key, tag) {
+                          $.each(tags, function(key, tag) {
                            if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                             //console.log('element_1: '+element_1+',key: '+key+'| '+tags[key]);
                            tags[key].quantity++;
@@ -1391,7 +1391,7 @@ head
                             tags.push({'tag_name':element_1,'quantity':1});
                            // console.log('TAGS LENGTH: '+tags.length);
                            }
-                         }
+                         
                           });
                         element.item_tags.forEach(function (element_3,index_3){
                         //console.log('correcting an array: '+element.item_tags);
