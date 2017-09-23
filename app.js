@@ -613,7 +613,7 @@ app.post('/counter/getteamlists',function (req,res){
 app.get('/counter/checkdb',function (req,res){
   var ms ={};
   ms.trouble=1;
-counter_items.findOne({'uid':ObjectId('59c56968db564a4e78000001')},function(err,doc){
+counter_items.findOne({'uid':new ObjectId('59c56968db564a4e78000001')},function(err,doc){
   if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -637,7 +637,7 @@ app.post('/counter/getitems',function (req,res){
   //var vuid = req.body._id.replace(/"/g,'').trim();
   //console.log('vuid: '+vuid);
   if(req.session&&req.session._id&&req.body._id)
-  {counter_items.findOne({'uid':ObjectId(req.body._id)},function(err,doc){
+  {counter_items.findOne({'uid':new ObjectId(req.body._id)},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
