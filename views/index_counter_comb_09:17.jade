@@ -1534,7 +1534,12 @@ head
           $('#item_title_redact').val(consolidated[i].item_title.capitalizeFirstLetter());
         }
         //$('.item_link').append('<span style="margin-right:5px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_link+'</a>');
-        $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        if(!consolidated[i].item_comment||consolidated[i].item_comment=='--'){
+          $('.item_comment').empty();
+        }
+        else{
+          $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        }
         $('#item_comment_redact').val(consolidated[i].item_comment.capitalizeFirstLetter());
         $('.item_tags').text('Tags: '+consolidated[i].item_tags);
         $('#item_tags_redact').val(consolidated[i].item_tags);
