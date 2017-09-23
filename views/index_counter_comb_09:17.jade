@@ -65,16 +65,6 @@ head
       border:1px solid #333;
       color:#333;
       }
-      .btn_mod .btn-iosdark,.btn_mod .modal-footer .btn-iosdark,.btn_mod .btn-iosdark {
-        box-shadow:none;
-        border:none;
-        border-bottom:1px solid #31a2bb;
-        color:#1f6a7b;
-        background-color:#36b7d4;;
-      }
-      .btn_mod .btn-iosdark:hover,.btn_mod .modal-footer .btn-iosdark:hover,.btn_mod .btn-iosdark:hover {
-        background-color:#22a9c7;
-      }
       .btn-red{
         box-shadow:none;
         border:none;
@@ -89,20 +79,20 @@ head
       .btn-red:active,btn-red:focus{
         outline:0px !important;
       }
-      .btn_mod .btn-yellow,.btn_mod .modal-footer .btn-yellow,.btn_mod .btn-yellow{
+       .btn-yellow, .modal-footer .btn-yellow, .btn-yellow{
         color: #9e6900;
         box-shadow:none;
         border:none;
         background-color: #ff9b00;
       }
-      .btn_mod .btn-yellow:hover,.btn_mod .modal-footer .btn-yellow:hover,.btn_mod .btn-yellow:hover {
+       .btn-yellow:hover, .modal-footer .btn-yellow:hover, .btn-yellow:hover {
         color: white;
         background-color: #ffa822;
       }
       .btn-yellow:active,btn-yellow:focus{
         outline:0px !important;
       }
-      .btn_mod .modal-body .btn, .btn_mod  .modal-footer .btn, .btn_mod .btn {
+       .modal-body .btn,   .modal-footer .btn,  .btn {
       height:50px;
       border-radius:0px;
       }
@@ -112,11 +102,6 @@ head
       .modal-sm h4 {
         padding-right:18px;
         padding-left:15px;
-      }
-      .btn_mod .modal-body .btn:last-child, .btn_mod .modal-footer .btn:last-child, .btn_mod .btn:last-child {
-        border:none;
-        border-bottom-left-radius:6px;
-        border-bottom-right-radius:6px;
       }
       .modal-sm .modal-body {
         padding:0px;
@@ -146,15 +131,6 @@ head
       }
       .modal-dialog {
       margin-top: 10%;
-      }
-      .modal-sm .btn_mod .modal-body .btn, .btn_mod .modal-footer .btn {
-      color: #b9b9b9;  
-      letter-spacing: 2px;
-      font-weight: 100;
-      }
-      .modal-footer{
-        padding:0px;
-        border-top:0px;
       }
       .form-control#year,.form-control#mtitle{
         color:#0d5830;
@@ -742,7 +718,7 @@ head
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
@@ -759,7 +735,7 @@ head
               input(type="text" class="form-control" placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
                 button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
@@ -772,7 +748,7 @@ head
           .modal-body  
             ul.list-group.friendlist(style='margin-bottom:0px;')
               li.list-group-item.noitemsfriends Пока пусто
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
@@ -819,7 +795,7 @@ head
                       label
                         input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                         |Show my email, so people can contact me
-          .modal-footer.btn_mod
+          .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -839,7 +815,7 @@ head
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить
               
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -854,7 +830,7 @@ head
                 .panel-body
                   input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer(style='padding:0px;')
             button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -876,7 +852,7 @@ head
                   input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button(class='btn btn-blue item_redact_submit') Submit
             
-          .modal-footer.btn_mod(style='padding:0px;')
+          .modal-footer(style='padding:0px;')
             button(class='btn btn-yellow form-control item_redact') Redact
             button(class='btn btn-red form-control item_remove ' style='margin:0px;') Remove
     .container-fluid(style='z-index:2;')
