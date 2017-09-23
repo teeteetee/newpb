@@ -1405,6 +1405,7 @@ head
                       });
         console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
         if(tags.length){
+          $('#tags').empty();
           sortByKey(tags,'quantity');
           tags.forEach(function (element, index){
             //console.log(element);
