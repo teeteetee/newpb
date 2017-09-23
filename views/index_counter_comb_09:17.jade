@@ -1317,6 +1317,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
+                  $('#list_heading').empty();
                   $('#list_heading').append('<h4 id="list_heading_title">'+list_name+'</h4><button class="btn btn-sm transparent">Redact</button>');
                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" id="add_item_located_in_tags">Add an item</button>');
                    items=msg.doc.itemstore;
@@ -1745,6 +1746,7 @@ head
               $('#tags').empty();
               $('.menu_item').removeClass('selected');
               $('#your_items').addClass('selected');
+              $('#list_heading').empty();
               $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
               populate(consolidated);
