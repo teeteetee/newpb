@@ -71,6 +71,7 @@ head
         background-color: #ef496e;
        letter-spacing: 1px;
        color: #a51636;
+       margin:auto;
       }
       .btn-red:hover{
         color:white;
@@ -91,10 +92,6 @@ head
       }
       .btn-yellow:active,btn-yellow:focus{
         outline:0px !important;
-      }
-       .modal-body .btn,   .modal-footer .btn,  .btn {
-      height:50px;
-      border-radius:0px;
       }
       h4 {
         word-wrap:break-word;
@@ -668,43 +665,6 @@ head
        margin-right: auto;
       }
   body
-    //  
-      nav(class="navbar navbar-inverse navbar-fixed-top")
-        .container
-          .navbar-header
-            button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
-              span(class="sr-only") Toggle navigation
-              span(class="icon-bar")
-              span(class="icon-bar")
-              span(class="icon-bar")
-            a(class="navbar-brand" style='font-family:boldproxima;' href="/") CONSORCIO
-          .collapse.navbar-collapse#navbar
-            ul(class='nav navbar-nav')
-              li(onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal")
-                a#add_modal_trigger
-                 span.hidden-lg.hidden-md.glyphicon.glyphicon-plus(style='margin-right:3px;')
-                 | Add item
-              li 
-                a#settings_btn 
-                  span.hidden-lg.hidden-md.glyphicon.glyphicon-cog(style='margin-right:3px;')
-                  |Settings
-              li
-                a(href="/counter/logout") 
-                  span.hidden-lg.hidden-md.glyphicon.glyphicon-log-out(style='margin-right:3px;')
-                  |Logout
-             
-            form(class="navbar-form navbar-right" role="search")
-             .input-group.float-right
-                input(type="text" class="form-control" name='searc_input' onKeyUp="typewatch(function(){search();}, 1000 );" id='search_input' placeholder='search' style='background-color: #005ab9;border-radius: 6px;border: none;color:white;') 
-    .modal.fade(tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            h5.modal-title#exampleModalLabel New message
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
-        
-     
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -719,7 +679,7 @@ head
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
           .modal-footer
-            button(class='btn form-control btn-close btn-red' data-dismiss="modal") Close
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
