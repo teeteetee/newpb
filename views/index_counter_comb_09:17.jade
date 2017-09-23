@@ -1728,7 +1728,7 @@ head
               $('.menu_item').removeClass('selected');
               $('#your_items').addClass('selected');
               $('#list_heading').text('Your items');
-              $('#submit_item_button').attr('onclick':list_index);
+              $('#submit_item_button').attr('onclick',list_index);
               populate(consolidated);
             }
           }
@@ -1739,7 +1739,7 @@ head
           $('#tags').empty();
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
-          $('#submit_item_button').attr('onclick':list_index);
+          $('#submit_item_button').attr('onclick',list_index);
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
            }
 
