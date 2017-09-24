@@ -1362,7 +1362,7 @@ head
             function get_teamlist_members(_id) {
               $.ajax({
               method: "POST",
-              url: "/counter/getitems",
+              url: "/counter/get_teamlist",
               data: {'_id':_id}
             })
               .done(function( msg ) {
