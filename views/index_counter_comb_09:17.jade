@@ -695,7 +695,7 @@ head
         border-top:0px;
       }
       .menu_add_item_button{
-        background-color: rgba(0,0,0,0.9);
+        background-color: rgba(0,0,0,0.0);
         border-color: rgba(255,255,255,0.5);
         color: rgba(255,255,255,0.8);
       }
@@ -1367,7 +1367,7 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                   console.log('teamlist info: \n'+msg.doc);
+                   console.log('teamlist info: \n'+JSON.stringify(msg.doc));
                   }
                   });
             }
