@@ -688,9 +688,8 @@ head
             //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
             //  span(aria-hidden="true") &times;
             //h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
-            h5.modal-title#tag_name_title 
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
+            h4.modal-title#tag_name_title 
+            
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
@@ -700,9 +699,8 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h5.modal-title Redacting a list
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
+            h4.modal-title Redacting a list
+            
           .modal-body   
              h6#list_name_redact
              h5#list_size_redact.badge(style='display:inline;')
@@ -722,9 +720,8 @@ head
             //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
             //  span(aria-hidden="true") ×
             //h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
-            h5.modal-title Welcome!
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
+            h4.modal-title Welcome!
+            
           .modal-body(style='padding:15px;padding-top:0px;') Unless you want other users to see you as 
             span(style='font-weight:500;') 'user № #{_id}'
             | , you might want to choose a nickname. You can do that later in the settings, or now:
@@ -738,10 +735,9 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4(class="modal-title" style='text-align:center;' ) You follow
+            h4.modal-title You follow
               span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
+            
           .modal-body  
             ul.list-group.friendlist(style='margin-bottom:0px;')
               li.list-group-item.noitemsfriends Пока пусто
@@ -751,9 +747,8 @@ head
       .modal-dialog.modal-sm(role="document")
         .modal-content
           .modal-header(style='border-bottom: 1px solid #eee;')
-            h4(class="modal-title" style='text-align:center;' ) Settings
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") &times;
+            h4.modal-title Settings
+            
           .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
@@ -800,8 +795,7 @@ head
         .modal-content
           .modal-header
             h4(class="modal-title" style='text-align:center;') Add item
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
+            
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default  
@@ -818,8 +812,7 @@ head
         .modal-content
           .modal-header
             h4(class="modal-title" style='text-align:center;') New team list
-            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true") ×
+            
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default     
