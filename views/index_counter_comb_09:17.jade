@@ -836,6 +836,20 @@ head
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
+    .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4(class="modal-title" style='text-align:center;') Sending an invitation
+            
+          .modal-body.add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default     
+                .panel-body
+                  input#list_name(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
+                  button(class='btn btn-blue' onclick='send_invitation()') Добавить          
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -874,7 +888,7 @@ head
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create team list
             span(style='color:#ff9900;margin-left:5px;') +
           #friends_insert
-          .row.menu_item#invite_friend(onclick="$('#invite_freind').modal('show');" data-toggle="modal" data-target="#invite" style='margin-top:30px;') Invite friends
+          .row.menu_item#invite_friend(onlick="$('#invite_freind').modal('show');" data-toggle="modal" data-target="#invite_friend_modal" style='margin-top:30px;') Invite friends
             span(style='color:#00ff8d;margin-left:5px;') +
           .row(style='padding-left: 15px;margin-bottom:10px;')
             button.btn.menu_add_item_button#add_modal_trigger(type='button' style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
