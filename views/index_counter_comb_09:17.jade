@@ -887,21 +887,21 @@ head
       .row  
         .col-md-2#menu_bar
           .row(style='border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:30px;')
-            h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;margin-bottom:20px;') Content Digest
+            h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;') Content Digest
           h4#user_name Reso 
-          .row.menu_heading
+          .row.menu_heading(style='margin-bottom:30px;')
             | Lists
           #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create team list
             span(style='color:#ff9900;margin-left:5px;') +
-          .row.menu_headingstyle='margin-top:30px;'
+          .row.menu_heading(style='margin-top:30px;')
             | Friends
           #friends_insert
           .row.menu_item#invite_friend(onlick="$('#invite_freind').modal('show');" data-toggle="modal" data-target="#invite_friend_modal") Invite friends
             span(style='color:#00ff8d;margin-left:5px;') +
-          .row(style='padding-left: 15px;margin-bottom:10px;')
-            button.btn.menu_add_item_button#add_modal_trigger(type='button' style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
+          .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
+            button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           //.row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.menu_item#settings_btn Settings
           .row.menu_item(onclick="window.location='/counter/logout';") Log out  
