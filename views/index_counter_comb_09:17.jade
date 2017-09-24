@@ -700,12 +700,11 @@ head
         .modal-content
           .modal-header
             h4.modal-title Redacting a list
-            
-          .modal-body   
-             h6#list_name_redact
-             h5#list_size_redact.badge(style='display:inline;')
-             button.btn.btn-grey#list_redact_toggle Rename
-             button.btn.btn-grey(style='color:red;') Delete 
+          .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:15px;padding-bottom:15px;') 
+             h6#list_name_redact(style='text-align:center;')
+               .badge.title_num#list_size_redact
+             button.btn.btn-grey#list_redact_toggle(style='margin-left:30px;') Rename
+             button.btn.btn-grey(style='color:red;margin-left:20px;') Delete 
             .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body
