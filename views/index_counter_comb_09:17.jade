@@ -709,9 +709,9 @@ head
               button.btn.btn-secondary#list_redact_toggle Rename
               button.btn.btn-secondary(style='color:#ff8888;') Delete 
             .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
-              .panel.panel-default
+              .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
                 .panel-body
-                  input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                  input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                   button(class='btn btn-blue list_name_redact_submit') Submit               
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
