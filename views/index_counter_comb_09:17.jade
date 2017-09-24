@@ -847,9 +847,9 @@ head
               .panel.panel-default     
                 .panel-body
                   input#invite_emal_0(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
-                  #invite_emal_insert
-                  button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()') Add recipient
-                  button(class='btn btn-blue' onclick='send_invitation()') Send         
+                  #invite_email_insert
+                  button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()' type='button') Add recipient
+                  button(class='btn btn-blue' onclick='send_invitation()' type='button') Send         
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
