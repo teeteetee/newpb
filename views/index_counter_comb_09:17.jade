@@ -6,10 +6,11 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title P&B
+    title Content Digest
     // Bootstrap
     //link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous")
+    link(rel="stylesheet" href="/bootstrap/css/open-iconic-bootstrap.min.css")
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -1386,7 +1387,7 @@ head
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
                   
                   if(list_name!="Your items"){
-                   insert+='<button class="btn btn-sm transparent" onclick="'+insert_2+'">Redact<svg src="bootstrap/fonts/gear.svg"></svg></button>'
+                   insert+='<button class="btn btn-sm transparent" onclick="'+insert_2+'">Redact<span class="oi oi-cog" title="icon name" aria-hidden="true"></span></button>'
                   }
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
