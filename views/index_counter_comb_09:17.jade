@@ -1369,7 +1369,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_heading').append('<span class="badge"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
+                   $('#list_heading').append('<span class="badge" style="margin-left:10px;"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
                   }
                   });
             }
@@ -1390,10 +1390,9 @@ head
                   $('#list_heading').append(insert);
                   if(list_name!="Your items"){
                    //$('#list_stat').prepend('<button style="padding-top:5px;padding-bottom:5px;" class="btn btn-sm transparent" onclick="'+insert_2+'"><span class="oi oi-cog" title="icon name" aria-hidden="true"></span></button>');
-                   $('#list_heading').prepend('<span class="oi oi-cog" style="color:rgba(255,255,255,0.3);" onclick="'+insert_2+'" title="cog" aria-hidden="true"></span>');
+                   $('#list_heading').append('<span class="oi oi-cog" style="color:rgba(255,255,255,0.3);margin-left:10px;" onclick="'+insert_2+'" title="cog" aria-hidden="true"></span>');
                    get_teamlist_members(_id);
                   }
-
                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                  var items=msg.doc.itemstore;
                   if(items.length<1 ) {
