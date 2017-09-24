@@ -689,8 +689,8 @@ head
         color: rgba(255,255,255,0.8);
       }
       .menu_add_item_button:hover{
-        color:rgba(23, 224, 125, 0.8);
-        background-color:rgba(255,255,255,0.5);
+        color: rgba(234, 122, 37, 0.8);
+        border-color: #bc6a22;
       }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
@@ -872,7 +872,7 @@ head
           #friends_insert
           .row.menu_item#invite_friend(onclick="$('#invite_freind').modal('show');" data-toggle="modal" data-target="#invite" style='margin-top:30px;') Invite friends
             span(style='color:#00ff8d;margin-left:5px;') +
-          .row
+          .row.menu_item
             button.btn.menu_add_item_button#add_modal_trigger(type='button' style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           //.row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.menu_item#settings_btn Settings
