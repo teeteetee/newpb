@@ -1307,7 +1307,7 @@ head
                   var insert ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
                   $('#list_heading').empty();
                   $('#list_heading').append('<h4 id="list_heading_title">'+list_name+'</h4><button class="btn btn-sm transparent" onclick="'+insert+'">Redact</button>');
-                  $('#tags').append('No tags, list is empty <button class="btn btn-sm" id="add_item_located_in_tags">Add an item</button>');
+                  $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                  var items=msg.doc.itemstore;
                   if(items.length<1 ) {
                    console.log('no items in teamlist');
