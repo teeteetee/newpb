@@ -846,8 +846,9 @@ head
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default     
                 .panel-body
-                  input#list_name(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
-                  button(class='btn btn-blue' style='margin-right:7px;' onclick='add_recipient()') Add recipient
+                  input#invite_emal_0(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
+                  #invite_emal_insert
+                  button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()') Add recipient
                   button(class='btn btn-blue' onclick='send_invitation()') Send         
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
@@ -922,6 +923,9 @@ head
                 }
             }
         });
+       function add_recipient(){
+        $('#invite_email_insert').append('<input id="invite_email_'+$('.invite_email').length+'" type="email" maxlength="100" autocomplete="off" class="form-control invite_email">');
+       }
        $('#followed_by').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
        $('#im_following').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
         var friends_and_followers=[];
