@@ -1509,7 +1509,7 @@ head
           })
         function redact_list_dialog(_id,list_name,total){
           $('#list_name_redact').empty();
-          $('#list_name_redact').text(list_name+'<span class="badge title_num" #id="list_size_redact">'+total+'</span>');
+          $('#list_name_redact').append(list_name+'<span class="badge title_num" id="list_size_redact">'+total+'</span>');
           $('#redact_list').modal('show');
         };
         function redactitem_dialog (i) {
