@@ -392,6 +392,31 @@ app.post('/counter/setshowmail',function (req,res){
     }
   });
 
+app.post('/counter/get_teamlist',function (req,res){
+   var ms ={};
+   ms.trouble=1;
+   if(req.session&&req.session._id&&req.body._id){
+      var list_id = new ObjectID(req.body._id);
+      counter_teamlists.findOne({_id:list_id},function (err,done){
+           if(err){
+             res.send(ms);
+           }
+           else{
+             if(done)
+             {ms.trouble=0;
+             ms.doc=done;
+             res.send(ms);}
+             else {
+               res.send(ms);
+             }
+           }
+         });
+   }
+     else{
+       res.send(ms);
+     }
+});
+
 app.post('/counter/gn/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;

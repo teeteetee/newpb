@@ -814,7 +814,7 @@ head
                         label
                           input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
                           |Show my email, so people can contact me
-          .modal-footer
+          .modal-footer(style='border-top: 1px solid #e9ecef;')
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
@@ -1359,6 +1359,18 @@ head
                    }  
                 }
               });
+            function get_teamlist_members(_id) {
+              $.ajax({
+              method: "POST",
+              url: "/counter/getitems",
+              data: {'_id':_id}
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                   console.log('teamlist info: \n'+msg.doc);
+                  }
+                  });
+            }
             
             function get_items(_id, list_name){
               consolidated=[];
@@ -1834,6 +1846,7 @@ head
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
+          get_teamlist_members(team_lists_arr[list_index]._id);
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
            }
 
