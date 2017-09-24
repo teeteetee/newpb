@@ -901,7 +901,7 @@ head
             | Lists
           #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
-          .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create team list
+          .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
             span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
@@ -916,7 +916,6 @@ head
         .col-md-10#lists
           #list_heading
             h4#list_heading_title Your items
-          #list_stat
           #tags
           ul.list-group#main_list(style='margin-bottom:40px;')
   
@@ -1370,8 +1369,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_stat').empty();
-                   $('#list_stat').append('<span class="badge"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
+                   $('#list_heading').append('<span class="badge"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
                   }
                   });
             }
@@ -1388,13 +1386,14 @@ head
                  // console.log('items: '+JSON.stringify(msg.doc));
                   var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
-                  
-                  if(list_name!="Your items"){
-                   //$('#list_stat').prepend('<button style="padding-top:5px;padding-bottom:5px;" class="btn btn-sm transparent" onclick="'+insert_2+'"><span class="oi oi-cog" title="icon name" aria-hidden="true"></span></button>');
-                   $('#list_stat').prepend('<span class="oi oi-cog" onclick="'+insert_2+'" title="cog" aria-hidden="true"></span>');
-                  }
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
+                  if(list_name!="Your items"){
+                   //$('#list_stat').prepend('<button style="padding-top:5px;padding-bottom:5px;" class="btn btn-sm transparent" onclick="'+insert_2+'"><span class="oi oi-cog" title="icon name" aria-hidden="true"></span></button>');
+                   $('#list_heading').prepend('<span class="oi oi-cog" style="color:rgba(255,255,255,0.3);" onclick="'+insert_2+'" title="cog" aria-hidden="true"></span>');
+                   get_teamlist_members(_id);
+                  }
+
                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                  var items=msg.doc.itemstore;
                   if(items.length<1 ) {
@@ -1590,7 +1589,6 @@ head
         $('.item_redact').click(function() {
           $('#redact_item_dialog').slideToggle();
           })
-
         $('#list_redact_toggle').click(function() {
           $('#redact_list_dialog').slideToggle();
           })
@@ -1851,7 +1849,6 @@ head
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
-          get_teamlist_members(team_lists_arr[list_index]._id);
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
            }
 
