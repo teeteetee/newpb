@@ -680,6 +680,9 @@ head
         padding-left:10px;
         padding-right:10px;
       }
+      .modal-footer {
+        border-top:0px;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -702,10 +705,9 @@ head
             h4.modal-title Redacting a list
           .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:15px;padding-bottom:15px;') 
              h6#list_name_redact(style='text-align:center;')
-               .badge.title_num#list_size_redact
-             .btn-group(style='margin:auto;')
+             .btn-group(style='margin-left: 69px;')
                button.btn.btn-secondary#list_redact_toggle Rename
-               button.btn.btn-secondary(style='color:red;') Delete 
+               button.btn.btn-secondary(style='color:#ff8888;') Delete 
             .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body
@@ -1506,8 +1508,8 @@ head
           $('#redact_list_dialog').slideToggle();
           })
         function redact_list_dialog(_id,list_name,total){
-          $('#list_name_redact').text(list_name);
-          $('#list_size_redact').text(total);
+          $('#list_name_redact').empty();
+          $('#list_name_redact').text(list_name+'<span class="badge title_num" #id="list_size_redact">'+total+'</span>');
           $('#redact_list').modal('show');
         };
         function redactitem_dialog (i) {
