@@ -1501,10 +1501,11 @@ head
         //--------------------------------------//
         //--------------------------------------//
         function join_teamlist(_id) {
+          var v_id=$('#join_list_id').text();
           $.ajax({
               method: "POST",
               url: "/counter/join_teamlist",
-              data: {_id:$('#join_list_id').text();}
+              data: {_id:}
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
