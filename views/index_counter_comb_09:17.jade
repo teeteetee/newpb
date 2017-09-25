@@ -735,7 +735,6 @@ head
             //  span(aria-hidden="true") &times;
             //h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
             h4.modal-title#tag_name_title 
-            
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
@@ -772,7 +771,6 @@ head
             //  span(aria-hidden="true") ×
             //h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
             h4.modal-title Welcome!
-            
           .modal-body(style='padding:15px;padding-top:0px;') Unless you want other users to see you as 
             span(style='font-weight:500;') 'user № #{_id}'
             | , you might want to choose a nickname. You can do that later in the settings, or now:
@@ -872,6 +870,19 @@ head
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
+    .modal.fade(id='join' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4(class="modal-title" style='text-align:center;') Join team list
+          .modal-body.add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default     
+                .panel-body
+                  input#join_list_id(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder=" provide an invitation code")
+                  button(class='btn btn-blue' onclick='join_teamlist()') Добавить          
+          .modal-footer
+            button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -926,6 +937,8 @@ head
           #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
+            span(style='color:#ff9900;margin-left:5px;') +
+          .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
             span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
@@ -1487,6 +1500,21 @@ head
             }
         //--------------------------------------//
         //--------------------------------------//
+        function join_teamlist(_id) {
+          $.ajax({
+              method: "POST",
+              url: "/counter/join_teamlist",
+              data: {_id:$('#join_list_id').text();}
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  console.log('no trouble');
+                }
+                else{
+                  console.log('trouble');
+                }
+              });
+        }
         //--------------------------------------//   
         var team_lists_arr =[];
         $.ajax({

@@ -1792,11 +1792,39 @@ else {
 }
 });
 
+app.post('/counter/join_teamlist', function (req,res){
+  var ms={};
+  ms.trouble =1;
+  ms.mtext;
+  if(req.session&&req.session._id&&req.body._id)
+  { var v_id=new ObjectID(req.body._id);
+    counter_teamlists.findOne({_id:v_id},function (err,done){
+       if(err){
+        res.send(ms);
+      }
+     else{
+        counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:done.list_name}}},function (err1,done1){
+        if(err1){
+          res.send(ms);
+        }
+          else{
+            ms.trouble=0;
+            res.send(ms;)
+          }
+      });
+        }
+    });
+  }
+  else{
+  res.send(ms);
+  }
+});
+
 app.post('/counter/get_nick',function (req,res){
   var ms={};
   ms.trouble =1;
   ms.mtext;
-  console.log('_id: '+req.body._id)
+  console.log('_id: '+req.body._id);
   if(req.session&&req.session._id)
   {var v_id = new ObjectID(req.body._id);
     counter_users.findOne({_id:v_id},function(err,user){
