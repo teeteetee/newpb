@@ -1381,9 +1381,8 @@ head
                    msg.doc.users.forEach(function (element,index){
                      users_insert+=element+' <br>';
                     });
-                   $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus"  title="Dismissible popover" data-content="'+users_insert+'"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</a>')
-                   
-              $('[data-toggle="popover"]').popover({'html':true,'title':'Members'});
+                   $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="hover"  title="Dismissible popover" data-content="'+users_insert+'"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</a>');  
+                   $('[data-toggle="popover"]').popover({'html':true,'title':'Members'});
                   }
                   });
             }
