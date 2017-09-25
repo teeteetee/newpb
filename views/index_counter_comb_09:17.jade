@@ -554,7 +554,7 @@ head
       }
       .active_menu_heading{
         padding-left:15px;
-        color: rgba(255,255,255,0.5);
+        color: rgba(255,255,255,0.3);
       }
       .active_menu_heading:hover{
         color:rgba(37, 204, 234, 0.8);
@@ -697,8 +697,8 @@ head
       }
       .menu_add_item_button{
         background-color: rgba(0,0,0,0.0);
-        border-color: rgba(255,255,255,0.5);
-        color: rgba(255,255,255,0.8);
+        border-color: rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.5);
       }
       .menu_add_item_button:hover{
         /*color: rgba(234, 122, 37, 0.8);
@@ -707,6 +707,17 @@ head
         border-color: #b71d44;*/
         color: rgba(37, 204, 234, 0.8);
         border-color: #1d9fb7;
+      }
+      .oi-cog{
+       color:rgba(255,255,255,0.3);
+       margin-left:10px;
+       cursor:pointer;
+      }
+      .oi-cog:hover{
+      color:rgba(255,255,255,0.5);
+      }
+      .oi_person{
+       margin-bottom: 4px;
       }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
@@ -1369,7 +1380,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_heading').append('<span class="badge" style="margin-left:10px;"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
+                   $('#list_heading').append('<span class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
                   }
                   });
             }
@@ -1390,7 +1401,7 @@ head
                   $('#list_heading').append(insert);
                   if(list_name!="Your items"){
                    //$('#list_stat').prepend('<button style="padding-top:5px;padding-bottom:5px;" class="btn btn-sm transparent" onclick="'+insert_2+'"><span class="oi oi-cog" title="icon name" aria-hidden="true"></span></button>');
-                   $('#list_heading').append('<span class="oi oi-cog" style="color:rgba(255,255,255,0.3);margin-left:10px;" onclick="'+insert_2+'" title="cog" aria-hidden="true"></span>');
+                   $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
                    get_teamlist_members(_id);
                   }
                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
