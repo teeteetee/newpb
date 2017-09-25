@@ -1380,11 +1380,13 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_heading').append('<span class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
+                   $('#list_heading').append('<span class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
                   }
                   });
             }
-            
+            $('.popover-dismiss').popover({
+              trigger: 'focus'
+            })
             function get_items(_id, list_name){
               consolidated=[];
               $.ajax({
