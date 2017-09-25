@@ -962,8 +962,8 @@ head
        //     }
        //   });
        //}
-       $('#followed_by').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
-       $('#im_following').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
+       //$('#followed_by').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
+       //$('#im_following').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
         var friends_and_followers=[];
         var friends_full=[];
         var followers_full=[];
@@ -1377,16 +1377,16 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_heading').append('<a class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</a>')
+                   $('#list_heading').append('<a class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover"  title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</a>')
                   }
                   });
             }
             $(function () {
               $('[data-toggle="popover"]').popover()
             })
-            $('.popover-dismiss').popover({
-              trigger: 'focus'
-            })
+            //$('.popover-dismiss').popover({
+            //  trigger: 'focus'
+            //})
             function get_items(_id, list_name){
               consolidated=[];
               $.ajax({
