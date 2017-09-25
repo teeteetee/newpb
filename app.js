@@ -1799,7 +1799,7 @@ app.post('/counter/get_nick',function (req,res){
   console.log('_id: '+req.body._id)
   if(req.body.nick&&is_nick(req.body._id))
   {var v_id = new ObjectID(req.body._id);
-    counter_users.findOne({_id:v_id},function(err,user){
+    counter_users.findOne({_id:req.body._id},function(err,user){
       if (err)
         {res.send(ms);}
       else 
