@@ -1815,6 +1815,7 @@ app.post('/counter/join_teamlist', function (req,res){
           res.send(ms);
         }
           else{
+            console.log('success joining teamlist: '+done1);
             ms.trouble=0;
             res.send(ms);
           }
