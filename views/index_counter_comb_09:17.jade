@@ -1501,7 +1501,7 @@ head
         //--------------------------------------//
         //--------------------------------------//
         function join_teamlist(_id) {
-          var v_id=$('#join_list_id').text();
+          var v_id=$('#join_list_id').val();
           $.ajax({
               method: "POST",
               url: "/counter/join_teamlist",
