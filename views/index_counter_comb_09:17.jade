@@ -1380,7 +1380,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   var users_insert='';
+                   //var users_insert='';
                    var users_arr=[];
                    get_nick(msg.doc.users,users_arr,0,get_nick);
                    //users_arr.forEach(function (element,index){
@@ -1407,6 +1407,7 @@ head
                     {current_key++;
                      callback(arr,output_arr,current_key,callback);}
                      else{
+                      var users_insert='';
                       output_arr.forEach(function (element,index){
                      users_insert+='<div id="'+element+'">'+element+'</div> <br>';
                     });
@@ -1418,7 +1419,8 @@ head
                 if(current_key+1!=arr.length)
                 {current_key++;
                  callback(arr,output_arr,current_key,callback);}
-                 else{
+                 else{ 
+                  var users_insert='';
                       output_arr.forEach(function (element,index){
                      users_insert+='<div id="'+element+'">'+element+'</div> <br>';
                     });
