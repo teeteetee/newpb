@@ -1085,7 +1085,14 @@ app.post('/counter/additem',function (req,res){
  {console.log('adding an item');
           var ms = {};
           ms.trouble =1;
-            var list_id =req.body.list_id===0?req.session._id:new ObjectID(req.body.list_id);
+            var list_id;
+            // =req.body.list_id===0?req.session._id:new ObjectID(req.body.list_id);
+             if(req.body.list_id.length===1&&!parseInt(req.body.list_id)){
+              list_id=req.session._id;
+             }
+             else{
+              list_id=new ObjectID(req.body.list_id);
+             }
             var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();;
             var vlink = req.body.item_link;
             console.log('breakpoint one');
