@@ -1667,6 +1667,8 @@ head
           $('#invite_to_a_list').slideToggle();
           })
         function redact_list_dialog(_id,list_name,total){
+          $('#redact_list_dialog').css('display','none');
+          $('#invite_to_a_list').css('display','none');
           $('#list_name_redact').empty();
           $('#list_name_redact').append(list_name+'<span class="badge title_num" id="list_size_redact">'+total+'</span>');
           $('#invitation_code').text(_id);
