@@ -1799,9 +1799,10 @@ app.post('/counter/get_nick',function (req,res){
   console.log('_id: '+req.body._id)
   if(req.body.nick&&is_nick(req.body._id))
   {var v_id = new ObjectID(req.body._id);
-    counter_users.findOne({_id:req.body._id},function(err,user){
+    counter_users.findOne({_id:v_id},function(err,user){
       if (err)
-        {res.send(ms);}
+        {console.log('bp3');
+          res.send(ms);}
       else 
       {
         if(user){
@@ -1810,11 +1811,13 @@ app.post('/counter/get_nick',function (req,res){
           res.send(ms);
         }
         else{
+          console.log('bp1');
           res.send(ms);
         }
       }
     });}
 else {
+  console.log('bp2');
   res.send(ms);
 }
 });
