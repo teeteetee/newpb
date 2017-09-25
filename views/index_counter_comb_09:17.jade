@@ -1400,13 +1400,12 @@ head
                 if(!msg.trouble) {
                     var id='#'+arr[current_key]
                     $(id).text(msg.mtext);
-                    current_key++;
                     if(current_key+1!=arr.length)
                     {current_key++;
                      callback(arr,current_key,callback);}
                   }
               else{
-                if(current_key+1!=<arr.length)
+                if(current_key+1!=arr.length)
                 {current_key++;
                  callback(arr,current_key,callback);}
               }
