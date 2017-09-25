@@ -1402,7 +1402,7 @@ head
                     //var id='#'+arr[current_key]
                     //$(id).text(msg.mtext);
                     console.log('get_nick iteration: '+msg.mtext);
-                    arr[current_key]=msg.mtext;
+                    output_arr[current_key]=msg.mtext;
                     if(current_key+1!=arr.length)
                     {current_key++;
                      callback(arr,output_arr,current_key,callback);}
