@@ -716,9 +716,6 @@ head
       .oi-cog:hover{
       color:rgba(255,255,255,0.5);
       }
-      .oi_person{
-       margin-bottom: 4px;
-      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -1380,7 +1377,7 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-                   $('#list_heading').append('<span class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><span class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
+                   $('#list_heading').append('<span class="badge" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And heres some amazing content. Its very engaging. Right?"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</span>')
                   }
                   });
             }
