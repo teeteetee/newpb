@@ -1809,7 +1809,7 @@ app.post('/counter/join_teamlist', function (req,res){
         }
           else{
             ms.trouble=0;
-            res.send(ms;)
+            res.send(ms);
           }
       });
         }
