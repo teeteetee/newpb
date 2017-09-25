@@ -1807,11 +1807,14 @@ app.post('/counter/join_teamlist', function (req,res){
   { var v_id=new ObjectID(req.body._id);
     counter_teamlists.findOne({_id:v_id},function (err,done){
        if(err){
+        console.log('bp1');
         res.send(ms);
       }
      else{
+      console.log('bp2');
         counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:done.list_name}}},function (err1,done1){
         if(err1){
+          console.log('bp3');
           res.send(ms);
         }
           else{
@@ -1824,6 +1827,7 @@ app.post('/counter/join_teamlist', function (req,res){
     });
   }
   else{
+    console.log('bp4');
   res.send(ms);
   }
 });
