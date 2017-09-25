@@ -1818,6 +1818,7 @@ app.post('/counter/join_teamlist', function (req,res){
           res.send(ms);
         }
           else{
+            counter_teamlists.update({_id:done._id},{$push:{users:req.session._id}});
             console.log('success joining teamlist: '+done1);
             ms.trouble=0;
             res.send(ms);
