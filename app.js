@@ -1802,7 +1802,7 @@ else {
 app.post('/counter/join_teamlist', function (req,res){
   var ms={};
   ms.trouble =1;
-  ms.mtext;
+  console.log(req.body._id);
   if(req.session&&req.session._id&&req.body._id)
   { var v_id=new ObjectID(req.body._id);
     counter_teamlists.findOne({_id:v_id},function (err,done){
