@@ -1151,12 +1151,12 @@ head
         });
         var lastentry;
         $('#friends_nick').keyup(function(event) {
-        if($('#btitle').val() != lastentry && $('#btitle').val().length >3) {       
+        if($('#friends_nick').val() != lastentry && $('#friends_nick').val().length >3) {       
           //$('div').append('TEST'+$(this).val()+"<br>");
           $.ajax({
             method: "POST",
             url: "/f_search",
-            data: { txt: $('#btitle').val() }
+            data: { txt: $('#friends_nick').val() }
           }).done(function( msg ) {
               console.log(msg);
               if(msg)
