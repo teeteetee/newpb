@@ -1013,6 +1013,31 @@ app.post('/counter/rd_item/',function(req,res){
   }
 });
 
+app.post('/f_search',function (req,res){
+  if(req.session&&req.session._id)
+ {
+  var query = req.body.f_nick;
+  console.log('txt: '+query);
+  counter_users.find({nick: { $regex: query, $options: 'i'}},function(err,docs){
+           if(err){
+             console.log('err');
+           }
+           else {
+             console.log(docs);
+             if(docs.length!=0)
+             {res.send(docs);}
+             else {
+               res.send(0);
+             }
+           }
+          });
+}
+else{
+  res.send('boo');
+}
+    
+});
+
 
 
 
