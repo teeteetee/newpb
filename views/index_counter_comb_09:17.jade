@@ -763,14 +763,13 @@ head
       display:none;
       padding-left: 25px;
       padding-right: 25px;
-      background-color: #ccc;
+      background-color: #2d2d2d;
       border-radius: 3px;
       margin-left: 0px;
       margin-right: 0px;
       padding-top:3px;
       padding-bottom:3px;
-      border: 1px solid #ddd;
-      position: absolute;
+      border: none;
       /*max-width: 510;*/
       width: 100%;
       box-shadow: 1px 7px 30px #A09F9F;
@@ -1148,7 +1147,8 @@ head
         //--------------------------------------//
         $('#friends_nick').focusout(function(){
         if($('#autocompbooks').css('display','block')) {
-          $('#autocompbooks').fadeOut(350);
+          //$('#autocompbooks').fadeOut(350);
+          $('#autocompbooks').slideToggle();
         }
         });
         var lastentry;
@@ -1180,7 +1180,8 @@ head
                    //  }
                    //  eval("$('#hint"+btitle+"').attr('onclick',click);");
                    // }
-                  $('#autocompbooks').fadeIn(350);
+                 // $('#autocompbooks').fadeIn(350);
+                 $('#autocompbooks').slideToggle();
                   }
                             else {
                               lastentry = $('#friends_nick').val();
