@@ -730,18 +730,9 @@ head
         background-color:transparent;
         fill:rgba(0,0,0,0.4);
       }
-      .arrow{
-        background-color:rgba(0,0,0,0.6);
-      }
-      .arrow::before, .arrow::after{
-        background-color:inherit;
-      }
       .popover-header {
           color: white;
           background-color:rgba(0,0,0,0.6);
-      }
-      .popover-header::before{
-        background-color:red;
       }
       .popover-body {
           color: white;
@@ -749,9 +740,8 @@ head
           padding-left:10px;
           padding-right:10px;
       }
-      .arrow{
-        color:rgba(0,0,0,0.4);
-      }
+      .popover.popover-bottom::after, .popover.bs-tether-element-attached-top::after{ 
+        border-bottom-color:rgba(0,0,0,0.6); }
       .invite{
         margin: 0px;
         margin-bottom: 5px;
