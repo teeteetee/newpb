@@ -903,19 +903,20 @@ head
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-red' data-dismiss="modal") Close
-    .modal.fade(id='join' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            h4(class="modal-title" style='text-align:center;') Join list
-          .modal-body.add_choice
-            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
-              .panel.panel-default     
-                .panel-body
-                  input#join_list_id(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder=" provide an invitation code")
-                  button(class='btn btn-blue' onclick='join_teamlist()') Добавить          
-          .modal-footer
-            button(class='btn btn-close btn-red' data-dismiss="modal") Close
+    //
+      .modal.fade(id='join' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              h4(class="modal-title" style='text-align:center;') Join list
+            .modal-body.add_choice
+              .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+                .panel.panel-default     
+                  .panel-body
+                    input#join_list_id(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder=" provide an invitation code")
+                    button(class='btn btn-blue' onclick='join_teamlist()') Добавить          
+            .modal-footer
+              button(class='btn btn-close btn-red' data-dismiss="modal") Close
     .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -971,8 +972,9 @@ head
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
             span(style='color:#ff9900;margin-left:5px;') +
-          .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
-            span(style='color:#ff9900;margin-left:5px;') +
+          //
+            .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
+              span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
           #friends_insert
