@@ -759,6 +759,29 @@ head
         color:white;
         border-color:white;
       }
+      .autocomp {
+      display:none;
+      background-color: white;
+      border-radius: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-top:3px;
+      padding-bottom:3px;
+      border: 1px solid #ddd;
+      position: absolute;
+      max-width: 510;
+      width: 100%;
+      box-shadow: 1px 7px 30px #A09F9F;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .sritem:hover {
+       background-color:#23A8E2;
+       color:white;
+      }
+      .sritem {
+        padding-top:3px;
+        padding-bottom:3px;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -927,6 +950,8 @@ head
                 .panel.panel-default     
                   .panel-body
                     input#firends_nick(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="friend's nickname")
+                    .row.autocomp#autocompbooks
+                      .col-xs-12#srb
                     button(class='btn btn-blue' onclick='join_teamlist()') Search          
             .modal-footer
               button(class='btn btn-close btn-red' data-dismiss="modal") Close
@@ -1118,6 +1143,50 @@ head
                   });}
         }
         //--------------------------------------//
+        //--------------------------------------//
+        $('#friends_nick').focusout(function(){
+        if($('#autocompbooks').css('display','block')) {
+          $('#autocompbooks').fadeOut(350);
+        }
+        });
+        var lastentry;
+        $('#friends_nick').keyup(function(event) {
+        if($('#btitle').val() != lastentry && $('#btitle').val().length >3) {       
+          //$('div').append('TEST'+$(this).val()+"<br>");
+          $.ajax({
+            method: "POST",
+            url: "/f_search",
+            data: { txt: $('#btitle').val() }
+          }).done(function( msg ) {
+              console.log(msg);
+              if(msg)
+                { $('#srb').empty();
+                      for(var i =0;i<msg.length;i++){
+                       $('#srb').append("<div class='row sritem'><div class='col-xs-12'>"+msg[i].nick+"</div></div>");
+                      }
+                   //for(var btitle =0;btitle<msg.length;btitle++){
+                   //  console.log('vtitle: '+msg[btitle]);
+                   //  //var click = "$('#btitle').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocomp').fadeOut(350);$('#srb').empty();";
+                   //  $('#srb').append("<div class='row sritem' id='hint"+btitle+"'><div class='col-xs-12'>"+msg[btitle].title.capitalizeFirstLetter()+"<span id='authors"+btitle+"' style='color:#ddd;margin-left:10px;'></span></div></div>");
+                   //  for(var xx=0;xx<msg[btitle].authors.length;xx++){
+                   //    if(xx===0)
+                   //    {eval("$('#authors"+btitle+"').append('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");}
+                   //    else {
+                   //      eval("$('#authors"+btitle+"').append(', "+msg[btitle].authors[xx].capitalizeFirstLetter()+"');");
+                   //    }
+                   //    var click="if($('#author"+xx+"_name').length){$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}else{addauthor();$('#author"+xx+"_name').val('"+msg[btitle].authors[xx].capitalizeFirstLetter()+"');}$('#btitle').val('"+msg[btitle].title.capitalizeFirstLetter()+"');$('#autocompbooks').fadeOut(350);$('#srb').empty();$('#addauthor').addClass('disabled');";
+                   //  }
+                   //  eval("$('#hint"+btitle+"').attr('onclick',click);");
+                   // }
+                  $('#autocompbooks').fadeIn(350);
+                  }
+                            else {
+                              lastentry = $('#friends_nick').val();
+                            }
+                });
+        }
+       lastentry = $('#friends_nick').val()
+      });
         //--------------------------------------//
         //--------------------------------------//
         function more_get_names(section) {
@@ -1661,36 +1730,36 @@ head
         }
           } 
         //var search_results_exist=0;
-        var previous_search_results=[];
-        function search (){
-          var search_tmp=[];
-          var query = $('#search_input').val().toLowerCase();
-         if(query.length>3){
-          consolidated.find(function (elem, index){
-            //console.log('searching: '+elem.item_title+', for: '+query);
-            if (elem.item_title.toLowerCase().indexOf(query) >= 0){
-             // console.log('found: '+elem.item_title)
-              search_tmp.push(elem.item_title);
-            }
-            });
-           if(search_tmp&&search_tmp.length&&search_tmp!=previous_search_results){
-           // $('#search_input').popover('destroy');
-            console.log(' popover destroyed');
-            //console.log('found smth: '+search_tmp);
-            var content;
-            //if(!search_results_exist)
-            content="<ul id='search_results' class='list-group'>";
-            search_tmp.forEach(function (element_1, index_1){
-             // console.log('forming a popover');
-              content+="<li class='list-group-item'>"+element_1+"</li>";
-              });
-            content+="</ul>";
-            previous_search_results = search_tmp;
-            $('#search_input').popover({'placement':'bottom','title':'Нашли','content':content,'html':true});
-            $('#search_input').popover('show');
-           }
-        }
-          }
+         //   var previous_search_results=[];
+         //   function search (){
+         //     var search_tmp=[];
+         //     var query = $('#search_input').val().toLowerCase();
+         //    if(query.length>3){
+         //     consolidated.find(function (elem, index){
+         //       //console.log('searching: '+elem.item_title+', for: '+query);
+         //       if (elem.item_title.toLowerCase().indexOf(query) >= 0){
+         //        // console.log('found: '+elem.item_title)
+         //         search_tmp.push(elem.item_title);
+         //       }
+         //       });
+         //      if(search_tmp&&search_tmp.length&&search_tmp!=previous_search_results){
+         //      // $('#search_input').popover('destroy');
+         //       console.log(' popover destroyed');
+         //       //console.log('found smth: '+search_tmp);
+         //       var content;
+         //       //if(!search_results_exist)
+         //       content="<ul id='search_results' class='list-group'>";
+         //       search_tmp.forEach(function (element_1, index_1){
+         //        // console.log('forming a popover');
+         //         content+="<li class='list-group-item'>"+element_1+"</li>";
+         //         });
+         //       content+="</ul>";
+         //       previous_search_results = search_tmp;
+         //       $('#search_input').popover({'placement':'bottom','title':'Нашли','content':content,'html':true});
+         //       $('#search_input').popover('show');
+         //      }
+         //   }
+         //     }
         //----------------// 
         var typewatch = function(){
             var timer = 0;
