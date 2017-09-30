@@ -763,7 +763,7 @@ head
       display:none;
       padding-left: 25px;
       padding-right: 25px;
-      background-color: white;
+      background-color: #ccc;
       border-radius: 3px;
       margin-left: 0px;
       margin-right: 0px;
@@ -1158,7 +1158,7 @@ head
           $.ajax({
             method: "POST",
             url: "/f_search",
-            data: { txt: $('#friends_nick').val() }
+            data: { f_nick: $('#friends_nick').val() }
           }).done(function( msg ) {
               console.log(msg);
               if(msg)
