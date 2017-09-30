@@ -1018,12 +1018,12 @@ app.post('/f_search',function (req,res){
  {
   var query = req.body.f_nick;
   console.log('txt: '+query);
-  counter_users.find({nick: { $regex: query, $options: 'i'}},function(err,docs){
+  counter_users.find({nick: { $regex: query, $options: 'i'}},{fields:{nick:1,_id:1}},function(err,docs){
            if(err){
              console.log('err');
            }
            else {
-             console.log(docs);
+             //console.log(docs);
              if(docs.length!=0)
              {res.send(docs);}
              else {
