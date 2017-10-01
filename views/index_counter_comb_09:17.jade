@@ -762,7 +762,7 @@ head
       .autocomp{
         display:none;
         margin-right: auto;
-        background-color: white;
+        background-color: rgba(0,0,0,0.8);
         border-radius: 3px;
         margin-right: auto;
         margin-right: 0px;
@@ -784,6 +784,7 @@ head
        color:white;
       }
       .sritem {
+        text-align:left;
         margin-left:0px;
         margin-right:0px;
         padding-left:15px;
@@ -795,13 +796,17 @@ head
       .sritem:last-child{
         border-bottom:0px;
       }
+      .sritem:hover .addfriend{
+        color: rgba(0,0,0,0.3);
+        border-color: rgba(0,0,0,0.3);
+      }
       .addfriend{
         margin: 0px;
         margin-top: 3px;
         margin-left: 10px;
         background-color: transparent;
-        color: rgba(0,0,0, 0.3);
-        border-color: rgba(0,0,0, 0.3);
+        color: rgba(255,255,255, 0.4);
+        border-color: rgba(255,255,255,0.4);
         letter-spacing: 1px;
         text-transform: uppercase;
         padding: 5px;
