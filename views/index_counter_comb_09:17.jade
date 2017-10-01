@@ -1053,7 +1053,7 @@ head
           .row.menu_heading(style='margin-top:30px;')
             | Friends
           #friends_insert
-          .row.menu_item#invite_friend(onlick="$('#find_friend').modal('show');" data-toggle="modal" data-target="#find_friend") Add a friend
+          .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
             span(style='color:#00ff8d;margin-left:5px;') +
           .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
             button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
