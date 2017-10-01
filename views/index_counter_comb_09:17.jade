@@ -774,6 +774,7 @@ head
       box-shadow:2px 2px 2px #333;
       max-width: 280;
       width: 100%;
+      min-height:
       /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
       }
       .autocomp:focus {
@@ -790,6 +791,10 @@ head
         padding-right:15px;
         padding-top:3px;
         padding-bottom:3px;
+        border-bottom:1px solid #eee;
+      }
+      .sritem:last-child{
+        border-bottom:0px;
       }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
