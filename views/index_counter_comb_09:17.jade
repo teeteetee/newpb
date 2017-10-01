@@ -795,6 +795,25 @@ head
       .sritem:last-child{
         border-bottom:0px;
       }
+      .addfriend{
+        margin: 0px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        background-color: transparent;
+        color: rgba(0,0,0, 0.3);
+        border-color: rgba(0,0,0, 0.3);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px;
+        font-size: 0.5rem;
+        padding-top: 3px;
+        padding-bottom: 2px;
+      }
+      .addfriend:hover{
+        background-color:rgba(0,0,0, 0.3);
+        color:white;
+        border-color:white;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -1176,7 +1195,7 @@ head
               if(msg)
                 { $('#srb').empty();
                       for(var i =0;i<msg.length;i++){
-                       $('#srb').append("<div class='row sritem'><div class='col-xs-12'>"+msg[i].nick+"</div></div>");
+                       $('#srb').append("<div class='row sritem'><div class='col-xs-12'>"+msg[i].nick+"<button class='addfriend florat-right'>add</button></div></div>");
                       }
                    //for(var btitle =0;btitle<msg.length;btitle++){
                    //  console.log('vtitle: '+msg[btitle]);
