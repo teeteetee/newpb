@@ -1731,7 +1731,7 @@ app.get('/correction',function(req,res){
   if(req.session&&req.session._id)
  {
   counter_teamlists.remove({});
-  counter_users.update({_id:req.session._id},{$set:{teamlists:[]}},function(err,done){
+  counter_users.update({_id:req.session._id},{$set:{friendstore:[]}},function(err,done){
     if(err){
       res.send(err);
     }
@@ -1768,7 +1768,7 @@ app.post('/newuser',function(req,res){
         // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
         // CHECK MAIL BEFOR WRTING
         //checkmail function was here before being moved out of scope
-          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,first_time:1,regdate:Date.now()},function (err,done){
+          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
               ms.mtext='db';
@@ -1779,7 +1779,7 @@ app.post('/newuser',function(req,res){
           var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
           console.log('vuid: '+vuid);
           counter_items.insert({uid:vuid,total:0,itemstore:[]});
-          counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
+          //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
           ms.trouble =0;
           ms.mtext='success';
