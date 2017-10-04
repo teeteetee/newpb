@@ -2131,11 +2131,10 @@ head
                  method: "POST",
                  url: "/counter/addfriend",
                  data: data
-               })
-                 .done(function( msg ) {
-                   alert(_id+' added');
-             }
-             
+               }).done(function( msg ) {
+                   if(!msg.trouble)
+                   {alert($(el).attr('id')+' added');}
+             }  
         }
         
       
