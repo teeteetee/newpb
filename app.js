@@ -1050,7 +1050,8 @@ app.post('/counter/addfriend',function (req,res){
   //console.log('adding a friend');
   //console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
   //console.log(req.body._id.toString());
-  counter_users.update({_id:req.session._id},{$push:{friendstore:req.body._id}},function (err,done){
+  var u_id= new ObjectID(req.session._id);
+  counter_users.update({_id:u_id},{$push:{friendstore:req.body._id}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
