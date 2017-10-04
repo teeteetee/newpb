@@ -1044,7 +1044,7 @@ else{
 
 
 app.post('/counter/addfriend',function (req,res){
-  if(req.session&&req.session._id)
+  if(req.session&&req.session._id&&req.body._id)
  {var ms={};
   ms.trouble=1;
   //console.log('adding a friend');

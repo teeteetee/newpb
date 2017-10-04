@@ -2126,7 +2126,8 @@ head
         //}
         function add_friend(el){
               var data={};
-              data._id = $(el).attr('id');   
+              data._id = $(el).attr('id');  
+              console.log(data._id+' friends _id'); 
              $.ajax({
                  method: "POST",
                  url: "/counter/addfriend",
