@@ -262,10 +262,10 @@ head
                 strong Fuck!
                 | What the fuck you think you are doing now?
           form(method='post',action='/backup',role='form',id='loginform')
-            input#mail(type='email' class='form-control input-colour' placeholder='login')
-            input#p(type='password' class='form-control input-colour' placeholder='password')
+            input#mail(type='email' style='color:white;' class='form-control input-colour' placeholder='login')
+            input#p(type='password' style='color:white' class='form-control input-colour' placeholder='password')
             button#login(type='button' style='letter-spacing:3px;margin-bottom:20px;border:none;' class='btn btn-login form-control') LOGIN
-            h5#reglink(style='color:rgba(255,255,255,0.3);' onclick="if($('#log_alert').css('display')!='none'){$('#log_alert').slideToggle();}" data-toggle="modal" data-target="#regmodal") Register
+            h5#reglink(style='color:rgba(255,255,255,0.4);' onclick="if($('#log_alert').css('display')!='none'){$('#log_alert').slideToggle();}" data-toggle="modal" data-target="#regmodal") Register
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script. 
