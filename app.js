@@ -1045,25 +1045,17 @@ app.post('/counter/addfriend',function (req,res){
   if(req.session&&req.session._id)
  {var ms={};
   ms.trouble=1;
-  console.log('adding a friend');
-  console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
-  console.log(req.body._id.toString());
-  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$push:{friendstore:req.body._id},$inc:{total_fd:1}},function (err,done){
+  //console.log('adding a friend');
+  //console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
+  //console.log(req.body._id.toString());
+  counter_users.update({_id:req.session._id},{$push:{friendstore:req.body._id}},function (err,done){
     if(err){
       console.log('err adding a friend');
       res.send(ms);}
       else {
         console.log('adding a follower');
-        counter_friends.update({uid:req.body._id},{$push:{followers:JSON.stringify(req.session._id).replace(/"/g,'').trim()},$inc:{total_fl:1}},function (err,done){
-          if(err){
-            console.log('err adding a friend 2');
-            res.send(ms);}
-            else {    
-              console.log('added a follower');     
-              ms.trouble=0;
-              res.send(ms);
-            }
-        });
+        ms.trouble=0;
+        res.send(ms);
       }
   });
  }       
