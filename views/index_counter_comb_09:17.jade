@@ -1072,6 +1072,8 @@ head
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous")
       script.
        var nick = '#{nick}';
+       var friendstore =#{friendstore};
+       console.log('friendstore: '+friendstore);
        if(nick.length>1){
         $('#user_name').text(nick);
        }
@@ -1202,7 +1204,7 @@ head
               if(msg)
                 { $('#srb').empty();
                       for(var i =0;i<msg.length;i++){
-                       $('#srb').append("<div id='"+msg[i]._id+"' class='sritem'>"+msg[i].nick+"<button onclick='addfriend(this)' class='btn addfriend float-right'>add</button></div>");
+                       $('#srb').append("<div id='"+msg[i]._id+"' class='sritem'>"+msg[i].nick+"<button onclick='add_friend(this)' class='btn addfriend float-right'>add</button></div>");
                       }
                    //for(var btitle =0;btitle<msg.length;btitle++){
                    //  console.log('vtitle: '+msg[btitle]);

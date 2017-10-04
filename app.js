@@ -265,7 +265,7 @@ app.get('/counter',function (req,res){
  {console.log(req.session);
   if(req.session.nick){
     //res.render('index_counter_comb',{'_id':req.session._id,'nick':req.session.nick});
-    res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick});
+    res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick,'friendstore':req.session.friendstore});
   }
   else{
   //res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
