@@ -955,7 +955,7 @@ app.post('/counter/rd_item/',function(req,res){
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
-  console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp);
+  console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp+', teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
     if(!teamlist){
