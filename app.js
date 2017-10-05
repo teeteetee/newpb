@@ -1012,8 +1012,8 @@ app.post('/counter/rd_item/',function(req,res){
    });
 }
 else{
-  console.log('redacting teamlist item');
-  var teamlist_id = new ObjectID(req.body.teamlist_id)
+  console.log('redacting teamlist item: '+req.body.teamlist_id);
+  var teamlist_id = new ObjectID(req.body.teamlist_id);
   counter_teamlists.findOne({_id:teamlist_id},function (err,done){
   if(err)
   {
