@@ -1021,9 +1021,10 @@ else{
     res.send(ms);
   }
     else{
-      console.log('found a profile');
+      console.log('done: '+JSON.stringify(done));
       //--------------//
       if(done&&done.itemstore){
+        console.log('found a profile');
         var itemstore_length = done.itemstore.length;
         console.log('has an itemstore, length: '+itemstore_length);
         for(var i =0;i<itemstore_length;i++){
@@ -1037,7 +1038,7 @@ else{
               vtags[index]=trim1(element).toLowerCase();
               });
               done.itemstore[i].item_tags = vtags;
-              counter_teamlists.update({_id:req.body.teamlist_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+              counter_teamlists.update({_id:teamlist_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
                    console.log(err2);
                  res.send(ms);
@@ -1050,6 +1051,10 @@ else{
             }
       }
       //--------------//
+      res.send(ms);
+    }
+    else{
+      console.log('no match')
       res.send(ms);
     }
   }
