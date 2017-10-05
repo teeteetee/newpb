@@ -1653,7 +1653,7 @@ head
                    }
                    if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
-                   if(_id.length<2)
+                   if(!_id)
                    {populate(consolidated,0,0);}
                    else{
                     populate(consolidated,1,_id);
