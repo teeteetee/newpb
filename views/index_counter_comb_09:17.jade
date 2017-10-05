@@ -1877,8 +1877,8 @@ head
         else{
           $('.modal-dialog').css('margin-top','5%');
         }
-        insert_remove = 'removeitem('+i+','+teamlist+','+teamlist_id+')';
-        insert_redact = 'redactitem_submit('+i+','+teamlist+','+teamlist_id+')';
+        insert_remove = 'removeitem('+i+','+teamlist+',"'+teamlist_id+'")';
+        insert_redact = 'redactitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
         //insert2 = 'switch_movie('+i+','+old+')';
         $('.item_remove').attr('onclick',insert_remove);
         $('.item_redact_submit').attr('onclick',insert_redact);
