@@ -1552,7 +1552,7 @@ head
                    if(consolidated.length){
                       console.log('bp2');
                    sortByKey(consolidated, 'tmstmp');
-                   populate(consolidated);
+                   populate(consolidated,0,0);
                    }  
                 }
               });
@@ -1653,7 +1653,11 @@ head
                    }
                    if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
-                   populate(consolidated);
+                   if(_id.length<2)
+                   {populate(consolidated,0,0);}
+                   else{
+                    populate(consolidated,1,_id);
+                   }
                    //return consolidated;
                    }  
                 }
@@ -1709,7 +1713,7 @@ head
         function trim1 (str) {
             return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         }
-        function populate(consolidated) {
+        function populate(consolidated,teamlist,teamlist_id) {
           tags=[];
           var count;
           var inarr;
@@ -1723,7 +1727,7 @@ head
                       else{
                         temp_insert=element.item_title;
                       }
-                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
+                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+','+teamlist+','+teamlist_id+')">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small>";
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags.length){
                         element.item_tags.forEach(function (element_2, index_2){
@@ -1864,7 +1868,7 @@ head
           $('#invitation_code').text(_id);
           $('#redact_list').modal('show');
         };
-        function redactitem_dialog (i) {
+        function redactitem_dialog (i,teamlist,teamlist_id) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
         if($('body').width()<$('body').height()) {
@@ -1873,8 +1877,8 @@ head
         else{
           $('.modal-dialog').css('margin-top','5%');
         }
-        insert_remove = 'removeitem('+i+')';
-        insert_redact = 'redactitem_submit('+i+')';
+        insert_remove = 'removeitem('+i+','+teamlist+','+teamlist_id+')';
+        insert_redact = 'redactitem_submit('+i+','+teamlist+','+teamlist_id+')';
         //insert2 = 'switch_movie('+i+','+old+')';
         $('.item_remove').attr('onclick',insert_remove);
         $('.item_redact_submit').attr('onclick',insert_redact);
@@ -1937,7 +1941,7 @@ head
               });
         }
         //-----------------------------------//
-        function redactitem_submit(i) {
+        function redactitem_submit(i,teamlist,teamlist_id) {
           var data={};
             data.v_index=i;
             data.item_title=$('#item_title_redact').val();
@@ -1945,6 +1949,9 @@ head
             data.item_comment=$('#item_comment_redact').val();
             data.item_tags=$('#item_tags_redact').val();
             data.item_tmstmp=consolidated[i].tmstmp;
+            data.teamlist = teamlist;
+            if(teamlist)
+             {data.teamlist_id=teamlist_id;}
         $.ajax({
               method: "POST",
               url: "/counter/rd_item/",
@@ -2119,6 +2126,29 @@ head
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
            }
         }
+        function remove_team_list(){
+          var teamlist_name;   
+          if($('#list_name').val() )//what if I dont know year yet?
+          {
+            $('#add').fadeOut(350);
+            $('#wait').css('display','block');
+            //-------------
+             var data={};
+             data.teamlistname = $('#list_name').val();
+             
+            $.ajax({
+                method: "POST",
+                url: "/counter/newteamlist",
+                data: data
+              })
+                .done(function( msg ) {
+                  window.location='/counter';
+                });
+            }
+            else{
+              alert('no name provided');
+            }
+          }
         //function load_team_lists(team_lists_arr){
         //  team_lists_arr.forEach(function (element,index){
         //      

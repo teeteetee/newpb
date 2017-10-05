@@ -954,9 +954,11 @@ app.post('/counter/rd_item/',function(req,res){
   var vtags = req.body.item_tags.split(',');
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
+  var teamlist = parseInt(req.body.teamlist);
   console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp);
   if(req.session&&req.session._id&&vtmstmp)
   {
+    if(!teamlist){
   counter_items.findOne({uid:req.session._id},function (err,done){
   if(err)
   {
@@ -970,7 +972,7 @@ app.post('/counter/rd_item/',function(req,res){
         var itemstore_length = done.itemstore.length;
         console.log('has an itemstore, length: '+itemstore_length);
         for(var i =0;i<itemstore_length;i++){
-          console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
+          //console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
               console.log('found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
@@ -1008,6 +1010,50 @@ app.post('/counter/rd_item/',function(req,res){
     }
   }
    });
+}
+else{
+  var teamlist_id = new ObjectID(req.body.teamlist_id)
+  counter_teamlists.findOne({_id:teamlist_id},function (err,done){
+  if(err)
+  {
+    console.log('trouble removing a item\n'+err);
+    res.send(ms);
+  }
+    else{
+      console.log('found a profile');
+      //--------------//
+      if(done&&done.itemstore){
+        var itemstore_length = done.itemstore.length;
+        console.log('has an itemstore, length: '+itemstore_length);
+        for(var i =0;i<itemstore_length;i++){
+          //console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
+         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
+              console.log('found to redact: '+done.itemstore[i].item_title);
+              done.itemstore[i].item_title = vtitle;
+              done.itemstore[i].item_comment = vlink;
+              done.itemstore[i].item_link = vlink;
+              vtags.forEach(function (element, index){
+              vtags[index]=trim1(element).toLowerCase();
+              });
+              done.itemstore[i].item_tags = vtags;
+              counter_teamlists.update({_id:req.body.teamlist_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+                 if(err2){
+                   console.log(err2);
+                 res.send(ms);
+                 }
+                   else{
+                  ms.trouble=0;
+                 res.send(ms);
+                   }
+        });
+            }
+      }
+      //--------------//
+      res.send(ms);
+    }
+  }
+   });
+}
   
 }
   else {
@@ -1654,7 +1700,8 @@ app.post('/counter/rmteamlist',function (req,res){
     if(req.session&&req.session._id&&vteamlistname)
  {
    counter_teamlists.remove({_id:vteamlistname});
-
+    ms.trouble=0;
+    res.send(ms);
  }
 else {
   res.send('err');
