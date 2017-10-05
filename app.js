@@ -976,7 +976,7 @@ app.post('/counter/rd_item/',function(req,res){
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
               console.log('found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
-              done.itemstore[i].item_comment = vlink;
+              done.itemstore[i].item_comment = vcomment;
               done.itemstore[i].item_link = vlink;
               vtags.forEach(function (element, index){
               vtags[index]=trim1(element).toLowerCase();
@@ -1012,6 +1012,7 @@ app.post('/counter/rd_item/',function(req,res){
    });
 }
 else{
+  console.log('redacting teamlist item');
   var teamlist_id = new ObjectID(req.body.teamlist_id)
   counter_teamlists.findOne({_id:teamlist_id},function (err,done){
   if(err)
@@ -1030,7 +1031,7 @@ else{
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
               console.log('found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
-              done.itemstore[i].item_comment = vlink;
+              done.itemstore[i].item_comment = vcomment;
               done.itemstore[i].item_link = vlink;
               vtags.forEach(function (element, index){
               vtags[index]=trim1(element).toLowerCase();
