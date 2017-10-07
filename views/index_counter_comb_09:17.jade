@@ -1719,7 +1719,8 @@ head
           var inarr;
           var temp_insert;
           if(consolidated.length)
-          {consolidated.forEach(function (element,index){
+          { $('#list_heading_title').prepend('<span class="badge" style="vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: #ef9437;background-color: white;">'+consolidated.length+'</span>')
+            consolidated.forEach(function (element,index){
                       var date=new Date(parseInt(element.tmstmp));
                       if(element.item_title.length>45){
                       temp_insert = element.item_title.slice(0,35)+'...';
