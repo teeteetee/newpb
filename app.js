@@ -1034,7 +1034,7 @@ app.post('/counter/addfriend',function (req,res){
       res.send(ms);}
       else {
         console.log('adding a follower');
-        res.session.friendstore=done.friendstore;
+        req.session.friendstore=done.friendstore;
         ms.trouble=0;
         res.send(ms);
       }
