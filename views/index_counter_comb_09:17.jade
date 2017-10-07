@@ -1076,20 +1076,25 @@ head
        console.log('friendstore: '+friendstore);
        var temp_id;
        if(friendstore.length>0){
-        friendstore.forEach(function (element,index){
-          temp_id='#'+element;
-          $('#friends_insert').append('<div class="row menu_item" id="'+element+'"></div>');
-             $.ajax({
+        get_friend_nick(friendstore,0,get_friend_nick)
+       }
+       function get_friend_nick(arr,index,callback){
+        var temp_id='#'+arr[index];
+        $('#friends_insert').append('<div class="row menu_item" id="'+arr[index]+'"></div>');
+        $.ajax({
                 method: "POST",
-                url: "/counter/gn/"+element,
+                url: "/counter/gn/"+arr[index],
                 data: 0
               }).done(function( msg ) {
                 if(!msg.trouble){
                  $(temp_id).text(msg.mtext);
                  $(temp_id).attr('lastitem',msg.lastitem);
                 }
+                index++;
+                if(!index===arr.length){
+                  callback(arr,index,callback);
+                }
                 });
-          });
        }
        if(nick.length>1){
         $('#user_name').text(nick);
