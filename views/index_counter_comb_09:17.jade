@@ -1074,7 +1074,7 @@ head
        var nick = '#{nick}';
        var friendstore =!{friendstore};
        console.log('friendstore: '+friendstore);
-       if(friendstore.length<0){
+       if(friendstore.length>0){
         friendstore.forEach(function (element,index){
           $('#friends_insert').append('<div class="row menu_item">'+element+'</div>');
           });
