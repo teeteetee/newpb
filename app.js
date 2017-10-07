@@ -936,7 +936,7 @@ app.post('/counter/rd_item/',function(req,res){
     res.send(ms);
   }
     else{
-      console.log('found a profile');
+      console.log('found a profile: '+JSON.stringify(done));
       //--------------//
       if(done&&done.itemstore){
         var itemstore_length = done.itemstore.length;
