@@ -1093,7 +1093,8 @@ head
                  $(temp_id).attr('lastitem',msg.lastitem);
                 }
                 index++;
-                if(!index===arr.length){
+                if(index!==arr.length){
+                  consle.log('lolololololo');
                   callback(arr,index,callback);
                 }
                 });
