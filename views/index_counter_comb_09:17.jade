@@ -1074,9 +1074,21 @@ head
        var nick = '#{nick}';
        var friendstore =!{friendstore};
        console.log('friendstore: '+friendstore);
+       var temp_id;
        if(friendstore.length>0){
         friendstore.forEach(function (element,index){
-          $('#friends_insert').append('<div class="row menu_item">'+element+'</div>');
+          temp_id='#'+element;
+          $('#friends_insert').append('<div class="row menu_item" id="'+element+'"></div>');
+             $.ajax({
+                method: "POST",
+                url: "/counter/gn/"+element,
+                data: 0
+              }).done(function( msg ) {
+                if(!msg.trouble){
+                 $(temp_id).text(msg.mtext);
+                 $(temp_id).attr('lastitem',msg.lastitem);
+                }
+                });
           });
        }
        if(nick.length>1){
