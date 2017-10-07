@@ -579,40 +579,6 @@ app.get('/counter/profile/:_id',function (req,res){
     }
 });
 
-app.get('/counter/profile/:_id/b',function (req,res){
-  if(req.session&&req.session._id){
-    counter_users.findOne({_id:req.params._id},function (err,done){
-      if(err){
-        console.log('err /counter/profile/'+req.params._id);
-      }
-      if(done){
-        counter_friends.findOne({uid:req.session._id},function (err,done1){
-          if(done1){
-            if(done1.friendstore.indexOf(req.params._id)!=-1){
-              res.render('index_in_profile_books',{'_id':req.params._id,'isfriend':1});
-            }
-            else {
-              res.render('index_in_profile_books',{'_id':req.params._id,'isfriend':0});
-            }
-          }
-        });
-      }
-      else {
-        res.send('no such user');
-      }
-    });
-  }
-    else{
-    counter_users.findOne({_id:req.params._id},function (err,done){
-      if(done){
-        res.render('index_profile_books',{'_id':req.params._id});
-      }
-      else {
-        res.send('no such user');
-      }
-    });
-    }
-});
 
 app.post('/counter/getteamlists',function (req,res){
   var ms ={};
@@ -690,29 +656,29 @@ else{
 }
 });
 
-app.post('/counter/getweb',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  if(req.session&&req.session._id)
-  {counter_web.find({},function(err,doc){
-      if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        //console.log(doc);
-        ms.doc = doc[0];
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        res.send(ms);
-      }
-    });}
-else{
-   res.send(ms);
-}
-});
+//app.post('/counter/getweb',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_web.find({},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        //console.log(doc);
+//        ms.doc = doc[0];
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
 
 //app.post('/counter/friend/getmovies/:_id',function (req,res){
 //  var ms ={};
@@ -896,6 +862,7 @@ app.post('/counter/rm_item/',function(req,res){
   ms.trouble =1;
   var vtitle = req.body.item_title;
   var vtmstmp= parseInt(req.body.item_tmstmp);
+  //ADD FUNCTIONALITY FOR TEAMLISTS
   console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
@@ -917,32 +884,32 @@ app.post('/counter/rm_item/',function(req,res){
   }
 });
 
-app.get('/counter/tmp_corr',function (req,res){
-  counter_items.findOne({uid:req.session._id},function (err,done){
-  if(err)
-  {
-    console.log('trouble removing a item\n'+err);
-    res.redirect('/counter');
-  }
-    else{
-      for(var i =0;i<done.itemstore.length;i++){
-        if(done.itemstore[i].tmstmp===1496353377409){
-          var tags=['фильм','посмотрел'];
-          done.itemstore[i].item_tags=tags;
-          counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
-                 if(err2){
-                   console.log(err2);
-                 res.redirect('/counter');
-                 }
-                   else{
-                  res.redirect('/counter');
-                   }
-        });
-        }
-      }
-    }
-  });
-});
+//app.get('/counter/tmp_corr',function (req,res){
+//  counter_items.findOne({uid:req.session._id},function (err,done){
+//  if(err)
+//  {
+//    console.log('trouble removing a item\n'+err);
+//    res.redirect('/counter');
+//  }
+//    else{
+//      for(var i =0;i<done.itemstore.length;i++){
+//        if(done.itemstore[i].tmstmp===1496353377409){
+//          var tags=['фильм','посмотрел'];
+//          done.itemstore[i].item_tags=tags;
+//          counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+//                 if(err2){
+//                   console.log(err2);
+//                 res.redirect('/counter');
+//                 }
+//                   else{
+//                  res.redirect('/counter');
+//                   }
+//        });
+//        }
+//      }
+//    }
+//  });
+//});
 
 app.post('/counter/rd_item/',function(req,res){
   // add user verification
@@ -958,8 +925,11 @@ app.post('/counter/rd_item/',function(req,res){
   console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp+', teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
-    if(!teamlist){
-  counter_items.findOne({uid:req.session._id},function (err,done){
+  var _id=req.session._id;
+  if(teamlist){
+    _id=req.body.teamlist_id;
+  }
+  counter_items.findOne({uid:_id},function (err,done){
   if(err)
   {
     console.log('trouble removing a item\n'+err);
@@ -1010,56 +980,6 @@ app.post('/counter/rd_item/',function(req,res){
     }
   }
    });
-}
-else{
-  console.log('redacting teamlist item: '+req.body.teamlist_id);
-  var teamlist_id = new ObjectID(req.body.teamlist_id);
-  counter_teamlists.findOne({_id:teamlist_id},function (err,done){
-  if(err)
-  {
-    console.log('trouble removing a item\n'+err);
-    res.send(ms);
-  }
-    else{
-      console.log('done: '+JSON.stringify(done));
-      //--------------//
-      if(done&&done.itemstore){
-        console.log('found a profile');
-        var itemstore_length = done.itemstore.length;
-        console.log('has an itemstore, length: '+itemstore_length);
-        for(var i =0;i<itemstore_length;i++){
-          //console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
-         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
-              console.log('found to redact: '+done.itemstore[i].item_title);
-              done.itemstore[i].item_title = vtitle;
-              done.itemstore[i].item_comment = vcomment;
-              done.itemstore[i].item_link = vlink;
-              vtags.forEach(function (element, index){
-              vtags[index]=trim1(element).toLowerCase();
-              });
-              done.itemstore[i].item_tags = vtags;
-              counter_teamlists.update({_id:teamlist_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
-                 if(err2){
-                   console.log(err2);
-                 res.send(ms);
-                 }
-                   else{
-                  ms.trouble=0;
-                 res.send(ms);
-                   }
-        });
-            }
-      }
-      //--------------//
-      res.send(ms);
-    }
-    else{
-      console.log('no match')
-      res.send(ms);
-    }
-  }
-   });
-}
   
 }
   else {
