@@ -1034,6 +1034,7 @@ app.post('/counter/addfriend',function (req,res){
       res.send(ms);}
       else {
         console.log('adding a follower');
+        res.session.friendstore=done.friendstore;
         ms.trouble=0;
         res.send(ms);
       }
@@ -1754,6 +1755,7 @@ app.post('/newuser',function(req,res){
           counter_items.insert({uid:vuid,total:0,itemstore:[]});
           //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
+          req.session.friendstore=[];
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
@@ -1878,6 +1880,7 @@ app.post('/check',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           req.session._id = confirmed._id;
+          req.session.friendstore = confirmed.friendstore;
           if(confirmed.nick){
             req.session.nick = confirmed.nick;
           }
