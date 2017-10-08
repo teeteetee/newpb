@@ -1086,7 +1086,7 @@ head
         temp_friend._id=arr[index];
         $.ajax({
                 method: "POST",
-                url: "/counter/gn/"+JSON.stringify(arr[index]),
+                url: "/counter/gn/"+arr[index].toString(),
                 data: 0
               }).done(function( msg ) {
                 temp_friend.nick='Unnamed user';
