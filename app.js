@@ -1045,6 +1045,18 @@ app.post('/counter/addfriend',function (req,res){
       }   
 });
 
+app.get('counter/clearfr',function (req,res){
+  counter_users.update({_id:req.session._id},{friendstore:[]},function(err,done){
+    if(err){
+      console.log('say hello');
+    }
+    else{
+      req.session.friendstore=[];
+      res.redirect('/counter');
+    }
+  });
+});
+
 app.post('/counter/removefriend',function (req,res){
   if(req.session&&req.session._id)
  {var ms={};
