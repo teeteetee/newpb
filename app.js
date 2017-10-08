@@ -1033,8 +1033,8 @@ app.post('/counter/addfriend',function (req,res){
       console.log('err adding a friend');
       res.send(ms);}
       else {
-        console.log('adding a friend: '+JSON.stringify(done));
-        req.session.friendstore=done.friendstore;
+        //console.log('adding a friend: '+JSON.stringify(done));
+        req.session.friendstore.push(req.body._id);
         ms.trouble=0;
         res.send(ms);
       }
