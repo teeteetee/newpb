@@ -1658,8 +1658,8 @@ head
               data: {'_id':_id}
             })
               .done(function( msg ) {
-                if(!friendlist){
                 if(!msg.trouble) {
+                   if(!friendlist){
                  // console.log('items: '+JSON.stringify(msg.doc));
                   var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
@@ -1692,7 +1692,6 @@ head
                    //return consolidated;
                    } 
                    } 
-                }
                 else{
                   var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
                   $('#list_heading').empty();
@@ -2184,7 +2183,7 @@ head
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
-          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0);}
+          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0f);}
            }
         }
         function open_friends_list(index) {
