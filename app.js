@@ -1034,7 +1034,14 @@ app.post('/counter/addfriend',function (req,res){
       res.send(ms);}
       else {
         //console.log('adding a friend: '+JSON.stringify(done));
-        req.session.friendstore.push(req.body._id);
+        if(req.session.friendstore!=0)
+          {
+            req.session.friendstore.push(req.body._id);
+          }
+        else{
+         req.session.friendstore=[];
+         req.session.friendstore.push(req.body._id);
+        }
         ms.trouble=0;
         res.send(ms);
       }
