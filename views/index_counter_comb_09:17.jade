@@ -1086,7 +1086,7 @@ head
         temp_friend._id=arr[index];
         $.ajax({
                 method: "POST",
-                url: "/counter/gn/"+arr[index],
+                url: "/counter/gn/"+JSON.stringify(arr[index]),
                 data: 0
               }).done(function( msg ) {
                 temp_friend.nick='Unnamed user';
@@ -1098,7 +1098,7 @@ head
                 }
                 index++;
                 arr[index]=temp_friend;
-                if(index!==arr.length){
+                if(index<arr.length){
                   console.log('lolololololo');
                   callback(arr,index,callback);
                 }
