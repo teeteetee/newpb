@@ -1024,7 +1024,7 @@ app.post('/counter/addfriend',function (req,res){
   if(req.session&&req.session._id&&req.body._id)
  {var ms={};
   ms.trouble=1;
-  //console.log('adding a friend');
+  console.log('adding a friend: '+req.body._id);
   //console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
   //console.log(req.body._id.toString());
   var u_id= new ObjectID(req.session._id);
