@@ -1081,18 +1081,23 @@ head
        function get_friend_nick(arr,index,callback){
         console.log('get_friend_nick '+index);
         var temp_id='#'+arr[index];
-        $('#friends_insert').append('<div class="row menu_item" id="'+arr[index]+'"></div>');
+        $('#friends_insert').append('<div class="row menu_item" onclick="open_friends_list('+index+')" id="'+arr[index]+'"></div>');
+        var temp_friend={};
+        temp_friend._id=arr[index];
         $.ajax({
                 method: "POST",
                 url: "/counter/gn/"+arr[index],
                 data: 0
               }).done(function( msg ) {
+                temp_friend.nick='Unnamed user';
                 if(!msg.trouble){
                   console.log('get_friend_nick '+msg.mtext);
                  $(temp_id).text(msg.mtext);
                  $(temp_id).attr('lastitem',msg.lastitem);
+                 temp_friend.nick=msg.mtext;
                 }
                 index++;
+                arr[index]=temp.user;
                 if(index!==arr.length){
                   console.log('lolololololo');
                   callback(arr,index,callback);
@@ -1645,7 +1650,7 @@ head
             $('.popover-dismiss').popover({
               trigger: 'focus'
             })
-            function get_items(_id, list_name){
+            function get_items(_id, list_name,friendlist){
               consolidated=[];
               $.ajax({
               method: "POST",
@@ -1653,6 +1658,7 @@ head
               data: {'_id':_id}
             })
               .done(function( msg ) {
+                if(!friendlist){
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                   var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
@@ -1684,7 +1690,35 @@ head
                     populate(consolidated,1,_id);
                    }
                    //return consolidated;
-                   }  
+                   } 
+                   } 
+                }
+                else{
+                  var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
+                  $('#list_heading').empty();
+                  $('#list_heading').append(insert);
+                  $('#tags').append('No tags, list is empty');
+                 var items=msg.doc.itemstore;
+                  if(items.length<1 ) {
+                   console.log('no items in teamlist');
+                   }
+                   else {
+                    items.forEach(function (element,index){
+                    if(element.item_title)
+                       //console.log('element pushed');
+                       consolidated.push(element);        
+                    });
+                   }
+                   if(consolidated.length){
+                   sortByKey(consolidated, 'tmstmp');
+                   if(!_id)
+                   {populate(consolidated,0,0);}
+                   else{
+                    populate(consolidated,1,_id);
+                   }
+                   //return consolidated;
+                   } 
+                   } 
                 }
               });
             }
@@ -2139,7 +2173,7 @@ head
               $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
               //populate(consolidated);
-              get_items(0,'Your items');
+              get_items(0,'Your items',0);
             }
           }
             else{
@@ -2150,8 +2184,17 @@ head
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
-          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name);}
+          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0);}
            }
+        }
+        function open_friends_list(index) {
+          var list_id_jq='#'+friendlist[index]._id;
+          if(!$(list_id_jq).hasClass('selected'))
+         {$('#main_list').empty();
+          $('#tags').empty();
+          $('.menu_item').removeClass('selected');
+          $(list_id_jq).addClass('selected');
+          get_items(friendlist[index]._id,friendlist[index].nick,1);}
         }
         function remove_team_list(){
           var teamlist_name;   
