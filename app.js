@@ -1045,7 +1045,7 @@ app.post('/counter/addfriend',function (req,res){
       }   
 });
 
-app.get('counter/clearfr',function (req,res){
+app.get('/counter/clearfr',function (req,res){
   counter_users.update({_id:req.session._id},{friendstore:[]},function(err,done){
     if(err){
       console.log('say hello');
