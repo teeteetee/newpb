@@ -590,7 +590,7 @@ app.post('/counter/getteamlists',function (req,res){
         res.send(ms);
       }
       else if(doc!=null){
-        console.log('TEAMLISTS: '+doc.toString());
+        console.log('TEAMLISTS: '+JSON.stringify(doc));
         ms.doc = doc.teamlists;
         ms.trouble=0;
         res.send(ms);
