@@ -1084,9 +1084,10 @@ head
         $('#friends_insert').append('<div class="row menu_item" onclick="open_friends_list(friendstore,'+index+')" id="'+arr[index]+'"></div>');
         var temp_friend={};
         temp_friend._id=arr[index];
+        console.log('typeof: '+typeof arr[index]);
         $.ajax({
                 method: "POST",
-                url: "/counter/gn/"+arr[index].toString(),
+                url: "/counter/gn/"+arr[index],
                 data: 0
               }).done(function( msg ) {
                 temp_friend.nick='Unnamed user';
