@@ -634,7 +634,8 @@ app.post('/counter/getitems',function (req,res){
   if(req.session&&req.session._id)
   {
     var temp_id=req.body&&req.body._id&&req.body._id.length>1?new ObjectID(req.body._id):req.session._id;
-    console.log('temp_id: '+temp_id);
+    console.log('GETITEMS temp_id: '+temp_id);
+    console.log('GETITEMS typeof: '+typeof temp_id);
     counter_items.findOne({'uid':temp_id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
@@ -647,7 +648,7 @@ app.post('/counter/getitems',function (req,res){
         res.send(ms);
       }
       else {
-        console.log('hey 2: '+doc);
+        console.log('GETITEMS hey 2: '+doc);
         res.send(ms);
       }
     });}
