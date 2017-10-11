@@ -1773,6 +1773,7 @@ app.post('/newuser',function(req,res){
           counter_users.insert({_id:vuid,mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
+              console.log('db');
               ms.mtext='db';
              res.send(ms); 
             }
@@ -1785,6 +1786,7 @@ app.post('/newuser',function(req,res){
           req.session._id=done._id;
           req.session.friendstore=[];
           ms.trouble =0;
+          console.log('success');
           ms.mtext='success';
           res.send(ms);
           }
@@ -1792,6 +1794,7 @@ app.post('/newuser',function(req,res){
           else{
             var ms={};
             ms.trouble=1;
+            console.log('email exists');
              ms.mtext='email exists';
              res.send(ms); 
           }
@@ -1799,6 +1802,7 @@ app.post('/newuser',function(req,res){
       });
     }
     else{
+      console.log('bad data');
       ms.mtext='bad data';
       res.send(ms);
     }
