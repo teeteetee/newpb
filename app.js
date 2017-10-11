@@ -1758,6 +1758,11 @@ counter_users.update({_id:vuid},{$set:{"mail":"gg@gg.gg","first_time":0,"nick":"
 
   });
 
+app.get('/hello2',function (req,res){
+counter_users.update({nick:"Thoughtful"},{$set:{mail:'uu@uu.uu'}});
+  res.redirect('/');
+  });
+
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
     var ms = {};
