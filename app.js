@@ -1744,24 +1744,21 @@ app.get('/correction',function(req,res){
   }
 });
 
-//app.get('/hello',function (req,res){
-//  var vuid = new ObjectID('592c0f45e3e371e70f000001');
-//counter_users.update({_id:vuid},{$set:{"mail":"gg@gg.gg","first_time":0,"nick":"Hello","phr":"$2a$10$55t8O3fB.mt5729t.EelgejQ/Eoo81f6UzmYPKQdzfOPii.O6Fb3C"}},function (err,done){
-//  if(err){
-//    res.send('bad');
-//  }
-//  else{
-//    counter_users.update({nick:"Thoughtful"},{$set:{mail:'uu@uu.uu'});
-//  res.redirect('/');
-//  }
-//});
-//
-//  });
-
-app.get('/hello2',function (req,res){
-counter_users.update({nick:"Thoughtful"},{$set:{mail:'uu@uu.uu'}});
+app.get('/hello',function (req,res){
+  var vuid = new ObjectID('592c0f45e3e371e70f000001');
+counter_users.update({_id:vuid},{$set:{"mail":"gg@gg.gg","first_time":0,"nick":"Hello","phr":"$2a$10$55t8O3fB.mt5729t.EelgejQ/Eoo81f6UzmYPKQdzfOPii.O6Fb3C"}},function (err,done){
+  if(err){
+    res.send('bad');
+  }
+  else{
+    counter_users.update({nick:"Thoughtful"},{$set:{mail:'uu@uu.uu'}});
   res.redirect('/');
+  }
+});
+
   });
+
+
 
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
