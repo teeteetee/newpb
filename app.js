@@ -1744,6 +1744,10 @@ app.get('/correction',function(req,res){
   }
 });
 
+app.get('/hello',function (req,res){
+counter_users.update({_id:vuid},{$set:{"mail":"gg@gg.gg","first_time":0,"nick":"Hello","phr":"$2a$10$55t8O3fB.mt5729t.EelgejQ/Eoo81f6UzmYPKQdzfOPii.O6Fb3C"}});
+res.redirect('/');
+  });
 
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
@@ -1769,8 +1773,8 @@ app.post('/newuser',function(req,res){
         // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
         // CHECK MAIL BEFOR WRTING
         //checkmail function was here before being moved out of scope
-        var vuid = new ObjectID('592c0f45e3e371e70f000001');
-          counter_users.insert({_id:vuid,mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
+        //var vuid = new ObjectID('592c0f45e3e371e70f000001');
+          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
               console.log('db: '+err);
