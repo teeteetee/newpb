@@ -579,6 +579,10 @@ app.get('/counter/profile/:_id',function (req,res){
     }
 });
 
+app.get('/counter/userrestore',function (req,res){
+  var object_id= new ObjectID('592c0f45e3e371e70f000001');
+  counter_users.insert({_id:object_id,})
+});
 
 app.post('/counter/getteamlists',function (req,res){
   var ms ={};
@@ -1740,6 +1744,7 @@ app.get('/correction',function(req,res){
   }
 });
 
+
 app.post('/newuser',function(req,res){
     //var reload = req.body.reload;
     var ms = {};
@@ -1764,7 +1769,8 @@ app.post('/newuser',function(req,res){
         // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
         // CHECK MAIL BEFOR WRTING
         //checkmail function was here before being moved out of scope
-          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
+        var vuid = new ObjectID('592c0f45e3e371e70f000001');
+          counter_users.insert({_id:vuid,mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
               ms.mtext='db';
