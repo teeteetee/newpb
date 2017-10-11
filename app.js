@@ -1773,7 +1773,7 @@ app.post('/newuser',function(req,res){
           counter_users.insert({_id:vuid,mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
-              console.log('db');
+              console.log('db: '+err);
               ms.mtext='db';
              res.send(ms); 
             }
