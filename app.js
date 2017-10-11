@@ -932,9 +932,9 @@ app.post('/counter/rd_item/',function(req,res){
   console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp+', teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
-  var _id=new ObjectID(req.session._id);
+  var _id=req.session._id;
   if(teamlist){
-    _id=new ObjectID(req.body.teamlist_id);
+    _id=req.body.teamlist_id;
   }
   counter_items.findOne({uid:_id},function (err,done){
   if(err)
