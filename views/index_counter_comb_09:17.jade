@@ -821,17 +821,16 @@ head
         color:white;
         border-color:white;
       }
-      .cssCircle {
+      margin-left: 5px;
       -webkit-border-radius: 999px;
       -moz-border-radius: 999px;
       border-radius: 999px;
-      /*behavior: url(PIE.htc);*/
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       padding: 0px;
-      background: transparent;
-      border: 1px solid white;
-      color: white;
+      background: rgba(255, 255, 255, 0);
+      border: 1px solid #aaa;
+      color: #aaa;
       text-align: center;
       -webkit-transition: background 0.2s linear;
       -moz-transition: background 0.2s linear;
@@ -839,8 +838,11 @@ head
       -o-transition: background 0.2s linear;
       transition: background 0.2s linear;
       transition: color 0.2s linear;
-      font: 13px Arial, sans-serif
-      }
+      font: 13px Arial, sans-serif;
+      padding-bottom: 10px;
+      padding-left: 1px;
+      padding-right: 1px;
+      margin-top: 4px;
       .cssCircle:hover {
         background: rgba(255,255,255,0.3);
         cursor: pointer;
@@ -855,6 +857,8 @@ head
       .minusSign:hover,
       .plusSign:hover {
         color: white;
+       background-color: #ce3636;
+       border-color: white;
       }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
@@ -1079,20 +1083,22 @@ head
           h4#user_name Reso 
           .row.menu_heading(style='margin-top:30px;')
             | Lists
-            .cssCircle.plusSign &#43;
+            .cssCircle.plusSign(onclick="$('#invite').modal('show');") &#43;
           #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
-          .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
-            span(style='color:#ff9900;margin-left:5px;') +
+          //
+            .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
+              span(style='color:#ff9900;margin-left:5px;') +
           //
             .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
               span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
-            .cssCircle.plusSign &#43;
+            .cssCircle.plusSign(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');") &#43;
           #friends_insert
-          .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
-            span(style='color:#00ff8d;margin-left:5px;') +
+          //
+            .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
+              span(style='color:#00ff8d;margin-left:5px;') +
           .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
             button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           //.row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
