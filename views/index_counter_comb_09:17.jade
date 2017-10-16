@@ -2291,18 +2291,21 @@ head
                }).done(function( msg ) {
                    if(!msg.trouble)
                    {console.log('friend added');
+                 (function(){
                  $.ajax({
                     method: "POST",
                     url: "/counter/get_nick",
                     data: {'_id':el}
                   })
                     .done(function( msg ) {
-                      if(!msg.trouble) {}});
-                         // console.log('get_nick iteration: '+msg.mtext);
+                      if(!msg.trouble) {
+                        // console.log('get_nick iteration: '+msg.mtext);
                          friendstore.push({'_id':el,'nick':msg.mtext});
                          var length=friendstore.length-1;
                          $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")'>"+msg.mtext+"</div>");
                          $('#find_friend').modal('hide');
+                        }});
+                  })();
                }
              }  
              )};
