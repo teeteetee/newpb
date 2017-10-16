@@ -265,7 +265,7 @@ app.get('/counter',function (req,res){
  {console.log(req.session);
   if(req.session.nick){
     //res.render('index_counter_comb',{'_id':req.session._id,'nick':req.session.nick});
-    console.log(JSON.stringify(req.session.friendstore));
+    console.log('MAIN ROUTE: friendstore'+JSON.stringify(req.session.friendstore));
     if(!req.session.friendstore||req.session.friendstore.length<1)
       {req.session.friendstore=0;}
     res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick,'friendstore':JSON.stringify(req.session.friendstore)});
