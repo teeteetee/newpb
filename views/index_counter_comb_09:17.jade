@@ -829,9 +829,9 @@ head
       width: 13px;
       height: 13px;
       padding: 0px;
-      background: #779BCA;
-      border: 1px solid #003580;
-      color: #003580;
+      background: transparent;
+      border: 1px solid white;
+      color: white;
       text-align: center;
       -webkit-transition: background 0.2s linear;
       -moz-transition: background 0.2s linear;
@@ -842,7 +842,7 @@ head
       font: 13px Arial, sans-serif
       }
       .cssCircle:hover {
-        background: #3F69A0 ;
+        background: rgba(255,255,255,0.3);
         cursor: pointer;
       }
       .minusSign {
@@ -1079,7 +1079,7 @@ head
           h4#user_name Reso 
           .row.menu_heading(style='margin-top:30px;')
             | Lists
-            .cssCircle.plusSign
+            .cssCircle.plusSign &#43;
           #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
           #team_lists_insert
           .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
@@ -1089,7 +1089,7 @@ head
               span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
-            .cssCircle.plusSign
+            .cssCircle.plusSign &#43;
           #friends_insert
           .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
             span(style='color:#00ff8d;margin-left:5px;') +
