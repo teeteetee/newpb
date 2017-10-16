@@ -1286,7 +1286,7 @@ app.post('/counter/restore',function (req,res){
               fs.unlink(oldPath, function(){
                 //if(err) throw err;
                 if(err) console.log(err);
-                res.redirect('/counter/comb');
+                res.redirect('/counter');
                });
            }
          });
