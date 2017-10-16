@@ -1613,7 +1613,7 @@ head
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                    items=msg.doc.itemstore;
-                  if(!items ) {
+                  if(!items||!items.length ) {
                    console.log('no items');
                    $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                    }
