@@ -2295,7 +2295,7 @@ head
                  $.ajax({
                     method: "POST",
                     url: "/counter/get_nick",
-                    data: {'_id':el}
+                    data: {'_id':data._id}
                   })
                     .done(function( msg ) {
                       if(!msg.trouble) {
