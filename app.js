@@ -1794,9 +1794,9 @@ app.post('/newuser',function(req,res){
             }
           else {
           //counter_stats.update({$inc:{users:1}});
-          var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
-          console.log('vuid: '+vuid);
-          counter_items.insert({uid:vuid,total:0,itemstore:[]});
+          //var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
+          //console.log('vuid: '+vuid);
+          counter_items.insert({uid:done._id,total:0,itemstore:[]});
           //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
           req.session.friendstore=[];
