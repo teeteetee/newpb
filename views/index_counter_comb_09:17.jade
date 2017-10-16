@@ -949,8 +949,12 @@ head
                 #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body(style='padding-top:30px;')
                     .form-group
-                      input(type="file" id="exampleInputFile")
-                      p(class="help-block") Restore from previously downloaded JSON backup file
+                      //input(type="file" id="exampleInputFile")
+                      //p(class="help-block") Restore from previously downloaded JSON backup file
+                      form#restore_form(action='/counter/restore', method='POST',enctype="multipart/form-data")
+                        .fileUpload.btn.btn-ioslight(style='margin:auto;')
+                          span(style='text-transform:uppercase;') Upload restore file
+                          input#restore_file(type="file" class="upload" name='userjson')
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree3")
                   button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
@@ -1122,6 +1126,12 @@ head
        if(friendstore){
         get_friend_nick(friendstore,0,get_friend_nick)
        }
+       document.getElementById("restore_file").onchange = function() {
+            var fileName = $("#restore_file").val();
+            if(fileName) {
+            document.getElementById("restore_form").submit();
+          }
+        };
        function get_friend_nick(arr,index,callback){
         console.log('get_friend_nick '+index);
         var temp_id='#'+arr[index];
