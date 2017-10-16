@@ -271,8 +271,10 @@ app.get('/counter',function (req,res){
     res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick,'friendstore':JSON.stringify(req.session.friendstore)});
   }
   else{
+    if(!req.session.friendstore||req.session.friendstore.length<1)
+      {req.session.friendstore=0;}
   //res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
-  res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':0});
+  res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':0,'friendstore':JSON.stringify(req.session.friendstore)});
 }}
  else {
   res.render('counter_index_login');
