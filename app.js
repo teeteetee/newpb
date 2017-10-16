@@ -934,7 +934,7 @@ app.post('/counter/rd_item/',function(req,res){
   {
   var _id=req.session._id;
   if(teamlist){
-    _id=req.body.teamlist_id;
+    _id=new ObjectID(req.body.teamlist_id);
   }
   counter_items.findOne({uid:_id},function (err,done){
   if(err)
