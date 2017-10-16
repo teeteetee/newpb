@@ -2300,7 +2300,9 @@ head
                     .done(function( msg ) {
                       if(!msg.trouble) {
                         // console.log('get_nick iteration: '+msg.mtext);
-                         friendstore.push({'_id':el,'nick':msg.mtext});
+                         if(!friendstore)
+                          {friendstore=[];}
+                          friendstore.push({'_id':el,'nick':msg.mtext});
                          var length=friendstore.length-1;
                          $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")'>"+msg.mtext+"</div>");
                          $('#find_friend').modal('hide');
