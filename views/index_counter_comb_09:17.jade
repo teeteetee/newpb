@@ -2204,7 +2204,8 @@ head
           }
         }
         function open_list(list_index){
-          //console.log('open_list');
+          console.log('open_list: '+list_index);
+          console.log('open_list: \n teamlists_arr'+teamlists_arr);
           if(list_index<0){
             //console.log('trying to open "your items"');
             if(!$('#your_items').hasClass('selected')){
