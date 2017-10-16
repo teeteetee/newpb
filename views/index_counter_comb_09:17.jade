@@ -858,6 +858,9 @@ head
        background-color: #ce3636;
        border-color: white;
       }
+      .grey-hover:hover{
+        background-color:#eee;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -934,14 +937,14 @@ head
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
                 .panel-heading(role="tab" id="headingOne3")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
+                  button(class='btn btn-iosdark form-control collapsed grey-hover' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     button.btn.btn-blue#backup download 
               .panel.panel-default
                 .panel-heading(role="tab" id="headingTwo3")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
+                  button(class='btn btn-iosdark form-control collapsed grey-hover' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
                 #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
                   .panel-body(style='padding-top:30px;')
@@ -950,7 +953,7 @@ head
                       p(class="help-block") Restore from previously downloaded JSON backup file
               .panel.panel-default
                 .panel-heading(role="tab" id="headingThree3")
-                  button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
+                  button#set_nick_button(class='btn btn-iosdark form-control collapsed grey-hover' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
