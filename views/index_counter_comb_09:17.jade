@@ -1615,6 +1615,7 @@ head
                    items=msg.doc.itemstore;
                   if(!items ) {
                    console.log('no items');
+                   $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                    }
                    else {
                     console.log('bp1');
