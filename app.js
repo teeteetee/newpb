@@ -1115,7 +1115,7 @@ app.post('/counter/additem',function (req,res){
             var list_id;
             // =req.body.list_id===0?req.session._id:new ObjectID(req.body.list_id);
              if(req.body.list_id.length===1&&!parseInt(req.body.list_id)){
-              list_id=req.session._id;
+              list_id=new ObjectID(req.session._id);
              }
              else{
               list_id=new ObjectID(req.body.list_id);
