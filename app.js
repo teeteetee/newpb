@@ -1265,7 +1265,7 @@ function validateJSON(body) {
 }
 
 app.get('/counter/tabak',function (req,res){
-   counter_users.update({"_id":new ObjectID(req.session._id)},{$set:{"teamlists":[{"_id":new ObjectID("59d6743979005c1d15000001"),"list_name":"Табак"]}},function (err1,done1){
+   counter_users.update({"_id":new ObjectID(req.session._id)},{$set:{"teamlists":[{"_id":new ObjectID("59d6743979005c1d15000001"),"list_name":"Табак"}]}},function (err1,done1){
        res.redirect('/counter');
    });
 });
