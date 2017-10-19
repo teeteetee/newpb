@@ -1214,7 +1214,8 @@ app.post('/counter/addweb',function (req,res){
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
   { var json = {};
-     counter_items.findOne({uid:req.session._id},function (err,doc){
+     var _id=new ObjectID(req.session._id);
+     counter_items.findOne({uid:_id},function (err,doc){
             if(err){
                console.log('ERR WHILE BACKUP REQUEST');
                console.log(err3);
