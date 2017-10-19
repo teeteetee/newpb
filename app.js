@@ -1264,6 +1264,13 @@ function validateJSON(body) {
   }
 }
 
+app.get('/counter/tabak',function (req,res){
+  counter_teamlists.update({"create_date":1507226681485},{$push:{"users":req.session._id}},function (err,done){
+   counter_users.update({"_id":new ObjectID(req.session._id)},{$push:{"teamlists":new ObjectID(59d6743979005c1d15000001)}},function (err1,done1){
+       res.redirect('/counter/showteamlists');
+   });
+  });
+});
 
 
 app.post('/counter/restore',function (req,res){
