@@ -854,8 +854,8 @@ head
       }
       .cssCircle:hover {
        cursor: pointer;
-       color: white;
-       background-color: #ce3636;
+       color: black;
+       background-color: white;
        border-color: white;
       }
       .collapsed:hover{
@@ -2303,7 +2303,7 @@ head
                           {friendstore=[];}
                           friendstore.push({'_id':el,'nick':msg.mtext});
                          var length=friendstore.length-1;
-                         $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")'>"+msg.mtext+"</div>");
+                         $('#friends_insert').append("<div class='row menu_item' id="+el+" onclick='open_friends_list(friendstore,"+length+")'>"+msg.mtext+"</div>");
                          $('#find_friend').modal('hide');
                         }});
                   })();
