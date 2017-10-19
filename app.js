@@ -1224,6 +1224,7 @@ app.post('/backup',function (req,res){
            {
             json.items={};
             json.items.itemstore=doc.itemstore;
+            json.teamlists = doc.teamlists;
             json.items.total=doc.total;
             var d = new Date();
             var vday = d.getDate().toString();
@@ -1288,7 +1289,7 @@ app.post('/counter/restore',function (req,res){
        if (valid) {
          console.log('breakpoint 4');
          data = JSON.parse(data);
-         counter_items.update({uid:new ObjectID(req.session._id)},{$set:{itemstore:data.items.itemstore}},function (err,done){
+         counter_items.update({uid:new ObjectID(req.session._id)},{$set:{itemstore:data.items.itemstore,teamlists:data.teamlists}},function (err,done){
            if(err){
             console.log('err');
            }
