@@ -901,7 +901,11 @@ head
             h6#list_name_redact(style='text-align:center;margin-bottom: 20px;')
             .btn-group(style='margin-left: 69px;margin-bottom:30px;')
               button.btn.btn-secondary#list_redact_toggle Rename
-              button.btn.btn-secondary(style='color:#ff8888;') Delete 
+              button.btn.btn-secondary#list_remove_toggle(style='color:#ff8888;') Delete 
+            .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
+              .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
+                .panel-body
+                  button(class='btn btn-red list_name_remove_submit' style='margin-top:30px;margin-bottom:30px;') Remove list
             .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
               .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
                 .panel-body
@@ -1994,6 +1998,9 @@ head
         $('#list_redact_toggle').click(function() {
           $('#redact_list_dialog').slideToggle();
           });
+        $('#list_remove_toggle').click(function() {
+          $('#remove_list_dialog').slideToggle();
+          });
         $('#invite_to_a_list_toggle').click(function() {
           $('#invite_to_a_list').slideToggle();
           })
@@ -2260,6 +2267,7 @@ head
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
+          $('#list_name_redact_input').val(+team_lists_arr[list_index].list_name+);
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0);}
            }
         }
