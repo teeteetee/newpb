@@ -1947,6 +1947,9 @@ head
            $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
             });
         }
+        else{
+          $('#tags').append("No tags yet");
+        }
         populated_once=1;
         }
         else{

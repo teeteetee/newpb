@@ -1697,16 +1697,29 @@ app.post('/counter/rmteamlist',function (req,res){
     ms.trouble=1;
     ms.mtext='trouble'; 
     var v_id= new ObjectID(req.body._id);
-    //var vmail = req.body.mail;
     if(req.session&&req.session._id&&v_id)
  {
-   counter_teamlists.remove({_id:v_id});
-   counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
-    ms.trouble=0;
-    res.send(ms);
+   counter.teamlists.findOne({_id:v_id},function (err,done){
+    if(err){
+      console.log('RMTEAMLIST: DB err');
+      res.send(ms);
+    }
+      else{
+        if(done._id&&done.admin===v_id) {
+           counter_teamlists.remove({_id:v_id});
+           counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
+            ms.trouble=0;
+            res.send(ms);
+        }
+        else{
+          console.log('RMTEAMLIST: low privileges teamlist remove attempt');
+         res.send(ms);
+        }
+      }
+   });
  }
 else {
-  res.send('err');
+  res.send('RMTEAMLIST: err');
 }
 });
 
@@ -1720,7 +1733,7 @@ app.post('/counter/newteamlist',function (req,res){
     //var vmail = req.body.mail;
     if(req.session&&req.session._id&&vteamlistname)
  {
-   counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),users:[req.session._id]},function (err,done){
+   counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),admin:req.session._id,users:[req.session._id]},function (err,done){
     //console.log('brp 2');
             if(err)
             {
