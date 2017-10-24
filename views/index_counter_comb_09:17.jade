@@ -1908,6 +1908,7 @@ head
                       var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags.length){
+                        console.log('POPULATE has tags: '+element.item_tags);
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
