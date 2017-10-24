@@ -1835,12 +1835,12 @@ head
                    else {
                     msg.doc.forEach(function (element,index){
                       team_lists_arr[index]=element;
-                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+index+')">'+element.list_name+'</div>');
-                    //if(element.item_title)
-                    //   //console.log('element pushed');
-                    //   consolidated.push(element); 
+                      //$('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+index+')">'+element.list_name+'</div>');
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'" onclick="open_list('+index+')"></div>');
                     });
-                   console.log('teamlists: '+msg.doc)
+                    var temp_count=0;
+                    get_teamlist_name(temp_count,get_teamlist_name);
+                    //console.log('teamlists: '+msg.doc)
                    }
                    //if(consolidated.length){
                    //sortByKey(consolidated, 'tmstmp');
@@ -1848,6 +1848,25 @@ head
                    //}  
                 }
               });
+        //----------------------------//
+        function get_teamlist_name(count,callback){
+          $.ajax({
+              method: "POST",
+              url: "/counter/getlistname",
+              data: {"_id":team_lists_arr[count]}
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  $('#'+team_lists_arr[count]).text(msg.doc.capitalizeFirstLetter()+'*'); 
+                }
+                else{
+                  console.log(team_lists_arr[count]+': teamlist was removed');
+                }
+                count++;
+                if(count!=team_lists_arr.length-1)
+                {callback(count,callback);}
+              });
+        }
         //----------------------------//
         function trim1 (str) {
             return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -2280,16 +2299,11 @@ head
           $(list_id_jq).addClass('selected');
           get_items(arr[index]._id,arr[index].nick,1);}
         }
-        function remove_team_list(){
-          var teamlist_name;   
-          if($('#list_name').val() )//what if I dont know year yet?
-          {
+        function remove_team_list(list_id){
+         
             $('#add').fadeOut(350);
             $('#wait').css('display','block');
-            //-------------
-             var data={};
-             data.teamlistname = $('#list_name').val();
-             
+            
             $.ajax({
                 method: "POST",
                 url: "/counter/newteamlist",
@@ -2298,10 +2312,6 @@ head
                 .done(function( msg ) {
                   window.location='/counter';
                 });
-            }
-            else{
-              alert('no name provided');
-            }
           }
         //function load_team_lists(team_lists_arr){
         //  team_lists_arr.forEach(function (element,index){

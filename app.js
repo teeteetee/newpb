@@ -666,6 +666,34 @@ else{
 }
 });
 
+app.post('/counter/getlistname',function (req,res){
+  var ms ={};
+  ms.trouble=1;
+  if(req.session&&req.session._id)
+  {
+    var temp_id=new ObjectID(req.body._id);
+    counter_teamlists.findOne({'_id':temp_id},function(err,doc){
+      if(err) {
+        console.log('ERR WHILE TEAMLISTS QUERY');
+        res.send(ms);
+      }
+      else if(doc!=null){
+        //console.log(doc);
+        ms.doc = doc.list_name;
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        //console.log('GETLISTNAME hey 2: '+doc);
+        res.send(ms);
+      }
+    });}
+else{
+   //console.log('hey 1');
+   res.send(ms);
+}
+});
+
 //app.post('/counter/getweb',function (req,res){
 //  var ms ={};
 //  ms.trouble=1;
@@ -1747,6 +1775,23 @@ app.get('/correction',function(req,res){
  {
   counter_teamlists.remove({});
   counter_users.update({_id:req.session._id},{$set:{friendstore:[]}},function(err,done){
+    if(err){
+      res.send(err);
+    }
+    else {
+      res.redirect('/counter');
+    }
+  });}
+  else{
+    res.send('boo');
+  }
+});
+
+app.get('/quick_correction',function(req,res){
+  if(req.session&&req.session._id)
+ {
+  //counter_teamlists.remove({});
+  counter_users.update({mail:'hhh@hh.hh'},{$set:{teamlists:["59d6743979005c1d15000001"]}},function(err,done){
     if(err){
       res.send(err);
     }
