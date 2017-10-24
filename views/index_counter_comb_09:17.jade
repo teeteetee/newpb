@@ -1757,7 +1757,7 @@ head
                 if(!msg.trouble) {
                    if(!friendlist){
                  // console.log('items: '+JSON.stringify(msg.doc));
-                  var insert =list_name.length>21?'<h4 id="list_heading_title">'+list_name.trim(0,20)+'...</h4>':'<h4 id="list_heading_title">'+list_name+'</h4>';
+                  var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
@@ -1874,7 +1874,8 @@ head
               .done(function( msg ) {
                 if(!msg.trouble) {
                   team_lists_arr[count]={'_id':_id,'list_name':msg.doc};
-                  $('#'+_id).text(msg.doc.capitalizeFirstLetter()); 
+                  //$('#'+_id).text(msg.doc.capitalizeFirstLetter()); 
+                  $('#'+_id).text(msg.doc.length>20?msg.doc.capitalizeFirstLetter().slice(0,20)+'...':msg.doc.capitalizeFirstLetter()); 
                 }
                 else{
                   team_lists_arr[count]={'_id':_id,'list_name':'THIS LIST WAS ERASED'};
