@@ -1850,19 +1850,20 @@ head
               });
         //----------------------------//
         function get_teamlist_name(count,callback){
+          var _id=team_lists_arr[count];
           $.ajax({
               method: "POST",
               url: "/counter/getlistname",
-              data: {"_id":team_lists_arr[count]}
+              data: {"_id":_id}
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  team_lists_arr[count]={'_id':team_lists_arr[count],'list_name':msg.doc};
-                  $('#'+team_lists_arr[count]).text(msg.doc.capitalizeFirstLetter()); 
+                  team_lists_arr[count]={'_id':_id,'list_name':msg.doc};
+                  $('#'+_id).text(msg.doc.capitalizeFirstLetter()); 
                 }
                 else{
-                  team_lists_arr[count]={'_id':team_lists_arr[count],'list_name':'THIS LIST WAS ERASED'};
-                  console.log(team_lists_arr[count]+': teamlist was removed');
+                  team_lists_arr[count]={'_id':_id,'list_name':'THIS LIST WAS ERASED'};
+                  console.log(_id+': teamlist was removed');
                 }
                 count++;
                 if(count<team_lists_arr.length)
