@@ -1152,7 +1152,7 @@ app.post('/counter/additem',function (req,res){
             var vlink = req.body.item_link;
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;
-            var vtags = req.body.item_tags.split(',');
+            var vtags = req.body.item_tags? req.body.item_tags.split(','):0;
             vtags.forEach(function (element, index){
               vtags[index]=trim1(element);
             });
