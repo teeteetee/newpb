@@ -2322,11 +2322,11 @@ head
             $.ajax({
                 method: "POST",
                 url: "/counter/rmteamlist",
-                data: {'_id':el.attr('_id')}
+                data: {'_id':$(el).attr('_id')}
               })
                 .done(function( msg ) {
                   //$('#'+list_id).slideToggle();
-                  el.slideToggle();
+                  $(el).slideToggle();
                 });
           }
         //function load_team_lists(team_lists_arr){
