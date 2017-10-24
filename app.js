@@ -904,7 +904,7 @@ app.post('/counter/rm_item/',function(req,res){
   console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
-  counter_items.update({uid:req.session._id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
+  counter_items.update({uid:new ObjectID(req.session._id)},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
   if(err)
   {
     console.log('trouble removing a item\n'+err);
