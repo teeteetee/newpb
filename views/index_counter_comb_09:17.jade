@@ -1757,7 +1757,7 @@ head
                 if(!msg.trouble) {
                    if(!friendlist){
                  // console.log('items: '+JSON.stringify(msg.doc));
-                  var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
+                  var insert =list_name.length>21?'<h4 id="list_heading_title">'+list_name.trim(0,20)+'...</h4>':'<h4 id="list_heading_title">'+list_name+'</h4>';
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
