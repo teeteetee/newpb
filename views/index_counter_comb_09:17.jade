@@ -2318,17 +2318,13 @@ head
           get_items(arr[index]._id,arr[index].nick,1);}
         }
         function remove_team_list(list_id){
-         
-            $('#add').fadeOut(350);
-            $('#wait').css('display','block');
-            
             $.ajax({
                 method: "POST",
-                url: "/counter/newteamlist",
-                data: data
+                url: "/counter/rmteamlist",
+                data: {'_id':list_id}
               })
                 .done(function( msg ) {
-                  window.location='/counter';
+                  $('#'+list_id).slideToggle();
                 });
           }
         //function load_team_lists(team_lists_arr){

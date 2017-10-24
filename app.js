@@ -1294,7 +1294,7 @@ function validateJSON(body) {
 }
 
 app.get('/counter/tabak',function (req,res){
-   counter_users.update({"_id":new ObjectID(req.session._id)},{$set:{"teamlists":[{"_id":new ObjectID("59d6743979005c1d15000001"),"list_name":"Табак"}]}},function (err1,done1){
+   counter_users.update({"_id":new ObjectID(req.session._id)},{$set:{"teamlists":[new ObjectID("59d6743979005c1d15000001")]}},function (err1,done1){
        res.redirect('/counter');
    });
 });
@@ -1696,11 +1696,12 @@ app.post('/counter/rmteamlist',function (req,res){
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
-    var vteamlistid= req.body.teamlistid;
+    var v_id= new ObjectID(req.body._id);
     //var vmail = req.body.mail;
-    if(req.session&&req.session._id&&vteamlistname)
+    if(req.session&&req.session._id&&v_id)
  {
-   counter_teamlists.remove({_id:vteamlistname});
+   counter_teamlists.remove({_id:v_id});
+   counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
     ms.trouble=0;
     res.send(ms);
  }
