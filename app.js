@@ -1775,11 +1775,12 @@ app.get('/correction',function(req,res){
   if(req.session&&req.session._id)
  {
   //counter_teamlists.remove({});
-  counter_users.update({_id:new ObjectID(req.session._id)},{$set:{friendstore:[],teamlists:[]}},function(err,done){
+  counter_users.update({_id:req.session._id},{$set:{friendstore:[],teamlists:[]}},function(err,done){
     if(err){
       res.send(err);
     }
     else {
+      console.log('CORRECTION: '+JSON.stringify(done));
       res.redirect('/counter');
     }
   });}
