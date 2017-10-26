@@ -2071,7 +2071,9 @@ head
         $('.item_redact_submit').attr('onclick',insert_redact);
         $('.item_title').text('');
         $('#item_title_redact').val(consolidated[i].item_title.capitalizeFirstLetter());
-        if(consolidated[i].item_link!='--'){
+        $('.item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+        if(consolidated[i].item_link!='--'&&consolidated[i].item_link!=''){
+        $('.item_title').text('');
         $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
         $('#item_link_redact').val(consolidated[i].item_link);
         }
