@@ -2091,8 +2091,11 @@ head
           $('.item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
         }
         $('#item_comment_redact').val(consolidated[i].item_comment.capitalizeFirstLetter());
-        $('.item_tags').text('Tags: '+consolidated[i].item_tags);
-        $('#item_tags_redact').val(consolidated[i].item_tags);
+         $('.item_tags').text();
+         $('#item_tags_redact').val();
+        if(consolidated[i].item_tags.length>0)
+        {$('.item_tags').text('Tags: '+consolidated[i].item_tags);
+         $('#item_tags_redact').val(consolidated[i].item_tags);}
          //$('.movie_switch').text('Mark as not seen');
         $('#itemmodal').modal('show');
         }
