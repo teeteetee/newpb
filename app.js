@@ -960,8 +960,8 @@ app.post('/counter/rd_item/',function(req,res){
   var vtitle = req.body.item_title;
   var vcomment = req.body.item_comment;
   var vlink = req.body.item_link;
-  var vtags;
-  if(req.body.item_tags.trim())
+  var vtags=req.body.item_tags.trim();
+  if(vtags)
      {console.log('RD_ITEM: has tags: '+req.body.item_tags);
        vtags=req.body.item_tags.split(',');
        vtags.forEach(function (element, index){
