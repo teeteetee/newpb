@@ -1263,6 +1263,8 @@ head
                 console.log('helo');
                 $('#rmfriend_modal').modal('hide');
                 $('#'+friendstore[index]._id).slideToggle();
+                $('#'+friendstore[index]._id).remove();
+                friendstore[index].splice(i,1);
               //window.location='/counter';
               });
         }
