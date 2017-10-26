@@ -966,6 +966,16 @@ head
                 button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+     .modal.fade(id='rmfriend_modal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4 Removing a friend
+          .modal-body  
+            h5#rmfriend_nick
+            button#rmfriend_submit.btn.btn-red Remove
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close       
     .modal.fade(id='friends' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
