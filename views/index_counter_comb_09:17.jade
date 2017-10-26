@@ -2095,10 +2095,13 @@ head
         $('#itemmodal').modal('show');
         }
         //----------------------------//
-        function removeitem(i) {
+        function removeitem(i,teamlist,teamlist_id) {
           var data={};
           data.item_title=consolidated[i].item_title;
           data.item_tmstmp=consolidated[i].tmstmp;  
+          data.teamlist = teamlist;
+            if(teamlist)
+             {data.teamlist_id=teamlist_id;}
          $.ajax({
               method: "POST",
               url: "/counter/rm_item/",

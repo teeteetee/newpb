@@ -900,11 +900,15 @@ app.post('/counter/rm_item/',function(req,res){
   ms.trouble =1;
   var vtitle = req.body.item_title;
   var vtmstmp= parseInt(req.body.item_tmstmp);
-  //ADD FUNCTIONALITY FOR TEAMLISTS
+  var teamlist = parseInt(req.body.teamlist);
+  var _id=req.session._id;
+  if(teamlist){
+    _id=new ObjectID(req.body.teamlist_id);
+  }
   console.log('removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
-  counter_items.update({uid:new ObjectID(req.session._id)},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
+  counter_items.update({uid:_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
   if(err)
   {
     console.log('trouble removing a item\n'+err);
