@@ -1381,7 +1381,8 @@ head
               if(msg)
                 { $('#srb').empty();
                       for(var i =0;i<msg.length;i++){
-                       $('#srb').append("<div class='sritem'>"+msg[i].nick+"<button id='"+msg[i]._id+"' onclick='add_friend(this)' class='btn addfriend float-right'>add</button></div>");
+                        if(msg.[i]._id!='#{_id}')
+                       {$('#srb').append("<div class='sritem'>"+msg[i].nick+"<button id='"+msg[i]._id+"' onclick='add_friend(this)' class='btn addfriend float-right'>add</button></div>");}
                       }
                    //for(var btitle =0;btitle<msg.length;btitle++){
                    //  console.log('vtitle: '+msg[btitle]);
