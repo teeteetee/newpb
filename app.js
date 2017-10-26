@@ -1155,7 +1155,7 @@ app.post('/counter/additem',function (req,res){
             var vtags;
             if(req.body.item_tags.trim())
               {console.log('ADDITEM: has tags: '+req.body.item_tags);
-                req.body.item_tags.split(',');
+                vtags=req.body.item_tags.split(',');
                 vtags.forEach(function (element, index){
               vtags[index]=trim1(element);
             });
