@@ -967,7 +967,7 @@ app.post('/counter/rd_item/',function(req,res){
   console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
-  var _id=req.session._id;
+  var _id=new ObjectID(req.session._id);
   if(teamlist){
     console.log('RD_ITEM: redacting an item from a teamlist');
     _id=new ObjectID(req.body.teamlist_id);
