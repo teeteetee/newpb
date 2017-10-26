@@ -965,7 +965,7 @@ app.post('/counter/rd_item/',function(req,res){
      {console.log('RD_ITEM: has tags: '+req.body.item_tags);
        vtags=req.body.item_tags.split(',');
        vtags.forEach(function (element, index){
-     vtags[index]=trim1(element);
+     vtags[index]=trim1(element).toLowerCase();
    });
      }
   var v_index = req.body.v_index;
@@ -999,9 +999,9 @@ app.post('/counter/rd_item/',function(req,res){
               done.itemstore[i].item_title = vtitle;
               done.itemstore[i].item_comment = vcomment;
               done.itemstore[i].item_link = vlink;
-              vtags.forEach(function (element, index){
-              vtags[index]=trim1(element).toLowerCase();
-              });
+              //vtags.forEach(function (element, index){
+              //vtags[index]=trim1(element).toLowerCase();
+              //});
               done.itemstore[i].item_tags = vtags;
               counter_items.update({uid:_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
