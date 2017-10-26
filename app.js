@@ -1118,34 +1118,34 @@ app.get('/counter/clearfr',function (req,res){
   });
 });
 
-app.post('/counter/removefriend',function (req,res){
-  if(req.session&&req.session._id)
- {var ms={};
-  ms.trouble=1;
-  console.log('removing a friend');
-  console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
-  console.log(req.body._id.toString());
-  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
-    if(err){
-      console.log('err removing a friend');
-      res.send(ms);}
-      else {
-        counter_friends.update({uid:req.body._id},{$pull:{followers:JSON.stringify(req.session._id).replace(/"/g,'').trim()},$inc:{total_fl:-1}},function (err,done){
-          if(err){
-            console.log('err removing a friend');
-            res.send(ms);}
-            else {
-              ms.trouble=0;
-              res.send(ms);
-                }
-         });
-        }  
-        });  
-        }   
-      else {
-        res.send('err');
-      }   
-});
+//app.post('/counter/removefriend',function (req,res){
+//  if(req.session&&req.session._id)
+// {var ms={};
+//  ms.trouble=1;
+//  console.log('removing a friend');
+//  console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
+//  console.log(req.body._id.toString());
+//  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
+//    if(err){
+//      console.log('err removing a friend');
+//      res.send(ms);}
+//      else {
+//        counter_friends.update({uid:req.body._id},{$pull:{followers:JSON.stringify(req.session._id).replace(/"/g,'').trim()},$inc:{total_fl:-1}},function (err,done){
+//          if(err){
+//            console.log('err removing a friend');
+//            res.send(ms);}
+//            else {
+//              ms.trouble=0;
+//              res.send(ms);
+//                }
+//         });
+//        }  
+//        });  
+//        }   
+//      else {
+//        res.send('err');
+//      }   
+//});
   
 function trim1 (str) {
     return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -1756,6 +1756,13 @@ app.post('/counter/rm_friend',function (req,res){
       console.log('RMFRIEND: DB err');
     }
     else {
+      var temp_arr=[];
+      req.session.friendstore.forEach(function (elem,index){
+        if(elem!=v_id){
+          temp_arr.push(elem);
+        }
+      });
+      req.session.friendstore = temp_arr;
       console.log('RMFRIEND: done: '+done);
       ms.trouble=0;
       res.send(ms);
