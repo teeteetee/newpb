@@ -908,6 +908,9 @@ head
       .svg-hidden:hover .svg-hidden path{
         fill:#2f9af1;
       }
+      .modal-title{
+        color: #999;
+      }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
@@ -970,10 +973,10 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4 Removing a friend
+            h4.modal-title Removing a friend
           .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:30px;padding-bottom:30px;')  
-            h5#rmfriend_nick(style='padding-bottom:20px;')
-            button#rmfriend_submit.btn.btn-red Remove
+            h5#rmfriend_nick(style='padding-bottom:20px;text-align: center;')
+            button#rmfriend_submit.btn.btn-red(style='margin-left: 105px;') Remove
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close       
     .modal.fade(id='friends' tabindex="-1")
