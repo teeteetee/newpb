@@ -1750,7 +1750,7 @@ app.post('/counter/rm_friend',function (req,res){
     var v_id= req.body._id;
     if(req.session&&req.session._id&&v_id)
  {
-   counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{friendstore:v_id}},function (err,done){
+   counter_users.update({_id:req.session._id},{$pull:{friendstore:v_id}},function (err,done){
     if(err){
       console.log('RMFRIEND: DB err');
     }
