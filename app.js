@@ -960,7 +960,7 @@ app.post('/counter/rd_item/',function(req,res){
   var vtitle = req.body.item_title;
   var vcomment = req.body.item_comment;
   var vlink = req.body.item_link;
-  var vtags = req.body.item_tags.split(',');
+  var vtags = req.body.item_tags.trim().split(',');
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
