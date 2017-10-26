@@ -1743,7 +1743,7 @@ else {
 }
 });
 
-app.post('/counter/rmfriend',function (req,res){
+app.post('/counter/rm_friend',function (req,res){
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
