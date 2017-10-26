@@ -972,6 +972,7 @@ app.post('/counter/rd_item/',function(req,res){
     console.log('RD_ITEM: redacting an item from a teamlist');
     _id=new ObjectID(req.body.teamlist_id);
   }
+  console.log('RD_ITEM: _id is:'+_id+',\n session: '+req.session._id+',\n type:'+typeof _id);
   counter_items.findOne({uid:_id},function (err,done){
   if(err)
   {
