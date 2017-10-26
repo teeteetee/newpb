@@ -2425,9 +2425,9 @@ head
                          if(!friendstore)
                           {friendstore=[];}
                           var temp_id=$(el).attr('id');
-                          var temp_nick = msg.mtext;
+                          var temp_nick = '#'+msg.mtext;
                           if(temp_nick.length>21){
-                            temp_nick=temp_nick.slice(0,21)+'...';
+                            temp_nick='#'+temp_nick.slice(0,21)+'...';
                           }
                           friendstore.push({'_id':temp_id,'nick':msg.mtext});
                          var length=friendstore.length-1;
