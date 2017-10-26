@@ -1743,6 +1743,30 @@ else {
 }
 });
 
+app.post('/counter/rmfriend',function (req,res){
+  var ms = {};
+    ms.trouble=1;
+    ms.mtext='trouble'; 
+    var v_id= new ObjectID(req.body._id);
+    if(req.session&&req.session._id&&v_id)
+ {
+   counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{friendstore:v_id}},function (err,done){
+    if(err){
+      console.log('RMFRIEND: DB err');
+    }
+    else {
+      console.log('RMFRIEND: done: '+done);
+      ms.trouble=0;
+      res.send(ms);
+    }
+   });
+ }
+else {
+  console.log('RMFRIEND: err');
+  res.send(ms);
+}
+});
+
 
 app.post('/counter/newteamlist',function (req,res){
   //console.log('brp 1');
