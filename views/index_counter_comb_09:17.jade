@@ -1203,7 +1203,8 @@ head
         var temp_friend_name;
        function get_friend_nick(arr,index,callback) {
         console.log('get_friend_nick '+index);
-        var temp_id='#'+arr[index];
+        //var temp_id='#'+arr[index];
+        var temp_id=arr[index];
         $('#friends_insert').append('<div class="row menu_item" onclick="open_friends_list(friendstore,'+index+')" id="'+arr[index]+'"></div>');
         var temp_friend={};
         temp_friend._id=arr[index];
@@ -1264,7 +1265,7 @@ head
                 $('#rmfriend_modal').modal('hide');
                 $('#'+friendstore[index]._id).slideToggle();
                 $('#'+friendstore[index]._id).remove();
-                friendstore[index].splice(i,1);
+                friendstore[index].splice(index,1);
               //window.location='/counter';
               });
         }
@@ -2391,7 +2392,7 @@ head
             $.ajax({
                 method: "POST",
                 url: "/counter/rmteamlist",
-                data: {'_id':$(el).attr('_id')}
+                data: {'_id':$(el).attr('id')}
               })
                 .done(function( msg ) {
                   //$('#'+list_id).slideToggle();
@@ -2433,7 +2434,7 @@ head
                           }
                           friendstore.push({'_id':temp_id,'nick':msg.mtext});
                          var length=friendstore.length-1;
-                         $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")' id='"+temp_id+"' _id='"+"#"+temp_id+"' nick='"+msg.mtext+"' >"+temp_nick+"<svg xmlns='http://www.w3.org/2000/svg' onclick='rmfriend_dialog("+length+")' class='svg-hidden' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 32 32' version='1.1' width='20' height='20'><g id='surface1'><path style='' d='M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 10 15 L 10 17 L 22 17 L 22 15 Z '/></g></svg></div>");
+                         $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")' id='"+temp_id+"' nick='"+msg.mtext+"' >"+temp_nick+"<svg xmlns='http://www.w3.org/2000/svg' onclick='rmfriend_dialog("+length+")' class='svg-hidden' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 32 32' version='1.1' width='20' height='20'><g id='surface1'><path style='' d='M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 10 15 L 10 17 L 22 17 L 22 15 Z '/></g></svg></div>");
                          $('#find_friend').modal('hide');
                         }});
                   })();
