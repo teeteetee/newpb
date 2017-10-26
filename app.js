@@ -1747,7 +1747,7 @@ app.post('/counter/rm_friend',function (req,res){
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
-    var v_id=new ObjectID(req.body._id);
+    var v_id=req.body._id;
     if(req.session&&req.session._id&&v_id)
  {
    console.log('RMFRIEND: session: '+req.session._id+',\n friends ID: '+v_id);
