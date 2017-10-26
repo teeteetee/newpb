@@ -964,29 +964,30 @@ app.post('/counter/rd_item/',function(req,res){
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
-  console.log('redacting: '+vtitle+','+vcomment+','+vlink+','+vtags+','+vtmstmp+', teamlist:'+teamlist);
+  console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
   var _id=req.session._id;
   if(teamlist){
+    console.log('RD_ITEM: redacting an item from a teamlist');
     _id=new ObjectID(req.body.teamlist_id);
   }
   counter_items.findOne({uid:_id},function (err,done){
   if(err)
   {
-    console.log('trouble removing a item\n'+err);
+    console.log('RD_ITEM: trouble removing a item\n'+err);
     res.send(ms);
   }
     else{
-      console.log('found a profile: '+JSON.stringify(done));
+      console.log('RD_ITEM: found a profile: '+JSON.stringify(done));
       //--------------//
       if(done&&done.itemstore){
         var itemstore_length = done.itemstore.length;
-        console.log('has an itemstore, length: '+itemstore_length);
+        console.log('RD_ITEM: has an itemstore, length: '+itemstore_length);
         for(var i =0;i<itemstore_length;i++){
           //console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
-              console.log('found to redact: '+done.itemstore[i].item_title);
+              console.log('RD_ITEM: found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
               done.itemstore[i].item_comment = vcomment;
               done.itemstore[i].item_link = vlink;
