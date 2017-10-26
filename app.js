@@ -1707,13 +1707,13 @@ app.post('/counter/rmteamlist',function (req,res){
     var v_id= new ObjectID(req.body._id);
     if(req.session&&req.session._id&&v_id)
  {
-   counter.teamlists.findOne({_id:v_id},function (err,done){
+   counter_teamlists.findOne({_id:v_id},function (err,done){
     if(err){
       console.log('RMTEAMLIST: DB err');
       res.send(ms);
     }
       else{
-        if(done._id&&done.admin===v_id) {
+        if(done._id&&done.admin===req.session._id) {
            counter_teamlists.remove({_id:v_id});
            counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
             ms.trouble=0;
