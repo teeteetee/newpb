@@ -1261,6 +1261,7 @@ app.post('/counter/check_invite',function (req,res){
     if(req.session&&req.session._id)
    { 
       counter_invite.findOne({uid:new ObjectID(req.session._id)},function(err,done){
+        console.log('CHECK INVITE: done '+JSON.stringify(done));
         if(err){
          res.send(ms);
         }
@@ -1271,7 +1272,6 @@ app.post('/counter/check_invite',function (req,res){
             res.send(ms);
           }
           else{
-            ms.trouble=0;
             res.send(ms);
           }
         }
