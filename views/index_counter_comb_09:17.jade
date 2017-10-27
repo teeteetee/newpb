@@ -1473,6 +1473,7 @@ head
             url: "/counter/check_invite",
             data: 0
           }).done(function( msg ) {
+              console.log('CHECK INVITE: '+JSON.stringify(msg));
               if(!msg.trouble&&msg.mtext){
                 alert(JSON.stringify(msg.mtext));
               }
