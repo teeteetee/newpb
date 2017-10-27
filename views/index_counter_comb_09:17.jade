@@ -2493,7 +2493,7 @@ head
                 msg.mtext.forEach(function (element,index){
                   //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
                   team_lists_arr.push({'_id':element._id,'list_name':element.list_name});
-                  $('#invite_insert').append('<div class="row menu_item" _id="'+element._id+'" onclick="open_list('+team_lists_arr.length+');">'+element.list_name+'</div>');
+                  $('#invite_insert').append('<div class="row menu_item" _id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+');">'+element.list_name+'</div>');
                   });
               }
             });
