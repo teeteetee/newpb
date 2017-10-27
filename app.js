@@ -1237,7 +1237,7 @@ app.get('/counter/cleanweb',function (req,res){
 app.post('/counter/invite',function (req,res){
    var ms = {};
        ms.trouble =1;
-    if(req.session&&req.session._id&&req.body.list_id&&req.body.list_id)
+    if(req.session&&req.session._id&&req.body.list_id&&req.body.friends_id&&req.body.list_name)
    { 
       counter_invite.update({uid:new ObjectID(req.body.friends_id)},{$push:{invitationstore:{_id:new ObjectID(req.body.list_id),list_name:req.body.list_name}}},function(err,done){
         if(err){

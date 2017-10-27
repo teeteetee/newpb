@@ -1276,7 +1276,7 @@ head
        function invite_submit (index,el){
          var data={};
         data.list_id=$(el).attr('listid');
-        data.list_name=$('#list_heading_title').text();
+        data.list_name=$('#list_heading_title').attr('clean_title');
         data.friends_id=friendstore[index]._id;
          $.ajax({
               method: "POST",
@@ -1868,7 +1868,7 @@ head
                 if(!msg.trouble) {
                    if(!friendlist){
                  // console.log('items: '+JSON.stringify(msg.doc));
-                  var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
+                  var insert ='<h4 clean_title="'+list_name+'" id="list_heading_title">'+list_name+'</h4>';
                   var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+msg.doc.total+")";
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
@@ -1900,7 +1900,7 @@ head
                    } 
                    } 
                 else{
-                  var insert ='<h4 id="list_heading_title">'+list_name+'</h4>';
+                  var insert ='<h4 clean_title="'+list_name+'" id="list_heading_title">'+list_name+'</h4>';
                   $('#list_heading').empty();
                   $('#list_heading').append(insert);
                   $('#tags').append('No tags, list is empty');
