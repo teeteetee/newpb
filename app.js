@@ -1975,7 +1975,7 @@ app.get('/quick_correction_v2',function(req,res){
   if(req.session&&req.session._id)
  {
   //counter_teamlists.remove({});
-  counter_users.update({_id:new ObjectID(req.session._id)},{$unset:{invitationstore:[]}},function(err,done){
+  counter_invite.update({_id:new ObjectID(req.session._id)},{$unset:{invitationstore:[]}},function(err,done){
     if(err){
       res.send(err);
     }
