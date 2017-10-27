@@ -1749,6 +1749,12 @@ app.get('/counter/showusers',function (req,res){
     });
 });
 
+app.get('/counter/showinvites',function (req,res){
+  counter_invite.find({},function(err,done){
+      res.send(JSON.stringify(done));
+    });
+});
+
 app.get('/counter/showteamlists',function (req,res){
   counter_teamlists.find({},function(err,done){
       res.send(JSON.stringify(done));
