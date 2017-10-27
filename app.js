@@ -1239,7 +1239,7 @@ app.post('/counter/invite',function (req,res){
        ms.trouble =1;
     if(req.session&&req.session._id&&req.body.list_id&&req.body.list_id)
    { 
-      counter_invite.update({uid:new ObjectID(req.body.friends_id)},{$push:{invitationstore:new ObjectID(req.body.list_id)}},function(err,done){
+      counter_invite.update({uid:new ObjectID(req.body.friends_id)},{$push:{invitationstore:{_id:new ObjectID(req.body.list_id),list_name:req.body.list_name}}},function(err,done){
         if(err){
          res.send(ms);
         }
@@ -1286,12 +1286,12 @@ app.post('/counter/confirm_invite',function (req,res){
        ms.mtext ;
     if(req.session&&req.session._id&&req.body.list_id)
    { 
-      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:new ObjectID(req.body.list_id)}},function (err,done){
+      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:{'_id':new ObjectID(req.body.list_id)}}},function (err,done){
         if(err){
          res.send(ms);
         }
         else{
-          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:new ObjectID(req.body.list_id)}},function (err1,done1){
+          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:{'_id':new ObjectID(req.body.list_id)}}},function (err1,done1){
             if(err){
                res.send(ms);
               }
@@ -1314,7 +1314,7 @@ app.post('/counter/decline_invite',function (req,res){
        ms.mtext ;
     if(req.session&&req.session._id&&req.body.list_id)
    { 
-      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:new ObjectID(req.body.list_id)}},function (err,done){
+      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:{'_id':new ObjectID(req.body.list_id)}}},function (err,done){
         if(err){
          res.send(ms);
         }
@@ -1959,6 +1959,23 @@ app.get('/quick_correction',function(req,res){
  {
   //counter_teamlists.remove({});
   counter_users.update({mail:'hhh@hh.hh'},{$set:{teamlists:["59d6743979005c1d15000001"]}},function(err,done){
+    if(err){
+      res.send(err);
+    }
+    else {
+      res.redirect('/counter');
+    }
+  });}
+  else{
+    res.send('boo');
+  }
+});
+
+app.get('/quick_correction_v2',function(req,res){
+  if(req.session&&req.session._id)
+ {
+  //counter_teamlists.remove({});
+  counter_users.update({_id:new ObjectID(req.session._id)},{$set:{invitationstore:[]}},function(err,done){
     if(err){
       res.send(err);
     }
