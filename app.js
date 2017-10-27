@@ -1225,14 +1225,14 @@ app.post('/counter/additem',function (req,res){
       }   
 });
 
-app.get('/counter/cleanweb',function (req,res){
-  if(req.session&&req.session._id){
-   counter_movies.update({uid:req.session._id},{$unset:{weblinkstore:1}});
-  }
-  else{
-    res.redirect('/counter');
-  }
-});
+//app.get('/counter/cleanweb',function (req,res){
+//  if(req.session&&req.session._id){
+//   counter_movies.update({uid:req.session._id},{$unset:{weblinkstore:1}});
+//  }
+//  else{
+//    res.redirect('/counter');
+//  }
+//});
 
 app.post('/counter/invite',function (req,res){
    var ms = {};
@@ -1959,35 +1959,13 @@ app.get('/quick_correction_v2',function(req,res){
   if(req.session&&req.session._id)
  {
   //counter_teamlists.remove({});
-  counter_invite.update({_id:new ObjectID(req.session._id)},{$unset:{invitationstore:[]}},function(err,done){
-    if(err){
-      res.send(err);
-    }
-    else {
-      res.redirect('/counter');
-    }
-  });}
+  counter_invite.remove({uid:new ObjectID(req.session._id)});
+  counter_invite.insert({uid:new ObjectID(req.session._id),invitationstore:[]});
   else{
     res.send('boo');
   }
 });
 
-app.get('/quick_correction_v3',function(req,res){
-  if(req.session&&req.session._id)
- {
-  //counter_teamlists.remove({});
-  counter_invite.update({},{$unset:{invitationstore:[]}},function(err,done){
-    if(err){
-      res.send(err);
-    }
-    else {
-      res.redirect('/counter');
-    }
-  });}
-  else{
-    res.send('boo');
-  }
-});
 
 
 
