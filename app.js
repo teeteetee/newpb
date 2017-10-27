@@ -1239,7 +1239,7 @@ app.post('/counter/invite',function (req,res){
        ms.trouble =1;
     if(req.session&&req.session._id&&req.body.list_id&&req.body.list_id)
    { 
-      counter_invite.update({uid:req.body.friends_id},{$push:{invitationstore:req.body.list_id}},function(err,done){
+      counter_invite.update({uid:new ObjectID(req.body.friends_id)},{$push:{invitationstore:new ObjectID(req.body.list_id)}},function(err,done){
         if(err){
          res.send(ms);
         }
