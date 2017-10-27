@@ -2152,7 +2152,7 @@ app.post('/check',function(req,res){
           {
           req.session._id = confirmed._id;
           req.session.friendstore = confirmed.friendstore;
-          counter_invite.insert({uid:confirmed._id,invitationstore:[]});
+          //counter_invite.insert({uid:confirmed._id,invitationstore:[]});
           if(confirmed.nick){
             req.session.nick = confirmed.nick;
           }
