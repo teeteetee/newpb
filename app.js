@@ -1954,22 +1954,6 @@ app.get('/correction',function(req,res){
   }
 });
 
-app.get('/quick_correction',function(req,res){
-  if(req.session&&req.session._id)
- {
-  //counter_teamlists.remove({});
-  counter_users.update({mail:'hhh@hh.hh'},{$set:{teamlists:["59d6743979005c1d15000001"]}},function(err,done){
-    if(err){
-      res.send(err);
-    }
-    else {
-      res.redirect('/counter');
-    }
-  });}
-  else{
-    res.send('boo');
-  }
-});
 
 app.get('/quick_correction_v2',function(req,res){
   if(req.session&&req.session._id)
@@ -1992,7 +1976,7 @@ app.get('/quick_correction_v3',function(req,res){
   if(req.session&&req.session._id)
  {
   //counter_teamlists.remove({});
-  counter_invite.update({},{$set:{invitationstore:[]}},function(err,done){
+  counter_invite.update({},{$unset:{invitationstore:[]}},function(err,done){
     if(err){
       res.send(err);
     }
@@ -2005,19 +1989,6 @@ app.get('/quick_correction_v3',function(req,res){
   }
 });
 
-app.get('/hello',function (req,res){
-  var vuid = new ObjectID('592c0f45e3e371e70f000001');
-counter_users.update({_id:vuid},{$set:{"mail":"gg@gg.gg","first_time":0,"nick":"Hello","phr":"$2a$10$55t8O3fB.mt5729t.EelgejQ/Eoo81f6UzmYPKQdzfOPii.O6Fb3C"}},function (err,done){
-  if(err){
-    res.send('bad');
-  }
-  else{
-    counter_users.update({nick:"Thoughtful"},{$set:{mail:'uu@uu.uu'}});
-  res.redirect('/');
-  }
-});
-
-  });
 
 
 
