@@ -582,16 +582,16 @@ app.get('/counter/profile/:_id',function (req,res){
     }
 });
 
-app.get('/counter/userrestore',function (req,res){
-  var object_id= new ObjectID('592c0f45e3e371e70f000001');
-  counter_users.insert({_id:object_id,})
-});
+//app.get('/counter/userrestore',function (req,res){
+//  var object_id= new ObjectID('592c0f45e3e371e70f000001');
+//  counter_users.insert({_id:object_id,})
+//});
 
 app.post('/counter/getteamlists',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
-  {counter_users.findOne({_id:req.session._id},function(err,doc){
+  {counter_users.findOne({_id:new ObjectID(req.session._id)},function(err,doc){
     if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -611,27 +611,27 @@ app.post('/counter/getteamlists',function (req,res){
   }
   });
 
-app.get('/counter/checkdb',function (req,res){
-  var ms ={};
-  ms.trouble=1;
-  var fixed_id= new ObjectID('592c0f45e3e371e70f000001');
-counter_items.findOne({'uid':fixed_id},function(err,doc){
-  if(err) {
-        console.log('ERR WHILE MOVIES QUERY');
-        res.send(ms);
-      }
-      else if(doc!=null){
-        //console.log(doc);
-        ms.doc = doc;
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        console.log('hey 2: '+doc);
-        res.send(ms);
-      }
-});
-});
+//app.get('/counter/checkdb',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  var fixed_id= new ObjectID('592c0f45e3e371e70f000001');
+//counter_items.findOne({'uid':fixed_id},function(err,doc){
+//  if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        //console.log(doc);
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        console.log('hey 2: '+doc);
+//        res.send(ms);
+//      }
+//});
+//});
 
 app.post('/counter/getitems',function (req,res){
   var ms ={};
