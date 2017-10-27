@@ -401,9 +401,10 @@ app.post('/counter/get_teamlist',function (req,res){
    var ms ={};
    ms.trouble=1;
    if(req.session&&req.session._id&&req.body._id){
-      var list_id = new ObjectID(req.body._id);
-      counter_teamlists.findOne({_id:list_id},function (err,done){
+      //var list_id = new ObjectID(req.body._id);
+      counter_teamlists.findOne({_id:new ObjectID(req.body._id)},function (err,done){
            if(err){
+            console.log('GET_TEAMLISTS: DB query err - '+err);
              res.send(ms);
            }
            else{
@@ -412,12 +413,14 @@ app.post('/counter/get_teamlist',function (req,res){
              ms.doc=done;
              res.send(ms);}
              else {
+              console.log('GET_TEAMLISTS: !done ');
                res.send(ms);
              }
            }
          });
    }
      else{
+      console.log('GET_TEAMLISTS: req problem ');
        res.send(ms);
      }
 });
