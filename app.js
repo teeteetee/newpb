@@ -17,7 +17,7 @@ var gm = require('gm');
 var mongo = require('mongodb').MongoClient;
 //var db = require('monk')('localhost/tav'),users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 
-var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_teamlists = db.get('counter_teamlist'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
+var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_invites = db.get('counter_invites'), counter_teamlists = db.get('counter_teamlist'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
 
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
@@ -1234,29 +1234,125 @@ app.get('/counter/cleanweb',function (req,res){
   }
 });
 
-app.post('/counter/addweb',function (req,res){
-  if(req.session&&req.session._id)
- {console.log('adding a web link');
-          var ms = {};
-          ms.trouble =1;
-            var v_r_name = req.body.r_name;//RESOURCE NAME
-            var v_r_link = req.body.r_link;// RESOURCE LINK
-            if(!v_r_name){
-              v_r_name = '--';
-              //SEND ERROR
-            }
-            if(!v_r_link){
-              v_r_link = '--';
-            }
-          var vtmstmp = Date.now();
-          counter_web.update({uid:req.session._id},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
-            console.log(done);
-          });
-           res.send('ok');  }       
+app.post('/counter/invite',function (req,res){
+   var ms = {};
+       ms.trouble =1;
+    if(req.session&&req.session._id&&req.body.list_id&&req.body.list_id)
+   { 
+      counter_invite.update({uid:req.body.friends_id},{$push:{invitationstore:req.body.list_id}},function(err,done){
+        if(err){
+         res.send(ms);
+        }
+        else{
+          ms.trouble=0;
+          res.send(ms);
+        }
+      });
+       res.send('ok');  }       
       else {
-        res.send('err');
+        res.send(ms);
       }   
 });
+
+app.post('/counter/check_invite',function (req,res){
+   var ms = {};
+       ms.trouble =1;
+       ms.mtext ;
+    if(req.session&&req.session._id)
+   { 
+      counter_invite.findOne({uid:new ObjectID(req.session._id)},function(err,done){
+        if(err){
+         res.send(ms);
+        }
+        else{
+          if(done&&done.invitationstore&&done.invitationstore.length>0){
+            ms.mtext=done.invitationstore;
+            ms.trouble=0;
+            res.send(ms);
+          }
+          else{
+            ms.trouble=0;
+            res.send(ms);
+          }
+        }
+      });
+       res.send('ok');  }       
+      else {
+        res.send(ms);
+      }   
+});
+
+app.post('/counter/confirm_invite',function (req,res){
+   var ms = {};
+       ms.trouble =1;
+       ms.mtext ;
+    if(req.session&&req.session._id&&req.body.list_id)
+   { 
+      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:new ObjectID(req.body.list_id)}},function (err,done){
+        if(err){
+         res.send(ms);
+        }
+        else{
+          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:new ObjectID(req.body.list_id)}},function (err1,done1){
+            if(err){
+               res.send(ms);
+              }
+              else{
+                 ms.trouble=0;
+                 res.send(ms);
+              }
+          });
+        }
+      });
+      }       
+      else {
+        res.send(ms);
+      }   
+});
+
+app.post('/counter/decline_invite',function (req,res){
+   var ms = {};
+       ms.trouble =1;
+       ms.mtext ;
+    if(req.session&&req.session._id&&req.body.list_id)
+   { 
+      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:new ObjectID(req.body.list_id)}},function (err,done){
+        if(err){
+         res.send(ms);
+        }
+        else{
+          ms.trouble=0;
+         res.send(ms);
+        }
+      });
+      }       
+      else {
+        res.send(ms);
+      }   
+});
+//app.post('/counter/addweb',function (req,res){
+//  if(req.session&&req.session._id)
+// {console.log('adding a web link');
+//          var ms = {};
+//          ms.trouble =1;
+//            var v_r_name = req.body.r_name;//RESOURCE NAME
+//            var v_r_link = req.body.r_link;// RESOURCE LINK
+//            if(!v_r_name){
+//              v_r_name = '--';
+//              //SEND ERROR
+//            }
+//            if(!v_r_link){
+//              v_r_link = '--';
+//            }
+//          var vtmstmp = Date.now();
+//          counter_web.update({uid:req.session._id},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+//            console.log(done);
+//          });
+//           res.send('ok');  }       
+//      else {
+//        res.send('err');
+//      }   
+//});
 
 
 app.post('/backup',function (req,res){
@@ -1973,39 +2069,39 @@ else {
 }
 });
 
-app.post('/counter/join_teamlist', function (req,res){
-  var ms={};
-  ms.trouble =1;
-  console.log('req.body._id: '+req.body);
-  if(req.session&&req.session._id&&req.body._id)
-  { var v_id=new ObjectID(req.body._id);
-    counter_teamlists.findOne({_id:v_id},function (err,done){
-       if(err){
-        console.log('bp1');
-        res.send(ms);
-      }
-     else{
-      console.log('bp2');
-        counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:done.list_name}}},function (err1,done1){
-        if(err1){
-          console.log('bp3');
-          res.send(ms);
-        }
-          else{
-            counter_teamlists.update({_id:done._id},{$push:{users:req.session._id}});
-            console.log('success joining teamlist: '+done1);
-            ms.trouble=0;
-            res.send(ms);
-          }
-      });
-        }
-    });
-  }
-  else{
-    console.log('bp4');
-  res.send(ms);
-  }
-});
+//app.post('/counter/join_teamlist', function (req,res){
+//  var ms={};
+//  ms.trouble =1;
+//  console.log('req.body._id: '+req.body);
+//  if(req.session&&req.session._id&&req.body._id)
+//  { var v_id=new ObjectID(req.body._id);
+//    counter_teamlists.findOne({_id:v_id},function (err,done){
+//       if(err){
+//        console.log('bp1');
+//        res.send(ms);
+//      }
+//     else{
+//      console.log('bp2');
+//        counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:done.list_name}}},function (err1,done1){
+//        if(err1){
+//          console.log('bp3');
+//          res.send(ms);
+//        }
+//          else{
+//            counter_teamlists.update({_id:done._id},{$push:{users:req.session._id}});
+//            console.log('success joining teamlist: '+done1);
+//            ms.trouble=0;
+//            res.send(ms);
+//          }
+//      });
+//        }
+//    });
+//  }
+//  else{
+//    console.log('bp4');
+//  res.send(ms);
+//  }
+//});
 
 app.post('/counter/get_nick',function (req,res){
   var ms={};

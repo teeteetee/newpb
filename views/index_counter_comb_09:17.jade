@@ -979,16 +979,14 @@ head
             button#rmfriend_submit.btn.btn-red(style='margin-left: 105px;') Remove
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close       
-    .modal.fade(id='friends' tabindex="-1")
+    .modal.fade(id='invite_dialog' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4.modal-title You follow
-              span.badge#friendsnum(style='margin-left:10px;margin-bottom:3px;')
-            
+            h4.modal-title Invite to this list  
           .modal-body  
             ul.list-group.friendlist(style='margin-bottom:0px;')
-              li.list-group-item.noitemsfriends Пока пусто
+              li.list-group-item.noitemsfriends You didn't add any friends yet
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -1054,7 +1052,7 @@ head
                 .panel-body
                   input#item_title(type="text" maxlength="150" class="form-control" autocomplete='off' placeholder="Название")
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
-                  input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+                  input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить   
           .modal-footer
@@ -1135,7 +1133,7 @@ head
                 .panel-body
                   input#item_title_redact(type="text" maxlength="150" class="form-control" autocomplete='off' placeholder="Название")
                   input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
-                  input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="200"  placeholder='Комментарий')
+                  input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
                   input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button(class='btn btn-blue item_redact_submit') Submit
             
@@ -1252,6 +1250,28 @@ head
         $('#rmfriend_nick').text(friendstore[index].nick);
         $('#rmfriend_submit').attr('onclick','rmfriend('+index+')');
         $('#rmfriend_modal').modal('show');
+       }
+       function invite_dialog(el){
+        $('.friendlist').empty();
+        friendstore.forEach(function (element,index){
+          $('.friendlist').append("<li listid='"+$(el).attr('listid')+"' onclick='invite_submit("+index+",this)' class='list-group-item'>"+element.nick+"</li>");
+          });
+        $('#invite_dialog').modal('show');
+       }
+       function invite_submit (index,el){
+         var data={};
+        data.list_id=$(el).attr('listid');
+        data.friends_id=friendstore[index]._id;
+         $.ajax({
+              method: "POST",
+              url: "/counter/invite",
+              data: data
+                })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  alert("We've just invited a friend");
+                }
+              });
        }
        function rmfriend(index){
         var data={};
@@ -1448,17 +1468,29 @@ head
         //--------------------------------------//
         //--------------------------------------//
         //--------------------------------------//
-        function more(section) {
-          //TODO
-          if(section){
-           temp_followers=followers_full.slice((more_follower)*10,(more_follower+1)*10);
-           more_followers++;
-          }
-          else{
-          temp_friends=friends_full.slice((more_follower)*10,(more_follower+1)*10);
-           more_friends++;
-          }
-        }
+        $.ajax({
+            method: "POST",
+            url: "/counter/check_invite",
+            data: 0
+          }).done(function( msg ) {
+              if(!msg.trouble&&msg.mtext){
+                alert(JSON.stringify(msg.mtext));
+              }
+            });
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
+        //function more(section) {
+        //  //TODO
+        //  if(section){
+        //   temp_followers=followers_full.slice((more_follower)*10,(more_follower+1)*10);
+        //   more_followers++;
+        //  }
+        //  else{
+        //  temp_friends=friends_full.slice((more_follower)*10,(more_follower+1)*10);
+        //   more_friends++;
+        //  }
+        //}
         //function get_follow(){
         //  $.ajax({
         //    method: "POST",
@@ -1780,7 +1812,7 @@ head
                      users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
                     });
                    $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
-                   $('#list_heading').append('<button class="btn invite">Invite</button>');
+                   $('#list_heading').append('<button class="btn invite" listid="'+arr[current_key]+'" onclick="invite_dialog(this)">Invite</button>');
                    $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                      }
                   }
@@ -1794,7 +1826,7 @@ head
                      users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
                     });
                    $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
-                   $('#list_heading').append('<button class="btn invite">Invite</button>');
+                   $('#list_heading').append('<button class="btn invite" listid="'+arr[current_key]+'" onclick="invite_dialog(this)">Invite</button>');
                    $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                      }
               }
