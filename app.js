@@ -677,7 +677,7 @@ app.post('/counter/getlistname',function (req,res){
     //var temp_id=new ObjectID(req.body._id);
     counter_teamlists.findOne({'_id':new ObjectID(req.body._id)},function(err,doc){
       if(err) {
-        console.log('ERR WHILE TEAMLISTS QUERY');
+        console.log('GETLISTNAME: DB query err - '+err);
         res.send(ms);
       }
       else if(doc!=null){
@@ -687,12 +687,12 @@ app.post('/counter/getlistname',function (req,res){
         res.send(ms);
       }
       else {
-        //console.log('GETLISTNAME hey 2: '+doc);
+        console.log('GETLISTNAME doc is null : '+doc);
         res.send(ms);
       }
     });}
 else{
-   //console.log('hey 1');
+   console.log('GETLISTNAME req problem');
    res.send(ms);
 }
 });
