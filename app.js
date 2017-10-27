@@ -1247,8 +1247,7 @@ app.post('/counter/invite',function (req,res){
           ms.trouble=0;
           res.send(ms);
         }
-      });
-       res.send('ok');  }       
+      });  }       
       else {
         res.send(ms);
       }   
@@ -1275,8 +1274,7 @@ app.post('/counter/check_invite',function (req,res){
             res.send(ms);
           }
         }
-      });
-       res.send('ok');  }       
+      });  }       
       else {
         res.send(ms);
       }   
