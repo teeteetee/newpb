@@ -1484,24 +1484,6 @@ head
         //--------------------------------------//
         //--------------------------------------//
         //--------------------------------------//
-        $.ajax({
-            method: "POST",
-            url: "/counter/check_invite",
-            data: 0
-          }).done(function( msg ) {
-              console.log('CHECK INVITE: '+JSON.stringify(msg));
-              if(!msg.trouble&&msg.mtext){
-                $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
-                $('#invites').css('display','block');
-                msg.mtext.forEach(function (element,index){
-                  //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
-                  $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="console.log(99);">'+element.list_name+'</div>');
-                  });
-              }
-            });
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
         //function more(section) {
         //  //TODO
         //  if(section){
@@ -2496,6 +2478,28 @@ head
                }
              }  
              )};
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
+        $.ajax({
+            method: "POST",
+            url: "/counter/check_invite",
+            data: 0
+          }).done(function( msg ) {
+              console.log('CHECK INVITE: '+JSON.stringify(msg));
+              if(!msg.trouble&&msg.mtext){
+                $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
+                $('#invites').css('display','block');
+                msg.mtext.forEach(function (element,index){
+                  //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
+                  team_lists_arr.push({'_id':element._id,'list_name':element.list_name});
+                  $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+team_lists_arr.length+');">'+element.list_name+'</div>');
+                  });
+              }
+            });
+        //--------------------------------------//
+        //--------------------------------------//
+        //--------------------------------------//
         
       
         
