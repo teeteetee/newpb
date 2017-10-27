@@ -1992,7 +1992,7 @@ app.get('/quick_correction_v3',function(req,res){
   if(req.session&&req.session._id)
  {
   //counter_teamlists.remove({});
-  counter_invite.update({},{$unset:{invitationstore:[]}},function(err,done){
+  counter_invite.update({},{$set:{invitationstore:[]}},function(err,done){
     if(err){
       res.send(err);
     }
