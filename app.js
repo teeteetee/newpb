@@ -1961,6 +1961,7 @@ app.get('/quick_correction_v2',function(req,res){
   //counter_teamlists.remove({});
   counter_invite.remove({uid:new ObjectID(req.session._id)});
   counter_invite.insert({uid:new ObjectID(req.session._id),invitationstore:[]});
+  res.redirect('/counter');
 }
   else{
     res.send('boo');
