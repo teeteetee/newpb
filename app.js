@@ -17,7 +17,7 @@ var gm = require('gm');
 var mongo = require('mongodb').MongoClient;
 //var db = require('monk')('localhost/tav'),users = db.get('users'),items = db.get('items'), concepts = db.get('concepts'), misc=db.get('misc'), business=db.get('business'), questions = db.get('questions'),movies = db.get('movies'),stats = db.get('stats');
 
-var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_invites = db.get('counter_invites'), counter_teamlists = db.get('counter_teamlist'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
+var db = require('monk')('localhost/tav'),counter_users = db.get('counter_users'),counter_invite = db.get('counter_invite'), counter_teamlists = db.get('counter_teamlist'),counter_items = db.get('counter_items'),counter_stats = db.get('counter_stats'),counter_books = db.get('counter_books'),counter_movies = db.get('counter_movies'),counter_friends = db.get('counter_friends'),counter_current = db.get('counter_current'),counter_web = db.get('counter_web'),ltps_posts = db.get('ltps_posts'),ltps_users = db.get('ltps_users');
 
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
@@ -2020,6 +2020,7 @@ app.post('/newuser',function(req,res){
           //var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
           //console.log('vuid: '+vuid);
           counter_items.insert({uid:done._id,total:0,itemstore:[]});
+          counter_invite.insert({uid:done._id,invitationstore:[]});
           //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
           req.session.friendstore=[];
@@ -2151,6 +2152,7 @@ app.post('/check',function(req,res){
           {
           req.session._id = confirmed._id;
           req.session.friendstore = confirmed.friendstore;
+          counter_invite.insert({uid:confirmed._id,invitationstore:[]});
           if(confirmed.nick){
             req.session.nick = confirmed.nick;
           }
