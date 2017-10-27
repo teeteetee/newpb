@@ -1235,6 +1235,7 @@ app.post('/counter/additem',function (req,res){
 //});
 
 app.post('/counter/invite',function (req,res){
+  //prevent double invites
    var ms = {};
        ms.trouble =1;
     if(req.session&&req.session._id&&req.body.list_id&&req.body.friends_id&&req.body.list_name)
