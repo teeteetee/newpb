@@ -2036,6 +2036,7 @@ head
                 {callback(count,callback);}
                 else{
                   team_lists_arr.forEach(function (element,index){
+                      console.log('GET_TEAMLIST_NAME populating teamlists list');
                        $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');
                     });
                 }
@@ -2637,7 +2638,6 @@ head
                   //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
                   team_lists_arr.push({'_id':element._id,'list_name':element.list_name});
                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+',0);">'+element.list_name+'</div>');
-                  console.log('CHECK_INVITE populating teamlists list');
                   });
               }
             });
