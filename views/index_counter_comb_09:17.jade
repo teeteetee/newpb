@@ -918,11 +918,12 @@ head
        position: relative;
        margin-left: 10px;
        bottom: 2px;
-       border: 1px solid white;
        line-height: 1.5;
        padding: 0px 9px;
        border-radius: 999px;
-       background-color: #e03838;
+       /*background-color: #e03838;*/
+       background-color:white;
+       color:black;
       }
   body
     .modal.fade(id='tagsmodal' tabindex="-1")
@@ -1113,21 +1114,22 @@ head
                     button(class='btn btn-blue' onclick='join_teamlist()') Search          
             .modal-footer
               button(class='btn btn-close btn-grey' data-dismiss="modal") Close
-    .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            h4(class="modal-title" style='text-align:center;') Sending an invitation
-          .modal-body.add_choice
-            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
-              .panel.panel-default     
-                .panel-body
-                  input#invite_emal_0(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
-                  #invite_email_insert
-                  button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()' type='button') Add recipient
-                  button(class='btn btn-blue' onclick='send_invitation()' type='button') Send         
-          .modal-footer
-            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    //
+      .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              h4(class="modal-title" style='text-align:center;') Sending an invitation
+            .modal-body.add_choice
+              .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+                .panel.panel-default     
+                  .panel-body
+                    input#invite_emal_0(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
+                    #invite_email_insert
+                    button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()' type='button') Add recipient
+                    button(class='btn btn-blue' onclick='send_invitation()' type='button') Send         
+            .modal-footer
+              button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
@@ -1266,6 +1268,9 @@ head
         $('#rmfriend_submit').attr('onclick','rmfriend('+index+')');
         $('#rmfriend_modal').modal('show');
        }
+       ////////--------------------/////////
+       ////////--------------------/////////
+       ////////--------------------/////////
        function invite_dialog(el){
         $('.friendlist').empty();
         friendstore.forEach(function (element,index){
@@ -1273,6 +1278,9 @@ head
           });
         $('#invite_dialog').modal('show');
        }
+       ////////--------------------/////////
+       ////////--------------------/////////
+       ////////--------------------/////////
        function invite_submit (index,el){
          var data={};
         data.list_id=$(el).attr('listid');
@@ -1289,6 +1297,9 @@ head
                 }
               });
        }
+       ////////--------------------/////////
+       ////////--------------------/////////
+       ////////--------------------/////////
        function rmfriend(index){
         var data={};
         data._id=friendstore[index]._id;
@@ -1306,9 +1317,12 @@ head
               //window.location='/counter';
               });
         }
-       function add_recipient(){
-        $('#invite_email_insert').append('<input id="invite_email_'+$('.invite_email').length+'" type="email" maxlength="100" autocomplete="off" placeholder="email" class="form-control invite_email">');
-       }
+       ////////--------------------/////////
+       ////////--------------------/////////
+       ////////--------------------/////////
+       //function add_recipient(){
+       // $('#invite_email_insert').append('<input id="invite_email_'+$('.invite_email').length+'" type="email" maxlength="100" autocomplete="off" placeholder="email" class="form-control invite_email">');
+       //}
        //function send_invitation(){
        // var data={};
        // data.email_list=
@@ -1323,83 +1337,83 @@ head
        //}
        //$('#followed_by').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
        //$('#im_following').popover({'placement':'bottom','html':true,'container':'body','template':'<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'});
-        var friends_and_followers=[];
-        var friends_full=[];
-        var followers_full=[];
-        var f_n_f_count=0;
-        var data_content_fr='';
-        var data_content_fl='';
-        var follow_num=0;
-        var following_num=0;
-        var loop_temp;
-        var temp_friends=0;//these two are here to implement 'more', holding sliced part of ten enteries
-        var temp_followers=0;
-        var more_friends=0;//these two are first used to indicate the need for the 'more' button insertion, then to keep track of which more to add from corresponding array
-        var more_followers=0;
-        function get_name_loop(){
-          console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
-          f_n_f_count--;
-          if(f_n_f_count>-1)
-          {$.ajax({
-                      method: "POST",
-                      url: "/counter/gn/"+friends_and_followers[f_n_f_count]._id,
-                      data: 0
-                    }).done(function( msg ) {
-                      if(!msg.trouble){
-                      //loop_temp = "window.location='/counter/profile/"+friends_and_followers[f_n_f_count]._id+"'";
-                      loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
-                      if(friends_and_followers[f_n_f_count].section==='friend'){
-                        data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
-                      }
-                      else{
-                       data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
-                      }
-                        if(!f_n_f_count){
-                          if(more_followers){
-                          data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
-                          }
-                          if(more_friends){
-                          data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
-                          }
-                          data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
-                          data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
-                          $('#followed_by').attr('data-content',data_content_fl);
-                          $('#im_following').attr('data-content',data_content_fr);
-                          $('#followed_by').text('Follow '+follow_num);
-                          $('#im_following').text('Following '+following_num);
-                        }
-                        else{
-                          get_name_loop();
-                        }
-                      }
-                      else{
-                        loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
-                      if(friends_and_followers[f_n_f_count].section==='friend'){
-                        data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
-                      }
-                      else{
-                       data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
-                      }
-                        if(!f_n_f_count){
-                          if(more_followers){
-                          data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
-                          }
-                          if(more_friends){
-                          data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
-                          }
-                          data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
-                          data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
-                          $('#followed_by').attr('data-content',data_content_fl);
-                          $('#im_following').attr('data-content',data_content_fr);
-                          $('#followed_by').text('Follow '+follow_num);
-                          $('#im_following').text('Following '+following_num);
-                        }
-                        else{
-                          get_name_loop();
-                        }
-                      }
-                  });}
-        }
+        //var friends_and_followers=[];
+        //var friends_full=[];
+        //var followers_full=[];
+        //var f_n_f_count=0;
+        //var data_content_fr='';
+        //var data_content_fl='';
+        //var follow_num=0;
+        //var following_num=0;
+        //var loop_temp;
+        //var temp_friends=0;//these two are here to implement 'more', holding sliced part of ten enteries
+        //var temp_followers=0;
+        //var more_friends=0;//these two are first used to indicate the need for the 'more' button insertion, then to keep track of which more to add from corresponding array
+        //var more_followers=0;
+        //function get_name_loop(){
+        //  console.log('HELLO: \n'+friends_and_followers+'\n'+f_n_f_count);
+        //  f_n_f_count--;
+        //  if(f_n_f_count>-1)
+        //  {$.ajax({
+        //              method: "POST",
+        //              url: "/counter/gn/"+friends_and_followers[f_n_f_count]._id,
+        //              data: 0
+        //            }).done(function( msg ) {
+        //              if(!msg.trouble){
+        //              //loop_temp = "window.location='/counter/profile/"+friends_and_followers[f_n_f_count]._id+"'";
+        //              loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
+        //              if(friends_and_followers[f_n_f_count].section==='friend'){
+        //                data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
+        //              }
+        //              else{
+        //               data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">'+msg.mtext+'</li></a>';
+        //              }
+        //                if(!f_n_f_count){
+        //                  if(more_followers){
+        //                  data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
+        //                  }
+        //                  if(more_friends){
+        //                  data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
+        //                  }
+        //                  data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
+        //                  data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
+        //                  $('#followed_by').attr('data-content',data_content_fl);
+        //                  $('#im_following').attr('data-content',data_content_fr);
+        //                  $('#followed_by').text('Follow '+follow_num);
+        //                  $('#im_following').text('Following '+following_num);
+        //                }
+        //                else{
+        //                  get_name_loop();
+        //                }
+        //              }
+        //              else{
+        //                loop_temp = "/counter/profile/"+friends_and_followers[f_n_f_count]._id;
+        //              if(friends_and_followers[f_n_f_count].section==='friend'){
+        //                data_content_fr+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
+        //              }
+        //              else{
+        //               data_content_fl+='<a href="'+loop_temp+'"<li class="list-group-item">User №'+friends_and_followers[f_n_f_count]._id+'</li></a>';
+        //              }
+        //                if(!f_n_f_count){
+        //                  if(more_followers){
+        //                  data_content_fl+='<li class="list-group-item more"><button onclick="more(1)" class="btn btn-default form-control">More</button></li>';
+        //                  }
+        //                  if(more_friends){
+        //                  data_content_fr+='<li class="list-group-item more"><button onclick="more(0)" class="btn btn-default form-control">More</button></li>';
+        //                  }
+        //                  data_content_fr='<ul class="list-group" id="friendlist">'+data_content_fr+'</ul>';
+        //                  data_content_fl='<ul class="list-group" id="followerlist">'+data_content_fl+'</ul>';
+        //                  $('#followed_by').attr('data-content',data_content_fl);
+        //                  $('#im_following').attr('data-content',data_content_fr);
+        //                  $('#followed_by').text('Follow '+follow_num);
+        //                  $('#im_following').text('Following '+following_num);
+        //                }
+        //                else{
+        //                  get_name_loop();
+        //                }
+        //              }
+        //          });}
+        //}
         //--------------------------------------//
         //--------------------------------------//
         $('#friends_nick').focusout(function(){
@@ -1561,9 +1575,9 @@ head
                $('#show_mail').prop('disabled',true);
             });
         }
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         $.ajax({
             method: "POST",
             url: "/counter/greeting/"+'#{_id}',
@@ -1572,9 +1586,9 @@ head
                if(msg.mtext&&parseInt(msg.mtext))
                {$('#first_time').modal('show');}
              });
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -1613,9 +1627,9 @@ head
            // e.onchange = e.oninput; // FF needs this in <select><option>...
            // other things for onload()
         };
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         onload = function () {
            $(function () {
              $('[data-toggle="tooltip"]').tooltip()
@@ -1650,9 +1664,9 @@ head
             })
            e.onpropertychange = e.oninput; 
         };
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function change_nick(mode){
           switch(mode){
           case 1:
@@ -1687,13 +1701,15 @@ head
           break;
           }
           };
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function add_dialog() {
           $('#add_comb').modal('show');
         }
-        //--------------------------------------//
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         var settings_loaded =0;
         $('#settings_btn').click(function(){
           //$('#nick').tooltip('destroy');
@@ -1745,7 +1761,9 @@ head
         //var populated_once=0;
         //console.log('heeelooo');
         //alert("{'_id':'#{_id}'}");
-        
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         $.ajax({
               method: "POST",
               url: "/counter/getitems",
@@ -1775,6 +1793,9 @@ head
                    }  
                 }
               });
+            ////////--------------------/////////
+            ////////--------------------/////////
+            ////////--------------------/////////
             function get_teamlist_members(_id) {
               $.ajax({
               method: "POST",
@@ -1786,7 +1807,7 @@ head
                    console.log('teamlist info: \n'+JSON.stringify(msg.doc));
                    //var users_insert='';
                    var users_arr=[];
-                   get_nick(msg.doc.users,users_arr,0,get_nick);
+                   get_nick(msg.doc.users,users_arr,0,_id,get_nick);
                    //users_arr.forEach(function (element,index){
                    //  users_insert+='<div id="'+element+'">'+element+'</div> <br>';
                    // });
@@ -1795,7 +1816,10 @@ head
                   }
                   });
             }
-            function get_nick(arr,output_arr,current_key,callback){
+            ////////--------------------/////////
+            ////////--------------------/////////
+            ////////--------------------/////////
+            function get_nick(arr,output_arr,current_key,teamlist_id,callback){
                $.ajax({
               method: "POST",
               url: "/counter/get_nick",
@@ -1816,7 +1840,7 @@ head
                      users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
                     });
                    $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
-                   $('#list_heading').append('<button class="btn invite" listid="'+arr[current_key]+'" onclick="invite_dialog(this)">Invite</button>');
+                   $('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');
                    $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                      }
                   }
@@ -1830,15 +1854,21 @@ head
                      users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
                     });
                    $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
-                   $('#list_heading').append('<button class="btn invite" listid="'+arr[current_key]+'" onclick="invite_dialog(this)">Invite</button>');
+                   $('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');
                    $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                      }
               }
              });
             }
+            ////////--------------------/////////
+            ////////--------------------/////////
+            ////////--------------------/////////
             $('.popover-dismiss').popover({
               trigger: 'focus'
-            })
+            });
+            ////////--------------------/////////
+            ////////--------------------/////////
+            ////////--------------------/////////
             function get_items(_id, list_name,friendlist){
               consolidated=[];
               $.ajax({
@@ -1910,8 +1940,9 @@ head
                 }
               });
             }
-        //--------------------------------------//
-        //--------------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function join_teamlist(_id) {
           var v_id=$('#join_list_id').val();
           $.ajax({
@@ -1928,7 +1959,9 @@ head
                 }
               });
         }
-        //--------------------------------------//   
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////  
         var team_lists_arr =[];
         $.ajax({
               method: "POST",
@@ -1956,7 +1989,9 @@ head
                    //}  
                 }
               });
-        //----------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function get_teamlist_name(count,callback){
           var _id=team_lists_arr[count];
           $.ajax({
@@ -1979,10 +2014,15 @@ head
                 {callback(count,callback);}
               });
         }
-        //----------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function trim1 (str) {
             return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function populate(consolidated,teamlist,teamlist_id) {
           tags=[];
           var count;
@@ -2092,7 +2132,9 @@ head
                 timer = setTimeout(callback, ms);
             }  
         }();
-       //=-----------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function tag_modal(tags_index) {
           //console.log(tags[tags_index]);
           //find them
@@ -2128,6 +2170,9 @@ head
           }
           console.log(mention_indexes);
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         $('.item_redact').click(function() {
           $('#redact_item_dialog').slideToggle();
           })
@@ -2139,7 +2184,10 @@ head
           });
         $('#invite_to_a_list_toggle').click(function() {
           $('#invite_to_a_list').slideToggle();
-          })
+          });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function redact_list_dialog(_id,list_name,total){
           $('#redact_list_dialog').css('display','none');
           $('#invite_to_a_list').css('display','none');
@@ -2149,6 +2197,9 @@ head
           $('#invitation_code').text(_id);
           $('#redact_list').modal('show');
         };
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function redactitem_dialog (i,teamlist,teamlist_id) {
           console.log('redact');
         // TODO screen blocker must be added to prevent user from interfering 
@@ -2192,7 +2243,9 @@ head
          //$('.movie_switch').text('Mark as not seen');
         $('#itemmodal').modal('show');
         }
-        //----------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function removeitem(i,teamlist,teamlist_id) {
           var data={};
           data.item_title=consolidated[i].item_title;
@@ -2228,7 +2281,9 @@ head
               window.location='/counter';
               });
         }
-        //-----------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function redactitem_submit(i,teamlist,teamlist_id) {
           var data={};
             data.v_index=i;
@@ -2267,7 +2322,9 @@ head
               window.location='/counter';
               });
         }
-        //-----------------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function removebook(i) {
           var data={};
           data.item_id=consolidated[i].item_title;
@@ -2281,7 +2338,9 @@ head
               window.location='/counter';
               });
         } 
-        //---------------------------//
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function submit_item(list_index){
           var item_title;
           var comment;
@@ -2362,17 +2421,18 @@ head
         
             });
         });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function add_team_list(){
           var teamlist_name;
-          
         if($('#list_name').val() )//what if I dont know year yet?
         {
           $('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
-           data.teamlistname = $('#list_name').val();
-           
+           data.teamlistname = $('#list_name').val();   
           $.ajax({
               method: "POST",
               url: "/counter/newteamlist",
@@ -2386,6 +2446,9 @@ head
             alert('no name provided');
           }
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function open_list(list_index){
           console.log('OPEN_LISTS: '+list_index);
           console.log('OPEN_LISTS: \n teamlists_arr: \n'+JSON.stringify(team_lists_arr));
@@ -2416,6 +2479,9 @@ head
           get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0);}
            }
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function open_friends_list(arr,index) {
           var list_id_jq='#'+arr[index]._id;
           if(!$(list_id_jq).hasClass('selected'))
@@ -2425,6 +2491,9 @@ head
           $(list_id_jq).addClass('selected');
           get_items(arr[index]._id,arr[index].nick,1);}
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function remove_team_list(el){
             $.ajax({
                 method: "POST",
@@ -2437,11 +2506,9 @@ head
                   window.location="/counter";
                 });
           }
-        //function load_team_lists(team_lists_arr){
-        //  team_lists_arr.forEach(function (element,index){
-        //      
-        //    });
-        //}
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function add_friend(el){
               var data={};
               data._id = $(el).attr('id');  
