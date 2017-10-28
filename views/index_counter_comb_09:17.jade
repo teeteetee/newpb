@@ -2015,7 +2015,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function get_teamlist_name(count,callback){
-          var _id=team_lists_arr[count];
+          var _id=typeof team_lists_arr[count]=== 'string'?team_lists_arr[count]:team_lists_arr[count]._id;
           $.ajax({
               method: "POST",
               url: "/counter/getlistname",
