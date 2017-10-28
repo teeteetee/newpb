@@ -2355,6 +2355,26 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function importitem_submit(i,teamlist,teamlist_id) {
+          var data={};
+            data.item_title=consolidated[i].item_title;
+            data.item_link=consolidated[i].item_title;
+            data.item_comment=consolidated[i].item_title;
+            data.item_tags=consolidated[i].item_title;
+            data.teamlist = teamlist;
+            if(teamlist)
+             {data.teamlist_id=teamlist_id;}
+        $.ajax({
+              method: "POST",
+              url: "/counter/additem/",
+              data: data
+              }).done(function( msg ) {
+              window.location='/counter';
+              });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function redactitem_submit(i,teamlist,teamlist_id) {
           var data={};
             data.v_index=i;
