@@ -1163,7 +1163,7 @@ head
             h6.import_item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h6.import_item_tags(style='margin-bottom:30px;color:#bbb;') 
             button(class='btn btn-grey-redact item_import') Add to my list
-            .panel-group(id="redact_item_dialog" role="tablist" style='display:none;')
+            .panel-group(id="import_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body
                   .dropdown
@@ -2201,6 +2201,9 @@ head
         ////////--------------------/////////
         $('.item_redact').click(function() {
           $('#redact_item_dialog').slideToggle();
+          })
+        $('.item_import').click(function() {
+          $('#import_item_dialog').slideToggle();
           })
         $('#list_redact_toggle').click(function() {
           $('#redact_list_dialog').slideToggle();
