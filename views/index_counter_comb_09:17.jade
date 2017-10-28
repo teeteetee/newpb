@@ -2660,8 +2660,7 @@ head
                      { console.log('GET_TEAMLIST_NAME populating teamlists list');
                        $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
                     });
-                if(!$('.dropdown-menu').children().length)
-                {$('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');}
+                $('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
                 }
             });
         //--------------------------------------//
