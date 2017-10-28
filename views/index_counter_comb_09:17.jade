@@ -2662,6 +2662,7 @@ head
                 $('#invites').css('display','block');
                 msg.mtext.forEach(function (element,index){
                   //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
+                  console.log('GET_TEAMLIST_NAME pushing invite');
                   team_lists_arr.push({'_id':element._id,'list_name':element.list_name,'invite':1});
                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+',0);">'+element.list_name+'</div>');
                   });
