@@ -1788,12 +1788,8 @@ app.get('/counter/showitems',function (req,res){
 app.get('/counter/showme',function (req,res){
   counter_users.findOne({_id:new ObjectID(req.session._id)},function(err,done){
     counter_invite.findOne({uid:new ObjectID(req.session._id)},function(err,done1){
-      counter_teamlists.findOne({uid:new ObjectID(req.session._id)},function(err,done2){
-        counter_items.findOne({uid:new ObjectID(req.session._id)},function(err,done3){
-          
-       res.send('<br><b>SESSION:</b><br>'+req.session._id+'<br><b>USERS:</b><br>'+JSON.stringify(done)+'<br><b>INVITE:</b><br>'+JSON.stringify(done1)+'<br><b>TEAMLISTS:</b><br>'+JSON.stringify(done2)+'<br><b>ITEMS:</b><br>'+JSON.stringify(done3));
-         
-        });
+        counter_items.findOne({uid:new ObjectID(req.session._id)},function(err,done2){     
+       res.send('<br><b>SESSION:</b><br>'+req.session._id+'<br><b>USERS:</b><br>'+JSON.stringify(done)+'<br><b>INVITE:</b><br>'+JSON.stringify(done1)+'<br><b>ITEMS:</b><br>'+JSON.stringify(done2));    
       });
     });
   });
