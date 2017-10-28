@@ -1165,17 +1165,17 @@ head
             button(class='btn btn-grey-redact item_import') Add to my list
             .panel-group(id="import_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
-                .panel-body
+                .panel-body(style='padding-top:50px;padding-bottom:30px;')
                   .dropdown
-                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
-                    .dropdown-menu(aria-labelledby="dropdownMenuButton")
+                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
+                    .dropdown-menu(aria-labelledby="dropdown_list_choice")
+                    //
                       a.dropdown-item(href="#") Action</a>
                       a.dropdown-item(href="#") Another action</a>
                       a.dropdown-item(href="#") Something else here</a>
-                  button(class='btn btn-blue item_import_submit') Add to chosen list
-            
+                  button(class='btn btn-blue item_import_submit') Add to chosen list 
           .modal-footer
-            button(class='btn btn-red item_remove ') Remove
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .container-fluid(style='z-index:2;')
       .row(style='display:none;')
         .col-xs-12
@@ -2034,7 +2034,18 @@ head
                 count++;
                 if(count<team_lists_arr.length)
                 {callback(count,callback);}
+                else{
+                  team_lists_arr.forEach(function (element,index){
+                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');
+                    });
+                }
               });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function list_choice(el){
+         $('dropdown_list_choice').text($(el).text());
         }
         ////////--------------------/////////
         ////////--------------------/////////
@@ -2204,6 +2215,7 @@ head
           })
         $('.item_import').click(function() {
           $('#import_item_dialog').slideToggle();
+          $('#dropdown_list_choice).text('Choose a list');
           })
         $('#list_redact_toggle').click(function() {
           $('#redact_list_dialog').slideToggle();
