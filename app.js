@@ -1954,6 +1954,24 @@ app.get('/correction',function(req,res){
   }
 });
 
+app.get('/clear_teamlists',function(req,res){
+  if(req.session&&req.session._id)
+ {
+  //counter_teamlists.remove({});
+  counter_users.update({_id:req.session._id},{$set:{teamlists:[]}},function(err,done){
+    if(err){
+      res.send(err);
+    }
+    else {
+      console.log('CLEAR_TEAMLISTS: '+JSON.stringify(done));
+      res.redirect('/counter');
+    }
+  });}
+  else{
+    res.send('boo');
+  }
+});
+
 
 app.get('/quick_correction_v2',function(req,res){
   if(req.session&&req.session._id)
