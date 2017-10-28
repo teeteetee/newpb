@@ -2023,7 +2023,7 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  team_lists_arr[count]={'_id':_id,'list_name':msg.doc};
+                  team_lists_arr[count]={'_id':_id,'list_name':msg.doc,'invite':0};
                   //$('#'+_id).text(msg.doc.capitalizeFirstLetter()); 
                   $('#'+_id).text(msg.doc.length>20?msg.doc.capitalizeFirstLetter().slice(0,20)+'...':msg.doc.capitalizeFirstLetter()); 
                 }
@@ -2652,13 +2652,17 @@ head
                 $('#invites').css('display','block');
                 msg.mtext.forEach(function (element,index){
                   //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
-                  team_lists_arr.push({'_id':element._id,'list_name':element.list_name});
+                  team_lists_arr.push({'_id':element._id,'list_name':element.list_name,'invite':1});
                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+',0);">'+element.list_name+'</div>');
                   });
                 team_lists_arr.forEach(function (element,index){
-                      console.log('GET_TEAMLIST_NAME populating teamlists list');
-                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');
+                    if(!element.invite)
+                     { console.log('GET_TEAMLIST_NAME populating teamlists list');
+                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
                     });
+                if(!$('.dropdown-menu').children().length){
+                   $('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');}
+                }
               }
             });
         //--------------------------------------//
