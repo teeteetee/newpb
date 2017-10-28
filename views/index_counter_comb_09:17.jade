@@ -1990,9 +1990,10 @@ head
               data: 0
             })
               .done(function( msg ) {
+                console.log('GETTEAMLISTS: msg\n'+JSON.stringify(msg));
                 if(!msg.trouble) {
                   if(!msg.doc||msg.doc.length ) {
-                   console.log('no teamlists');
+                   console.log('GETTEAMLISTS: no teamlists');
                    }
                    else {
                     msg.doc.forEach(function (element,index){
