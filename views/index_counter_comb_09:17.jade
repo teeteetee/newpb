@@ -2041,7 +2041,7 @@ head
         ////////--------------------/////////
         function list_choice(el){
          $('#dropdown_list_choice').text($(el).text());
-         $('#item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+1+','+$(el).attr('_id'));
+         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+1+','+$(el).attr('_id'));
         }
         ////////--------------------/////////
         ////////--------------------/////////
