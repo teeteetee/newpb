@@ -1154,6 +1154,28 @@ head
             
           .modal-footer
             button(class='btn btn-red item_remove ') Remove
+    .modal.fade(id='importmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+          .modal-body.add_choice(style='text-align:center;')
+            h5.import_item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
+            h6.import_item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
+            h6.import_item_tags(style='margin-bottom:30px;color:#bbb;') 
+            button(class='btn btn-grey-redact item_import') Add to my list
+            .panel-group(id="redact_item_dialog" role="tablist" style='display:none;')
+              .panel.panel-default
+                .panel-body
+                  .dropdown
+                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
+                    .dropdown-menu(aria-labelledby="dropdownMenuButton")
+                      a.dropdown-item(href="#") Action</a>
+                      a.dropdown-item(href="#") Another action</a>
+                      a.dropdown-item(href="#") Something else here</a>
+                  button(class='btn btn-blue item_import_submit') Add to chosen list
+            
+          .modal-footer
+            button(class='btn btn-red item_remove ') Remove
     .container-fluid(style='z-index:2;')
       .row(style='display:none;')
         .col-xs-12
@@ -1170,7 +1192,7 @@ head
             svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#invite').modal('show');" style="margin-left: 5px;margin-top:1px;")
               g#surface2
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
-          #your_items.row.menu_item.selected(onclick="open_list(-1)") Your items
+          #your_items.row.menu_item.selected(onclick="open_list(-1,1)") Your items
           #team_lists_insert
           //
             .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
@@ -1789,7 +1811,7 @@ head
                    if(consolidated.length){
                       console.log('bp2');
                    sortByKey(consolidated, 'tmstmp');
-                   populate(consolidated,0,0);
+                   populate(consolidated,0,0,1);
                    }  
                 }
               });
@@ -1869,7 +1891,7 @@ head
             ////////--------------------/////////
             ////////--------------------/////////
             ////////--------------------/////////
-            function get_items(_id, list_name,friendlist){
+            function get_items(_id, list_name,friendlist,redact){
               consolidated=[];
               $.ajax({
               method: "POST",
@@ -1904,9 +1926,9 @@ head
                    if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
                    if(!_id)
-                   {populate(consolidated,0,0);}
+                   {populate(consolidated,0,0,1);}
                    else{
-                    populate(consolidated,1,_id);
+                    populate(consolidated,1,_id,redact);
                    }
                    //return consolidated;
                    } 
@@ -1930,9 +1952,9 @@ head
                    if(consolidated.length){
                    sortByKey(consolidated, 'tmstmp');
                    if(!_id)
-                   {populate(consolidated,0,0);}
+                   {populate(consolidated,0,0,1);}
                    else{
-                    populate(consolidated,1,_id);
+                    populate(consolidated,1,_id,redact);
                    }
                    //return consolidated;
                    } 
@@ -1977,7 +1999,7 @@ head
                     msg.doc.forEach(function (element,index){
                       team_lists_arr[index]=element;
                       //$('#team_lists_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+index+')">'+element.list_name+'</div>');
-                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'" onclick="open_list('+index+')"></div>');
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'" onclick="open_list('+index+',1)"></div>');
                     });
                     var temp_count=0;
                     get_teamlist_name(temp_count,get_teamlist_name);
@@ -2023,7 +2045,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function populate(consolidated,teamlist,teamlist_id) {
+        function populate(consolidated,teamlist,teamlist_id,redact) {
           tags=[];
           var count;
           var inarr;
@@ -2039,7 +2061,11 @@ head
                         temp_insert=element.item_title;
                       }
                       var vteamlist_id = "'"+teamlist_id+"'";
-                      var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                      if(redact)
+                      {var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';}
+                      else{
+                        var insert='<li class="list-group-item " onclick="import_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                      }
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags){
                         console.log('POPULATE has tags: '+JSON.stringify(element));
@@ -2197,6 +2223,18 @@ head
           $('#invitation_code').text(_id);
           $('#redact_list').modal('show');
         };
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function import_dialog (i,teamlist,teamlist_id){
+          if($('body').width()<$('body').height()) {
+          $('.modal-dialog').css('margin-top','20%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','5%');
+        }
+        $('#importmodal').modal('show');
+        }
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
@@ -2449,7 +2487,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function open_list(list_index){
+        function open_list(list_index,redact){
           console.log('OPEN_LISTS: '+list_index);
           console.log('OPEN_LISTS: \n teamlists_arr: \n'+JSON.stringify(team_lists_arr));
           if(list_index<0){
@@ -2464,7 +2502,7 @@ head
               $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
               //populate(consolidated);
-              get_items(0,'Your items',0);
+              get_items(0,'Your items',0,1);
             }
           }
             else{
@@ -2476,7 +2514,7 @@ head
           $(list_id_jq).addClass('selected');
           $('#submit_item_button').attr('onclick','submit_item('+list_index+')');
           $('#list_name_redact_input').val(team_lists_arr[list_index].list_name);
-          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0);}
+          get_items(team_lists_arr[list_index]._id,team_lists_arr[list_index].list_name,0,redact);}
            }
         }
         ////////--------------------/////////
@@ -2560,7 +2598,7 @@ head
                 msg.mtext.forEach(function (element,index){
                   //$('#invite_insert').append("<li onclick='console.log(99);' class='list-group-item'>"+element.list_name+"</li>");
                   team_lists_arr.push({'_id':element._id,'list_name':element.list_name});
-                  $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+');">'+element.list_name+'</div>');
+                  $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+',0);">'+element.list_name+'</div>');
                   });
               }
             });
