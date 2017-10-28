@@ -1791,7 +1791,7 @@ app.get('/counter/showme',function (req,res){
       counter_teamlists.findOne({uid:new ObjectID(req.session._id)},function(err,done2){
         counter_items.findOne({uid:new ObjectID(req.session._id)},function(err,done3){
           
-       res.send(req.session._id+'\n'+'USERS:'+'<br>\n'+JSON.stringify(done)+'\n'+'INVITE:'+'<br>\n'+JSON.stringify(done1)+'\n'+'TEAMLISTS:'+'<br>\n'+JSON.stringify(done2)+'\n'+'ITEMS:'+'<br>\n'+JSON.stringify(done3)+'\n');
+       res.send('<br><b>SESSION:</b><br>'+req.session._id+'<br><b>USERS:</b><br>'+JSON.stringify(done)+'<br><b>INVITE:</b><br>'+JSON.stringify(done1)+'<br><b>TEAMLISTS:</b><br>'+JSON.stringify(done2)+'<br><b>ITEMS:</b><br>'+JSON.stringify(done3));
          
         });
       });
