@@ -1786,12 +1786,12 @@ app.get('/counter/showitems',function (req,res){
 //});
 
 app.get('/counter/showme',function (req,res){
-  counter_users.findOne({_id:req.session._id},function(err,done){
-    counter_invite.findOne({uid:req.session._id},function(err,done1){
-      counter_teamlists.findOne({uid:req.session._id},function(err,done2){
-        counter_items.findOne({uid:req.session._id},function(err,done3){
+  counter_users.findOne({_id:new ObjectID(req.session._id)},function(err,done){
+    counter_invite.findOne({uid:new ObjectID(req.session._id)},function(err,done1){
+      counter_teamlists.findOne({uid:new ObjectID(req.session._id)},function(err,done2){
+        counter_items.findOne({uid:new ObjectID(req.session._id)},function(err,done3){
           
-       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'INVITE:'+'\n'+JSON.stringify(done1)+'\n'+'TEAMLISTS:'+'\n'+JSON.stringify(done2)+'\n'+'ITEMS:'+'\n'+JSON.stringify(done3)+'\n');
+       res.send(req.session._id+'\n'+'USERS:'+'<br>\n'+JSON.stringify(done)+'\n'+'INVITE:'+'<br>\n'+JSON.stringify(done1)+'\n'+'TEAMLISTS:'+'<br>\n'+JSON.stringify(done2)+'\n'+'ITEMS:'+'<br>\n'+JSON.stringify(done3)+'\n');
          
         });
       });
