@@ -1239,13 +1239,13 @@ head
         };
         var temp_friend_name;
        function get_friend_nick(arr,index,callback) {
-        console.log('get_friend_nick '+index);
+        //console.log('GET_FRIEND_NICK '+index);
         //var temp_id='#'+arr[index];
         var temp_id=arr[index];
         $('#friends_insert').append('<div class="row menu_item" onclick="open_friends_list(friendstore,'+index+')" id="'+arr[index]+'"></div>');
         var temp_friend={};
         temp_friend._id=arr[index];
-        console.log('typeof: '+typeof arr[index]);
+        //console.log('GET_FRIEND_NICK typeof: '+typeof arr[index]);
         $.ajax({
                 method: "POST",
                 url: "/counter/gn/"+arr[index],
@@ -1256,7 +1256,7 @@ head
                   temp_friend_name=msg.mtext;
                   if(msg.mtext.length>21)
                     {temp_friend_name=msg.mtext.slice(0,21)+'...';}
-                  console.log('get_friend_nick '+msg.mtext);
+                  //console.log('GET_FRIEND_NICK '+msg.mtext);
                  $('#'+temp_id).append(temp_friend_name+'<svg xmlns="http://www.w3.org/2000/svg" onclick="rmfriend_dialog('+index+')" class="svg-hidden" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" width="20" height="20"><g id="surface1"><path style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 10 15 L 10 17 L 22 17 L 22 15 Z "/></g></svg>');
                 // $('#'+temp_id).attr({'lastitem':msg.lastitem,'_id':temp_id,'nick':msg.mtext});
                 $('#'+temp_id).attr({'lastitem':msg.lastitem,'nick':msg.mtext});
@@ -1265,7 +1265,7 @@ head
                 arr[index]=temp_friend;
                 index++;
                 if(index<arr.length){
-                  console.log('lolololololo');
+                  //console.log('lolololololo');
                   callback(arr,index,callback);
                 }
                 });
@@ -1792,16 +1792,15 @@ head
               data: 0
             })
               .done(function( msg ) {
-                console.log('hello hello');
                 if(!msg.trouble) {
                  // console.log('items: '+JSON.stringify(msg.doc));
                    items=msg.doc.itemstore;
                   if(!items||!items.length ) {
-                   console.log('no items');
+                   //console.log('GETITEMS ajax no items');
                    $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                    }
                    else {
-                    console.log('bp1');
+                    //console.log('GETITEMS ajax bp1');
                     items.forEach(function (element,index){
                     if(element.item_title)
                        //console.log('element pushed');
@@ -1809,7 +1808,7 @@ head
                     });
                    }
                    if(consolidated.length){
-                      console.log('bp2');
+                      //console.log('GETITEMS ajax bp2');
                    sortByKey(consolidated, 'tmstmp');
                    populate(consolidated,0,0,1);
                    }  
@@ -2074,7 +2073,7 @@ head
                       }
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags){
-                        console.log('POPULATE has tags: '+JSON.stringify(element));
+                        //console.log('POPULATE has tags: '+JSON.stringify(element));
                         element.item_tags.forEach(function (element_2, index_2){
                           element.item_tags[index_2]=trim1(element_2);
                         });
@@ -2105,7 +2104,7 @@ head
                         
                       $('#main_list').append(insert);
                       });
-        console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
+        //console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
         if(tags.length){
           $('#tags').empty();
           sortByKey(tags,'quantity');
