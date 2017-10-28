@@ -2034,6 +2034,14 @@ head
                 count++;
                 if(count<team_lists_arr.length)
                 {callback(count,callback);}
+                else{
+                  team_lists_arr.forEach(function (element,index){
+                    if(!element.invite)
+                     { console.log('GET_TEAMLIST_NAME populating teamlists list');
+                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
+                    });
+                $('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
+                }
               });
         }
         ////////--------------------/////////
@@ -2655,12 +2663,12 @@ head
                   team_lists_arr.push({'_id':element._id,'list_name':element.list_name,'invite':1});
                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list('+(team_lists_arr.length-1)+',0);">'+element.list_name+'</div>');
                   });
-                team_lists_arr.forEach(function (element,index){
-                    if(!element.invite)
-                     { console.log('GET_TEAMLIST_NAME populating teamlists list');
-                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
-                    });
-                $('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
+                //team_lists_arr.forEach(function (element,index){
+                //    if(!element.invite)
+                //     { console.log('GET_TEAMLIST_NAME populating teamlists list');
+                //       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
+                //    });
+                //$('.dropdown-menu').append('<a _id="#{_id}" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
                 }
             });
         //--------------------------------------//
