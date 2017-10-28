@@ -2041,6 +2041,7 @@ head
         ////////--------------------/////////
         function list_choice(el){
          $('#dropdown_list_choice').text($(el).text());
+         $('#item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+1+','+$(el).attr('_id'));
         }
         ////////--------------------/////////
         ////////--------------------/////////
@@ -2068,9 +2069,9 @@ head
                       }
                       var vteamlist_id = "'"+teamlist_id+"'";
                       if(redact)
-                      {var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';}
+                      {var insert='<li class="list-group-item" onclick="redactitem_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';}
                       else{
-                        var insert='<li class="list-group-item " onclick="import_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                        var insert='<li class="list-group-item" onclick="import_dialog('+index+','+teamlist+','+vteamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
                       }
                       //var insert='<li class="list-group-item " onclick="redactitem_dialog('+index+')"><div class="col-sm-8">'+temp_insert+"<small>"+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+"</small></div>";
                       if(element.item_tags){
@@ -2245,6 +2246,7 @@ head
         }
         //
         insert_import = 'importitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
+        $('#dropdown_list_choice').attr('index',i);
         $('.item_import_submit').attr('onclick',insert_import);
         $('.import_item_title').text('');
         $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
