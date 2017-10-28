@@ -1992,7 +1992,7 @@ head
               .done(function( msg ) {
                 console.log('GETTEAMLISTS: msg\n'+JSON.stringify(msg));
                 if(!msg.trouble) {
-                  if(!msg.doc||msg.doc.length ) {
+                  if(!msg.doc||msg.doc.length===0 ) {
                    console.log('GETTEAMLISTS: no teamlists');
                    }
                    else {
