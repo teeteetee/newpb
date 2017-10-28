@@ -2035,7 +2035,9 @@ head
                 if(count<team_lists_arr.length)
                 {callback(count,callback);}
                 else{
+                  console.log('GET_TEAMLIST_NAME team_list_arr: '+JSON.stringify(team_lists_arr));
                   team_lists_arr.forEach(function (element,index){
+                    console.log('GET_TEAMLIST_NAME element: '+JSON.stringify(element));
                     if(!element.invite)
                      { console.log('GET_TEAMLIST_NAME populating teamlists list');
                        $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
