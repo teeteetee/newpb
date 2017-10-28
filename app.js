@@ -1785,19 +1785,19 @@ app.get('/counter/showitems',function (req,res){
 //  });
 //});
 
-//app.get('/counter/showme',function (req,res){
-//  counter_users.findOne({_id:req.session._id},function(err,done){
-//    counter_books.findOne({uid:req.session._id},function(err,done1){
-//      counter_movies.findOne({uid:req.session._id},function(err,done2){
-//        counter_friends.findOne({uid:req.session._id},function(err,done3){
-//          counter_web.findOne({uid:req.session._id},function(err,done4){
-//       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'BOOKS:'+'\n'+JSON.stringify(done1)+'\n'+'MOVIES:'+'\n'+JSON.stringify(done2)+'\n'+'FRIENDS:'+'\n'+JSON.stringify(done3)+'\n'+'WEB:'+'\n'+JSON.stringify(done4));
-//          });
-//        });
-//      });
-//    });
-//  });
-//});
+app.get('/counter/showme',function (req,res){
+  counter_users.findOne({_id:req.session._id},function(err,done){
+    counter_invite.findOne({uid:req.session._id},function(err,done1){
+      counter_teamlists.findOne({uid:req.session._id},function(err,done2){
+        counter_items.findOne({uid:req.session._id},function(err,done3){
+          
+       res.send(req.session._id+'\n'+'USERS:'+'\n'+JSON.stringify(done)+'\n'+'INVITE:'+'\n'+JSON.stringify(done1)+'\n'+'TEAMLISTS:'+'\n'+JSON.stringify(done2)+'\n'+'ITEMS:'+'\n'+JSON.stringify(done3)+'\n');
+         
+        });
+      });
+    });
+  });
+});
 
 app.get('/counter/logout',function (req,res){
   delete req.session._id;
