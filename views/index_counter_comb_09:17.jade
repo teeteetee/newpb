@@ -2463,7 +2463,7 @@ head
            data.item_comment = $('#item_comment').val();
            data.item_tags = $('#item_tags').val();
            data.list_id = list_index>-1?team_lists_arr[list_index]._id:0;
-           //console.log(JSON.stringify(data));
+           console.log('SUBMIT_ITEM data'+JSON.stringify(data));
           $.ajax({
               method: "POST",
               url: "/counter/additem",
