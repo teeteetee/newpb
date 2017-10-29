@@ -2480,6 +2480,15 @@ head
               data: data
             })
               .done(function( msg ) {
+                $('#add_comb').modal('hide');
+                if(!msg.trouble){
+                  var date= new Date(msg.date);
+                  var insert ='<li class="list-group-item" onclick="redactitem_dialog('+index+','+teamlist+','+teamlist_id+')">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                      $('#main_list').append(insert);
+                }
+                else{
+                  console.log('IMPORTITEM_SUBMIT trouble while adding an item');
+                }
                 window.location='/counter';
               });
           }

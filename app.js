@@ -1162,7 +1162,7 @@ app.post('/counter/additem',function (req,res){
   //--item_comment
   //--item_tags
   if(req.session&&req.session._id)
- {       //console.log('adding an item');
+ {       console.log('adding an item');
           var ms = {};
           ms.trouble =1;
             var list_id;
@@ -1223,12 +1223,19 @@ app.post('/counter/additem',function (req,res){
           counter_items.update({uid:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
             //console.log(err);
+            if(err){
+              console.log('ADDITEM DB ERR');
+              res.send(ms);
+            }
+              else{
+                ms.trouble=0;
+                ms.date=vtmstmp;
+                res.send(ms);
+              }
           });
           console.log('breakpoint five');
-          
-          
           //console.log('item added');
-           res.send('ok');  }       
+          }       
       else {
         res.send('err');
       }   
