@@ -2381,7 +2381,7 @@ head
             }
             data.item_tags="";
             console.log('IMPORTITEM_SUBMIT 1: '+data.item_tags);
-            if(consolidated[i].item_tags){
+            if(consolidated[i].item_tags&&consolidated[i].item_tags.length>0){
               console.log('IMPORTITEM_SUBMIT 2: '+consolidated[i].item_tags);
               data.item_tags=consolidated[i].item_tags;}
             console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
