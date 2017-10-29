@@ -1155,8 +1155,14 @@ function trim1 (str) {
 }
 
 app.post('/counter/additem',function (req,res){
+  //req:
+  //--item_title
+  //--list_id
+  //--item_link
+  //--item_comment
+  //--item_tags
   if(req.session&&req.session._id)
- {console.log('adding an item');
+ {       //console.log('adding an item');
           var ms = {};
           ms.trouble =1;
             var list_id;
@@ -1216,12 +1222,12 @@ app.post('/counter/additem',function (req,res){
           var vtmstmp = Date.now();
           counter_items.update({uid:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
-            console.log(err);
+            //console.log(err);
           });
-          //console.log('breakpoint five');
+          console.log('breakpoint five');
           
           
-          console.log('item added');
+          //console.log('item added');
            res.send('ok');  }       
       else {
         res.send('err');
