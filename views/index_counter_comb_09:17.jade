@@ -2257,7 +2257,7 @@ head
         }
         //
         insert_import = 'importitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
-        $('#dropdown_list_choice').attr('index',i);
+        $('#dropdown_list_choice').attr({'index':i,'teamlist':teamlist});
         $('.item_import_submit').attr('onclick',insert_import);
         $('.import_item_title').text('');
         $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
