@@ -2371,10 +2371,17 @@ head
         function importitem_submit(i,teamlist,teamlist_id) {
           var data={};
             data.item_title=consolidated[i].item_title;
-            data.item_link=consolidated[i].item_link;
+            data.item_link="";
+            if(consolidated[i].item_link){
+              data.item_link=consolidated[i].item_link;
+            }
+            data.item_comment="";
+            if(consolidated[i].item_comment){
             data.item_comment=consolidated[i].item_comment;
-            data.item_tags=consolidated[i].item_tags;
-            if(!consolidated[i].item_tags||consolidated[i].item_tags.length===0){data.item_tags="";}
+            }
+            data.item_tags="";
+            if(consolidated[i].item_tags){
+              data.item_tags=consolidated[i].item_tags;}
             data.teamlist = teamlist;
             if(teamlist)
              {data.list_id=teamlist_id;}
