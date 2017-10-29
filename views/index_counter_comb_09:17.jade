@@ -2023,7 +2023,8 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                  team_lists_arr[count]={'_id':_id,'list_name':msg.doc,'invite':0};
+                   
+                   if(typeof team_lists_arr[count]==='string') {team_lists_arr[count]={'_id':_id,'list_name':msg.doc,'invite':0};}
                   //$('#'+_id).text(msg.doc.capitalizeFirstLetter()); 
                   $('#'+_id).text(msg.doc.length>20?msg.doc.capitalizeFirstLetter().slice(0,20)+'...':msg.doc.capitalizeFirstLetter()); 
                 }
