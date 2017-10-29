@@ -2388,7 +2388,7 @@ head
             data.teamlist = teamlist;
             if(teamlist)
              {data.list_id=teamlist_id;}
-           alert.log('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
+           alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
         $.ajax({
               method: "POST",
               url: "/counter/additem/",
