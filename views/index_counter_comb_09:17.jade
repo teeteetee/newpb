@@ -2374,7 +2374,7 @@ head
             data.item_link=consolidated[i].item_link;
             data.item_comment=consolidated[i].item_comment;
             data.item_tags=consolidated[i].item_tags;
-            if(!consolidated[i].item_tags){data.item_tags='';}
+            if(!consolidated[i].item_tags||consolidated[i].item_tags.length===0){data.item_tags='';}
             data.teamlist = teamlist;
             if(teamlist)
              {data.list_id=teamlist_id;}
