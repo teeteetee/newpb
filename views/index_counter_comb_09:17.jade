@@ -2041,9 +2041,9 @@ head
                     console.log('GET_TEAMLIST_NAME element: '+JSON.stringify(element));
                     if(!element.invite)
                      { console.log('GET_TEAMLIST_NAME populating teamlists list');
-                       $('.dropdown-menu').append('<a _id="'+element._id+'" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
+                       $('.dropdown-menu').append('<a _id="'+element._id+'" teamlist="1" onclick="list_choice(this)" class="dropdown-item">'+element.list_name+'</a>');}
                     });
-                $('.dropdown-menu').append('<a _id="-1" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
+                $('.dropdown-menu').append('<a _id="-1" teamlist="0" onclick="list_choice(this)" class="dropdown-item">Your items</a>');
                 }
               });
         }
@@ -2052,7 +2052,7 @@ head
         ////////--------------------/////////
         function list_choice(el){
          $('#dropdown_list_choice').text($(el).text());
-         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+1+',"'+$(el).attr('_id')+'")');
+         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+$('#dropdown_list_choice').attr('teamlist')+',"'+$(el).attr('_id')+'")');
         }
         ////////--------------------/////////
         ////////--------------------/////////
