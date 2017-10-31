@@ -1312,6 +1312,25 @@ head
          /////////------------------//////////
          /////////------------------//////////
          /////////------------------//////////
+         function invite_submit (index,el){
+         var data={};
+          data.list_id=$(el).attr('listid');
+          data.list_name=$('#list_heading_title').attr('clean_title');
+          data.friends_id=friendstore[index]._id;
+           $.ajax({
+                method: "POST",
+                url: "/counter/invite",
+                data: data
+                  })
+                .done(function( msg ) {
+                  if(!msg.trouble){
+                    alert("We've just invited a friend");
+                  }
+                });
+         }
+         ////////--------------------/////////
+         ////////--------------------/////////
+         ////////--------------------/////////
          function getteamlists(){
          $.ajax({
               method: "POST",
@@ -1418,6 +1437,7 @@ head
           var item_click_function;
           var insert;
           var inarr;
+          $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
           global_items_store[list_id].itemstore.forEach(function (element,index){
             date=new Date(parseInt(element.tmstmp));
             temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
