@@ -1477,36 +1477,36 @@ head
            else{
              $('.modal-dialog').css('margin-top','5%');
            }
-           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('_id')+'")';
-           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('_id')+'")';
+           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('teamlist_id')+'")';
+           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('teamlist_id')+'")';
            $('.item_remove').attr('onclick',insert_remove);
            $('.item_redact_submit').attr('onclick',insert_redact);
            $('.item_title').text('');
-           $('#item_title_redact').val(global_items_store[$(el).attr('_id')].itemstore[i].item_title.capitalizeFirstLetter());
-           $('.item_title').text(global_items_store[$(el).attr('_id')].itemstore[i].item_title.capitalizeFirstLetter());
-           if(global_items_store[$(el).attr('_id')].itemstore[i].item_link!='--'&&global_items_store[$(el).attr('_id')].itemstore[i].item_link!=''){
+           $('#item_title_redact').val(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_title.capitalizeFirstLetter());
+           $('.item_title').text(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_title.capitalizeFirstLetter());
+           if(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_link!='--'&&global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_link!=''){
            $('.item_title').text('');
-           $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+global_items_store[$(el).attr('_id')].itemstore[i].item_link+'">'+global_items_store[$(el).attr('_id')].itemstore[i].item_title.capitalizeFirstLetter()+'</a>');
-           $('#item_link_redact').val(global_items_store[$(el).attr('_id')].itemstore[i].item_link);
+           $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_link+'">'+global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_title.capitalizeFirstLetter()+'</a>');
+           $('#item_link_redact').val(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_link);
            }
            else{
              $('#item_link_redact').val();
-             $('.item_title').text(global_items_store[$(el).attr('_id')].itemstore[i].item_title.capitalizeFirstLetter());
-             $('#item_title_redact').val(global_items_store[$(el).attr('_id')].itemstore[i].item_title.capitalizeFirstLetter());
+             $('.item_title').text(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_title.capitalizeFirstLetter());
+             $('#item_title_redact').val(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_title.capitalizeFirstLetter());
            }
-           if(!global_items_store[$(el).attr('_id')].itemstore[i].item_comment||global_items_store[$(el).attr('_id')].itemstore[i].item_comment=='--'){
+           if(!global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_comment||global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_comment=='--'){
              $('.item_comment').css('display','none');
            }
            else{
              $('.item_comment').css('display','block');
-             $('.item_comment').text(global_items_store[$(el).attr('_id')].itemstore[i].item_comment.capitalizeFirstLetter());
+             $('.item_comment').text(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_comment.capitalizeFirstLetter());
            }
-           $('#item_comment_redact').val(global_items_store[$(el).attr('_id')].itemstore[i].item_comment.capitalizeFirstLetter());
+           $('#item_comment_redact').val(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_comment.capitalizeFirstLetter());
             $('.item_tags').text();
             $('#item_tags_redact').val();
-           if(global_items_store[$(el).attr('_id')].itemstore[i].item_tags.length>0)
-           {$('.item_tags').text('Tags: '+global_items_store[$(el).attr('_id')].itemstore[i].item_tags);
-            $('#item_tags_redact').val(global_items_store[$(el).attr('_id')].itemstore[i].item_tags);}
+           if(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_tags.length>0)
+           {$('.item_tags').text('Tags: '+global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_tags);
+            $('#item_tags_redact').val(global_items_store[$(el).attr('teamlist_id')].itemstore[i].item_tags);}
            $('#itemmodal').modal('show');
          }
         ////////--------------------/////////
