@@ -1,0 +1,1517 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title Content Digest
+    // Bootstrap
+    //link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous")
+    link(rel="stylesheet" href="/bootstrap/css/open-iconic-bootstrap.min.css")
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      }
+      @font-face {
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      }
+      body{
+      background: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      font-family:helvetica;
+      }
+      .container {
+        transition: 0.5s -webkit-filter linear;
+        transition: 0.5s -moz-filter linear;
+        -webkit-transition: 0.5s -webkit-filter linear;
+        -moz-transition: 0.5s -moz-filter linear;
+      }
+      .navbar-right {
+        float: none !important; 
+      }
+      input[type="text"], textarea {
+      outline: none;
+      box-shadow:none !important;
+      }
+      .leftPaddingExtended{
+        padding-left:30px;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:none !important;
+          -webkit-appearance:none;
+      }
+      .btn-iosdark,btn-iosdark-add {
+      background-color:white;
+      border:1px solid #333;
+      color:#333;
+      }
+      .btn-red{
+        box-shadow:none;
+        border:none;
+        background-color: #ef496e;
+       letter-spacing: 1px;
+       color: #a51636;
+       margin:auto;
+      }
+      .btn-red:hover{
+        color:white;
+        background-color:#d2375a;
+      }
+      .btn-red:active,btn-red:focus{
+        outline:0px !important;
+      }
+      .btn:active,btn:focus{
+        outline:0px !important;
+      }
+      .btn-grey{
+       box-shadow: none;
+       border: none;
+       background-color: #e2e2e2;
+       letter-spacing: 1px;
+       color: #ababab;
+       margin: auto;
+      }
+      .btn-grey:hover{
+        color:white;
+        background-color:#d2375a;
+      }
+       .btn-yellow, .modal-footer .btn-yellow, .btn-yellow{
+        color: #9e6900;
+        box-shadow:none;
+        border:none;
+        background-color: #ff9b00;
+      }
+       .btn-yellow:hover, .modal-footer .btn-yellow:hover, .btn-yellow:hover {
+        color: white;
+        background-color: #ffa822;
+      }
+      .btn-yellow:active,btn-yellow:focus{
+        outline:0px !important;
+      }
+      h4 {
+        word-wrap:break-word;
+      }
+      .modal-sm h4 {
+        padding-right:18px;
+        padding-left:15px;
+      }
+      .modal-sm .modal-body {
+        padding:0px;
+      }
+      .modal-header {
+      border:none;
+      }
+      .modal-content{
+        border:none;
+        box-shadow:none;
+      }
+      .fileUpload {
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+      }
+      .fileUpload input.upload {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 0;
+          font-size: 20px;
+          cursor: pointer;
+          opacity: 0;
+          filter: alpha(opacity=0);
+      }
+      .modal-dialog {
+      margin-top: 10%;
+      }
+      .form-control#year,.form-control#mtitle{
+        color:#0d5830;
+        font-weight:300 !important;
+      }/*
+      input[type=text]::-webkit-input-placeholder {font-weight:200;}
+      input[type=text]::-moz-placeholder          {font-weight:200;}
+      input[type=text]:-moz-placeholder           {font-weight:200;}
+      input[type=text]:-ms-input-placeholder      {font-weight:200;}*/
+      #addbook .btn-iosdark-add.active {
+      background-color: #178e4d;
+      color: #28d476;
+      }
+      #addbook .btn-iosdark-add {
+      background-color: #21b363;
+      border: 1px solid #158448;
+      color: #0d5830;
+      }
+      #addbook input{
+      background-color: #1aa057;
+      border: 1px solid #178e4d;
+      }
+      #first_lg{
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      #second_lg{
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      #third_lg{
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      #fourth_lg{
+        box-shadow: 0px 6px 15px 3px #6f6e6e;
+      }
+      .navbar-inverse .navbar-brand {
+      color: white;
+      font-family: boldproxima;
+      letter-spacing: 2px;
+      font-size: 22px;}
+      .navbar-inverse {
+        background-color:#0151a7;
+        border:none;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+       border-color: #f5f5f5;
+      }
+      .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+          background-color: rgba(51, 51, 51, 0.35);
+      }
+      .navbar-inverse .navbar-toggle {
+          border-color: white;
+      }
+      .navbar-inverse .navbar-nav>li>a {
+      color:rgba(255, 255, 255, 0.6);
+      font-weight:200;
+      letter-spacing:1px;
+      }
+      .navbar-inverse .navbar-nav>li:hover {
+          color: #333;
+          background-color:rgba(255,255,255,0.2);
+      }
+      .data_lg .list-group-item{
+        color:#2f2f2f;
+        border:none;
+        font-weight: 200;
+       letter-spacing: 1px;
+       background-color: rgba(255,255,255,0.8);
+       border-top: 1px solid rgb(241, 241, 241);
+      }
+      .data_lg .list-group-item.disabled:hover{
+        background-color:white;
+      }
+      .data_lg .list-group-item.disabled{
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        font-weight: 500;
+        letter-spacing: 0px;
+      }
+      .data_lg .list-group-item:hover{
+        background-color:#eee;
+      }
+      /*.btn-blue{
+        border:none;
+        background-color:rgba(0,0,0,0.4);
+        color:white;
+      }
+      .btn-blue:focus,.btn-blue:active,.btn-blue:hover{
+        border:none;
+        background-color:white;
+        color:#333;
+      }*/
+      small {
+      color: rgba(0, 0, 0, 0.45);
+      letter-spacing:0px;
+      }
+      #add_comb .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #friends .modal-footer{
+      padding: 15px;
+      text-align: center;
+      }
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus,#settings .panel-group .panel .panel-heading .btn .form-control:focus {
+      border-color: none;
+      box-shadow:none;
+      }
+      #add_comb .sec {
+      text-align: center;
+      background-color: rgb(238, 238, 238);
+      }
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark,#settings .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
+      background-color: white;
+      color: #333;
+      min-height: 50px;
+      border-radius: 0px;
+      border: none;
+      box-shadow: none;
+      text-align: left;
+      }
+      .btn-blue {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        color:#347888;
+        border:1px solid #36b7d4;
+      }
+      #add_comb .panel-body .btn-blue {
+        /*background-color:#39cc95;*/
+        background-color:#36b7d4;
+        letter-spacing:1px;
+        margin:14px;
+        color:#347888;
+        border:none;
+      }
+      /*#add_comb .panel-body */
+      #add_comb .panel-body .btn-blue:hover, .btn-blue:hover {
+        color:white;
+        background-color:#3ad1f3;
+        border-color:#3ad1f3;
+      }
+      .modal-body input.form-control {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      height: 50px;
+      border-radius: 0px;
+      background-color: rgba(243, 243, 243, 0.83);
+      }
+      #add_comb .modal-header{
+        border-bottom:1px solid #eee;
+      }
+      .modal-body .panel-body,#settings_choice .panel-body{
+        text-align:center;
+        padding:0px;
+      }
+      .modal-body .panel-body .btn-blue{
+        margin:15px;
+      }
+      .modal-body .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
+       color: #333;
+       background-color: white;
+       border-color: #ddd;}
+      .modal-body .panel-group .panel+.panel,#settings_choice .panel-group .panel+.panel {
+          margin-top: 0px;
+      }
+      .modal-body .panel-group .panel,#settings_choice .panel-group .panel {
+          border-radius: 0px;
+      }
+      .modal-body .panel-default>.panel-heading,#settings_choice .panel-default>.panel-heading {
+        height:50px;
+      }
+      .modal-body .panel,#settings_choice .panel{
+        border:none;
+        border-bottom:1px solid #eee;
+        background-color: #eee;
+      }
+      .modal-body .panel-heading,#settings_choice .panel-heading{
+        padding:0px;}
+      .modal-body .panel-group,#settings_choice .panel-group{
+        margin-bottom:0px;
+      }
+      #settings_choice .panel-body{
+        padding-top:20px;
+        padding-bottom:20px;
+        padding-left:15px;
+        padding-right:15px;
+      }
+      #accordion2 .panel-title .badge{
+        margin-left:7px;
+      }
+      .panel-group .panel+.panel {
+      margin-top:0px;
+      border-radius: 0px;
+      }
+      .panel-group .panel{
+        border-radius: 0px;
+      }
+      #accordion2 .panel{
+        border:none;
+        border-bottom:1px solid rgba(0,0,0,0.32);
+        color:white;
+      }
+      #accordion2 small{
+        color:rgba(230, 230, 230, 0.45);
+      }
+      #accordion2 .panel:last-child{
+        border:none;
+      }
+      #accordion2 .panel-default .panel-heading{
+       height: 20%;
+      padding: 15%;
+      }
+      #accordion2 .list-group-item {
+        background-color:rgba(255,255,255,0.35);
+        border:none;
+        font-weight:200;
+        font-size:17px;
+        letter-sapcing:1px;
+        padding:17px 15px;
+      }
+      h4.panel-title{
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .panel-default>.panel-heading {
+        color:white;
+        background-color:transparent;
+      }
+      .panel {
+        background-color:rgba(0,0,0,0.34);
+      }
+      .glyphicon-chevron-right{
+        color:rgba(255, 255, 255, 0.51);
+      }
+      .panel-title{
+        letter-spacing:1px;
+      }
+      #accordion2 .panel-body{
+        padding:0px;
+      }
+      #accordion2 .list-group-item:first-child,#accordion2 .list-group-item:last-child,.friendlist .list-group-item:first-child,.friendlist .list-group-item:last-child {
+        border-radius:0px;} 
+      .friendlist .list-group-item{
+        height:50px;
+        padding:15px;
+        border:none;
+        border-bottom:1px solid #eee;
+      }
+      .friendlist .list-group-item:hover{
+        background-color:#eee;
+      }
+      .panel-default>.panel-heading+.panel-collapse>.panel-body {
+        border:none;
+      }
+      .add_choice .panel:last-child,#settings_choice .panel:last-child {
+       border-bottom:none;
+      }
+      .navbar-inverse .navbar-toggle {
+        border-color:white;
+      }
+      .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+          border-color: #f5f5f5;
+      }
+      #row_margin .row {
+        margin:0px;
+        padding-top:20px;
+        padding-bottom:10px;
+      }
+      .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+        cursor:auto;
+      }
+      .tooltip.top .tooltip-inner {
+          background-color:#ff6767;
+        }
+      .tooltip.top .tooltip-arrow {
+          border-top-color: #ff6767;
+       }
+       .btn-close{
+        letter-spacing:1px;
+        text-transform:uppercase;
+       }
+       .friendlist .list-group-item{
+        border-top:1px solid #eee;
+       }
+       .modal-backdrop.in {
+           filter: alpha(opacity=50);
+           opacity: .65;
+       }
+       button.collapsed .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(0deg);
+         -moz-transform:    rotate(0deg);
+         -ms-transform:     rotate(0deg);
+         -o-transform:      rotate(0deg);
+         transform:         rotate(0deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       button .glyphicon-chevron-right
+       {
+         -webkit-transform: rotate(90deg);
+         -moz-transform:    rotate(90deg);
+         -ms-transform:     rotate(90deg);
+         -o-transform:      rotate(90deg);
+         transform:         rotate(90deg);
+         -webkit-transition: all 0.5s;
+                      -moz-transition: all 0.5s;
+                       -ms-transition: all 0.5s;
+                        -o-transition: all 0.5s;
+                           transition: all 0.5s;
+       }
+       .popover-title {
+        text-align:center;
+       }
+       .popover-content {
+           padding: 0px;
+       }
+       .btn-default, .btn-default:focus{
+        color: #404040;
+        background-color: rgba(0, 0, 0, 0.16);
+        border-color: transparent;
+       }
+       .btn-default:hover {
+       color: #ffffff;
+       background-color: #36b7d4;
+       border-color: #36b7d4;
+      }
+      .popover-content ul {
+        margin-bottom:0px;
+      }
+      .popover-content .list-group {
+        margin-bottom:0px;
+      }
+      .popover-content .list-group-item{
+       border:none;
+       border-top:1px solid #eee;
+       min-width: 200;
+      }
+      .popover-content .list-group-item:first-child{
+       border:none;
+      }
+      .popover-content .list-group-item:hover{
+       background-color:#eee;
+      }
+      .popover-content .list-group-item.more:hover{
+       background-color:white;
+      }
+      .popover-content .list-group-item.more{
+        padding:0px;
+      }
+      .popover-content .btn{
+        border-top-left-radius:0px;
+        border-top-right-radius:0px;
+      }
+      .popover {
+        padding:0px;
+      }
+      .btn-default .badge{
+        font-weight: 200;
+        background-color:#c7c6c6;
+        color:#020202;
+      }
+      a .badge{
+        background-color:#0354ab;
+        border:1px solid #2872c1;
+        font-weight:200;
+        color:#aaa;
+        margin-right:10px;
+        margin-left:4px;
+      }
+      .panel>.list-group:first-child .list-group-item:first-child, .panel>.panel-collapse>.list-group:first-child .list-group-item:first-child {
+      border-top: 0;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      }
+      .panel>.list-group:last-child .list-group-item:last-child, .panel>.panel-collapse>.list-group:last-child .list-group-item:last-child {
+      border-bottom: 0;
+      border-bottom-right-radius: 6px;
+      border-bottom-left-radius: 6px;
+      }
+      .btn:focus { outline: none; }
+      .itemlist .list-group-item:last-child{
+       border-radius:0px;
+       border:none;
+       border-top:1px solid #eee;
+      }
+      .itemlist .list-group-item:first-child{
+       border-radius:0px;
+      }
+      .itemlist .list-group-item{
+        border:none;
+        border-top: 1px solid #eee;
+        background-color:rgba(243, 243, 243, 0.83);
+      }
+      .title_num{
+        margin-left:5px;
+        margin-bottom: 2px;
+        font-weight:200;
+        color: #1384e8;
+        border: 2px solid #1384e8;
+      }
+      .NEW_VERSION_ITEMS{}
+      #menu_bar {
+      min-height:100vh;
+      background-color: rgba(0,0,0,0.9);
+      padding-top:20px;
+      color:rgba(255,255,255,0.3);
+      font-weight:100;
+      }
+      #lists {
+        height: 100vh;
+        overflow-y: auto;
+        padding-top:53px;
+      }
+      .menu_item{
+        padding-left:25px;
+        -webkit-transition: background-color 0.2s linear;
+        -moz-transition: background-color 0.2s linear;
+        -ms-transition: background-color 0.2s linear;
+        -o-transition: background-color 0.2s linear;
+        transition: background-color 0.2s linear;
+      }
+      .menu_heading{
+        padding-left:15px;
+        color: rgba(255,255,255,0.5);
+      }
+      .active_menu_heading{
+        padding-left:15px;
+        color: rgba(255,255,255,0.3);
+      }
+      .active_menu_heading:hover{
+        color:rgba(37, 204, 234, 0.8);
+      }
+      .menu_item:hover{
+        /*background-color:#ffd3b7;*/
+        background-color:rgba(255,255,255,0.1);
+        color:rgba(255,255,255,0.8);
+      }
+      .menu_item.selected {
+        background-color:rgba(255,255,255,0.1);
+        color:rgba(255,255,255,0.8);
+      }
+      .list-group{
+        background-color:none;
+      }
+      .list-group-item{
+        background-color:rgba(255,255,255,0.2);
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top:5px;
+        padding-bottom:5px;
+        color:white;
+        font-weight:100;
+      }
+      .list-group-item:hover{
+        background-color:rgba(255,255,255,0.3);
+      }
+      .list-group-item{
+        border:none;
+        border-bottom:rgba(255,255,255,0.3);
+      }
+      .list-group-item:last-child{
+        border-bottom:none;
+      }
+      #tags{
+        font-weight: 100;
+        padding:10px;
+        min-width:100%;
+        min-height:40px;
+        background-color:rgba(255,255,255,0.1);
+        border-radius:6px;
+        margin-bottom:40px;
+        margin-top: 13px;
+        color:rgba(255,255,255,0.5);
+      }
+      a .badge {
+       background-color: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 200;
+      color: white;
+      margin-right: 10px;
+      margin-left: 4px;
+      }
+      .badge {
+      display: inline-block;
+      min-width: 10px;
+      padding: 3px 7px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 10px;
+      }
+      .badge-primary {
+         background-color: rgba(255,255,255,0.3);
+         color: white;
+         margin: 3px;
+         font-weight: 200;
+         letter-spacing: 1px;
+       padding: 4px 8px;
+          }
+      small {
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing:0px;
+        margin-left:10px;
+        }
+      #user_name {
+      padding-bottom: 7px;
+      /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
+      margin-top: 30px;
+      }
+      #add_item_located_in_tags {
+        background-color:rgba(255,255,255,0);
+        border:1px solid rgba(255,255,255,0.4);
+        color:rgba(255,255,255,0.8);
+        margin-left:10px;
+      }
+      #add_item_located_in_tags:hover {
+        background-color:rgba(255,255,255,0.2);
+        color:white;
+        border-color:white;
+      }
+      #list_heading_title{
+        font-family:boldproxima;
+        color:rgba(255,255,255,0.5);
+        /*margin-top: 25;*/
+        display:inline;
+      }
+      .transparent{
+        background-color:rgba(255,255,255,0);
+        border:1px solid rgba(255,255,255,0.4);
+        color:rgba(255,255,255,0.4);
+        margin-left:10px;
+        vertical-align:bottom;
+        padding-top: 1px;
+        padding-bottom: 1px;
+      }
+      .transparent:hover{
+        background-color:rgba(255,255,255,0.3);
+        border:1px solid rgba(255,255,255,1);
+        color:rgba(255,255,255,1);
+      }
+      .modal-body .list-group-item{
+        color:#333;
+      }
+      .modal-sm h4{
+       margin-left: auto;
+       margin-right: auto;
+      }
+      .btn-grey-redact{
+        border-color:#ddd;
+        color:#aaa;
+        background-color:white;
+        margin-bottom:15px;
+      }
+      .btn-grey-redact:hover{
+        border-color:#ddd;
+        color:#aaa;
+        background-color:#eee;
+      }
+      .item_title{
+        padding-left:10px;
+        padding-right:10px;
+      }
+      .modal-footer {
+        border-top:0px;
+      }
+      .menu_add_item_button{
+        background-color: rgba(0,0,0,0.0);
+        border-color: rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.5);
+      }
+      .menu_add_item_button:hover{
+        /*color: rgba(234, 122, 37, 0.8);
+        border-color: #bc6a22;
+        color: rgba(234, 37, 88, 0.8);
+        border-color: #b71d44;*/
+        color: rgba(37, 204, 234, 0.8);
+        border-color: #1d9fb7;
+      }
+      .oi-cog{
+       color:rgba(255,255,255,0.3);
+       margin-left:10px;
+       cursor:pointer;
+      }
+      .oi-cog:hover{
+      color:rgba(255,255,255,0.5);
+      }
+      .badge:focus{
+        outline: 0;
+      }
+      #invitation_code{
+      padding: 5px;
+      background-color: #ffecc0;
+      border-radius: 6px;
+      color: #e89600;
+      margin-top:20px;
+      }
+      .popover{
+      }
+      .popover-header {
+      }
+      .popover-body {
+          padding-left:10px;
+          padding-right:10px;
+      }
+      .popover.bs-popover-bottom::after, .popover.bs-tether-element-attached-top::after, .arrow::before, .arrow::after{ 
+      /*border-bottom-color:rgba(0,0,0,0.6);*/
+      border-bottom-color:red;
+       }
+       .arrow::before, arrow::after{
+       }
+      .invite{
+        margin: 0px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.6);
+        border-color: hsla(0, 0%, 100%, 0.4);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px;
+        font-size: 0.5rem;
+        padding-top: 3px;
+        padding-bottom: 2px;
+      }
+      .invite:hover{
+        background-color:rgba(255,255,255,0.3);
+        color:white;
+        border-color:white;
+      }
+      .autocomp{
+        display:none;
+        margin-right: auto;
+        background-color: rgba(0,0,0,0.8);
+        border-radius: 3px;
+        margin-right: auto;
+        margin-right: 0px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border: 1px solid #ddd;
+        position: absolute;
+        max-width: 280;
+        width: 100%;
+        left: 25px;
+        top: 53px;
+        min-height: 110px;
+      }
+      .autocomp:focus {
+        outline:none;
+      }
+      .sritem:hover {
+       background-color:#39cc95;
+       color:white;
+      }
+      .sritem {
+        color:white;
+        text-align:left;
+        margin-left:0px;
+        margin-right:0px;
+        padding-left:15px;
+        padding-right:15px;
+        padding-top:3px;
+        padding-bottom:3px;
+        border-bottom:1px solid #eee;
+      }
+      .sritem:last-child{
+        border-bottom:0px;
+      }
+      .sritem:hover .addfriend{
+        color: white;
+        border-color: white;
+      }
+      .addfriend{
+        margin: 0px;
+        margin-top: 3px;
+        margin-left: 10px;
+        background-color: transparent;
+        /*background-color: #17c36d;*/
+        color: rgba(255,255,255, 0.4);
+        border-color: rgba(255,255,255,0.4);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px;
+        font-size: 0.5rem;
+        padding-top: 3px;
+        padding-bottom: 2px;
+      }
+      .addfriend:hover{
+        background-color:rgba(0,0,0, 0.4);
+        color:white;
+        border-color:white;
+      }
+      .cssCircle {
+      margin-left: 5px;
+      -webkit-border-radius: 999px;
+      -moz-border-radius: 999px;
+      border-radius: 999px;
+      width: 16px;
+      height: 16px;
+      padding: 0px;
+      background: rgba(255, 255, 255, 0);
+      border: 1px solid #aaa;
+      color: #aaa;
+      text-align: center;
+      -webkit-transition: background 0.2s linear;
+      -moz-transition: background 0.2s linear;
+      -ms-transition: background 0.2s linear;
+      -o-transition: background 0.2s linear;
+      transition: background 0.2s linear;
+      transition: color 0.2s linear;
+      font: 13px Arial, sans-serif;
+      padding-bottom: 14px;
+      padding-left: 1px;
+      padding-right: 1px;
+      margin-top: 4px;
+      }
+      .minusSign {
+        line-height: 0.9em;
+        margin-bottom: 1px;
+      }
+      .plusSign {
+        line-height: 1.1em;
+      }
+      .cssCircle:hover {
+       cursor: pointer;
+       color: black;
+       background-color: white;
+       border-color: white;
+      }
+      .collapsed:hover{
+        background-color:#eee !important;
+      }
+      .svg path,.svg-hidden path{
+        fill:rgba(255,255,255,0.6);
+        -webkit-transition: fill 0.2s linear;
+        -moz-transition: fill 0.2s linear;
+        -ms-transition: fill 0.2s linear;
+        -o-transition: fill 0.2s linear;
+        transition: fill 0.2s linear;
+      }
+      .svg:hover path{
+        fill:#00debc;
+      }
+      .svg-hidden{
+        position: relative;
+        margin-left: auto;
+        right: 2px;
+        top: 2px;
+      }
+      .svg-hidden{
+        display:none;
+      }
+      .menu_item:hover .svg-hidden{
+        display:block;
+      }
+      .svg-hidden:hover .svg-hidden path{
+        fill:#2f9af1;
+      }
+      .modal-title{
+        color: #999;
+      }
+      #invites{
+        display:none;
+      }
+      .badge-red{
+       position: relative;
+       margin-left: 10px;
+       bottom: 2px;
+       line-height: 1.5;
+       padding: 0px 9px;
+       border-radius: 999px;
+       /*background-color: #e03838;*/
+       background-color:white;
+       color:black;
+      }
+  body
+    .modal.fade(id='tagsmodal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+            //  span(aria-hidden="true") &times;
+            //h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
+            h4.modal-title#tag_name_title 
+          .modal-body  
+            ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
+              li.list-group-item.noitemstags Пока пусто
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='redact_list' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4.modal-title Redacting a list
+          .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:30px;') 
+            h6#list_name_redact(style='text-align:center;margin-bottom: 20px;')
+            .btn-group(style='margin-left: 69px;margin-bottom:30px;')
+              button.btn.btn-grey-redact#list_redact_toggle Rename
+              button.btn.btn-grey-redact#list_remove_toggle Delete 
+            .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
+              .panel.panel-default(style='border-bottom:0px;background-color: #222;')
+                .panel-body
+                  button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
+            .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
+              .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
+                .panel-body
+                  input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
+                  button(class='btn btn-blue list_name_redact_submit') Submit 
+            button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:70px;') Invite to this list
+            .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
+              .panel.panel-default(style='border-bottom:0px;background-color: #333;color:ffe0a3;padding-left:10px;padding-right:10px;padding-top:50px;padding-bottom:40px;')
+                .panel-body
+                  | This is an invitation code, pass it to a registered user and he will be able to join this list
+                  h6#invitation_code ID goes here            
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='first_time' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+            //  span(aria-hidden="true") ×
+            //h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
+            h4.modal-title Welcome!
+          .modal-body(style='padding:15px;padding-top:0px;') Unless you want other users to see you as 
+            span(style='font-weight:500;') 'user № #{_id}'
+            | , you might want to choose a nickname. You can do that later in the settings, or now:
+            .input-group(style='padding-top:10px;padding-bottom:15px;')
+              input(type="text" class="form-control" placeholder="nickname" id='nick_first')
+              span(class="input-group-btn")
+                button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+     .modal.fade(id='rmfriend_modal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4.modal-title Removing a friend
+          .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:30px;padding-bottom:30px;')  
+            h5#rmfriend_nick(style='padding-bottom:20px;text-align: center;')
+            button#rmfriend_submit.btn.btn-red(style='margin-left: 105px;') Remove
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close       
+    .modal.fade(id='invite_dialog' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4.modal-title Invite to this list  
+          .modal-body  
+            ul.list-group.friendlist(style='margin-bottom:0px;')
+              li.list-group-item.noitemsfriends You didn't add any friends yet
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog.modal-sm(role="document")
+        .modal-content
+          .modal-header(style='border-bottom: 1px solid #eee;')
+            h4.modal-title Settings
+            
+          .modal-body#settings_choice
+            .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingOne3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                  .panel-body
+                    button.btn.btn-blue#backup download 
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingTwo3")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
+                #collapseTwo3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
+                  .panel-body(style='padding-top:30px;')
+                    .form-group
+                      //input(type="file" id="exampleInputFile")
+                      //p(class="help-block") Restore from previously downloaded JSON backup file
+                      form#restore_form(action='/counter/restore', method='POST',enctype="multipart/form-data")
+                        .fileUpload.btn.btn-ioslight(style='margin:auto;')
+                          span(style='text-transform:uppercase;') Upload restore file
+                          input#restore_file(type="file" class="upload" name='userjson')
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingThree3")
+                  button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                  .panel-body 
+                    .input-group#nick_group
+                      input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
+                      span(class="input-group-btn")
+                        button(class="btn btn-blue" onclick="change_nick(1);" id="change_nick" type="button") Submit
+              //
+                .panel.panel-default
+                  .panel-heading(role="tab" id="headingFour3")
+                    button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseFour3" aria-expanded="false" aria-controls="collapseFour") Email visibility
+                      span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                  #collapseFour3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
+                    .panel-body 
+                      .checkbox#visibility
+                        label
+                          input(type="checkbox" id='show_mail' onchange='showmail_submit()') 
+                          |Show my email, so people can contact me
+          .modal-footer(style='border-top: 1px solid #e9ecef;')
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='add_comb' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4(class="modal-title" style='text-align:center;') Add item
+            
+          .modal-body.add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default  
+                .panel-body
+                  input#item_title(type="text" maxlength="150" class="form-control" autocomplete='off' placeholder="Название")
+                  input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+                  input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
+                  input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+                  button#submit_item_button(class='btn btn-blue' onclick='submit_item(-1)') Добавить   
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4(class="modal-title" style='text-align:center;') New team list
+            
+          .modal-body.add_choice
+            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+              .panel.panel-default     
+                .panel-body
+                  input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                  button(class='btn btn-blue' onclick='add_team_list()') Добавить          
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    //
+      .modal.fade(id='join' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              h4(class="modal-title" style='text-align:center;') Join list
+            .modal-body.add_choice
+              .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+                .panel.panel-default     
+                  .panel-body
+                    input#join_list_id(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder=" provide an invitation code")
+                    button(class='btn btn-blue' onclick='join_teamlist()') Добавить          
+            .modal-footer
+              button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='find_friend' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              h4(class="modal-title" style='text-align:center;') Adding a friend
+            .modal-body.add_choice
+              .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+                .panel.panel-default     
+                  .panel-body
+                    input#friends_nick(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="friend's nickname")
+                    .row.autocomp#autocompbooks
+                      .col-xs-12#srb
+                    button(class='btn btn-blue' onclick='join_teamlist()') Search          
+            .modal-footer
+              button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    //
+      .modal.fade(id='invite_friend_modal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-header
+              h4(class="modal-title" style='text-align:center;') Sending an invitation
+            .modal-body.add_choice
+              .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+                .panel.panel-default     
+                  .panel-body
+                    input#invite_emal_0(type="email" maxlength="100" class="form-control" autocomplete='off' placeholder="Friend's email")
+                    #invite_email_insert
+                    button(class='btn btn-secondary' style='margin-right:7px;' onclick='add_recipient()' type='button') Add recipient
+                    button(class='btn btn-blue' onclick='send_invitation()' type='button') Send         
+            .modal-footer
+              button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='itemmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            //
+              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true") ×
+          .modal-body.add_choice(style='text-align:center;')
+            h5.item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
+            //h5.item_link(style='margin-bottom:30px;color:gray;')
+            h6.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
+            h6.item_tags(style='margin-bottom:30px;color:#bbb;') 
+            button(class='btn btn-grey-redact item_redact') Redact
+            .panel-group(id="redact_item_dialog" role="tablist" style='display:none;')
+              .panel.panel-default
+                .panel-body
+                  input#item_title_redact(type="text" maxlength="150" class="form-control" autocomplete='off' placeholder="Название")
+                  input#item_link_redact(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
+                  input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
+                  input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
+                  button(class='btn btn-blue item_redact_submit') Submit
+            
+          .modal-footer
+            button(class='btn btn-red item_remove ') Remove
+    .modal.fade(id='importmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+          .modal-body.add_choice(style='text-align:center;')
+            h5.import_item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
+            h6.import_item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
+            h6.import_item_tags(style='margin-bottom:30px;color:#bbb;') 
+            button(class='btn btn-grey-redact item_import') Add to my list
+            .panel-group(id="import_item_dialog" role="tablist" style='display:none;')
+              .panel.panel-default
+                .panel-body(style='padding-top:50px;padding-bottom:30px;')
+                  .dropdown
+                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
+                    .dropdown-menu(aria-labelledby="dropdown_list_choice")
+                    //
+                      a.dropdown-item(href="#") Action</a>
+                      a.dropdown-item(href="#") Another action</a>
+                      a.dropdown-item(href="#") Something else here</a>
+                  button(class='btn btn-blue item_import_submit') Add to chosen list 
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .container-fluid(style='z-index:2;')
+      .row(style='display:none;')
+        .col-xs-12
+          form(method='post',action='/backup',role='form',id='backupform')
+      .row  
+        .col-md-2#menu_bar
+          .row(style='border-bottom:1px solid rgba(255,255,255,0.1);')
+            h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:15px;margin-right:15px;margin-bottom:20px;') Content Digest
+          h4#user_name Reso 
+          #invites.row.menu_heading(style='margin-top:30px;')
+          #invite_insert
+          .row.menu_heading(style='margin-top:30px;')
+            | Lists
+            svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#invite').modal('show');" style="margin-left: 5px;margin-top:1px;")
+              g#surface2
+                path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
+          #your_items.row.menu_item.selected(onclick="open_list(-1,1)") Your items
+          #team_lists_insert
+          //
+            .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
+              span(style='color:#ff9900;margin-left:5px;') +
+          //
+            .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
+              span(style='color:#ff9900;margin-left:5px;') +
+          .row.menu_heading(style='margin-top:30px;')
+            | Friends
+            svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" style="margin-top: 1px;margin-left: 5px;")
+              g#surface1
+                path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
+          #friends_insert
+          //
+            .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
+              span(style='color:#00ff8d;margin-left:5px;') +
+          .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
+            button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
+          //.row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
+          .row.active_menu_heading#settings_btn Settings
+          .row.active_menu_heading(onclick="window.location='/counter/logout';") Log out  
+        .col-md-10#lists
+          #list_heading
+            h4#list_heading_title Your items
+          #tags
+          ul.list-group#main_list(style='margin-bottom:40px;')
+  
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous")
+      script.
+        var user_id = #{_id};
+        var user_nick = #{nick};
+        $('#user_name').text(nick);
+        var teamlist_store = #{teamlists}; 
+        var friendstore = #{friendstore};
+        if(friendstore){
+           get_friend_nick(friendstore,0,get_friend_nick)
+          }
+        var global_items_store={};
+        var temp_teamlists_arr;
+        /////////------------------//////////
+        /////////------------------//////////
+        $.ajax({
+            method: "POST",
+            url: "/counter/getitems",
+            data: 0
+          }).done(function( msg ) {
+               if(!trouble){
+                   items=msg.doc.itemstore;
+                   if(!items||!items.length ) {
+                     $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
+                   }
+                   else {
+                    global_items_store.user_id={"redactable":1,"list_name":"Your items","itemstore":items,"teamlist":0}
+                    sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
+                    populate(user_id);
+                   }
+               }
+               else{
+                alert('Service unavaliable');
+               }
+         });
+         /////////------------------//////////
+         /////////------------------//////////
+         /////////------------------//////////
+         $.ajax({
+             method: "POST",
+             url: "/counter/check_invite",
+             data: 0
+           }).done(function( msg ) {
+               if(!msg.trouble&&msg.mtext){
+                 $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
+                 $('#invites').css('display','block');
+                 msg.mtext.forEach(function (element,index){
+                   global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1});
+                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list(this);">'+element.list_name+'</div>');
+                   });
+                 }
+                 else{
+                  console.log('CHECK_INVITE serivce unavailable');
+                 }
+                 getteamlists();
+             });
+         /////////------------------//////////
+         /////////------------------//////////
+         /////////------------------//////////
+         function getteamlists(){
+         $.ajax({
+              method: "POST",
+              url: "/counter/getteamlists",
+              data: 0
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                  if(!msg.doc||msg.doc.length===0 ) {
+                   console.log('GETTEAMLISTS: no teamlists');
+                   }
+                   else {
+                   temp_teamlists_arr=msg.doc;
+                    msg.doc.forEach(function (element,index){
+                      global_items_store.element={"redactable":0,"list_name":0,"itemstore":[],"teamlist":1}; //this will be overwritten in get_teamlist_name()
+                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'"></div>');
+                    });
+                    var temp_count=0;
+                    get_teamlist_name(temp_count,get_teamlist_name);
+                   } 
+                }
+         });
+         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function get_teamlist_name(count,callback){
+          var _id=temp_teamlists_arr[count];
+          $.ajax({
+              method: "POST",
+              url: "/counter/getlistname",
+              data: {"_id":_id}
+            })
+              .done(function( msg ) {
+                if(!msg.trouble) {
+                   if(msg.doc.admin!=user_id) {global_items_store._id={"redactable":0,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
+                   else{global_items_store._id={"redactable":1,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
+                  $('#'+_id).text(msg.doc.length>20?msg.doc.capitalizeFirstLetter().slice(0,20)+'...':msg.doc.capitalizeFirstLetter()); 
+                }
+                else{
+                  //temp_teamlists_arr[count]={'_id':_id,'list_name':'THIS LIST WAS ERASED'};
+                  //console.log(_id+': teamlist was removed');
+                  //
+                  //* not clear what should be done 
+                }
+                count++;
+                if(count<temp_teamlists_arr.length)
+                {callback(count,callback);}
+                else{
+                  temp_teamlists_arr.push(user_id);
+                  temp_teamlists_arr.forEach(function (element,index){
+                    if(global_items_store[element].redactable)
+                     {
+                       $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');}
+                      }
+                    });
+                }
+              });
+         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function add_dialog() {
+          $('#add_comb').modal('show');
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function populate(list_id){
+        //1. Check if we have local store
+        if(global_items_store.indexOf(list_id)<0)
+         {
+          $.ajax({
+              method: "POST",
+              url: "/counter/getitems",
+              data: {"_id":list_id}
+            }).done(function( msg ) {
+                 if(!trouble){
+                     items=msg.doc.itemstore;
+                     if(!items||!items.length ) {
+                       $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
+                     }
+                     else {
+                      global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
+                      items.forEach(function (element,index){
+                      if(element.item_title)
+                         consolidated.push(element);        
+                      });
+                     }
+                     if(consolidated.length){
+                       sortByKey(consolidated, 'tmstmp');
+                       populate(consolidated,0,0,1);
+                     } 
+                 }
+                 else{
+                  alert('Service unavaliable');
+                 }
+              });
+         }
+        else
+         {
+          //2. Populate from local variable
+          $('#main_list').empty();
+          $('#tags').empty();
+          var tags;
+          var date;
+          var temp_insert;
+          var item_click_function;
+          var insert;
+          var inarr;
+          global_items_store[list_id].itemstore.forEach(function (element,index){
+            date=new Date(parseInt(element.tmstmp));
+            temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
+            if(global_items_store[list_id].redactable)
+              {item_click_function='import_dialog(this)';}
+            else{
+              item_click_function='redactitem_dialog(this)';
+            }
+            var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+teamlist+'" teamlist_id="'+teamlist_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+            if(element.item_tags){
+               element.item_tags.forEach(function (element_2, index_2){
+                 element.item_tags[index_2]=trim1(element_2);
+               });
+               element.item_tags.forEach(function (element_1,index_1){
+                 inarr=0;
+                 insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                 $.each(tags, function(key, tag) {
+                  if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
+                  tags[key].quantity++;
+                  inarr=1;
+                  }
+                 });
+                 if(!inarr){
+                   tags.push({'tag_name':element_1,'quantity':1});
+                  }
+                 });
+               element.item_tags.forEach(function (element_3,index_3){
+               element.item_tags[index_3]=' '+element.item_tags[index_3];
+               });
+             }
+             insert+="</li>";    
+             $('#main_list').append(insert);
+          });
+          if(tags.length){
+            $('#tags').empty();
+            sortByKey(tags,'quantity');
+            tags.forEach(function (element, index){
+             $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+              });
+            }
+            else{
+              $('#tags').empty();
+              $('#tags').append("No tags yet");
+            }
+         }
+        //3. Populate with a request
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function redactitem_dialog (i,teamlist,teamlist_id) {
+             console.log('redact');
+           // TODO screen blocker must be added to prevent user from interfering 
+           if($('body').width()<$('body').height()) {
+             $('.modal-dialog').css('margin-top','20%');
+           }
+           else{
+             $('.modal-dialog').css('margin-top','5%');
+           }
+           insert_remove = 'removeitem('+i+','+teamlist+',"'+teamlist_id+'")';
+           insert_redact = 'redactitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
+           $('.item_remove').attr('onclick',insert_remove);
+           $('.item_redact_submit').attr('onclick',insert_redact);
+           $('.item_title').text('');
+           $('#item_title_redact').val(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
+           $('.item_title').text(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
+           if(global_items_store[teamlist_id].itemstore[i].item_link!='--'&&global_items_store[teamlist_id].itemstore[i].item_link!=''){
+           $('.item_title').text('');
+           $('.item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+global_items_store[teamlist_id].itemstore[i].item_link+'">'+global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter()+'</a>');
+           $('#item_link_redact').val(global_items_store[teamlist_id].itemstore[i].item_link);
+           }
+           else{
+             $('#item_link_redact').val();
+             $('.item_title').text(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
+             $('#item_title_redact').val(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
+           }
+           if(!global_items_store[teamlist_id].itemstore[i].item_comment||global_items_store[teamlist_id].itemstore[i].item_comment=='--'){
+             $('.item_comment').css('display','none');
+           }
+           else{
+             $('.item_comment').css('display','block');
+             $('.item_comment').text(global_items_store[teamlist_id].itemstore[i].item_comment.capitalizeFirstLetter());
+           }
+           $('#item_comment_redact').val(global_items_store[teamlist_id].itemstore[i].item_comment.capitalizeFirstLetter());
+            $('.item_tags').text();
+            $('#item_tags_redact').val();
+           if(global_items_store[teamlist_id].itemstore[i].item_tags.length>0)
+           {$('.item_tags').text('Tags: '+global_items_store[teamlist_id].itemstore[i].item_tags);
+            $('#item_tags_redact').val(global_items_store[teamlist_id].itemstore[i].item_tags);}
+           $('#itemmodal').modal('show');
+         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function get_friend_nick(arr,index,callback) {
+          global_items_store[arr[index]]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":0};
+          $('#friends_insert').append('<div class="row menu_item" onclick="open_list(this)" id="'+arr[index]+'"></div>');
+          var temp_friend_name;
+          var temp_friend={};
+          temp_friend._id=arr[index];
+          $.ajax({
+                  method: "POST",
+                  url: "/counter/gn/"+arr[index],
+                  data: 0
+                }).done(function( msg ) {
+                  if(!msg.trouble){
+                    global_items_store[arr[index]]={"list_name":msg.mtext};
+                    temp_friend_name = msg.mtext;
+                    temp_friend.nick = msg.mtext;
+                    temp_friend.last_item = msg.last_item;
+                    if(msg.mtext.length>21)
+                      {temp_friend_name=msg.mtext.slice(0,21)+'...';}
+                   $('#'+temp_id).append(temp_friend_name+'<svg xmlns="http://www.w3.org/2000/svg" _id="'+arr[index]+'" onclick="rmfriend_dialog(this)" class="svg-hidden" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" width="20" height="20"><g id="surface1"><path style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 10 15 L 10 17 L 22 17 L 22 15 Z "/></g></svg>');
+                  //$('#'+temp_id).attr({'lastitem':msg.lastitem,'nick':msg.mtext});
+                  arr[index]= temp_friend;
+                  }
+                  index++;
+                  if(index<arr.length){
+                    callback(arr,index,callback);
+                  }
+                  });
+             }
+
+
+ 
