@@ -1175,7 +1175,7 @@ app.post('/counter/additem',function (req,res){
              else{
               list_id=new ObjectID(req.body.list_id);
              }
-            var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();;
+            var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();
             var vlink = req.body.item_link;
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;

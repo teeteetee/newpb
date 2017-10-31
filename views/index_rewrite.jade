@@ -1689,6 +1689,8 @@ head
                   else{item_click_function='import_dialog(this)';}
                   var insert='<li class="list-group-item" index="'+global_items_store[list_id].teamlist.length+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
                   if(data.item_tags){
+                       data.item_tags.trim();
+                       data.item_tags=data.item_tags.split(',');
                        data.item_tags.forEach(function (element, index){
                          data.item_tags[index_2]=trim1(element_2);
                        });
