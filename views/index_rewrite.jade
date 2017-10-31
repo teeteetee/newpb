@@ -1336,7 +1336,7 @@ head
                 if(!msg.trouble) {
                    if(msg.doc.admin!=user_id) {global_items_store._id={"redactable":0,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
                    else{global_items_store._id={"redactable":1,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
-                  $('#'+_id).text(msg.doc.length>20?msg.doc.capitalizeFirstLetter().slice(0,20)+'...':msg.doc.capitalizeFirstLetter()); 
+                  $('#'+_id).text(msg.doc.length>20?msg.doc.slice(0,20)+'...':msg.doc); 
                 }
                 else{
                   //temp_teamlists_arr[count]={'_id':_id,'list_name':'THIS LIST WAS ERASED'};
