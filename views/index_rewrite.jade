@@ -1512,6 +1512,80 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function removeitem(i,teamlist,teamlist_id) {
+          var data={};
+          data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
+          data.item_tmstmp=global_items_store[teamlist_id].itemstore[i].tmstmp;  
+          data.teamlist = teamlist;
+            if(teamlist)
+             {data.teamlist_id=teamlist_id;}
+         $.ajax({
+              method: "POST",
+              url: "/counter/rm_item/",
+              data: data
+                })
+              .done(function( msg ) {
+              window.location='/counter';
+              });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function importitem_submit(i,teamlist,teamlist_id) {
+          var data={};
+            data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
+            data.item_link="";
+            if(global_items_store[teamlist_id].itemstore[i].item_link){
+              data.item_link=global_items_store[teamlist_id].itemstore[i].item_link;
+            }
+            data.item_comment="";
+            if(global_items_store[teamlist_id].itemstore[i].item_comment){
+            data.item_comment=global_items_store[teamlist_id].itemstore[i].item_comment;
+            }
+            data.item_tags="";
+            console.log('IMPORTITEM_SUBMIT 1: '+data.item_tags);
+            if(global_items_store[teamlist_id].itemstore[i].item_tags&&global_items_store[teamlist_id].itemstore[i].item_tags.length>0){
+              console.log('IMPORTITEM_SUBMIT 2: '+global_items_store[teamlist_id].itemstore[i].item_tags);
+              data.item_tags=global_items_store[teamlist_id].itemstore[i].item_tags;}
+            console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
+            data.teamlist = teamlist;
+            if(teamlist)
+             {data.list_id=teamlist_id;}
+           alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
+        $.ajax({
+              method: "POST",
+              url: "/counter/additem/",
+              data: data
+              }).done(function( msg ) {
+              //window.location='/counter';
+              $('#importmodal').modal('hide');
+              });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function redactitem_submit(i,teamlist,teamlist_id) {
+          var data={};
+            data.v_index=i;
+            data.item_title=$('#item_title_redact').val();
+            data.item_link=$('#item_link_redact').val();
+            data.item_comment=$('#item_comment_redact').val();
+            data.item_tags=$('#item_tags_redact').val();
+            data.item_tmstmp=global_items_store[teamlist_id].itemstore[i].tmstmp;
+            data.teamlist = teamlist;
+            if(teamlist)
+             {data.teamlist_id=teamlist_id;}
+        $.ajax({
+              method: "POST",
+              url: "/counter/rd_item/",
+              data: data
+              }).done(function( msg ) {
+              window.location='/counter';
+              });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function get_friend_nick(arr,index,callback) {
           console.log('GET_FRIEND_NICK arr[index]: '+arr[index]);
           global_items_store[arr[index]]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":0};
@@ -1541,6 +1615,28 @@ head
                   }
                   });
              }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        $('.item_redact').click(function() {
+          $('#redact_item_dialog').slideToggle();
+          })
+        $('.item_import').click(function() {
+          $('#import_item_dialog').slideToggle();
+          $('#dropdown_list_choice').text('Choose a list');
+          })
+        $('#list_redact_toggle').click(function() {
+          $('#redact_list_dialog').slideToggle();
+          });
+        $('#list_remove_toggle').click(function() {
+          $('#remove_list_dialog').slideToggle();
+          });
+        $('#invite_to_a_list_toggle').click(function() {
+          $('#invite_to_a_list').slideToggle();
+          });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
 
 
  
