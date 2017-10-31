@@ -1403,11 +1403,6 @@ head
         ////////--------------------/////////
         //populate variables
         var tags=[];
-        var date;
-        var temp_insert;
-        var item_click_function;
-        var insert;
-        var inarr;
         //
         function populate(list_id){
         //1. Check if we have local store
@@ -1437,6 +1432,11 @@ head
         else
          {
           //2. Populate from local variable
+          var date;
+          var temp_insert;
+          var item_click_function;
+          var insert;
+          var inarr;
           $('#main_list').empty();
           $('#tags').empty();
           $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
@@ -1687,11 +1687,9 @@ head
                   var date= new Date(msg.date);
                   temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':temp_insert=data.item_title;
                   if(global_items_store[list_id].redactable)
-                    {item_click_function='redactitem_dialog(this)';}
-                  else{
-                    item_click_function='import_dialog(this)';
-                  }
-                  var insert='<li class="list-group-item" index="'+global_items_store[list_id].teamlist.length+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                  {item_click_function='redactitem_dialog(this)';}
+                  else{item_click_function='import_dialog(this)';}
+                  var insert='<li class="list-group-item" index="'+global_items_store[list_id].teamlist.length+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';           
                   if(data.item_tags){
                        data.item_tags.forEach(function (element, index){
                          data.item_tags[index_2]=trim1(element_2);
@@ -1715,14 +1713,14 @@ head
                      }
                      insert+="</li>";    
                      $('#main_list').append(insert);
-                  });
-                  if(tags.length){
+                     if(tags.length){
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
                      $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
                       });
                     }  
+                  }
                 }
                 else{
                   console.log('IMPORTITEM_SUBMIT trouble while adding an item');
