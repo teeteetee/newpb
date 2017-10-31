@@ -1384,15 +1384,8 @@ head
                      }
                      else {
                       global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
-                      items.forEach(function (element,index){
-                      if(element.item_title)
-                         consolidated.push(element);        
-                      });
-                     }
-                     if(consolidated.length){
-                       sortByKey(consolidated, 'tmstmp');
+                       sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                        populate(consolidated,0,0,1);
-                     } 
                  }
                  else{
                   alert('Service unavaliable');
