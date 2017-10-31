@@ -1488,6 +1488,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function get_friend_nick(arr,index,callback) {
+          console.log('GET_FRIEND_NICK arr[index]: '+arr[index]);
           global_items_store[arr[index]]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":0};
           $('#friends_insert').append('<div class="row menu_item" onclick="open_list(this)" id="'+arr[index]+'"></div>');
           var temp_friend_name;
