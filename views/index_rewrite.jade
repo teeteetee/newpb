@@ -1477,10 +1477,12 @@ head
                         $('#tags').append('No tags, list is empty ');
                      }
                      else {
-                      global_items_store[user_id]={"itemstore":items}//???? teamlist?????
+                      console.log('POPULATE ajax global_items_store: '+global_items_store[list_id].itemstore);
+                      global_items_store[user_id]={"itemstore":items};//???? teamlist?????
                        sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                        $('#main_list').empty();
                        $('#tags').empty();
+                       $('#list_heading_title').text(global_items_store[list_id]);
                        $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
