@@ -1407,7 +1407,7 @@ head
         //
         function populate(list_id){
         //1. Check if we have local store
-        if(global_items_store[list_id]&&global_items_store[list_id].itemstore.length)
+        if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
          {
           //populate localy
           var date;
