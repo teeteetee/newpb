@@ -1407,7 +1407,7 @@ head
         //
         function populate(list_id){
         //1. Check if we have local store
-        if(!global_items_store[list_id])
+        if(!global_items_store[list_id]||!global_items_store[list_id].itemstore.length)
          {
           $.ajax({
               method: "POST",
@@ -1415,15 +1415,16 @@ head
               data: {"_id":list_id}
             }).done(function( msg ) {
                  if(!msg.trouble){
-                     items=msg.doc.itemstore;
-                     if(!items||!items.length ) {
-                       $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
-                     }
-                     else {
-                      global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
-                       sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
-                       alert('what should i do');
-                     }
+                  console.log('POPULATE ajax follows');
+                 //    items=msg.doc.itemstore;
+                 //    if(!items||!items.length ) {  
+                 //       $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
+                 //    }
+                 //    else {
+                 //     global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
+                 //      sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
+                 //      alert('what should i do');
+                 //    }
                  }
                  else{
                   alert('Service unavaliable');
