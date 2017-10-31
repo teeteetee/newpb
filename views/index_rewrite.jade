@@ -1192,7 +1192,7 @@ head
             svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#invite').modal('show');" style="margin-left: 5px;margin-top:1px;")
               g#surface2
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
-          #your_items.row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
+          .row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
           #team_lists_insert
           //
             .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
@@ -1736,12 +1736,12 @@ head
           //console.log('OPEN_LISTS: \n teamlists_arr: \n'+JSON.stringify(team_lists_arr));
           if($(el).attr('id')===user_idl){
             //console.log('trying to open "your items"');
-            if(!$('#your_items').hasClass('selected')){
+            if(!$('#'+'#{_id}').hasClass('selected')){
               //console.log('opening "your items"');
               $('#main_list').empty();
               $('#tags').empty();
               $('.menu_item').removeClass('selected');
-              $('#your_items').addClass('selected');
+              $('#'+'#{_id}').addClass('selected');
               $('#list_heading').empty();
               $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
