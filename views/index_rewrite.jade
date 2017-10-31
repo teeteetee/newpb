@@ -1478,7 +1478,7 @@ head
                         $('#tags').append('No tags, list is empty ');
                      }
                      else {
-                      global_items_store[user_id]={"itemstore":items};//???? teamlist?????
+                      global_items_store[user_id].itemstore=items;//???? teamlist?????
                       console.log('POPULATE ajax global_items_store: '+global_items_store[list_id].itemstore);
                        sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                        $('#main_list').empty();
