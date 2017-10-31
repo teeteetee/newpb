@@ -1268,7 +1268,7 @@ head
                  $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
                  $('#invites').css('display','block');
                  msg.mtext.forEach(function (element,index){
-                   global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1});
+                   global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1};
                    $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list(this);">'+element.list_name+'</div>');
                    });
                  }
