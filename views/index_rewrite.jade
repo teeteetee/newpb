@@ -1247,7 +1247,8 @@ head
                      $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
                    }
                    else {
-                    global_items_store.user_id={"redactable":1,"list_name":"Your items","itemstore":items,"teamlist":0}
+                    global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items,"teamlist":0};
+                    console.log('INIT GETITEMS global_items_store: '+JSON.stringify(global_items_store));
                     sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                     populate(user_id);
                    }
@@ -1275,6 +1276,7 @@ head
                  else{
                   console.log('CHECK_INVITE serivce unavailable');
                  }
+                 console.log('INIT CHECK_INVITE global_items_store: '+JSON.stringify(global_items_store));
                  getteamlists();
              });
          /////////------------------//////////
@@ -1298,6 +1300,7 @@ head
                       $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'"></div>');
                     });
                     var temp_count=0;
+                    console.log('INIT GETTEAMLISTS global_items_store: '+JSON.stringify(global_items_store));
                     get_teamlist_name(temp_count,get_teamlist_name);
                    } 
                 }
