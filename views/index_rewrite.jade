@@ -1473,6 +1473,7 @@ head
             }).done(function( msg ) {
                  if(!msg.trouble){
                      items=msg.doc.itemstore;
+                     console.log('POPULATE ajax items: '+JSON.stringify(items));
                      if(!items||!items.length ) {  
                         $('#tags').append('No tags, list is empty ');
                      }
