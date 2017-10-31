@@ -1228,11 +1228,11 @@ head
         var user_nick = '#{nick}';
         $('#user_name').text(nick);
         //var teamlist_store = !{teamlists}; 
+        var global_items_store={};
         var friendstore = !{friendstore};
         if(friendstore){
            get_friend_nick(friendstore,0,get_friend_nick)
           }
-        var global_items_store={};
         console.log('INIT global_items_store: '+global_items_store);
         var temp_teamlists_arr;
         /////////------------------//////////
