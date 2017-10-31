@@ -1422,9 +1422,9 @@ head
             date=new Date(parseInt(element.tmstmp));
             temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
             if(global_items_store[list_id].redactable)
-              {item_click_function='import_dialog(this)';}
+              {item_click_function='redactitem_dialog(this)';}
             else{
-              item_click_function='redactitem_dialog(this)';
+              item_click_function='import_dialog(this)';
             }
             var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
