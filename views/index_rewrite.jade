@@ -1350,6 +1350,7 @@ head
                 else{
                   temp_teamlists_arr.push(user_id);
                   temp_teamlists_arr.forEach(function (element,index){
+                    console.log('GET_TEAMLIST_NAME '+element);
                     if(global_items_store[element].redactable)
                      {
                        $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
