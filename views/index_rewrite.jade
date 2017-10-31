@@ -1692,7 +1692,7 @@ head
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
                        data.item_tags.forEach(function (element, index){
-                         data.item_tags[index_2]=trim1(element_2);
+                         data.item_tags[index]=trim1(element);
                        });
                        data.item_tags.forEach(function (element_1,index_1){
                          inarr=0;
@@ -1708,7 +1708,7 @@ head
                           }
                          });
                        data.item_tags.forEach(function (element_2,index_2){
-                       data.item_tags[index_3]=' '+data.item_tags[index_3];
+                       data.item_tags[index_2]=' '+data.item_tags[index_2];
                        });
                      }
                      insert+="</li>";    
