@@ -1407,33 +1407,9 @@ head
         //
         function populate(list_id){
         //1. Check if we have local store
-        if(!global_items_store[list_id]||!global_items_store[list_id].itemstore.length)
+        if(global_items_store[list_id]&&global_items_store[list_id].itemstore.length)
          {
-          $.ajax({
-              method: "POST",
-              url: "/counter/getitems",
-              data: {"_id":list_id}
-            }).done(function( msg ) {
-                 if(!msg.trouble){
-                  console.log('POPULATE ajax follows');
-                 //    items=msg.doc.itemstore;
-                 //    if(!items||!items.length ) {  
-                 //       $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
-                 //    }
-                 //    else {
-                 //     global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
-                 //      sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
-                 //      alert('what should i do');
-                 //    }
-                 }
-                 else{
-                  alert('Service unavaliable');
-                 }
-              });
-         }
-        else
-         {
-          //2. Populate from local variable
+          //populate localy
           var date;
           var temp_insert;
           var item_click_function;
@@ -1487,7 +1463,31 @@ head
               $('#tags').append("No tags yet");
             }
          }
-        //3. Populate with a request
+        else
+         {
+          //populate through AJAX
+          $.ajax({
+              method: "POST",
+              url: "/counter/getitems",
+              data: {"_id":list_id}
+            }).done(function( msg ) {
+                 if(!msg.trouble){
+                  console.log('POPULATE ajax follows');
+                 //    items=msg.doc.itemstore;
+                 //    if(!items||!items.length ) {  
+                 //       $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
+                 //    }
+                 //    else {
+                 //     global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items}//???? teamlist?????
+                 //      sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
+                 //      alert('what should i do');
+                 //    }
+                 }
+                 else{
+                  alert('Service unavaliable');
+                 }
+              });
+         }
         }
         ////////--------------------/////////
         ////////--------------------/////////
