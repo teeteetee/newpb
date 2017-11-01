@@ -1266,6 +1266,15 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        document.getElementById("restore_file").onchange = function() {
+            var fileName = $("#restore_file").val();
+            if(fileName) {
+            document.getElementById("restore_form").submit();
+          }
+        };
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         $.ajax({
             method: "POST",
             url: "/counter/getitems",
@@ -1287,74 +1296,118 @@ head
                 alert('Service unavaliable');
                }
          });
-         /////////------------------//////////
-         /////////------------------//////////
-         /////////------------------//////////
-         $.ajax({
-             method: "POST",
-             url: "/counter/check_invite",
-             data: 0
-           }).done(function( msg ) {
-               if(!msg.trouble&&msg.mtext){
-                 $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
-                 $('#invites').css('display','block');
-                 msg.mtext.forEach(function (element,index){
-                   global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1};
-                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list(this);">'+element.list_name+'</div>');
-                   });
-                 }
-                 else{
-                  console.log('CHECK_INVITE serivce unavailable');
-                 }
-                 console.log('INIT CHECK_INVITE global_items_store: '+JSON.stringify(global_items_store));
-                 getteamlists();
+        /////////------------------//////////
+        /////////------------------//////////
+        /////////------------------//////////
+        $.ajax({
+            method: "POST",
+            url: "/counter/check_invite",
+            data: 0
+          }).done(function( msg ) {
+              if(!msg.trouble&&msg.mtext){
+                $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
+                $('#invites').css('display','block');
+                msg.mtext.forEach(function (element,index){
+                  global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1};
+                  $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list(this);">'+element.list_name+'</div>');
+                  });
+                }
+                else{
+                 console.log('CHECK_INVITE serivce unavailable');
+                }
+                console.log('INIT CHECK_INVITE global_items_store: '+JSON.stringify(global_items_store));
+                getteamlists();
+            });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        $.ajax({
+            method: "POST",
+            url: "/counter/greeting/"+'#{_id}',
+            data: 0
+          }).done(function( msg ) {
+               if(msg.mtext&&parseInt(msg.mtext))
+               {$('#first_time').modal('show');}
              });
-         /////////------------------//////////
-         /////////------------------//////////
-         /////////------------------//////////
-         function invite_submit (index,el){
-         var data={};
-          data.list_id=$(el).attr('listid');
-          data.list_name=$('#list_heading_title').attr('clean_title');
-          data.friends_id=friendstore[index]._id;
-           $.ajax({
-                method: "POST",
-                url: "/counter/invite",
-                data: data
-                  })
-                .done(function( msg ) {
-                  if(!msg.trouble){
-                    alert("We've just invited a friend");
-                  }
-                });
-         }
-         ////////--------------------/////////
-         ////////--------------------/////////
-         ////////--------------------/////////
-         function getteamlists(){
-         $.ajax({
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        var settings_loaded =0;
+        $('#settings_btn').click(function(){
+          //$('#nick').tooltip('destroy');
+          $('#settings').modal('show');
+          if(!settings_loaded)
+          {$.ajax({
               method: "POST",
-              url: "/counter/getteamlists",
+              url: "/counter/gn/"+'#{_id}',
               data: 0
             })
               .done(function( msg ) {
-                if(!msg.trouble) {
-                  if(!msg.doc||msg.doc.length===0 ) {
-                   console.log('GETTEAMLISTS: no teamlists');
-                   }
-                   else {
-                   temp_teamlists_arr=msg.doc;
-                    msg.doc.forEach(function (element,index){
-                      global_items_store[element]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":1}; //this will be overwritten in get_teamlist_name()
-                      $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'"></div>');
-                    });
-                    var temp_count=0;
-                    console.log('INIT GETTEAMLISTS global_items_store: '+JSON.stringify(global_items_store));
-                    get_teamlist_name(temp_count,get_teamlist_name);
-                   } 
+                if(!msg.trouble){
+                  $('#nick').prop('placeholder',msg.mtext);
+                  $('#change_nick').text('Change');
                 }
-         });
-         }
+                });
+            $.ajax({
+            method: "POST",
+            url: "/counter/getshowmail/"+'#{_id}',
+            data: 0
+          }).done(function( msg ) {
+               if(msg.mtext)
+               {$('#show_mail').prop('checked',true);}
+             });
+          settings_loaded=1;
+          }
+          });
+        $('#backup').click(function(){
+          $('#backupform').submit();
+          });
+        /////////------------------//////////
+        /////////------------------//////////
+        /////////------------------//////////
+        function invite_submit (index,el){
+        var data={};
+         data.list_id=$(el).attr('listid');
+         data.list_name=$('#list_heading_title').attr('clean_title');
+         data.friends_id=friendstore[index]._id;
+          $.ajax({
+               method: "POST",
+               url: "/counter/invite",
+               data: data
+                 })
+               .done(function( msg ) {
+                 if(!msg.trouble){
+                   alert("We've just invited a friend");
+                 }
+               });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function getteamlists(){
+        $.ajax({
+             method: "POST",
+             url: "/counter/getteamlists",
+             data: 0
+           })
+             .done(function( msg ) {
+               if(!msg.trouble) {
+                 if(!msg.doc||msg.doc.length===0 ) {
+                  console.log('GETTEAMLISTS: no teamlists');
+                  }
+                  else {
+                  temp_teamlists_arr=msg.doc;
+                   msg.doc.forEach(function (element,index){
+                     global_items_store[element]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":1}; //this will be overwritten in get_teamlist_name()
+                     $('#team_lists_insert').append('<div class="row menu_item" id="'+element+'"></div>');
+                   });
+                   var temp_count=0;
+                   console.log('INIT GETTEAMLISTS global_items_store: '+JSON.stringify(global_items_store));
+                   get_teamlist_name(temp_count,get_teamlist_name);
+                  } 
+               }
+        });
+        }
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
