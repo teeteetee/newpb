@@ -1429,6 +1429,7 @@ head
             }
             var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
+              tags=[];
                element.item_tags.forEach(function (element_2, index_2){
                  element.item_tags[index_2]=trim1(element_2);
                });
