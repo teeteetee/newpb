@@ -1483,23 +1483,26 @@ head
             var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
               tags=[];
-               element.item_tags.forEach(function (element_2, index_2){
-                 element.item_tags[index_2]=trim1(element_2);
+               element.item_tags.forEach(function (element_1, index_1){
+                 console.log('item_tags iteration 1');
+                 element.item_tags[index_1]=trim1(element_1);
                });
-               element.item_tags.forEach(function (element_1,index_1){
+               element.item_tags.forEach(function (element_2,index_2){
+                 console.log('item_tags iteration 2');
                  inarr=0;
-                 insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                 insert+="<span class='badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
                  $.each(tags, function(key, tag) {
-                  if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
+                  if (tag.tag_name.toLowerCase() === element_2.toLowerCase()) {
                   tags[key].quantity++;
                   inarr=1;
                   }
                  });
                  if(!inarr){
-                   tags.push({'tag_name':element_1,'quantity':1});
+                   tags.push({'tag_name':element_2,'quantity':1});
                   }
                  });
                element.item_tags.forEach(function (element_3,index_3){
+               console.log('item_tags iteration 3');
                element.item_tags[index_3]=' '+element.item_tags[index_3];
                });
              }
@@ -1510,6 +1513,7 @@ head
             $('#tags').empty();
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
+              console.log('item_tags iteration 4');
              $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
               });
             }
