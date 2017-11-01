@@ -1411,7 +1411,6 @@ head
           var item_click_function;
           var insert;
           var inarr;
-          var items;
         //1. Check if we have local store
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
          {
@@ -1473,12 +1472,12 @@ head
               data: {"_id":list_id}
             }).done(function( msg ) {
                  if(!msg.trouble){
-                     items=msg.doc.itemstore;
-                     if(!items||!items.length ) {  
+                     //items=msg.doc.itemstore;
+                     if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
                         $('#tags').append('No tags, list is empty ');
                      }
                      else {
-                      global_items_store[user_id].itemstore=items;//???? teamlist?????
+                      global_items_store[user_id].itemstore=msg.doc.itemstore;//???? teamlist?????
                        sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                        $('#main_list').empty();
                        $('#tags').empty();
