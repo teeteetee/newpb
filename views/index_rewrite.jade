@@ -1370,6 +1370,7 @@ head
                    if(msg.doc.admin!=user_id) {global_items_store[_id]={"redactable":0,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
                    else{global_items_store[_id]={"redactable":1,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
                   $('#'+_id).text(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name); 
+                  $('#'+_id).attr('clean_title',msg.doc.list_name);
                   $('#'+_id).attr('onclick','open_list(this)');
                 }
                 else{
@@ -1495,6 +1496,7 @@ head
                          }
                          var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
                          if(element.item_tags){
+                          tags=[];
                             element.item_tags.forEach(function (element_2, index_2){
                               element.item_tags[index_2]=trim1(element_2);
                             });
@@ -1807,6 +1809,8 @@ head
           $('#tags').empty();
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
+          $('#list_heading').empty();
+          $('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
           $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
           populate($(el).attr('id'));}
