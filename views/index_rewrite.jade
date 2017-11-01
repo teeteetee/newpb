@@ -1411,6 +1411,7 @@ head
           var item_click_function;
           var insert;
           var inarr;
+          var items;
         //1. Check if we have local store
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
          {
@@ -1473,20 +1474,11 @@ head
             }).done(function( msg ) {
                  if(!msg.trouble){
                      items=msg.doc.itemstore;
-                     console.log('POPULATE ajax items: '+JSON.stringify(items));
                      if(!items||!items.length ) {  
                         $('#tags').append('No tags, list is empty ');
                      }
                      else {
                       global_items_store[user_id].itemstore=items;//???? teamlist?????
-                      console.log('POPULATE ajax global_items_store: '+JSON.stringify(global_items_store[list_id]));
-                      console.log('POPULATE ajax global_items_store: '+JSON.stringify(global_items_store));
-                      global_items_store[user_id].itemstore=items;
-                      global_items_store[user_id].itemstore=items;
-                      global_items_store[user_id].itemstore=items;
-                      global_items_store[user_id].itemstore=items;
-                      global_items_store[user_id].itemstore=items;
-                      global_items_store[user_id].itemstore=items;
                        sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
                        $('#main_list').empty();
                        $('#tags').empty();
