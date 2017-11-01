@@ -1484,7 +1484,7 @@ head
                        sortByKey(global_items_store[list_id].itemstore, 'tmstmp');
                        $('#main_list').empty();
                        $('#tags').empty();
-                       $('#list_heading_title').text(global_items_store[list_id]);
+                       //$('#list_heading_title').text(global_items_store[list_id]);
                        $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
@@ -1617,15 +1617,15 @@ head
             data.item_comment=global_items_store[teamlist_id].itemstore[i].item_comment;
             }
             data.item_tags="";
-            console.log('IMPORTITEM_SUBMIT 1: '+data.item_tags);
+            //console.log('IMPORTITEM_SUBMIT 1: '+data.item_tags);
             if(global_items_store[teamlist_id].itemstore[i].item_tags&&global_items_store[teamlist_id].itemstore[i].item_tags.length>0){
-              console.log('IMPORTITEM_SUBMIT 2: '+global_items_store[teamlist_id].itemstore[i].item_tags);
+              //console.log('IMPORTITEM_SUBMIT 2: '+global_items_store[teamlist_id].itemstore[i].item_tags);
               data.item_tags=global_items_store[teamlist_id].itemstore[i].item_tags;}
-            console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
+            //console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
             data.teamlist = teamlist;
             if(teamlist)
              {data.list_id=teamlist_id;}
-           alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
+           // alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
         $.ajax({
               method: "POST",
               url: "/counter/additem/",
@@ -1786,18 +1786,16 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function open_list(el){
-          //console.log('OPEN_LISTS: '+list_index);
-          //console.log('OPEN_LISTS: \n teamlists_arr: \n'+JSON.stringify(team_lists_arr));
+          $('#list_heading').empty();
+          $('#list_heading').append('<h4 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h4>');
           if($(el).attr('id')===user_id){
-            //console.log('trying to open "your items"');
             if(!$('#'+'#{_id}').hasClass('selected')){
-              //console.log('opening "your items"');
               $('#main_list').empty();
               $('#tags').empty();
               $('.menu_item').removeClass('selected');
               $('#'+'#{_id}').addClass('selected');
-              $('#list_heading').empty();
-              $('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
+              //$('#list_heading').empty();
+              //$('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
               $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
               populate($(el).attr('id'));
             }
@@ -1809,8 +1807,8 @@ head
           $('#tags').empty();
           $('.menu_item').removeClass('selected');
           $(list_id_jq).addClass('selected');
-          $('#list_heading').empty();
-          $('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
+          //$('#list_heading').empty();
+          //$('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
           $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
           populate($(el).attr('id'));}
