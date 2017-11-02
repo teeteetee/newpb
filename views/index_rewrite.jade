@@ -930,7 +930,7 @@ head
                     .form-group
                       //input(type="file" id="exampleInputFile")
                       //p(class="help-block") Restore from previously downloaded JSON backup file
-                      form#restore_form(action='/counter/restore', method='POST',enctype="multipart/form-data")
+                      form#restore_form(action='/restore', method='POST',enctype="multipart/form-data")
                         .fileUpload.btn.btn-ioslight(style='margin:auto;')
                           span(style='text-transform:uppercase;') Upload restore file
                           input#restore_file(type="file" class="upload" name='userjson')
@@ -1098,7 +1098,7 @@ head
           .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
             button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.active_menu_heading#settings_btn Settings
-          .row.active_menu_heading(onclick="window.location='/counter/logout';") Log out  
+          .row.active_menu_heading(onclick="window.location='/logout';") Log out  
         .col-md-10#lists
           #list_heading
             h4#list_heading_title Your items
@@ -1162,7 +1162,7 @@ head
         ////////--------------------/////////
         $.ajax({
             method: "POST",
-            url: "/counter/getitems",
+            url: "/getitems",
             data: 0
           }).done(function( msg ) {
                if(!msg.trouble){
@@ -1186,7 +1186,7 @@ head
         /////////------------------//////////
         $.ajax({
             method: "POST",
-            url: "/counter/check_invite",
+            url: "/check_invite",
             data: 0
           }).done(function( msg ) {
               if(!msg.trouble&&msg.mtext){
@@ -1208,7 +1208,7 @@ head
         ////////--------------------/////////
         $.ajax({
             method: "POST",
-            url: "/counter/greeting/"+'#{_id}',
+            url: "/greeting/"+'#{_id}',
             data: 0
           }).done(function( msg ) {
                if(msg.mtext&&parseInt(msg.mtext))
@@ -1224,7 +1224,7 @@ head
           if(!settings_loaded)
           {$.ajax({
               method: "POST",
-              url: "/counter/gn/"+'#{_id}',
+              url: "/gn/"+'#{_id}',
               data: 0
             })
               .done(function( msg ) {
@@ -1235,7 +1235,7 @@ head
                 });
             $.ajax({
             method: "POST",
-            url: "/counter/getshowmail/"+'#{_id}',
+            url: "/getshowmail/"+'#{_id}',
             data: 0
           }).done(function( msg ) {
                if(msg.mtext)
@@ -1257,7 +1257,7 @@ head
          data.friends_id=friendstore[index]._id;
           $.ajax({
                method: "POST",
-               url: "/counter/invite",
+               url: "/invite",
                data: data
                  })
                .done(function( msg ) {
@@ -1272,7 +1272,7 @@ head
         function getteamlists(){
         $.ajax({
              method: "POST",
-             url: "/counter/getteamlists",
+             url: "/getteamlists",
              data: 0
            })
              .done(function( msg ) {
@@ -1300,7 +1300,7 @@ head
           var _id=temp_teamlists_arr[count];
           $.ajax({
               method: "POST",
-              url: "/counter/getlistname",
+              url: "/getlistname",
               data: {"_id":_id}
             })
               .done(function( msg ) {
@@ -1412,7 +1412,7 @@ head
           //populate through AJAX
           $.ajax({
               method: "POST",
-              url: "/counter/getitems",
+              url: "/getitems",
               data: {"_id":list_id}
             }).done(function( msg ) {
                  if(!msg.trouble){
@@ -1538,7 +1538,7 @@ head
              {data.teamlist_id=teamlist_id;}
          $.ajax({
               method: "POST",
-              url: "/counter/rm_item/",
+              url: "/rm_item/",
               data: data
                 })
               .done(function( msg ) {
@@ -1571,7 +1571,7 @@ head
            // alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
         $.ajax({
               method: "POST",
-              url: "/counter/additem/",
+              url: "/additem/",
               data: data
               }).done(function( msg ) {
               //window.location='/counter';
@@ -1594,7 +1594,7 @@ head
              {data.teamlist_id=teamlist_id;}
         $.ajax({
               method: "POST",
-              url: "/counter/rd_item/",
+              url: "/rd_item/",
               data: data
               }).done(function( msg ) {
               window.location='/counter';
@@ -1612,7 +1612,7 @@ head
           temp_friend._id=arr[index];
           $.ajax({
                   method: "POST",
-                  url: "/counter/gn/"+arr[index],
+                  url: "/gn/"+arr[index],
                   data: 0
                 }).done(function( msg ) {
                   if(!msg.trouble){
@@ -1671,7 +1671,7 @@ head
            //alert('SUBMIT_ITEM data'+JSON.stringify(data));
           $.ajax({
               method: "POST",
-              url: "/counter/additem",
+              url: "/additem",
               data: data
             })
               .done(function( msg ) {
@@ -1680,6 +1680,7 @@ head
                   var date= new Date(msg.date);
                   var item_click_function;
                   var temp_insert;
+                  global_items_store[$(el).attr('_id')].itemstore
                   temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
                   if(global_items_store[$(el).attr('_id')].redactable)
                   {item_click_function='redactitem_dialog(this)';}
@@ -1709,7 +1710,7 @@ head
                        });
                      }
                      insert+="</li>";    
-                     $('#main_list').append(insert);
+                     $('#main_list').prepend(insert);
                      if(tags.length){
                     $('#tags').empty();
                     sortByKey(tags,'quantity');

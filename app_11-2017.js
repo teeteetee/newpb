@@ -45,7 +45,7 @@ app.use(sessions({
   cookie: {
     path:'/',
   httpOnly: true,
-  domain:'teamlists.xyz'
+  domain:'188.166.118.116'
   }
 }));
 
@@ -92,12 +92,159 @@ function rm_st_sc(input){
 
 
 
+/*app.get('/test',function (req,res){
+  items.findOne({user:req.session._id},function (err,done){
+                  res.send(done);});
+});
 
-app.get('/settings',function (req,res) {
-  res.render('counter_settings');
+//-----------------------//
+
+app.get('/promstat',function (req,res){
+  res.render('promstat');
+});
+
+app.get('/scroll',function (req,res){
+  res.render('scroll_test');
+});
+
+//-----------------------//
+
+app.get('/ltps',function (req,res){
+  res.render('ltps');
+});
+
+app.get('/ltps/red',function (req,res){
+  if(req.session&&req.session.red_allow==1){
+    res.render('ltps_admin');
+  }
+    else{
+      res.render('ltps_login');
+    }
 });
 
 
+
+app.post('/ltps/getposts',function (req,res){
+  var msg={};
+  msg.trouble=1;
+  ltps_posts.find({},function(err,done){
+    if(err){
+
+    }
+    else{
+      if(done)
+      {
+       msg.trouble=0;
+       msg.doc=done;
+       res.send(msg);
+      }
+      else{
+      res.send(msg);
+      }
+    }
+  });
+});*/
+
+
+app.get('/counter/settings',function (req,res) {
+  res.render('counter_settings');
+});
+
+/*
+app.get('/counter/current',function (req,res) {
+  if(req.session&&req.session._id){
+  res.render('counter_current');
+  }
+  else{
+    res.send('no');
+  }
+});
+
+app.post('/counter/current/get',function (req,res){
+  var ms={};
+  if(req.session&&req.session._id){
+  counter_current.find({},function (err,done){
+    if(err){
+     ms.trouble=1;
+     res.send(ms);
+    }
+    else {
+      //console.log(done);
+      ms.trouble=0;
+      ms.msg=done;
+      res.send(ms);
+    }
+  });
+  }
+  else{
+    res.send('no');
+  }
+});
+
+app.post('/counter/current/add',function (req,res){
+  if(req.session&&req.session._id){
+    var vtmstmp=Date.now();
+    var ms={};
+  counter_current.insert({c_text:req.body.c_text,tmstmp:vtmstmp,done:0},function(err,done){
+    if(err){
+      ms.trouble=1;
+      res.send(ms);
+    }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send('no');
+   }
+});
+
+app.post('/counter/current/remove',function (req,res){
+  var ms={};
+   ms.trouble=1;
+  if(req.session&&req.session._id){
+  counter_current.remove({_id:req.body._id},function(err,done){
+   if(err){
+      res.send(ms);
+    }
+    else{
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send(ms);
+   }
+});
+
+
+
+app.post('/counter/current/done',function (req,res){
+  var ms={};
+   ms.trouble=1;
+  if(req.session&&req.session._id){
+    var vstatus = parseInt(req.body.vstatus)?0:1;
+    console.log('BODY: '+req.body._id+' '+vstatus);
+  counter_current.update({_id:req.body._id},{$set:{done:vstatus}},function(err,done){
+   if(err){
+      res.send(ms);
+    }
+    else{
+      console.log(done);
+      ms.trouble=0;
+      res.send(ms);
+    }
+  });
+   }
+   else{
+    res.send(ms);
+   }
+});
+
+*/
 //-----------------test-----------------//
 
 app.get('/update_users',function (req,res){
@@ -107,13 +254,13 @@ app.get('/update_users',function (req,res){
       else{
         console.log('update users success');
         console.log('done: '+done)
-        res.redirect('/');
+        res.redirect('/counter');
       }
     
   });
 });
 
-app.get('/',function (req,res){
+app.get('/counter',function (req,res){
   if(req.session&&req.session._id)
  {console.log(req.session);
   if(req.session.nick){
@@ -138,7 +285,7 @@ app.get('/',function (req,res){
 });
 
 
-app.get('/session/:session',function (req,res){
+app.get('/counter/session/:session',function (req,res){
   if(req.params.session==='give'||req.params.session==='clean')
   {if(req.params.session==='give') {
       req.session._id = 1;
@@ -147,21 +294,29 @@ app.get('/session/:session',function (req,res){
     }
     if(req.params.session==='clean') {
       delete req.session._id;
-      res.redirect('/');
+      res.redirect('/counter');
     }}
     else {
-res.redirect('/');
+res.redirect('/counter');
     }
 });
 
+//app.get('/counter/comb',function (req,res){
+//  if(req.session&&req.session._id)
+// {console.log(req.session);
+//  res.render('index_counter_comb',{'_id':req.session._id});}
+// else {
+//  res.render('counter_index_login');
+// }
+//});
 
-app.get('/setfirsttime',function (req,res){
+app.get('/counter/setfirsttime',function (req,res){
   counter_users.update({},{$set:{first_time:1}},function (err,done){
     res.send(done);
 });
 });
 
-app.post('/greeting/:_id',function (req,res){
+app.post('/counter/greeting/:_id',function (req,res){
   //cancel that from server so it wont appear more that once 
   var ms ={};
   ms.trouble=1;
@@ -192,7 +347,7 @@ app.post('/greeting/:_id',function (req,res){
   }
 });
 
-app.post('/getshowmail/:_id',function (req,res){
+app.post('/counter/getshowmail/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
@@ -217,7 +372,7 @@ app.post('/getshowmail/:_id',function (req,res){
     }
   });
 
-app.post('/setshowmail',function (req,res){
+app.post('/counter/setshowmail',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
@@ -244,7 +399,7 @@ app.post('/setshowmail',function (req,res){
     }
   });
 
-app.post('/get_teamlist',function (req,res){
+app.post('/counter/get_teamlist',function (req,res){
    var ms ={};
    ms.trouble=1;
    if(req.session&&req.session._id&&req.body._id){
@@ -272,7 +427,7 @@ app.post('/get_teamlist',function (req,res){
      }
 });
 
-app.post('/gn/:_id',function (req,res){
+app.post('/counter/gn/:_id',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id){
@@ -302,26 +457,79 @@ app.post('/gn/:_id',function (req,res){
       }
 });
 
+/*
+app.get('/counter/p3345',function (req,res){
+  res.render('index_in');
+});
 
-app.get('/friends_in',function (req,res){
+app.get('/counter/p3345/b',function (req,res){
+  res.render('index_in_b');
+});
+*/
+app.get('/counter/friends_in',function (req,res){
   res.render('index_in_friend');
 });
 
-app.get('/friends_out',function (req,res){
+app.get('/counter/friends_out',function (req,res){
   res.render('index_out_friend');
 });
 
+/*
+app.get('/counter/initdb',function (req,res){
+  stats.remove({},function(err,done){
+  stats.insert({queryhook:'stats',newmovies:0,totalmovies:0,seenmovies:0});
+  stats.find({},function(err,done){
+    res.redirect('/counter');
+  });
+ });
+});
 
-app.get('/web_init',function (req,res){
+app.get('/counter/showmovies',function (req,res){
+  movies.find({},function(err,done){
+    res.send(done);
+  });
+});
+
+app.get('/counter/showstats',function (req,res){
+  stats.find({},function(err,done){
+    res.send(done);
+  });
+});
+
+app.get('/counter/clearfriends',function (req,res){
+  counter_friends.update({uid:req.session._id},{$set:{total:0,friendstore:[]},$unset:{firendstore:1}},function (err,done){
+    res.redirect('/counter');
+  });
+});
+*/
+
+//app.get('/counter/clear',function (req,res){
+//  counter_users.remove({});
+//  counter_friends.remove({});
+//  counter_movies.remove({});
+//  counter_books.remove({});
+//  delete req.session._id;
+//  delete req.session;
+//  res.redirect('/counter');
+//});
+
+//app.get('/counter/deletemovies',function (req,res){
+//  movies.remove({},function(err,done){
+//  stats.update({queryhook:'stats'},{$set:{newmovies:0,totalmovies:0,seenmovies:0}});
+//    res.redirect('/counter/initdb');
+//  });
+//});/
+
+app.get('/counter/web_init',function (req,res){
   if(req.session&&req.session._id)
   {counter_web.insert({uid:req.session._id,total:0,weblinkstore:[]});
-    res.redirect('/current');}
+    res.redirect('/counter/current');}
     else {
-      res.redirect('/');
+      res.redirect('/counter');
     }
 });
 
-app.post('/setnick',function (req,res){
+app.post('/counter/setnick',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id&&req.body.nick&&is_nick(req.body.nick)){
@@ -343,7 +551,7 @@ app.post('/setnick',function (req,res){
     }
 });
 
-app.get('/profile/:_id',function (req,res){
+app.get('/counter/profile/:_id',function (req,res){
   if(req.session&&req.session._id){
     counter_users.findOne({_id:req.params._id},function (err,done){
       if(err){
@@ -379,8 +587,12 @@ app.get('/profile/:_id',function (req,res){
     }
 });
 
+//app.get('/counter/userrestore',function (req,res){
+//  var object_id= new ObjectID('592c0f45e3e371e70f000001');
+//  counter_users.insert({_id:object_id,})
+//});
 
-app.post('/getteamlists',function (req,res){
+app.post('/counter/getteamlists',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
@@ -404,8 +616,29 @@ app.post('/getteamlists',function (req,res){
   }
   });
 
+//app.get('/counter/checkdb',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  var fixed_id= new ObjectID('592c0f45e3e371e70f000001');
+//counter_items.findOne({'uid':fixed_id},function(err,doc){
+//  if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        //console.log(doc);
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        console.log('hey 2: '+doc);
+//        res.send(ms);
+//      }
+//});
+//});
 
-app.post('/getitems',function (req,res){
+app.post('/counter/getitems',function (req,res){
   var ms ={};
   ms.trouble=1;
   //var vuid = req.body._id.replace(/"/g,'').trim();
@@ -438,7 +671,7 @@ else{
 }
 });
 
-app.post('/getlistname',function (req,res){
+app.post('/counter/getlistname',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id&&req.body._id)
@@ -466,8 +699,108 @@ else{
 }
 });
 
+//app.post('/counter/getweb',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_web.find({},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        //console.log(doc);
+//        ms.doc = doc[0];
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
 
-app.post('/getfriends',function (req,res){
+//app.post('/counter/friend/getmovies/:_id',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id&&req.params._id)
+//  {
+//    counter_movies.findOne({uid:req.params._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
+//
+//app.post('/counter/friend/getbooks/:_id',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id&&req.params._id)
+//  {
+//    counter_books.findOne({uid:req.params._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//   res.send(ms);
+//}
+//});
+
+//app.post('/counter/getbooks',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_books.findOne({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE MOVIES QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else{
+//  res.send(ms);
+//}
+//});
+
+//app.get('/counter/sset',function (req,res){
+//  counter_friends.update({uid:req.session._id},{$set:{total:0}},function(err,doc){
+//  res.send('done');
+//  });
+//});
+
+app.post('/counter/getfriends',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
@@ -491,7 +824,7 @@ else{
 }
 });
 
-app.post('/getfl',function (req,res){
+app.post('/counter/getfl',function (req,res){
   var ms ={};
   ms.trouble=1;
   if(req.session&&req.session._id)
@@ -520,8 +853,53 @@ else{
 }
 });
 
+//app.post('/counter/getstat_m',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_movies.find({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE STATS QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else {
+//  res.send(ms);
+//}
+//});
+//
+//app.post('/counter/getstat_b',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  if(req.session&&req.session._id)
+//  {counter_books.find({uid:req.session._id},function(err,doc){
+//      if(err) {
+//        console.log('ERR WHILE STATS QUERY');
+//        res.send(ms);
+//      }
+//      else if(doc!=null){
+//        ms.doc = doc;
+//        ms.trouble=0;
+//        res.send(ms);
+//      }
+//      else {
+//        res.send(ms);
+//      }
+//    });}
+//else {
+//  res.send(ms);
+//}
+//});
 
-app.post('/rm_item/',function(req,res){
+app.post('/counter/rm_item/',function(req,res){
   //add user verification
   var ms = {};
   ms.trouble =1;
@@ -553,8 +931,34 @@ app.post('/rm_item/',function(req,res){
   }
 });
 
+//app.get('/counter/tmp_corr',function (req,res){
+//  counter_items.findOne({uid:req.session._id},function (err,done){
+//  if(err)
+//  {
+//    console.log('trouble removing a item\n'+err);
+//    res.redirect('/counter');
+//  }
+//    else{
+//      for(var i =0;i<done.itemstore.length;i++){
+//        if(done.itemstore[i].tmstmp===1496353377409){
+//          var tags=['фильм','посмотрел'];
+//          done.itemstore[i].item_tags=tags;
+//          counter_items.update({uid:req.session._id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+//                 if(err2){
+//                   console.log(err2);
+//                 res.redirect('/counter');
+//                 }
+//                   else{
+//                  res.redirect('/counter');
+//                   }
+//        });
+//        }
+//      }
+//    }
+//  });
+//});
 
-app.post('/rd_item/',function(req,res){
+app.post('/counter/rd_item/',function(req,res){
   // add user verification
   var ms = {};
   ms.trouble =1;
@@ -642,9 +1046,9 @@ app.post('/rd_item/',function(req,res){
   }
 });
 
-app.get('/correct',function (req,res){
+app.get('/counter/correct',function (req,res){
   counter_items.update({uid:req.session._id},{$set:{itemstore:[{"item_comment":"--","item_title":"Горожане 1975","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20171006,"tmstmp":1507312140029},{"item_comment":" салют 7. Художественный фильм должен был быть по сценарию этой ленты","item_title":"ХХ век. \"За строкой сообщения ТАСС\". 1986","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20171006,"tmstmp":1507311890753},{"item_comment":"--","item_title":"Awakenings 1990","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171002,"tmstmp":1506934024941},{"item_comment":"--","item_title":"The Taking of K-129: How the CIA Used Howard Hughes to Steal a Russian Sub in the Most Daring Covert Operation in History","item_link":"--","item_tags":[" книга"," прочитать"],"regdateint":20171002,"tmstmp":1506931426726},{"item_comment":"--","item_title":"Darkest hour 2017","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171002,"tmstmp":1506931041326},{"item_comment":"--","item_title":"Gotti 2017","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171002,"tmstmp":1506930987905},{"item_comment":"--","item_title":"La vita è bella 1997","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506883443951},{"item_comment":"--","item_title":"Per qualche dollaro in più 1965","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506883281896},{"item_comment":"--","item_title":"Cidade de Deus 2002","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506883247709},{"item_comment":"--","item_title":"The World's Fastest Indian 2005","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506883089092},{"item_comment":"--","item_title":"Front of the Class 2008","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506883008203},{"item_comment":"--","item_title":"Witness for the Prosecution 1957","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506882821503},{"item_comment":"--","item_title":"Жизнь других","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506882530537},{"item_comment":"--","item_title":"Римские каникулы 1953","item_link":"--","item_tags":[" фильмы"," посмотреть"],"regdateint":20171001,"tmstmp":1506882466864},{"item_comment":"","item_title":"Судьба человека 1959","item_link":"","item_tags":[" фильм"," советское кино"," посмотреть"],"regdateint":20171001,"tmstmp":1506881679183},{"item_comment":"--","item_title":"Хороший, плохой, злой 1966","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506881617845},{"item_comment":"--","item_title":"The blade runner 2049","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20171001,"tmstmp":1506881576034},{"item_comment":"--","item_title":"Как важно быть серьезным 2002","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20170925,"tmstmp":1506356603160},{"item_comment":"--","item_title":"Неоконченная пьеса для механического пианино 1976","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20170925,"tmstmp":1506356538392},{"item_comment":"--","item_title":"Неоконченная повесть 1955","item_link":"--","item_tags":[" фильмы"," посмотреть"," советское кино"],"regdateint":20170925,"tmstmp":1506356442599},{"item_comment":"","item_title":"Чистое небо 1961","item_link":"","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20170925,"tmstmp":1506356389816},{"item_comment":"--","item_title":"Мужчина и женщина 1966","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20170925,"tmstmp":1506356352625},{"item_comment":"--","item_title":"Looper 2012","item_link":"--","item_tags":[" фильм"," посмотрел"],"regdateint":20170704,"tmstmp":1499211202322},{"item_comment":"--","item_title":"Друг мой, Колька 1961","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20170625,"tmstmp":1498413086515},{"item_comment":"--","item_title":"Звезда пленительного счастья 1975","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20170625,"tmstmp":1498413013165},{"item_comment":"--","item_title":"О бедном гусаре замолвите слово 1980","item_link":"--","item_tags":[" фильм"," посмотрел"," советское кино"],"regdateint":20170624,"tmstmp":1498328000278},{"item_comment":"Книга о смоленском сражении","item_title":"Дэвид Гланц \"Барбаросса сброшенная с рельс\"","item_link":"--","item_tags":[" книга"," прочитать"," история"," вторая мировая"],"regdateint":20170622,"tmstmp":1498174120004},{"item_comment":"--","item_title":"Операция \"Трест\" 1968","item_link":"--","item_tags":[" советское кино"," фильм"," посмотреть"],"regdateint":20170621,"tmstmp":1498041022922},{"item_comment":"воспоминания английского дипломата, в том числе о ленине","item_title":"Робин Локхарт \"Моя Европа\"","item_link":"--","item_tags":[" книга"," прочитать"],"regdateint":20170613,"tmstmp":1497369543064},{"item_comment":"--","item_title":"Gone girl 2010","item_link":"--","item_tags":[" посмотрел"," фильм"],"regdateint":20170607,"tmstmp":1496826854056},{"item_comment":"русская документалистика на манер \"счастливые люди\"","item_title":"Поморы 2013","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20170606,"tmstmp":1496768731353},{"item_comment":"Famous book on cognitive semantics","item_title":"'Don't Think of an Elephant' by George Lakoff","item_link":"--","item_tags":[" книга"," прочитать"],"regdateint":20170605,"tmstmp":1496682106071},{"item_comment":"--","item_title":"The Handmaiden 2016","item_link":"--","item_tags":[" фильм"," посмотреть"],"regdateint":20170603,"tmstmp":1496476726952},{"item_comment":"Книга французского историка","item_title":"\"Как рассказывают детям историю в разных странах мира\" Марк Феро","item_link":"--","item_tags":[" прочитать"," книга"],"regdateint":20170602,"tmstmp":1496441353737},{"item_comment":"--","item_title":"Шеститомник Жукова о сталине","item_link":"--","item_tags":[" прочитать"," книга"],"regdateint":20170601,"tmstmp":1496353910899},{"item_comment":"","item_title":"It Started with Eve 1941","item_link":"","item_tags":[" фильм"," посмотрел"],"regdateint":20170601,"tmstmp":1496353377409},{"item_comment":"","item_title":"\"За волгой для нас земли не было\" Зайцев","item_link":"","item_tags":[" прочитать"," книга"],"regdateint":20170601,"tmstmp":1496328589613},{"item_comment":"Письма 1931-78","item_title":"\"Письма к подруге\" Фаина Раневская 2017","item_link":"--","item_tags":[" прочитать"," книга"],"regdateint":20170531,"tmstmp":1496260362976},{"item_comment":"--","item_title":"Михайло Ломоносов 1986","item_link":"--","item_tags":[" фильм"," советское кино"],"regdateint":20170530,"tmstmp":1496181835650},{"item_comment":"--","item_title":"Луна 2112 Moon 2009","item_link":"--","item_tags":[" посмотрел"," фильм"],"regdateint":20170529,"tmstmp":1496097221163},{"item_comment":"","item_title":"The Lincoln Lawyer 2011","item_link":"","item_tags":[" Посмотрел"," фильм"],"regdateint":20170529,"tmstmp":1496097091374},{"item_comment":"--","item_title":"The Thirteenth Floor 1999","item_link":"--","item_tags":[" посмотрел"," фильм"],"regdateint":20170529,"tmstmp":1496095372343},{"item_comment":"--","item_title":"Layer cake 2004","item_link":"--","item_tags":[" фильм"," посмотрел"],"regdateint":20170529,"tmstmp":1496095306102},{"item_comment":"--","item_title":"Revolutionary road 2008","item_link":"--","item_tags":[" фильм"," посмотрел"],"regdateint":20170529,"tmstmp":1496095255382},{"item_comment":"--","item_title":"Dream house 2011","item_link":"--","item_tags":[" Посмотрел"],"regdateint":20170529,"tmstmp":1496094976918},{"item_comment":"--","item_title":"Старомодная комедия 1978","item_link":"--","item_tags":[" посмотрел"," советское кино"],"regdateint":20170529,"tmstmp":1496091336807},{"item_comment":"Типа мистер рипли, достаточно наивно","item_title":"Идеальный мужчина Un homme idéal 2015","item_link":"--","item_tags":[" посмотрел"],"regdateint":20170529,"tmstmp":1496091155426},{"item_comment":"Книга бывшего чиновника (ссср-россия) о том, что ему довелось видеть на службе. В реестре э/м","item_title":"Подножие российского Олимпа. Штрихи к портрету современного чиновника. Виталий Гулий","item_link":"--","item_tags":[" Прочитать"],"regdateint":20170529,"tmstmp":1496073442415}]}});
-  res.redirect('/');
+  res.redirect('/counter');
 });
 
 app.post('/f_search',function (req,res){
@@ -675,7 +1079,7 @@ else{
 
 
 
-app.post('/addfriend',function (req,res){
+app.post('/counter/addfriend',function (req,res){
   if(req.session&&req.session._id&&req.body._id)
  {var ms={};
   ms.trouble=1;
@@ -707,24 +1111,52 @@ app.post('/addfriend',function (req,res){
       }   
 });
 
-app.get('/clearfr',function (req,res){
+app.get('/counter/clearfr',function (req,res){
   counter_users.update({_id:req.session._id},{friendstore:[]},function(err,done){
     if(err){
       console.log('say hello');
     }
     else{
       req.session.friendstore=[];
-      res.redirect('/');
+      res.redirect('/counter');
     }
   });
 });
 
+//app.post('/counter/removefriend',function (req,res){
+//  if(req.session&&req.session._id)
+// {var ms={};
+//  ms.trouble=1;
+//  console.log('removing a friend');
+//  console.log(JSON.stringify(req.session._id).replace(/"/g,'').trim());
+//  console.log(req.body._id.toString());
+//  counter_friends.update({uid:req.session._id.replace(/"/g,'').trim()},{$pull:{friendstore:req.body._id},$inc:{total_fd:-1}},function (err,done){
+//    if(err){
+//      console.log('err removing a friend');
+//      res.send(ms);}
+//      else {
+//        counter_friends.update({uid:req.body._id},{$pull:{followers:JSON.stringify(req.session._id).replace(/"/g,'').trim()},$inc:{total_fl:-1}},function (err,done){
+//          if(err){
+//            console.log('err removing a friend');
+//            res.send(ms);}
+//            else {
+//              ms.trouble=0;
+//              res.send(ms);
+//                }
+//         });
+//        }  
+//        });  
+//        }   
+//      else {
+//        res.send('err');
+//      }   
+//});
   
 function trim1 (str) {
     return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 }
 
-app.post('/additem',function (req,res){
+app.post('/counter/additem',function (req,res){
   //req:
   //--item_title
   //--list_id
@@ -811,16 +1243,16 @@ app.post('/additem',function (req,res){
       }   
 });
 
-//app.get('/cleanweb',function (req,res){
+//app.get('/counter/cleanweb',function (req,res){
 //  if(req.session&&req.session._id){
 //   counter_movies.update({uid:req.session._id},{$unset:{weblinkstore:1}});
 //  }
 //  else{
-//    res.redirect('/');
+//    res.redirect('/counter');
 //  }
 //});
 
-app.post('/invite',function (req,res){
+app.post('/counter/invite',function (req,res){
   //prevent double invites
    var ms = {};
        ms.trouble =1;
@@ -840,7 +1272,7 @@ app.post('/invite',function (req,res){
       }   
 });
 
-app.post('/check_invite',function (req,res){
+app.post('/counter/check_invite',function (req,res){
    var ms = {};
        ms.trouble =1;
        ms.mtext ;
@@ -867,7 +1299,7 @@ app.post('/check_invite',function (req,res){
       }   
 });
 
-app.post('/confirm_invite',function (req,res){
+app.post('/counter/confirm_invite',function (req,res){
    var ms = {};
        ms.trouble =1;
        ms.mtext ;
@@ -895,7 +1327,7 @@ app.post('/confirm_invite',function (req,res){
       }   
 });
 
-app.post('/decline_invite',function (req,res){
+app.post('/counter/decline_invite',function (req,res){
    var ms = {};
        ms.trouble =1;
        ms.mtext ;
@@ -915,6 +1347,30 @@ app.post('/decline_invite',function (req,res){
         res.send(ms);
       }   
 });
+//app.post('/counter/addweb',function (req,res){
+//  if(req.session&&req.session._id)
+// {console.log('adding a web link');
+//          var ms = {};
+//          ms.trouble =1;
+//            var v_r_name = req.body.r_name;//RESOURCE NAME
+//            var v_r_link = req.body.r_link;// RESOURCE LINK
+//            if(!v_r_name){
+//              v_r_name = '--';
+//              //SEND ERROR
+//            }
+//            if(!v_r_link){
+//              v_r_link = '--';
+//            }
+//          var vtmstmp = Date.now();
+//          counter_web.update({uid:req.session._id},{$push:{weblinkstore:{r_link:v_r_link,r_name:v_r_name,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+//            console.log(done);
+//          });
+//           res.send('ok');  }       
+//      else {
+//        res.send('err');
+//      }   
+//});
+
 
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
@@ -970,19 +1426,19 @@ function validateJSON(body) {
   }
 }
 
-app.get('/tabak',function (req,res){
+app.get('/counter/tabak',function (req,res){
    counter_users.update({"_id":new ObjectID(req.session._id)},{$set:{"teamlists":[new ObjectID("59d6743979005c1d15000001")]}},function (err1,done1){
-       res.redirect('/');
+       res.redirect('/counter');
    });
 });
 
-app.get('/eval/:eval',function (req,res){
+app.get('/counter/eval/:eval',function (req,res){
    eval(req.params.eval);
-   res.redirect('/');
+   res.redirect('/counter');
 });
 
 
-app.post('/restore',function (req,res){
+app.post('/counter/restore',function (req,res){
  if(req.session&&req.session._id){      
   console.log('breakpoint 0, req.files: \n'+req.files);
     var oldPath = req.files.userjson.path;
@@ -1003,7 +1459,7 @@ app.post('/restore',function (req,res){
               fs.unlink(oldPath, function(){
                 //if(err) throw err;
                 if(err) console.log(err);
-                res.redirect('/');
+                res.redirect('/counter');
                });
            }
          });
@@ -1018,6 +1474,67 @@ app.post('/restore',function (req,res){
 //------------------test-------------------//
 
 
+app.get('/',function(req,res) {
+  res.send('boo');
+/*   var tmstmp=0;
+    if(req.session.tmstmp)
+    {console.log('setting last_visit');
+      req.session.last_visit=req.session.tmstmp;
+     req.session.tmstmp = Date.now();
+    }
+  else {
+    console.log('NEW CLIENT');
+    console.log('User-Agent: ' + req.headers['user-agent']);
+    console.log('IP: '+req.ip);
+    req.session.tmstmp = Date.now();
+  }
+   if (req.session._id)
+        { 
+          users.findOne({_id:req.session._id},function (err,done){
+            if(err){
+              if(req.session.last_visit)
+                {tmstmp=req.session.last_visit}
+               res.render('index_new',{'tmstmp':tmstmp});
+                }
+            else {
+              if(done){
+                //req.session=done;
+                res.render('userpage_new');
+              }
+              else {
+                //var color;
+                //switch(Math.floor(Math.random() * 4) + 1){
+                //  case(1):
+                //  color='#ec3737';
+                //  break
+                //  case(2):
+                //  color='#37b6ec';
+                //  break
+                //  case(3):
+                //  color='#1FD081';
+                //  break
+                //  case(4):
+                //  color='#ec8637';
+                //  break
+                //}
+                //res.render('index_new',{'color':color});
+                if(req.session.last_visit)
+                {tmstmp=req.session.last_visit}
+                res.render('index_new',{'tmstmp':tmstmp});
+              }
+            }
+          });
+        }
+   else { 
+       if(req.session.last_visit)
+      {tmstmp=req.session.last_visit}
+      res.render('index_new',{'tmstmp':tmstmp});
+   }*/
+});
+
+//app.get('/userpage',function (req,res){
+//  res.render('userpage_new');
+//});
 
 //DATA VALIDATION
 // half of this shit doesnt work and fucks the thing up, needs to be tested
@@ -1077,7 +1594,130 @@ function is_email(email) {
     return re.test(email);
     } 
 
+// will be used on writes mostly
 
+//END OF DATA VALIDATION
+
+//app.post('/getitems',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  items.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+//
+//app.post('/getitems_b',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  business.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_b QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+
+//app.post('/getitems_m',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  misc.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_b QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+
+//
+
+//app.post('/getitems_q',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  questions.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE ITEMS_q QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+
+//app.post('/getitems_ic',function (req,res){
+//  var ms ={};
+//  ms.trouble=1;
+//  concepts.find({},function (err,doc){
+//    //console.log(doc);
+//    if(err) {
+//      console.log('ERR WHILE CONCEPTS QUERY');
+//      res.send(ms);
+//    }
+//    else if(doc!=null){
+//      ms.doc = doc;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      res.send(ms);
+//    }
+//  });
+//});
+
+
+
+
+//app.post('/ic',function (err,done){
+//  var ms ={};
+//  concepts.find({},function(err,done){
+//    if(err)
+//    {
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//    else {
+//      ms.articles=done;
+//      ms.trouble=0;
+//      res.send(ms);
+//    }
+//  });
+//});
 
 
 function validateJSON(body) {
@@ -1093,37 +1733,74 @@ function validateJSON(body) {
 
 
 
-app.get('/logout',function (req,res){
+
+
+
+//app.get('/signin', function (req,res){
+//  var color;
+//   switch(Math.floor(Math.random() * 4) + 1){
+//     case(1):
+//     color='#ec3737';
+//     break
+//     case(2):
+//     color='#37b6ec';
+//     break
+//     case(3):
+//     color='#1FD081';
+//     break
+//     case(4):
+//     color='#ec8637';
+//     break
+//   }
+//   res.render('signin',{'color':color});
+//});
+
+app.get('/counter/logout',function (req,res){
   req.session.reset();
-  res.redirect('/');
+  res.redirect('/counter');
 });
 
-app.get('/showusers',function (req,res){
+app.get('/counter/showusers',function (req,res){
   counter_users.find({},function(err,done){
       res.send(JSON.stringify(done));
     });
 });
 
-app.get('/showinvites',function (req,res){
+app.get('/counter/showinvites',function (req,res){
   counter_invite.find({},function(err,done){
       res.send(JSON.stringify(done));
     });
 });
 
-app.get('/showteamlists',function (req,res){
+app.get('/counter/showteamlists',function (req,res){
   counter_teamlists.find({},function(err,done){
       res.send(JSON.stringify(done));
     });
 });
 
-app.get('/showitems',function (req,res){
+app.get('/counter/showitems',function (req,res){
   counter_items.find({},function(err,done){
       res.send(JSON.stringify(done));
     });
 });
 
+//app.get('/counter/showusers',function (req,res){
+//  counter_users.find({},function(err,done){
+//    counter_books.find({},function(err,done1){
+//      counter_movies.find({},function(err,done2){
+//       res.send(JSON.stringify(done)+'\n'+JSON.stringify(done1)+'\n'+JSON.stringify(done2));
+//      });
+//    });
+//  });
+//});
 
-app.get('/showme',function (req,res){
+//app.get('/counter/showweb',function (req,res){
+//  counter_web.find({},function(err,done){
+//       res.send(JSON.stringify(done));
+//  });
+//});
+
+app.get('/counter/showme',function (req,res){
   counter_users.findOne({_id:new ObjectID(req.session._id)},function(err,done){
     counter_invite.findOne({uid:new ObjectID(req.session._id)},function(err,done1){
         counter_items.findOne({uid:new ObjectID(req.session._id)},function(err,done2){     
@@ -1133,13 +1810,13 @@ app.get('/showme',function (req,res){
   });
 });
 
-app.get('/logout',function (req,res){
+app.get('/counter/logout',function (req,res){
   delete req.session._id;
   delete req.session.nick;
-  res.redirect('/');
+  res.redirect('/counter');
 });
 
-app.get('/testdb',function (req,res){
+app.get('/counter/testdb',function (req,res){
   counter_books.findOne({uid:"57e815540825521938000001"},function(err,done){
     res.send(done);
   });
@@ -1150,7 +1827,7 @@ function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
 
-app.post('/rmteamlist',function (req,res){
+app.post('/counter/rmteamlist',function (req,res){
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
@@ -1181,7 +1858,7 @@ else {
 }
 });
 
-app.post('/rm_friend',function (req,res){
+app.post('/counter/rm_friend',function (req,res){
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
@@ -1214,7 +1891,7 @@ else {
 });
 
 
-app.post('/newteamlist',function (req,res){
+app.post('/counter/newteamlist',function (req,res){
   //console.log('brp 1');
   var ms = {};
     ms.trouble=1;
@@ -1284,7 +1961,7 @@ app.get('/correction',function(req,res){
     }
     else {
       console.log('CORRECTION: '+JSON.stringify(done));
-      res.redirect('/');
+      res.redirect('/counter');
     }
   });}
   else{
@@ -1302,7 +1979,7 @@ app.get('/clear_teamlists',function(req,res){
     }
     else {
       console.log('CLEAR_TEAMLISTS: '+JSON.stringify(done));
-      res.redirect('/');
+      res.redirect('/counter');
     }
   });}
   else{
@@ -1317,7 +1994,7 @@ app.get('/quick_correction_v2',function(req,res){
   //counter_teamlists.remove({});
   counter_invite.remove({uid:new ObjectID(req.session._id)});
   counter_invite.insert({uid:new ObjectID(req.session._id),invitationstore:[]});
-  res.redirect('/');
+  res.redirect('/counter');
 }
   else{
     res.send('boo');
@@ -1392,7 +2069,7 @@ app.post('/newuser',function(req,res){
     }
     });
 
-app.post('/chcknck',function (req,res){
+app.post('/counter/chcknck',function (req,res){
   var ms={};
   ms.mtext=0;
   if(req.body.nick&&is_nick(req.body.nick))
@@ -1415,8 +2092,41 @@ else {
 }
 });
 
+//app.post('/counter/join_teamlist', function (req,res){
+//  var ms={};
+//  ms.trouble =1;
+//  console.log('req.body._id: '+req.body);
+//  if(req.session&&req.session._id&&req.body._id)
+//  { var v_id=new ObjectID(req.body._id);
+//    counter_teamlists.findOne({_id:v_id},function (err,done){
+//       if(err){
+//        console.log('bp1');
+//        res.send(ms);
+//      }
+//     else{
+//      console.log('bp2');
+//        counter_users.update({_id:req.session._id},{$push:{teamlists:{_id:done._id,list_name:done.list_name}}},function (err1,done1){
+//        if(err1){
+//          console.log('bp3');
+//          res.send(ms);
+//        }
+//          else{
+//            counter_teamlists.update({_id:done._id},{$push:{users:req.session._id}});
+//            console.log('success joining teamlist: '+done1);
+//            ms.trouble=0;
+//            res.send(ms);
+//          }
+//      });
+//        }
+//    });
+//  }
+//  else{
+//    console.log('bp4');
+//  res.send(ms);
+//  }
+//});
 
-app.post('/get_nick',function (req,res){
+app.post('/counter/get_nick',function (req,res){
   var ms={};
   ms.trouble =1;
   ms.mtext;
@@ -1493,6 +2203,80 @@ app.post('/check',function(req,res){
 
 //******************** HELPERS ********************//
 
+
+//app.get('/see:items',function (req,res){
+//  switch(req.params.items){
+//    case('items'):
+//  items.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('m'):
+//  misc.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('b'):
+//  business.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('ic'):
+//  concepts.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('q'):
+//  questions.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//  case('user'):
+//  users.find({},function (err,done){
+//    if(err){
+//
+//    }
+//    else {
+//      res.send(done);
+//    }
+//  });
+//  break;
+//}
+//});
+
+
+//app.get('/clearitems',function (req,res){
+//  concepts.remove({});
+//  business.remove({});
+//  misc.remove({});
+//  items.remove({});
+//  res.redirect('/');
+//});
 
 
 app.get('/cs',function (req,res){
