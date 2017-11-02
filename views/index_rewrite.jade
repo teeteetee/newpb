@@ -625,9 +625,6 @@ head
         padding-left:10px;
         padding-right:10px;
       }
-      .modal-footer {
-        border-top:0px;
-      }
       .menu_add_item_button{
         background-color: rgba(0,0,0,0.0);
         border-color: rgba(255,255,255,0.3);
@@ -974,7 +971,7 @@ head
                   input#item_link(type="text" class="form-control" autocomplete='off' maxlength="150"  placeholder='Ссылка')
                   input#item_comment(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
                   input#item_tags(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
-                  button#submit_item_button(class='btn btn-blue' onclick='submit_item(user_id)') Добавить   
+                  button#submit_item_button(class='btn btn-blue' _id='#{_id}' onclick='submit_item(this)') Добавить   
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='invite' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
@@ -1659,7 +1656,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function submit_item(list_id){
+        function submit_item(el){
         if($('#item_title').val() )
         {
           $('#add').fadeOut(350);
@@ -1670,7 +1667,7 @@ head
            data.item_link = $('#item_link').val();
            data.item_comment = $('#item_comment').val();
            data.item_tags = $('#item_tags').val();
-           data.list_id = list_id===user_id?0:list_id;
+           data.list_id = $(el).attr('_id')===user_id?0:$(el).attr('_id');
            //alert('SUBMIT_ITEM data'+JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -1684,10 +1681,10 @@ head
                   var item_click_function;
                   var temp_insert;
                   temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
-                  if(global_items_store[list_id].redactable)
+                  if(global_items_store[$(el).attr('_id')].redactable)
                   {item_click_function='redactitem_dialog(this)';}
                   else{item_click_function='import_dialog(this)';}
-                  var insert='<li class="list-group-item" index="'+global_items_store[list_id].teamlist.length+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].teamlist.length+'" is_teamlist="'+global_items_store[$(el).attr('_id')].teamlist+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
@@ -1742,7 +1739,7 @@ head
               $('#'+'#{_id}').addClass('selected');
               //$('#list_heading').empty();
               //$('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
-              $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
+              $('#submit_item_button').attr('_id',$(el).attr('id'));
               populate($(el).attr('id'));
             }
           }
@@ -1755,7 +1752,7 @@ head
           $(list_id_jq).addClass('selected');
           //$('#list_heading').empty();
           //$('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
-          $('#submit_item_button').attr('onclick','submit_item('+$(el).attr('id')+')');
+          $('#submit_item_button')..attr('_id',$(el).attr('id'));
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
           populate($(el).attr('id'));}
            }
