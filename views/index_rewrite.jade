@@ -930,9 +930,6 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-            //  span(aria-hidden="true") &times;
-            //h4(id="tag_name_title" class="modal-title" style='text-align:center;font-weight:500;' ) Нашли
             h4.modal-title#tag_name_title 
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
@@ -970,9 +967,6 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            //button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-            //  span(aria-hidden="true") ×
-            //h4(class="modal-title" style='padding-left:0px;text-align:center;' ) Welcome!
             h4.modal-title Welcome!
           .modal-body(style='padding:15px;padding-top:0px;') Unless you want other users to see you as 
             span(style='font-weight:500;') 'user № #{_id}'
@@ -1134,12 +1128,8 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            //
-              button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                span(aria-hidden="true") ×
           .modal-body.add_choice(style='text-align:center;')
             h5.item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
-            //h5.item_link(style='margin-bottom:30px;color:gray;')
             h6.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h6.item_tags(style='margin-bottom:30px;color:#bbb;') 
             button(class='btn btn-grey-redact item_redact') Redact
@@ -1169,10 +1159,6 @@ head
                   .dropdown
                     button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
                     .dropdown-menu(aria-labelledby="dropdown_list_choice")
-                    //
-                      a.dropdown-item(href="#") Action</a>
-                      a.dropdown-item(href="#") Another action</a>
-                      a.dropdown-item(href="#") Something else here</a>
                   button(class='btn btn-blue item_import_submit') Add to chosen list 
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
@@ -1194,24 +1180,14 @@ head
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
           .row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
           #team_lists_insert
-          //
-            .row.menu_item#create_team(onclick="$('#invite').modal('show');" data-toggle="modal" data-target="#invite") Create list
-              span(style='color:#ff9900;margin-left:5px;') +
-          //
-            .row.menu_item#join_team(onclick="$('#join').modal('show');" data-toggle="modal" data-target="#join") Join list
-              span(style='color:#ff9900;margin-left:5px;') +
           .row.menu_heading(style='margin-top:30px;')
             | Friends
             svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" style="margin-top: 1px;margin-left: 5px;")
               g#surface1
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
           #friends_insert
-          //
-            .row.menu_item#invite_friend(onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" data-toggle="modal" dat-target="#find_friend") Add a friend
-              span(style='color:#00ff8d;margin-left:5px;') +
           .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
             button.btn.menu_add_item_button#add_modal_trigger(type='button' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
-          //.row.menu_item#add_modal_trigger(style='margin-top:30px;' onclick="$('#add_comb').modal('show');" data-toggle="modal" data-target="#myModal") Add item
           .row.active_menu_heading#settings_btn Settings
           .row.active_menu_heading(onclick="window.location='/counter/logout';") Log out  
         .col-md-10#lists
@@ -1514,7 +1490,7 @@ head
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
               console.log('item_tags iteration 4');
-             $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+             $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
               });
             }
             else{
@@ -1582,7 +1558,7 @@ head
                          $('#tags').empty();
                          sortByKey(tags,'quantity');
                          tags.forEach(function (element, index){
-                          $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+                          $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
                            });
                          }
                          else{
@@ -1875,6 +1851,39 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function tag_modal(el) {
+          mention_indexes=[];
+          var results = global_items_store[$(el).attr('list_id')].itemstore.find(function (element,index) {
+            var has_mentions;
+            element.item_tags.find(function (element_1,index_1,array_1) {
+              console.log('checking: '+element_1+' ? '+tags[$(el).attr('index')].tag_name);
+                if(trim1(element_1).toLowerCase()===trim1(tags[$(el).attr('index')].tag_name.toLowerCase()))
+                  {console.log('is mentioned');
+                    has_mentions=1;}
+              });
+              if(has_mentions){
+                has_mentions=0;
+                mention_indexes.push(index);
+              }
+            });
+          //show them
+          if(mention_indexes){
+            $('.itemlist').empty();
+            mention_indexes.forEach(function (element,index){
+              $('.itemlist').append('<li class="list-group-item">'+global_items_store[$(el).attr('list_id')].itemstore[element].item_title+'</li>');
+              });
+            $('#tag_name_title').text(tags[$(el).attr('index')].tag_name.capitalizeFirstLetter());
+            $('#tag_name_title').append('<span class="badge title_num">'+mention_indexes.length+'</span>');
+            if($('body').width()<$('body').height()) {
+            $('.modal-dialog').css('margin-top','20%');
+            }
+            else{
+              $('.modal-dialog').css('margin-top','5%');
+            }
+            $('#tagsmodal').modal('show');
+          }
+          console.log(mention_indexes);
+        }
 
 
  
