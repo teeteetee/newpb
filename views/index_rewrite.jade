@@ -1118,7 +1118,7 @@ head
         if(friendstore){
            get_friend_nick(friendstore,0,get_friend_nick)
           }
-        console.log('INIT global_items_store: '+global_items_store);
+        //console.log('INIT global_items_store: '+global_items_store);
         var temp_teamlists_arr;
         ////////--------------------/////////
         ////////--------------------/////////
@@ -1597,7 +1597,11 @@ head
               url: "/rd_item/",
               data: data
               }).done(function( msg ) {
-              window.location='/';
+              //window.location='/';
+              if(!msg.trouble){
+                global_items_store[teamlist_id].itemstore[i].
+                $('#'+data.item_tmstmp).
+              }
               });
         }
         ////////--------------------/////////
