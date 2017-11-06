@@ -1581,6 +1581,42 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function import_dialog (i,teamlist,teamlist_id){
+          if($('body').width()<$('body').height()) {
+          $('.modal-dialog').css('margin-top','20%');
+        }
+        else{
+          $('.modal-dialog').css('margin-top','5%');
+        }
+        //
+        insert_import = 'importitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
+        $('#dropdown_list_choice').attr({'index':i,'teamlist':teamlist});
+        $('.item_import_submit').attr('onclick',insert_import);
+        $('.import_item_title').text('');
+        $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+        //
+        if(consolidated[i].item_link!='--'&&consolidated[i].item_link!=''){
+        $('.import_item_title').text('');
+        $('.import_item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
+        }
+        else{
+          $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+        }
+        if(!consolidated[i].item_comment||consolidated[i].item_comment=='--'){
+          $('.import_item_comment').css('display','none');
+        }
+        else{
+          $('.import_item_comment').css('display','block');
+          $('.import_item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+        }
+        $('.import_item_tags').text();
+        if(consolidated[i].item_tags.length>0)
+        {$('.import_item_tags').text('Tags: '+consolidated[i].item_tags);}
+        $('#importmodal').modal('show');
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function redactitem_submit(i,teamlist,teamlist_id) {
           var data={};
             data.v_index=i;
@@ -1688,7 +1724,7 @@ head
                   if(global_items_store[$(el).attr('_id')].redactable)
                   {item_click_function='redactitem_dialog(this)';}
                   else{item_click_function='import_dialog(this)';}
-                  var insert='<li class="list-group-item" id="'+msg.date+'" index="'+global_items_store[$(el).attr('_id')].teamlist.length+'" is_teamlist="'+global_items_store[$(el).attr('_id')].teamlist+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" is_teamlist="'+global_items_store[$(el).attr('_id')].teamlist+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
