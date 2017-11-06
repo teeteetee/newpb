@@ -1494,8 +1494,8 @@ head
            else{
              $('.modal-dialog').css('margin-top','5%');
            }
-           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('teamlist_id')+'")';
-           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('teamlist')+',"'+$(el).attr('teamlist_id')+'")';
+           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'")';
+           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'")';
            $('.item_remove').attr('onclick',insert_remove);
            $('.item_redact_submit').attr('onclick',insert_redact);
            $('.item_title').text('');
