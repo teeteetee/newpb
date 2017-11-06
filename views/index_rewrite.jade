@@ -1494,8 +1494,8 @@ head
            else{
              $('.modal-dialog').css('margin-top','5%');
            }
-           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'")';
-           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'")';
+           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'")';
+           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'")';
            $('.item_remove').attr('onclick',insert_remove);
            $('.item_redact_submit').attr('onclick',insert_redact);
            $('.item_title').text('');
@@ -1617,7 +1617,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function redactitem_submit(i,teamlist,teamlist_id) {
+        function redactitem_submit(i,teamlist,teamlist_id,el) {
           var data={};
             data.v_index=i;
             data.item_title=$('#item_title_redact').val();
@@ -1634,6 +1634,7 @@ head
               data: data
               }).done(function( msg ) {
               if(!msg.trouble){
+                $(el).css('background-color','red');
                 //global_items_store[teamlist_id].itemstore[i].
                 //$('#'+data.item_tmstmp).
                 window.location='/';
