@@ -633,8 +633,8 @@ app.post('/rd_item/',function(req,res){
            // });
       }
       //--------------//
-      console.log('rd_item – trouble 2');
-      res.send(ms);
+      //console.log('rd_item – trouble 2');
+      //res.send(ms);
     }
   }
    });
