@@ -566,7 +566,7 @@ app.post('/rd_item/',function(req,res){
   }
   var vtags=req.body.item_tags.trim();
   if(vtags)
-     {console.log('RD_ITEM: has tags: '+req.body.item_tags);
+     {//console.log('RD_ITEM: has tags: '+req.body.item_tags);
        vtags=req.body.item_tags.split(',');
        vtags.forEach(function (element, index){
      vtags[index]=trim1(element).toLowerCase();
@@ -575,31 +575,31 @@ app.post('/rd_item/',function(req,res){
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
-  console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
+  //console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
   var _id=new ObjectID(req.session._id);
   if(teamlist){
-    console.log('RD_ITEM: redacting an item from a teamlist');
+    //console.log('RD_ITEM: redacting an item from a teamlist');
     _id=new ObjectID(req.body.teamlist_id);
   }
-  console.log('RD_ITEM: _id is:'+_id+',\n session: '+req.session._id+',\n type:'+typeof _id);
+  //console.log('RD_ITEM: _id is:'+_id+',\n session: '+req.session._id+',\n type:'+typeof _id);
   counter_items.findOne({uid:_id},function (err,done){
   if(err)
   {
-    console.log('RD_ITEM: trouble removing a item\n'+err);
+    //console.log('RD_ITEM: trouble removing a item\n'+err);
     res.send(ms);
   }
     else{
-      console.log('RD_ITEM: found a profile: '+JSON.stringify(done));
+      //console.log('RD_ITEM: found a profile: '+JSON.stringify(done));
       //--------------//
       if(done&&done.itemstore){
         var itemstore_length = done.itemstore.length;
-        console.log('RD_ITEM: has an itemstore, length: '+itemstore_length);
+        //console.log('RD_ITEM: has an itemstore, length: '+itemstore_length);
         for(var i =0;i<itemstore_length;i++){
           //console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
          if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
-              console.log('RD_ITEM: found to redact: '+done.itemstore[i].item_title);
+              //console.log('RD_ITEM: found to redact: '+done.itemstore[i].item_title);
               done.itemstore[i].item_title = vtitle;
               done.itemstore[i].item_comment = vcomment;
               done.itemstore[i].item_link = vlink;
@@ -610,9 +610,11 @@ app.post('/rd_item/',function(req,res){
               counter_items.update({uid:_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
                    console.log(err2);
+                   console.log('rd_item – trouble 1');
                  res.send(ms);
                  }
                    else{
+                    console.log('rd_item – everything is good');
                   ms.trouble=0;
                  res.send(ms);
                    }
@@ -631,6 +633,7 @@ app.post('/rd_item/',function(req,res){
            // });
       }
       //--------------//
+      console.log('rd_item – trouble 2');
       res.send(ms);
     }
   }
@@ -638,6 +641,7 @@ app.post('/rd_item/',function(req,res){
   
 }
   else {
+    console.log('rd_item – trouble 3');
     res.send(ms);
   }
 });
