@@ -1366,7 +1366,7 @@ head
             else{
               item_click_function='import_dialog(this)';
             }
-            var insert='<li class="list-group-item" id="'+element.tmstmp+'" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+            var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
                element.item_tags.forEach(function (element_1, index_1){
                  console.log('item_tags iteration 1');
