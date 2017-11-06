@@ -1485,6 +1485,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        var temp_element;
         function redactitem_dialog (el) {
              console.log('redact');
            // TODO screen blocker must be added to prevent user from interfering 
@@ -1494,8 +1495,9 @@ head
            else{
              $('.modal-dialog').css('margin-top','5%');
            }
-           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'")';
-           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'")';
+           temp_element=el;
+           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'",temp_element)';
+           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+','+el+'",temp_element)';
            $('.item_remove').attr('onclick',insert_remove);
            $('.item_redact_submit').attr('onclick',insert_redact);
            $('.item_title').text('');
