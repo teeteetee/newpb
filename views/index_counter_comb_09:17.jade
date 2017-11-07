@@ -2112,7 +2112,6 @@ head
                             tags.push({'tag_name':element_1,'quantity':1});
                            // console.log('TAGS LENGTH: '+tags.length);
                            }
-                         
                           });
                         element.item_tags.forEach(function (element_3,index_3){
                         //console.log('correcting an array: '+element.item_tags);
@@ -2120,8 +2119,7 @@ head
                         //console.log('correcting: '+element.item_tags[index_3]);
                         });
                       }
-                      insert=insert+"</li>";
-                        
+                      insert=insert+"</li>";    
                       $('#main_list').append(insert);
                       });
         //console.log('TAGS LENGTH BEFORE POPULATE: '+tags.length);
@@ -2192,12 +2190,13 @@ head
           mention_indexes=[];
           var results = consolidated.find(function (element,index) {
             var has_mentions;
-            element.item_tags.find(function (element_1,index_1,array_1) {
-              console.log('checking: '+element_1+' ? '+tags[tags_index].tag_name);
-                if(trim1(element_1).toLowerCase()===trim1(tags[tags_index].tag_name.toLowerCase()))
-                  {console.log('is mentioned');
-                    has_mentions=1;}
-              });
+            if(element.item_tags)
+            {element.item_tags.find(function (element_1,index_1,array_1) {
+             console.log('checking: '+element_1+' ? '+tags[tags_index].tag_name);
+               if(trim1(element_1).toLowerCase()===trim1(tags[tags_index].tag_name.toLowerCase()))
+                 {console.log('is mentioned');
+                   has_mentions=1;}
+             });}
               if(has_mentions){
                 has_mentions=0;
                 mention_indexes.push(index);
