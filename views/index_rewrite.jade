@@ -1641,7 +1641,7 @@ head
                   var date= new Date(global_items_store[teamlist_id].itemstore[i].tmstmp);
                   var item_click_function;
                   var temp_insert;
-                  temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
+                  insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
                   $(el).empty()         
                   if(data.item_tags){
                        data.item_tags.trim();
@@ -1667,7 +1667,7 @@ head
                        data.item_tags[index_2]=' '+data.item_tags[index_2];
                        });
                      }    
-                     $(el).append(temp_insert)
+                     $(el).append(insert)
                      if(tags.length){
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
