@@ -1353,6 +1353,31 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function add_team_list(){
+          var teamlist_name;
+        if($('#list_name').val() )//what if I dont know year yet?
+        {
+          $('#add').fadeOut(350);
+          $('#wait').css('display','block');
+          //-------------
+           var data={};
+           data.teamlistname = $('#list_name').val();   
+          $.ajax({
+              method: "POST",
+              url: "/counter/newteamlist",
+              data: data
+            })
+              .done(function( msg ) {
+                window.location='/counter';
+              });
+          }
+          else{
+            alert('no name provided');
+          }
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         //populate variables
         var tags=[];
         //
