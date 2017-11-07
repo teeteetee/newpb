@@ -1371,7 +1371,7 @@ head
           $('#tags').empty();
           $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
           if(global_items_store[list_id].redactable){
-            var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+global_items_store[list_id].itemstore.length+")";
+            var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
             $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
           }
           global_items_store[list_id].itemstore.forEach(function (element,index){
