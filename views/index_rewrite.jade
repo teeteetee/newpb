@@ -1642,14 +1642,11 @@ head
                   var item_click_function;
                   var temp_insert;
                   temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
-                  if(global_items_store[teamlist_id].redactable)
-                  {item_click_function='redactitem_dialog(this)';}
-                  else{item_click_function='import_dialog(this)';}
-                  var insert='<li class="list-group-item" index="'+global_items_store[teamlist_id].itemstore.length+'" is_teamlist="'+global_items_store[teamlist_id].teamlist+'" teamlist_id="'+teamlist_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  $(el).empty()         
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
-                       global_items_store[teamlist_id].itemstore.push({'tmstmp':msg.date,'item_title':data.item_title,'item_link':data.item_link,'item_comment':data.item_comment,'item_tags':data.item_tags});
+                       //global_items_store[teamlist_id].itemstore.push({'tmstmp':msg.date,'item_title':data.item_title,'item_link':data.item_link,'item_comment':data.item_comment,'item_tags':data.item_tags});
                        data.item_tags.forEach(function (element, index){
                          data.item_tags[index]=trim1(element);
                        });
@@ -1669,9 +1666,8 @@ head
                        data.item_tags.forEach(function (element_2,index_2){
                        data.item_tags[index_2]=' '+data.item_tags[index_2];
                        });
-                     }
-                     insert+="</li>";    
-                     $('#main_list').prepend(insert);
+                     }    
+                     $(el).append(temp_insert)
                      if(tags.length){
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
@@ -1681,7 +1677,7 @@ head
                     } 
                   }
                 else{
-                  console.log('IMPORTITEM_SUBMIT trouble while adding an item');
+                  console.log('REDACTITEM_SUBMIT trouble while redacting an item');
                 }
               });
         }
