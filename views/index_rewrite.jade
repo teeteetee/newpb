@@ -1857,6 +1857,7 @@ head
           mention_indexes=[];
           var results = global_items_store[$(el).attr('list_id')].itemstore.find(function (element,index) {
             var has_mentions;
+            console.log('TAG_MODAL: element –'+element);
             element.item_tags.find(function (element_1,index_1,array_1) {
               console.log('checking: '+element_1+' ? '+tags[$(el).attr('index')].tag_name);
                 if(trim1(element_1).toLowerCase()===trim1(tags[$(el).attr('index')].tag_name.toLowerCase()))
