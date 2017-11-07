@@ -1219,7 +1219,7 @@ else {
 
 
 app.post('/newteamlist',function (req,res){
-  //console.log('brp 1');
+  console.log('NEWTEAMLIST');
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
@@ -1274,6 +1274,7 @@ app.post('/newteamlist',function (req,res){
           });
         }
 else{
+  console.log('NEWTEAMLIST err');
   res.send('err');
 }
 });
