@@ -1219,7 +1219,6 @@ else {
 
 
 app.post('/newteamlist',function (req,res){
-  console.log('NEWTEAMLIST');
   var ms = {};
     ms.trouble=1;
     ms.mtext='trouble'; 
@@ -1235,17 +1234,14 @@ app.post('/newteamlist',function (req,res){
             }
           else {
                counter_users.findOne({_id:req.session._id},function (err,done_0){
-                console.log('brp 4');
                 if(err)
                   {
                     ms.mtext='db';
                    res.send(ms); 
                   }
                 else {
-                  console.log('brp 6');
                   counter_items.insert({uid:done._id,total:0,itemstore:[]});
                   counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
-                    console.log('brp 7');
                         if(err)
                        {
                          ms.mtext='db';
