@@ -1635,12 +1635,54 @@ head
               url: "/rd_item/",
               data: data
               }).done(function( msg ) {
-              if(!msg.trouble){
-                $(el).css('background-color','red');
-                //global_items_store[teamlist_id].itemstore[i].
-                //$('#'+data.item_tmstmp).
-                //window.location='/';
-              }
+                //$(el).css('background-color','red');
+                $('#add_comb').modal('hide');
+                if(!msg.trouble){ 
+                  var date= new Date(global_items_store[teamlist_id].itemstore[i].tmstmp);
+                  var item_click_function;
+                  var temp_insert;
+                  temp_insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
+                  if(global_items_store[$(el).attr('_id')].redactable)
+                  {item_click_function='redactitem_dialog(this)';}
+                  else{item_click_function='import_dialog(this)';}
+                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" is_teamlist="'+global_items_store[$(el).attr('_id')].teamlist+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  if(data.item_tags){
+                       data.item_tags.trim();
+                       data.item_tags=data.item_tags.split(',');
+                       global_items_store[$(el).attr('_id')].itemstore.push({'tmstmp':msg.date,'item_title':data.item_title,'item_link':data.item_link,'item_comment':data.item_comment,'item_tags':data.item_tags});
+                       data.item_tags.forEach(function (element, index){
+                         data.item_tags[index]=trim1(element);
+                       });
+                       data.item_tags.forEach(function (element_1,index_1){
+                         inarr=0;
+                         insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                         $.each(tags, function(key, tag) {
+                          if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
+                          tags[key].quantity++;
+                          inarr=1;
+                          }
+                         });
+                         if(!inarr){
+                           tags.push({'tag_name':element_1,'quantity':1});
+                          }
+                         });
+                       data.item_tags.forEach(function (element_2,index_2){
+                       data.item_tags[index_2]=' '+data.item_tags[index_2];
+                       });
+                     }
+                     insert+="</li>";    
+                     $('#main_list').prepend(insert);
+                     if(tags.length){
+                    $('#tags').empty();
+                    sortByKey(tags,'quantity');
+                    tags.forEach(function (element, index){
+                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+                      });
+                    } 
+                  }
+                else{
+                  console.log('IMPORTITEM_SUBMIT trouble while adding an item');
+                }
               });
         }
         ////////--------------------/////////
