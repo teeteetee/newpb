@@ -1639,6 +1639,9 @@ head
                 $('#itemmodal').modal('hide');
                 if(!msg.trouble){ 
                   var date= new Date(global_items_store[teamlist_id].itemstore[i].tmstmp);
+                  global_items_store[teamlist_id].itemstore[i].item_title=data.item_title;
+                  global_items_store[teamlist_id].itemstore[i].item_comment=data.item_comment;
+                  global_items_store[teamlist_id].itemstore[i].item_link=data.item_link;
                   var item_click_function;
                   var temp_insert;
                   insert = data.item_title.length>45?data.item_title.slice(0,35)+'...':data.item_title;
@@ -1646,6 +1649,7 @@ head
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
+                       global_items_store[teamlist_id].itemstore[i].item_tags=data.item_tags;
                        //global_items_store[teamlist_id].itemstore.push({'tmstmp':msg.date,'item_title':data.item_title,'item_link':data.item_link,'item_comment':data.item_comment,'item_tags':data.item_tags});
                        data.item_tags.forEach(function (element, index){
                          data.item_tags[index]=trim1(element);
