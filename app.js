@@ -1228,32 +1228,24 @@ app.post('/newteamlist',function (req,res){
     if(req.session&&req.session._id&&vteamlistname)
  {
    counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),admin:req.session._id,users:[req.session._id]},function (err,done){
-    //console.log('brp 2');
             if(err)
             {
               ms.mtext='db';
              res.send(ms); 
             }
           else {
-           // console.log('brp 3');
-          //counter_stats.update({$inc:{users:1}});
-          //var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
-          //console.log('vuid: '+vuid);
-          //counter_items.insert({uid:vuid,total:0,itemstore:[]});
-          //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
-          //req.session._id=done._id;
                counter_users.findOne({_id:req.session._id},function (err,done_0){
-                //console.log('brp 4');
+                console.log('brp 4');
                 if(err)
                   {
                     ms.mtext='db';
                    res.send(ms); 
                   }
                 else {
-                 // console.log('brp 6');
+                  console.log('brp 6');
                   counter_items.insert({uid:done._id,total:0,itemstore:[]});
                   counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
-                    //console.log('brp 7');
+                    console.log('brp 7');
                         if(err)
                        {
                          ms.mtext='db';
