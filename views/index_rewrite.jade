@@ -1335,6 +1335,18 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function redact_list_dialog(_id,list_name,total){
+          $('#redact_list_dialog').css('display','none');
+          $('#invite_to_a_list').css('display','none');
+          $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
+          $('#list_name_redact').empty();
+          $('#list_name_redact').append(list_name+'<span class="badge title_num" id="list_size_redact">'+total+'</span>');
+          $('#invitation_code').text(_id);
+          $('#redact_list').modal('show');
+        };
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function add_dialog() {
           $('#add_comb').modal('show');
         }
@@ -1358,6 +1370,10 @@ head
           $('#main_list').empty();
           $('#tags').empty();
           $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+          if(global_items_store[list_id].redactable){
+            var insert_2 ="redact_list_dialog('"+_id+"','"+list_name+"',"+global_items_store[list_id].itemstore.length+")";
+            $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
+          }
           global_items_store[list_id].itemstore.forEach(function (element,index){
             date=new Date(parseInt(element.tmstmp));
             temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
