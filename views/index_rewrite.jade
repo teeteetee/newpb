@@ -1138,7 +1138,7 @@ head
         var colours=[['#efa328','#3ed9f2'],['#16bf69','#3ed9f2'],['#16bf69','#02338c'],['#bf2d16','#02338c'],['#bf2d16','#c3af4b'],['#cc7fc9','#436786'],['#ce6372','#436786'],['#ce6372','#ff9221'],['#929292','#ff9221'],['#929292','#484847'],['#3e6094','#484847'],['#3e9480','#a4bb5e'],['#239e82','#ec563e'],['#236b9e','#ec563e'],['#236b9e','#ec3ea6'],['#373cc5','#2bceb0'],['#289c67','#294ed4']];
         var last_colour=Math.floor(Math.random()*(16+1));
         //-webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%);
-        $(document).ready(function(){var temp_colour_insert='-webkit-linear-gradient(-45deg, '+colours[last_colour][1]+' 0%,'+colours[last_colour][2]+' 100%)';$('body').css('background',temp_colour_insert);});
+        $(document).ready(function(){$('body').css('background','-webkit-linear-gradient(-45deg, red 0%,orange 100%)');});
         var current_colour;
         setInterval(function(){
           console.log('BACKGROUND CHANGE');
