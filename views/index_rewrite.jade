@@ -1141,7 +1141,10 @@ head
         var current_colour;
         setInterval(function(){
           console.log('BACKGROUND CHANGE');
-           do{current_colour=Math.floor(Math.random()*(16+1));}
+           do{current_colour=Math.floor(Math.random()*(16+1));
+           console.log('BACKGROUND CHANGE last colour: '+current_colour);
+           console.log('BACKGROUND CHANGE current colour: '+current_colour);
+           }
            while(current_colour!=last_colour)
             last_colour=current_colour;
            $('body').css('background','linear-gradient(135deg, '+colours[current_colour][1]+' 0%,'+colours[current_colour][2]+' 100%)');   
