@@ -1140,6 +1140,7 @@ head
         $('body').css('background','linear-gradient(135deg, '+colours[last_colour][1]+' 0%,'+colours[last_colour][2]+' 100%)');
         var current_colour;
         setInterval(function(){
+          console.log('BACKGROUND CHANGE');
            do{current_colour=Math.floor(Math.random()*(16+1));}
            while(current_colour!=last_colour)
            $('body').css('background','linear-gradient(135deg, '+colours[current_colour][1]+' 0%,'+colours[current_colour][2]+' 100%)');   
