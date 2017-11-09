@@ -1145,7 +1145,7 @@ head
            console.log('BACKGROUND CHANGE last colour: '+current_colour);
            console.log('BACKGROUND CHANGE current colour: '+current_colour);
            }
-           while(current_colour!=last_colour)
+           while(current_colour===last_colour)
             last_colour=current_colour;
            $('body').css('background','linear-gradient(135deg, '+colours[current_colour][1]+' 0%,'+colours[current_colour][2]+' 100%)');   
           },10000);
