@@ -27,12 +27,14 @@ head
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       body{
+      font-family:helvetica;
+      }
+      .colour-transition{
       -webkit-transition: background 3s ;
       -moz-transition: background 3s ;
       -ms-transition: background 3s ;
       -o-transition: background 3s ;
       transition: background 3s ;
-      font-family:helvetica;
       }
       body2{
       /*transition: 2s background linear;
@@ -42,23 +44,23 @@ head
       background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
       }
-      .colour0{background: linear-gradient(135deg, #efa328 0%, #3ed9f2 100%);}
-      .colour1{background: linear-gradient(135deg, #16bf69 0%, #3ed9f2 100%);}
-      .colour2{background: linear-gradient(135deg, #16bf69 0%, #02338c 100%);}
-      .colour3{background: linear-gradient(135deg, #bf2d16 0%, #02338c 100%);}
-      .colour4{background: linear-gradient(135deg, #bf2d16 0%, #c3af4b 100%);}
-      .colour5{background: linear-gradient(135deg, #cc7fc9 0%, #436786 100%);}
-      .colour6{background: linear-gradient(135deg, #ce6372 0%, #436786 100%);}
-      .colour7{background: linear-gradient(135deg, #ce6372 0%, #ff9221 100%);}
-      .colour8{background: linear-gradient(135deg, #929292 0%, #ff9221 100%);}
-      .colour9{background: linear-gradient(135deg, #929292 0%, #484847 100%);}
-      .colour10{background: linear-gradient(135deg, #3e6094 0%, #484847 100%);}
-      .colour11{background: linear-gradient(135deg, #3e9480 0%, #a4bb5e 100%);}
-      .colour12{background: linear-gradient(135deg, #239e82 0%, #ec563e 100%);}
-      .colour13{background: linear-gradient(135deg, #236b9e 0%, #ec563e 100%);}
-      .colour14{background: linear-gradient(135deg, #236b9e 0%, #ec3ea6 100%);}
-      .colour15{background: linear-gradient(135deg, #373cc5 0%, #2bceb0 100%);}
-      .colour16{background: linear-gradient(135deg, #289c67 0%, #294ed4 100%);}
+      .colour-transition.colour0{background: linear-gradient(135deg, #efa328 0%, #3ed9f2 100%);}
+      .colour-transition.colour1{background: linear-gradient(135deg, #16bf69 0%, #3ed9f2 100%);}
+      .colour-transition.colour2{background: linear-gradient(135deg, #16bf69 0%, #02338c 100%);}
+      .colour-transition.colour3{background: linear-gradient(135deg, #bf2d16 0%, #02338c 100%);}
+      .colour-transition.colour4{background: linear-gradient(135deg, #bf2d16 0%, #c3af4b 100%);}
+      .colour-transition.colour5{background: linear-gradient(135deg, #cc7fc9 0%, #436786 100%);}
+      .colour-transition.colour6{background: linear-gradient(135deg, #ce6372 0%, #436786 100%);}
+      .colour-transition.colour7{background: linear-gradient(135deg, #ce6372 0%, #ff9221 100%);}
+      .colour-transition.colour8{background: linear-gradient(135deg, #929292 0%, #ff9221 100%);}
+      .colour-transition.colour9{background: linear-gradient(135deg, #929292 0%, #484847 100%);}
+      .colour-transition.colour10{background: linear-gradient(135deg, #3e6094 0%, #484847 100%);}
+      .colour-transition.colour11{background: linear-gradient(135deg, #3e9480 0%, #a4bb5e 100%);}
+      .colour-transition.colour12{background: linear-gradient(135deg, #239e82 0%, #ec563e 100%);}
+      .colour-transition.colour13{background: linear-gradient(135deg, #236b9e 0%, #ec563e 100%);}
+      .colour-transition.colour14{background: linear-gradient(135deg, #236b9e 0%, #ec3ea6 100%);}
+      .colour-transition.colour15{background: linear-gradient(135deg, #373cc5 0%, #2bceb0 100%);}
+      .colour-transition.colour16{background: linear-gradient(135deg, #289c67 0%, #294ed4 100%);}
       .container {
         transition: 0.5s -webkit-filter linear;
         transition: 0.5s -moz-filter linear;
@@ -861,7 +863,7 @@ head
        background-color:white;
        color:black;
       }
-  body
+  body.colour-transition
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -1162,14 +1164,14 @@ head
         var colours=[['#efa328','#3ed9f2'],['#16bf69','#3ed9f2'],['#16bf69','#02338c'],['#bf2d16','#02338c'],['#bf2d16','#c3af4b'],['#cc7fc9','#436786'],['#ce6372','#436786'],['#ce6372','#ff9221'],['#929292','#ff9221'],['#929292','#484847'],['#3e6094','#484847'],['#3e9480','#a4bb5e'],['#239e82','#ec563e'],['#236b9e','#ec563e'],['#236b9e','#ec3ea6'],['#373cc5','#2bceb0'],['#289c67','#294ed4']];
         var last_colour=Math.floor(Math.random()*(16+1));
         //-webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%);
-        $('body').addClass('colour'+last_colour);
+        $('.colour-transition').addClass('colour'+last_colour);
         var current_colour;
         setInterval(function(){
            do{current_colour=Math.floor(Math.random()*(16+1));
            }
            while(current_colour===last_colour)
-           $('body').addClass('colour'+current_colour); 
-           $('body').removeClass('colour'+last_colour);  
+           $('.colour-transition').addClass('colour'+current_colour); 
+           $('.colour-transition').removeClass('colour'+last_colour);  
            last_colour=current_colour;
           },10000);
         ////////--------------------/////////
