@@ -27,10 +27,13 @@ head
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       body{
+      transition: 2s background-color linear;
+      font-family:helvetica;
+      }
+      body2{
       background: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
       background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      font-family:helvetica;
       }
       .container {
         transition: 0.5s -webkit-filter linear;
@@ -1129,6 +1132,18 @@ head
               return ((x < y) ? 1 : ((x > y) ? -1 : 0));
           });
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        var colours=[['#efa328','#3ed9f2'],['#16bf69','#3ed9f2'],['#16bf69','#02338c'],['#bf2d16','#02338c'],['#bf2d16','#c3af4b'],['#cc7fc9','#436786'],['#ce6372','#436786'],['#ce6372','#ff9221'],['#929292','#ff9221'],['#929292','#484847'],['#3e6094','#484847'],['#3e9480','#a4bb5e'],['#239e82','#ec563e'],['#236b9e','#ec563e'],['#236b9e','#ec3ea6'],['#373cc5','#2bceb0'],['#289c67','#294ed4']];
+        var last_colour=Math.floor(Math.random()*(0-16+1));
+        $('body').css('background','linear-gradient(135deg, '+colours[last_colour][1]+' 0%,'+colours[last_colour][2]+' 100%)'); 
+        var current_colour;
+        setInterval(function(){
+           do{current_colour=Math.floor(Math.random()*(0-16+1));}
+           while(current_colour!=last_colour)
+           $('body').css('background','linear-gradient(135deg, '+colours[current_colour][1]+' 0%,'+colours[current_colour][2]+' 100%)');   
+          },60000);
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
