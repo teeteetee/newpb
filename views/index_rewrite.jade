@@ -1173,12 +1173,12 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        var last_colour=Math.floor(Math.random()*(16+1));
+        var last_colour=Math.floor(Math.random()*(11+1));
         //-webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%);
         $('.colour'+last_colour).css('opacity',1);
         var current_colour;
         setInterval(function(){
-           do{current_colour=Math.floor(Math.random()*(16+1));
+           do{current_colour=Math.floor(Math.random()*(11+1));
            }
            while(current_colour===last_colour)
             console.log('current colour: '+current_colour);
