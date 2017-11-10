@@ -1468,11 +1468,11 @@ head
             var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
                element.item_tags.forEach(function (element_1, index_1){
-                 console.log('item_tags iteration 1');
+                 //console.log('item_tags iteration 1');
                  element.item_tags[index_1]=trim1(element_1);
                });
                element.item_tags.forEach(function (element_2,index_2){
-                 console.log('item_tags iteration 2');
+                 //console.log('item_tags iteration 2');
                  inarr=0;
                  insert+="<span class='badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
                  $.each(tags, function(key, tag) {
@@ -1486,7 +1486,7 @@ head
                   }
                  });
                element.item_tags.forEach(function (element_3,index_3){
-               console.log('item_tags iteration 3');
+              // console.log('item_tags iteration 3');
                element.item_tags[index_3]=' '+element.item_tags[index_3];
                });
              }
@@ -1497,7 +1497,7 @@ head
             $('#tags').empty();
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
-              console.log('item_tags iteration 4');
+              //console.log('item_tags iteration 4');
              $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
               });
             }
@@ -1520,9 +1520,9 @@ head
                         $('#tags').append('No tags, list is empty ');
                      }
                      else {
-                      console.log('POPULATE ajax response: '+msg.doc.itemstore);
+                     // console.log('POPULATE ajax response: '+msg.doc.itemstore);
                       global_items_store[list_id].itemstore=msg.doc.itemstore;//???? teamlist?????
-                      console.log('POPULATE ajax global_items: '+JSON.stringify(global_items_store[list_id]));
+                     // console.log('POPULATE ajax global_items: '+JSON.stringify(global_items_store[list_id]));
                        sortByKey(global_items_store[list_id].itemstore, 'tmstmp');
                        tags=[];
                        $('#main_list').empty();
