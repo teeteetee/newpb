@@ -1192,6 +1192,7 @@ head
            do{current_colour=Math.floor(Math.random()*(16+1));
            }
            while(current_colour===last_colour)
+            console.log('current colour: '+current_colour);
            $('.colour'+current_colour).css('opacity',1);
            $('.colour'+last_colour).css('opacity',0);
            last_colour=current_colour;
