@@ -22,11 +22,11 @@ head
       }
       body {
       min-height: 100vh;
-      background: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
+      /*background: -moz-linear-gradient(-45deg, #efa328 0%, #f23e8f 100%); /* FF3.6-15 */
       background: -webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%); /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(135deg, #efa328 0%,#f23e8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efa328', endColorstr='#f23e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      /*background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
-      /*background-color:#005ab9;*/
+      background: -webkit-linear-gradient(-45deg, #ff4300 0%,#0fb4e7 100%);*/
+      background-color:#005ab9;*/
       text-transform:uppercase;
       letter-spacing:2px;
       font-size:10px;
@@ -230,7 +230,41 @@ head
         background-color:#fd0069;
         border:none;
       }
+      .colour-transition{
+      position:absolute;
+      width:100%;
+      height:100%;
+      -webkit-transition: opacity 5s ;
+      -moz-transition: opacity 5s ;
+      -ms-transition: opacity 5s ;
+      -o-transition: opacity 5s ;
+      transition: opacity 5s ;
+      }
+      .colour-transition.colour0{background: linear-gradient(135deg, #16bf69 0%, #2ba9bd 100%);opacity:0;}
+      .colour-transition.colour1{background: linear-gradient(135deg, #16bf69 0%, #02338c 100%);opacity:0;}
+      .colour-transition.colour2{background: linear-gradient(135deg, #bf2d16 0%, #02338c 100%);opacity:0;}
+      .colour-transition.colour3{background: linear-gradient(135deg, #ce224a 0%, #436786 100%);opacity:0;}
+      .colour-transition.colour4{background: linear-gradient(135deg, #ce6372 0%, #436786 100%);opacity:0;}
+      .colour-transition.colour5{background: linear-gradient(135deg, #ce6372 0%, #ff9221 100%);opacity:0;}
+      .colour-transition.colour6{background: linear-gradient(135deg, #929292 0%, #484847 100%);opacity:0;}
+      .colour-transition.colour7{background: linear-gradient(135deg, #3e6094 0%, #484847 100%);opacity:0;}
+      .colour-transition.colour8{background: linear-gradient(135deg, #236b9e 0%, #ec563e 100%);opacity:0;}
+      .colour-transition.colour9{background: linear-gradient(135deg, #236b9e 0%, #ec3ea6 100%);opacity:0;}
+      .colour-transition.colour10{background: linear-gradient(135deg, #373cc5 0%, #2bceb0 100%);opacity:0;}
+      .colour-transition.colour11{background: linear-gradient(135deg, #289c67 0%, #294ed4 100%);opacity:0;}
   body
+    .colour-transition.colour0
+    .colour-transition.colour1
+    .colour-transition.colour2
+    .colour-transition.colour3
+    .colour-transition.colour4
+    .colour-transition.colour5
+    .colour-transition.colour6
+    .colour-transition.colour7
+    .colour-transition.colour8
+    .colour-transition.colour9
+    .colour-transition.colour10
+    .colour-transition.colour11
     .modal.fade.bs-example-modal-sm(id='regmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
           .modal-content#colourful
@@ -467,6 +501,25 @@ head
           // Most libraries like jQuery/Prototype/Dojo do this
           request.send("mail="+vmail+"&p="+vp+"&pc="+vpc);}
           }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        var last_colour=Math.floor(Math.random()*(11+1));
+        //-webkit-linear-gradient(-45deg, #efa328 0%,#f23e8f 100%);
+        $('.colour'+last_colour).css('opacity',1);
+        var current_colour;
+        setInterval(function(){
+           do{current_colour=Math.floor(Math.random()*(11+1));
+           }
+           while(current_colour===last_colour)
+            console.log('current colour: '+current_colour);
+           $('.colour'+current_colour).css('opacity',1);
+           $('.colour'+last_colour).css('opacity',0);
+           last_colour=current_colour;
+          },20000);
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         
         
         
