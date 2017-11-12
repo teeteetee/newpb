@@ -486,8 +486,10 @@ head
         margin-left:5px;
         margin-bottom: 2px;
         font-weight:200;
-        color: #1384e8;
-        border: 2px solid #1384e8;
+        /*color: #1384e8;
+        border: 2px solid #1384e8;*/
+        background-color:#a7a7a7;
+        color:white;
       }
       .NEW_VERSION_ITEMS{}
       #menu_bar {
@@ -850,7 +852,9 @@ head
         fill:#2f9af1;
       }
       .modal-title{
-        color: #999;
+        color: #333;
+        letter-spacing:1px;
+        font-weight:700;
       }
       #invites{
         display:none;
@@ -884,6 +888,7 @@ head
         .modal-content
           .modal-header
             h4.modal-title#tag_name_title 
+            .badge#tag_name_title_num.title_num
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
@@ -1984,7 +1989,7 @@ head
               $('.itemlist').append('<li class="list-group-item">'+global_items_store[$(el).attr('list_id')].itemstore[element].item_title+'</li>');
               });
             $('#tag_name_title').text(tags[$(el).attr('index')].tag_name.capitalizeFirstLetter());
-            $('#tag_name_title').append('<span class="badge title_num">'+mention_indexes.length+'</span>');
+            $('#tag_name_title_num').text(mention_indexes.length);
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','20%');
             }
