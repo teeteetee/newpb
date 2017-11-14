@@ -562,7 +562,6 @@ app.post('/rm_item/',function(req,res){
  }
  //-----// 
 }
-}
   else {
     res.send(ms);
   }
