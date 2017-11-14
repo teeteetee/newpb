@@ -833,6 +833,7 @@ app.post('/additem',function (req,res){
             }
             console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
+          if(req.body.list_id===1&&!parseInt(req.body.list_id)){
           counter_items.update({uid:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
             //console.log(err);
@@ -846,6 +847,22 @@ app.post('/additem',function (req,res){
                 res.send(ms);
               }
           });
+          }
+          else{
+            counter_teamlists.update({_id:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
+            console.log(done);
+            //console.log(err);
+            if(err){
+              console.log('ADDITEM TEAMLIST DB ERR');
+              res.send(ms);
+            }
+              else{
+                ms.trouble=0;
+                ms.date=vtmstmp;
+                res.send(ms);
+              }
+          });
+          }
           console.log('breakpoint five');
           //console.log('item added');
           }       
