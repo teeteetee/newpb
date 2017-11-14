@@ -528,25 +528,40 @@ app.post('/rm_item/',function(req,res){
   var vtitle = req.body.item_title;
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
-  var _id=req.session._id;
+  var v_id=req.session._id;
   if(teamlist){
     _id=new ObjectID(req.body.teamlist_id);
   }
-  console.log('removing: '+vtitle+','+vtmstmp);
+  console.log('RM_ITEM: removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
-  counter_items.update({uid:_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
-  if(err)
-  {
-    console.log('trouble removing a item\n'+err);
-    res.send(ms);
-  }
-    else{
-      ms.trouble=0;
+   if(!teamlist)
+  {counter_items.update({uid:v_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
+    if(err)
+    {
+      console.log('RM_ITEM: trouble removing a item\n'+err);
       res.send(ms);
     }
-   });
-  
+      else{
+        ms.trouble=0;
+        res.send(ms);
+      }
+     });}
+ else{
+  counter_teamlists.update({_id:v_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
+    if(err)
+    {
+      console.log('RM_ITEM: TEAMLIST trouble removing a item\n'+err);
+      res.send(ms);
+    }
+      else{
+        ms.trouble=0;
+        res.send(ms);
+      }
+     });
+ }
+ //-----// 
+}
 }
   else {
     res.send(ms);
