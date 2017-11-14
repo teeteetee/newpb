@@ -530,7 +530,7 @@ app.post('/rm_item/',function(req,res){
   var teamlist = parseInt(req.body.teamlist);
   var v_id=req.session._id;
   if(teamlist){
-    _id=new ObjectID(req.body.teamlist_id);
+    v_id=new ObjectID(req.body.teamlist_id);
   }
   console.log('RM_ITEM: removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
