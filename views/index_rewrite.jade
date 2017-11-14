@@ -34,11 +34,11 @@ head
       position:absolute;
       width:100%;
       height:100%;
-      -webkit-transition: opacity 5s ;
-      -moz-transition: opacity 5s ;
-      -ms-transition: opacity 5s ;
-      -o-transition: opacity 5s ;
-      transition: opacity 5s ;
+      -webkit-transition: opacity 3.5s ;
+      -moz-transition: opacity 3.5s ;
+      -ms-transition: opacity 3.5s ;
+      -o-transition: opacity 3.5s ;
+      transition: opacity 3.5s ;
       }
       body2{
       /*transition: 2s background linear;
@@ -1459,7 +1459,7 @@ head
           tags=[];
           $('#main_list').empty();
           $('#tags').empty();
-          $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+          $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
           if(global_items_store[list_id].redactable&&global_items_store[list_id].list_name!='Your items'){
             console.log('POPULATE appending');
             var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
@@ -1915,6 +1915,8 @@ head
                      }
                      insert+="</li>";    
                      $('#main_list').prepend(insert);
+                     global_items_store[$(el).attr('_id')].itemstore.push({item_title:data.item_title,item_tags:data.item_tags,item_comment:data.item_comment,item_link:data.item_link,tmstmp:msg.date});//there is a 'regdateint' field on the server, not used in frontend
+                     $('#list_heading_title_num').text(parseInt($('#list_heading_title_num').text())+1);
                      if(tags.length){
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
