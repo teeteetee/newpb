@@ -584,7 +584,7 @@ app.post('/rd_item/',function(req,res){
     v_id=new ObjectID(req.body.teamlist_id);
   }
   console.log('RD_ITEM: _id is:'+v_id+',\n session: '+req.session._id+',\n type:'+typeof v_id);
-  if(teamlist)
+  if(!teamlist)
   {counter_items.findOne({uid:v_id},function (err,done){
   if(err)
   {
