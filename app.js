@@ -1584,6 +1584,29 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.get('/ins_t',function (req,res){
+  counter_teamlists.insert({"_id":"59d6743979005c1d15000002","itemstore":[{"item_comment":"--","item_title":"Dunhill De Luxe Navy Rolls","item_link":"http://www.mirtabaka.net/Tabak-dlya-trubki-dunhill-luxe-navy-rolls-p-17338.html","item_tags":["dunhill"],"regdateint":20171005,"tmstmp":1507226739871},{"item_comment":"Сигарный","item_title":"","item_link":"http://www.mirtabaka.net/Tabak-dlya-trubki-mcclelland-dominican-glory-p-22531.html","item_tags":["mcclelland","ribbon"],"regdateint":20171005,"tmstmp":1507226861686},{"item_comment":"Чёрный Кавендиш и Вирджиния дымовой сушки смешиваются для создания «Свежего яблока». Сладкий, «хрустящий» вкус со свежим ароматом фруктового сада.","item_title":"","item_link":"http://www.mirtabaka.net/Tabak-dlya-trubki-mcclelland-fresh-apple-p-24385.html","item_tags":["mcclelland","ribbon"],"regdateint":20171005,"tmstmp":1507226912847},{"item_comment":"--","item_title":"Capstan Gold Flake","item_link":"","item_tags":["capstan","flake"],"regdateint":20171007,"tmstmp":1507397943940},{"item_comment":"--","item_title":"Davidoff Flake Medaillons","item_link":"","item_tags":["davidoff","flake"],"regdateint":20171007,"tmstmp":1507398732565},{"item_comment":"--","item_title":"","item_link":"","item_tags":["dunhill","flake"],"regdateint":20171007,"tmstmp":1507398897181},{"item_comment":"--","item_title":"Petersen & Sorensen The Squire’s 50 гр","item_link":"--","item_tags":["Petersen & Sorensen"],"regdateint":20171007,"tmstmp":1507399311987},{"item_comment":"Может быть ароматизированным","item_title":"Rattray's Malcolm Flake - 50гр","item_link":"--","item_tags":["Rattray's"],"regdateint":20171007,"tmstmp":1507399438006},{"item_comment":"ароматизатор – ром","item_title":"Robert McConnell Scottish Flake","item_link":"--","item_tags":["Robert McConnell"],"regdateint":20171007,"tmstmp":1507399528368},{"item_comment":"--","item_title":"Peterson Irish Flake","item_link":"--","item_tags":["Peterson"],"regdateint":20171007,"tmstmp":1507399713742},{"item_comment":"Похож на peterson irish flake","item_title":"Rattray's Stirling Flake - 50гр","item_link":"","item_tags":["rattray's"],"regdateint":20171007,"tmstmp":1507399742126},{"item_comment":"--","item_title":"Petersen & Sorensen Waterloo No.2 Mixture 50 гр","item_link":"--","item_tags":["Petersen & Sorensen"],"regdateint":20171007,"tmstmp":1507399909586},{"item_comment":"--","item_title":"Samuel Gawith Full Virginia Flake -50 гр","item_link":"--","item_tags":["Samuel Gawith"],"regdateint":20171007,"tmstmp":1507400233216},{"item_comment":"--","item_title":"Solani Aged Burley Flake - blend 656 50гр","item_link":"--","item_tags":["Solani"],"regdateint":20171007,"tmstmp":1507400459269},{"item_comment":"--","item_title":"Solani Red Label - blend 131 100 гр.","item_link":"--","item_tags":["Solani"],"regdateint":20171007,"tmstmp":1507400503806},{"item_comment":"--","item_title":"Solani Silver Flake - blend 660 100 гр.","item_link":"--","item_tags":["Solani"],"regdateint":20171007,"tmstmp":1507400556121},{"item_comment":"--","item_title":"Solani Virginia Flake - blend 633 50 гр","item_link":"--","item_tags":["Solani"],"regdateint":20171007,"tmstmp":1507400592773},{"item_comment":"ароматизирован яблоком","item_title":"Solani Green Label - blend 127 100 гр","item_link":"--","item_tags":["Solani"],"regdateint":20171007,"tmstmp":1507400630433},{"item_comment":"--","item_title":"A. G. Ruhtenberg Limited Edition - 100 гр","item_link":"","item_tags":["a. g. ruhtenberg","flake"],"regdateint":20171007,"tmstmp":1507401005386},{"item_comment":"--","item_title":"Capstan Original Flake - 50гр","item_link":"","item_tags":["capstan","flake"],"regdateint":20171007,"tmstmp":1507401103882},{"item_comment":"--","item_title":"McClelland Personal Reserve British Woods - 100 гр","item_link":"","item_tags":["mcclelland","ribbon"],"regdateint":20171007,"tmstmp":1507401136296},{"item_comment":"--","item_title":"McClelland Oriental Mixture №6 - 50 гр","item_link":"--","item_tags":["McClelland","ribbon"],"regdateint":20171007,"tmstmp":1507401210055},{"item_comment":"--","item_title":"McClelland Dominican Glory - 100 гр","item_link":"--","item_tags":["McClelland","ribbon"],"regdateint":20171007,"tmstmp":1507402954018}],"total":23,"admin":new ObjectID("59e5257fa86e6c3c6a000001"),"users":[new ObjectID("59e5257fa86e6c3c6a000001")],"create_date":1507226739860,"list_name":"Tobacco"},function (err,done){
+    if(err){
+      res.send('ins_t err');
+    }
+      else{
+        res.redirect('/ins_t_2');
+      }
+    }
+  });
+});
+
+app.get('/ins_t_2',function (req,res){
+  counter_users.update({_id:req.session._id},{$push:{teamlists:new ObjectID("59d6743979005c1d15000002")}},function (err,done){
+    if(err){
+      res.send('ins_t_2 err');
+    }
+      else{
+        res.redirect('/');
+      }
+  });
+});
+
 
 
 module.exports = app;
