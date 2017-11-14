@@ -578,16 +578,17 @@ app.post('/rd_item/',function(req,res){
   console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
-  var _id=new ObjectID(req.session._id);
+  var v_id=new ObjectID(req.session._id);
   if(teamlist){
     console.log('RD_ITEM: redacting an item from a teamlist');
-    _id=new ObjectID(req.body.teamlist_id);
+    v_id=new ObjectID(req.body.teamlist_id);
   }
-  console.log('RD_ITEM: _id is:'+_id+',\n session: '+req.session._id+',\n type:'+typeof _id);
-  counter_items.findOne({uid:_id},function (err,done){
+  console.log('RD_ITEM: _id is:'+v_id+',\n session: '+req.session._id+',\n type:'+typeof v_id);
+  if(teamlist)
+  {counter_items.findOne({uid:v_id},function (err,done){
   if(err)
   {
-    console.log('RD_ITEM: trouble removing a item\n'+err);
+    console.log('RD_ITEM: trouble finding a list by _id\n'+err);
     res.send(ms);
   }
     else{
@@ -607,7 +608,7 @@ app.post('/rd_item/',function(req,res){
               //vtags[index]=trim1(element).toLowerCase();
               //});
               done.itemstore[i].item_tags = vtags;
-              counter_items.update({uid:_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+              counter_items.update({uid:v_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
                  if(err2){
                    console.log(err2);
                    console.log('rd_item – trouble 1');
@@ -620,28 +621,56 @@ app.post('/rd_item/',function(req,res){
                    }
         });
             }
-      
-           //done.itemstore.find(function (elem, index){
-           // //console.log('searching: '+elem.item_title+', for: '+query);
-           // if (parseInt(elem.tmstmp) === parseInt(vtmstmp)){
-           //  // console.log('found: '+elem.item_title)
-           //   done.itemstore[index].item_title = vtitle;
-           //   done.itemstore[index].item_comment = vlink;
-           //   done.itemstore[index].item_link = vlink;
-           //   done.itemstore[index].item_tags = vtags;
-           // }
-           // });
       }
-      //--------------//
-      //console.log('rd_item – trouble 2');
-      //res.send(ms);
     }
   }
    });
-  
+ }
+ else
+ {
+  //---------//
+  counter_teamlists.findOne({_id:v_id},function (err,done){
+  if(err)
+  {
+    console.log('RD_ITEM: TEAMLIST trouble finding a list by _id\n'+err);
+    res.send(ms);
+  }
+    else{
+      console.log('RD_ITEM: TEAMLIST found a profile: '+JSON.stringify(done));
+      //--------------//
+      if(done&&done.itemstore){
+        var itemstore_length = done.itemstore.length;
+        console.log('RD_ITEM: TEAMLIST has an itemstore, length: '+itemstore_length);
+        for(var i =0;i<itemstore_length;i++){
+          console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
+         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
+              console.log('RD_ITEM: TEAMLIST found to redact: '+done.itemstore[i].item_title);
+              done.itemstore[i].item_title = vtitle;
+              done.itemstore[i].item_comment = vcomment;
+              done.itemstore[i].item_link = vlink;
+              done.itemstore[i].item_tags = vtags;
+              counter_teamlists.update({_id:v_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
+                 if(err2){
+                   console.log(err2);
+                   console.log('RD_ITEM: TEAMLIST – trouble 1');
+                 res.send(ms);
+                 }
+                   else{
+                    console.log('RD_ITEM: TEAMLIST – everything is good');
+                  ms.trouble=0;
+                 res.send(ms);
+                   }
+        });
+            }
+      }
+    }
+  }
+   });
+  //---------//
+ }
 }
   else {
-    console.log('rd_item – trouble 3');
+    console.log('RD_ITEM: TEAMLIST – trouble 3');
     res.send(ms);
   }
 });
