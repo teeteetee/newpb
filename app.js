@@ -1592,7 +1592,6 @@ app.get('/ins_t',function (req,res){
       else{
         res.redirect('/ins_t_2');
       }
-    }
   });
 });
 
