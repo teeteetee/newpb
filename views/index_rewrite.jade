@@ -1150,8 +1150,9 @@ head
           .row.active_menu_heading(onclick="window.location='/logout';") Log out  
         .col-md-10#lists
           #list_heading
-            h4#list_heading_title Your items
+            h4#list_heading_title Welcome!
           #tags
+            | Create a list, add items, invite team members
           ul.list-group#main_list(style='margin-bottom:40px;')
   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -1225,27 +1226,28 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        $.ajax({
-            method: "POST",
-            url: "/getitems",
-            data: 0
-          }).done(function( msg ) {
-               if(!msg.trouble){
-                   items=msg.doc.itemstore;
-                   if(!items||!items.length ) {
-                     $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
-                   }
-                   else {
-                    global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items,"teamlist":0};
-                    console.log('INIT GETITEMS global_items_store: '+JSON.stringify(global_items_store));
-                    sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
-                    populate(user_id);
-                   }
-               }
-               else{
-                alert('Service unavaliable');
-               }
-         });
+        // THIS IS CANCELED DUE TO DECISION NOT TO HAVE AN INITIAL LIST, BUT A
+        //$.ajax({
+        //    method: "POST",
+        //    url: "/getitems",
+        //    data: 0
+        //  }).done(function( msg ) {
+        //       if(!msg.trouble){
+        //           items=msg.doc.itemstore;
+        //           if(!items||!items.length ) {
+        //             $('#tags').append('No tags, list is empty <button class="btn btn-sm" onclick="add_dialog()" id="add_item_located_in_tags">Add an item</button>');
+        //           }
+        //           else {
+        //            global_items_store[user_id]={"redactable":1,"list_name":"Your items","itemstore":items,"teamlist":0};
+        //            console.log('INIT GETITEMS global_items_store: '+JSON.stringify(global_items_store));
+        //            sortByKey(global_items_store[user_id].itemstore, 'tmstmp');
+        //            populate(user_id);
+        //           }
+        //       }
+        //       else{
+        //        alert('Service unavaliable');
+        //       }
+        // });
         /////////------------------//////////
         /////////------------------//////////
         /////////------------------//////////
@@ -1473,7 +1475,7 @@ head
             else{
               item_click_function='import_dialog(this)';
             }
-            var insert='<li class="list-group-item" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+            var insert='<li class="list-group-item" index="'+index+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
             if(element.item_tags){
                element.item_tags.forEach(function (element_1, index_1){
                  //console.log('item_tags iteration 1');
@@ -1545,7 +1547,7 @@ head
                          else{
                            item_click_function='import_dialog(this)';
                          }
-                         var insert='<li class="list-group-item" id="'+element.tmstmp+'" index="'+index+'" is_teamlist="'+global_items_store[list_id].teamlist+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
+                         var insert='<li class="list-group-item" id="'+element.tmstmp+'" index="'+index+'" teamlist_id="'+list_id+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+ date.getFullYear()+'</small>';
                          if(element.item_tags){
                             element.item_tags.forEach(function (element_2, index_2){
                               element.item_tags[index_2]=trim1(element_2);
@@ -1608,8 +1610,8 @@ head
              $('.modal-dialog').css('margin-top','5%');
            }
            temp_element=el;
-           insert_remove = 'removeitem('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'",temp_element)';
-           insert_redact = 'redactitem_submit('+$(el).attr('index')+','+$(el).attr('is_teamlist')+',"'+$(el).attr('teamlist_id')+'",temp_element)';
+           insert_remove = 'removeitem('+$(el).attr('index')+',"'+$(el).attr('teamlist_id')+'",temp_element)';
+           insert_redact = 'redactitem_submit('+$(el).attr('index')+',"'+$(el).attr('teamlist_id')+'",temp_element)';
            $('.item_remove').attr('onclick',insert_remove);
            $('.item_redact_submit').attr('onclick',insert_redact);
            $('.item_title').text('');
@@ -1643,13 +1645,11 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function removeitem(i,teamlist,teamlist_id) {
+        function removeitem(i,teamlist_id) {
           var data={};
           data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
-          data.item_tmstmp=global_items_store[teamlist_id].itemstore[i].tmstmp;  
-          data.teamlist = teamlist;
-            if(teamlist)
-             {data.teamlist_id=teamlist_id;}
+          data.item_tmstmp=global_items_store[teamlist_id].itemstore[i].tmstmp;
+          data.teamlist_id=teamlist_id;
          $.ajax({
               method: "POST",
               url: "/rm_item/",
@@ -1662,7 +1662,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function importitem_submit(i,teamlist,teamlist_id) {
+        function importitem_submit(i,teamlist_id) {
           var data={};
             data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
             data.item_link="";
@@ -1679,7 +1679,6 @@ head
               //console.log('IMPORTITEM_SUBMIT 2: '+global_items_store[teamlist_id].itemstore[i].item_tags);
               data.item_tags=global_items_store[teamlist_id].itemstore[i].item_tags;}
             //console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
-            data.teamlist = teamlist;
             if(teamlist)
              {data.list_id=teamlist_id;}
            // alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
@@ -1695,7 +1694,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function import_dialog (i,teamlist,teamlist_id){
+        function import_dialog (i,teamlist_id){
           if($('body').width()<$('body').height()) {
           $('.modal-dialog').css('margin-top','20%');
         }
@@ -1703,8 +1702,8 @@ head
           $('.modal-dialog').css('margin-top','5%');
         }
         //
-        insert_import = 'importitem_submit('+i+','+teamlist+',"'+teamlist_id+'")';
-        $('#dropdown_list_choice').attr({'index':i,'teamlist':teamlist});
+        insert_import = 'importitem_submit('+i+',"'+teamlist_id+'")';
+        $('#dropdown_list_choice').attr({'index':i});
         $('.item_import_submit').attr('onclick',insert_import);
         $('.import_item_title').text('');
         $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
@@ -1731,7 +1730,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function redactitem_submit(i,teamlist,teamlist_id,el) {
+        function redactitem_submit(i,teamlist_id,el) {
           var data={};
             data.v_index=i;
             data.item_title=$('#item_title_redact').val();
@@ -1739,9 +1738,7 @@ head
             data.item_comment=$('#item_comment_redact').val();
             data.item_tags=$('#item_tags_redact').val();
             data.item_tmstmp=global_items_store[teamlist_id].itemstore[i].tmstmp;
-            data.teamlist = teamlist;
-            if(teamlist)
-             {data.teamlist_id=teamlist_id;}
+            data.teamlist_id=teamlist_id;
         $.ajax({
               method: "POST",
               url: "/rd_item/",
@@ -1871,7 +1868,7 @@ head
            data.item_link = $('#item_link').val();
            data.item_comment = $('#item_comment').val();
            data.item_tags = $('#item_tags').val();
-           data.list_id = $(el).attr('_id')===user_id?0:$(el).attr('_id');
+           data.list_id = $(el).attr('_id');
            //alert('SUBMIT_ITEM data'+JSON.stringify(data));
           $.ajax({
               method: "POST",
@@ -1888,7 +1885,7 @@ head
                   if(global_items_store[$(el).attr('_id')].redactable)
                   {item_click_function='redactitem_dialog(this)';}
                   else{item_click_function='import_dialog(this)';}
-                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" is_teamlist="'+global_items_store[$(el).attr('_id')].teamlist+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
@@ -1938,19 +1935,6 @@ head
         function open_list(el){
           $('#list_heading').empty();
           $('#list_heading').append('<h4 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h4>');
-          if($(el).attr('id')===user_id){
-            if(!$('#'+'#{_id}').hasClass('selected')){
-              $('#main_list').empty();
-              $('#tags').empty();
-              $('.menu_item').removeClass('selected');
-              $('#'+'#{_id}').addClass('selected');
-              //$('#list_heading').empty();
-              //$('#list_heading').append('<h4 id="list_heading_title">Your items</h4>');
-              $('#submit_item_button').attr('_id',$(el).attr('id'));
-              populate($(el).attr('id'));
-            }
-          }
-            else{
           var list_id_jq='#'+$(el).attr('id');
           if(!$(list_id_jq).hasClass('selected'))
          {$('#main_list').empty();
@@ -1961,8 +1945,7 @@ head
           //$('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
           $('#submit_item_button').attr('_id',$(el).attr('id'));
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
-          populate($(el).attr('id'));}
-           }
+          populate($(el).attr('id'));}  
         }
         ////////--------------------/////////
         ////////--------------------/////////

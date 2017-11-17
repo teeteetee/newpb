@@ -529,25 +529,10 @@ app.post('/rm_item/',function(req,res){
   var vtmstmp= parseInt(req.body.item_tmstmp);
   var teamlist = parseInt(req.body.teamlist);
   var v_id=req.session._id;
-  if(teamlist){
-    v_id=new ObjectID(req.body.teamlist_id);
-  }
+  v_id=new ObjectID(req.body.teamlist_id);
   console.log('RM_ITEM: removing: '+vtitle+','+vtmstmp);
   if(req.session&&req.session._id)
   {
-   if(!teamlist)
-  {counter_items.update({uid:v_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
-    if(err)
-    {
-      console.log('RM_ITEM: trouble removing a item\n'+err);
-      res.send(ms);
-    }
-      else{
-        ms.trouble=0;
-        res.send(ms);
-      }
-     });}
- else{
   counter_teamlists.update({_id:v_id},{$pull:{itemstore:{item_title:vtitle,tmstmp:vtmstmp}},$inc:{total:-1}},function (err,done){
     if(err)
     {
@@ -559,7 +544,6 @@ app.post('/rm_item/',function(req,res){
         res.send(ms);
       }
      });
- }
  //-----// 
 }
   else {
@@ -588,60 +572,13 @@ app.post('/rd_item/',function(req,res){
      }
   var v_index = req.body.v_index;
   var vtmstmp= parseInt(req.body.item_tmstmp);
-  var teamlist = parseInt(req.body.teamlist);
   console.log('RD_ITEM:redacting: '+vtitle+',\n comment:'+vcomment+',\n link:'+vlink+',\n tags:'+vtags+',\n timestamp:'+vtmstmp+',\n teamlist:'+teamlist);
   if(req.session&&req.session._id&&vtmstmp)
   {
   var v_id=new ObjectID(req.session._id);
-  if(teamlist){
-    console.log('RD_ITEM: redacting an item from a teamlist');
-    v_id=new ObjectID(req.body.teamlist_id);
-  }
+  console.log('RD_ITEM: redacting an item from a teamlist');
+  v_id=new ObjectID(req.body.teamlist_id);
   console.log('RD_ITEM: _id is:'+v_id+',\n session: '+req.session._id+',\n type:'+typeof v_id);
-  if(!teamlist)
-  {counter_items.findOne({uid:v_id},function (err,done){
-  if(err)
-  {
-    console.log('RD_ITEM: trouble finding a list by _id\n'+err);
-    res.send(ms);
-  }
-    else{
-      console.log('RD_ITEM: found a profile: '+JSON.stringify(done));
-      //--------------//
-      if(done&&done.itemstore){
-        var itemstore_length = done.itemstore.length;
-        console.log('RD_ITEM: has an itemstore, length: '+itemstore_length);
-        for(var i =0;i<itemstore_length;i++){
-          console.log(done.itemstore[i].tmstmp+'  :  '+vtmstmp);
-         if (parseInt(done.itemstore[i].tmstmp) == vtmstmp){
-              console.log('RD_ITEM: found to redact: '+done.itemstore[i].item_title);
-              done.itemstore[i].item_title = vtitle;
-              done.itemstore[i].item_comment = vcomment;
-              done.itemstore[i].item_link = vlink;
-              //vtags.forEach(function (element, index){
-              //vtags[index]=trim1(element).toLowerCase();
-              //});
-              done.itemstore[i].item_tags = vtags;
-              counter_items.update({uid:v_id},{$set:{itemstore:done.itemstore}},function (err2,done2){
-                 if(err2){
-                   console.log(err2);
-                   console.log('rd_item – trouble 1');
-                 res.send(ms);
-                 }
-                   else{
-                    console.log('rd_item – everything is good');
-                  ms.trouble=0;
-                 res.send(ms);
-                   }
-        });
-            }
-      }
-    }
-  }
-   });
- }
- else
- {
   //---------//
   counter_teamlists.findOne({_id:v_id},function (err,done){
   if(err)
@@ -681,7 +618,6 @@ app.post('/rd_item/',function(req,res){
   }
    });
   //---------//
- }
 }
   else {
     console.log('RD_ITEM: TEAMLIST – trouble 3');
@@ -1413,7 +1349,6 @@ app.post('/newuser',function(req,res){
           //counter_stats.update({$inc:{users:1}});
           //var vuid = JSON.stringify(done._id).replace(/"/g,'').trim();
           //console.log('vuid: '+vuid);
-          counter_items.insert({uid:done._id,total:0,itemstore:[]});
           counter_invite.insert({uid:done._id,invitationstore:[]});
           //counter_friends.insert({uid:vuid,total_fd:0,total_fl:0,friendstore:[],followers:[]});
           req.session._id=done._id;
