@@ -1406,7 +1406,7 @@ head
                        $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
                     });
-                  populate(last_list);
+                  open_list(last_list);
                 }
               });
          }
@@ -1576,7 +1576,8 @@ head
                  if(!msg.trouble){
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
-                        $('#tags').append('No tags, list is empty ');
+                        $('#tags').empty();
+                        $('#tags').append('No tags, list is empty <button>Add item</button>');
                      }
                      else {
                      // console.log('POPULATE ajax response: '+msg.doc.itemstore);
