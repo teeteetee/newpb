@@ -1144,7 +1144,7 @@ head
             svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#invite').modal('show');" style="margin-left: 5px;margin-top:1px;")
               g#surface2
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
-          .row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
+          //.row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
           #team_lists_insert
           .row.menu_heading(style='margin-top:30px;')
             | Friends
@@ -1511,7 +1511,7 @@ head
           $('#main_list').empty();
           $('#tags').empty();
           $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
-          if(global_items_store[list_id].redactable&&global_items_store[list_id].list_name!='Your items'){
+          if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
             var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
             $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
@@ -1632,7 +1632,7 @@ head
                            $('#tags').empty();
                            $('#tags').append("No tags yet");
                          }
-                        if(global_items_store[list_id].redactable&&global_items_store[list_id].list_name!='Your items'){
+                        if(global_items_store[list_id].redactable){
                           console.log('POPULATE appending');
                           var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
                           $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
