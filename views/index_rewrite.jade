@@ -1406,7 +1406,7 @@ head
                        $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
                     });
-                  open_list(last_list);
+                  open_list($('#'+last_list));
                 }
               });
          }
