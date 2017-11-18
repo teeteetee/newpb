@@ -45,7 +45,7 @@ app.use(sessions({
   cookie: {
     path:'/',
   httpOnly: true,
-  domain:'teamlists.xyz'
+  domain:'teamlists.space'
   }
 }));
 
