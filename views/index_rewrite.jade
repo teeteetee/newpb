@@ -1422,11 +1422,11 @@ head
              $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
-                 url: "/counter/setnick",
+                 url: "/setnick",
                  data: data
                })
                  .done(function( msg ) {
-                   window.location='/counter';
+                   window.location='/';
                    });
                  }
           break;
@@ -1437,11 +1437,11 @@ head
              $('#wait').css('display','block');
              $.ajax({
                  method: "POST",
-                 url: "/counter/setnick",
+                 url: "/setnick",
                  data: data
                })
                  .done(function( msg ) {
-                   window.location='/counter';
+                   window.location='/';
                    });
                  }
           break;
