@@ -50,7 +50,7 @@ head
       }
       .colour-transition.colour0{background: linear-gradient(135deg, #16bf69 0%, #2ba9bd 100%);opacity:0;}
       .colour-transition.colour1{background: linear-gradient(135deg, #16bf69 0%, #02338c 100%);opacity:0;}
-      .colour-transition.colour2{background: linear-gradient(135deg, #bf2d16 0%, #02338c 100%);opacity:0;}
+      .colour-transition.colour2{background: linear-gradient(135deg, #109286 0%, #fdbd2e 100%);opacity:0;}
       .colour-transition.colour3{background: linear-gradient(135deg, #ce224a 0%, #436786 100%);opacity:0;}
       .colour-transition.colour4{background: linear-gradient(135deg, #ce6372 0%, #436786 100%);opacity:0;}
       .colour-transition.colour5{background: linear-gradient(135deg, #ce6372 0%, #ff9221 100%);opacity:0;}
@@ -870,6 +870,14 @@ head
        background-color:white;
        color:black;
       }
+      .btn-transparent{
+        background-color:rgba(255,255,255,0.0);
+        color:white;
+        border:1px solid white;
+      }
+      .btn-transparent:hover{
+        background-color:rgba(255,255,255,0.3);
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1153,6 +1161,7 @@ head
             h4#list_heading_title Welcome!
           #tags
             | Create a list, add items, invite team members
+            button.btn-transparent(onclick="$('#invite').modal('show');" style='margin-left:20px;') Create a list
           ul.list-group#main_list(style='margin-bottom:40px;')
   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -1946,6 +1955,19 @@ head
           $('#submit_item_button').attr('_id',$(el).attr('id'));
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
           populate($(el).attr('id'));}  
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function set_last_list(list_id){
+          $.ajax({
+              method: "POST",
+              url: "/additem/",
+              data: data
+              }).done(function( msg ) {
+              //window.location='/';
+              $('#importmodal').modal('hide');
+              });
         }
         ////////--------------------/////////
         ////////--------------------/////////
