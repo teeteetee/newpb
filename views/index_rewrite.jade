@@ -1364,7 +1364,7 @@ head
                    });
                    var temp_count=0;
                    console.log('INIT GETTEAMLISTS global_items_store: '+JSON.stringify(global_items_store));
-                   get_teamlist_name(temp_count,get_teamlist_name);
+                   get_teamlist_name(temp_count,msg.last_list,get_teamlist_name);
                   } 
                }
         });
@@ -1372,7 +1372,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function get_teamlist_name(count,callback){
+        function get_teamlist_name(count,last_list,callback){
           var _id=temp_teamlists_arr[count];
           $.ajax({
               method: "POST",
@@ -1405,6 +1405,7 @@ head
                        $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
                     });
+                  populate(last_list);
                 }
               });
          }
@@ -1464,6 +1465,7 @@ head
           var insert;
           var inarr;
         //1. Check if we have local store
+        set_last_list(list_id);
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
          {
           //populate localy
@@ -1962,11 +1964,10 @@ head
         function set_last_list(list_id){
           $.ajax({
               method: "POST",
-              url: "/additem/",
-              data: data
+              url: "/setlastlist",
+              data: {'list_id':list_id}
               }).done(function( msg ) {
-              //window.location='/';
-              $('#importmodal').modal('hide');
+               console.log('setlastlist');
               });
         }
         ////////--------------------/////////

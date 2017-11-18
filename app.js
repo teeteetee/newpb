@@ -392,6 +392,7 @@ app.post('/getteamlists',function (req,res){
       else if(doc!=null){
         console.log('TEAMLISTS: '+JSON.stringify(doc));
         ms.doc = doc.teamlists;
+        ms.last_list = doc.last_list;
         ms.trouble=0;
         res.send(ms);
       }
@@ -912,6 +913,27 @@ app.post('/decline_invite',function (req,res){
       }   
 });
 
+app.post('/set_last_list',function (req,res){
+   var ms = {};
+       ms.trouble =1;
+       ms.mtext ;
+    if(req.session&&req.session._id&&req.body.list_id)
+   { 
+      counter_users.update({uid:new ObjectID(req.session._id)},{$set:{last_list:new ObjectID(req.body.list_id)}},function (err,done){
+        if(err){
+         res.send(ms);
+        }
+        else{
+          ms.trouble=0;
+         res.send(ms);
+        }
+      });
+      }       
+      else {
+        res.send(ms);
+      }   
+});
+
 app.post('/backup',function (req,res){
   if(req.session&&req.session._id)
   { var json = {};
@@ -1233,7 +1255,7 @@ app.post('/newteamlist',function (req,res){
                   }
                 else {
                   counter_items.insert({uid:done._id,total:0,itemstore:[]});
-                  counter_users.update({_id:req.session._id},{$push:{teamlists:done._id}},function (err,done_1){
+                  counter_users.update({_id:req.session._id},{$push:{teamlists:done._id},$set:{last_list:done._id}},function (err,done_1){
                         if(err)
                        {
                          ms.mtext='db';
@@ -1338,7 +1360,7 @@ app.post('/newuser',function(req,res){
         // CHECK MAIL BEFOR WRTING
         //checkmail function was here before being moved out of scope
         //var vuid = new ObjectID('592c0f45e3e371e70f000001');
-          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
+          counter_users.insert({mail:vmail,phr:vp,totallinks:0,last_item:0,last_list:0,friendstore:[],first_time:1,regdate:Date.now()},function (err,done){
             if(err)
             {
               console.log('db: '+err);
