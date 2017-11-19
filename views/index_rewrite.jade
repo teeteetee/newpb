@@ -1405,7 +1405,7 @@ head
                 }
                 count++;
                 if(count<temp_teamlists_arr.length)
-                {callback(count,callback);}
+                {callback(count,last_list,callback);}
                 else{
                   temp_teamlists_arr.push(user_id);
                   temp_teamlists_arr.forEach(function (element,index){
@@ -1416,7 +1416,7 @@ head
                      }    
                     });
                   console.log('GET_TEAMLIST_NAME breakpoint');
-                  open_list(last_list);
+                  open_list($('#'+last_list));
                 }
               });
          }
@@ -1999,10 +1999,10 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function open_list(el){
-          if(typeof el != 'object'){
-            el=$('#'+el);
-            console.log('OPEN LIST el: '+typeof el);
-          }
+          //if(typeof el != 'object'){
+          //  el=$('#'+el);
+          //  console.log('OPEN LIST el: '+typeof el);
+          //}
           $('#list_heading').empty();
           $('#list_heading').append('<h4 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h4>');
           var list_id_jq='#'+$(el).attr('id');
