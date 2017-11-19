@@ -2092,7 +2092,7 @@ head
               console.log(data._id+' friends _id'); 
              $.ajax({
                  method: "POST",
-                 url: "/counter/addfriend",
+                 url: "/addfriend",
                  data: data
                }).done(function( msg ) {
                    if(!msg.trouble)
@@ -2100,7 +2100,7 @@ head
                  (function(){
                  $.ajax({
                     method: "POST",
-                    url: "/counter/get_nick",
+                    url: "/get_nick",
                     data: {'_id':data._id}
                   })
                     .done(function( msg ) {
