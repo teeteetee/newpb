@@ -1585,6 +1585,7 @@ head
           $('#main_list').empty();
           $('#tags').empty();
           $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+          $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
             var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
@@ -1665,6 +1666,7 @@ head
                        $('#tags').empty();
                        //$('#list_heading_title').text(global_items_store[list_id]);
                        $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+                       $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
                          temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
