@@ -1168,7 +1168,6 @@ head
             h4#list_heading_title Welcome!
           #tags
             | Create a list, add items, invite team members
-            br
           //button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
           button.btn.menu_add_item_button#add_modal_trigger(type='button'  data-toggle="modal") Add item
           ul.list-group#main_list(style='margin-bottom:40px;')
@@ -1587,7 +1586,7 @@ head
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
                         $('#tags').empty();
-                        $('#tags').append('No tags, list is empty <button class="btn btn-transparent">Add item</button>');
+                        $('#tags').append('No tags, list is empty ');
                      }
                      else {
                      // console.log('POPULATE ajax response: '+msg.doc.itemstore);
