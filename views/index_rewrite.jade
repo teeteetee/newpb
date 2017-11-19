@@ -2069,6 +2069,92 @@ head
           }
           console.log(mention_indexes);
         }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        //hiding popover on outside click
+        $(document).on('click', function (e) {
+            $('[data-toggle="popover"],[data-original-title]').each(function () {
+                //the 'is' for buttons that trigger popups
+                //the 'has' for icons within a button that triggers a popup
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {                
+                    (($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
+                }
+        
+            });
+        });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function add_friend(el){
+              var data={};
+              data._id = $(el).attr('id');  
+              console.log(data._id+' friends _id'); 
+             $.ajax({
+                 method: "POST",
+                 url: "/counter/addfriend",
+                 data: data
+               }).done(function( msg ) {
+                   if(!msg.trouble)
+                   {console.log('friend added');
+                 (function(){
+                 $.ajax({
+                    method: "POST",
+                    url: "/counter/get_nick",
+                    data: {'_id':data._id}
+                  })
+                    .done(function( msg ) {
+                      if(!msg.trouble) {
+                        // console.log('get_nick iteration: '+msg.mtext);
+                         if(!friendstore)
+                          {friendstore=[];}
+                          var temp_id=$(el).attr('id');
+                          var temp_nick = msg.mtext;
+                          if(temp_nick.length>21){
+                            temp_nick=temp_nick.slice(0,21)+'...';
+                          }
+                          friendstore.push({'_id':temp_id,'nick':msg.mtext});
+                         var length=friendstore.length-1;
+                         $('#friends_insert').append("<div class='row menu_item' onclick='open_friends_list(friendstore,"+length+")' id='"+temp_id+"' nick='"+msg.mtext+"' >"+temp_nick+"<svg xmlns='http://www.w3.org/2000/svg' onclick='rmfriend_dialog("+length+")' class='svg-hidden' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 32 32' version='1.1' width='20' height='20'><g id='surface1'><path style='' d='M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 10 15 L 10 17 L 22 17 L 22 15 Z '/></g></svg></div>");
+                         $('#find_friend').modal('hide');
+                        }});
+                  })();
+               }
+             }  
+             )};
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        $('#friends_nick').focusout(function(){
+        if($('#autocompbooks').css('display','block')) {
+          $('#autocompbooks').fadeOut(350);
+          //$('#autocompbooks').slideToggle();
+        }
+        });
+        var lastentry;
+        $('#friends_nick').keyup(function(event) {
+        if($('#friends_nick').val() != lastentry && $('#friends_nick').val().length >3) {   
+          $.ajax({
+            method: "POST",
+            url: "/f_search",
+            data: { f_nick: $('#friends_nick').val() }
+          }).done(function( msg ) {
+              console.log(msg);
+              if(msg)
+                { $('#srb').empty();
+                      for(var i =0;i<msg.length;i++){
+                        if(msg[i]._id!='#{_id}')
+                       {$('#srb').append("<div class='sritem'>"+msg[i].nick+"<button id='"+msg[i]._id+"' onclick='add_friend(this)' class='btn addfriend float-right'>add</button></div>");}
+                      }
+                 $('#autocompbooks').fadeIn(350);\
+                  }
+                            else {
+                              lastentry = $('#friends_nick').val();
+                            }
+                });
+        }
+         lastentry = $('#friends_nick').val()
+        });
 
 
  
