@@ -1501,6 +1501,72 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function get_teamlist_members(_id) {
+          $.ajax({
+          method: "POST",
+          url: "/get_teamlist",
+          data: {'_id':_id}
+        })
+          .done(function( msg ) {
+            if(!msg.trouble) {
+               //console.log('teamlist info: \n'+JSON.stringify(msg.doc));
+               var users_arr=[];
+               get_nick(msg.doc.users,users_arr,0,_id,get_nick);
+               users_arr.forEach(function (element,index){
+                 users_insert+='<div id="'+element+'">'+element+'</div> <br>';
+                });
+               $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+msg.doc.users.length+'</a>');  
+               $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
+              }
+              });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function get_nick(arr,output_arr,current_key,teamlist_id,callback){
+           $.ajax({
+          method: "POST",
+          url: "/counter/get_nick",
+          data: {'_id':arr[current_key]}
+        })
+          .done(function( msg ) {
+            if(!msg.trouble) {
+                //var id='#'+arr[current_key]
+                //$(id).text(msg.mtext);
+                console.log('get_nick iteration: '+msg.mtext);
+                output_arr[current_key]=msg.mtext;
+                if(current_key+1!=arr.length)
+                {current_key++;
+                 callback(arr,output_arr,current_key,callback);}
+                 else{
+                  var users_insert='';
+                  output_arr.forEach(function (element,index){
+                 users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
+                });
+               $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
+               $('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');
+               $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
+                 }
+              }
+          else{
+            if(current_key+1!=arr.length)
+            {current_key++;
+             callback(arr,output_arr,current_key,callback);}
+             else{ 
+              var users_insert='';
+                  output_arr.forEach(function (element,index){
+                 users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
+                });
+               $('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
+               $('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');
+               $('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
+                 }
+          }
+         });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         //populate variables
         var tags=[];
         //
@@ -1523,6 +1589,7 @@ head
             console.log('POPULATE appending');
             var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
             $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
+            get_teamlist_members(list_id);
           }
           global_items_store[list_id].itemstore.forEach(function (element,index){
             date=new Date(parseInt(element.tmstmp));
@@ -2155,6 +2222,38 @@ head
         }
          lastentry = $('#friends_nick').val()
         });
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function invite_dialog(el){
+         $('.friendlist').empty();
+         friendstore.forEach(function (element,index){
+           $('.friendlist').append("<li listid='"+$(el).attr('listid')+"' onclick='invite_submit("+index+",this)' class='list-group-item'>"+element.nick+"</li>");
+           });
+         $('#invite_dialog').modal('show');
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function invite_submit (index,el){
+         var data={};
+        data.list_id=$(el).attr('listid');
+        data.list_name=$('#list_heading_title').attr('clean_title');
+        data.friends_id=friendstore[index]._id;
+         $.ajax({
+              method: "POST",
+              url: "/invite",
+              data: data
+                })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  alert("We've just invited a friend");
+                }
+               });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
 
 
  
