@@ -1406,7 +1406,6 @@ head
                 if(count<temp_teamlists_arr.length)
                 {callback(count,last_list,callback);}
                 else{
-                  temp_teamlists_arr.push(user_id);
                   temp_teamlists_arr.forEach(function (element,index){
                     console.log('GET_TEAMLIST_NAME '+element);
                     if(global_items_store[element]&&global_items_store[element].redactable)
