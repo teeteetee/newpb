@@ -664,7 +664,6 @@ head
         color: rgba(255,255,255,1);
         margin-right: auto;
         margin-left: auto;
-        display: block;
         letter-spacing: 1px;
         text-transform: uppercase;
         margin-bottom: 20px;
@@ -674,6 +673,7 @@ head
         padding-bottom: 3px;
         padding-left: 25px;
         padding-right: 25px;
+        display:none;
       }
       .menu_add_item_button:hover{
         background-color: rgba(255,255,255, 0.3);
@@ -2001,6 +2001,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function open_list(el){
+          $('.menu_add_item_button').css('display','block');
           //if(typeof el != 'object'){
           //  el=$('#'+el);
           //  console.log('OPEN LIST el: '+typeof el);
