@@ -1562,6 +1562,7 @@ head
              $('#main_list').prepend(insert);
           });
           if(tags.length){
+            $('#tags').css('display','block');
             $('#tags').empty();
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
@@ -1571,7 +1572,7 @@ head
             }
             else{
               $('#tags').empty();
-              $('#tags').append("No tags yet");
+              $('#tags').css('display','none');
             }
          }
         else
@@ -1586,7 +1587,7 @@ head
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
                         $('#tags').empty();
-                        $('#tags').append('No tags, list is empty ');
+                        $('#tags').css('display','none');
                      }
                      else {
                      // console.log('POPULATE ajax response: '+msg.doc.itemstore);
@@ -1633,6 +1634,7 @@ head
                        });
                        if(tags.length){
                          $('#tags').empty();
+                         $('#tags').css('display','block');
                          sortByKey(tags,'quantity');
                          tags.forEach(function (element, index){
                           $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
@@ -1640,7 +1642,7 @@ head
                          }
                          else{
                            $('#tags').empty();
-                           $('#tags').append("No tags yet");
+                           $('#tags').css('display','none');
                          }
                         if(global_items_store[list_id].redactable){
                           console.log('POPULATE appending');
@@ -1980,6 +1982,7 @@ head
                      global_items_store[$(el).attr('_id')].itemstore.push({item_title:data.item_title,item_tags:data.item_tags,item_comment:data.item_comment,item_link:data.item_link,tmstmp:msg.date});//there is a 'regdateint' field on the server, not used in frontend
                      $('#list_heading_title_num').text(parseInt($('#list_heading_title_num').text())+1);
                      if(tags.length){
+                    $('#tags').css('display','block');
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
