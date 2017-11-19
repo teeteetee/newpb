@@ -51,7 +51,7 @@ head
       .colour-transition.colour0{background: linear-gradient(135deg, #16bf69 0%, #2ba9bd 100%);opacity:0;}
       .colour-transition.colour1{background: linear-gradient(135deg, #16bf69 0%, #02338c 100%);opacity:0;}
       .colour-transition.colour2{background: linear-gradient(135deg, #109286 0%, #fdbd2e 100%);opacity:0;}
-      .colour-transition.colour3{background: linear-gradient(135deg, #ce224a 0%, #436786 100%);opacity:0;}
+      .colour-transition.colour3{background: linear-gradient(135deg, #06a092 0%, #436786 100%);opacity:0;}
       .colour-transition.colour4{background: linear-gradient(135deg, #ce6372 0%, #436786 100%);opacity:0;}
       .colour-transition.colour5{background: linear-gradient(135deg, #ce6372 0%, #ff9221 100%);opacity:0;}
       .colour-transition.colour6{background: linear-gradient(135deg, #bd064a 0%, #e84e13 100%);opacity:0;}
@@ -1558,7 +1558,7 @@ head
                });
              }
              insert+="</li>";    
-             $('#main_list').append(insert);
+             $('#main_list').prepend(insert);
           });
           if(tags.length){
             $('#tags').empty();
@@ -1628,7 +1628,7 @@ head
                             });
                           }
                           insert+="</li>";    
-                          $('#main_list').append(insert);
+                          $('#main_list').prepend(insert);
                        });
                        if(tags.length){
                          $('#tags').empty();
