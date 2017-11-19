@@ -1152,8 +1152,9 @@ head
               g#surface1
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
           #friends_insert
-          .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
-            button.btn.menu_add_item_button#add_modal_trigger(type='button'  data-toggle="modal") Add item
+          //
+            .row(style='padding-left: 15px;margin-bottom:10px;margin-top:30px;')
+              button.btn.menu_add_item_button#add_modal_trigger(type='button'  data-toggle="modal") Add item
           .row.active_menu_heading#settings_btn Settings
           .row.active_menu_heading(onclick="window.location='/logout';") Log out  
         .col-md-10#lists
@@ -1162,7 +1163,8 @@ head
           #tags
             | Create a list, add items, invite team members
             br
-            button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
+          //button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
+          button.btn.menu_add_item_button#add_modal_trigger(type='button'  data-toggle="modal") Add item
           ul.list-group#main_list(style='margin-bottom:40px;')
   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -1577,7 +1579,7 @@ head
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
                         $('#tags').empty();
-                        $('#tags').append('No tags, list is empty <button>Add item</button>');
+                        $('#tags').append('No tags, list is empty <button class="btn btn-transparent">Add item</button>');
                      }
                      else {
                      // console.log('POPULATE ajax response: '+msg.doc.itemstore);
