@@ -564,7 +564,7 @@ head
         /*background-color:rgba(255,255,255,0.1);*/
         border:1px solid rgba(255,255,255,0.1);
         border-radius:6px;
-        margin-bottom:40px;
+        margin-bottom:20px;
         margin-top: 13px;
         color:rgba(255,255,255,0.5);
       }
@@ -668,7 +668,7 @@ head
         display: block;
         letter-spacing: 1px;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-size: 12px;
         padding-top: 5px;
         padding-bottom: 3px;
@@ -1142,7 +1142,7 @@ head
         .col-md-2#menu_bar
           .row(style='border-bottom:1px solid rgba(255,255,255,0.1);')
             h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:30;margin-right:auto;margin-bottom:30px;margin-top:18px;') Teamlists
-          h4#user_name Reso 
+          //h4#user_name Reso 
           #invites.row.menu_heading(style='margin-top:30px;')
           #invite_insert
           .row.menu_heading(style='margin-top:30px;')
@@ -1153,7 +1153,7 @@ head
           //.row.menu_item.selected(onclick="open_list(this)" id="#{_id}") Your items
           #team_lists_insert
           .row.menu_heading(style='margin-top:30px;')
-            | Friends
+            | Team members
             svg(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg" viewBox="0 0 32 32" version="1.1" width="20" height="20" onclick="$('#find_friend').modal('show');$('#friends_nick').val('');" style="margin-top: 1px;margin-left: 5px;")
               g#surface1
                 path(style=" " d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 15 10 L 15 15 L 10 15 L 10 17 L 15 17 L 15 22 L 17 22 L 17 17 L 22 17 L 22 15 L 17 15 L 17 10 Z ")
@@ -1178,8 +1178,8 @@ head
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous")
       script.
         var user_id = '#{_id}';
-        var user_nick = '#{nick}';
-        $('#user_name').text(user_nick);
+        //var user_nick = '#{nick}';
+        //$('#user_name').text(user_nick);
         //var teamlist_store = !{teamlists}; 
         var global_items_store={};
         var friendstore = !{friendstore};
