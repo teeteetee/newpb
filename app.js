@@ -257,6 +257,7 @@ app.post('/get_teamlist',function (req,res){
            else{
              if(done)
              {ms.trouble=0;
+              console.log('GET_TEAMLISTS done: '+JSON.stringify(done));
              ms.doc=done;
              res.send(ms);}
              else {
