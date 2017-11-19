@@ -1526,7 +1526,7 @@ head
         function get_nick(arr,output_arr,current_key,teamlist_id,callback){
            $.ajax({
           method: "POST",
-          url: "/counter/get_nick",
+          url: "/get_nick",
           data: {'_id':arr[current_key]}
         })
           .done(function( msg ) {
