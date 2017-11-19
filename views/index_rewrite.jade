@@ -1943,7 +1943,13 @@ head
                   if(global_items_store[$(el).attr('_id')].redactable)
                   {item_click_function='redactitem_dialog(this)';}
                   else{item_click_function='import_dialog(this)';}
-                  var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';           
+                  if(global_items_store[$(el).attr('_id')].itemstore){
+                   var insert='<li class="list-group-item" index="'+global_items_store[$(el).attr('_id')].itemstore.length+'" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';   
+                  }
+                    else{
+                   var insert='<li class="list-group-item" index="0" teamlist_id="'+$(el).attr('_id')+'" onclick="'+item_click_function+'">'+temp_insert+'<small>'+date.getDate()+'.'+(date.getMonth()+1)+'.'+date.getFullYear()+'</small>';   
+                    global_items_store[$(el).attr('_id')].itemstore=[];
+                    }       
                   if(data.item_tags){
                        data.item_tags.trim();
                        data.item_tags=data.item_tags.split(',');
