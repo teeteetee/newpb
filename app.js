@@ -826,6 +826,7 @@ app.post('/invite',function (req,res){
    { 
       counter_invite.update({uid:new ObjectID(req.body.friends_id)},{$push:{invitationstore:{_id:new ObjectID(req.body.list_id),list_name:req.body.list_name}}},function(err,done){
         if(err){
+         console.log('INVITE: db err '+err);
          res.send(ms);
         }
         else{
@@ -834,6 +835,7 @@ app.post('/invite',function (req,res){
         }
       });  }       
       else {
+        console.log('INVITE: err ');
         res.send(ms);
       }   
 });
