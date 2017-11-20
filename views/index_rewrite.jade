@@ -928,12 +928,13 @@ head
                 .panel-body
                   input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                   button(class='btn btn-blue list_name_redact_submit') Submit 
-            button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
-            .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
-              .panel.panel-default(style='border-bottom:0px;background-color: #333;color:ffe0a3;padding-left:10px;padding-right:10px;padding-top:50px;padding-bottom:40px;')
-                .panel-body
-                  | This is an invitation code, pass it to a registered user and he will be able to join this list
-                  h6#invitation_code ID goes here            
+             //
+              button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
+              .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
+                .panel.panel-default(style='border-bottom:0px;background-color: #333;color:ffe0a3;padding-left:10px;padding-right:10px;padding-top:50px;padding-bottom:40px;')
+                  .panel-body
+                    | This is an invitation code, pass it to a registered user and he will be able to join this list
+                    h6#invitation_code ID goes here            
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='first_time' tabindex="-1")
@@ -1278,7 +1279,7 @@ head
                 $('#invites').append('New invites'+'<span class="badge badge-red">'+msg.mtext.length+'</span>');
                 $('#invites').css('display','block');
                 msg.mtext.forEach(function (element,index){
-                  global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1};
+                  global_items_store[element._id]={"redactable":0,"list_name":element.list_name,"itemstore":element.itemstore,"teamlist":1,"pending_invite":1};
                   $('#invite_insert').append('<div class="row menu_item" id="'+element._id+'" onclick="open_list(this);">'+element.list_name+'</div>');
                   });
                 }
@@ -1364,9 +1365,6 @@ head
                if(!msg.trouble) {
                  if(!msg.doc||msg.doc.length===0 ) {
                   console.log('GETTEAMLISTS: no teamlists');
-                  if(global_items_store.length&&msg.last_list){
-                    open_list($('#'+msg.last_list));
-                  }
                   }
                   else {
                   temp_teamlists_arr=msg.doc;
@@ -2096,6 +2094,9 @@ head
           if(!global_items_store[$(el).attr('id')].redactable){
                            $('.menu_add_item_button').css('display','none');
                           }
+          if(global_items_list[$(el).attr('id')].pending_invite){
+            $('#list_heading').append('<div class="btn-group"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)">Accept</button></div>');
+          }
           populate($(el).attr('id'));}  
         }
         ////////--------------------/////////
