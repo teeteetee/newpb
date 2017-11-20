@@ -2094,7 +2094,7 @@ head
         function set_last_list(list_id){
           $.ajax({
               method: "POST",
-              url: "/setlastlist",
+              url: "/set_last_list",
               data: {'list_id':list_id}
               }).done(function( msg ) {
                console.log('setlastlist');
