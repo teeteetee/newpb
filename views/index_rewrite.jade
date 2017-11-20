@@ -1364,6 +1364,9 @@ head
                if(!msg.trouble) {
                  if(!msg.doc||msg.doc.length===0 ) {
                   console.log('GETTEAMLISTS: no teamlists');
+                  if(global_items_store.length&&msg.last_list){
+                    open_list($('#'+msg.last_list));
+                  }
                   }
                   else {
                   temp_teamlists_arr=msg.doc;
