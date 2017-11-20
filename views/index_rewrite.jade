@@ -944,7 +944,7 @@ head
             span(style='font-weight:500;') 'user № #{_id}'
             | , you might want to choose a nickname. You can do that later in the settings, or now:
             .input-group(style='padding-top:10px;padding-bottom:15px;')
-              input(type="text" class="form-control" placeholder="nickname" id='nick_first')
+              input(type="text" class="form-control" style='border-bottom:0px;height:38px;border-top-left-radius:6px;border-bottom-left-radius:6px;' placeholder="nickname" id='nick_first')
               span(class="input-group-btn")
                 button(class="btn btn-blue" onclick="change_nick(0);" id='change_nick_first' type="button") save   
           .modal-footer
