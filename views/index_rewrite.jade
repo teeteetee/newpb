@@ -1593,9 +1593,9 @@ head
             $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
             get_teamlist_members(list_id);
           }
-          else{
-            $('.menu_add_item_button').css('display','none');
-          }
+          //else{
+          //  $('.menu_add_item_button').css('display','none');
+          //}
           global_items_store[list_id].itemstore.forEach(function (element,index){
             date=new Date(parseInt(element.tmstmp));
             temp_insert = element.item_title.length>45?element.item_title.slice(0,35)+'...':temp_insert=element.item_title;
@@ -1655,9 +1655,6 @@ head
               data: {"_id":list_id}
             }).done(function( msg ) {
                  if(!msg.trouble){
-                     if(!global_items_store[list_id].redactable){
-                           $('.menu_add_item_button').css('display','none');
-                          }
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
                         $('#tags').empty();
@@ -2093,6 +2090,9 @@ head
           //$('#list_heading').append('<h4 id="list_heading_title">'+$(el).attr('clean_title')+'</h4>');
           $('#submit_item_button').attr('_id',$(el).attr('id'));
           $('#list_name_redact_input').val(global_items_store[$(el).attr('id')].list_name);
+          if(!global_items_store[$(el).attr('id')].redactable){
+                           $('.menu_add_item_button').css('display','none');
+                          }
           populate($(el).attr('id'));}  
         }
         ////////--------------------/////////
