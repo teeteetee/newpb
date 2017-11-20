@@ -418,7 +418,7 @@ app.post('/getitems',function (req,res){
     var temp_id=new ObjectID(req.body._id);
     console.log('GETITEMS temp_id: '+temp_id);
     console.log('GETITEMS typeof: '+typeof temp_id);
-    counter_items.findOne({'uid':temp_id},function(err,doc){
+    counter_teamlists.findOne({_id:temp_id},function(err,doc){
       if(err) {
         console.log('ERR WHILE MOVIES QUERY');
         res.send(ms);
@@ -716,14 +716,7 @@ app.post('/additem',function (req,res){
  {       console.log('adding an item');
           var ms = {};
           ms.trouble =1;
-            var list_id;
-            // =req.body.list_id===0?req.session._id:new ObjectID(req.body.list_id);
-             if(req.body.list_id.length===1&&!parseInt(req.body.list_id)){
-              list_id=new ObjectID(req.session._id);
-             }
-             else{
-              list_id=new ObjectID(req.body.list_id);
-             }
+            var list_id=new ObjectID(req.body.list_id);
             var vtitle = req.body.item_title.replace(/\s{2,}/g,' ').trim();
             var vlink = req.body.item_link;
             console.log('breakpoint one');
@@ -771,22 +764,6 @@ app.post('/additem',function (req,res){
             }
             console.log('breakpoint four: '+req.session._id);
           var vtmstmp = Date.now();
-          if(req.body.list_id===1&&!parseInt(req.body.list_id)){
-          counter_items.update({uid:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
-            console.log(done);
-            //console.log(err);
-            if(err){
-              console.log('ADDITEM DB ERR');
-              res.send(ms);
-            }
-              else{
-                ms.trouble=0;
-                ms.date=vtmstmp;
-                res.send(ms);
-              }
-          });
-          }
-          else{
             counter_teamlists.update({_id:list_id},{$push:{itemstore:{item_comment:vcomment,item_title:vtitle,item_link:vlink,item_tags:vtags,regdateint:fulldate,tmstmp:vtmstmp}},$inc:{total:1}},function(err,done){
             console.log(done);
             //console.log(err);
@@ -800,7 +777,7 @@ app.post('/additem',function (req,res){
                 res.send(ms);
               }
           });
-          }
+          
           console.log('breakpoint five');
           //console.log('item added');
           }       
@@ -1257,7 +1234,7 @@ app.post('/newteamlist',function (req,res){
                    res.send(ms); 
                   }
                 else {
-                  counter_items.insert({uid:done._id,total:0,itemstore:[]});
+                  //counter_items.insert({uid:done._id,total:0,itemstore:[]});
                   counter_users.update({_id:req.session._id},{$push:{teamlists:done._id},$set:{last_list:done._id}},function (err,done_1){
                         if(err)
                        {
