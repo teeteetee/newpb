@@ -2095,7 +2095,7 @@ head
                            $('.menu_add_item_button').css('display','none');
                           }
           if(global_items_store[$(el).attr('id')].pending_invite){
-            $('#list_heading').append('<div class="btn-group"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)">Accept</button></div>');
+            $('#list_heading').append('<div class="btn-group" style="vertical-align:super;margin-left:25px;"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" style="padding-left:12px;padding-right:12px;">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" style="padding-left:12px;padding-right:12px;">Decline</button></div>');
           }
           populate($(el).attr('id'));}  
         }
