@@ -2094,7 +2094,7 @@ head
           if(!global_items_store[$(el).attr('id')].redactable){
                            $('.menu_add_item_button').css('display','none');
                           }
-          if(global_items_list[$(el).attr('id')].pending_invite){
+          if(global_items_store[$(el).attr('id')].pending_invite){
             $('#list_heading').append('<div class="btn-group"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)">Accept</button></div>');
           }
           populate($(el).attr('id'));}  
