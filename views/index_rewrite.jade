@@ -1842,25 +1842,25 @@ head
         $('#dropdown_list_choice').attr({'index':i});
         $('.item_import_submit').attr('onclick',insert_import);
         $('.import_item_title').text('');
-        $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+        $('.import_item_title').text(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
         //
-        if(consolidated[i].item_link!='--'&&consolidated[i].item_link!=''){
+        if(global_items_store[teamlist_id].itemstore[i].item_link!='--'&&global_items_store[teamlist_id].itemstore[i].item_link!=''){
         $('.import_item_title').text('');
-        $('.import_item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+consolidated[i].item_link+'">'+consolidated[i].item_title.capitalizeFirstLetter()+'</a>');
+        $('.import_item_title').append('<span style="margin-right:5px;color:#ddd;font-size:15px;" class="glyphicon glyphicon-link"></span><a href="'+global_items_store[teamlist_id].itemstore[i].item_link+'">'+global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter()+'</a>');
         }
         else{
-          $('.import_item_title').text(consolidated[i].item_title.capitalizeFirstLetter());
+          $('.import_item_title').text(global_items_store[teamlist_id].itemstore[i].item_title.capitalizeFirstLetter());
         }
-        if(!consolidated[i].item_comment||consolidated[i].item_comment=='--'){
+        if(!global_items_store[teamlist_id].itemstore[i].item_comment||global_items_store[teamlist_id].itemstore[i].item_comment=='--'){
           $('.import_item_comment').css('display','none');
         }
         else{
           $('.import_item_comment').css('display','block');
-          $('.import_item_comment').text(consolidated[i].item_comment.capitalizeFirstLetter());
+          $('.import_item_comment').text(global_items_store[teamlist_id].itemstore[i].item_comment.capitalizeFirstLetter());
         }
         $('.import_item_tags').text();
-        if(consolidated[i].item_tags.length>0)
-        {$('.import_item_tags').text('Tags: '+consolidated[i].item_tags);}
+        if(global_items_store[teamlist_id].itemstore[i].item_tags.length>0)
+        {$('.import_item_tags').text('Tags: '+global_items_store[teamlist_id].itemstore[i].item_tags);}
         $('#importmodal').modal('show');
         }
         ////////--------------------/////////
