@@ -132,6 +132,7 @@ app.get('/',function (req,res){
   res.render('index_rewrite',{'_id':req.session._id,'nick':0,'friendstore':JSON.stringify(req.session.friendstore)});
 }}
  else {
+  console.log(' MAIN REQUEST FROM '+req.ip);
   res.render('counter_index_login');
  }
  //res.render('index_counter_out');
