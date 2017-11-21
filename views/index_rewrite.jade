@@ -26,9 +26,14 @@ head
       font-family:boldproxima;
       src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
+      @font-face {
+      font-family:roboto;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
       body{
       background-color:transparent;
-      font-family:helvetica;
+      /*font-family:helvetica;*/
+      font-family:roboto;
       }
       .colour-transition{
       position:absolute;
@@ -2249,6 +2254,25 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function invite_submit (index,el){
+         var data={};
+        data.list_id=$(el).attr('listid');
+        data.list_name=$('#list_heading_title').attr('clean_title');
+        data.friends_id=friendstore[index]._id;
+         $.ajax({
+              method: "POST",
+              url: "/invite",
+              data: data
+                })
+              .done(function( msg ) {
+                if(!msg.trouble){
+                  alert("We've just invited a friend");
+                }
+               });
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function accept_invite (index,el){
          var data={};
         data.list_id=$(el).attr('listid');
         data.list_name=$('#list_heading_title').attr('clean_title');
