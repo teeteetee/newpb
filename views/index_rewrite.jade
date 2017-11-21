@@ -32,8 +32,8 @@ head
       }
       body{
       background-color:transparent;
-      /*font-family:helvetica;*/
-      font-family:roboto;
+      font-family:helvetica;
+      /*font-family:roboto;*/
       }
       .colour-transition{
       position:absolute;
@@ -1269,7 +1269,7 @@ head
         //           }
         //       }
         //       else{
-        //        alert('Service unavaliable');
+        //        alert('Service unavailable');
         //       }
         // });
         /////////------------------//////////
@@ -1584,7 +1584,8 @@ head
           var insert;
           var inarr;
         //1. Check if we have local store
-        set_last_list(list_id);
+        if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
+          {set_last_list(list_id);}
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
          {
           //populate localy
@@ -1730,7 +1731,7 @@ head
                      }
                  }
                  else{
-                  alert('Service unavaliable');
+                  alert('Service unavailable');
                  }
               });
          }
@@ -2272,21 +2273,35 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function accept_invite (index,el){
+        function accept_invite (el,accept){
          var data={};
         data.list_id=$(el).attr('listid');
-        data.list_name=$('#list_heading_title').attr('clean_title');
-        data.friends_id=friendstore[index]._id;
+        if(accept){
          $.ajax({
               method: "POST",
-              url: "/invite",
+              url: "/confirm_invite",
+              data: data
+                })
+              .done(function( msg ) {
+                if(msg.trouble){
+                 alert("accept_invite service unavailable");
+                }
+                window.location='/';
+               });
+        }
+        else{
+          $.ajax({
+              method: "POST",
+              url: "/decline_invite",
               data: data
                 })
               .done(function( msg ) {
                 if(!msg.trouble){
-                  alert("We've just invited a friend");
+                  alert("accept_invite service unavailable");
+                  window.location='/';
                 }
                });
+        }
         }
         ////////--------------------/////////
         ////////--------------------/////////
