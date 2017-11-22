@@ -851,12 +851,13 @@ app.post('/confirm_invite',function (req,res){
        ms.mtext ;
     if(req.session&&req.session._id&&req.body.list_id)
    { 
-      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:{'_id':new ObjectID(req.body.list_id)}}},function (err,done){
+      var temp_id=typeof req.body.list_id === 'string'?new ObjectID(req.body.list_id):req.body.list_id;
+      counter_invite.update({uid:new ObjectID(req.session._id)},{$pull:{invitationstore:{'_id':temp_id}}},function (err,done){
         if(err){
          res.send(ms);
         }
         else{
-          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:{'_id':new ObjectID(req.body.list_id)}}},function (err1,done1){
+          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:{'_id':temp_id}}},function (err1,done1){
             if(err){
                res.send(ms);
               }
