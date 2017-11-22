@@ -2325,6 +2325,7 @@ head
          var data={};
         data.list_id=$(el).attr('listid');
         if(accept){
+          data.list_name=global_items_store[$(el).attr('listid')].list_name;
          $.ajax({
               method: "POST",
               url: "/confirm_invite",
