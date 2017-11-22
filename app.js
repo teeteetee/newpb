@@ -862,6 +862,7 @@ app.post('/confirm_invite',function (req,res){
                res.send(ms);
               }
               else{
+                 console.log('CONFIRM INVITE done: '+done1);
                  ms.trouble=0;
                  res.send(ms);
               }
