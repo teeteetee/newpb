@@ -862,9 +862,16 @@ app.post('/confirm_invite',function (req,res){
                res.send(ms);
               }
               else{
-                 console.log('CONFIRM INVITE done: '+done1);
+                  counter_teamlists.update({_id:temp_id},{$push:{users:req.session._id}},function (err1,done1){
+            if(err){
+               res.send(ms);
+              }
+              else{
+                console.log('CONFIRM INVITE done: '+done1);
                  ms.trouble=0;
                  res.send(ms);
+              }
+            });
               }
           });
         }
