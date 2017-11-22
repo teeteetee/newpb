@@ -444,10 +444,10 @@ else{
 app.post('/getlistname',function (req,res){
   var ms ={};
   ms.trouble=1;
-  if(req.session&&req.session._id&&req.body._id)
+  if(req.session&&req.session._id&&req.body.list_id)
   {
     //var temp_id=new ObjectID(req.body._id);
-    counter_teamlists.findOne({'_id':new ObjectID(req.body._id)},function(err,doc){
+    counter_teamlists.findOne({'_id':new ObjectID(req.body.list_id)},function(err,doc){
       if(err) {
         console.log('GETLISTNAME: DB query err - '+err);
         res.send(ms);
