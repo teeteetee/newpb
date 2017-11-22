@@ -945,7 +945,7 @@ head
     .colour-transition.colour9
     .colour-transition.colour10
     .colour-transition.colour11
-    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
+    .container-fluid(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
       .row(id='spin') 
         .col-xs-12(style='text-align:center;')
           .loader
@@ -2332,9 +2332,9 @@ head
                 })
               .done(function( msg ) {
                 if(msg.trouble){
-                 alert("accept_invite service unavailable");
+                 console.log("accept_invite service unavailable");
                 }
-                window.location='/';
+                //window.location='/';
                });
         }
         else{
@@ -2345,8 +2345,8 @@ head
                 })
               .done(function( msg ) {
                 if(!msg.trouble){
-                  alert("accept_invite service unavailable");
-                  window.location='/';
+                  console.log("accept_invite service unavailable");
+                  //window.location='/';
                 }
                });
         }
