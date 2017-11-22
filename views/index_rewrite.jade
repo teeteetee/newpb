@@ -1177,7 +1177,7 @@ head
             h5.import_item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
             h6.import_item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h6.import_item_tags(style='margin-bottom:30px;color:#bbb;') 
-            button(class='btn btn-grey-redact item_import') Add to my list
+            button(class='btn btn-grey-redact item_import') Recieving list
             .panel-group(id="import_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body(style='padding-top:50px;padding-bottom:30px;')
@@ -1276,7 +1276,7 @@ head
         ////////--------------------/////////
         function list_choice(el){
          $('#dropdown_list_choice').text($(el).text());
-         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+','+$('#dropdown_list_choice').attr('teamlist')+',"'+$(el).attr('_id')+'")');
+         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+',"'+$(el).attr('list_id')+'")');
         }
         ////////--------------------/////////
         ////////--------------------/////////
@@ -1461,9 +1461,10 @@ head
                 else{
                   temp_teamlists_arr.forEach(function (element,index){
                     console.log('GET_TEAMLIST_NAME '+element);
-                    if(global_items_store[element]&&global_items_store[element].redactable)
+                    //if(global_items_store[element]&&global_items_store[element].redactable)
+                    if(global_items_store[element])
                      {
-                       $('.dropdown-menu').append('<a _id="'+element+'" teamlist="'+global_items_store[element].teamlist+'" onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
+                       $('.dropdown-menu').append('<a list_id="'+element+'"  onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
                     });
                   console.log('GET_TEAMLIST_NAME breakpoint');
