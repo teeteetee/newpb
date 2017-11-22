@@ -1714,7 +1714,8 @@ head
             }).done(function( msg ) {
                  if(!msg.trouble){
                      //items=msg.doc.itemstore;
-                     if(!msg.doc.itemstore||!msg.doc.itemstore.length ) {  
+                     if(!msg.doc.itemstore||!msg.doc.itemstore.length ) { 
+                        $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">0</span>') 
                         $('#tags').empty();
                         $('#tags').css('display','none');
                      }
