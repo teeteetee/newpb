@@ -446,8 +446,8 @@ app.post('/getlistname',function (req,res){
   ms.trouble=1;
   if(req.session&&req.session._id&&req.body.list_id)
   {
-    //var temp_id=new ObjectID(req.body._id);
-    counter_teamlists.findOne({'_id':new ObjectID(req.body.list_id)},function(err,doc){
+    var temp_id=typeof req.body.list_id === 'string'?new ObjectID(req.body.list_id):req.body.list_id;
+    counter_teamlists.findOne({'_id':temp_id},function(err,doc){
       if(err) {
         console.log('GETLISTNAME: DB query err - '+err);
         res.send(ms);
