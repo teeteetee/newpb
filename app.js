@@ -857,7 +857,7 @@ app.post('/confirm_invite',function (req,res){
          res.send(ms);
         }
         else{
-          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:{'_id':temp_id,'list_name':req.body.list_name}}},function (err1,done1){
+          counter_users.update({_id:new ObjectID(req.session._id)},{$push:{teamlists:temp_id}},function (err1,done1){
             if(err){
                res.send(ms);
               }
