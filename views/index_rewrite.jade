@@ -1593,7 +1593,7 @@ head
                 output_arr[current_key]=msg.mtext;
                 if(current_key+1!=arr.length)
                 {current_key++;
-                 callback(arr,output_arr,current_key,callback);}
+                 callback(arr,output_arr,current_key,teamlist_id,callback);}
                  else{
                   var users_insert='';
                   output_arr.forEach(function (element,index){
@@ -1608,7 +1608,7 @@ head
           else{
             if(current_key+1!=arr.length)
             {current_key++;
-             callback(arr,output_arr,current_key,callback);}
+             callback(arr,output_arr,current_key,teamlist_id,callback);}
              else{ 
               var users_insert='';
                   output_arr.forEach(function (element,index){
