@@ -2156,6 +2156,7 @@ head
             console.log('CHECK CHECK: id: '+$(el).attr('id'));
             $('#list_heading').append('<div class="btn-group" style="vertical-align:super;margin-left:25px;"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" style="padding-left:12px;padding-right:12px;">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" style="padding-left:12px;padding-right:12px;">Decline</button></div>');
           }
+          tags=[];
           populate($(el).attr('id'));}  
         }
         ////////--------------------/////////
