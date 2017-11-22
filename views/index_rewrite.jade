@@ -903,6 +903,10 @@ head
     .colour-transition.colour9
     .colour-transition.colour10
     .colour-transition.colour11
+    .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;')
+      .row(id='spin') 
+        .col-xs-12(style='text-align:center;')
+          .loader
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -1421,6 +1425,7 @@ head
                      }    
                     });
                   console.log('GET_TEAMLIST_NAME breakpoint');
+                  $('#wait').css('display','none');
                   open_list($('#'+last_list));
                 }
               });
@@ -1487,7 +1492,7 @@ head
           var teamlist_name;
         if($('#list_name').val() )//what if I dont know year yet?
         {
-          $('#add').fadeOut(350);
+          //$('#add').fadeOut(350);
           $('#wait').css('display','block');
           //-------------
            var data={};
