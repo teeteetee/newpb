@@ -1637,6 +1637,7 @@ head
         //1. Check if we have local store
         $('.dropdown-item').css('display','block');
         $('#dropdown'+list_id).css('display','none');
+        console.log('POPULATE: '+$('#dropdown'+list_id));
         if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
           {set_last_list(list_id);}
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
