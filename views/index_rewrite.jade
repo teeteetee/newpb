@@ -1638,7 +1638,7 @@ head
           var insert;
           var inarr;
         //1. Check if we have local store
-        $('#dropdown'+list_id).addClass('zero_height');
+        $('#dropdown_'+list_id).css('display','none');
         if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
           {set_last_list(list_id);}
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
@@ -2139,7 +2139,7 @@ head
         var current_list_id;
         function open_list(el){
           if(current_list_id){
-            $('#dropdown'+current_list_id).removeClass('zero_height');
+            $('#dropdown_'+current_list_id).css('display','block');
           }
           current_list_id=$(el).attr('id');
           $('.menu_add_item_button').css('display','block');
