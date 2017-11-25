@@ -1462,7 +1462,7 @@ head
                   temp_teamlists_arr.forEach(function (element,index){
                     console.log('GET_TEAMLIST_NAME '+element);
                     //if(global_items_store[element]&&global_items_store[element].redactable)
-                    if(global_items_store[element]&&element!=current_list_id)
+                    if(global_items_store[element])
                      {
                        $('.dropdown-menu').append('<a list_id="'+element+'" id="dropdown_'+element+'"  onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
@@ -1636,7 +1636,6 @@ head
           var inarr;
         //1. Check if we have local store
         $('#dropdown'+list_id).css('display','none');
-        console.log('POPULATE: '+$('#dropdown'+list_id));
         if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
           {set_last_list(list_id);}
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
@@ -2136,6 +2135,9 @@ head
         ////////--------------------/////////
         var current_list_id;
         function open_list(el){
+          if(current_list_id){
+            $('#dropdown'+current_list_id).css('display','none');
+          }
           current_list_id=$(el).attr('id');
           $('.menu_add_item_button').css('display','block');
           //if(typeof el != 'object'){
