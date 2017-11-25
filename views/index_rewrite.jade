@@ -528,7 +528,7 @@ head
         color: rgba(255,255,255,0.3);
       }
       .active_menu_heading:hover{
-        color:rgba(37, 204, 234, 0.8);
+        color:white;
       }
       .menu_item:hover{
         /*background-color:#ffd3b7;*/
@@ -1177,12 +1177,12 @@ head
             h5.import_item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
             h6.import_item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h6.import_item_tags(style='margin-bottom:30px;color:#bbb;') 
-            button(class='btn btn-grey-redact item_import') Recieving list
+            button(class='btn btn-grey-redact item_import') Add to my list
             .panel-group(id="import_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body(style='padding-top:50px;padding-bottom:30px;')
                   .dropdown
-                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Choose a list
+                    button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Chose a list
                     .dropdown-menu(aria-labelledby="dropdown_list_choice")
                   button(class='btn btn-blue item_import_submit') Add to chosen list 
           .modal-footer
@@ -1464,7 +1464,7 @@ head
                     //if(global_items_store[element]&&global_items_store[element].redactable)
                     if(global_items_store[element])
                      {
-                       $('.dropdown-menu').append('<a list_id="'+element+'"  onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
+                       $('.dropdown-menu').append('<a list_id="'+element+'" id="dropdown_'+element+'"  onclick="list_choice(this)" class="dropdown-item">'+global_items_store[element].list_name+'</a>');
                      }    
                     });
                   console.log('GET_TEAMLIST_NAME breakpoint');
@@ -1635,6 +1635,8 @@ head
           var insert;
           var inarr;
         //1. Check if we have local store
+        $('.dropdown-item').css('display','block');
+        $('#dropdown'+list_id).css('display','none');
         if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
           {set_last_list(list_id);}
         if(global_items_store[list_id]&&global_items_store[list_id].itemstore&&global_items_store[list_id].itemstore.length)
