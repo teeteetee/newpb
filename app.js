@@ -727,6 +727,7 @@ app.post('/additem',function (req,res){
               {console.log('ADDITEM: has tags: '+req.body.item_tags);
                console.log('ADDITEM: typeof tags: '+typeof req.body.item_tags);
                 vtags=req.body.item_tags.split(',');
+                console.log('ADDITEM: vtags: '+vtags);
                 vtags.forEach(function (element, index){
               vtags[index]=trim1(element);
             });
