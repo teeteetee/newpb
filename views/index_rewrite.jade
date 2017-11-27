@@ -1632,6 +1632,7 @@ head
         var tags=[];
         //
         function populate(list_id){
+          console.log('POPULATE list_id: '+list_id)
           var date;
           var temp_insert;
           var item_click_function;
@@ -1859,6 +1860,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function importitem_submit(i,teamlist_id) {
+          console.log('IMPORTITEM_SUBMIT teamlist_id: '+teamlist_id);
           var data={};
             data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
             data.item_link="";
