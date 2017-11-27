@@ -723,7 +723,7 @@ app.post('/additem',function (req,res){
             console.log('breakpoint one');
             var vcomment = req.body.item_comment;
             var vtags;
-            if(req.body.item_tags.trim())
+            if(req.body.item_tags)
               {console.log('ADDITEM: has tags: '+req.body.item_tags);
                 vtags=req.body.item_tags.split(',');
                 vtags.forEach(function (element, index){

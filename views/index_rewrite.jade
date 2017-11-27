@@ -1879,9 +1879,10 @@ head
             //console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
             data.list_id=dest_teamlist_id;
            // alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
+           console.log('IMPORTITEM_SUBMIT data: '+JSON.stringify(data));
         $.ajax({
               method: "POST",
-              url: "/additem/",
+              url: "/additem",
               data: data
               }).done(function( msg ) {
               //window.location='/';
