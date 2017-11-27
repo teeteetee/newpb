@@ -1279,7 +1279,7 @@ head
         ////////--------------------/////////
         function list_choice(el){
          $('#dropdown_list_choice').text($(el).text());
-         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+',"'+$(el).attr('list_id')+'")');
+         $('.item_import_submit').attr('onclick','importitem_submit('+$('#dropdown_list_choice').attr('index')+',"'+current_list_id+'","'+$(el).attr('list_id')+'")');
         }
         ////////--------------------/////////
         ////////--------------------/////////
@@ -1859,7 +1859,7 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
-        function importitem_submit(i,teamlist_id) {
+        function importitem_submit(i,teamlist_id,dest_teamlist_id) {
           console.log('IMPORTITEM_SUBMIT teamlist_id: '+teamlist_id);
           var data={};
             data.item_title=global_items_store[teamlist_id].itemstore[i].item_title;
@@ -1877,8 +1877,7 @@ head
               //console.log('IMPORTITEM_SUBMIT 2: '+global_items_store[teamlist_id].itemstore[i].item_tags);
               data.item_tags=global_items_store[teamlist_id].itemstore[i].item_tags;}
             //console.log('IMPORTITEM_SUBMIT 3: '+data.item_tags); 
-            if(teamlist)
-             {data.list_id=teamlist_id;}
+            data.list_id=dest_teamlist_id;
            // alert('IMPORTITEM_SUBMIT data'+JSON.stringify(data));
         $.ajax({
               method: "POST",
@@ -1900,7 +1899,7 @@ head
           $('.modal-dialog').css('margin-top','5%');
         }
         //
-        insert_import = 'importitem_submit('+$(el).attr('index')+',"'+$(el).attr('teamlist_id')+'")';
+        insert_import = 'importitem_submit('+$(el).attr('index')+',"'+current_list_id+'","'+$(el).attr('teamlist_id')+'")';
         $('#dropdown_list_choice').attr({'index':$(el).attr('index')});
         $('.item_import_submit').attr('onclick',insert_import);
         $('.import_item_title').text('');
