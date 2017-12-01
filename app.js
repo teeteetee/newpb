@@ -912,7 +912,7 @@ app.post('/set_last_list',function (req,res){
        ms.mtext ;
     if(req.session&&req.session._id&&req.body.list_id)
    { 
-      counter_users.update({uid:new ObjectID(req.session._id)},{$set:{last_list:new ObjectID(req.body.list_id)}},function (err,done){
+      counter_users.update({_id:new ObjectID(req.session._id)},{$set:{last_list:new ObjectID(req.body.list_id)}},function (err,done){
         if(err){
          res.send(ms);
         }
