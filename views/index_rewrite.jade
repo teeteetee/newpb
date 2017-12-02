@@ -934,6 +934,14 @@ head
       .zero_height{
         height:0px;
       }
+      #list_heading_span{    
+      font-family: helvetica;
+      font-size: 15px;
+      font-style: italic;
+      margin-top: 20px;
+      font-weight: 100;
+      display: block;
+      color: rgba(255,255,255,0.4);}
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1647,7 +1655,7 @@ head
           tags=[];
           $('#main_list').empty();
           $('#tags').empty();
-          $('#list_heading_title').append('<span style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;display:block;"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+          $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
           $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
@@ -1719,7 +1727,7 @@ head
                  if(!msg.trouble){
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) { 
-                        $('#list_heading_title').append('<span style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;margin-right:10px;display:block;"><span style="margin-right:10px;" id="list_heading_title_num" >0</span>items</span>');
+                        $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >0</span>items</span>');
                         $('#tags').empty();
                         $('#tags').css('display','none');
                      }
@@ -1732,7 +1740,7 @@ head
                        $('#main_list').empty();
                        $('#tags').empty();
                        //$('#list_heading_title').text(global_items_store[list_id]);
-                       $('#list_heading_title').append('<span style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;display:block;"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+                       $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
                        $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
