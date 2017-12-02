@@ -625,6 +625,7 @@ head
       #list_heading_title{
         font-family:boldproxima;
         color:rgba(255,255,255,1);
+        text-align:center;
       }
       .transparent{
         background-color:rgba(255,255,255,0);
@@ -1646,7 +1647,7 @@ head
           tags=[];
           $('#main_list').empty();
           $('#tags').empty();
-          $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+          $('#list_heading_title').prepend('<span style="display:block;"><span id="list_heading_title_num" style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;margin-right:10px;">'+global_items_store[list_id].itemstore.length+'</span>items</span>');
           $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
@@ -1718,7 +1719,7 @@ head
                  if(!msg.trouble){
                      //items=msg.doc.itemstore;
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) { 
-                        $('#list_heading_title').prepend('<span class="badge" id="list_heading_title_num" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">0</span>') 
+                        $('#list_heading_title').prepend('<span style="display:block;"><span id="list_heading_title_num" style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;margin-right:10px;">0</span>items</span>') 
                         $('#tags').empty();
                         $('#tags').css('display','none');
                      }
@@ -1731,7 +1732,7 @@ head
                        $('#main_list').empty();
                        $('#tags').empty();
                        //$('#list_heading_title').text(global_items_store[list_id]);
-                       $('#list_heading_title').prepend('<span class="badge" style="min-width: 27px;vertical-align: text-top;font-size: 15px;border: 2px solid white;border-radius: 100px;margin-right: 7px;padding-top: 5px;color: white;background-color: transparent;">'+global_items_store[list_id].itemstore.length+'</span>')
+                       $('#list_heading_title').prepend('<span style="display:block;"><span id="list_heading_title_num" style="font-family: helvetica;font-size: 15px;font-style: italic;margin-top: 20px;font-weight: 100;margin-right:10px;">'+global_items_store[list_id].itemstore.length+'</span>items</span>')
                        $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
@@ -2150,7 +2151,7 @@ head
           //  console.log('OPEN LIST el: '+typeof el);
           //}
           $('#list_heading').empty();
-          $('#list_heading').append('<h4 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h4>');
+          $('#list_heading').append('<h3 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h3>');
           var list_id_jq='#'+$(el).attr('id');
           if(!$(list_id_jq).hasClass('selected'))
          {$('#main_list').empty();
