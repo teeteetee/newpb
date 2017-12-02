@@ -855,7 +855,7 @@ head
         transition: fill 0.2s linear;
       }
       .svg:hover path{
-        fill:#de8500;
+        fill:white;
       }
       .svg-hidden{
         position: relative;
@@ -952,6 +952,15 @@ head
       font-weight: 100;
       display: block;
       color: rgba(255,255,255,0.4);}
+      #tag_name_title_num{
+      font-family: helvetica;
+      font-size: 15px;
+      font-style: italic;
+      margin-top: 10px;
+      font-weight: 100;
+      display: block;
+      color: rgba(0,0,0,0.4);
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -974,7 +983,7 @@ head
         .modal-content
           .modal-header
             h4.modal-title#tag_name_title 
-            .badge#tag_name_title_num.title_num
+            #tag_name_title_num
           .modal-body  
             ul.list-group.itemlist(style='margin-bottom:0px;border-radius:0px;')
               li.list-group-item.noitemstags Пока пусто
@@ -2234,7 +2243,7 @@ head
               $('.itemlist').append('<li class="list-group-item">'+global_items_store[$(el).attr('list_id')].itemstore[element].item_title+'</li>');
               });
             $('#tag_name_title').text(tags[$(el).attr('index')].tag_name.capitalizeFirstLetter());
-            $('#tag_name_title_num').text(mention_indexes.length);
+            $('#tag_name_title_num').text(mention_indexes.length===1?mention_indexes.length+' item':mention_indexes.length+' items');
             if($('body').width()<$('body').height()) {
             $('.modal-dialog').css('margin-top','20%');
             }
