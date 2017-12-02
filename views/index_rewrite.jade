@@ -146,10 +146,10 @@ head
       h4 {
         word-wrap:break-word;
       }
-      .modal-sm h4 {
+      /*.modal-sm h4 {
         padding-right:18px;
         padding-left:15px;
-      }
+      }*/
       .modal-sm .modal-body {
         padding:0px;
       }
@@ -981,7 +981,7 @@ head
     .modal.fade(id='tagsmodal' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
-          .modal-header
+          .modal-header(style='display:block;text-align:center;')
             h4.modal-title#tag_name_title 
             #tag_name_title_num
           .modal-body  
