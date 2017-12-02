@@ -2140,7 +2140,7 @@ head
                      }
                      insert+="</li>";    
                      $('#main_list').prepend(insert);
-                     global_items_store[$(el).attr('_id')].itemstore.push({item_title:data.item_title,item_tags:data.item_tags,item_comment:data.item_comment,item_link:data.item_link,tmstmp:msg.date});//there is a 'regdateint' field on the server, not used in frontend
+                     //global_items_store[$(el).attr('_id')].itemstore.push({item_title:data.item_title,item_tags:data.item_tags,item_comment:data.item_comment,item_link:data.item_link,tmstmp:msg.date});//there is a 'regdateint' field on the server, not used in frontend
                      $('#list_heading_title_num').text(parseInt($('#list_heading_title_num').text())+1);
                      if(tags.length){
                     $('#tags').css('display','block');
