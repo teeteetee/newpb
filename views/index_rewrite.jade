@@ -688,7 +688,9 @@ head
       }
       .oi-cog{
        color:rgba(255,255,255,0.3);
-       margin-left:10px;
+       margin-left: auto;
+       margin-right: 5px;
+       margin-top: 4px;
        cursor:pointer;
       }
       .oi-cog:hover{
@@ -1458,7 +1460,9 @@ head
                 if(!msg.trouble) {
                    if(msg.doc.admin!=user_id) {global_items_store[_id]={"redactable":0,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
                    else{global_items_store[_id]={"redactable":1,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
-                  $('#'+_id).text(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name); 
+                  //$('#'+_id).text(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name); 
+                  var insert ="redact_list_dialog('"+_id+"','"+global_items_store[_id].list_name+"',"+global_items_store[_id].itemstore.length+")";
+                  $('#'+_id).append(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name+'<span class="oi oi-cog" onclick="'+insert+'" title="redact this list" aria-hidden="true"></span>');
                   $('#'+_id).attr('clean_title',msg.doc.list_name);
                   $('#'+_id).attr('onclick','open_list(this)');
                 }
@@ -1662,9 +1666,9 @@ head
           $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
-            var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
-            $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
-            get_teamlist_members(list_id);
+            //var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
+            //$('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
+            //get_teamlist_members(list_id);
           }
           //else{
           //  $('.menu_add_item_button').css('display','none');
@@ -1790,11 +1794,11 @@ head
                            $('#tags').empty();
                            $('#tags').css('display','none');
                          }
-                        if(global_items_store[list_id].redactable){
-                          console.log('POPULATE appending');
-                          var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
-                          $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
-                        }
+                        //if(global_items_store[list_id].redactable){
+                        //  console.log('POPULATE appending');
+                        //  var insert_2 ="redact_list_dialog('"+list_id+"','"+global_items_store[list_id].list_name+"',"+global_items_store[list_id].itemstore.length+")";
+                        //  $('#list_heading').append('<span class="oi oi-cog" onclick="'+insert_2+'" title="redact this list" aria-hidden="true"></span>');
+                        //}
                      }
                  }
                  else{
