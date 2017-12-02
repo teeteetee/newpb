@@ -507,7 +507,7 @@ head
       #lists {
         height: 100vh;
         overflow-y: auto;
-        padding-top:53px;
+        padding-top:37px;
         padding-left:30px;
         padding-right:30px;
       }
@@ -624,9 +624,7 @@ head
       }
       #list_heading_title{
         font-family:boldproxima;
-        color:rgba(255,255,255,0.5);
-        /*margin-top: 25;*/
-        display:inline;
+        color:rgba(255,255,255,1);
       }
       .transparent{
         background-color:rgba(255,255,255,0);
@@ -1197,7 +1195,7 @@ head
       .row  
         .col-md-2#menu_bar
           .row(style='border-bottom:1px solid rgba(255,255,255,0.1);')
-            h4(style='color:white;font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:30;margin-right:auto;margin-bottom:30px;margin-top:18px;') Teamlists
+            h4(style='color:rgba(255,255,255,0.3);font-family:boldproxima;text-transform:uppercase;letter-spacing:1px;margin-left:30;margin-right:auto;margin-bottom:30px;margin-top:18px;') Teamlists
           //h4#user_name Reso 
           #invites.row.menu_heading(style='margin-top:30px;')
           #invite_insert(style='margin-bottom:30px;')
@@ -1221,7 +1219,7 @@ head
           .row.active_menu_heading(onclick="window.location='/logout';") Log out  
         .col-md-10#lists
           #list_heading
-            h4#list_heading_title Welcome!
+            h3#list_heading_title Welcome!
           #tags
             | Create a list, add items, invite team members
           //button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
