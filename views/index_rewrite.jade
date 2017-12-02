@@ -1176,7 +1176,10 @@ head
             h5.item_title(style='margin-top:10px;margin-bottom:35px;text-transform: uppercase;font-weight: 500;')
             h6.item_comment(style='padding-bottom:30px;color:#333;font-weight:400;padding-left: 10px;padding-right: 10px;')
             h6.item_tags(style='margin-bottom:30px;color:#bbb;') 
-            button(class='btn btn-grey-redact item_redact' style='margin-bottom:50px;') Redact
+            //button(class='btn btn-grey-redact item_redact' style='margin-bottom:50px;') Redact
+            .btn-group(style='margin-left: 69px;margin-bottom:50px;')
+              button.btn.btn-grey-redact.item_redact Redact
+              button.btn.btn-grey-redact.item_remove Delete
             .panel-group(id="redact_item_dialog" role="tablist" style='display:none;')
               .panel.panel-default
                 .panel-body
@@ -1185,9 +1188,9 @@ head
                   input#item_comment_redact(type="text" class="form-control" autocomplete='off' maxlength="250"  placeholder='Комментарий')
                   input#item_tags_redact(type="text" class="form-control" autocomplete='off' maxlength="500"  placeholder='Тэги')
                   button(class='btn btn-blue item_redact_submit') Submit
-            
           .modal-footer
-            button(class='btn btn-red item_remove ') Remove
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+            //button(class='btn btn-red item_remove ') Remove
     .modal.fade(id='importmodal' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
       .modal-dialog.modal-sm
         .modal-content
