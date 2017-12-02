@@ -539,6 +539,20 @@ head
         background-color:rgba(255,255,255,0.1);
         color:rgba(255,255,255,0.8);
       }
+      .oi-cog{
+       color:rgba(255,255,255,0.3);
+       margin-left: auto;
+       margin-right: 5px;
+       margin-top: 4px;
+       cursor:pointer;
+       display:none;
+      }
+      .oi-cog:hover{
+      color:rgba(255,255,255,0.5);
+      }
+      .menu_item.selected .oi-cog{
+        display:inline;
+      }
       .list-group{
         background-color:none;
       }
@@ -685,16 +699,6 @@ head
       }
       .menu_add_item_button:hover{
         background-color: rgba(255,255,255, 0.3);
-      }
-      .oi-cog{
-       color:rgba(255,255,255,0.3);
-       margin-left: auto;
-       margin-right: 5px;
-       margin-top: 4px;
-       cursor:pointer;
-      }
-      .oi-cog:hover{
-      color:rgba(255,255,255,0.5);
       }
       .badge:focus{
         outline: 0;
