@@ -1031,9 +1031,8 @@ head
               button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
               #members_list.collapse  
             .invite_section(style='border-top:1px solid #eee;width:100%;adding-bottom:15px;padding-top:15px;text-align:center;')
-              button.btn.btn-grey-redact( data-toggle='collapse' data-target='#friends_list') Invite
-              ul.list-group.friendlist.collapse#friends_list
-                li.list-group-item.noitemsfriends You didn't add any friends yet
+              button.btn.btn-grey-redact#invite_button( data-toggle='collapse' data-target='#friends_list') Invite
+              ul.list-item-group#invite_members_list.collapse
              //
               button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
               .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
@@ -1684,6 +1683,7 @@ head
                //if(friendstore&&friendstore.length){$('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');}
                //$('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                  }
+                 $('#invite_button').attr('onclick','invite_dialog(this)');
                  $('#members_list').empty();
                 $('#members_list').append(users_insert);
               }
@@ -1701,6 +1701,7 @@ head
                // if(friendstore&&friendstore.length){$('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');}
                //$('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
                  }
+                 $('#invite_button').attr('onclick','invite_dialog(this)');
                  $('#members_list').empty();
                  $('#members_list').append(users_insert);
           }
@@ -2234,6 +2235,7 @@ head
           //  el=$('#'+el);
           //  console.log('OPEN LIST el: '+typeof el);
           //}
+          $('#invite_button').attr('listid',$(el).attr('id'));
           $('#list_heading').empty();
           $('#list_heading').append('<h3 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h3>');
           var list_id_jq='#'+$(el).attr('id');
