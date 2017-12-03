@@ -993,10 +993,10 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4.modal-title Redacting a list
-          .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:30px;') 
+            h4.modal-title List settings
+          .modal-body(style='background-color: rgba(243, 243, 243, 0.83);padding-top:50px;') 
             h6#list_name_redact(style='text-align:center;')
-            #redact_list_title_num.itelic_title_num(style='text-align:center;margin-bottom: 20px;')
+            #redact_list_title_num.italic_title_num(style='text-align:center;margin-bottom: 20px;')
             .btn-group(style='margin-left: 69px;margin-bottom:30px;')
               button.btn.btn-grey-redact#list_redact_toggle Rename
               button.btn.btn-grey-redact#list_remove_toggle Delete 
@@ -1009,6 +1009,31 @@ head
                 .panel-body
                   input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                   button(class='btn btn-blue list_name_redact_submit') Submit 
+
+            .panel-group(id="accordion4" role="tablist" aria-multiselectable="true")
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingOne32")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseOne32" aria-expanded="false" aria-controls="collapseOne32") Members/Admins
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                #collapseOne32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne32")
+                  .panel-body
+                    h3 hello
+                    
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingTwo32")
+                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseTwo32" aria-expanded="false" aria-controls="collapseTwo32") Inivte members
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
+                #collapseTwo32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo32")
+                  .panel-body(style='padding-top:30px;')
+                    h3 hello
+            //        
+              .panel.panel-default
+                .panel-heading(role="tab" id="headingThree32")
+                  button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseThree32" aria-expanded="false" aria-controls="collapseThree32") Change nick
+                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
+                #collapseThree32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree32")
+                  .panel-body 
+                    
              //
               button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
               .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
@@ -1016,7 +1041,7 @@ head
                   .panel-body
                     | This is an invitation code, pass it to a registered user and he will be able to join this list
                     h6#invitation_code ID goes here            
-          .modal-footer
+          .modal-footer(style='border:none;')
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='first_time' tabindex="-1")
       .modal-dialog.modal-sm
@@ -1056,8 +1081,7 @@ head
       .modal-dialog.modal-sm(role="document")
         .modal-content
           .modal-header(style='border-bottom: 1px solid #eee;')
-            h4.modal-title Settings
-            
+            h4.modal-title Settings 
           .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
               .panel.panel-default
@@ -1557,6 +1581,7 @@ head
           $('#invite_to_a_list').css('display','none');
           $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
           $('#list_name_redact').text(global_items_store[_id].list_name);
+          $('#redact_list_title_num').empty();
           if(global_items_store[_id].itemstore)
           {$('#redact_list_title_num').append(global_items_store[_id].itemstore.length===1?global_items_store[_id].itemstore.length+' item':global_items_store[_id].itemstore.length+' items');}
           else{
