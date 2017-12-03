@@ -1031,7 +1031,9 @@ head
               button.btn.btn-grey-redact(style='margin-left:auto;margin-right:auto;' data-toggle="collapse" data-target="#members_list") Show members
               #members_list.collapse  
             .invite_section(style='border-top:1px solid #eee;width:100%;')
-              button.btn.btn-grey-redact(style='margin-left:auto;margin-right:auto;') Invite
+              button.btn.btn-grey-redact(style='margin-left:auto;margin-right:auto;' data-toggle='collapse' data-target='#friends_list') Invite
+              ul.list-group.friendlist.collapse#friends_list
+                li.list-group-item.noitemsfriends You didn't add any friends yet
              //
               button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
               .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
@@ -1065,16 +1067,16 @@ head
             button#rmfriend_submit.btn.btn-red(style='margin-left: 105px;') Remove
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close       
-    .modal.fade(id='invite_dialog' tabindex="-1")
-      .modal-dialog.modal-sm
-        .modal-content
-          .modal-header
-            h4.modal-title Invite to this list  
-          .modal-body  
-            ul.list-group.friendlist(style='margin-bottom:0px;')
-              li.list-group-item.noitemsfriends You didn't add any friends yet
-          .modal-footer
-            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    //.modal.fade(id='invite_dialog' tabindex="-1")
+    //  .modal-dialog.modal-sm
+    //    .modal-content
+    //      .modal-header
+    //        h4.modal-title Invite to this list  
+    //      .modal-body  
+    //        ul.list-group.friendlist(style='margin-bottom:0px;')
+    //          li.list-group-item.noitemsfriends You didn't add any friends yet
+    //      .modal-footer
+    //        button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
