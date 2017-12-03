@@ -1616,12 +1616,12 @@ head
                $('#redact_list_title_user_num').empty();
                if(msg.doc.users&&msg.doc.users.length){
                 $('#redact_list_title_user_num').append(msg.doc.users.length===1?msg.doc.users.length+' memeber':msg.doc.users.length+' members');
+                var users_arr=[];
+               get_nick(msg.doc.users,users_arr,0,_id,get_nick);
                }
                else{
                 $('#redact_list_title_user_num').append('0 members');
                }
-               var users_arr=[];
-               get_nick(msg.doc.users,users_arr,0,_id,get_nick);
                //users_arr.forEach(function (element,index){
                //  users_insert+='<div id="'+element+'">'+element+'</div> <br>';
                // });
@@ -1657,7 +1657,7 @@ head
                //$('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
                //if(friendstore&&friendstore.length){$('#list_heading').append('<button class="btn invite" listid="'+teamlist_id+'" onclick="invite_dialog(this)">Invite</button>');}
                //$('[data-toggle="popover"]').popover({'html':true,'content':users_insert});
-               //  }
+                 }
                 $('#members_list').append(users_insert);
               }
           else{
