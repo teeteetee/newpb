@@ -1680,7 +1680,7 @@ head
           tags=[];
           $('#main_list').empty();
           $('#tags').empty();
-          $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+          $('#list_heading_title').append(global_items_store[list_id].itemstore.length===1?'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>item</span>':'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
           $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
@@ -1765,7 +1765,7 @@ head
                        $('#main_list').empty();
                        $('#tags').empty();
                        //$('#list_heading_title').text(global_items_store[list_id]);
-                       $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+                       $('#list_heading_title').append(global_items_store[list_id].itemstore.length===1?'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>item</span>':'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
                        $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
                        global_items_store[list_id].itemstore.forEach(function (element,index){
                          date=new Date(parseInt(element.tmstmp));
