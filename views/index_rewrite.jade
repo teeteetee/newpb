@@ -1028,10 +1028,10 @@ head
                   input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                   button(class='btn btn-blue list_name_redact_submit') Submit 
             #members_list_section(style='border-top:1px solid #eee;width:100%;padding-bottom:15px;padding-top:15px;text-align:center;')
-              button.btn.btn-grey-redact(style='margin-left:auto;margin-right:auto;' data-toggle="collapse" data-target="#members_list") Show members
+              button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
               #members_list.collapse  
-            .invite_section(style='border-top:1px solid #eee;width:100%;')
-              button.btn.btn-grey-redact(style='margin-left:auto;margin-right:auto;' data-toggle='collapse' data-target='#friends_list') Invite
+            .invite_section(style='border-top:1px solid #eee;width:100%;adding-bottom:15px;padding-top:15px;text-align:center;')
+              button.btn.btn-grey-redact( data-toggle='collapse' data-target='#friends_list') Invite
               ul.list-group.friendlist.collapse#friends_list
                 li.list-group-item.noitemsfriends You didn't add any friends yet
              //
