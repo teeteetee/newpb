@@ -195,7 +195,7 @@ head
       padding: 15px;
       text-align: center;
       }
-      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus,#settings .panel-group .panel .panel-heading .btn .form-control:focus,#redact_list .panel-group .panel .panel-heading .btn .form-control:focus  {
+      #add_comb .panel-group .panel .panel-heading .btn .form-control:focus,#settings .panel-group .panel .panel-heading .btn .form-control:focus {
       border-color: none;
       box-shadow:none;
       }
@@ -203,7 +203,7 @@ head
       text-align: center;
       background-color: rgb(238, 238, 238);
       }
-      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark,#settings .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add, #redact_list .panel-group .panel .panel-heading .btn .form-control:focus  {
+      #add_comb .modal-body .panel-group .panel .panel-heading .btn-iosdark,#settings .modal-body .panel-group .panel .panel-heading .btn-iosdark, btn-iosdark-add {
       background-color: white;
       color: #333;
       min-height: 50px;
@@ -1009,31 +1009,10 @@ head
                 .panel-body
                   input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                   button(class='btn btn-blue list_name_redact_submit') Submit 
-
-            .panel-group(id="accordion4" role="tablist" aria-multiselectable="true")
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingOne32")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseOne32" aria-expanded="false" aria-controls="collapseOne32") Members/Admins
-                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
-                #collapseOne32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne32")
-                  .panel-body
-                    h3 hello
-                    
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingTwo32")
-                  button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseTwo32" aria-expanded="false" aria-controls="collapseTwo32") Inivte members
-                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
-                #collapseTwo32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo32")
-                  .panel-body(style='padding-top:30px;')
-                    h3 hello
-            //        
-              .panel.panel-default
-                .panel-heading(role="tab" id="headingThree32")
-                  button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseThree32" aria-expanded="false" aria-controls="collapseThree32") Change nick
-                    span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
-                #collapseThree32(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree32")
-                  .panel-body 
-                    
+            .members(style='border-top:1px solid #ddd;width:100%;')
+              h3 hello m
+            .invite(style='border-top:1px solid #ddd;width:100%;')
+              h3 hello i
              //
               button.btn.btn-grey-redact#invite_to_a_list_toggle(style='margin-top:20px;margin-bottom:20px;margin-left:82px;') Invite to this list
               .panel-group(id="invite_to_a_list" role="tablist" style='display:none;')
