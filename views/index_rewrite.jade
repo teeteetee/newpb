@@ -1285,6 +1285,9 @@ head
         .col-md-10#lists
           #list_heading
             h3#list_heading_title Welcome!
+            span#list_heading_span
+              | items:
+              span(style="margin-left:10px;" id="list_heading_title_num")
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
             h4 List settings
@@ -1766,7 +1769,8 @@ head
           tags=[];
           $('#main_list').empty();
           $('#tags').empty();
-          $('#list_heading_title').append(global_items_store[list_id].itemstore.length===1?'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>item</span>':'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+          //$('#list_heading_title').append(global_items_store[list_id].itemstore.length===1?'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>item</span>':'<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >'+global_items_store[list_id].itemstore.length+'</span>items</span>');
+          $('#list_heading_span').text(global_items_store[list_id].itemstore.length);
           $('#list_heading_title').attr('clean_title',global_items_store[list_id].list_name);
           if(global_items_store[list_id].redactable){
             console.log('POPULATE appending');
@@ -2295,7 +2299,7 @@ head
             $('#list_heading').append('<div class="btn-group" style="vertical-align:super;margin-left:25px;"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" style="padding-left:12px;padding-right:12px;">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" style="padding-left:12px;padding-right:12px;">Decline</button></div>');
           }
           if($('#redact_list_div').css('display')!='none')
-          {$('#redact_list_div').slideToggle();};
+          {$('#redact_list_div').css('display','none');};
           tags=[];
           populate($(el).attr('id'));}  
         }
