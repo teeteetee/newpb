@@ -1610,25 +1610,29 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         function redact_list_dialog(_id){
-          //$('#redact_list_dialog').css('display','none');
-          //$('#invite_to_a_list').css('display','none');
-          $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
-          //alert(1);
-          $('#list_name_redact').text(global_items_store[_id].list_name);
-          //alert(2);
-          $('#redact_list_title_num').empty();
-          //alert(3);
-          if(global_items_store[_id].itemstore)
-          {$('#redact_list_title_num').append(global_items_store[_id].itemstore.length===1?global_items_store[_id].itemstore.length+' item':global_items_store[_id].itemstore.length+' items');alert(4.1);}
-          else{
-            //alert(4.2);
-            $('#redact_list_title_num').append('0 items');
-          }
-          //alert(5);
-          //$('#invitation_code').text(_id);
-          //alert(6);
-          //$('#redact_list').modal('show');
-          $('#redact_list_div').slideToggle();
+          if($('#redact_list_div').css('display')==='none')
+          {//$('#redact_list_dialog').css('display','none');
+           //$('#invite_to_a_list').css('display','none');
+           $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
+           //alert(1);
+           $('#list_name_redact').text(global_items_store[_id].list_name);
+           //alert(2);
+           $('#redact_list_title_num').empty();
+           //alert(3);
+           if(global_items_store[_id].itemstore)
+           {$('#redact_list_title_num').append(global_items_store[_id].itemstore.length===1?global_items_store[_id].itemstore.length+' item':global_items_store[_id].itemstore.length+' items');}
+           else{
+             //alert(4.2);
+             $('#redact_list_title_num').append('0 items');
+           }
+           //alert(5);
+           //$('#invitation_code').text(_id);
+           //alert(6);
+           //$('#redact_list').modal('show');
+           $('#redact_list_div').slideToggle();}
+           else{
+            $('#redact_list_div').slideToggle();
+           }
         };
         ////////--------------------/////////
         ////////--------------------/////////
