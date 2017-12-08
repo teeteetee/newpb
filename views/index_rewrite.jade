@@ -979,7 +979,12 @@ head
         border-bottom-right-radius:5px;
       }
       #redact_list_div{
-        dislpay:none;
+       display:none;
+       background-color: rgba(255,255,255,0.3);
+       border-radius: 6px;
+       margin-bottom:30px;
+       margin-top:30px;
+       border: 3px solid white;
       }
   body
     .colour-transition.colour0
@@ -1282,25 +1287,27 @@ head
           #list_heading
             h3#list_heading_title Welcome!
           #redact_list_div
-            h4#list_name_redact(style='text-align:center;')
+            //h4#list_name_redact(style='text-align:center;')
+            h4 List settings
             #redact_list_title_num.italic_title_num(style='text-align:center;')
             #redact_list_title_user_num.italic_title_num(style='text-align:center;margin-bottom: 20px;')
             .btn-group(style='margin-left: 69px;margin-bottom:30px;')
               button.btn.btn-grey-redact#list_redact_toggle Rename
               button.btn.btn-grey-redact#list_remove_toggle Delete 
-            .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
-              .panel.panel-default(style='border-bottom:0px;background-color: #222;')
-                .panel-body
-                  button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
-            .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
-              .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
-                .panel-body
-                  input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
-                  button(class='btn btn-blue list_name_redact_submit') Submit 
-            #members_list_section(style='border-top:1px solid #eee;width:100%;padding-bottom:15px;padding-top:15px;text-align:center;')
+            //
+              .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
+                .panel.panel-default(style='border-bottom:0px;background-color: #222;')
+                  .panel-body
+                    button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
+              .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
+                .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
+                  .panel-body
+                    input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
+                    button(class='btn btn-blue list_name_redact_submit') Submit 
+            #members_list_section(style='padding-bottom:15px;padding-top:15px;text-align:center;')
               button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
               #members_list.collapse  
-            .invite_section(style='border-top:1px solid #eee;width:100%;adding-bottom:15px;padding-top:15px;text-align:center;')
+            .invite_section(style='adding-bottom:15px;padding-top:15px;text-align:center;')
               button.btn.btn-grey-redact#invite_button( data-toggle='collapse' data-target='#invite_members_list') Invite
               ul.list-item-group#invite_members_list.collapse(style='padding-left:0px;')
             button.btn.btn-default Close
