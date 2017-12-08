@@ -1299,15 +1299,15 @@ head
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
             #redact_list_title_user_num.italic_title_num(style='text-align:center;margin-bottom: 20px;')
             .row
-              .col-sm-3(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+              .col-sm-2.col-sm-offset-2(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                   button.btn.btn-grey-redact#list_redact_toggle Rename
-              .col-sm-3(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+              .col-sm-2(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                   button.btn.btn-grey-redact#list_remove_toggle Delete 
-              .col-sm-3(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+              .col-sm-2(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
                 button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
                 #members_list.collapse 
-              .col-sm-3(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+              .col-sm-2(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
                 button.btn.btn-grey-redact#invite_button( data-toggle='collapse' data-target='#invite_members_list') Invite
                 ul.list-item-group#invite_members_list.collapse(style='padding-left:0px;')
@@ -1322,7 +1322,7 @@ head
                     input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                     button(class='btn btn-blue list_name_redact_submit') Submit 
             .row(style='text-align:center;')
-              .col-xs-12
+              .col-sm-12
                 button.btn.btn-grey-redact(onclick='$("#redact_list_div").slideToggle();') Close
           #tags
             | Create a list, add items, invite team members
