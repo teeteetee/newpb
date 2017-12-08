@@ -984,6 +984,8 @@ head
        border-radius: 6px;
        margin-bottom:30px;
        margin-top:30px;
+       padding-top:25px;
+       padding-bottom:25px;
       }
       #list_heading_span{
         display:none;
@@ -1293,7 +1295,7 @@ head
               span(style="margin-left:10px;" id="list_heading_title_num")
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
-            h4(style='margin-top:25px;text-align:center;') List settings
+            h4(style='text-align:center;') List settings
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
             #redact_list_title_user_num.italic_title_num(style='text-align:center;margin-bottom: 20px;')
             .row
@@ -1319,7 +1321,7 @@ head
                   .panel-body
                     input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
                     button(class='btn btn-blue list_name_redact_submit') Submit 
-            button.btn.btn-grey(onclick='$("#redact_list_div").slideToggle();') Close
+            button.btn.btn-grey-redact(onclick='$("#redact_list_div").slideToggle();') Close
           #tags
             | Create a list, add items, invite team members
           //button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
