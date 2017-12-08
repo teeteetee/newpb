@@ -985,6 +985,9 @@ head
        margin-bottom:30px;
        margin-top:30px;
       }
+      #list_heading_span{
+        display:none;
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1759,6 +1762,9 @@ head
           var item_click_function;
           var insert;
           var inarr;
+          if($('#list_heading_span').css('display')==='none'){
+            $('#list_heading_span').css('display','block');
+          }
         //1. Check if we have local store
         $('#dropdown_'+list_id).css('display','none');
         if(global_items_store[list_id]&&!global_items_store[list_id].pending_inivte)
@@ -2279,8 +2285,9 @@ head
           friendstore.forEach(function (element,index){
            $('#invite_members_list').append("<li listid='"+$(el).attr('id')+"' onclick='invite_submit("+index+",this)' class='list-group-item'>"+element.nick+"</li>");
            });
-          $('#list_heading').empty();
-          $('#list_heading').append('<h3 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h3>');
+          //$('#list_heading').empty();
+          //$('#list_heading').append('<h3 id="list_heading_title">'+global_items_store[$(el).attr('id')].list_name+'</h3>');
+          $('#list_heading_title').text(global_items_store[$(el).attr('id')].list_name);
           var list_id_jq='#'+$(el).attr('id');
           if(!$(list_id_jq).hasClass('selected'))
          {$('#main_list').empty();
