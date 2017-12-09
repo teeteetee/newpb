@@ -1031,7 +1031,6 @@ head
               li.list-group-item.noitemstags Пока пусто
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
-
     .modal.fade(id='list_name_change' tabindex="-1")
       .modal-dialog.modal-sm
         .modal-content
@@ -1128,6 +1127,15 @@ head
               li.list-group-item.noitemsfriends You didn't add any friends yet
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='members_modal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            h4.modal-title Members 
+          .modal-body  
+            ul.list-group.members_list(style='margin-bottom:0px;')
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='settings' tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog.modal-sm(role="document")
         .modal-content
@@ -1199,8 +1207,7 @@ head
       .modal-dialog.modal-sm
         .modal-content
           .modal-header
-            h4(class="modal-title" style='text-align:center;') New team list
-            
+            h4(class="modal-title" style='text-align:center;') New team list   
           .modal-body.add_choice
             .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
               .panel.panel-default     
@@ -1343,9 +1350,8 @@ head
                   button.btn.btn-grey-redact#list_remove_toggle(data-toggle='modal' data-target='#list_remove_modal') Delete 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
-                button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
-                  span.badge.badge-pill.badge-dark#redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;padding-right: 3px;")
-                #members_list.collapse 
+                button.btn.btn-grey-redact( data-toggle="modal" data-target="#members_modal") Show members
+                  span.badge.badge-pill.badge-dark#redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;padding-right: 3px;") 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
                 button.btn.btn-grey-redact#invite_button( onclick="invite_dialog(this);") Invite
@@ -1763,7 +1769,7 @@ head
                  else{
                   var users_insert='';
                   output_arr.forEach(function (element,index){
-                 users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
+                 users_insert+='<li class="member_block" id="'+element+'">'+element+'</li>';
                 });
                //console.log('CHECK CHECK 1: temlist_id: '+teamlist_id);
                //$('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
@@ -1780,7 +1786,7 @@ head
              else{ 
               var users_insert='';
                   output_arr.forEach(function (element,index){
-                 users_insert+='<div class="member_block" id="'+element+'">'+element+'</div>';
+                 users_insert+='<li class="member_block" id="'+element+'">'+element+'</li>';
                 });
                   //console.log('CHECK CHECK 2: temlist_id: '+teamlist_id);
                //$('#list_heading').append('<a class="badge" role="button" tabindex="0" data-placement="bottom" style="margin-left:10px;color:rgba(255,255,255,0.5);" data-toggle="popover" data-trigger="focus" title="Members"  title="Dismissible popover"><span style="margin-bottom: 4px;" class="oi oi-person"></span> '+output_arr.length+'</a>');  
