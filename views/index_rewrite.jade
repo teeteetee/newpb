@@ -589,7 +589,7 @@ head
         color:rgba(255,255,255,0.5);
         margin-bottom:20px;
       }
-      a .badge  {
+      .a-badge  {
        background-color: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
       font-weight: 200;
@@ -597,17 +597,14 @@ head
       margin-right: 10px;
       margin-left: 4px;
       }
-      li .badge {
-      display: inline-block;
-      min-width: 10px;
-      padding: 3px 7px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      border-radius: 10px;
+      .list-badge {
+      background-color: transparent;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.3);
+      margin: 3px;
+      font-weight: 200;
+      letter-spacing: 1px;
+      padding: 4px 8px;
       }
       .badge-primary {
          /*background-color: rgba(255,255,255,0.3);
@@ -1820,7 +1817,7 @@ head
                element.item_tags.forEach(function (element_2,index_2){
                  //console.log('item_tags iteration 2');
                  inarr=0;
-                 insert+="<span class='badge tag-badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
+                 insert+="<span class='badge list-badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
                  $.each(tags, function(key, tag) {
                   if (tag.tag_name.toLowerCase() === element_2.toLowerCase()) {
                   tags[key].quantity++;
@@ -1845,7 +1842,7 @@ head
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
               //console.log('item_tags iteration 4');
-             $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
+             $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
               });
             }
             else{
@@ -1895,7 +1892,7 @@ head
                             });
                             element.item_tags.forEach(function (element_1,index_1){
                               inarr=0;
-                              insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                              insert+="<span class='badge list-badge float-right'>"+element_1.toLowerCase()+"</span>";
                               $.each(tags, function(key, tag) {
                                if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                                tags[key].quantity++;
@@ -1918,7 +1915,7 @@ head
                          $('#tags').css('display','block');
                          sortByKey(tags,'quantity');
                          tags.forEach(function (element, index){
-                          $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
+                          $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
                            });
                          }
                          else{
@@ -2110,7 +2107,7 @@ head
                        });
                        data.item_tags.forEach(function (element_1,index_1){
                          inarr=0;
-                         insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                         insert+="<span class='badge list-badge float-right '>"+element_1.toLowerCase()+"</span>";
                          $.each(tags, function(key, tag) {
                           if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                           tags[key].quantity++;
@@ -2130,7 +2127,7 @@ head
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
-                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
+                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
                       });
                     } 
                   }
@@ -2246,7 +2243,7 @@ head
                        });
                        data.item_tags.forEach(function (element_1,index_1){
                          inarr=0;
-                         insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                         insert+="<span class='badge list-badge float-right '>"+element_1.toLowerCase()+"</span>";
                          $.each(tags, function(key, tag) {
                           if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                           tags[key].quantity++;
@@ -2270,7 +2267,7 @@ head
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
-                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
+                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
                       });
                     } 
                   }
