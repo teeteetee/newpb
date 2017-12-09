@@ -2265,8 +2265,9 @@ head
                     $('#tags').css('display','block');
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
+                    var temp_list_id=$(el).attr('_id');
                     tags.forEach(function (element, index){
-                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
+                     $('#tags').append("<a onclick='tag_modal("+index+")' list_id='"+temp_list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge a-badge'>"+element.quantity+"</span></a>");
                       });
                     } 
                   }
