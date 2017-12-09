@@ -984,8 +984,11 @@ head
        border-radius: 6px;
        margin-bottom:30px;
        margin-top:30px;
-       padding-top:25px;
-       padding-bottom:25px;
+       padding-top:70px;
+       padding-bottom:70px;
+       width: 80%;
+       margin-left: auto;
+       margin-right: auto;
       }
       #list_heading_span{
         display:none;
@@ -1289,8 +1292,8 @@ head
             span(style="color: rgba(255,255,255,0.1);margin:auto;font-size: 13;") 2017
         .col-md-10#lists
           #list_heading
-            h3#list_heading_title Welcome!
-            span#list_heading_span
+            h3#list_heading_title(style='margin-bottom:12px;') Welcome!
+            h5#list_heading_span(style='text-align:center;margin-bottom:30px;')
               | items:
               span(style="margin-left:10px;" id="list_heading_title_num")
           #redact_list_div
