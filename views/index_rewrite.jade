@@ -587,7 +587,7 @@ head
         color:rgba(255,255,255,0.5);
         margin-bottom:20px;
       }
-      a .badge {
+      a .badge .tag-badge {
        background-color: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
       font-weight: 200;
@@ -595,7 +595,7 @@ head
       margin-right: 10px;
       margin-left: 4px;
       }
-      .badge {
+      .badge .tag-badge {
       display: inline-block;
       min-width: 10px;
       padding: 3px 7px;
@@ -1309,7 +1309,7 @@ head
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
                 button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
-                  span.badge.badge-pill.badge-primary#redact_list_title_user_num
+                  span.badge.badge-pill.badge-dark#redact_list_title_user_num
                 #members_list.collapse 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
@@ -1813,7 +1813,7 @@ head
                element.item_tags.forEach(function (element_2,index_2){
                  //console.log('item_tags iteration 2');
                  inarr=0;
-                 insert+="<span class='badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
+                 insert+="<span class='badge tag-badge float-right badge-primary'>"+element_2.toLowerCase()+"</span>";
                  $.each(tags, function(key, tag) {
                   if (tag.tag_name.toLowerCase() === element_2.toLowerCase()) {
                   tags[key].quantity++;
@@ -1838,7 +1838,7 @@ head
             sortByKey(tags,'quantity');
             tags.forEach(function (element, index){
               //console.log('item_tags iteration 4');
-             $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+             $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
               });
             }
             else{
@@ -1888,7 +1888,7 @@ head
                             });
                             element.item_tags.forEach(function (element_1,index_1){
                               inarr=0;
-                              insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                              insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
                               $.each(tags, function(key, tag) {
                                if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                                tags[key].quantity++;
@@ -1911,7 +1911,7 @@ head
                          $('#tags').css('display','block');
                          sortByKey(tags,'quantity');
                          tags.forEach(function (element, index){
-                          $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+                          $('#tags').append("<a onclick='tag_modal(this)' index='"+index+"' list_id='"+list_id+"' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
                            });
                          }
                          else{
@@ -2103,7 +2103,7 @@ head
                        });
                        data.item_tags.forEach(function (element_1,index_1){
                          inarr=0;
-                         insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                         insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
                          $.each(tags, function(key, tag) {
                           if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                           tags[key].quantity++;
@@ -2123,7 +2123,7 @@ head
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
-                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
                       });
                     } 
                   }
@@ -2239,7 +2239,7 @@ head
                        });
                        data.item_tags.forEach(function (element_1,index_1){
                          inarr=0;
-                         insert+="<span class='badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
+                         insert+="<span class='badge tag-badge float-right badge-primary'>"+element_1.toLowerCase()+"</span>";
                          $.each(tags, function(key, tag) {
                           if (tag.tag_name.toLowerCase() === element_1.toLowerCase()) {
                           tags[key].quantity++;
@@ -2263,7 +2263,7 @@ head
                     $('#tags').empty();
                     sortByKey(tags,'quantity');
                     tags.forEach(function (element, index){
-                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge'>"+element.quantity+"</span></a>");
+                     $('#tags').append("<a onclick='tag_modal("+index+")' class='tag_name'>"+element.tag_name.toLowerCase()+"<span class='badge tag-badge'>"+element.quantity+"</span></a>");
                       });
                     } 
                   }
