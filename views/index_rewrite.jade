@@ -984,7 +984,8 @@ head
        border-radius: 6px;
        margin-bottom:30px;
        margin-top:30px;
-       padding-top:70px;
+       padding-top:50px;
+       color:#666;
        padding-bottom:70px;
        width: 80%;
        margin-left: auto;
@@ -1298,9 +1299,8 @@ head
               span(style="margin-left:10px;" id="list_heading_title_num")
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
-            h4(style='text-align:center;') List settings
+            h4(style='text-align:center;margin-bottom:20px;') List settings
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
-            #redact_list_title_user_num.italic_title_num(style='text-align:center;margin-bottom: 20px;')
             .row.justify-content-center
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                   button.btn.btn-grey-redact#list_redact_toggle Rename
@@ -1309,6 +1309,7 @@ head
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
                 button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
+                  span.badge.badge-pill.badge-primary#redact_list_title_user_num
                 #members_list.collapse 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
@@ -1693,14 +1694,13 @@ head
           .done(function( msg ) {
             if(!msg.trouble) {
                //console.log('teamlist info: \n'+JSON.stringify(msg.doc));
-               $('#redact_list_title_user_num').empty();
                if(msg.doc.users&&msg.doc.users.length){
-                $('#redact_list_title_user_num').append(msg.doc.users.length===1?msg.doc.users.length+' memeber':msg.doc.users.length+' members');
+                $('#redact_list_title_user_num').text(msg.doc.users.length);
                 var users_arr=[];
                get_nick(msg.doc.users,users_arr,0,_id,get_nick);
                }
                else{
-                $('#redact_list_title_user_num').append('0 members');
+                $('#redact_list_title_user_num').text(0);
                }
                //users_arr.forEach(function (element,index){
                //  users_insert+='<div id="'+element+'">'+element+'</div> <br>';
