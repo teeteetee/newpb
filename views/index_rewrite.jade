@@ -369,8 +369,10 @@ head
           border-top-color: #ff6767;
        }
        .btn-close{
-        letter-spacing:1px;
-        text-transform:uppercase;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: white;
        }
        .friendlist .list-group-item{
         border-top:1px solid #eee;
@@ -665,12 +667,17 @@ head
       .modal-sm h4{
        margin-left: auto;
        margin-right: auto;
+       margin-top: 30px;
+       margin-bottom: 20px;
       }
       .btn-grey-redact{
         border-color:#ddd;
         color:#aaa;
         background-color:white;
         margin-bottom:15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 11px;
       }
       .btn-grey-redact:hover{
         border-color:#ddd;
@@ -1309,7 +1316,7 @@ head
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
                 button.btn.btn-grey-redact( data-toggle="collapse" data-target="#members_list") Show members
-                  span.badge.badge-pill.badge-dark#redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;")
+                  span.badge.badge-pill.badge-dark#redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;")
                 #members_list.collapse 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
