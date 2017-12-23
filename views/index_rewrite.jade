@@ -1680,6 +1680,10 @@ head
           if($('#redact_list_div').css('display')==='none')
           {//$('#redact_list_dialog').css('display','none');
            //$('#invite_to_a_list').css('display','none');
+           if(user_id===global_items_store[_id].admin){
+            $('#redact_list_admin').text('Administrator: you');
+           }
+           else{
            friendstore.forEach(function (element,index){
             console.log('REDACT LIST DIALOG element '+JSON.stringify(element));
            if(element._id===global_items_store[_id].admin){
@@ -1687,6 +1691,7 @@ head
             $('#redact_list_admin').text('Administrator: '+element.nick);
            }
            });
+           }
            $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
            //alert(1);
            $('#list_name_redact').text(global_items_store[_id].list_name);
