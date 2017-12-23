@@ -1003,6 +1003,13 @@ head
       .modal-backdrop.show {
         opacity:0.7;
       }
+      body.modal-open .container-fluid{
+          -webkit-filter: blur(5px);
+          -moz-filter: blur(5px);
+          -o-filter: blur(5px);
+          -ms-filter: blur(5px);
+          filter: blur(5px);
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -2179,7 +2186,7 @@ head
         function get_friend_nick(arr,index,callback) {
           //console.log('GET_FRIEND_NICK arr[index]: '+arr[index]);
           global_items_store[arr[index]]={"redactable":0,"list_name":0,"itemstore":[],"teamlist":0};
-          $('#friends_insert').append('<div class="row menu_item" onclick="open_list(this)" id="'+arr[index]+'"></div>');
+          $('#friends_insert').append('<div class="row menu_item" id="'+arr[index]+'"></div>');
           var temp_friend_name;
           var temp_friend={};
           temp_friend._id=arr[index];
