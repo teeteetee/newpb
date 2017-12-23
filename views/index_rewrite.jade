@@ -1008,11 +1008,20 @@ head
         opacity:0.3;
       }
       body.modal-open .container-fluid{
-          -webkit-filter: blur(5px);
-          -moz-filter: blur(5px);
-          -o-filter: blur(5px);
-          -ms-filter: blur(5px);
-          filter: blur(5px);
+       -webkit-filter: blur(5px);
+       -moz-filter: blur(5px);
+       -o-filter: blur(5px);
+       -ms-filter: blur(5px);
+       filter: blur(5px);
+      }
+      #redact_list_admin{
+       text-align: center;
+       margin-bottom: 35px;
+       font-style: italic;
+       font-weight: 100;
+       color: #cecece;
+       margin-top: 20px;
+       font-size: 14px;
       }
   body
     .colour-transition.colour0
@@ -1352,8 +1361,8 @@ head
               span(style="margin-left:10px;" id="list_heading_title_num")
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
-            h4(style='text-align:center;margin-bottom:20px;text-transform: uppercase;letter-spacing: 2px;font-size: 13px;') List settings
-            h5#redact_list_admin(style='text-align:center;margin-bottom:20px;font-style:italic;font-weight:100;color:#333;margin-top:20px;')
+            h4(style='text-align:center;margin-bottom:20px;margin-top:20px;text-transform: uppercase;letter-spacing: 2px;font-size: 13px;') List settings
+            h5#redact_list_admin
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
             .row.justify-content-center
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
