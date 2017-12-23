@@ -1353,6 +1353,7 @@ head
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
             h4(style='text-align:center;margin-bottom:20px;text-transform: uppercase;letter-spacing: 2px;font-size: 13px;') List settings
+            h5#redact_list_admin(style='text-align:center;margin-bottom:20px;font-style:italic;font-weight:100;')
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
             .row.justify-content-center
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
@@ -1528,14 +1529,14 @@ head
                   $('#change_nick').text('Change');
                 }
                 });
-            $.ajax({
-            method: "POST",
-            url: "/getshowmail/"+'#{_id}',
-            data: 0
-          }).done(function( msg ) {
-               if(msg.mtext)
-               {$('#show_mail').prop('checked',true);}
-             });
+          //  $.ajax({
+          //  method: "POST",
+          //  url: "/getshowmail/"+'#{_id}',
+          //  data: 0
+          //}).done(function( msg ) {
+          //     if(msg.mtext)
+          //     {$('#show_mail').prop('checked',true);}
+          //   });
           settings_loaded=1;
           }
           });
@@ -1601,8 +1602,8 @@ head
             })
               .done(function( msg ) {
                 if(!msg.trouble) {
-                   if(msg.doc.admin!=user_id) {global_items_store[_id]={"redactable":0,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
-                   else{global_items_store[_id]={"redactable":1,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
+                   if(msg.doc.admin!=user_id) {global_items_store[_id]={"redactable":0,"admin":msg.doc.admin,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
+                   else{global_items_store[_id]={"redactable":1,"admin":msg.doc.admin,"list_name":msg.doc.list_name,"itemstore":msg.doc.itemstore,"teamlist":1};}
                   //$('#'+_id).text(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name); 
                   // var insert ="redact_list_dialog('"+_id+"','"+global_items_store[_id].list_name+"',"+global_items_store[_id].itemstore.length+")";
                   var insert ="redact_list_dialog('"+_id+"')";
@@ -1679,6 +1680,11 @@ head
           if($('#redact_list_div').css('display')==='none')
           {//$('#redact_list_dialog').css('display','none');
            //$('#invite_to_a_list').css('display','none');
+           friendstore.forEach(function (element,index){
+           if(element._id===global_items_store[_id].admin){
+            $('#redact_list_admin').text('Administrator: '+elemnt.nick);
+           }
+           });
            $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
            //alert(1);
            $('#list_name_redact').text(global_items_store[_id].list_name);
