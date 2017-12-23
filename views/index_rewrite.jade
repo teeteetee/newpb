@@ -1681,10 +1681,10 @@ head
           {//$('#redact_list_dialog').css('display','none');
            //$('#invite_to_a_list').css('display','none');
            friendstore.forEach(function (element,index){
-            console.log('REDACT LIST DIALOG element '+elemnt);
+            console.log('REDACT LIST DIALOG element '+element);
            if(element._id===global_items_store[_id].admin){
-            console.log('REDACT LIST DIALOG admin  '+elemnt.nick);
-            $('#redact_list_admin').text('Administrator: '+elemnt.nick);
+            console.log('REDACT LIST DIALOG admin  '+element.nick);
+            $('#redact_list_admin').text('Administrator: '+element.nick);
            }
            });
            $('#list_remove_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
