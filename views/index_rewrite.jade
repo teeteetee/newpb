@@ -1681,8 +1681,9 @@ head
           {//$('#redact_list_dialog').css('display','none');
            //$('#invite_to_a_list').css('display','none');
            friendstore.forEach(function (element,index){
+            console.log('REDACT LIST DIALOG element '+elemnt);
            if(element._id===global_items_store[_id].admin){
-            console.log('admin, hey '+elemnt.nick);
+            console.log('REDACT LIST DIALOG admin  '+elemnt.nick);
             $('#redact_list_admin').text('Administrator: '+elemnt.nick);
            }
            });
