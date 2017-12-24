@@ -1079,6 +1079,18 @@ head
                     button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+    .modal.fade(id='list_leave_modal' tabindex="-1")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header(style='display:block;text-align:center;')
+            h4.modal-title Leave this list
+          .modal-body          
+            .panel-group(id="leave_list_dialog" role="tablist" style='display:none;')
+                .panel.panel-default(style='border-bottom:0px;background-color: #dedede;')
+                  .panel-body
+                    button(class='btn btn-red' id='list_leave_submit' style='margin-top:70px;margin-bottom:70px;') Confirm
+          .modal-footer
+            button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     //
       .modal.fade(id='redact_list' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel")
         .modal-dialog.modal-sm
