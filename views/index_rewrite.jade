@@ -1017,7 +1017,7 @@ head
        -ms-filter: blur(5px);
        filter: blur(5px);
       }
-      #redact_list_admin{
+      .admin{
        text-align: center;
        margin-bottom: 35px;
        font-style: italic;
@@ -1365,7 +1365,7 @@ head
           #redact_list_div
             //h4#list_name_redact(style='text-align:center;')
             h4(style='text-align:center;margin-bottom:20px;margin-top:20px;text-transform: uppercase;letter-spacing: 2px;font-size: 13px;') List settings
-            h5#redact_list_admin
+            h5.admin#redact_list_admin
             //#redact_list_title_num.italic_title_num(style='text-align:center;')
             .row.justify-content-center
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
@@ -1375,21 +1375,30 @@ head
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //#members_list_section(style='text-align:center;')
                 button.btn.btn-grey-redact( data-toggle="modal" data-target="#members_modal") Show members
-                  span.badge.badge-pill.badge-dark#redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;padding-right: 3px;") 
+                  span.badge.badge-pill.badge-dark.redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;padding-right: 3px;") 
               .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
                 //.invite_section(style='text-align:center;')
                 button.btn.btn-grey-redact#invite_button( onclick="invite_dialog(this);") Invite
                 ul.list-item-group#invite_members_list.collapse(style='padding-left:0px;')
-            //
-              .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
-                .panel.panel-default(style='border-bottom:0px;background-color: #222;')
-                  .panel-body
-                    button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
-              .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
-                .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
-                  .panel-body
-                    input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
-                    button(class='btn btn-blue list_name_redact_submit') Submit 
+            #leave_list_div
+            h4(style='text-align:center;margin-bottom:20px;margin-top:20px;text-transform: uppercase;letter-spacing: 2px;font-size: 13px;') List settings
+            h5.admin#leave_list_admin
+            .row.justify-content-center
+              .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+                button.btn.btn-grey-redact#list_leave_toggle(data-toggle='modal' data-target='#list_leave_modal') Leave  
+              .col-sm-auto(style='padding-bottom:15px;padding-top:15px;text-align:center;')
+                button.btn.btn-grey-redact( data-toggle="modal" data-target="#members_modal") Show members
+                  span.badge.badge-pill.badge-dark.redact_list_title_user_num(style="vertical-align: text-bottom;padding-bottom: 2px;padding-top: 4px;margin-left: 10px;padding-right: 3px;") 
+               // 
+                .panel-group(id="remove_list_dialog" role="tablist" style='display:none;')
+                  .panel.panel-default(style='border-bottom:0px;background-color: #222;')
+                    .panel-body
+                      button(class='btn btn-red' id='list_remove_submit' style='margin-top:70px;margin-bottom:70px;') Remove list
+                .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
+                  .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
+                    .panel-body
+                      input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
+                      button(class='btn btn-blue list_name_redact_submit') Submit 
           #tags
             | Create a list, add items, invite team members
           //button.btn.btn-transparent(onclick="$('#invite').modal('show');" style='margin-top:20px;margin-bottom:20px;') Create a list
@@ -1619,6 +1628,9 @@ head
                   //$('#'+_id).text(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...':msg.doc.list_name); 
                   // var insert ="redact_list_dialog('"+_id+"','"+global_items_store[_id].list_name+"',"+global_items_store[_id].itemstore.length+")";
                   var insert ="redact_list_dialog('"+_id+"')";
+                  if(!global_items_store[_id].redactable){
+                   var insert ="leave_list_dialog('"+_id+"')";
+                  }
                   $('#'+_id).append(msg.doc.list_name.length>20?msg.doc.list_name.slice(0,20)+'...'+'<span class="oi oi-cog" onclick="'+insert+'" title="redact this list" aria-hidden="true"></span>':msg.doc.list_name+'<span class="oi oi-cog" onclick="'+insert+'" title="redact this list" aria-hidden="true"></span>');
                   $('#'+_id).attr('clean_title',msg.doc.list_name);
                   $('#'+_id).attr('onclick','open_list(this)');
@@ -1685,6 +1697,26 @@ head
           break;
           }
           };
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function leave_list_dialog(_id){
+          if($('#leave_list_div').css('display')==='none')
+          {
+             friendstore.forEach(function (element,index){
+               console.log('REDACT LIST DIALOG element '+JSON.stringify(element));
+               if(element._id===global_items_store[_id].admin){
+                  console.log('REDACT LIST DIALOG admin  '+element.nick);
+                 $('#leave_list_admin').text('Administrator: '+element.nick);
+                 }
+             });
+             $('#list_leave_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
+             $('#leave_list_div').slideToggle();
+           }
+           else{
+            $('#leave_list_div').slideToggle();
+           }
+        }
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
