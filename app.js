@@ -1161,6 +1161,46 @@ function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);} 
 
+app.post('/leave_list',function (req,res){
+  var ms = {};
+    ms.trouble=1;
+    ms.mtext='trouble'; 
+    var v_id= new ObjectID(req.body._id);
+    if(req.session&&req.session._id&&v_id)
+ { 
+   counter_users.find_one({_id:req.session._id},function (err,done){
+    if(err){
+
+    }
+    else{
+      if(done.teamlists.length>1){
+        var temp_last_list;
+        if(done.teamlists[0]!=v_id){
+          temp_last_list=temp_lists_arr[0];
+        }
+        else{
+          temp_last_list=temp_lists_arr[1];
+        }
+       counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id},$set:{last_list:temp_last_list}});
+         ms.trouble=0;
+         res.send(ms);
+      }
+      else{
+        counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id},$set:{last_list:0}});
+         ms.trouble=0;
+         res.send(ms);
+      }
+    }
+   });
+   //counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
+   //ms.trouble=0;
+   //res.send(ms);
+ }
+else {
+  res.send('RMTEAMLIST: err');
+}
+});
+
 app.post('/rmteamlist',function (req,res){
   var ms = {};
     ms.trouble=1;
