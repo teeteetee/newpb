@@ -1192,9 +1192,6 @@ app.post('/leave_list',function (req,res){
       }
     }
    });
-   //counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id}});
-   //ms.trouble=0;
-   //res.send(ms);
  }
 else {
   res.send('RMTEAMLIST: err');
