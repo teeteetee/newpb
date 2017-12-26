@@ -615,6 +615,7 @@ head
       letter-spacing: 1px;
       padding: 4px 8px;
       font-size:10px;
+      padding-top: 2px;
        }
       small {
       color: rgba(255, 255, 255, 0.45);
@@ -1031,6 +1032,10 @@ head
         margin-top:40px;
         margin-bottom:40px;
       }
+      .btn-secondary{
+        background-color:#b5b5b5;
+        border-color:#b5b5b5;
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1339,7 +1344,7 @@ head
                   .dropdown
                     button(class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_list_choice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Chose a list
                     .dropdown-menu(aria-labelledby="dropdown_list_choice")
-                  button(class='btn btn-blue item_import_submit') Add to chosen list 
+                  button(class='btn btn-blue item_import_submit' style='background-color:#6f6f6f;border-color:#6f6f6f;') Add to chosen list 
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .container-fluid(style='z-index:2;')
