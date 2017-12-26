@@ -733,14 +733,15 @@ head
         margin-bottom: 5px;
         margin-left: 10px;
         background-color: transparent;
-        color: rgba(255, 255, 255, 0.6);
-        border-color: hsla(0, 0%, 100%, 0.4);
+        color: white;
+        border-color: white;
         letter-spacing: 1px;
         text-transform: uppercase;
-        padding: 5px;
         font-size: 0.5rem;
-        padding-top: 3px;
-        padding-bottom: 2px;
+        padding-top: 7px;
+        padding-bottom: 6px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       .invite:hover{
         background-color:rgba(255,255,255,0.3);
@@ -1025,6 +1026,10 @@ head
        color: #cecece;
        margin-top: 20px;
        font-size: 14px;
+      }
+      .invite-button-group{
+        margin-top:40px;
+        margin-bottom:40px;
       }
   body
     .colour-transition.colour0
@@ -1369,7 +1374,7 @@ head
           .row(style='position: absolute;width: 100%;bottom: 10px;')
             span(style="color: rgba(255,255,255,0.1);margin:auto;font-size: 13;") 2017
         .col-md-10#lists
-          #list_heading
+          #list_heading(style='text-align:center;')
             h3#list_heading_title(style='margin-bottom:12px;') Welcome!
             h5#list_heading_span(style='text-align:center;margin-bottom:30px;')
               | items:
@@ -2184,7 +2189,7 @@ head
               url: "/additem",
               data: data
               }).done(function( msg ) {
-              //window.location='/';
+              //TODO add imported item to global_items_store
               $('#importmodal').modal('hide');
               });
         }
@@ -2471,7 +2476,7 @@ head
                           }
           if(global_items_store[$(el).attr('id')].pending_invite){
             console.log('CHECK CHECK: id: '+$(el).attr('id'));
-            $('#list_heading').append('<div class="btn-group" style="vertical-align:super;margin-left:25px;"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" style="padding-left:12px;padding-right:12px;">Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" style="padding-left:12px;padding-right:12px;">Decline</button></div>');
+            $('#list_heading').append('<div class="btn-group invite-button-group"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" >Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" >Decline</button></div>');
           }
           if($('#redact_list_div').css('display')!='none')
           {$('#redact_list_div').css('display','none');};
