@@ -2478,6 +2478,7 @@ head
             console.log('CHECK CHECK: id: '+$(el).attr('id'));
             $('#list_heading').append('<div class="btn-group invite-button-group"><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,1)" >Accept</button><button class="btn invite" listid="'+$(el).attr('id')+'" onclick="accept_invite(this,0)" >Decline</button></div>');
           }
+          //TODO show list's admin name
           if($('#redact_list_div').css('display')!='none')
           {$('#redact_list_div').css('display','none');};
           if($('#leave_list_div').css('display')!='none')
