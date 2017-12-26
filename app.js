@@ -1168,7 +1168,7 @@ app.post('/leave_list',function (req,res){
     var v_id= new ObjectID(req.body._id);
     if(req.session&&req.session._id&&v_id)
  { 
-   counter_users.find_one({_id:req.session._id},function (err,done){
+   counter_users.findOne({_id:req.session._id},function (err,done){
     if(err){
 
     }
