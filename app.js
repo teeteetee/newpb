@@ -1168,7 +1168,10 @@ app.post('/leave_list',function (req,res){
     var v_id= new ObjectID(req.body._id);
     if(req.session&&req.session._id&&v_id)
  { 
-   counter_users.findOne({_id:req.session._id},function (err,done){
+
+    counter_teamlists.update({_id:v_id},{$pull:{users:req.session._id}});
+   
+counter_users.findOne({_id:req.session._id},function (err,done){
     if(err){
 
     }
@@ -1192,9 +1195,10 @@ app.post('/leave_list',function (req,res){
       }
     }
    });
+
  }
 else {
-  res.send('RMTEAMLIST: err');
+  res.send('LEAVE_TEAMLIST: err');
 }
 });
 
