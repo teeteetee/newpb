@@ -1712,6 +1712,46 @@ head
         ////////--------------------/////////
         ////////--------------------/////////
         ////////--------------------/////////
+        function leave_team_list(el) {
+          //TODO what happens with last_list ?
+          $.ajax({
+                 method: "POST",
+                 url: "/leave_list",
+                 data: {"_id":$(el).attr('_id')}
+               })
+                 .done(function( msg ) {
+                   if(!msg.trouble){
+                    console.log('left a list successfuly');
+                   }
+                    else{
+                    console.log('trouble leaving a list');
+                    }
+                   });
+                 }
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
+        function remove_team_list(el) {
+          //TODO what happens with last_list ? 
+          $.ajax({
+                 method: "POST",
+                 url: "/rmteamlist",
+                 data: {"_id":$(el).attr('_id')}
+               })
+                 .done(function( msg ) {
+                   if(!msg.trouble){
+                    console.log('removed a list successfuly');
+                   }
+                    else{
+                    console.log('trouble removing a list');
+                    }
+                   });
+                 }
+        }
+        ////////--------------------/////////
+        ////////--------------------/////////
+        ////////--------------------/////////
         function leave_list_dialog(_id){
           if($('#leave_list_div').css('display')==='none')
           {
@@ -1722,7 +1762,7 @@ head
                  $('#leave_list_admin').text('Administrator: '+element.nick);
                  }
              });
-             $('#list_leave_submit').attr({'onclick':'remove_team_list(this);','_id':_id});
+             $('#list_leave_submit').attr({'onclick':'leave_team_list(this);','_id':_id});
              $('#leave_list_div').slideToggle();
            }
            else{
