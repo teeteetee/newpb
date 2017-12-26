@@ -1176,10 +1176,10 @@ app.post('/leave_list',function (req,res){
       if(done.teamlists.length>1){
         var temp_last_list;
         if(done.teamlists[0]!=v_id){
-          temp_last_list=temp_lists_arr[0];
+          temp_last_list=done.teamlists[0];
         }
         else{
-          temp_last_list=temp_lists_arr[1];
+          temp_last_list=done.teamlists[1];
         }
        counter_users.update({_id:new ObjectID(req.session._id)},{$pull:{teamlists:v_id},$set:{last_list:temp_last_list}});
          ms.trouble=0;
