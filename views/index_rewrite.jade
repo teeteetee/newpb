@@ -1008,6 +1008,7 @@ head
       }
       .modal-footer{
         padding-top: 30px;
+        padding-bottom: 30px;
       }
       .modal-backdrop.show {
         opacity:0.3;
@@ -1073,8 +1074,8 @@ head
             .panel-group(id="redact_list_dialog" role="tablist" style='display:none;')
                 .panel.panel-default(style='border-bottom:0px;background-color: #ddd;')
                   .panel-body
-                    input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;")
-                    button(class='btn btn-blue list_name_redact_submit') Submit 
+                    input#list_name_redact_input(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name" style="background-color: #ddd;border-bottom: 1px solid #ccc;text-align:center;")
+                    button(class='btn btn-blue list_name_redact_submit' style="margin-top:30px;margin-bottom:30px;") Submit 
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
     .modal.fade(id='list_remove_modal' tabindex="-1")
