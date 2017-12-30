@@ -1255,14 +1255,21 @@ head
           .modal-header
             h4(class="modal-title" style='text-align:center;') New team list   
           .modal-body.add_choice
-            .panel-group(id="accordion" role="tablist" aria-multiselectable="true")
-              .panel.panel-default     
-                .panel-body
-                  input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
-                  .custom-control.custom-checkbox
-                    input(type="checkbox" class="custom-control-input" id="customCheck1")
-                    label(class="custom-control-label" for="customCheck1") redactable
-                    small.form-text.text-muted  Allow all members of the list to add and remove items
+            //.panel-group(id="accordion" role="tablist" aria-multiselectable="true")
+            //  .panel.panel-default     
+            //    .panel-body
+            //      input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+            //      .custom-control.custom-checkbox
+            //        input(type="checkbox" class="custom-control-input" id="customCheck1")
+            //        label(class="custom-control-label" for="customCheck1") redactable
+            //        small.form-text.text-muted  Allow all members of the list to add and remove items
+            form
+              .form-group
+                input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                .custom-control.custom-checkbox
+                  input(type="checkbox" class="custom-control-input" id="customCheck1")
+                  label(class="custom-control-label" for="customCheck1") redactable
+                 small.form-text.text-muted  Allow all members of the list to add and remove items
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
