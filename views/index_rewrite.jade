@@ -1259,6 +1259,9 @@ head
               .panel.panel-default     
                 .panel-body
                   input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
+                  .custom-control.custom-checkbox
+                    input(type="checkbox" class="custom-control-input" id="customCheck1")
+                    label(class="custom-control-label" for="customCheck1") All members can add and remove items
                   button(class='btn btn-blue' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
