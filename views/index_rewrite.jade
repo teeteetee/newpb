@@ -1271,11 +1271,11 @@ head
             //        input(type="checkbox" class="custom-control-input" id="customCheck1")
             //        label(class="custom-control-label" for="customCheck1") redactable
             //        small.form-text.text-muted  Allow all members of the list to add and remove items
-            .sep(style='width:100%;height:15px;')
             form
               .form-group
                 input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
-                .custom-control.custom-checkbox(style='margin:20px')
+                .sep(style='width:100%;height:15px;')
+                .custom-control.custom-checkbox
                   input(type="checkbox" class="custom-control-input" id="new_teamlist_redactable")
                   label(class="custom-control-label" for="customCheck1") Redactable
                   small.form-text.text-muted  Allow all members of the list to add and remove items
