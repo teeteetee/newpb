@@ -1275,7 +1275,7 @@ head
               .form-group(style='text-align:center;')
                 input#list_name(type="text" maxlength="100" class="form-control" autocomplete='off' placeholder="List name")
                 .custom-control.custom-checkbox(style='margin:20px;text-align:left;')
-                  input(type="checkbox" class="custom-control-input" id="customCheck1")
+                  input(type="checkbox" class="custom-control-input" id="new_teamlist_redactable")
                   label(class="custom-control-label" for="customCheck1") Redactable
                   small.form-text.text-muted  Allow all members of the list to add and remove items
                 button(class='btn btn-blue' onclick='add_team_list()') Добавить          
@@ -1855,6 +1855,11 @@ head
           //-------------
            var data={};
            data.teamlistname = $('#list_name').val();   
+           data.redactable =0;
+           if ($('#new_teamlist_redactable').is(":checked"))
+           {
+             data.redactable =1;
+           }
           $.ajax({
               method: "POST",
               url: "/newteamlist",
@@ -2045,6 +2050,9 @@ head
             }).done(function( msg ) {
                  if(!msg.trouble){
                      //items=msg.doc.itemstore;
+                     if(msg.doc.redactable){
+                      console.log('POPULATE teamlist is redactable');
+                     }
                      if(!msg.doc.itemstore||!msg.doc.itemstore.length ) { 
                         $('#list_heading_title').append('<span id="list_heading_span"><span style="margin-right:10px;" id="list_heading_title_num" >0</span>items</span>');
                         $('#tags').empty();

@@ -1274,7 +1274,7 @@ app.post('/newteamlist',function (req,res){
     //var vmail = req.body.mail;
     if(req.session&&req.session._id&&vteamlistname)
  {
-   counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),admin:req.session._id,users:[req.session._id]},function (err,done){
+   counter_teamlists.insert({list_name:vteamlistname,totallinks:0,last_item:0,create_date:Date.now(),admin:req.session._id,users:[req.session._id],redactable:req.body.redactable},function (err,done){
             if(err)
             {
               ms.mtext='db';
