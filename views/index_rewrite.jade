@@ -1045,6 +1045,9 @@ head
        border-radius: 6px;
        background-color: #eee;
       }
+      .text-muted {
+          color: #bcbcbd!important;
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1277,8 +1280,8 @@ head
                 .sep(style='width:100%;height:15px;')
                 .custom-control.custom-checkbox
                   input(type="checkbox" class="custom-control-input" id="new_teamlist_redactable")
-                  label(class="custom-control-label" for="customCheck1") Redactable
-                  small.form-text.text-muted  Allow all members of the list to add and remove items
+                  label(class="custom-control-label" for="new_teamlist_redactable") Redactable
+                  small.form-text.text-muted(style='font-weight: 300;margin-left:0px;')  Allow all members of the list to add and remove items
                 button(class='btn btn-blue' style='margin-right:auto;margin-left:auto;display:block;' onclick='add_team_list()') Добавить          
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
