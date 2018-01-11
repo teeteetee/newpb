@@ -535,7 +535,7 @@ head
       }
       .menu_item.selected {
         background-color:rgba(255,255,255,0.1);
-        color:rgba(255,255,255,0.8);
+        color:rgba(255,255,255,0.6);
       }
       .oi-cog{
        color:rgba(255,255,255,0.3);
@@ -1048,6 +1048,13 @@ head
       .text-muted {
           color: #bcbcbd!important;
       }
+      #nick {
+      border: none;
+      width: 100%;
+      margin: auto;
+      border-radius: 6px;
+      background-color: #eee;
+      }
   body
     .colour-transition.colour0
     .colour-transition.colour1
@@ -1200,14 +1207,14 @@ head
             h4.modal-title Settings 
           .modal-body#settings_choice
             .panel-group(id="accordion3" role="tablist" aria-multiselectable="true")
-              .panel.panel-default
+              .panel.panel-default(style='background-color: #f9f8f8;')
                 .panel-heading(role="tab" id="headingOne3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne") Download backup file
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseOne3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
                   .panel-body
                     button.btn.btn-blue#backup download 
-              .panel.panel-default
+              .panel.panel-default(style='background-color: #f9f8f8;')
                 .panel-heading(role="tab" id="headingTwo3")
                   button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo") Restore from file
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")    
@@ -1220,16 +1227,14 @@ head
                         .fileUpload.btn.btn-ioslight(style='margin:auto;')
                           span(style='text-transform:uppercase;') Upload restore file
                           input#restore_file(type="file" class="upload" name='userjson')
-              .panel.panel-default
+              .panel.panel-default(style='background-color: #f9f8f8;')
                 .panel-heading(role="tab" id="headingThree3")
                   button#set_nick_button(class='btn btn-iosdark form-control collapsed' role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree") Change nick
                     span(class="glyphicon glyphicon-chevron-right float-right" style="color:gray;")
                 #collapseThree3(class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
                   .panel-body 
-                    .input-group#nick_group
-                      input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
-                      span(class="input-group-btn")
-                        button(class="btn btn-blue" onclick="change_nick(1);" id="change_nick" type="button") Submit
+                    input(type="text" class="form-control" placeholder="nickname" id='nick' data-toggle="tooltip")
+                    button(class="btn btn-blue" onclick="change_nick(1);" style='margin-left:auto;margin-right:auto;display:block;' id="change_nick" type="button") Submit
               //
                 .panel.panel-default
                   .panel-heading(role="tab" id="headingFour3")
