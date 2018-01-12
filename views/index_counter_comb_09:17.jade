@@ -38,9 +38,6 @@ head
         -webkit-transition: 0.5s -webkit-filter linear;
         -moz-transition: 0.5s -moz-filter linear;
       }
-      .navbar-right {
-        float: none !important; 
-      }
       input[type="text"], textarea {
       outline: none;
       box-shadow:none !important;
@@ -1176,6 +1173,21 @@ head
                   button(class='btn btn-blue item_import_submit') Add to chosen list 
           .modal-footer
             button(class='btn btn-close btn-grey' data-dismiss="modal") Close
+  nav(class="navbar navbar-expand-lg navbar-light bg-light")
+    a(class="navbar-brand" href="#") Teamlists
+    button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      span class="navbar-toggler-icon"></span>
+    div(class="collapse navbar-collapse" id="navbarNav")
+      ul.navbar-nav
+        li.nav-item active 
+          a.nav-link(href="#") Home <
+            span(class="sr-only")
+        li.nav-item 
+          a.nav-link(href="#") Features
+        li.nav-item 
+          a.nav-link(href="#") Pricing
+        li.nav-item 
+          a.nav-link.disabled(href="#") Disabled
     .container-fluid(style='z-index:2;')
       .row(style='display:none;')
         .col-xs-12
