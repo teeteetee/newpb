@@ -1674,8 +1674,8 @@ head
                   console.log('INIT GETTEAMLISTS: no teamlists');
                   }
                   else {
-                  var temp_teamlists_arr=msg.doc;
-                  var temp_arr_length=temp_teamlists_arr.length;
+                  var gt_temp_teamlists_arr=msg.doc;
+                  var temp_arr_length=gt_temp_teamlists_arr.length;
                   console.log('INIT GETTEAMLISTS teamlists total: '+temp_arr_length);
                   if(temp_arr_length>4&&temp_arr_length%4>0){
                     temp_arr_length=(temp_arr_length-temp_arr_length%4)/4;
@@ -1684,8 +1684,8 @@ head
                      $('#row_insert').append('<div id="list_row_'+z+'" class="row"><div id="list_col_'+(z+1)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+1)+'"></h5></div><div id="list_col_'+(z+2)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+2)+'"></h5></div><div id="list_col_'+(z+3)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+3)+'"></h5></div><div id="list_col_'+(z+4)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+4)+'"></h5></div></div>');
                     }
                      $('#row_insert').append('<div id="list_row_'+(temp_arr_length+1)+'" class="row"></div>');
-                     for(y=0;y<temp_teamlists_arr.length%4;y++){
-                      $('#list_row_'+(temp_arr_length+1)).append('<div id="list_col_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'"></h5></div>');
+                     for(y=0;y<gt_temp_teamlists_arr.length%4;y++){
+                      $('#list_row_'+(temp_arr_length+1)).append('<div id="list_col_'+(gt_temp_teamlists_arr.length-gt_temp_teamlists_arr.length%4+y)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(gt_temp_teamlists_arr.length-gt_temp_teamlists_arr.length%4+y)+'"></h5></div>');
                      }
                   }
                   else{
