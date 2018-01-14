@@ -147,14 +147,14 @@ app.get('/v2',function (req,res){
     if(!req.session.friendstore||req.session.friendstore.length<1)
       {req.session.friendstore=0;}
     //res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':req.session.nick,'friendstore':JSON.stringify(req.session.friendstore)});
-    res.render('list_views',{'_id':req.session._id,'nick':req.session.nick,'friendstore':JSON.stringify(req.session.friendstore)});
+    res.render('lists_view',{'_id':req.session._id,'nick':req.session.nick,'friendstore':JSON.stringify(req.session.friendstore)});
   }
   else{
     if(!req.session.friendstore||req.session.friendstore.length<1)
       {req.session.friendstore=0;}
   //res.render('index_counter_comb',{'_id':req.session._id,'nick':0});
   //res.render('index_counter_comb_09:17',{'_id':req.session._id,'nick':0,'friendstore':JSON.stringify(req.session.friendstore)});
-  res.render('list_views',{'_id':req.session._id,'nick':0,'friendstore':JSON.stringify(req.session.friendstore)});
+  res.render('lists_view',{'_id':req.session._id,'nick':0,'friendstore':JSON.stringify(req.session.friendstore)});
 }}
  else {
   console.log(' MAIN REQUEST FROM '+req.ip);
