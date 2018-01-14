@@ -1677,7 +1677,7 @@ head
                   var temp_teamlists_arr=msg.doc;
                   var temp_arr_length=temp_teamlists_arr.length;
                   console.log('INIT GETTEAMLISTS teamlists total: '+temp_arr_length);
-                  if(temp_arr_length%4>0){
+                  if(temp_arr_length>4&&temp_arr_length%4>0){
                     temp_arr_length=(temp_arr_length-temp_arr_length%4)/4;
                     console.log("INIT GETTEAMLISTS no clean divide, number of rows: "+temp_arr_length);
                     for(z=0;z<temp_arr_length;z++){
@@ -1685,14 +1685,21 @@ head
                     }
                      $('#row_insert').insert('<div id="list_row_'+(temp_arr_length+1)+'" class="row"></div>');
                      for(y=0;y<temp_teamlists_arr.length%4;y++){
-                      $('#list_row'+(temp_arr_length+1)).insert('<div id="list_col_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'"></h5></div>');
+                      $('#list_row_'+(temp_arr_length+1)).insert('<div id="list_col_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(temp_teamlists_arr.length-temp_teamlists_arr.length%4+y)+'"></h5></div>');
                      }
                   }
                   else{
-                  temp_arr_length=temp_arr_length/4;
+                  if(temp_arr_length>4)
+                  {temp_arr_length=temp_arr_length/4;
                   console.log("INIT GETTEAMLISTS clean divide, number of rows: "+temp_arr_length);
                   for(z=0;z<temp_arr_length;z++){
                      $('#row_insert').insert('<div id="list_row_'+z+'" class="row"><div id="list_col_'+(z+1)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+1)+'"></h5></div><div id="list_col_'+(z+2)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+2)+'"></h5></div><div id="list_col_'+(z+3)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+3)+'"></h5></div><div id="list_col_'+(z+4)+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+(z+4)+'"></h5></div></div>');
+                    }}
+                    else{
+                      $('#row_insert').insert('<div id="list_row_0" class="row"></div>');
+                      for(y=0;y<temp_arr_length;y++){
+                      $('#list_row_0').insert('<div id="list_col_'+y+'" class="col-sm-3 list_vis"><h5 id="list_col_heading_'+y+'"></h5></div>');
+                     }
                     }
                   }
                    msg.doc.forEach(function (element,index){
